@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9935DBF1-02E7-46DC-952D-D901A313BA15}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{310C5F07-73B8-44D0-8E2C-7CB9EF476D9D}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DevTreks", "src\DevTreks\DevTreks.xproj", "{6705ED8A-109B-446F-9230-921170E5AD6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6705ED8A-109B-446F-9230-921170E5AD6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6705ED8A-109B-446F-9230-921170E5AD6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6705ED8A-109B-446F-9230-921170E5AD6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6705ED8A-109B-446F-9230-921170E5AD6D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6705ED8A-109B-446F-9230-921170E5AD6D} = {9935DBF1-02E7-46DC-952D-D901A313BA15}
+	EndGlobalSection
+EndGlobal
