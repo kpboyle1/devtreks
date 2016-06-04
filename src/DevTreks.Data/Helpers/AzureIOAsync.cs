@@ -504,8 +504,6 @@ namespace DevTreks.Data.Helpers
                         string sBlobName = GetBlobRelativeName(container.Name, blobURI);
                         if (!string.IsNullOrEmpty(sBlobName))
                         {
-                            //string relativeBlobPath = string.Concat(container.Name,
-                            //    Helpers.GeneralHelpers.WEBFILE_PATH_DELIMITER, sBlobName);
                             //a references to the blob is not the blob itself
                             cBlob = container.GetBlockBlobReference(sBlobName);
                         }
@@ -1471,7 +1469,6 @@ namespace DevTreks.Data.Helpers
                 {
                     //do not use a using with the memory stream or it closes before it can be used in reader
                     //when reader closes it will dipose of the memory stream
-                    //using (var memoryStream = new MemoryStream())
                     var memoryStream = new MemoryStream();
                     blob.DownloadToStream(memoryStream);
                     memoryStream.Position = 0;

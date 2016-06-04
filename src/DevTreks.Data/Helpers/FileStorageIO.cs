@@ -1349,12 +1349,33 @@ namespace DevTreks.Data.Helpers
                 }
             }
         }
+        public static async Task<bool> CopyNewerFiles(ContentURI uri, string fromDllPath, string toDllPath)
+        {
+            bool bHasCopied = false;
+            //2.0.0 workaround for post build scripts and buildoption copy not working
+            //probably better than post build scripts for cross platform use
+            if (uri.URIMember.ClubInUse.PrivateAuthorizationLevel
+                == DevTreks.Models.AccountHelper.AUTHORIZATION_LEVELS.fulledits)
+            {
+                //only update if the dll is updated
+                bool bIsNewerFile = File1IsNewer(uri, fromDllPath, toDllPath);
+                if (bIsNewerFile)
+                {
+                    bHasCopied = await CopyURIsAsync(
+                            uri, fromDllPath, toDllPath);
+                }
+            }
+            return bHasCopied;
+        }
         public static bool File1IsNewer(ContentURI uri, 
             string file1Path, string file2Path)
         {
             bool bXmlIsNewer = false;
+            bool bFile2Exists = FileStorageIO.URIAbsoluteExists(uri, file2Path);
+            if (!bFile2Exists)
+                return true;
             if (FileStorageIO.URIAbsoluteExists(uri, file1Path)
-                && FileStorageIO.URIAbsoluteExists(uri, file2Path))
+                && bFile2Exists)
             {
                 DateTime xmlFileTime 
                     = GetLastWriteTimeUtc(uri, file1Path);

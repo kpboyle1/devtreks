@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using DevTreks.Data;
+using DataAllHelpers = DevTreks.Data.Helpers;
 using DataAppHelpers = DevTreks.Data.AppHelpers;
 using DataHelpers = DevTreks.Data.Helpers.GeneralHelpers;
 using Exceptions = DevTreks.Exceptions;
@@ -20,7 +21,7 @@ namespace DevTreks.ViewModels
     /// <summary>
     ///Purpose:		ViewModel class for loading, displaying and editing DevTreks content uris
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
+    ///Date:		2016, June
     ///References:	
     /// </summary>
     public class ContentViewModel 
@@ -915,20 +916,25 @@ namespace DevTreks.ViewModels
         private async Task CopyExtensions(ContentURI uri)
         {
             //2.0.0 workaround for post build scripts and buildoption copy not working
+            //probably better than post build scripts for cross platform use
             if (ContentURIData.URIMember.ClubInUse.PrivateAuthorizationLevel
                 == AccountHelper.AUTHORIZATION_LEVELS.fulledits)
             {
                 bool bHasCopied = false;
-                bool bOverwrite = true;
+                //2 debugs 
                 string sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net451\\AgBudgetingCalculators.dll");
-                string sToExtension = Path.GetFullPath("ExtensionsDev\\AgBudgetingCalculators.dll");
-                //refactor for blob
-                if (File.GetLastWriteTimeUtc(sFromExtension) > File.GetLastWriteTimeUtc(sToExtension))
-                {
-                    bHasCopied =
-                        await DevTreks.Data.Helpers.FileStorageIO.CopyURIsAsync(
-                            uri, sFromExtension, sToExtension);
-                }
+                string sToExtension = Path.GetFullPath("wwwroot\\ExtensionsDev\\AgBudgetingCalculators.dll");
+                bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
+                    uri, sFromExtension, sToExtension);
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net451\\AgBudgetingCalculators.pdb");
+                sToExtension = Path.GetFullPath("wwwroot\\ExtensionsDev\\AgBudgetingCalculators.pdb");
+                bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
+                    uri, sFromExtension, sToExtension);
+                //1 release
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Release\\net451\\AgBudgetingCalculators.dll");
+                sToExtension = Path.GetFullPath("wwwroot\\Extensions\\AgBudgetingCalculators.dll");
+                bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
+                    uri, sFromExtension, sToExtension);
             }
         }
     }
