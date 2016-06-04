@@ -1,0 +1,54 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.Account == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.ULStart(string.Empty, string.Empty, "listview", string.Empty, string.Empty)
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Account.AccountName, Model.URIModels.Account.PKId.ToString(),
+        Model.URINetworkPartName, Accounts.ACCOUNT_TYPES.account.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+        @Model.URINodeName, Accounts.ACCOUNT_TYPES.account.ToString(), 
+            Model.URIDataManager.ServerActionType, Model.URIMember);
+    @Html.LIStart("fieldcontain")
+    @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.Account.AccountName,
+                    "AccountName", Model.URIDataManager.EditViewEditType, bCanDelete)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Account.AccountEmail, "AccountEmail",
+        "Club Contact Email:", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "1000")
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Account.AccountURI, "AccountURI",
+        "Club URI:", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Account.AccountDesc, "AccountDesc",
+                "Description:", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Account.AccountLongDesc, "AccountLongDesc",
+        "Long Description:", Model.URIDataManager.EditViewEditType, "Text450W400H", "1000")
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    string clubgroupname = string.Concat(searchurl, ";AccountClassId;", GeneralRules.INTEGER, ";4");
+    @Html.LabelStrong(clubgroupname, "Club Group:  ")
+    @HtmlMemberExtensions.WriteClubGroupsSelectList(Html, Model, clubgroupname, Model.URIDataManager.EditViewEditType.ToString(), Model.URIModels.Account.AccountClassId.ToString());
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    string memberregionname = string.Concat(searchurl, ";GeoRegionId;", GeneralRules.INTEGER, ";4");
+    @Html.LabelStrong(memberregionname, "Region:  ")
+    @HtmlMemberExtensions.WriteGeoRegionsSelectList(Html, Model, memberregionname, Model.URIDataManager.EditViewEditType.ToString(), Model.URIModels.Account.GeoRegionId.ToString());
+    @Html.LIEnd()
+@Html.ULEnd()
+}

@@ -1,0 +1,34 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "CalculatorsContracts Class Library",
+  "authors": [ "kpboyle1" ],
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.ComponentModel.Composition": "4.0.0.0",
+        "System.Xml.Linq": "4.0.0.0"
+      }
+    }
+  },
+  "dependencies": {
+    "DevTreks.Data": "1.0.0-*",
+    "Jace": "1.0.0-*",
+    "Numerics": "1.0.0-*"
+  },
+  //2.0.0 changes: https://github.com/aspnet/Announcements/issues/175
+  "buildOptions": {
+    "embed": {
+      "include": [ "" ],
+      "exclude": [ "" ],
+      "includeFiles": [
+        "GeneralMessages/Messages.resx"
+      ],
+      "excludeFiles": [ "" ],
+      "builtIns": { },
+      "mappings": {
+        "dest1": "./src1",
+        "dest2": [ "./src2" ]
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+﻿<root>
+	<linkedview Id="1" Version="1.3.2" CalculatorType="lifecycle" WhatIfTagName="none"
+		FileExtensionType="lifecycle" RelatedCalculatorsType="lifecycle" 
+		StylesheetResourceFileName="LifeCycleCost1.xslt" Stylesheet2ResourceFileName="LCC1StocksIns1.xslt"
+		CalculatorName="Life Cycle Cost Calculator" Overwrite="0"
+    OptionForInflation="1" />
+</root>

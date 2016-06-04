@@ -1,0 +1,7 @@
+﻿<root>
+	<linkedview Id="1" Version="0.8.1" CalculatorType="hcbenefit1" 
+		WhatIfTagName="none" FileExtensionType="hcbenefit1" 
+		CalculatorName="Health Care Benefits Calculator" StylesheetResourceFileName="HC1BenefitOuts1.xslt" 
+		Stylesheet2ResourceFileName="HC1StocksOuts1.xslt"
+		RelatedCalculatorsType="healthcare1" Overwrite="0"  />
+</root>

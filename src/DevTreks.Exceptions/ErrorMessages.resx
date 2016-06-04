@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Class that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="TITLE_MESSAGE" xml:space="preserve">
+    <value>Point of contention: </value>
+  </data>
+  <data name="TITLE_APPLICATION" xml:space="preserve">
+    <value>Application: </value>
+  </data>
+  <data name="TITLE_SUBAPPLICATION" xml:space="preserve">
+    <value>SubApplication: </value>
+  </data>
+  <data name="TITLE_NODENAME" xml:space="preserve">
+    <value>Node Name: </value>
+  </data>
+  <data name="TITLE_ID" xml:space="preserve">
+    <value>Id: </value>
+  </data>
+  <data name="TITLE_SERVICEID" xml:space="preserve">
+    <value>Service Id: </value>
+  </data>
+  <data name="TITLE_ACCOUNTID" xml:space="preserve">
+    <value>Account Id: </value>
+  </data>
+  <data name="TITLE_FULLMSG" xml:space="preserve">
+    <value>Admin Message:</value>
+  </data>
+  <data name="TEST" xml:space="preserve">
+    <value>Proof</value>
+  </data>
+  <data name="TAB_CLICK_TO_ERASE" xml:space="preserve">
+    <value> This contention message can be erased by clicking on any tab.</value>
+  </data>
+  <data name="DISPLAYHELPER_NOSERVICES" xml:space="preserve">
+    <value>Clubs subscribe to individual services. Please first select a service.</value>
+  </data>
+  <data name="DISPLAYHELPER_NOSUBSCRIPTIONS" xml:space="preserve">
+    <value>No clubs have subscriptions to this service. Does the service need to be improved?.</value>
+  </data>
+  <data name="DISPLAYHELPER_NOADDIN" xml:space="preserve">
+    <value>The linked view could not be found. Has a specific linked view been opened? Are you sure that the linked view has been linked to the view selected? If linked views are available in the selection box above, please try running and saving the linked views.</value>
+  </data>
+  <data name="DISPLAYHELPER_NOCALCULATIONS" xml:space="preserve">
+    <value>The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.</value>
+  </data>
+  <data name="DISPLAYHELPER_NOHTMLFILE" xml:space="preserve">
+    <value>An html file could not be made. Please try again.</value>
+  </data>
+  <data name="DISPLAYHELPER_NOSELECTEDFILES" xml:space="preserve">
+    <value>The selected files could not be saved.</value>
+  </data>
+  <data name="ECONOMICS_NOTEMPFILE" xml:space="preserve">
+    <value>The temporary document holding the calculations was not saved properly. Please try running the calculations again.</value>
+  </data>
+  <data name="ADDIN_NOANALYSISLIST" xml:space="preserve">
+    <value>The database list of custom documents being analyzed could not be found. Does this analysis have actual files to analyze?</value>
+  </data>
+  <data name="ADDIN_NOSUMMARYDOC" xml:space="preserve">
+    <value>Either the summary document used to verify analyses has not been made yet or you have not made a correct selection below. Make sure to run a base calculator before running an analysis and make sure that the "Base Calculator" or "Related Calculator" selection is correct for the analyses being run.</value>
+  </data>
+  <data name="CONTENTHELPER_FILENOUPLOAD" xml:space="preserve">
+    <value>The file could not be uploaded because the application-node combination you are using do not support file uploads.</value>
+  </data>
+  <data name="CONTENTHELPER_NOSAVECALCS" xml:space="preserve">
+    <value>The calculations could not be saved.</value>
+  </data>
+  <data name="EDIT_CHOOSEFILE" xml:space="preserve">
+    <value>Please choose the type of file being analyzed.</value>
+  </data>
+  <data name="EDIT_EMAILINUSE" xml:space="preserve">
+    <value>This email is already in use. Please use a different email address.</value>
+  </data>
+  <data name="EDIT_NODELETEFOUNDER" xml:space="preserve">
+    <value>The original founder of a club can not be deleted from a club by club members. It requires an act of ...</value>
+  </data>
+  <data name="EDIT_NOFOUNDERCHANGE" xml:space="preserve">
+    <value>The original founder of a club must remain in the coordinator role.</value>
+  </data>
+  <data name="EDIT_PASSWORDLENGTH" xml:space="preserve">
+    <value>The password entered has less than the required 5 characters. Please use a password with at least 5 characters.</value>
+  </data>
+  <data name="EDIT_PASSWORDNOMATCH" xml:space="preserve">
+    <value>The password and confirmed password do not match. Please enter the passwords again.</value>
+  </data>
+  <data name="EPUB_NOCONTAINER" xml:space="preserve">
+    <value>The container.xml file needed by the package could not be found on the web site.</value>
+  </data>
+  <data name="EPUB_NOFILE" xml:space="preserve">
+    <value>A file needed for the package could not be found on the web site.</value>
+  </data>
+  <data name="ERROR_INTRO" xml:space="preserve">
+    <value>The following error took place:  </value>
+  </data>
+  <data name="RESOURCES_NOFILETYPE" xml:space="preserve">
+    <value>The type of file you are uploading is not presently allowed. Please contact the network about adding support for this type of file.</value>
+  </data>
+  <data name="SQLCONTENT_NORESOURCES" xml:space="preserve">
+    <value>The resources associated with this uri could not be retrieved. Please check the resource's attributes, including the filename. If the problem can't be fixed, try uploading a new file with new filename, or deleting this resource.</value>
+  </data>
+  <data name="SQLCONTENT_NOSAVE" xml:space="preserve">
+    <value>The xml document could not be saved.</value>
+  </data>
+  <data name="SQLCONTENT_NOSAVE2" xml:space="preserve">
+    <value>The file could not be saved.</value>
+  </data>
+  <data name="SQLCONTENT_NOSELECTS" xml:space="preserve">
+    <value>No selections were available for insertion. Please make selections and submit the selections again.</value>
+  </data>
+  <data name="ADDINSTYLE_NOSTYLESHEET" xml:space="preserve">
+    <value>The stylesheet for this analysis could not be found. Please run another analysis and save the results.</value>
+  </data>
+  <data name="CONTENTSERVICE_NOCALCSRUN" xml:space="preserve">
+    <value>The calculations could not be run. Please make sure the addin names are correct in the calculator being used (i.e. the linkedview's host name and add-in name).</value>
+  </data>
+  <data name="CONTENTSERVICE_NOCALCSRUN2" xml:space="preserve">
+    <value>The calculations can not be run. In this release, calculators and analyzers only run when linked to other uris, not stand-alone.</value>
+  </data>
+  <data name="CONTENTSERVICE_NOFORMELS" xml:space="preserve">
+    <value>The form parameters needed to add default nodes was not available. Please try again.</value>
+  </data>
+  <data name="CONTENTSERVICE_NOLINKEDVIEW" xml:space="preserve">
+    <value>The selected linked view could not be loaded for editing. Please try again.</value>
+  </data>
+  <data name="EDITHELPER_NOEDITDOC" xml:space="preserve">
+    <value>The document being edited does not exist yet. Please load the document in the Edits panel. After loading, the edits can then be made.</value>
+  </data>
+  <data name="EDITHELPER_NOSELECTEDLV" xml:space="preserve">
+    <value>The selected linked view being edited does not exist yet. Please add the linked view before continuing further.</value>
+  </data>
+  <data name="APPHELPER_NOFILEUPLOAD" xml:space="preserve">
+    <value>The file could not be uploaded. A non-standard error has been logged. Please inform DevTreks about the time and circumstance of the error.</value>
+  </data>
+  <data name="APPHELPER_WHOKNOWS" xml:space="preserve">
+    <value>A non-standard error has been logged. Please inform DevTreks about the time and circumstance of the error.</value>
+  </data>
+  <data name="CONTENTVIEW_MAKEEDIT" xml:space="preserve">
+    <value>Please make an edit before clicking on the submit edit button. </value>
+  </data>
+  <data name="CONTENTVIEW_MAKEEDIT2" xml:space="preserve">
+    <value>Please make an edit before clicking on the submit edit button. Also close any form that is open in the linked views panel.</value>
+  </data>
+  <data name="CONTENTVIEW_NOFILEUPLOAD" xml:space="preserve">
+    <value>A file was not received on the server. Please try uploading it again.</value>
+  </data>
+  <data name="MEMSERVICE_BADEMAIL" xml:space="preserve">
+    <value>Please include a normal email address in the format: 'someone@somewhere.here' .</value>
+  </data>
+  <data name="MEMSERVICE_BADEMAIL2" xml:space="preserve">
+    <value>The email address entered could not be found. Please try again.</value>
+  </data>
+  <data name="MEMSERVICE_PASSWORDBAD" xml:space="preserve">
+    <value>The password entered does not work. Please try re-entering the password again. If you have forgotten your password, please call us for assistance.</value>
+  </data>
+  <data name="MEMSERVICE_PASSWORDENTER" xml:space="preserve">
+    <value>Please enter a password. If you have forgotten your password, please call us for assistance.</value>
+  </data>
+  <data name="IOHELPER_BADFILETYPE" xml:space="preserve">
+    <value>The type of file being uploaded is not recognized by this site. Please contact devtrekkers if you have any questions.</value>
+  </data>
+  <data name="IOHELPER_CANTBUILD" xml:space="preserve">
+    <value>Could not build an html doc. A bug has been logged and will be investigated.</value>
+  </data>
+  <data name="IOHELPER_CANTCOPY" xml:space="preserve">
+    <value>Could not copy an html doc into the package. A bug has been logged and will be investigated.</value>
+  </data>
+  <data name="IOHELPER_CANTFINDZIP" xml:space="preserve">
+    <value>The zip file could not be found.</value>
+  </data>
+  <data name="IOHELPER_CANTSAVE" xml:space="preserve">
+    <value>The file could not be saved. Please contact devtrekkers about this problem.</value>
+  </data>
+  <data name="IOHELPER_CANTZIP" xml:space="preserve">
+    <value>Could not determine the files to zip. Please select new files.</value>
+  </data>
+  <data name="IOHELPER_CANTZIP2" xml:space="preserve">
+    <value>The files could not be zipped. Please correct the following error and try again:</value>
+  </data>
+  <data name="IOHELPER_NOINSTRUCTS" xml:space="preserve">
+    <value>The instructions needed to package the file are missing. An error might have ocurred between you and here. Please try again.</value>
+  </data>
+  <data name="IOHELPER_NONAME" xml:space="preserve">
+    <value>The file being zipped or packaged does not have a name. An error might have ocurred between you and here. Please try again.</value>
+  </data>
+  <data name="IOHELPER_NOSAVE" xml:space="preserve">
+    <value>The resource could not be saved on: </value>
+  </data>
+  <data name="IOHELPER_NOSAVELOCATION" xml:space="preserve">
+    <value>Could not determine where the file should be uploaded. Please make sure that javascript is fully enabled on your browser and that this site's security is set to at least a medium (i.e. trusted) level.</value>
+  </data>
+  <data name="IOHELPER_NOSAVELOCATION2" xml:space="preserve">
+    <value>Could not determine where to put the file.</value>
+  </data>
+  <data name="IOHELPER_TOOBIG" xml:space="preserve">
+    <value>The size of the file being uploaded is too large. Please reduce the file size to</value>
+  </data>
+  <data name="MEMHELPER_NOSERVICES" xml:space="preserve">
+    <value>No owned services were found. In order to view the clubs that have subscribed to a service, the service must be an owned service.</value>
+  </data>
+  <data name="MEMHELPER_NOSERVICES2" xml:space="preserve">
+    <value>No owned services were found (note that services can't start with '00' in their name). In order to view the clubs that have subscribed to a service, the service must be an owned service.</value>
+  </data>
+  <data name="MEMHELPER_NOTAUTHORIZED" xml:space="preserve">
+    <value>Could not authorize you. Please log back in.</value>
+  </data>
+  <data name="STYLEHELPER_NOLINKEDLIST" xml:space="preserve">
+    <value>A linked list could not be found. Please ask the list's author to check the list's tag name:</value>
+  </data>
+  <data name="STYLEHELPER_NOLINKEDLIST2" xml:space="preserve">
+    <value>&lt;br /&gt;&lt;span&gt;&lt;strong&gt;A linked list could not be found. Please ask the list's author to check the list's tag name:&lt;/strong&gt;&lt;/span&gt;</value>
+  </data>
+  <data name="STYLEHELPER_NOSTYLE" xml:space="preserve">
+    <value>The stylesheet could not be found (StylesheetHelper.GetStylesheet()).</value>
+  </data>
+  <data name="MEMBERHELPER_NOTMEMBER" xml:space="preserve">
+    <value>You are not currently a member of any clubs. Please contact the clubs that you wish to join. Once they have added you to their club, this utility can be used.</value>
+  </data>
+  <data name="DIRECTORY_NOEXIST" xml:space="preserve">
+    <value>The directory you are trying to use does not exist yet.</value>
+  </data>
+  <data name="FILE_NOEXIST" xml:space="preserve">
+    <value>The file you are seeking could not be found.</value>
+  </data>
+  <data name="NETWORKS_NOTSELECTED" xml:space="preserve">
+    <value>Either networks have not been selected yet by your current club, or the club needs to load the list containing them. Please contact one of the club's coordinators and have them select at least one network or load their list of networks.</value>
+  </data>
+  <data name="FILEIO_CANTSAVEFILE" xml:space="preserve">
+    <value>The file could not be saved.</value>
+  </data>
+  <data name="FILEIO_STREAMCLOSED" xml:space="preserve">
+    <value>The file can not be saved -it appears a data stream has been closed inappropriately.</value>
+  </data>
+  <data name="ADDS_NOANCESTORFOUND" xml:space="preserve">
+    <value>Could not find an ancestor for one of the selections being added.</value>
+  </data>
+  <data name="ADDS_COULDNOTADDELEMENT" xml:space="preserve">
+    <value>One of the nodes selected could not be added.</value>
+  </data>
+  <data name="ADDS_NOSELECTIONS" xml:space="preserve">
+    <value>Selections were not available for making insertions. Please resubmit.</value>
+  </data>
+  <data name="ADDS_NOSQLPARAMS" xml:space="preserve">
+    <value>Could not get the sqlxml parameters needed to run this query.</value>
+  </data>
+  <data name="ADDS_NOSELECTION" xml:space="preserve">
+    <value>One of the selections could not be retrieved. Please try another selection.</value>
+  </data>
+  <data name="ADDS_CANTADDCHILDTOPARENT" xml:space="preserve">
+    <value>The parent node does not accept child nodes of the type being added.</value>
+  </data>
+  <data name="REPOSITORY_NOTNULL" xml:space="preserve">
+    <value>Repository cannot be null</value>
+  </data>
+  <data name="ADDS_CANTBUILDTEMPDOC" xml:space="preserve">
+    <value>The temporary document needed to hold the selections could not be built (due to a namespace issue).</value>
+  </data>
+  <data name="ADDS_NOGROUPINGANCESTORFOUND" xml:space="preserve">
+    <value>A grouping ancestor (i.e. outputs) could not be built.</value>
+  </data>
+  <data name="ADDSELECTS_NOFILE" xml:space="preserve">
+    <value>The file for adding the selections could not be found -a possible reason is that its using an old name that is not currently allowed by DevTreks.</value>
+  </data>
+  <data name="ADDS_MISSINGFROMSELECTIONSLIST" xml:space="preserve">
+    <value>One of the nodes inserted could not be found in the original list of nodes needing to be inserted. This will interfere with any pending database insertion.</value>
+  </data>
+  <data name="ADDS_NORETURNIDS" xml:space="preserve">
+    <value>The return ids needed for inserting nodes could not be found.</value>
+  </data>
+  <data name="MEMBERSERVICE_CHOOSEGROUPANDREGION" xml:space="preserve">
+    <value>Please choose an initial region and club group for your club.</value>
+  </data>
+  <data name="MEMBERSERVICE_CHOOSEMEMBERGROUP" xml:space="preserve">
+    <value>Please choose an initial region and member group for your membership.</value>
+  </data>
+  <data name="MEMBERSERVICE_MEMBER_EMAILINUSE" xml:space="preserve">
+    <value>This email is already in use. Please use a different email address for your member email.</value>
+  </data>
+  <data name="MEMBERSERVICE_PASSWORDLENGTH" xml:space="preserve">
+    <value>The password entered has less than the required 5 characters. Please use a password with at least 5 characters.</value>
+  </data>
+  <data name="ADDS_NODBRECORD" xml:space="preserve">
+    <value>No database record could be found for one of the selections.</value>
+  </data>
+  <data name="MEMBERSERVICE_CLUB_EMAILINUSE" xml:space="preserve">
+    <value>This email is already in use. Please use a different email address for your club email.</value>
+  </data>
+  <data name="MEMBERSERVICE_CLUB_EMAILNOTFOUND" xml:space="preserve">
+    <value>The email for the club you entered could not be found. Please check the address and try again.</value>
+  </data>
+  <data name="ADDINSTATE_NOINITDOC" xml:space="preserve">
+    <value>The file path to the initial document being viewed could not be determined.</value>
+  </data>
+  <data name="ADDINSTATE_NOADDINDOC" xml:space="preserve">
+    <value>The file path to the selected linked view could not be determined.</value>
+  </data>
+  <data name="ADDINSTATE_NOADDINDOC2" xml:space="preserve">
+    <value>The chosen calculator or analyzer no longer exists. Please change to another one.</value>
+  </data>
+  <data name="ADDINSTATE_NOSELECTEDVIEWDOC" xml:space="preserve">
+    <value>The linked view that you selected was not set correctly.</value>
+  </data>
+  <data name="EDITHELPER_PLEASECLICKONANCESTORTOC" xml:space="preserve">
+    <value>This file has been deleted. Please click on one of the ancestors in the links above the 'Submit Edits' button.</value>
+  </data>
+  <data name="ADDS_NODEFAULTNODETOCOPY" xml:space="preserve">
+    <value>The xml document used to start this story does not have a default node with an Id = 1 for the node you are trying to add.</value>
+  </data>
+  <data name="ECONOMICS_NONODETOCALCULATE" xml:space="preserve">
+    <value>Could not find the node in the document being calculated. Please run the calculations again.</value>
+  </data>
+  <data name="ADDINHELPER_MISSINGDOC" xml:space="preserve">
+    <value>A document needed to run the calculations is missing.</value>
+  </data>
+  <data name="ADDINHELPER_NOCALCTYPE" xml:space="preserve">
+    <value>The calculator does not have a required Type attribute.</value>
+  </data>
+  <data name="ADDINHELPER_NODEVPACKPARTS" xml:space="preserve">
+    <value>Files could not be found to analyze. Are you sure that devpackpart files have been added to the database?</value>
+  </data>
+  <data name="ADDINHELPER_NOFILEEXTENSIONTYPE" xml:space="preserve">
+    <value>The calculator does not have a needed file extension type.</value>
+  </data>
+  <data name="ADDIN_MISSINGOBSERVATION" xml:space="preserve">
+    <value>An observation is missing from the analysis. Please make sure that calculations have been run on all observations. Also make sure that the type of calculation selected is appropriate for this analysis.</value>
+  </data>
+  <data name="ADDINHELPER_NOCALCULATOR" xml:space="preserve">
+    <value>The calculator file could not be found. Please be sure that the calculator being used has a default calculator document.</value>
+  </data>
+  <data name="CONTENTHELPER_SELECTHASNOPARENT" xml:space="preserve">
+    <value>The selected view does not have a required parent uri pattern.</value>
+  </data>
+  <data name="ADDINHELPER_NOBASECALCS" xml:space="preserve">
+    <value>The type of files being analyzed could not be determined. Has the base calculator been run?</value>
+  </data>
+  <data name="MEMBERREPOSIT_UPDATEAGREEMENTAMOUNT" xml:space="preserve">
+    <value>A discrepency was found between the number of of members subscribing to a service and the actual members belonging to the club. </value>
+  </data>
+  <data name="MEMBERREPOSIT_UPDATEAGREEMENTISOWNER" xml:space="preserve">
+    <value>The service agreement could not be updated. A discrepency was found with the isowner property.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADBANKENDMONTH" xml:space="preserve">
+    <value>Please fill in a good bank expiration month.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADBANKENDYEAR" xml:space="preserve">
+    <value>Please fill in a good bank expiration year.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADBANKFULLNUMBER" xml:space="preserve">
+    <value>Please fill in a good bank number.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADBANKNAME" xml:space="preserve">
+    <value>Please fill in a good bank name.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADBANKSHORTNUMBER" xml:space="preserve">
+    <value>Please fill in a good short bank number.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADBANKSTATE" xml:space="preserve">
+    <value>Please fill in a good bank state.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADBANKTYPE" xml:space="preserve">
+    <value>Please fill in a good bank type.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADCARDENDMONTH" xml:space="preserve">
+    <value>Please fill in a good credit card expiration month.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADCARDENDYEAR" xml:space="preserve">
+    <value>Please fill in a good credit card expiration year.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADCARDFULLNUMBER" xml:space="preserve">
+    <value>Please fill in a good credit card number.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADCARDNAME" xml:space="preserve">
+    <value>Please fill in a credit card name.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADCARDSHORTNUMBER" xml:space="preserve">
+    <value>Please fill in a good short credit card number.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADCARDSTATE" xml:space="preserve">
+    <value>Please fillin a good credit card state.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADCARDTYPE" xml:space="preserve">
+    <value>Please fill in a good credit card type.</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+  <data name="MEMBERSERVICE_BADUPDATECREDIT" xml:space="preserve">
+    <value>The credit card and bank information submitted could not be updated. Please contact DevTreks for further information.</value>
+  </data>
+  <data name="MEMBERVIEW_BADDEFAULTCLUB" xml:space="preserve">
+    <value>The default club could not be set properly.</value>
+  </data>
+  <data name="MEMBERVIEW_BADURIFULL" xml:space="preserve">
+    <value>The full uri for this content was not set properly.</value>
+  </data>
+  <data name="MEMBERVIEW_NOPAYS" xml:space="preserve">
+    <value>This club has not made any payments, nor has it received any revenues.</value>
+  </data>
+  <data name="MEMHELPER_NOCATEGORIES" xml:space="preserve">
+    <value>No categories have been added yet for this network.</value>
+  </data>
+  <data name="MEMHELPER_NOSERVICE" xml:space="preserve">
+    <value>No service was set for this uri.</value>
+  </data>
+  <data name="EDITS_NOCANDO" xml:space="preserve">
+    <value>The edits could not be made. Load this panel again and try the edits again.</value>
+  </data>
+  <data name="SAVECATEGORIES_NOCANDO" xml:space="preserve">
+    <value>The category list could not be saved for display.</value>
+  </data>
+  <data name="CALCDOC_NOLINKEDVIEWNODES" xml:space="preserve">
+    <value>The calculator being used has no nodes with the required name of 'linkedview'. Please have the calculator owner recheck their calculator node names.</value>
+  </data>
+  <data name="CONTENTSERVICE_NOLINKEDVIEWADD" xml:space="preserve">
+    <value>The selected linked views could not be added to the node. Are you selecting linkedview nodes?</value>
+  </data>
+  <data name="DISPLAYHELPER_NOLINKEDVIEWS" xml:space="preserve">
+    <value>No linked views have beed added yet for this uri. Please use the Select New Linked Views link to add new linked views.</value>
+  </data>
+  <data name="DISPLAYHELPER_NODOCFORTHISNODE" xml:space="preserve">
+    <value>The node you are on has no data. If it is a linked view's resources, please go back to the linked view itself.</value>
+  </data>
+  <data name="MEMBERSERVICE_MISSINGMEMBERDATA" xml:space="preserve">
+    <value>The member's first name, last name, and email address must be filled out.</value>
+  </data>
+  <data name="SQLXML_MISSINGDBDEFAULTNODE" xml:space="preserve">
+    <value>A default xml node, used to start an xml document, was mistakenly deleted from the database. Please alert  the web platform host.</value>
+  </data>
+  <data name="MEMBERSERVICE_MISSINGCLUBDATA" xml:space="preserve">
+    <value>The club's name and email address must be filled out.</value>
+  </data>
+  <data name="MEMBERSERVICE_NOPASSWORD" xml:space="preserve">
+    <value>Please enter both a password and a confirmation password.</value>
+  </data>
+  <data name="MEMBERSERVICE_PASSWORDNOTCONFIRMED" xml:space="preserve">
+    <value>The password and the confirmation password do not match.</value>
+  </data>
+  <data name="MEMBERSERVICE_MISSINGCLUBEMAIL" xml:space="preserve">
+    <value>The new club's email must be filled out.</value>
+  </data>
+  <data name="MEMBERSERVICE_MISSINGCLUBNAME" xml:space="preserve">
+    <value>The new club's name must be filled out.</value>
+  </data>
+  <data name="MEMBERSERVICE_BADMEMBERFORCLUBINSERT" xml:space="preserve">
+    <value>A club can not be inserted. We could not confirm that you are a member.</value>
+  </data>
+  <data name="INSERT_NOPARENT" xml:space="preserve">
+    <value>The insertion failed because the parent node for the insertion couldn't be determined.</value>
+  </data>
+  <data name="DELETE_NOTFOUND" xml:space="preserve">
+    <value>The node being deleted could not be found.</value>
+  </data>
+  <data name="EDIT_NOURISTOEDIT" xml:space="preserve">
+    <value>No uris were selected to add, delete, or edit.</value>
+  </data>
+  <data name="UPDATE_BADPROPERTY" xml:space="preserve">
+    <value>The following property could not be updated: </value>
+  </data>
+  <data name="VIEWS_NOACCOUNTINIT" xml:space="preserve">
+    <value>The initial club and list that starts this collection was not retrieved properly.</value>
+  </data>
+  <data name="CONTENTREP_BADAPP" xml:space="preserve">
+    <value>The uri you are trying to edit has a bad initial application type. Please try loading this uri again.</value>
+  </data>
+  <data name="DELETESERVICE_FAIL" xml:space="preserve">
+    <value>One of the services or incentives could not be deleted. Please try again.</value>
+  </data>
+  <data name="MODELHELPERS_BADXMLCONTENT" xml:space="preserve">
+    <value>The xml document associated with this uri could not be built.</value>
+  </data>
+  <data name="MODELHELPERS_CANTMAKEMODEL" xml:space="preserve">
+    <value>This uri can not be displayed. This message usually means that the potential data associated with the uri can be too large to display, or that the uri is only used for navigation not for building content . Please use the uri's children instead.</value>
+  </data>
+  <data name="MODELHELPERS_CANTMAKEMODEL1" xml:space="preserve">
+    <value>The model for this uri could not be made. This message usually means that the uri has a bad address (the id could be wrong).</value>
+  </data>
+  <data name="BLOB_CANTSAVEZIPBLOB" xml:space="preserve">
+    <value>The package could not be save in the cloud (in a blob in the cloud).</value>
+  </data>
+  <data name="STYLEHELPER_NOSTYLEFROMCACHE" xml:space="preserve">
+    <value>The stylesheet could not be retrieved from cache (or it could not be read using the path specfied in the getfromcache method).</value>
+  </data>
+  <data name="RESOURCES_NOBLOB" xml:space="preserve">
+    <value>The resource being retrieved could not be found in blob storage.</value>
+  </data>
+  <data name="RESOURCES_NOFILE" xml:space="preserve">
+    <value>The resource being retrieved does not have the file needed to load it.</value>
+  </data>
+  <data name="FILESTORAGE_FILENOSAVEXML" xml:space="preserve">
+    <value>The xml file could not be saved in storage (SaveXmlInURI). The cloud platform's storage is not working correctly. Please contact DevTreks.</value>
+  </data>
+  <data name="FILESTORAGE_FILENOSAVEHTMLORTEXT" xml:space="preserve">
+    <value>The html or text file could not be saved in storage (SaveTextURI). The cloud platform's storage is not working correctly. Please contact DevTreks.</value>
+  </data>
+  <data name="IOHELPER_YESSAVE" xml:space="preserve">
+    <value>The resource was saved successfully on: </value>
+  </data>
+  <data name="EDIT_USERNAMEINUSE" xml:space="preserve">
+    <value>The user name is already in use. Please try a different user name.</value>
+  </data>
+  <data name="DELETE_LASTCLUBMEMBER" xml:space="preserve">
+    <value>You tried to delete the last member of a club. The associated club must also be deleted but could not be, probably because it still holds undeleted data. First delete all of the data associated with the club and then try to delete the last member of the club.</value>
+  </data>
+  <data name="CONTENTSERVICE_CANTSAVESELECTS" xml:space="preserve">
+    <value>The selections could not be saved.</value>
+  </data>
+  <data name="CONTENTSERVICE_HASNEWXMLDOC" xml:space="preserve">
+    <value>The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.</value>
+  </data>
+  <data name="DISPLAYHELPER_DONTNEEDHTMLDOC" xml:space="preserve">
+    <value>No display is needed by this step.</value>
+  </data>
+  <data name="STYLEHELPER_BADXMLORHTML" xml:space="preserve">
+    <value>The base xml document could not be converted to xhtml. Try rebuilding the base xml (by running new calculations). If the error persists the bad xml is probably coming from an error in a calculator or analyzer.</value>
+  </data>
+  <data name="FILESTORAGE_FILENOSAVEPOSTEDFILE" xml:space="preserve">
+    <value>The posted file could not be saved while writing to data storage.</value>
+  </data>
+  <data name="FILESTORAGE_FILENOSAVEXMLSUM" xml:space="preserve">
+    <value>A summary file associated with the parent file could not be saved.</value>
+  </data>
+  <data name="DISPLAYHELPER_DEVPACKSINIT" xml:space="preserve">
+    <value>Use the second Get command to display the results for a specific calculator or analyzer.</value>
+  </data>
+  <data name="DISPLAYHELPER_NOMEDIA" xml:space="preserve">
+    <value>No media has been linked to this calculator or analyzer. Please use another view.</value>
+  </data>
+  <data name="DISPLAYHELPER_BADMEDIAURL" xml:space="preserve">
+    <value>The media url must be copied from the link associated with Download Resource buttons.</value>
+  </data>
+</root>

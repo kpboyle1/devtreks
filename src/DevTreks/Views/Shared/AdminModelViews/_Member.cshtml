@@ -1,0 +1,130 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.Member == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.ULStart(string.Empty, string.Empty, "listview", string.Empty, string.Empty)
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Member.MemberLastName, Model.URIModels.Member.PKId.ToString(),
+        Model.URINetworkPartName, Members.MEMBER_BASE_TYPES.memberbase.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+       @Model.URINodeName, Members.MEMBER_BASE_TYPES.memberbase.ToString(),
+       Model.URIDataManager.ServerActionType, Model.URIMember);
+    //members must not be allowed to change email or username because they correspond to context.Identity.Name
+    //and must edited using aspnet security, not the member or club forms
+    @Html.LIStart("fieldcontain")
+        @Html.Span(string.Empty, string.Empty,
+         string.Concat("Email: ",
+         Model.URIModels.Member.MemberEmail));
+        @*2.0.0 diallowed: @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Member.MemberEmail, "MemberEmail",
+            "Email", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "1000")*@
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.Span(string.Empty, string.Empty,
+         string.Concat("User Name: ",
+         Model.URIModels.Member.UserName));
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberFirstName", "First Name:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                Model.URIModels.Member.MemberFirstName, "MemberFirstName", GeneralRules.STRING, "75",
+                string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberLastName", "Last Name:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.Member.MemberLastName, "MemberLastName", GeneralRules.STRING, "75",
+            string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Member.MemberDesc, "MemberDesc",
+        "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberAddress1", "Street Address Line 1:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                Model.URIModels.Member.MemberAddress1, "MemberAddress1", GeneralRules.STRING, "50",
+                string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberAddress2", "Street Address Line 2:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.Member.MemberAddress2, "MemberAddress2", GeneralRules.STRING, "50",
+                string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberCity", "City:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.Member.MemberCity, "MemberCity", GeneralRules.STRING, "50",
+                string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberState", "State Province:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                Model.URIModels.Member.MemberState, "MemberState", GeneralRules.STRING, "50",
+                string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberZip", "Postal Code:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                            Model.URIModels.Member.MemberZip, "MemberZip", GeneralRules.STRING, "10",
+                        string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberCountry", "Country:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                            Model.URIModels.Member.MemberCountry, "MemberCountry", GeneralRules.STRING, "50",
+                string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberPhone", "Phone:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                            Model.URIModels.Member.MemberPhone, "MemberPhone", GeneralRules.STRING, "15",
+                        string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberPhone2", "Phone 2:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                            Model.URIModels.Member.MemberPhone2, "MemberPhone2", GeneralRules.STRING, "15",
+                        string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberFax", "Fax:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                            Model.URIModels.Member.MemberFax, "MemberFax", GeneralRules.STRING, "15",
+                        string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Member.MemberUrl, "MemberUrl",
+                    "Uri", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    @Html.LabelStrong("MemberOrganization", "Organization:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                                    Model.URIModels.Member.MemberOrganization, "MemberOrganization", GeneralRules.STRING, "150",
+                        string.Empty, string.Empty)
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    string membergroupname = string.Concat(searchurl, ";MemberClassId;", GeneralRules.INTEGER, ";4");
+    @Html.LabelStrong(membergroupname, "Member Group:   ")
+    @HtmlMemberExtensions.WriteMemberGroupsSelectList(Html, Model, membergroupname, 
+     Model.URIDataManager.EditViewEditType.ToString(), Model.URIModels.Member.MemberClassId.ToString());
+    @Html.LIEnd()
+    @Html.LIStart("fieldcontain")
+    string memberregionname = string.Concat(searchurl, ";GeoRegionId;", GeneralRules.INTEGER, ";4");
+    @Html.LabelStrong(memberregionname, "Region:   ")
+    @HtmlMemberExtensions.WriteGeoRegionsSelectList(Html, Model, memberregionname, 
+     Model.URIDataManager.EditViewEditType.ToString(), Model.URIModels.Member.GeoRegionId.ToString());
+    @Html.LIEnd()
+    @Html.ULEnd()
+ }

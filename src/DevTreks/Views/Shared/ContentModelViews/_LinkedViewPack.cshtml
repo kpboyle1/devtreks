@@ -1,0 +1,78 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, LinkedViews.LINKEDVIEWS_TYPES.linkedviewpack.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+   
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.LinkedViewPack.LinkedViewPackName, Model.URIModels.LinkedViewPack.PKId.ToString(),
+                Model.URINetworkPartName, LinkedViews.LINKEDVIEWS_TYPES.linkedviewpack.ToString(), string.Empty);
+    if (Model.URINodeName == LinkedViews.LINKEDVIEWS_TYPES.linkedviewpack.ToString())
+    {
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.LinkedViewPack.LinkedViewPackName,
+                        "LinkedViewPackName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "Linked View",
+                LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
+                                         
+        }
+        else 
+        {
+            @Html.H4("Linked Views", "ui-bar-b")
+        }
+        if (Model.URIModels.LinkedViewPack.LinkedView != null)
+        {
+            if (Model.URIModels.LinkedViewPack.LinkedView.Count > 0)
+            {
+                foreach (var linkedview in Model.URIModels.LinkedViewPack.LinkedView)
+                {
+                    ViewData.Model.URIModels.LinkedView = linkedview;
+                    @Html.DivCollapseStart(Model, linkedview.PKId)
+                    <h4>@linkedview.LinkedViewName</h4>
+                    @Html.Partial("ContentModelViews/_LinkedView", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else
+    {
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.LinkedViewPack.LinkedViewPackName,
+                 "LinkedViewPackName", Model.URIDataManager.EditViewEditType, bCanDelete)
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.LinkedViewPack.LinkedViewPackDocStatus.ToString(),
+            "LinkedViewPackDocStatus", GeneralRules.SHORTINTEGER, "2", "Status",
+                 Model.URIDataManager.EditViewEditType, "Select225", GeneralHelpers.GetDocStatusDictionary())
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("LinkedViewPackNum", "Label: ")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.LinkedViewPack.LinkedViewPackNum, "LinkedViewPackNum", GeneralRules.STRING, "15",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("LinkedViewPackLastChangedDate", "Date Changed: ")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.LinkedViewPack.LinkedViewPackLastChangedDate.ToShortDateString(), "LinkedViewPackLastChangedDate", GeneralRules.SHORTDATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.LinkedViewPack.LinkedViewPackDesc, "LinkedViewPackDesc",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.LinkedViewPack.LinkedViewPackKeywords, "LinkedViewPackKeywords",
+            "Keywords", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        @HtmlHelperExtensions.MakeMetaDocUpload(Html, Model, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIModels.LinkedViewPack.PKId.ToString(),
+            @Model.URIModels.LinkedViewPack.LinkedViewPackMetaDataXml, "LinkedViewPackMetaDataXml", @Model.URIDataManager.EditViewEditType,
+            "4", @Model.URIFileExtensionType)
+    }
+    
+}

@@ -1,0 +1,74 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, DevPacks.DEVPACKS_TYPES.devpack.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackName, Model.URIModels.DevPackClassToDevPack.PKId.ToString(),
+                Model.URINetworkPartName, DevPacks.DEVPACKS_TYPES.devpack.ToString(), string.Empty);
+    string basesearchurl = StylesheetHelper.GetURIPattern(Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackName, Model.URIModels.DevPackClassToDevPack.DevPack.PKId.ToString(),
+            Model.URINetworkPartName, DevPacks.DEVPACKS_BASE_TYPES.devpackbase.ToString(), string.Empty);
+        //note fileextension is set internally
+    @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackName,
+                    "DevPackClassAndPackName", Model.URIDataManager.EditViewEditType, bCanDelete)
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("DevPackClassAndPackSortLabel", "Label: ")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                        Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackSortLabel, "DevPackClassAndPackSortLabel", GeneralRules.STRING, "15",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackDesc, "DevPackClassAndPackDesc",
+        "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+    @HtmlHelperExtensions.WriteViewLinks(Html, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIDataManager.CalcParams,
+                DevPacks.DEVPACKS_TYPES.devpack.ToString(), "oldid")
+    GeneralHelpers.VIEW_EDIT_TYPES viewType = Model.URIDataManager.EditViewEditType;
+    if (viewType != GeneralHelpers.VIEW_EDIT_TYPES.full)
+    {
+        //only owners can edit
+        viewType = GeneralHelpers.VIEW_EDIT_TYPES.part;
+        basesearchurl = string.Empty;
+    }
+    @Html.H4("Owner Properties", "ui-bar-b")
+    bCanDelete = false;
+    @HtmlHelperExtensions.MakeName(Html, @basesearchurl, @Model.URIModels.DevPackClassToDevPack.DevPack.DevPackName,
+                        "DevPackName", viewType, bCanDelete)
+    @HtmlHelperExtensions.MakeSelectList(Html, basesearchurl, Model.URIModels.DevPackClassToDevPack.DevPack.DevPackDocStatus.ToString(),
+                "DevPackDocStatus", GeneralRules.SHORTINTEGER, "2", "Status",
+                viewType, "Select225", GeneralHelpers.GetDocStatusDictionary())
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("DevPackNum", "Label: ")
+    @Html.InputTextUpdate(viewType, basesearchurl,
+                            Model.URIModels.DevPackClassToDevPack.DevPack.DevPackNum, "DevPackNum", GeneralRules.STRING, "15",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("DevPackLastChangedDate", "Date Changed: ")
+    @Html.InputTextUpdate(viewType, basesearchurl,
+                        Model.URIModels.DevPackClassToDevPack.DevPack.DevPackLastChangedDate.ToShortDateString(), "DevPackLastChangedDate", GeneralRules.SHORTDATE, "8",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @HtmlHelperExtensions.MakeTextArea(Html, basesearchurl, Model.URIModels.DevPackClassToDevPack.DevPack.DevPackDesc, "DevPackDesc",
+        "Description", viewType, "Text75H100PCW", "255")
+    @HtmlHelperExtensions.MakeTextArea(Html, basesearchurl, Model.URIModels.DevPackClassToDevPack.DevPack.DevPackKeywords, "DevPackKeywords",
+        "Key Words", viewType, "Text75H100PCW", "255")
+    if (viewType == GeneralHelpers.VIEW_EDIT_TYPES.full)
+    {
+        @HtmlHelperExtensions.MakeMetaDocUpload(Html, Model, basesearchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIModels.DevPackClassToDevPack.DevPack.PKId.ToString(),
+            @Model.URIModels.DevPackClassToDevPack.DevPack.DevPackMetaDataXml, "DevPackMetaDataXml", @viewType,
+            "4", @Model.URIFileExtensionType)
+    }
+}

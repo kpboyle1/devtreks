@@ -1,0 +1,38 @@
+﻿@using DevTreks.Helpers;
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "Resource";
+}
+<div>
+    @{
+        if (Model.URIModels.Service != null)
+        {
+            @Html.Partial("ContentModelViews/_ResourceService", ViewData.Model)
+        }
+        else if (Model.URIModels.ResourceClass != null)
+        {
+            @Html.Partial("ContentModelViews/_ResourceClass", ViewData.Model)
+        }
+        else if (Model.URIModels.ResourcePack != null)
+        {
+            @Html.Partial("ContentModelViews/_ResourcePack", ViewData.Model)
+        }
+        else if (Model.URIModels.Resource != null)
+        {
+            @Html.Partial("ContentModelViews/_Resource", ViewData.Model)
+        }
+        else if (Model.URIDataManager.LinkedView != null)
+        {
+            @Html.Partial("ContentModelViews/_ResourceLVs", ViewData.Model)
+        }
+        <br />
+        <div>
+            @Html.LinkMobile("feedback", string.Concat("mailto:", @Model.URIClub.AccountEmail, "?subject=", @Model.URIFull),
+                string.Empty, string.Concat("Feedback About ", @Model.URIPattern), "button", "true", "false",
+                "info", "left")
+        </div>
+    }
+</div>
+
+
+

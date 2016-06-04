@@ -1,0 +1,39 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "Clubs";
+}
+@{
+    if (Model.URINodeName == Accounts.ACCOUNT_TYPES.accountgroup.ToString())
+    {
+        if (Model.URIModels.AccountClass == null)
+        {
+            return;
+        }
+        bool bCanDelete = false;
+        @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.AccountClass.AccountClassName,
+                 "AccountClassName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+
+        if (Model.URIModels.AccountClass.Account != null)
+        {
+            if (Model.URIModels.AccountClass.Account.Count > 0)
+            {
+                @Html.H4("Account", "ui-bar-b")
+                foreach (var account in Model.URIModels.AccountClass.Account)
+                {
+                    ViewData.Model.URIModels.Account = account;
+                    @Html.DivCollapseStart(Model, account.PKId)
+                    <h4>@account.AccountName</h4>
+                    @Html.Partial("AdminModelViews/_Account", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    
+    }

@@ -1,0 +1,37 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = false;
+    @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Service.ServiceName,
+        "ServiceName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+    if (Model.URIDataManager.EditViewEditType
+        == GeneralHelpers.VIEW_EDIT_TYPES.full
+        && Model.URINodeName.StartsWith(Agreement.AGREEMENT_TYPES.service.ToString()))
+    {
+        @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "DevPack Group",
+        DevPacks.DEVPACKS_TYPES.devpackgroup.ToString());
+    }
+    else 
+    {
+        @Html.H4("DevPack Groups", "ui-bar-b")
+    }
+    if (Model.URIModels.Service.DevPackClass != null)
+    {
+        if (Model.URIModels.Service.DevPackClass.Count > 0)
+        {
+            foreach (var devpackclass in Model.URIModels.Service.DevPackClass)
+            {
+                ViewData.Model.URIModels.DevPackClass = devpackclass;
+                @Html.DivCollapseStart(Model, devpackclass.PKId)
+                <h4>@devpackclass.DevPackClassName</h4>
+                @Html.Partial("ContentModelViews/_DevPackClass", ViewData.Model)
+                @Html.DivEnd()
+            }
+        }
+    }
+    }

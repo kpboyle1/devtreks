@@ -1,0 +1,72 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.Network == null)
+    {
+        //show existing error message only
+        return;
+    }
+    
+    @Html.ULStart(string.Empty, string.Empty, "listview", string.Empty, string.Empty)
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Network.NetworkName, Model.URIModels.Network.PKId.ToString(),
+        Model.URINetworkPartName, Networks.NETWORK_BASE_TYPES.networkbase.ToString(), string.Empty);
+        @Html.LIStart("list-divider")
+        @Html.Raw(Model.URIModels.Network.NetworkName)
+        @Html.LIEnd()
+        @Html.LIStart("fieldcontain")
+        @Html.LabelStrong("NetworkURIPartName", "URI Name:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.Network.NetworkURIPartName, "NetworkURIPartName", GeneralRules.STRING, "20",
+             "Input75", string.Empty)
+        @Html.LIEnd()
+        @Html.LIStart("fieldcontain")
+        @Html.LabelStrong("AdminConnection", "Admin Connection:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                GeneralHelpers.GetSubstringFromFront(Model.URIModels.Network.AdminConnection,
+                GeneralHelpers.STRING_DELIMITERS, GeneralHelpers.STRING_DELIMITER, 3),
+                "AdminConnection", GeneralRules.STRING, "255",
+                 "Input300", string.Empty)
+        @Html.LIEnd()
+        @Html.LIStart("fieldcontain")
+        @Html.LabelStrong("WebFileSystemPath", "Web File Path:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                Model.URIModels.Network.WebFileSystemPath, "WebFileSystemPath", GeneralRules.STRING, "255",
+                "Input300", string.Empty)
+        @Html.LIEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Network.NetworkDesc, "NetworkDesc",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+         @Html.LIStart("fieldcontain")
+        @Html.LabelStrong("WebConnection", "Web Connection:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                GeneralHelpers.GetSubstringFromFront(Model.URIModels.Network.WebConnection,
+                GeneralHelpers.STRING_DELIMITERS, GeneralHelpers.STRING_DELIMITER, 3), "WebConnection", GeneralRules.STRING, "255",
+                "Input300", string.Empty)
+        @Html.LIEnd()
+        @Html.LIStart("fieldcontain")
+        @Html.LabelStrong("WebDbPath", "WebDb Path:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                 Model.URIModels.Network.WebDbPath, "WebDbPath", GeneralRules.STRING, "255",
+                 "Input300", string.Empty)
+        @Html.LIEnd()
+        @Html.LIStart("fieldcontain")
+        @Html.LabelStrong("NetworkClassId", "Network Group:   ")
+        @Html.Span("NetworkClassId", string.Empty,
+            Model.URIModels.Network.NetworkClassId.ToString())
+        //@Html.Raw(Model.URIModels.Network.NetworkClassId.ToString())
+        //@Html.SpanEnd()
+        @Html.LIEnd()
+        @Html.LIStart("fieldcontain")
+        string networkregionname = string.Concat(searchurl, ";GeoRegionId;", GeneralRules.INTEGER, ";4");
+        @Html.LabelStrong(networkregionname, "Region:   ")
+        @HtmlMemberExtensions.WriteGeoRegionsSelectList(Html, Model, networkregionname, Model.URIDataManager.EditViewEditType.ToString(), Model.URIModels.Network.GeoRegionId.ToString());
+        @Html.LIEnd()
+     @Html.ULEnd()
+ }

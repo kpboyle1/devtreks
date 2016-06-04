@@ -1,0 +1,196 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, Economics1.INVESTMENT_TYPES.investmenttimeperiod.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.CostSystemToTime.Name, Model.URIModels.CostSystemToTime.PKId.ToString(),
+                Model.URINetworkPartName, Economics1.INVESTMENT_TYPES.investmenttimeperiod.ToString(), string.Empty);
+    if (Model.URINodeName == Economics1.INVESTMENT_TYPES.investmenttimeperiod.ToString())
+    {
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.CostSystemToTime.Name,
+                        "Name", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @Html.DivStart(string.Empty, "ui-grid-a")
+            @Html.DivStart(string.Empty, "ui-block-a")
+            @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                        "GetSelectsLink", "Select Outcome", "spanSelectionFiles",
+                        Model.URIDataManager.ContentURIPattern, searchurl,
+                            Prices.OUTCOME_PRICE_TYPES.outcome.ToString(), string.Empty, Model.URIDataManager.CalcParams))
+            @Html.DivEnd()
+            @Html.DivStart(string.Empty, "ui-block-b")
+            @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                        "GetSelectsLink", "Select Component", "spanSelectionFiles",
+                        Model.URIDataManager.ContentURIPattern, searchurl,
+                             Prices.COMPONENT_PRICE_TYPES.component.ToString(), string.Empty, Model.URIDataManager.CalcParams))
+            @Html.DivEnd()
+            @Html.DivEnd()    
+		}   
+        if (Model.URIModels.CostSystemToTime.CostSystemToOutcome != null)
+        {
+            if (Model.URIModels.CostSystemToTime.CostSystemToOutcome.Count > 0)
+            {
+                @Html.H4("Outcome", "ui-bar-b")
+                foreach (var outcome in Model.URIModels.CostSystemToTime.CostSystemToOutcome)
+                {
+                    ViewData.Model.URIModels.CostSystemToOutcome = outcome;
+                    @Html.DivCollapseStart(Model, outcome.PKId)
+                    <h4>@outcome.Name</h4>
+                    @Html.Partial("ContentModelViews/_InvestmentToOutcome", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+        if (Model.URIModels.CostSystemToTime.CostSystemToComponent != null)
+        {
+            if (Model.URIModels.CostSystemToTime.CostSystemToComponent.Count > 0)
+            {
+                @Html.H4("Component", "ui-bar-b")
+                foreach (var component in Model.URIModels.CostSystemToTime.CostSystemToComponent)
+                {
+                    ViewData.Model.URIModels.CostSystemToComponent = component;
+                    @Html.DivCollapseStart(Model, component.PKId)
+                    <h4>@component.Name</h4>
+                    @Html.Partial("ContentModelViews/_InvestmentToComponent", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else
+    {
+        int iUnitGroupId = (Model.URIModels.CostSystemToPractice != null) ? Model.URIModels.CostSystemToPractice.UnitClassId : 1;
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.CostSystemToTime.Name,
+                 "Name", Model.URIDataManager.EditViewEditType, bCanDelete)
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("Date", "Ending Date:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                          Model.URIModels.CostSystemToTime.Date.ToShortDateString(), "Date", GeneralRules.DATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("CommonRefYorN", "Common Ref. Point?:")
+        if (Model.URIDataManager.EditViewEditType == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            string name = string.Concat(searchurl, ";CommonRefYorN;boolean;1");
+            string label = string.Concat(Model.URIModels.CostSystemToTime.PKId.ToString(), "CommonRefYorN");
+            @HtmlHelperExtensions.MakeRadioTrueFalseBothOptions(Html, label, name, Model.URIModels.CostSystemToTime.CommonRefYorN)
+        }
+        else
+        {
+            @Html.Raw(Model.URIModels.CostSystemToTime.CommonRefYorN.ToString())
+        }
+        @Html.DivEnd()
+        @Html.DivEnd()
+        
+        @Html.DivStart(string.Empty, string.Empty)
+        @Html.LabelStrong("PracticeName", "Practice Name:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                          Model.URIModels.CostSystemToTime.PracticeName.ToString(), "PracticeName", GeneralRules.STRING, "75",
+                "Input100PerCent", string.Empty)
+        @Html.DivEnd()
+    
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("DiscountYorN", "Discount?:")
+        if (Model.URIDataManager.EditViewEditType == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            string name = string.Concat(searchurl, ";DiscountYorN;boolean;1");
+            string label = string.Concat(Model.URIModels.CostSystemToTime.PKId.ToString(), "DiscountYorN");
+            @HtmlHelperExtensions.MakeRadioTrueFalseBothOptions(Html, label, name, Model.URIModels.CostSystemToTime.DiscountYorN)
+        }
+        else
+        {
+            @Html.Raw(Model.URIModels.CostSystemToTime.DiscountYorN.ToString())
+        }
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("PracticeAmount", "Practice Amount:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.CostSystemToTime.PracticeAmount.ToString(), "PracticeAmount", GeneralRules.FLOAT, "4",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a") 
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("PracticeUnit", "Practice Unit:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.CostSystemToTime.PracticeUnit, "PracticeUnit", GeneralRules.STRING, "75",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("AOHFactor", "Overhead Factor:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.CostSystemToTime.AOHFactor.ToString(), "AOHFactor", GeneralRules.FLOAT, "4",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("GrowthTypeId", "Growth Type:")
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.CostSystemToTime.GrowthTypeId.ToString(),
+                 "GrowthTypeId", GeneralRules.SHORTINTEGER, "2",
+            Model.URIDataManager.EditViewEditType, "Select150", Economics1.GetGrowthTypesDictionary())
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("GrowthPeriods", "Growth Periods:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+              Model.URIModels.CostSystemToTime.GrowthPeriods.ToString(), "GrowthPeriods", GeneralRules.INTEGER, "4",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("IncentiveAmount", "Incentive Amount:")
+                         string sFormatted = StylesheetHelper.WriteFormattedNumber("IncentiveAmount", Model.URIModels.CostSystemToTime.IncentiveAmount.ToString(), GeneralRules.DECIMAL, "8");
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                sFormatted, "IncentiveAmount", GeneralRules.DECIMAL, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("IncentiveRate", "Incentive Rate:")
+        sFormatted = StylesheetHelper.WriteFormattedNumber("IncentiveRate", Model.URIModels.CostSystemToTime.IncentiveRate.ToString(), GeneralRules.FLOAT, "4");
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                    sFormatted, "IncentiveRate", GeneralRules.FLOAT, "4",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("LastChangedDate", "Date:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                          Model.URIModels.CostSystemToTime.LastChangedDate.ToShortDateString(), "LastChangedDate", GeneralRules.SHORTDATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("Num", "Label:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.CostSystemToTime.Num, "Num", GeneralRules.STRING, "15",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+    
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.CostSystemToTime.Description, "Description",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        @HtmlHelperExtensions.WriteViewLinks(Html, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIDataManager.CalcParams,
+                Economics1.INVESTMENT_TYPES.investmenttimeperiod.ToString(), "oldid")
+        
+    }
+    
+}

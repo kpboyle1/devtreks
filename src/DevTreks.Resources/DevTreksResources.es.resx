@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Class that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FIND" xml:space="preserve">
+    <value>Buscar</value>
+  </data>
+  <data name="FIND_TT" xml:space="preserve">
+    <value>"Busce entries."</value>
+  </data>
+  <data name="INFORMATION_SOURCE" xml:space="preserve">
+    <value>Information Source</value>
+  </data>
+  <data name="KEYNAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>Not set</value>
+  </data>
+  <data name="NAVIGATOR1_GET" xml:space="preserve">
+    <value>No podria iniciar el Navigator sobre la server.</value>
+  </data>
+  <data name="ALL" xml:space="preserve">
+    <value>Todos</value>
+  </data>
+  <data name="GOVERNMENT" xml:space="preserve">
+    <value>Gobierno</value>
+  </data>
+  <data name="UNIVERSITY" xml:space="preserve">
+    <value>Universidad</value>
+  </data>
+  <data name="PRIVATE_SECTOR" xml:space="preserve">
+    <value>Sector privado</value>
+  </data>
+  <data name="NGOS" xml:space="preserve">
+    <value>No-gobierno organizacciones</value>
+  </data>
+  <data name="START_AT_RECORD" xml:space="preserve">
+    <value>Empiece a row:</value>
+  </data>
+  <data name="OF" xml:space="preserve">
+    <value>de</value>
+  </data>
+  <data name="RECORDS" xml:space="preserve">
+    <value>recordes</value>
+  </data>
+  <data name="GO_BACK" xml:space="preserve">
+    <value>&lt; Atras</value>
+  </data>
+  <data name="GO_BACK_TT" xml:space="preserve">
+    <value>Vaya atras al recordes anteriores</value>
+  </data>
+  <data name="GO_FORWARD" xml:space="preserve">
+    <value>Adelante &gt;</value>
+  </data>
+  <data name="GO_FORWARD_TT" xml:space="preserve">
+    <value>Vaya adelante al recordes proximos</value>
+  </data>
+  <data name="RECORDS_NONE" xml:space="preserve">
+    <value>No recordes vuelen de la search. Por favor, hagalo otra vez. Please use the edit form </value>
+  </data>
+  <data name="INFORMATION_SOURCES" xml:space="preserve">
+    <value>Fuentes de Informaccion:</value>
+  </data>
+  <data name="TOC_CONTENT_INIT" xml:space="preserve">
+    <value>Por favor, hagase un seleccion desde la mesa de contenidos a la izquierda.</value>
+  </data>
+  <data name="KEYGROUP" xml:space="preserve">
+    <value>Groupo</value>
+  </data>
+  <data name="GEONAME" xml:space="preserve">
+    <value>Nombre de lugar</value>
+  </data>
+  <data name="GEOSTART" xml:space="preserve">
+    <value>Empiece a buscar a</value>
+  </data>
+  <data name="START" xml:space="preserve">
+    <value>Empezar</value>
+  </data>
+  <data name="START_TT" xml:space="preserve">
+    <value>Empiece un nuevo buscar</value>
+  </data>
+  <data name="SUBMIT_EDITS" xml:space="preserve">
+    <value>Mande edits</value>
+  </data>
+  <data name="SUBMIT_EDITS_TT" xml:space="preserve">
+    <value>Primero, hagase edits a la forma siguiente. Despues, nos mande por un click her.</value>
+  </data>
+  <data name="CANCEL_EDITS" xml:space="preserve">
+    <value>Cierre edits</value>
+  </data>
+  <data name="CANCEL_EDITS_TT" xml:space="preserve">
+    <value>Cierre edits form ...</value>
+  </data>
+  <data name="EDITS_CONFIRM" xml:space="preserve">
+    <value>Por favor, confirme los cambios siguientes por clicking the Submit button once more.</value>
+  </data>
+  <data name="EDITS_CONFIRMED" xml:space="preserve">
+    <value>Sus cambios han sido hecho. Gracias.</value>
+  </data>
+  <data name="MYDEVDOCS_STOREAT" xml:space="preserve">
+    <value>Doc mio path:</value>
+  </data>
+  <data name="MYDEVDOCS_DOWNLOAD" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="NEW" xml:space="preserve">
+    <value>Nuevo</value>
+  </data>
+  <data name="SAVE" xml:space="preserve">
+    <value>Ahorre</value>
+  </data>
+  <data name="SEARCH_NEW" xml:space="preserve">
+    <value>Ahora, se puede empezar a construir recordes. Por favor, espere veingte segundos y empiece un nuevo busco para empezar.</value>
+  </data>
+  <data name="SEARCH_SELECTIONS" xml:space="preserve">
+    <value>Por favor, haga la voluntud do no  busar y hacer selecionnes afuera del node typo: </value>
+  </data>
+  <data name="CANCEL_SELECTIONS" xml:space="preserve">
+    <value>Termine selecciones</value>
+  </data>
+  <data name="CANCEL_SELECTIONS_TT" xml:space="preserve">
+    <value>click aqui para terminar selecciones</value>
+  </data>
+  <data name="SERVICE_UNAUTHORIZED" xml:space="preserve">
+    <value>Usted no tiene el derecho hacer este cambios. Llame  a DevTreks por ayuda.</value>
+  </data>
+  <data name="XML_DEVDOCS_BELOW" xml:space="preserve">
+    <value>El documento de xml podria ser encontrado abajo.</value>
+  </data>
+  <data name="AGTREKS_TITLE" xml:space="preserve">
+    <value>agtreks -social budgeting para mejorar vidas y ganancias rurales</value>
+  </data>
+  <data name="DEVTREKS_TITLE" xml:space="preserve">
+    <value>devtreks -social budgeting para mejorar vidas y ganancias</value>
+  </data>
+  <data name="OPENSOURCE_TESTING1" xml:space="preserve">
+    <value>Este sitio hace pruebas de un proyecto open source.</value>
+  </data>
+</root>

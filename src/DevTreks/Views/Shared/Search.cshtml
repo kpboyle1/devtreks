@@ -1,0 +1,42 @@
+﻿@using DevTreks.Helpers;
+@model DevTreks.ViewModels.SearchViewModel
+
+@{
+    ViewBag.Title = AppHelper.GetResource("DEVTREKS_TITLE");
+    ViewBag.Description = AppHelper.GetResource("DEVTREKS_GOAL");
+    //Layout = "~/Views/Shared/_Layout";
+    Layout = "_Layout";
+}
+
+@section Search
+{
+    @Html.Partial("_SearchBody", ViewData.Model)
+}
+@section Preview
+{
+    @Html.Partial("_ContentBody", ViewData.Model.SearchManagerData.SearchResult)
+}
+@section Select
+{
+    @Html.Partial("_ContentBody", ViewData.Model.SearchManagerData.SearchResult)
+}
+@section Edit
+{
+    @Html.Partial("_ContentBody", ViewData.Model.SearchManagerData.SearchResult)
+}
+@section Pack
+{
+    @Html.Partial("SubActionsViews/_Package", ViewData.Model.SearchManagerData.SearchResult)
+}
+@section LinkedView
+{
+    @Html.Partial("_ContentBody", ViewData.Model.SearchManagerData.SearchResult)
+}
+@section Member
+{
+    @Html.Partial("_Member", ViewData.Model.SearchManagerData.SearchResult)
+}
+@section UploadFile
+{
+  @HtmlHelperExtensions.FileUpload(Html, ViewData.Model.SearchManagerData.SearchResult)
+}

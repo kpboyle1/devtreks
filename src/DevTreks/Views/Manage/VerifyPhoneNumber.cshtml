@@ -2,10 +2,10 @@
 @{
     ViewData["Title"] = "Verify Phone Number";
 }
-
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini = "true", data_inline = "true" }) > @ViewData["Title"] </strong></p>
 <h2>@ViewData["Title"].</h2>
 
-<form asp-controller="Manage" asp-action="VerifyPhoneNumber" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+<form asp-controller="Manage" asp-action="VerifyPhoneNumber" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
     <input asp-for="PhoneNumber" type="hidden" />
     <h4>Add a phone number.</h4>
     <h5>@ViewData["Status"]</h5>

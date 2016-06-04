@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ADDINHELPER_MISSINGDOC" xml:space="preserve">
+    <value>A document needed to run the calculations is missing.</value>
+  </data>
+  <data name="ADDINHELPER_NOCALCTYPE" xml:space="preserve">
+    <value>The type of calculator being run could not be determined. Are you sure this is the right addin?</value>
+  </data>
+  <data name="ADDINHELPER_NOCALCULATOR" xml:space="preserve">
+    <value>The calculator could not be loaded. Please try running the calculations again. If the problem continues, please reload the calculator again.</value>
+  </data>
+  <data name="ADDINHELPER_NODEVPACKPARTS" xml:space="preserve">
+    <value>Files could not be found to analyze. Are you sure that devpackpart files have been added to the database?</value>
+  </data>
+  <data name="ADDINHELPER_NOFILEEXTENSIONTYPE" xml:space="preserve">
+    <value>The calculator does not have a needed file extension type.</value>
+  </data>
+  <data name="ADDIN_MISSINGOBSERVATION" xml:space="preserve">
+    <value>An observation is missing from the analysis. Please make sure that calculations have been run on all observations. Also make sure that the type of calculation selected is appropriate for this analysis.</value>
+  </data>
+  <data name="ANALYSES_CANTRUN" xml:space="preserve">
+    <value>The statistical analysis could not be run.</value>
+  </data>
+  <data name="ANALYSES_CHOOSEAGGTYPE" xml:space="preserve">
+    <value>Please choose the type of aggregation to run.</value>
+  </data>
+  <data name="ANALYSES_CHOOSEONE" xml:space="preserve">
+    <value>Please choose the type of analysis to run.</value>
+  </data>
+  <data name="ANALYSES_ID_MISMATCH" xml:space="preserve">
+    <value>The analyses could not be saved because of an id mismatch between the pre-analysis analyzer and post-analysis analyzer.</value>
+  </data>
+  <data name="ANALYSES_INDEX_OUTOFBOUNDS" xml:space="preserve">
+    <value>Either the node count or the file count was out of acceptable bounds for the analysis being run.</value>
+  </data>
+  <data name="ANALYSES_NOANALYZER" xml:space="preserve">
+    <value>The analyzer chosen has not been completed yet. Please choose another analysis.</value>
+  </data>
+  <data name="ANALYSES_NOFILES" xml:space="preserve">
+    <value>The analysis could not find any files to analyze. Has the base calculator been run first? Please double check the file being analyzed.</value>
+  </data>
+  <data name="ANALYSES_URI_MISMATCH" xml:space="preserve">
+    <value>The step was not completed successfully. Please check the data used in the analyzer and try again. Make sure this analyzer is compatible with this uri. If the problem persists, contact the analyzer's author (using the feedback link on the Intro page of the analyzer).</value>
+  </data>
+  <data name="ANALYZER_BASECALCS_MISSING" xml:space="preserve">
+    <value>This analyzer analyzes base calculator data. The base calculator data has not been run yet. Please run the base  calculations first.</value>
+  </data>
+  <data name="CALCSHELPER_FILE_NOTFOUND" xml:space="preserve">
+    <value>The calculator file could not be found. Please be sure that the calculator being used has a default calculator document.</value>
+  </data>
+  <data name="CALCULATORS_ID_MISMATCH" xml:space="preserve">
+    <value>The calculations could not be saved because of an id mismatch between the pre-calculation calculator and post-calculation calculator</value>
+  </data>
+  <data name="CALCULATORS_MISSING" xml:space="preserve">
+    <value>The calculator could not be found. Are you sure this is the right addin or extension for this calculator?</value>
+  </data>
+  <data name="CALCULATORS_MISSINGBASEDOC" xml:space="preserve">
+    <value>The base document needed to run calculations has not been built. Please use the Make Base command to build the missing document. Once built it only needs to be rebuilt if changes have been made in this data.</value>
+  </data>
+  <data name="CALCULATORS_MISSING_HOST" xml:space="preserve">
+    <value>A host for this calculator could not be found.</value>
+  </data>
+  <data name="CALCULATORS_URI_MISMATCH" xml:space="preserve">
+    <value>The step was not completed successfully. Please check the data used in the calculator and try again. Make sure this calculator is compatible with this uri. If the problem persists, contact the calculator's author (using the feedback link on the Intro page of the calculator).</value>
+  </data>
+  <data name="CALCULATORS_WRONG_ONE" xml:space="preserve">
+    <value>This uri can not be calculated using this calculator. Please choose another calculator.</value>
+  </data>
+  <data name="CALCULATOR_SEELAST_PERIOD" xml:space="preserve">
+    <value>See the expenses for the last period being grown.</value>
+  </data>
+  <data name="CI_PCT" xml:space="preserve">
+    <value>% ci</value>
+  </data>
+  <data name="DATAURL_BAD" xml:space="preserve">
+    <value>This url is incorrect. Please make sure the file has been uploaded to a base resource correctly and make sure the url is correct.</value>
+  </data>
+  <data name="DATAURL_BADDATA" xml:space="preserve">
+    <value>The data set is not formatted correctly. Please read the instructions in the associated tutorial.</value>
+  </data>
+  <data name="DATAURL_MISSING" xml:space="preserve">
+    <value>The Data URL must point to one or more csv-delimited files holding the data being analyzed. One or more files are missing. Please read the instructions for this algorithm.</value>
+  </data>
+  <data name="DATA_BADDISTRIBUTION" xml:space="preserve">
+    <value>This error can result from having a distribution outside the bounds of QT.</value>
+  </data>
+  <data name="DATA_NOCOLUMNNAMES" xml:space="preserve">
+    <value>The first row of data in a DataSetURL must contain column names. The names are missing.</value>
+  </data>
+  <data name="GETDEVPACKCALC_NOLINKEDVIEW" xml:space="preserve">
+    <value>Either the original DevPack file needed to find the linked view was not available, or the file did not contain the needed linked view. Please try initialized the calculator again.</value>
+  </data>
+  <data name="INDICATORS_BAD" xml:space="preserve">
+    <value>Indicator properties are missing or wrong. Do indicator labels correspond to dataset labels? Do indicators have correct algorithms? Please recheck all indicator properties.</value>
+  </data>
+  <data name="JACE_BASIC" xml:space="preserve">
+    <value>: jace.net parser error</value>
+  </data>
+  <data name="JDATAURL_BAD" xml:space="preserve">
+    <value>The joint data url needed by this dataset is missing. The indexed dataset is: </value>
+  </data>
+  <data name="JOINTURL_MISSING" xml:space="preserve">
+    <value>The Joint Data URL must point to one or more csv-delimited files with information about the indicator correlations. One or more files are missing. Please read the instructions for this algorithm.</value>
+  </data>
+  <data name="LOWER" xml:space="preserve">
+    <value>lower </value>
+  </data>
+  <data name="MATRIX_BADCHOL" xml:space="preserve">
+    <value>This calculation uses Cholesky matrixes which could not be generated from the correlation matrix. Recheck the correlation matrix.</value>
+  </data>
+  <data name="MATRIX_BADCOR" xml:space="preserve">
+    <value>A correlation matrix could not be generated from the data in Data URL. The data must contain at lease three observations for each correlated indicator and the number of rows must be identical for each indicator.</value>
+  </data>
+  <data name="MATRIX_BADCORDATA" xml:space="preserve">
+    <value>The data stored in the Data URL can't be used to generate a correlation matrix. Does each correlated indicator have at least 3 observations and do they have the same number of observations? Do the indicators stored in the Joint Data file match the same indicators used in Data URL?</value>
+  </data>
+  <data name="MATRIX_BADEIGEN" xml:space="preserve">
+    <value>This calculation uses eigenvalue matrixes which could not be generated from the correlation matrix. Recheck the correlation matrix.</value>
+  </data>
+  <data name="MATRIX_BADFORMAT" xml:space="preserve">
+    <value>A matrix could not be made from the data in the url. Please upload a good matrix.</value>
+  </data>
+  <data name="MATRIX_MISSING" xml:space="preserve">
+    <value>Please make sure to upload either an initial zeroes, or real, correlation matrix and reference it using the Joint DataURL property.</value>
+  </data>
+  <data name="MATRIX_NOCINDICATORS" xml:space="preserve">
+    <value>The matrix does not start with a csv row of indicators.</value>
+  </data>
+  <data name="OBSERVATIONS_MISSING_AGGREGATOR" xml:space="preserve">
+    <value>An aggregating element could not be added to the observations document.</value>
+  </data>
+  <data name="OBSERVATIONS_MISSING_ONE" xml:space="preserve">
+    <value>An existing observation could not be found in the observations document.</value>
+  </data>
+  <data name="OBSERVATIONS_MISSING_REPLACEMENT" xml:space="preserve">
+    <value>An existing observation could not be replaced correctly in the observations document.</value>
+  </data>
+  <data name="OBSERVATIONS_NOFILES_SAVETEXT" xml:space="preserve">
+    <value>The files used to run the analysis and build the text file could not be found. Please contact the owner of this calculator or analyzer.</value>
+  </data>
+  <data name="RESOURCESTOCKS2A_NOBASENPVOPCOMP" xml:space="preserve">
+    <value>The initial net present value calculator for an operation or component was not run. Please make sure that each operation or component has a good net present value calculation.</value>
+  </data>
+  <data name="RESOURCESTOCKS2A_NOBASESTOCKBUDGET" xml:space="preserve">
+    <value>The base budget stock collection needed for analyzing timeliness penalties was not built correctly. Please contact the author of this analyzer using the Feedback link on the Init panel of the analyzer.</value>
+  </data>
+  <data name="RESOURCESTOCKS2A_NOBASESTOCKTIMEPERIODS" xml:space="preserve">
+    <value>The base time period stock collection needed for analyzing timeliness penalties was not built correctly. Please contact the author of this analyzer using the Feedback link on the Init panel of the analyzer.</value>
+  </data>
+  <data name="RESOURCESTOCKS2A_NOBESTTIMELINESSCALCS" xml:space="preserve">
+    <value>The best machinery stock calculations could not be run correctly. Please check the underlying machinery.</value>
+  </data>
+  <data name="RESOURCESTOCKS2A_NOMACHINERYLIST" xml:space="preserve">
+    <value>The stock collection needed for analyzing machinery costs was not built correctly. Please contact the author of this analyzer using the Feedback link on the Init panel of the analyzer.</value>
+  </data>
+  <data name="RESOURCESTOCKS2A_NOSERIALIZEBEST" xml:space="preserve">
+    <value>The best machinery stocks could not be converted to a data format that allows them to be displayed (they could not be correctly serialized).</value>
+  </data>
+  <data name="RESOURCESTOCKS2A_NOSIZERANGES" xml:space="preserve">
+    <value>The size range collection needed for the analysis could not be built correctly. Please check the inputs to make sure they have correct size ranges. If the problem still persists, please contact the author of this analyzer using the Feedback link on the Init panel of the analyzer.</value>
+  </data>
+  <data name="RESOURCESTOCKS2A_NOTIMELINESSOBJECT" xml:space="preserve">
+    <value>The stock collection needed for analyzing timeliness penalties was not built correctly. Please contact the author of this analyzer using the Feedback link on the Init panel of the analyzer.</value>
+  </data>
+  <data name="RESOURCESTOCKS_NOMACH1SELECTSCHEDULE" xml:space="preserve">
+    <value>The best combination of machinery could not be determined using these operations or components. Make sure the base operations or components have been calculated using good machinery-calculated inputs.</value>
+  </data>
+  <data name="RESOURCESTOCKS_NOPOWERORNONPOWERINPUTS" xml:space="preserve">
+    <value>The collections of power inputs and nonpower inputs could not be made. Please check the underlying inputs in this analysis.</value>
+  </data>
+  <data name="RESOURCESTOCKS_NOSIMULATEDANNEALING" xml:space="preserve">
+    <value>The scheduling and selection calculations could not be run.</value>
+  </data>
+  <data name="SAMPLES_BADDIST" xml:space="preserve">
+    <value>The initial random samples needed by this calculation could not be built. Has all of the distribution properties for each correlated indicator been filled in correctly?</value>
+  </data>
+  <data name="SAMPLES_BADRND" xml:space="preserve">
+    <value>The correlated random samples needed by this calculation could not be built. Has all of the distribution properties for each correlated indicator been filled in correctly and has the inital correlation matrix been filled in correctly?</value>
+  </data>
+  <data name="STATS_DESC1" xml:space="preserve">
+    <value>sampled descriptive statistics</value>
+  </data>
+  <data name="STATS_DESC2" xml:space="preserve">
+    <value>N,Total,Mean,Median,StdDev,Var,Min,Max</value>
+  </data>
+  <data name="STATS_DESC3" xml:space="preserve">
+    <value>observed descriptive statistics</value>
+  </data>
+  <data name="STATS_DESC4" xml:space="preserve">
+    <value>sampled cumulative density function</value>
+  </data>
+  <data name="STATS_DESC5" xml:space="preserve">
+    <value>observed cumulative density function</value>
+  </data>
+  <data name="STATS_DESC6" xml:space="preserve">
+    <value>This data does not have sampled descriptive statistics.</value>
+  </data>
+  <data name="UPPER" xml:space="preserve">
+    <value>upper </value>
+  </data>
+</root>

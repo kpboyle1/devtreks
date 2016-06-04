@@ -7,11 +7,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using DevTreks.Models;
-using DevTreks.Models.ManageViewModels;
 using DevTreks.Services;
+using DevTreks.ViewModels.Manage;
 
 namespace DevTreks.Controllers
 {
+    /// <summary>
+    ///Purpose  Security and login managment
+    ///Author:	www.devtreks.org
+    ///Date:    2016, June
+    ///Note:    
+    /// </summary>
     [Authorize]
     public class ManageController : Controller
     {

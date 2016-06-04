@@ -1,0 +1,15 @@
+﻿@using DevTreks.Helpers;
+@model DevTreks.Data.ContentURI
+
+@{
+    ViewBag.Title = "Response";
+    if (!string.IsNullOrEmpty(this.Model.Message))
+    {
+        @Html.Raw(Model.Message)
+    }
+    else 
+    {
+        this.Write(ViewData["Message"]);
+    }
+}
+

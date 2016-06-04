@@ -1,0 +1,8 @@
+﻿<root>
+	<linkedview Id="1" Version="1.7.3" CalculatorType="me2" 
+		WhatIfTagName="none" FileExtensionType="me2" 
+		CalculatorName="Monitoring and Evaluation 2 Investment Calculator" 
+    StylesheetResourceFileName="ME2CalculatorBI1.xslt" 
+		Stylesheet2ResourceFileName="ME2StocksInvests1.xslt"
+		RelatedCalculatorsType="me2" Overwrite="0"  />
+</root>

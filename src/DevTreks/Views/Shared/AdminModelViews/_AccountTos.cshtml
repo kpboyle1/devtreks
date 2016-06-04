@@ -1,0 +1,131 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    if (ViewData.Model.URIDataManager.SubAppType == GeneralHelpers.SUBAPPLICATION_TYPES.addins)
+    {
+        ViewBag.Title = "Linked Views";
+    }
+    else if (ViewData.Model.URIDataManager.SubAppType == GeneralHelpers.SUBAPPLICATION_TYPES.locals)
+    {
+        ViewBag.Title = "Locals";
+    }
+}
+@HtmlExtensions.DivStart(Html, string.Empty, string.Empty)
+@{
+    bool bCanDelete = false;
+    if (ViewData.Model.URIDataManager.SubAppType == GeneralHelpers.SUBAPPLICATION_TYPES.addins)
+    {
+        if (Model.URINodeName == AddIns.ADDIN_TYPES.addinaccountgroup.ToString())
+        {
+            if (Model.URIModels.Account != null)
+            {
+                 @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Account.AccountName,
+                    "AccountName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+                string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Account.AccountName, Model.URIModels.Account.PKId.ToString(),
+                    Model.URINetworkPartName, AddIns.ADDIN_TYPES.addinaccountgroup.ToString(), string.Empty);
+                if (Model.URIDataManager.EditViewEditType
+                   == GeneralHelpers.VIEW_EDIT_TYPES.full)
+                {
+                    @HtmlExtensions.DivStart(Html, string.Empty, string.Empty)
+                    @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                        "GetSelectsLink", "Select Linked Views", "spanSelectionFiles",
+                        Model.URIDataManager.ContentURIPattern, searchurl,
+                        LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString(), string.Empty, string.Empty))
+                   @HtmlExtensions.DivEnd(Html)
+                    @*@HtmlHelperExtensions.WriteViewLinks(Html, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIDataManager.CalcParams,
+                        @Model.URINodeName, "oldid")*@
+                    @Html.Raw("<br />")
+                }
+                else
+                {
+                    @Html.H4("Linked Views", "ui-bar-b")
+                }
+                if (Model.URIModels.Account.AccountToAddIn != null)
+                {
+                    if (Model.URIModels.Account.AccountToAddIn.Count > 0)
+                    {
+                        foreach (var addin in Model.URIModels.Account.AccountToAddIn)
+                        {
+                            @Html.DivCollapseStart(Model, addin.PKId)
+                            @Html.H4(@addin.LinkedViewName, string.Empty)
+                            ViewData.Model.URIModels.AccountToAddIn = addin;
+                            @Html.Partial("AdminModelViews/_AccountToAddIn", ViewData.Model)
+                            @Html.DivEnd()
+                        }
+                    }
+
+                }
+            }
+        }
+        else
+        {
+             @Html.Partial("AdminModelViews/_AccountToAddIn", ViewData.Model)
+        }
+    }
+    else if (ViewData.Model.URIDataManager.SubAppType == GeneralHelpers.SUBAPPLICATION_TYPES.locals)
+    {
+        if (Model.URINodeName == Locals.LOCAL_TYPES.localaccountgroup.ToString())
+        {
+            if (Model.URIModels.Account != null)
+            {
+                string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Account.AccountName, Model.URIModels.Account.PKId.ToString(),
+                    Model.URINetworkPartName, Locals.LOCAL_TYPES.localaccountgroup.ToString(), string.Empty);
+                @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Account.AccountName,
+                    "AccountName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+                if (Model.URIDataManager.EditViewEditType
+                    == GeneralHelpers.VIEW_EDIT_TYPES.full)
+                {
+                    @HtmlExtensions.DivStart(Html, string.Empty, string.Empty)
+                    @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "Local",
+                        Locals.LOCAL_TYPES.local.ToString())
+                    @*@Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                        "GetSelectsLink", "Select Locals", "spanSelectionFiles",
+                        Model.URIDataManager.ContentURIPattern, searchurl,
+                        LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString(), string.Empty, string.Empty))*@
+                   @HtmlExtensions.DivEnd(Html)
+                
+                   @*2.0.0 deprecated: @HtmlHelperExtensions.WriteViewLinks(Html, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIDataManager.CalcParams,
+                            @Model.URINodeName, "oldid")*@
+                    @Html.Raw("<br />")
+                }
+                else
+                {
+                    @Html.H4("Linked Views", "ui-bar-b")
+                }
+                if (Model.URIModels.Account.AccountToLocal != null)
+                {
+
+                    if (Model.URIModels.Account.AccountToLocal.Count > 0)
+                    {
+                        foreach (var local in Model.URIModels.Account.AccountToLocal)
+                        {
+                            @Html.DivCollapseStart(Model, local.PKId)
+                            @Html.H4(@local.LinkedViewName, string.Empty)
+                            ViewData.Model.URIModels.AccountToLocal = local;
+                            @Html.Partial("AdminModelViews/_AccountToLocal", ViewData.Model)
+                            @Html.DivEnd()
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+                    @Html.Partial("AdminModelViews/_AccountToLocal", ViewData.Model)
+        }
+    }
+    @Html.Raw("<br />")
+    @HtmlExtensions.DivStart(Html, string.Empty, string.Empty)
+        @Html.LinkMobile("feedback", string.Concat("mailto:", @Model.URIClub.AccountEmail, "?subject=", @Model.URIFull),
+            string.Empty, string.Concat("Feedback About ", @Model.URIPattern), "button", "true", "false",
+            "info", "left")
+    @HtmlExtensions.DivEnd(Html)
+}
+@HtmlExtensions.DivEnd(Html)

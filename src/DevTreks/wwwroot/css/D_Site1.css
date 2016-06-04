@@ -1,0 +1,116 @@
+﻿/*
+Name:       Site1.css
+Author:     www.devtreks.org
+Date:       2016, March
+Purpose:    Cross device css styles
+*/
+
+body
+{
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: .85em;
+}
+/* default widths less than 100% wide */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+input.Input25
+{
+    width: 25px;
+}
+input.Input35
+{
+    width: 35px;
+}
+input.Input50
+{
+    width: 50px;
+}
+input.Input100PerCent,
+input.Input100PerCentBold,
+textarea.Text200H100PCW,
+textarea.Text300H100PCW,
+textarea.Text75H100PCW
+{border:1px solid #000;
+ width:100%;
+ background-color:#F2F4F4
+}
+input.Input100PerCent
+{
+    font-size: small;
+}
+input.Input100PerCentBold
+{
+    font-size: small;
+    font-weight: bold;
+}
+textarea.Text75H100PCW
+{
+	height: 75px;
+}
+textarea.Text200H100PCW
+{
+	height: 200px;
+}
+textarea.Text300H100PCW
+{
+	height: 300px;
+}
+TABLE.data TH
+{
+    background-color: #A48B79;
+    font-weight: normal;
+    color: #FFFFFF;
+}
+TABLE.data TH H1, TABLE.data TH H2, TABLE.data TH H3, TABLE.data TH H4, TABLE.data TH H5, TABLE.data TH H6
+{ color:black; margin:0px; }
+TABLE.data TD
+{ background-color:white; color:#000; line-height:1.4em; vertical-align:top; }
+td.Top
+{
+    vertical-align:top;
+}
+#mainwrapper
+{
+	margin: 0 auto;
+    width:  auto;
+	border-bottom: solid 1px #005AC5;
+	border-top: solid 1px #005AC5;
+	border-left: solid 1px #005AC5;
+	border-right: solid 1px #005AC5;
+	height: auto;
+    /*horizontal scroll bar for div*/
+    overflow-x: auto
+}
+/* Boxes */
+.box
+{
+	border: 1px solid #000000;
+}
+/* Printer Output */
+@media print {
+
+	#headerPhoto, #navBar, #footer, #leftBar, .goback, #leftbar2, 
+	#menuEdits, #search2, #modEdits_divMyDocButtons, .noprint
+	{ display:none; }
+
+	TABLE.data
+	{ border-collapse:collapse; }
+	TABLE.data TH, TABLE.data TD, .box, .linkedviewuments
+	{ color:#000; border:solid 1px #000; }
+}
+
+
+/* Mobile styles*/
+/*@media only screen and (min-width: 450px)
+{
+    //advantages to having horizontal scroll for body, but this doesn't do the job
+    jQuery mobile overwritten styles: horizontal scroll bar
+    body.ui-mobile-viewport,
+    div.ui-mobile-viewport { overflow-x: auto; }
+.ui-content { border-width: 0; overflow: visible; overflow-x: auto; padding: 15px; }
+}*/
+
+

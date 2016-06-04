@@ -1,0 +1,80 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, Resources.RESOURCES_TYPES.resourcepack.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+   
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.ResourcePack.ResourcePackName, Model.URIModels.ResourcePack.PKId.ToString(),
+                Model.URINetworkPartName, Resources.RESOURCES_TYPES.resourcepack.ToString(), string.Empty);
+    if (Model.URINodeName == Resources.RESOURCES_TYPES.resourcepack.ToString())
+    {
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.ResourcePack.ResourcePackName,
+            "ResourcePackName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "Resource",
+                Resources.RESOURCES_TYPES.resource.ToString())                  
+        }
+        else 
+        {
+            @Html.H4("Resource", "ui-bar-b")
+        }
+        if (Model.URIModels.ResourcePack.Resource != null)
+        {
+            if (Model.URIModels.ResourcePack.Resource.Count > 0)
+            {
+                foreach (var resource in Model.URIModels.ResourcePack.Resource)
+                {
+                    ViewData.Model.URIModels.Resource = resource;
+                    @Html.DivCollapseStart(Model, resource.PKId)
+                    @Html.H4(@resource.ResourceName, "ui-bar-b")
+                    @Html.Partial("ContentModelViews/_Resource", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else
+    {
+        
+  
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.ResourcePack.ResourcePackName,
+                 "ResourcePackName", Model.URIDataManager.EditViewEditType, bCanDelete)
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.ResourcePack.ResourcePackDocStatus.ToString(),
+            "ResourcePackDocStatus", GeneralRules.SHORTINTEGER, "2", "Status",
+                 Model.URIDataManager.EditViewEditType, "Select225", GeneralHelpers.GetDocStatusDictionary())
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("ResourcePackNum", "Label: ")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.ResourcePack.ResourcePackNum, "ResourcePackNum", GeneralRules.STRING, "15",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("ResourcePackLastChangedDate", "Date Changed: ")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.ResourcePack.ResourcePackLastChangedDate.ToShortDateString(), "ResourcePackLastChangedDate", GeneralRules.SHORTDATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.ResourcePack.ResourcePackDesc, "ResourcePackDesc",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.ResourcePack.ResourcePackKeywords, "ResourcePackKeywords",
+            "Keywords", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+		string sContentURIPatternNoPage = StylesheetHelper.GetContentURIPatternNoVar(@Model);
+		@HtmlHelperExtensions.MakeMetaDocUpload(Html, Model, searchurl, sContentURIPatternNoPage, @Model.URIModels.ResourcePack.PKId.ToString(),
+            @Model.URIModels.ResourcePack.ResourcePackMetaDataXml, "ResourcePackMetaDataXml", @Model.URIDataManager.EditViewEditType,
+            "4", @Model.URIFileExtensionType)
+    }
+    
+}

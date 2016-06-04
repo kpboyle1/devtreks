@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<geocodeprice Id="0" Name="none"/>
+	<geocodeprice Id="1" Name="Portland, USA, Northwest Neighborhood" Description="typical urban neighborhood"/>
+	<geocodeprice Id="2" Name="Portland, USA, Northeast Neighborhood" Description="typical urban neighborhood"/>
+	<geocodeprice Id="3" Name="Portland, USA, Southwest Neighborhood" Description="typical urban neighborhood"/>
+	<geocodeprice Id="4" Name="Portland, USA, Southeast Neighborhood" Description="typical urban neighborhood"/>
+</root>

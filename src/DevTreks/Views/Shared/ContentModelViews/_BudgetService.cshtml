@@ -1,0 +1,37 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = false;
+    @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Service.ServiceName,
+        "ServiceName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+    if (Model.URIDataManager.EditViewEditType
+        == GeneralHelpers.VIEW_EDIT_TYPES.full
+        && Model.URINodeName.StartsWith(Agreement.AGREEMENT_TYPES.service.ToString()))
+    {
+        @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "Budget Group",
+            Economics1.BUDGET_TYPES.budgetgroup.ToString());
+    }
+    else
+    {
+        @Html.H4("Budget Groups", "ui-bar-b")
+    }
+    if (Model.URIModels.Service.BudgetSystem != null)
+    {
+        if (Model.URIModels.Service.BudgetSystem.Count > 0)
+        {
+            foreach (var budgetclass in Model.URIModels.Service.BudgetSystem)
+            {
+                ViewData.Model.URIModels.BudgetSystem = budgetclass;
+                @Html.DivCollapseStart(Model, budgetclass.PKId)
+                <h4>@budgetclass.Name</h4>
+                @Html.Partial("ContentModelViews/_BudgetClass", ViewData.Model)
+                @Html.DivEnd()
+            }
+        }
+    }
+    }

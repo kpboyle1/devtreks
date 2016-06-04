@@ -1,0 +1,1347 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="FIND" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="FIND_TT" xml:space="preserve">
+    <value>"Find items that match the search boxes entries."</value>
+  </data>
+  <data name="INFORMATION_SOURCE" xml:space="preserve">
+    <value>Information Source</value>
+  </data>
+  <data name="KEYNAME" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="NONE" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="NAVIGATOR1_GET" xml:space="preserve">
+    <value>Could not initiate navigator on the server.</value>
+  </data>
+  <data name="ALL" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="GOVERNMENT" xml:space="preserve">
+    <value>Government</value>
+  </data>
+  <data name="UNIVERSITY" xml:space="preserve">
+    <value>University</value>
+  </data>
+  <data name="PRIVATE_SECTOR" xml:space="preserve">
+    <value>Private sector</value>
+  </data>
+  <data name="NGOS" xml:space="preserve">
+    <value>Non-govt. organizations</value>
+  </data>
+  <data name="START_AT_RECORD" xml:space="preserve">
+    <value>Start at row:</value>
+  </data>
+  <data name="OF" xml:space="preserve">
+    <value>of</value>
+  </data>
+  <data name="RECORDS" xml:space="preserve">
+    <value>records</value>
+  </data>
+  <data name="GO_BACK" xml:space="preserve">
+    <value>Row</value>
+  </data>
+  <data name="GO_BACK_TT" xml:space="preserve">
+    <value>Go back to the previous group  of records</value>
+  </data>
+  <data name="GO_FORWARD" xml:space="preserve">
+    <value>Row</value>
+  </data>
+  <data name="GO_FORWARD_TT" xml:space="preserve">
+    <value>Go forward to the next group of records</value>
+  </data>
+  <data name="RECORDS_NONE" xml:space="preserve">
+    <value>This is the end of the search.</value>
+  </data>
+  <data name="INFORMATION_SOURCES" xml:space="preserve">
+    <value>Information Sources:</value>
+  </data>
+  <data name="TOC_CONTENT_INIT" xml:space="preserve">
+    <value>Please make a selection from the table of contents at left.</value>
+  </data>
+  <data name="KEYGROUP" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="GEONAME" xml:space="preserve">
+    <value>Location Name</value>
+  </data>
+  <data name="GEOSTART" xml:space="preserve">
+    <value>Start search at</value>
+  </data>
+  <data name="START" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="START_TT" xml:space="preserve">
+    <value>Start a new search</value>
+  </data>
+  <data name="SUBMIT_EDITS" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SUBMIT_EDITS_TT" xml:space="preserve">
+    <value>First make edits to the following form and then click here to submit the edits</value>
+  </data>
+  <data name="CANCEL_EDITS" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="CANCEL_EDITS_TT" xml:space="preserve">
+    <value>Click here to cancel any edits made to the following form</value>
+  </data>
+  <data name="CLOSE_EDITS" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CLOSE_EDITS_TT" xml:space="preserve">
+    <value>Close the edits pending and return to the previous form.</value>
+  </data>
+  <data name="EDITS_CONFIRM" xml:space="preserve">
+    <value>Please confirm the following edits by clicking the Submit button once more.</value>
+  </data>
+  <data name="EDITS_CONFIRMED" xml:space="preserve">
+    <value>Your changes have been made. Thank you.</value>
+  </data>
+  <data name="MYDEVDOCS_STOREAT" xml:space="preserve">
+    <value>My Doc Path:</value>
+  </data>
+  <data name="MYDEVDOCS_DOWNLOAD" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="NEW" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="SAVE" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SEARCH_SELECTIONS" xml:space="preserve">
+    <value>Please limit your searches and selections to nodes of type: </value>
+  </data>
+  <data name="CANCEL_SELECTIONS" xml:space="preserve">
+    <value>Cancel selections</value>
+  </data>
+  <data name="CANCEL_SELECTIONS_TT" xml:space="preserve">
+    <value>click to cancel selections</value>
+  </data>
+  <data name="SERVICE_UNAUTHORIZED" xml:space="preserve">
+    <value>You are not authorized to edit this service. Please contact DevTreks for further information.</value>
+  </data>
+  <data name="XML_DEVDOCS_BELOW" xml:space="preserve">
+    <value>The extensible markup language can be found at the bottom of this page.</value>
+  </data>
+  <data name="CLOSE" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CLOSE_TT" xml:space="preserve">
+    <value>Close the table of contents</value>
+  </data>
+  <data name="OPEN" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="OPEN_TT" xml:space="preserve">
+    <value>Open the table of contents</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="SELECT" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="SELECTED" xml:space="preserve">
+    <value>Selected </value>
+  </data>
+  <data name="DISCARD" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="BUILD_NEW_DEVDOCS_INSTRUCTS" xml:space="preserve">
+    <value>Please select an option for building a new document where the selections can be saved. Then click on the 'Build New Document' button.</value>
+  </data>
+  <data name="BUILD_NEW_DEVDOCS_OPTIONS" xml:space="preserve">
+    <value>Build New Doc Options</value>
+  </data>
+  <data name="BUILD_NEW_DEVDOCS" xml:space="preserve">
+    <value>Build New Document</value>
+  </data>
+  <data name="ANCESTORS" xml:space="preserve">
+    <value>*Ancestor(s) refer to the categories used to classify each selection. If these categories are not needed, select the 'Use the Following Selection's Ancestors Only' option.</value>
+  </data>
+  <data name="USE_ALL_ANCESTORS" xml:space="preserve">
+    <value>Use All Ancestors*</value>
+  </data>
+  <data name="USE_NEW_ANCESTORS" xml:space="preserve">
+    <value>Use New Ancestors*</value>
+  </data>
+  <data name="USE_ONE_ANCESTOR" xml:space="preserve">
+    <value>Use the Following Selection's Ancestors* Only:</value>
+  </data>
+  <data name="SELECT_EXISTING_DEVDOCS" xml:space="preserve">
+    <value>To Add Selections to an Existing Document</value>
+  </data>
+  <data name="SELECT_EXISTING_DEVDOCS_INSTRUCTIONS" xml:space="preserve">
+    <value>Open the existing document, click on one of the 'Selections' links within the document, and make selections in the regular way.</value>
+  </data>
+  <data name="SELECTION_FILE" xml:space="preserve">
+    <value>File   for   Selections          :    </value>
+  </data>
+  <data name="SELECTION_NODE" xml:space="preserve">
+    <value>Node for Selections           :</value>
+  </data>
+  <data name="LOAD_PACK" xml:space="preserve">
+    <value>Pack</value>
+  </data>
+  <data name="LOAD_PACK_TT" xml:space="preserve">
+    <value>Opens links to this document, such as images, contacts, footnotes ...</value>
+  </data>
+  <data name="LOAD_EDIT" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="ADD_NEW" xml:space="preserve">
+    <value>ADD NEW:</value>
+  </data>
+  <data name="GO_BACK1" xml:space="preserve">
+    <value>&lt; Back 1</value>
+  </data>
+  <data name="GO_FORWARD1" xml:space="preserve">
+    <value>Next 1 &gt;</value>
+  </data>
+  <data name="SELECTS_SUCCESS" xml:space="preserve">
+    <value>Success. </value>
+  </data>
+  <data name="SELECTION_NODE_NEEDED" xml:space="preserve">
+    <value>Node Needed for Selections:</value>
+  </data>
+  <data name="ADD_SELECTION" xml:space="preserve">
+    <value>Select </value>
+  </data>
+  <data name="RELOAD_SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="RELOAD_SELECT" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="LOAD_SELECT" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="RELOAD_PREVIEW" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="ADD_OR_SELECT" xml:space="preserve">
+    <value>To add a new, or select an existing,  </value>
+  </data>
+  <data name="ADD_NEW2" xml:space="preserve">
+    <value>Add new</value>
+  </data>
+  <data name="DEFAULTINSERTS_SUCCESS" xml:space="preserve">
+    <value>Success. </value>
+  </data>
+  <data name="EDITS_SUCCESS" xml:space="preserve">
+    <value>Success. </value>
+  </data>
+  <data name="HELP" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ADD_TO_PACK" xml:space="preserve">
+    <value>PackIt</value>
+  </data>
+  <data name="SHOWURI" xml:space="preserve">
+    <value>Show URI</value>
+  </data>
+  <data name="SELECTION_ATTRIBUTE_NEEDED" xml:space="preserve">
+    <value>Attribute For Setting URI:</value>
+  </data>
+  <data name="AGTREKS_TITLE" xml:space="preserve">
+    <value>AgTreks, agriculture social budgeting</value>
+  </data>
+  <data name="DEVTREKS_TITLE" xml:space="preserve">
+    <value>DevTreks -social budgeting that improves lives and livelihoods</value>
+  </data>
+  <data name="ENABLE_JAVASCRIPT" xml:space="preserve">
+    <value>Enable javascript</value>
+  </data>
+  <data name="OPENSOURCE_TESTING1" xml:space="preserve">
+    <value>This web site is being tested as part of the  </value>
+  </data>
+  <data name="REQUIRES_JAVASCRIPT" xml:space="preserve">
+    <value>DevTreks requires Javacript to be enabled in your browser. Please enable javascript. The following page gives instructions:</value>
+  </data>
+  <data name="ABOUT_DEVTREKS" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="OPENSOURCE_PARTICIPATION" xml:space="preserve">
+    <value>Open-source participation</value>
+  </data>
+  <data name="SOCIALBUDGET_HOWDOES" xml:space="preserve">
+    <value>How does DevTreks do Social Budgeting?</value>
+  </data>
+  <data name="SOCIALBUDGET_WHATIS" xml:space="preserve">
+    <value>What is Social Budgeting?</value>
+  </data>
+  <data name="NETWORK" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="NETWORK_SWITCH" xml:space="preserve">
+    <value>Switch to Network:</value>
+  </data>
+  <data name="SERVICE_FILTER" xml:space="preserve">
+    <value>Service Filter      :</value>
+  </data>
+  <data name="SERVICE" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="SERVICES_USE_ALL" xml:space="preserve">
+    <value>Use All Services</value>
+  </data>
+  <data name="LOGIN" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="LOGGEDIN_WELCOME" xml:space="preserve">
+    <value>Welcome, please choose a network group:</value>
+  </data>
+  <data name="JOININ" xml:space="preserve">
+    <value>Start a new DevTreks membership and join an existing club or start a new club</value>
+  </data>
+  <data name="NETWORKSEARCH_ALLNETWORKS" xml:space="preserve">
+    <value>All Networks In All Network Groups</value>
+  </data>
+  <data name="NETWORKSEARCH_DEFAULT" xml:space="preserve">
+    <value>This Club's Default Network</value>
+  </data>
+  <data name="NETWORKSEARCH_LANGUAGE" xml:space="preserve">
+    <value>All Networks By Current Language</value>
+  </data>
+  <data name="NETWORKSEARCH_NETWORKS" xml:space="preserve">
+    <value>This Club's Individual Networks</value>
+  </data>
+  <data name="NETWORKSEARCH_SERVICES" xml:space="preserve">
+    <value>This Club's Agreement Services</value>
+  </data>
+  <data name="DEVTREKS_ABOUT" xml:space="preserve">
+    <value>What DevTreks is About</value>
+  </data>
+  <data name="DEVTREKS_GOAL" xml:space="preserve">
+    <value>Members of DevTreks use social budgeting to improve lives and livelihoods.</value>
+  </data>
+  <data name="SOCIALBUDGET_DOES" xml:space="preserve">
+    <value>People share information in groups of networks devoted to a general theme of importance to the networks members, such as residential construction, agricultural conservation, family budgeting, or government cost-benefit analysis. Each network group is sliced up into smaller segments, known as networks, that focus on a narrower part of the group. An agricultural network group might have individual networks devoted to crop production, organic farming, dairy, cattle ranching, or innovative water conservation technologies.  Each network consists of groups of DevTreks members, known as clubs, who build the content found in the network. Each club offers their content, known as services, to other clubs through subscriptions, known as service agreements.</value>
+  </data>
+  <data name="SOCIALBUDGET_IS" xml:space="preserve">
+    <value>Social budgeting is the on-line sharing of social and economic knowledge among networks and groups of people for the purposes of improving lives and livelihoods. Families finances improve when neighbors show them how to budget their money, or energy use, better. Businesses improve by more easily discovering how their performance, be it profitability or carbon use, compares to their peers. Governments spend money better when project and program managers share information about the benefits, costs, and tradeoffs involved in the delivery of public goods and services. </value>
+  </data>
+  <data name="ANCESTOR_LINKS" xml:space="preserve">
+    <value>Ancestors: </value>
+  </data>
+  <data name="SOCIALBUDGET_DOES4" xml:space="preserve">
+    <value>All DevTreks content, and the metadata used to describe content, is standardized across networks. The standards make it easier to aggregate, compare, and analyze data. Clubs use the standardization to deliver higher-valued services, such as cost effectiveness comparisons, performance metrics, and natural resources tradeoff analyses. Clubs can easily extend DevTreks, by either building 'add-ins' or 'extensions', to offer these more advanced services.</value>
+  </data>
+  <data name="BUILDTREKS_TITLE" xml:space="preserve">
+    <value>BuildTreks, construction social budgeting</value>
+  </data>
+  <data name="HOMETREKS_TITLE" xml:space="preserve">
+    <value>HomeTreks, family social budgeting</value>
+  </data>
+  <data name="SOCIALBUDGET_DOES2" xml:space="preserve">
+    <value>Resource analyses, such as budget and price analysis, are among the value-added services offered by DevTreks clubs. These can be as simple as comparing monthly family living expenses, or energy use, among club members. They can be as sophisticated as aggregating, and statistically analyzing, thousands of crop rotational budgets to find the causes of efficient production. Mature DevTreks analyses, such as government cost-benefit analysis, include 'social pricing' views -perspectives that price resource use according to its cost to society and that show who wins or loses from resource allocation policies.</value>
+  </data>
+  <data name="ADDINS_NOT_SELECTED" xml:space="preserve">
+    <value>Linked Views have not been selected yet by your current club. Please contact one of the club's coordinators and have them select at least one linked view or linked view pack.</value>
+  </data>
+  <data name="NETWORKS_NOT_SELECTED" xml:space="preserve">
+    <value>Either networks have not been selected yet by your current club, or the club needs to load the list containing them. Please contact one of the club's coordinators and have them select at least one network or load their list of networks.</value>
+  </data>
+  <data name="DEVTREKS_KEYWORDS" xml:space="preserve">
+    <value>social budgeting; mobile budgeting; economic development; microeconomics; economics; budgets; costs; benefits; profits; operating budgets; capital budgets; cost benefit analysis; input prices; output prices; operations; components; outcomes; technology assessment; resources conservation; </value>
+  </data>
+  <data name="CHANGE_CLUB" xml:space="preserve">
+    <value>Change IsDefault Club</value>
+  </data>
+  <data name="SOCIALBUDGET_IS2" xml:space="preserve">
+    <value>Social budgeting employs the economics perspective that society, as a whole, is better off when citizens, firms, and governments use resources efficiently. Social budgeting, when done properly, shows people how to conserve scarce resources such as labor, capital, goods, services, know-how, talent, and natural resource assets. </value>
+  </data>
+  <data name="SOCIALBUDGET_DOES3" xml:space="preserve">
+    <value>All numeric analyses are linked together with 'story-like' explanations. The explanations can include dictionary entries, case studies, scientific articles, demographic details, or other structured forms of stories. These packages of numbers and explanations tell what's important about the data and what lessons are being learned about improving lives and livelihoods.</value>
+  </data>
+  <data name="NO_SELECTIONS" xml:space="preserve">
+    <value>Selections can not be made from these items. Please move up one level to make selections.</value>
+  </data>
+  <data name="SELECTION_CALCPARAMS" xml:space="preserve">
+    <value>Linked Views Parameters</value>
+  </data>
+  <data name="LOAD_URI" xml:space="preserve">
+    <value>Load This URI</value>
+  </data>
+  <data name="NO_SEARCH_RESULTS" xml:space="preserve">
+    <value>No results were found for this search. Please try another search. Please keep in mind that the owners of data authorize who can and can not see their data.</value>
+  </data>
+  <data name="RELOAD_MEMBER" xml:space="preserve">
+    <value> to display the club panel and to refresh this display after the properties on this panel are changed.</value>
+  </data>
+  <data name="CLUB_CURRENT" xml:space="preserve">
+    <value>Current default club:</value>
+  </data>
+  <data name="CLUB_MEMBERS" xml:space="preserve">
+    <value>Members of current club, total =</value>
+  </data>
+  <data name="CLUB_SERVICES" xml:space="preserve">
+    <value>Service owned by current club, total =</value>
+  </data>
+  <data name="CLUB_SERVICES2" xml:space="preserve">
+    <value>Service subscribed to by current club, total =</value>
+  </data>
+  <data name="GO_TO" xml:space="preserve">
+    <value>Go to </value>
+  </data>
+  <data name="HOME_CLEARS" xml:space="preserve">
+    <value>Note: Going home clears all of these panels.</value>
+  </data>
+  <data name="ADDIN_DEFAULT" xml:space="preserve">
+    <value>Default linked views for current club:</value>
+  </data>
+  <data name="MEMBER_CLUBS" xml:space="preserve">
+    <value>Clubs in which you are a member:</value>
+  </data>
+  <data name="NETWORK_DEFAULT" xml:space="preserve">
+    <value>Default network for current club:</value>
+  </data>
+  <data name="PANELS_SYNCH" xml:space="preserve">
+    <value>Synchronize panels by clicking the panel directional buttons found at the top of the panel.</value>
+  </data>
+  <data name="SEARCH_CATEGORY" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="SEARCH_KEYWORDS" xml:space="preserve">
+    <value>Keyword</value>
+  </data>
+  <data name="SEARCH_NETWORK" xml:space="preserve">
+    <value>Network</value>
+  </data>
+  <data name="SEARCH_SERVICE" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="TAB_EDIT" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="TAB_MEMBER" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="TAB_PACK" xml:space="preserve">
+    <value>Pack  </value>
+  </data>
+  <data name="TAB_PREVIEW" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="TAB_SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="TAB_SELECT" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="TAB_VIEWS" xml:space="preserve">
+    <value>Views  </value>
+  </data>
+  <data name="CONTACT_DEVTREKKERS" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="CONTACT_MOREINFO" xml:space="preserve">
+    <value>for further information about this open source software project.</value>
+  </data>
+  <data name="CONTACT_PLEASE" xml:space="preserve">
+    <value>Please contact</value>
+  </data>
+  <data name="SERVICES_FUTURE" xml:space="preserve">
+    <value>Future Service</value>
+  </data>
+  <data name="SERVICES_NETWORK" xml:space="preserve">
+    <value>Networking Service (found in CommonTreks)</value>
+  </data>
+  <data name="SERVICES_NUMBER" xml:space="preserve">
+    <value>Number Service</value>
+  </data>
+  <data name="SERVICES_STORY" xml:space="preserve">
+    <value>Story Service</value>
+  </data>
+  <data name="STAR_TREKS" xml:space="preserve">
+    <value>(Note - a space agency should step in here and do the obvious.)</value>
+  </data>
+  <data name="CLUB_ADDINS_VIEW" xml:space="preserve">
+    <value>View club's linked views</value>
+  </data>
+  <data name="CLUB_ALL_VIEW" xml:space="preserve">
+    <value>View all clubs</value>
+  </data>
+  <data name="CLUB_MEMBERS_VIEW" xml:space="preserve">
+    <value>View club's members</value>
+  </data>
+  <data name="CLUB_NETWORKS_VIEW" xml:space="preserve">
+    <value>View club's networks</value>
+  </data>
+  <data name="CLUB_VIEW" xml:space="preserve">
+    <value>View club</value>
+  </data>
+  <data name="CLUB_AGREEMENT_VIEW" xml:space="preserve">
+    <value>View club's service agreement</value>
+  </data>
+  <data name="WELCOME" xml:space="preserve">
+    <value>Welcome </value>
+  </data>
+  <data name="DOWNLOAD_PACKAGE" xml:space="preserve">
+    <value>Click, to download package:</value>
+  </data>
+  <data name="DOWNLOAD_ZIP" xml:space="preserve">
+    <value>Click, to download zip file:</value>
+  </data>
+  <data name="CLUB_SUBSCRIBED_CLUBS_VIEW" xml:space="preserve">
+    <value>View clubs subscribed to owned services</value>
+  </data>
+  <data name="CLUB_CANNOT_EDIT" xml:space="preserve">
+    <value>Club is authorized to edit this service</value>
+  </data>
+  <data name="CLUB_CAN_EDIT" xml:space="preserve">
+    <value>Club is not authorized to edit this service</value>
+  </data>
+  <data name="CLUB_SUBSCRIBERS" xml:space="preserve">
+    <value>Clubs subscribing to service</value>
+  </data>
+  <data name="SERVICE_SELECT" xml:space="preserve">
+    <value>Please select a service:</value>
+  </data>
+  <data name="MEMBER_CLUBS_EDIT" xml:space="preserve">
+    <value>Change IsDefault Club or Insert New Club</value>
+  </data>
+  <data name="CLUB_AUTHORIZATION_LEVEL" xml:space="preserve">
+    <value>Authorization Level: </value>
+  </data>
+  <data name="CLUB_ISDEFAULT" xml:space="preserve">
+    <value>Is Default Club</value>
+  </data>
+  <data name="JOININ_1" xml:space="preserve">
+    <value>After registering, you must either start a new club or join an existing club. To start a new club, open any Network Group (i.e. CommonTreks), open the Club panel and click on the Manage Member button. Click on the Insert New Club link. To join an existing club, email one of the club's coordinators and ask them to add you to the club.</value>
+  </data>
+  <data name="JOININ_2" xml:space="preserve">
+    <value>After you are a member of at least one club, please fill in the rest of your member and club information on the Club panel. </value>
+  </data>
+  <data name="SERVICE_VIEW" xml:space="preserve">
+    <value>View service</value>
+  </data>
+  <data name="URI_VIEW" xml:space="preserve">
+    <value>View uri</value>
+  </data>
+  <data name="CONTACT_BUILDTREKS" xml:space="preserve">
+    <value>Contact DevTrekkers About BuildTreks</value>
+  </data>
+  <data name="CONTACT_HOMETREKS" xml:space="preserve">
+    <value>Contact DevTrekkers About HomeTreks</value>
+  </data>
+  <data name="CLUB_LASTEDITS" xml:space="preserve">
+    <value>Last few uris edited by current club</value>
+  </data>
+  <data name="URIS_NOTEDITED" xml:space="preserve">
+    <value>No uris have been edited yet.</value>
+  </data>
+  <data name="LINKEDVIEWS_SYNCH" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="CLUB_ISNOTDEFAULT" xml:space="preserve">
+    <value>Is Not Default Club</value>
+  </data>
+  <data name="MEMBERSHIP_EDIT" xml:space="preserve">
+    <value>Edit membership</value>
+  </data>
+  <data name="MEMBER_VIEW" xml:space="preserve">
+    <value>View member</value>
+  </data>
+  <data name="SERVICES_VIEW_REMAINING" xml:space="preserve">
+    <value>View remaining services</value>
+  </data>
+  <data name="LOCALS_NOT_SELECTED" xml:space="preserve">
+    <value>Locals have not been selected yet by your current club. Please contact one of the club's coordinators and have them calculate at least one local.</value>
+  </data>
+  <data name="LOCAL_DEFAULT" xml:space="preserve">
+    <value>Default local for current club: </value>
+  </data>
+  <data name="CLUB_LOCALS_VIEW" xml:space="preserve">
+    <value>View club's locals</value>
+  </data>
+  <data name="RECORDS_NOCHILDREN" xml:space="preserve">
+    <value>This node has no children -is the start row greater than the number of children?</value>
+  </data>
+  <data name="LINKEDVIEWS_DEFAULTADDIN" xml:space="preserve">
+    <value>Link to Default LinkedView</value>
+  </data>
+  <data name="LINKEDVIEWS_DEFAULTLOCAL" xml:space="preserve">
+    <value>Link to Default Local</value>
+  </data>
+  <data name="LINKEDVIEWS_EXISTING" xml:space="preserve">
+    <value>View LinkedView</value>
+  </data>
+  <data name="LINKEDVIEWS_NEW" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="LINKEDVIEWS_OPEN" xml:space="preserve">
+    <value>Open linked views</value>
+  </data>
+  <data name="LINKEDVIEWS_OPENDEFAULTS" xml:space="preserve">
+    <value>Open Default Linked Views</value>
+  </data>
+  <data name="LOAD_DEFAULTADDIN" xml:space="preserve">
+    <value>|| Get Default Linked View</value>
+  </data>
+  <data name="LOAD_DEFAULTLOCAL" xml:space="preserve">
+    <value>|| Get Default Local</value>
+  </data>
+  <data name="ADDINS" xml:space="preserve">
+    <value>LinkedView:</value>
+  </data>
+  <data name="PARENT" xml:space="preserve">
+    <value>Parent: </value>
+  </data>
+  <data name="VIEWS" xml:space="preserve">
+    <value>Views :</value>
+  </data>
+  <data name="VIEW_GET" xml:space="preserve">
+    <value>Get</value>
+  </data>
+  <data name="VIEW_GETADDIN" xml:space="preserve">
+    <value>Get Linked View For View</value>
+  </data>
+  <data name="VIEW_GETADDINPARENT" xml:space="preserve">
+    <value>Get Linked View For Parent</value>
+  </data>
+  <data name="OPENSOURCE_TESTING2" xml:space="preserve">
+    <value> open source project.</value>
+  </data>
+  <data name="FILE_UPLOAD" xml:space="preserve">
+    <value>Uploading a new file will replace any existing file. If necessary, please package and download the existing file prior to this action. If the file has been uploaded successfully, this page will refresh and show the new file information. If the file can't be uploaded (i.e. exceeds 60MB, unsupported mimetype, bad xml, bad html) this page will refresh and show the existing file information.</value>
+  </data>
+  <data name="AGTREKS_EXPLAINS" xml:space="preserve">
+    <value>AgTreks Explains How Lives and Livelihoods Improve</value>
+  </data>
+  <data name="SEARCH_DO" xml:space="preserve">
+    <value>Please carry out a search by making selections and then clicking the search button.</value>
+  </data>
+  <data name="DOWNLOAD_SCHEMA" xml:space="preserve">
+    <value>Load Schema (data definition document)</value>
+  </data>
+  <data name="NGOTREKS_EXPLAINS" xml:space="preserve">
+    <value>NGOTreks explains how NGO clients lives and livelihoods improve</value>
+  </data>
+  <data name="NGOTREKS_TITLE" xml:space="preserve">
+    <value>NGOTreks - social budgeting that improves ngo client lives and livelihoods</value>
+  </data>
+  <data name="COMMONTREKS_EXPLAINS" xml:space="preserve">
+    <value>CommonTreks Explains How Lives and Livelihoods Improve</value>
+  </data>
+  <data name="COMMONTREKS_TITLE" xml:space="preserve">
+    <value>CommonTreks, explaining social budgeting</value>
+  </data>
+  <data name="NETWORKSEARCH_ALLNETWORKSBYGROUP" xml:space="preserve">
+    <value>This Network Group's Individual Networks</value>
+  </data>
+  <data name="TAB_CLUB" xml:space="preserve">
+    <value>Club</value>
+  </data>
+  <data name="BUILDTREKS_EXPLAINS" xml:space="preserve">
+    <value>BuildTreks explains how lives and livelihoods improve</value>
+  </data>
+  <data name="HOMETREKS_EXPLAINS" xml:space="preserve">
+    <value>HomeTreks explains how lives and livelihoods improve</value>
+  </data>
+  <data name="LINKEDVIEWS_NONE" xml:space="preserve">
+    <value>No views have been linked to this selection. Please synchronize with the 'Selects' panel and verify that this selection has children in the table of contents.</value>
+  </data>
+  <data name="LINKEDVIEWS_NOTAVAILABLE" xml:space="preserve">
+    <value>no linked views available ________</value>
+  </data>
+  <data name="LINKEDVIEW_OPEN" xml:space="preserve">
+    <value>no linked addins available _______</value>
+  </data>
+  <data name="SELECTEDVIEWS_NODOC" xml:space="preserve">
+    <value>Error: No document exists.</value>
+  </data>
+  <data name="STYLESHEET_OPENEDITS" xml:space="preserve">
+    <value>Open in Edits Panel.</value>
+  </data>
+  <data name="SCHEMA_NONE" xml:space="preserve">
+    <value>This uri does not have a schema</value>
+  </data>
+  <data name="MAKE_SELECTION" xml:space="preserve">
+    <value>Please make a selection</value>
+  </data>
+  <data name="SELECT_ONLY_NODES" xml:space="preserve">
+    <value>Only nodes of the following type can be selected:  </value>
+  </data>
+  <data name="SELECT_ONLY_NODES_HEAD" xml:space="preserve">
+    <value>All selections must be of the same node type. </value>
+  </data>
+  <data name="JOININ_CLUBOPTIONS" xml:space="preserve">
+    <value>Fill in the existing club section to join an existing club. Fill in the new club section to start a new club.</value>
+  </data>
+  <data name="SELECTEDVIEWS_WRONGDOC" xml:space="preserve">
+    <value>Error: This is the wrong list for this type of selection.</value>
+  </data>
+  <data name="ADD_TO_PACK2" xml:space="preserve">
+    <value>PackIt</value>
+  </data>
+  <data name="HEALTHTREKS_EXPLAINS" xml:space="preserve">
+    <value>HealthTreks explains how peoples lives and livelihoods improve.</value>
+  </data>
+  <data name="HEALTHTREKS_TITLE" xml:space="preserve">
+    <value>HealthTreks, health care social budgeting</value>
+  </data>
+  <data name="STYLESHEET_OPENLINKEDVIEWS" xml:space="preserve">
+    <value>Open In Linked Views Panel.</value>
+  </data>
+  <data name="STYLESHEET_OPENPREVIEWS" xml:space="preserve">
+    <value>Open In Preview Panel.</value>
+  </data>
+  <data name="STYLESHEET_OPENSELECTS" xml:space="preserve">
+    <value>Open In Select Panel.</value>
+  </data>
+  <data name="CLUBDEFAULT_NOT_SELECTED" xml:space="preserve">
+    <value>A default club has not been selected, please use the IsDefault club link below to select a default club. If you are not a member of any club, please contact a club and ask them to make you a member.</value>
+  </data>
+  <data name="STARTNEWCLUB_1" xml:space="preserve">
+    <value>Before starting a new club, please give a lot of thought to the prospective members of this club, the administration of the club, and the overall quality of the club's services. We recommend not starting a club until the club has been thoroughly thought through.</value>
+  </data>
+  <data name="MEMBER_INSERT_NEWCLUB_VIEW" xml:space="preserve">
+    <value>Insert New Club For Logged In Member</value>
+  </data>
+  <data name="CLUB_INSERTNEW" xml:space="preserve">
+    <value>Insert new club with main club coordinator</value>
+  </data>
+  <data name="CLUB_EMAIL" xml:space="preserve">
+    <value>Club Email</value>
+  </data>
+  <data name="CLUB_GEOREGION" xml:space="preserve">
+    <value>Initial Club Region</value>
+  </data>
+  <data name="CLUB_GROUP" xml:space="preserve">
+    <value>Initial Club Network Group</value>
+  </data>
+  <data name="CLUB_NAME" xml:space="preserve">
+    <value>Club Name</value>
+  </data>
+  <data name="CLUB_INSERTSUCCESS" xml:space="preserve">
+    <value>Your new club  has been successfully added. Please go to the Club panel, click on the Load This URI link to switch to the new club. Edit the new club with additional information, such as a URI and a description.</value>
+  </data>
+  <data name="MEMBERSERVICE_CLUB_ENTERNAME" xml:space="preserve">
+    <value>Please enter a name for the new club.</value>
+  </data>
+  <data name="OWNER_CHARGESFEES" xml:space="preserve">
+    <value>The owner of this data charges a subscription fee for using the data. Please first subscribe to this service using your service agreement.</value>
+  </data>
+  <data name="RECORDS_CHECKSTARTROW" xml:space="preserve">
+    <value>Try changing the start row, above, to zero, and see if children records become available.</value>
+  </data>
+  <data name="CLUB_PAYMENT_HANDLING" xml:space="preserve">
+    <value>View club payment handling</value>
+  </data>
+  <data name="CLUB_PAYMENT_HISTORY" xml:space="preserve">
+    <value>View club payment history</value>
+  </data>
+  <data name="PAYMENTS" xml:space="preserve">
+    <value>Subscription Revenue and Cost Handling</value>
+  </data>
+  <data name="PAYMENTS_1" xml:space="preserve">
+    <value>DO NOT ENTER REAL DATA ON THIS FORM. This form is being used to test a proposed subscription payment system. Real payments will not be collected or disbursed until a final payment handling system has been fully tested.</value>
+  </data>
+  <data name="PAYMENTS_2" xml:space="preserve">
+    <value>The security of payments is a top priority for DevTreks. We won't start any real payment system until we are sure (i.e. Internet sure) that the payment system is fully secure.</value>
+  </data>
+  <data name="CLUB_PAYMENTS" xml:space="preserve">
+    <value>Default club payments paid and revenues received</value>
+  </data>
+  <data name="NETWORK_CATEGORIES" xml:space="preserve">
+    <value>Categories Used To Classify This Network's Data </value>
+  </data>
+  <data name="MEMHELPER_CURRENTSERVICE" xml:space="preserve">
+    <value>Current Service: </value>
+  </data>
+  <data name="ADD_NEWCATEGORY" xml:space="preserve">
+    <value>Add Category</value>
+  </data>
+  <data name="CONTSERVICE_CANTADDCATEGORY" xml:space="preserve">
+    <value>A new category could not be added either because the network id, or the service group id, was missing.</value>
+  </data>
+  <data name="NETWORK_USEADMINCLUB" xml:space="preserve">
+    <value>DevTreks recommends that each network assign one club to administer the network's shared data, including this list. That club should be the only club that edits these categories.</value>
+  </data>
+  <data name="ALL_CATEGORIES" xml:space="preserve">
+    <value>All Categories</value>
+  </data>
+  <data name="DISPLAY_OPENINSELECTS" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="DISPLAY_OPENINVIEWS" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="LINKEDVIEWS_EDIT" xml:space="preserve">
+    <value>Edit Linked Views</value>
+  </data>
+  <data name="LINKEDVIEWS_LIST" xml:space="preserve">
+    <value>Linked Views </value>
+  </data>
+  <data name="RELOAD_EDIT" xml:space="preserve">
+    <value>Reload the previous edit panel.</value>
+  </data>
+  <data name="EDIT_URI" xml:space="preserve">
+    <value>View URI</value>
+  </data>
+  <data name="VIEW" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="ADD_DEFAULTADDIN" xml:space="preserve">
+    <value>Add Deflt LView</value>
+  </data>
+  <data name="ADD_DEFAULTLOCAL" xml:space="preserve">
+    <value>Add Deflt Local</value>
+  </data>
+  <data name="ANALYZE" xml:space="preserve">
+    <value>Run Analysis</value>
+  </data>
+  <data name="ANALYZE_TT" xml:space="preserve">
+    <value>Run an analysis for this uri.</value>
+  </data>
+  <data name="CALCULATE" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="CALCULATE_TT" xml:space="preserve">
+    <value>Run a calculation for this uri.</value>
+  </data>
+  <data name="GET_NEW_SELECTIONS" xml:space="preserve">
+    <value>Get Selects</value>
+  </data>
+  <data name="GET_NEW_SELECTIONS_TT" xml:space="preserve">
+    <value>Get new constants and other selections.</value>
+  </data>
+  <data name="CALCS_HELP" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="CALCS_INTRO" xml:space="preserve">
+    <value>Intro</value>
+  </data>
+  <data name="CALCS_STEP1" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="CALCS_STEP2" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="CALCS_STEP3" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="CALCS_STEP4" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="CALCS_STEP5" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="CALCS_STEP6" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="CALCS_STEP7" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="CALCS_STEP8" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="CALCS_STEP9" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="NETWORKS_SELECTONE" xml:space="preserve">
+    <value>Please select a network</value>
+  </data>
+  <data name="TREKS_MORE" xml:space="preserve">
+    <value>Please contact us if you need a new network group, or a new network for an existing network group.</value>
+  </data>
+  <data name="SOCIAL_BUDGET_CLUB" xml:space="preserve">
+    <value>DevTreks club:</value>
+  </data>
+  <data name="SOCIAL_BUDGET_CLUB2" xml:space="preserve">
+    <value>A DevTreks club is a discovery team that explores, and carefully records, science-based efforts to learn about technology, development, and conservation. Clubs help their members to allocate scarce resources in ways that balance economic progress, social improvement, equity, and natural resources conservation.</value>
+  </data>
+  <data name="SOCIAL_BUDGET_DECISION" xml:space="preserve">
+    <value>DevTreks decision assistance:</value>
+  </data>
+  <data name="SOCIAL_BUDGET_DECISION2" xml:space="preserve">
+    <value>DevTreks gives citizens, firms, organizations, and governments the science-based knowledge needed to make sound resource allocation decisions. Making sound decisions help people to improve lives and livelihoods.</value>
+  </data>
+  <data name="SOCIAL_BUDGET_DEFS" xml:space="preserve">
+    <value>Definitions and Principles</value>
+  </data>
+  <data name="SOCIAL_BUDGET_GOAL" xml:space="preserve">
+    <value>DevTreks goal:   </value>
+  </data>
+  <data name="SOCIAL_BUDGET_MEMBER" xml:space="preserve">
+    <value>DevTreks member:   </value>
+  </data>
+  <data name="SOCIAL_BUDGET_MEMBER2" xml:space="preserve">
+    <value>A DevTreks member, or DevTrekker, is an explorer with a practical need to study, carefully record, and share, information about prices, costs, revenues, performance, and resource use, for the purpose of improving resource allocation decisions.  DevTrekkers take an on-line, open-source, interactive, and long-term approach to improving resource allocation decisions.</value>
+  </data>
+  <data name="SOCIAL_BUDGET_NETWORK" xml:space="preserve">
+    <value>DevTreks network:</value>
+  </data>
+  <data name="SOCIAL_BUDGET_NETWORK2" xml:space="preserve">
+    <value>A DevTreks network is a group of clubs devoted to delivering high quality socioeconomic services in a specialized area of interest to the club members.</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE" xml:space="preserve">
+    <value>DevTreks service:</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE10" xml:space="preserve">
+    <value>What is the risk?</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE2" xml:space="preserve">
+    <value>A DevTreks service provides members with with practical answers to resource allocation decisions that involve questions such as:</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE3" xml:space="preserve">
+    <value>What is the price of?</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE4" xml:space="preserve">
+    <value>What much does it cost to?</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE5" xml:space="preserve">
+    <value>What are the benefits of?</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE6" xml:space="preserve">
+    <value>How much value is added by?</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE7" xml:space="preserve">
+    <value>What are the amounts and values of resources conserved?</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE8" xml:space="preserve">
+    <value>What are the benefits foregone by?</value>
+  </data>
+  <data name="SOCIAL_BUDGET_SERVICE9" xml:space="preserve">
+    <value>What are the tradeoffs involved with alternative courses of action?</value>
+  </data>
+  <data name="SEARCH_NETWORKFILTER" xml:space="preserve">
+    <value>Network Filter</value>
+  </data>
+  <data name="GOTOROW" xml:space="preserve">
+    <value> Row </value>
+  </data>
+  <data name="ISDEFAULT_CLUB" xml:space="preserve">
+    <value>Is Default Club</value>
+  </data>
+  <data name="PREVIEW_NONE_AVAILABLE" xml:space="preserve">
+    <value>This uri does not have any linked views associated with it and can not be previewed. The uri's content can be viewed by using the Synch links to open the Select and Edit panels.</value>
+  </data>
+  <data name="LINKEDVIEWS_NONE_AVAILABLE" xml:space="preserve">
+    <value>This uri does not have any linked views associated with it and can not be opened in the linked view panel. The uri's content can be viewed by using the Synch links to open the Preview, Select and Edit panels.</value>
+  </data>
+  <data name="MEMBER_ANONVIEW" xml:space="preserve">
+    <value>Please use the login or joinin links to view member information.</value>
+  </data>
+  <data name="SEARCH_START" xml:space="preserve">
+    <value>Start Search</value>
+  </data>
+  <data name="FILE_UPLOAD1" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+  <data name="PACKAGE_MAKE" xml:space="preserve">
+    <value>Make Package</value>
+  </data>
+  <data name="PACKAGE_CLEAR" xml:space="preserve">
+    <value>Clear Package</value>
+  </data>
+  <data name="PASSWORD_FORGOT" xml:space="preserve">
+    <value>     If you have forgotten your password, please email devtrekkers@gmail.com.</value>
+  </data>
+  <data name="HELPTREKS_TITLE" xml:space="preserve">
+    <value>HelpTreks -the help files explaining how DevTreks works</value>
+  </data>
+  <data name="VIEWS_ANALYZERS" xml:space="preserve">
+    <value>analyzers</value>
+  </data>
+  <data name="VIEWS_CALCULATORS" xml:space="preserve">
+    <value>calculators</value>
+  </data>
+  <data name="VIEWS_CAPBUDGETS" xml:space="preserve">
+    <value>capital budgets</value>
+  </data>
+  <data name="VIEWS_CLUBS" xml:space="preserve">
+    <value>clubs</value>
+  </data>
+  <data name="VIEWS_COMPONENTS" xml:space="preserve">
+    <value>components</value>
+  </data>
+  <data name="VIEWS_DEVPACKS" xml:space="preserve">
+    <value>devpacks</value>
+  </data>
+  <data name="VIEWS_INPUTS" xml:space="preserve">
+    <value>inputs</value>
+  </data>
+  <data name="VIEWS_LINKEDVIEWS" xml:space="preserve">
+    <value>linked views</value>
+  </data>
+  <data name="VIEWS_MEDIA" xml:space="preserve">
+    <value>media</value>
+  </data>
+  <data name="VIEWS_MEMBERS" xml:space="preserve">
+    <value>members</value>
+  </data>
+  <data name="VIEWS_NETWORKS" xml:space="preserve">
+    <value>networks</value>
+  </data>
+  <data name="VIEWS_OPBUDGETS" xml:space="preserve">
+    <value>operating budgets</value>
+  </data>
+  <data name="VIEWS_OPERATIONS" xml:space="preserve">
+    <value>operations</value>
+  </data>
+  <data name="VIEWS_OUTPUTS" xml:space="preserve">
+    <value>outputs</value>
+  </data>
+  <data name="VIEWS_SERVICES" xml:space="preserve">
+    <value>services</value>
+  </data>
+  <data name="DEBITCARD_3DIGITNUMBER" xml:space="preserve">
+    <value>3 Digit Back of Card Number</value>
+  </data>
+  <data name="DEBITCARD_EXPMONTH" xml:space="preserve">
+    <value>Expiration Date Month</value>
+  </data>
+  <data name="DEBITCARD_EXPYEAR" xml:space="preserve">
+    <value>Expiration Date Year</value>
+  </data>
+  <data name="DEBITCARD_NAME" xml:space="preserve">
+    <value>Exact Name On Debit Card</value>
+  </data>
+  <data name="DEBITCARD_NUMBER" xml:space="preserve">
+    <value>Card Number (just numbers)</value>
+  </data>
+  <data name="DEBITCARD_STATE" xml:space="preserve">
+    <value>Card State</value>
+  </data>
+  <data name="DEBITCARD_TITLE" xml:space="preserve">
+    <value>Debit Card For Paying Subscription Service Payments and Depositing Owned Subscription Service Payments (TESTING: DO NOT ENTER REAL DATA ON THIS FORM)</value>
+  </data>
+  <data name="DEBITCARD_TYPE" xml:space="preserve">
+    <value>Debit Card Type</value>
+  </data>
+  <data name="DEBITCARD_ENCRYPT" xml:space="preserve">
+    <value>Please copy the exact numbers that appear on your debit card (i.e. using Notepad). The number is encrypted before it is stored in the database and handled the same as your password. </value>
+  </data>
+  <data name="DEVTREKS_NGO" xml:space="preserve">
+    <value>DevTreks, the company: </value>
+  </data>
+  <data name="DEVTREKS_SUPPORT" xml:space="preserve">
+    <value>DevTreks is a 501c3 public benefit corporation, or charity. We focus exclusively on social budgeting. Drop us an email, at devtrekkers@gmail.com, to find out more about our corporation. Further information about donations, grants, and fees, can be found in the Social Budgeting tutorial.</value>
+  </data>
+  <data name="GREENTREKS_TITLE" xml:space="preserve">
+    <value>GreenTreks, natural resource social budgeting</value>
+  </data>
+  <data name="DEBITCARD_NOTAUTHORIZED" xml:space="preserve">
+    <value>Only club coordinators can edit debit card information. Please contact your club's coordinators to get information about the club's debit card.</value>
+  </data>
+  <data name="NETWORK_CATEGORIES_ADMINONLY" xml:space="preserve">
+    <value>Only clubs with a network role of 'coordinator' can edit categories. Within those clubs, only members with a 'coordinator' role can edit the categories.</value>
+  </data>
+  <data name="JOININ_CLUBEMAIL" xml:space="preserve">
+    <value>Existing Club Email Address (main point of contact)</value>
+  </data>
+  <data name="JOININ_CLUBEMAILNEW" xml:space="preserve">
+    <value>New Club Email Address (main point of contact)</value>
+  </data>
+  <data name="JOININ_CLUBGROUP" xml:space="preserve">
+    <value>Initial Club Group</value>
+  </data>
+  <data name="JOININ_CLUBINFO" xml:space="preserve">
+    <value>A. Existing Club Information</value>
+  </data>
+  <data name="JOININ_CLUBNAME" xml:space="preserve">
+    <value>New Club Name</value>
+  </data>
+  <data name="JOININ_CLUBNEW" xml:space="preserve">
+    <value>B. New Club Information</value>
+  </data>
+  <data name="JOININ_CLUBREGION" xml:space="preserve">
+    <value>Initial Region</value>
+  </data>
+  <data name="JOININ_CONFIRM" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="JOININ_CONFIRMEDNOT" xml:space="preserve">
+    <value>The confirmed password does not match the regular password. Please try again.</value>
+  </data>
+  <data name="JOININ_EMAIL" xml:space="preserve">
+    <value>Email Address (used for log-in)</value>
+  </data>
+  <data name="JOININ_FIRSTNAME" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="JOININ_JOIN" xml:space="preserve">
+    <value>Join DevTreks</value>
+  </data>
+  <data name="JOININ_JOININ" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="JOININ_LASTNAME" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="JOININ_MEMBERGROUP" xml:space="preserve">
+    <value>Initial Member Group</value>
+  </data>
+  <data name="JOININ_NEWMEMBER" xml:space="preserve">
+    <value>New Member Information</value>
+  </data>
+  <data name="JOININ_OR" xml:space="preserve">
+    <value>OR</value>
+  </data>
+  <data name="JOININ_PASSWORD" xml:space="preserve">
+    <value>Password (minimum length of 5)</value>
+  </data>
+  <data name="JOININ_REGION" xml:space="preserve">
+    <value>Initial Region</value>
+  </data>
+  <data name="LOGIN_EMAIL" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="LOGIN_NOTMEMBER" xml:space="preserve">
+    <value>Not yet a member?</value>
+  </data>
+  <data name="LOGIN_PASSWORD" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PAY" xml:space="preserve">
+    <value>Payments</value>
+  </data>
+  <data name="PAY_UPDATE" xml:space="preserve">
+    <value>Update Payments Information</value>
+  </data>
+  <data name="NETWORKS_NOT_SELECTEDYET" xml:space="preserve">
+    <value>Network have not been selected yet by your current club. Please contact one of the club's coordinators and have them select at least one network.</value>
+  </data>
+  <data name="RELOAD_DOCSTATE" xml:space="preserve">
+    <value>&lt;&lt;&lt; Synch Doc</value>
+  </data>
+  <data name="SAVE_EDITS" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="EDITS_SUCCESSSAVEFILE" xml:space="preserve">
+    <value>The edits were saved successfully in the file system (for packaging and running linked views).</value>
+  </data>
+  <data name="SAVE_FILE" xml:space="preserve">
+    <value>Save Files</value>
+  </data>
+  <data name="EDITMODELS_SAVEFILES" xml:space="preserve">
+    <value>Please remember to save the xml and html file after completing all edits to this view. Packages and Linked Views may not have good content unless the edits are saved.</value>
+  </data>
+  <data name="LINKEDVIEWS_SAVEFILES" xml:space="preserve">
+    <value>Before running calculations, was the base file saved properly after it was edited?</value>
+  </data>
+  <data name="LINKEDVIEWS_BUILDDOC" xml:space="preserve">
+    <value>Owners of this node must first build the underlying xml document that is used in the calculations (use the Save xml/html button on the Edits panel after finishing all edits to the document or use the Save calculator base doc link above).</value>
+  </data>
+  <data name="GOVTREKS_TITLE" xml:space="preserve">
+    <value>GovTreks, public service social budgeting</value>
+  </data>
+  <data name="FILE_NONE" xml:space="preserve">
+    <value>no file on hand</value>
+  </data>
+  <data name="EPUB_NOEPUBFILE" xml:space="preserve">
+    <value>A file needed to build an idpf package could not be found on the web site.</value>
+  </data>
+  <data name="SAVE_FILEFORCALCS" xml:space="preserve">
+    <value>Make base</value>
+  </data>
+  <data name="VIEWS_OUTCOMES" xml:space="preserve">
+    <value>outcomes</value>
+  </data>
+  <data name="LOGOUT" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="LOGIN_CHANGE" xml:space="preserve">
+    <value>Edit login</value>
+  </data>
+  <data name="JOININ_0" xml:space="preserve">
+    <value>Please note that you can login, without a DevTreks registration, using a third party login, such as those listed below.</value>
+  </data>
+  <data name="JOININ_5" xml:space="preserve">
+    <value>The Club Administration video tutorial explains how to administer a club and a network.</value>
+  </data>
+  <data name="MEMBER_USERNAME" xml:space="preserve">
+    <value>If the Login Name is changed, you must log off and log in using the new name. </value>
+  </data>
+  <data name="OPENSOURCE_TESTING3" xml:space="preserve">
+    <value>open source testing site.</value>
+  </data>
+  <data name="MEMBER_CLUBSDEFAULT" xml:space="preserve">
+    <value>Choose Default Club: </value>
+  </data>
+  <data name="JOININ_0A" xml:space="preserve">
+    <value>Please note that you can login, without a DevTreks registration, using a third party login, such as those listed on the log in form.</value>
+  </data>
+  <data name="RECORDS_CHILDREN" xml:space="preserve">
+    <value>Children</value>
+  </data>
+  <data name="SEARCH" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="IRIS_SEARCH" xml:space="preserve">
+    <value>Search IRIs</value>
+  </data>
+  <data name="TECH_STORY" xml:space="preserve">
+    <value>Tech Story</value>
+  </data>
+  <data name="DATASET" xml:space="preserve">
+    <value>Dataset</value>
+  </data>
+  <data name="IRI_DEVTREKS" xml:space="preserve">
+    <value>Recommended IRI</value>
+  </data>
+  <data name="IRI_PREVIEW" xml:space="preserve">
+    <value>preview IRI</value>
+  </data>
+  <data name="IRI_SEARCH" xml:space="preserve">
+    <value>search IRI</value>
+  </data>
+  <data name="IRI_SELECT" xml:space="preserve">
+    <value>select IRI</value>
+  </data>
+  <data name="IRI_VIEWS" xml:space="preserve">
+    <value>view IRI</value>
+  </data>
+  <data name="FULL" xml:space="preserve">
+    <value>Desktop</value>
+  </data>
+  <data name="MEDIA" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="MOBILE" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="DOWNLOAD_RESOURCE" xml:space="preserve">
+    <value>Download Resource</value>
+  </data>
+  <data name="OVERWRITE_CHILDS" xml:space="preserve">
+    <value>Overwrite Childs?</value>
+  </data>
+  <data name="USEIN_CHILDS" xml:space="preserve">
+    <value>Use In Childs?</value>
+  </data>
+  <data name="FORGOT_PASSWORD" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
+  <data name="AUTHORIZATION_NO1" xml:space="preserve">
+    <value>Your authorization level within this club is:  </value>
+  </data>
+  <data name="AUTHORIZATION_NO2" xml:space="preserve">
+    <value>  , which does not allow you to change a subscribed club's authorization.</value>
+  </data>
+</root>

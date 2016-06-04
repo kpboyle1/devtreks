@@ -1,0 +1,7 @@
+﻿<root>
+	<linkedview Id="1" Version="1.6.3" CalculatorType="gencapital" WhatIfTagName="none"
+		FileExtensionType="gencapital" RelatedCalculatorsType="gencapital" 
+		StylesheetResourceFileName="GeneralCapital1.xslt" Stylesheet2ResourceFileName="GenCap1StocksIns1.xslt"
+		CalculatorName="General Capital Calculator" Overwrite="0"
+    OptionForInflation="1" />
+</root>

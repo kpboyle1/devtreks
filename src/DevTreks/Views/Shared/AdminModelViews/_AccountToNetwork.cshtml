@@ -1,0 +1,46 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.AccountToNetwork == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.DivStart(string.Empty, string.Empty, "fieldcontain", "b", string.Empty, string.Empty, "true")
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToNetwork.Network.NetworkName, 
+        Model.URIModels.AccountToNetwork.PKId.ToString(),
+        Model.URINetworkPartName, Networks.NETWORK_TYPES.network.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+        @Model.URINodeName, Networks.NETWORK_TYPES.network.ToString(),
+        Model.URIDataManager.ServerActionType, Model.URIMember);
+    if (bCanDelete)
+    {
+        @HtmlHelperExtensions.MakeDeleteOptionsWithFieldSet(Html, searchurl, Model.URIModels.AccountToNetwork.Network.NetworkName)
+    }
+    string sNetworkText = string.Empty;
+    if (bCanDelete)
+    {
+        sNetworkText = string.Concat("Role: ", Model.URIModels.AccountToNetwork.NetworkRole, "; ", Model.URIModels.AccountToNetwork.Network.NetworkDesc);
+        string name = string.Concat(StylesheetHelper.GetURIPattern("none", "0", "0", "network", ""), ";IsDefaultNetwork;boolean;1");
+        string id = string.Concat("defaultnetwork", Model.URIModels.AccountToNetwork.PKId.ToString());
+        @Html.Raw("<br/>")
+        @HtmlHelperExtensions.MakeRadioTrueFalseOption(Html, id, name, Model.URIModels.AccountToNetwork.PKId.ToString(), 
+            Model.URIModels.AccountToNetwork.IsDefaultNetwork, "Is Default Network")
+        @Html.Raw("<br/>")
+    }
+    else
+    {
+        sNetworkText = string.Concat("Is Default: ", Model.URIModels.AccountToNetwork.IsDefaultNetwork.ToString(), "; Role: ", Model.URIModels.AccountToNetwork.NetworkRole, "; ", Model.URIModels.AccountToNetwork.Network.NetworkDesc);
+
+    }
+    @Html.DivEnd()
+    <p>@Html.Raw(sNetworkText)</p>
+}

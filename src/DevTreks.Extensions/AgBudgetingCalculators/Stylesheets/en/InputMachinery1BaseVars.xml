@@ -1,0 +1,8 @@
+﻿<root>
+	<linkedview Id="1" Version="1.6.3" CalculatorType="agmachinery" WhatIfTagName="none" FileExtensionType="agmachinery" 
+    CalculatorName="Machinery Calculations" StylesheetResourceFileName="InputMachinery1.xslt" 
+    Stylesheet2ResourceFileName="AgMach1StocksIns1.xslt"
+    RelatedCalculatorsType="agmachinery" Overwrite="0" 
+    OptionForCapacity="1" OptionForInflation="1" OptionForTime="1" OptionForFuel="1"
+    ListPriceAdj="10.0000"   />
+</root>

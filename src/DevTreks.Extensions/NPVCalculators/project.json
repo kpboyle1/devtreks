@@ -1,0 +1,18 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "NPVCalculators Class Library",
+  "authors": [ "Kevin P. Boyle" ],
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.ComponentModel.Composition": "4.0.0.0"
+      }
+    }
+  },
+  "dependencies": {
+    "AgBudgetingCalculators": "1.0.0-*",
+    "CalculatorsContracts": "1.0.0-*",
+    "FoodNutrition": "1.0.0-*",
+    "HealthCare": "1.0.0-*"
+  }
+}

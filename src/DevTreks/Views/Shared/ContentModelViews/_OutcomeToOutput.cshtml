@@ -1,0 +1,118 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, Prices.OUTCOME_PRICE_TYPES.outcomeoutput.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.OutcomeToOutput.Name, Model.URIModels.OutcomeToOutput.PKId.ToString(),
+                Model.URINetworkPartName, Prices.OUTCOME_PRICE_TYPES.outcomeoutput.ToString(), string.Empty);
+    
+    @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.OutcomeToOutput.Name,
+                "Name", Model.URIDataManager.EditViewEditType, bCanDelete)
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("OutputDate", "Date:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.OutcomeToOutput.OutputDate.ToShortDateString(), "OutputDate", GeneralRules.DATE, "8",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("Num", "Label:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.OutcomeToOutput.Num, "Num", GeneralRules.STRING, "15",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("IncentiveAmount", "Incentive Amount:")
+    string sFormatted = StylesheetHelper.WriteFormattedNumber("IncentiveAmount", Model.URIModels.OutcomeToOutput.IncentiveAmount.ToString(), GeneralRules.DECIMAL, "8");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "IncentiveAmount", GeneralRules.DECIMAL, "8",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("IncentiveRate", "Incentive Rate:")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("IncentiveRate", Model.URIModels.OutcomeToOutput.IncentiveRate.ToString(), GeneralRules.FLOAT, "4");
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "IncentiveRate", GeneralRules.FLOAT, "4",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("OutputAmount1", "Amount: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("OutputAmount1", Model.URIModels.OutcomeToOutput.OutputAmount1.ToString(), GeneralRules.FLOAT, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                    sFormatted, "OutputAmount1", GeneralRules.FLOAT, "4", "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("OutputUnit1", "Unit: ")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+        Model.URIModels.OutcomeToOutput.OutputSeries.OutputUnit1, "OutputUnit1", GeneralRules.STRING, "75",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("OutputPrice1", "Price: ")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+        Model.URIModels.OutcomeToOutput.OutputSeries.OutputPrice1.ToString(), "OutputPrice1",
+        GeneralRules.DECIMAL, "8", "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("OutputPrice1Total", "Total: ")
+    double total = Model.URIModels.OutcomeToOutput.OutputAmount1 * (double)Model.URIModels.OutcomeToOutput.OutputSeries.OutputPrice1;
+    sFormatted = StylesheetHelper.WriteFormattedNumber("OutputPrice1Total", total.ToString(), GeneralRules.FLOAT, "4");
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+                        sFormatted, "OutputPrice1Total", GeneralRules.STRING, "75",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("OutputCompositionAmount", "Composition Amount: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("OutputCompositionAmount", Model.URIModels.OutcomeToOutput.OutputCompositionAmount.ToString(), GeneralRules.FLOAT, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                    sFormatted, "OutputCompositionAmount", GeneralRules.FLOAT, "4", "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("OutputCompositionUnit", "Composition Unit: ")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+        Model.URIModels.OutcomeToOutput.OutputCompositionUnit, "OutputCompositionUnit", GeneralRules.STRING, "75",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("OutputTimes", "Output Times: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("OutputTimes", Model.URIModels.OutcomeToOutput.OutputTimes.ToString(), GeneralRules.FLOAT, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                            sFormatted, "OutputTimes", GeneralRules.FLOAT, "4", "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("CompTotalCost", "Composition Total: ")
+    total = total * Model.URIModels.OutcomeToOutput.OutputCompositionAmount * Model.URIModels.OutcomeToOutput.OutputTimes;
+    sFormatted = StylesheetHelper.WriteFormattedNumber("CompTotalCost", total.ToString(), GeneralRules.FLOAT, "4");
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+                        sFormatted, "CompTotalCost", GeneralRules.STRING, "75",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.OutcomeToOutput.Description, "Description",
+        "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+
+}

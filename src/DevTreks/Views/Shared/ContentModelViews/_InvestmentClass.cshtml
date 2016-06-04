@@ -1,0 +1,97 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, Economics1.INVESTMENT_TYPES.investmentgroup.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    if (Model.URINodeName == Economics1.INVESTMENT_TYPES.investmentgroup.ToString())
+    {
+
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.CostSystem.Name, string.Empty,
+                  GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "Investment",
+                Economics1.INVESTMENT_TYPES.investment.ToString())
+        }
+        else 
+        {
+            @Html.H4("Practices", "ui-bar-b")
+        }
+        if (Model.URIModels.CostSystem.CostSystemToPractice != null)
+        {
+            if (Model.URIModels.CostSystem.CostSystemToPractice.Count > 0)
+            {
+                foreach (var practice in Model.URIModels.CostSystem.CostSystemToPractice)
+                {
+                    ViewData.Model.URIModels.CostSystemToPractice = practice;
+                    @Html.DivCollapseStart(Model, practice.PKId)
+                    <h4>@practice.Name</h4>
+                    @Html.Partial("ContentModelViews/_InvestmentToPractice", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else
+    {
+        string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.CostSystem.Name, Model.URIModels.CostSystem.PKId.ToString(),
+                Model.URINetworkPartName, Economics1.INVESTMENT_TYPES.investmentgroup.ToString(), string.Empty);
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.CostSystem.Name, "Name",
+                         Model.URIDataManager.EditViewEditType, bCanDelete)
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("DocStatus", "URI Status:")
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.CostSystem.DocStatus.ToString(),
+            "DocStatus", GeneralRules.SHORTINTEGER, "2",
+            Model.URIDataManager.EditViewEditType, "Select150", GeneralHelpers.GetDocStatusDictionary())
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("Num", "Label")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                           Model.URIModels.CostSystem.Num, "Num", GeneralRules.STRING, "15",
+                 "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("TypeId", "Type:")
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.CostSystem.TypeId.ToString(),
+                           "TypeId", GeneralRules.INTEGER, "4",
+                 Model.URIDataManager.EditViewEditType, "Select150", Economics1.GetEconomicsTypes(Model))
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("Date", "Date:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                               Model.URIModels.CostSystem.Date.ToShortDateString(), "Date", GeneralRules.DATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("LastChangedDate", "Date Changed:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                               Model.URIModels.CostSystem.LastChangedDate.ToShortDateString(), "LastChangedDate", GeneralRules.SHORTDATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.CostSystem.Description, "Description",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        @HtmlHelperExtensions.WriteViewLinks(Html, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIDataManager.CalcParams,
+                Economics1.INVESTMENT_TYPES.investmentgroup.ToString(), "oldid")
+    }
+    
+    }

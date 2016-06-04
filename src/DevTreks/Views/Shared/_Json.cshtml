@@ -1,0 +1,15 @@
+﻿@using DevTreks.Helpers;
+@model DevTreks.Data.ContentURI
+
+@{
+    ViewBag.Title = "Json Result";
+    if (!string.IsNullOrEmpty(this.Model.Json))
+    {
+        this.Write(Model.Json);
+    }
+    else
+    {
+        this.Write(ViewData["Json"]);
+    }
+}
+

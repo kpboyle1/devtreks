@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<linkedview Id="1" Version="1.9.0" AnalyzerType="" CalculatorType="" 
+		StylesheetResourceFileName="SB1StocksOC1.xslt" Stylesheet2ResourceFileName=""
+		WhatIfTagName="none" RelatedCalculatorType="" RelatedCalculatorsType="sb01"
+		FileExtensionType="" FilesToAnalyzeExtensionType="" 
+		CalculatorName="" CalculatorDate="" Option1="none" Option2="none" Option3="" Option4="none"
+		CalculatorDescription="" />
+</root>

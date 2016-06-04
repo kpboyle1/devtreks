@@ -1,0 +1,54 @@
+﻿@using DevTreks.Helpers;
+<!DOCTYPE html>
+
+<html>
+<head>
+     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @Html.Raw(HtmlExtensions.GetMetaDescription(AppHelper.GetResource("DEVTREKS_GOAL")))
+    <title>@ViewBag.Title</title>
+    <environment names="Development">
+        <link rel="stylesheet" href="~/css/A_desert2.css" />
+        <link rel="stylesheet" href="~/css/B_jquery.mobile.icons-1.4.5.min.css" />
+        <link rel="stylesheet" href="~/css/C_jquery.mobile.structure-1.4.5.css" />
+        <link rel="stylesheet" href="~/css/D_Site1.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <environment names="Development">
+        <script src="~/js/A_jquery-2.2.3.js" asp-append-version="false"></script>
+        <script src="~/js/B_SharedUtils1.js" asp-append-version="false"></script>
+        <script src="~/js/C_Form1.js" asp-append-version="false"></script>
+        <script src="~/js/D_Select1.js" asp-append-version="false"></script>
+        <script src="~/js/E_ChangeTabView1.js" asp-append-version="false"></script>
+        <script src="~/js/F_ChangeClickView1.js" asp-append-version="false"></script>
+        <script src="~/js/G_OnClickPresenter1.js" asp-append-version="false"></script>
+        <script src="~/js/H_OnSearchClickPresenter1.js" asp-append-version="false"></script>
+        <script src="~/js/I_LoadFile1.js" asp-append-version="false"></script>
+        <script src="~/js/J_DevTreksJQ1.js" asp-append-version="false"></script>
+        <script src="~/js/K_jquery.mobile-1.4.5.js" asp-append-version="false"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+</head>
+
+<body>
+    <div data-role="page">
+        <div class="ui-content" role="main">
+            @RenderBody()
+        </div>
+        @if (IsSectionDefined("Footer"))
+        {
+            <div data-role="footer" class="footer-docs" data-theme="a">
+                @RenderSection("Footer")
+            </div>
+        } 
+    </div>
+    @if (IsSectionDefined("scripts"))
+    {
+        @RenderSection("scripts", required: false)
+    }
+</body>
+</html>

@@ -1,0 +1,105 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, Prices.OUTPUT_PRICE_TYPES.output.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Output.Name, Model.URIModels.Output.PKId.ToString(),
+                Model.URINetworkPartName, Prices.OUTPUT_PRICE_TYPES.output.ToString(), string.Empty);
+    if (Model.URINodeName == Prices.OUTPUT_PRICE_TYPES.output.ToString())
+    {
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.Output.Name,
+                        "Name", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "Output Series",
+                Prices.OUTPUT_PRICE_TYPES.outputseries.ToString())                 
+        }
+        else 
+        {
+            @Html.H4("Output Series", "ui-bar-b")
+        }
+        if (Model.URIModels.Output.OutputSeries != null)
+        {
+            if (Model.URIModels.Output.OutputSeries.Count > 0)
+            {
+                foreach (var outputseries in Model.URIModels.Output.OutputSeries)
+                {
+                    ViewData.Model.URIModels.OutputSeries = outputseries;
+                    @Html.DivCollapseStart(Model, outputseries.PKId)
+                    <h4>@outputseries.Name</h4>
+                    @Html.Partial("ContentModelViews/_OutputSeries", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else
+    {
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.Output.Name,
+                 "Name", Model.URIDataManager.EditViewEditType, bCanDelete)
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("OutputLastChangedDate", "Date Changed:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                          Model.URIModels.Output.OutputLastChangedDate.ToShortDateString(), "OutputLastChangedDate", GeneralRules.SHORTDATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("Num", "Label:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.Output.Num, "Num", GeneralRules.STRING, "15",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("OutputDate", "Date:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                Model.URIModels.Output.OutputDate.ToShortDateString(), "OutputDate", GeneralRules.DATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("OutputAmount1", "Output Amount:")
+        string sFormatted = StylesheetHelper.WriteFormattedNumber("OutputAmount1", Model.URIModels.Output.OutputAmount1.ToString(), GeneralRules.FLOAT, "4");
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                sFormatted, "OutputAmount1", GeneralRules.FLOAT, "4",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("OutputPrice1", "Output Price:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.Output.OutputPrice1.ToString(), "OutputPrice1", GeneralRules.DECIMAL, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("OutputUnit1", "Output Unit:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.Output.OutputUnit1, "OutputUnit1", GeneralRules.STRING, "75",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.Output.Description, "Description",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        @HtmlHelperExtensions.WriteViewLinks(Html, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIDataManager.CalcParams,
+                Prices.OUTPUT_PRICE_TYPES.output.ToString(), "oldid")
+
+
+    }
+
+}

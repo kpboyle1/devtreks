@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<currencygroup Id="0" Name="none"/><currencygroup Id="1" Name="Dollars, US"/><currencygroup Id="2" Name="Euro, European Union"/><currencygroup Id="3" Name="Dollars, Canadian"/><currencygroup Id="4" Name="Pesos, Mexican"/>
+</root>

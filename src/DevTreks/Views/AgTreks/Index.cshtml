@@ -1,0 +1,45 @@
+﻿@using DevTreks.Helpers;
+@{
+    ViewBag.Title = AppHelper.GetResource("AGTREKS_TITLE"); 
+}
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini="true", data_inline="true" }) > @Html.Encode(ViewData["Title"]) </strong></p>
+
+<div data-role="navbar">
+    @await Html.PartialAsync("_LoginPartial")
+    @*<ul>
+        @if (DevTreks.Helpers.HtmlMemberExtensions.UserIsLoggedIn(this.Context))
+        {
+            <li>@Html.ActionLink("logout", "LogOff", "Account", routeValues: null, htmlAttributes: new { id = "logoffLink" })</li>
+        }
+        else
+        {
+            <li>@Html.ActionLink(AppHelper.GetResource("JOININ_JOININ"), "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink(AppHelper.GetResource("LOGIN"), "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        }
+        <li><a href="mailto:devtrekkers@gmail.com?subject=AgTreks" title="Contact" >@AppHelper.GetResource("CONTACT_DEVTREKKERS")</a></li>
+    </ul>*@
+ </div>
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_STORY")</li>
+        <li>@Html.Link("A100", "/agtreks/search/crops/resourcepack/none/0/none", "Home", AppHelper.GetResource("VIEWS_MEDIA"))</li>
+        <li>@Html.Link("A200", "/agtreks/search/crops/linkedviewpack/none/0/none", "Home", AppHelper.GetResource("VIEWS_LINKEDVIEWS"))</li>
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_NUMBER")</li>
+        <li>@Html.Link("A400", "/agtreks/search/crops/input/none/0/none", "Home",  AppHelper.GetResource("VIEWS_INPUTS"))</li>
+        <li>@Html.Link("A500", "/agtreks/search/crops/output/none/0/none?Keywords=none", "Home",  AppHelper.GetResource("VIEWS_OUTPUTS"))</li>
+        <li>@Html.Link("A300", "/agtreks/search/crops/outcome/none/0/none", "Home",  AppHelper.GetResource("VIEWS_OUTCOMES"))</li>
+        <li>@Html.Link("A600", "/agtreks/search/crops/operation/none/0/none", "Home",  AppHelper.GetResource("VIEWS_OPERATIONS"))</li>
+        <li>@Html.Link("A700", "/agtreks/search/crops/component/none/0/none", "Home",  AppHelper.GetResource("VIEWS_COMPONENTS"))</li>
+        <li>@Html.Link("A800", "/agtreks/search/crops/budgettimeperiod/none/0/none", "Home",  AppHelper.GetResource("VIEWS_OPBUDGETS"))</li>
+        <li>@Html.Link("A900", "/agtreks/search/crops/investmenttimeperiod/none/0/none", "Home",  AppHelper.GetResource("VIEWS_CAPBUDGETS"))</li>
+        <li>@Html.Link("A300", "/agtreks/search/crops/devpackpart/none/0/none", "Home", AppHelper.GetResource("VIEWS_DEVPACKS"))</li>
+        <li>@Html.Link("A1000", "/agtreks/search/crops/linkedviewpack/none/0/none?typeid=2", "Home",  AppHelper.GetResource("VIEWS_CALCULATORS"))</li>
+        <li>@Html.Link("A1100", "/agtreks/search/crops/linkedviewpack/none/0/none?typeid=1", "Home",  AppHelper.GetResource("VIEWS_ANALYZERS"))</li>
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_NETWORK")</li>
+        <li>@Html.Link("A1", "/commontreks/member/allnetworks/club/none/0/none", "Home",  AppHelper.GetResource("VIEWS_CLUBS"))</li>
+        <li>@Html.Link("A2", "/commontreks/search/allnetworks/network/none/0/none", "Home",  AppHelper.GetResource("VIEWS_NETWORKS"))</li>
+        <li>@Html.Link("A3", "/commontreks/search/allnetworks/service/none/0/none", "Home",  AppHelper.GetResource("VIEWS_SERVICES"))</li>
+    </ul>
+@section Footer {
+     @Html.Image("logo", StylesheetHelper.GetImagesUrl("devtreks-logo.jpg"), "DevTreks logo", "15%", "15%", string.Empty)@HtmlHelperExtensions.WriteCurrentVersion(Html)
+}
+   

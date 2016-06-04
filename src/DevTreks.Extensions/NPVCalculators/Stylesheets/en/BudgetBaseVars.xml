@@ -1,0 +1,7 @@
+﻿<root>
+	<linkedview Id="1" Version="1.7.0" CalculatorType="budget" WhatIfTagName="none" 
+      FileExtensionType="budget" CalculatorName="Operating Budget NPV Calculator" 
+      StylesheetResourceFileName="BudgetAndInvestment1.xslt" 
+      Stylesheet2ResourceFileName="Budgets1.xslt" RelatedCalculatorsType="npv"
+      Overwrite="0" />
+</root>

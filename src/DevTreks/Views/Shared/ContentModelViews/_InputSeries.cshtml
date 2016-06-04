@@ -1,0 +1,103 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, Prices.INPUT_PRICE_TYPES.inputseries.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.InputSeries.Name, Model.URIModels.InputSeries.PKId.ToString(),
+                Model.URINetworkPartName, Prices.INPUT_PRICE_TYPES.inputseries.ToString(), string.Empty);
+    
+    @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.InputSeries.Name,
+                "Name", Model.URIDataManager.EditViewEditType, bCanDelete)
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("InputLastChangedDate", "Date Changed:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                            Model.URIModels.InputSeries.InputLastChangedDate.ToShortDateString(), "InputLastChangedDate", GeneralRules.SHORTDATE, "8",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("Num", "Label:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                    Model.URIModels.InputSeries.Num, "Num", GeneralRules.STRING, "15",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("InputDate", "Date:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            Model.URIModels.InputSeries.InputDate.ToShortDateString(), "InputDate", GeneralRules.DATE, "8",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("InputPrice1Amount", "OC Amount:")
+    string sFormatted = StylesheetHelper.WriteFormattedNumber("InputPrice1Amount", Model.URIModels.InputSeries.InputPrice1Amount.ToString(), GeneralRules.FLOAT, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "InputPrice1Amount", GeneralRules.FLOAT, "4",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("InputPrice1", "OC Price:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                    Model.URIModels.InputSeries.InputPrice1.ToString(), "InputPrice1", GeneralRules.DECIMAL, "8",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("InputUnit1", "OC Unit:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.InputSeries.InputUnit1, "InputUnit1", GeneralRules.STRING, "75",
+                "Input75Center", string.Empty)    
+    @Html.DivEnd()
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("InputPrice2", "AOH Price:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                        Model.URIModels.InputSeries.InputPrice2.ToString(), "InputPrice2", GeneralRules.DECIMAL, "8",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("InputUnit2", "AOH Unit:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                        Model.URIModels.InputSeries.InputUnit2, "InputUnit2", GeneralRules.STRING, "75",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("InputPrice3", "CAP Price:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                    Model.URIModels.InputSeries.InputPrice3.ToString(), "InputPrice3", GeneralRules.DECIMAL, "8",
+            "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("InputUnit3", "CAP Unit:")
+   @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.InputSeries.InputUnit3, "InputUnit3", GeneralRules.STRING, "75",
+                "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+
+
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.InputSeries.Description, "Description",
+        "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+    @HtmlHelperExtensions.WriteViewLinks(Html, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIDataManager.CalcParams,
+            Prices.INPUT_PRICE_TYPES.input.ToString(), "oldid")
+
+}

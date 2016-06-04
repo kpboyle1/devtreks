@@ -1,0 +1,7 @@
+﻿<root>
+	<linkedview Id="1" Version="0.8.1" CalculatorType="healthcost1" 
+		WhatIfTagName="none" FileExtensionType="healthcost1" 
+		CalculatorName="Health Care Costs Calculator" StylesheetResourceFileName="HC1CostIns1.xslt" 
+		Stylesheet2ResourceFileName="HC1StocksIns1.xslt"
+		RelatedCalculatorsType="healthcare1" Overwrite="0"  />
+</root>

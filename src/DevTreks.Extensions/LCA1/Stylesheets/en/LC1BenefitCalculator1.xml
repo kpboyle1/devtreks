@@ -1,0 +1,7 @@
+﻿<root>
+	<linkedview Id="1" Version="1.7.0" CalculatorType="buildbenefit1" 
+		WhatIfTagName="none" FileExtensionType="buildbenefit1" 
+		CalculatorName="Life Cycle Benefits Calculator" StylesheetResourceFileName="LC1BenefitCalculator1.xslt" 
+		Stylesheet2ResourceFileName="LC1StocksOuts1.xslt"
+		RelatedCalculatorsType="lifecycle1" Overwrite="0"  />
+</root>

@@ -1,0 +1,36 @@
+<foodgoals>
+<foodgoal Id="0" Name="none" C1to3="0" F4to8="0" M4to8="0" F9to13="0" M9to13="0" F14to18="0" M14to88="0" F19to30="0" M19to30="0" F31to50="0" M31to50="0" F51="0" M51="0" />
+<foodgoal Id="1" Name="Protein g" C1to3="13" F4to8="19" M4to8="19" F9to13="34" M9to13="34" F14to18="46" M14to88="52" F19to30="46" M19to30="56" F31to50="46" M31to50="56" F51="46" M51="56" />
+<foodgoal Id="2" Name="Protein pc of calories" C1to3="5–20" F4to8="10–30" M4to8="10–30" F9to13="10–30" M9to13="10–30" F14to18="10–30" M14to88="10–30" F19to30="10–35" M19to30="10–35" F31to50="10–35" M31to50="10–35" F51="10–35" M51="10–35" />
+<foodgoal Id="3" Name="Carbohydrate g" C1to3="130" F4to8="130" M4to8="130" F9to13="130" M9to13="130" F14to18="130" M14to88="130" F19to30="130" M19to30="130" F31to50="130" M31to50="130" F51="130" M51="130" />
+<foodgoal Id="4" Name="Carbo pc of calories" C1to3="45–65" F4to8="45–65" M4to8="45–65" F9to13="45–65" M9to13="45–65" F14to18="45–65" M14to88="45–65" F19to30="45–65" M19to30="45–65" F31to50="45–65" M31to50="45–65" F51="45–65" M51="45–65" />
+<foodgoal Id="5" Name="Total fiber g" C1to3="14" F4to8="17" M4to8="20" F9to13="22" M9to13="25" F14to18="25" M14to88="31" F19to30="28" M19to30="34" F31to50="25" M31to50="31" F51="22" M51="28" />
+<foodgoal Id="6" Name="Total fat pc of calories" C1to3="30–40" F4to8="25–35" M4to8="25–35" F9to13="25–35" M9to13="25–35" F14to18="25–35" M14to88="25–35" F19to30="20–35" M19to30="20–35" F31to50="20–35" M31to50="20–35" F51="20–35" M51="20–35" />
+<foodgoal Id="7" Name="Saturated fat pc of calories" C1to3="10" F4to8="10" M4to8="10" F9to13="10" M9to13="10" F14to18="10" M14to88="10" F19to30="10" M19to30="10" F31to50="10" M31to50="10" F51="10" M51="10" />
+<foodgoal Id="8" Name="Linoleic acid g" C1to3="7" F4to8="10" M4to8="10" F9to13="10" M9to13="12" F14to18="11" M14to88="16" F19to30="12" M19to30="17" F31to50="12" M31to50="17" F51="11" M51="14" />
+<foodgoal Id="9" Name="Lin pc of calories" C1to3="5–10" F4to8="5–10" M4to8="5–10" F9to13="5–10" M9to13="5–10" F14to18="5–10" M14to88="5–10" F19to30="5–10" M19to30="5–10" F31to50="5–10" M31to50="5–10" F51="5–10" M51="5–10" />
+<foodgoal Id="10" Name="alpha-Linolenic acid g" C1to3="0.7" F4to8="0.9" M4to8="0.9" F9to13="1" M9to13="1.2" F14to18="1.1" M14to88="1.6" F19to30="1.1" M19to30="1.6" F31to50="1.1" M31to50="1.6" F51="1.1" M51="1.6" />
+<foodgoal Id="11" Name="AlphLin pc of calories" C1to3="0.6–1.2" F4to8="0.6–1.2" M4to8="0.6–1.2" F9to13="0.6–1.2" M9to13="0.6–1.2" F14to18="0.6–1.2" M14to88="0.6–1.2" F19to30="0.6–1.2" M19to30="0.6–1.2" F31to50="0.6–1.2" M31to50="0.6–1.2" F51="0.6–1.2" M51="0.6–1.2" />
+<foodgoal Id="12" Name="Cholesterol mg" C1to3="300" F4to8="300" M4to8="300" F9to13="300" M9to13="300" F14to18="300" M14to88="300" F19to30="300" M19to30="300" F31to50="300" M31to50="300" F51="300" M51="300" />
+<foodgoal Id="13" Name="Calcium mg" C1to3="700" F4to8="1,000" M4to8="1,000" F9to13="1,300" M9to13="1,300" F14to18="1,300" M14to88="1,300" F19to30="1,000" M19to30="1,000" F31to50="1,000" M31to50="1,000" F51="1,200" M51="1,200" />
+<foodgoal Id="14" Name="Iron mg" C1to3="7" F4to8="10" M4to8="10" F9to13="8" M9to13="8" F14to18="15" M14to88="11" F19to30="18" M19to30="8" F31to50="18" M31to50="8" F51="8" M51="8" />
+<foodgoal Id="15" Name="Magnesium mg" C1to3="80" F4to8="130" M4to8="130" F9to13="240" M9to13="240" F14to18="360" M14to88="410" F19to30="310" M19to30="400" F31to50="320" M31to50="420" F51="320" M51="420" />
+<foodgoal Id="16" Name="Phosphorus mg" C1to3="460" F4to8="500" M4to8="500" F9to13="1,250" M9to13="1,250" F14to18="1,250" M14to88="1,250" F19to30="700" M19to30="700" F31to50="700" M31to50="700" F51="700" M51="700" />
+<foodgoal Id="17" Name="Potassium mg" C1to3="3,000" F4to8="3,800" M4to8="3,800" F9to13="4,500" M9to13="4,500" F14to18="4,700" M14to88="4,700" F19to30="4,700" M19to30="4,700" F31to50="4,700" M31to50="4,700" F51="4,700" M51="4,700" />
+<foodgoal Id="18" Name="Sodium mg" C1to3="1,500" F4to8="1,900" M4to8="1,900" F9to13="2,200" M9to13="2,200" F14to18="2,300" M14to88="2,300" F19to30="2,300" M19to30="2,300" F31to50="2,300" M31to50="2,300" F51="2,300" M51="2,300" />
+<foodgoal Id="19" Name="Zinc mg" C1to3="3" F4to8="5" M4to8="5" F9to13="8" M9to13="8" F14to18="9" M14to88="11" F19to30="8" M19to30="11" F31to50="8" M31to50="11" F51="8" M51="11" />
+<foodgoal Id="20" Name="Copper mcg" C1to3="340" F4to8="440" M4to8="440" F9to13="700" M9to13="700" F14to18="890" M14to88="890" F19to30="900" M19to30="900" F31to50="900" M31to50="900" F51="900" M51="900" />
+<foodgoal Id="21" Name="Selenium mcg" C1to3="20" F4to8="30" M4to8="30" F9to13="40" M9to13="40" F14to18="55" M14to88="55" F19to30="55" M19to30="55" F31to50="55" M31to50="55" F51="55" M51="55" />
+<foodgoal Id="22" Name="Vitamin A mcg RAE" C1to3="300" F4to8="400" M4to8="400" F9to13="600" M9to13="600" F14to18="700" M14to88="900" F19to30="700" M19to30="900" F31to50="700" M31to50="900" F51="700" M51="900" />
+<foodgoal Id="23" Name="Vitamin D mcg" C1to3="15" F4to8="15" M4to8="15" F9to13="15" M9to13="15" F14to18="15" M14to88="15" F19to30="15" M19to30="15" F31to50="15" M31to50="15" F51="15" M51="15" />
+<foodgoal Id="24" Name="Vitamin E mg AT" C1to3="6" F4to8="7" M4to8="7" F9to13="11" M9to13="11" F14to18="15" M14to88="15" F19to30="15" M19to30="15" F31to50="15" M31to50="15" F51="15" M51="15" />
+<foodgoal Id="25" Name="Vitamin C mg" C1to3="15" F4to8="25" M4to8="25" F9to13="45" M9to13="45" F14to18="65" M14to88="75" F19to30="75" M19to30="90" F31to50="75" M31to50="90" F51="75" M51="90" />
+<foodgoal Id="26" Name="Thiamin mg" C1to3="0.5" F4to8="0.6" M4to8="0.6" F9to13="0.9" M9to13="0.9" F14to18="1" M14to88="1.2" F19to30="1.1" M19to30="1.2" F31to50="1.1" M31to50="1.2" F51="1.1" M51="1.2" />
+<foodgoal Id="27" Name="Riboflavin mg" C1to3="0.5" F4to8="0.6" M4to8="0.6" F9to13="0.9" M9to13="0.9" F14to18="1" M14to88="1.3" F19to30="1.1" M19to30="1.3" F31to50="1.1" M31to50="1.3" F51="1.1" M51="1.3" />
+<foodgoal Id="28" Name="Niacin mg" C1to3="6" F4to8="8" M4to8="8" F9to13="12" M9to13="12" F14to18="14" M14to88="16" F19to30="14" M19to30="16" F31to50="14" M31to50="16" F51="14" M51="16" />
+<foodgoal Id="29" Name="Folate mcg" C1to3="150" F4to8="200" M4to8="200" F9to13="300" M9to13="300" F14to18="400" M14to88="400" F19to30="400" M19to30="400" F31to50="400" M31to50="400" F51="400" M51="400" />
+<foodgoal Id="30" Name="Vitamin B6 mg" C1to3="0.5" F4to8="0.6" M4to8="0.6" F9to13="1" M9to13="1" F14to18="1.2" M14to88="1.3" F19to30="1.3" M19to30="1.3" F31to50="1.3" M31to50="1.3" F51="1.5" M51="1.7" />
+<foodgoal Id="31" Name="Vitamin B12 mg" C1to3="0.9" F4to8="1.2" M4to8="1.2" F9to13="1.8" M9to13="1.8" F14to18="2.4" M14to88="2.4" F19to30="2.4" M19to30="2.4" F31to50="2.4" M31to50="2.4" F51="2.4" M51="2.4" />
+<foodgoal Id="32" Name="Choline mg" C1to3="200" F4to8="250" M4to8="250" F9to13="375" M9to13="375" F14to18="400" M14to88="550" F19to30="425" M19to30="550" F31to50="425" M31to50="550" F51="425" M51="550" />
+<foodgoal Id="33" Name="Vitamin K mcg" C1to3="30" F4to8="55" M4to8="55" F9to13="60" M9to13="60" F14to18="75" M14to88="75" F19to30="90" M19to30="120" F31to50="90" M31to50="120" F51="90" M51="120" />
+</foodgoals>

@@ -1,0 +1,16 @@
+﻿<?xml-stylesheet type="text/xsl" href="Story1.xslt"?>
+<root xmlns:devtreks="urn:DevTreks-support-schemas:Story1">
+	<!--Default nodes must have Id=1 or they can't be added dynamically. These 
+		default nodes should not be displayed or edited-->
+	<story Id="1" Label="a" Name="Story Basic" Title="none" Description="This story uses a very, simple, basic style that might be appropriate for a dictionary." DateLastModified="">
+		<storycontent Id="1" Label="a" Name="none"  Title="none" Description="none">
+			<storylist Id="1" Label="a" Name="none"  Description="none" />
+			<storymedia Id="1" Label="a" Name="none" LongDescription="none" FileName="none"/>
+			<storylink Id="1" Label="a" Name="none"  Href="none"/>
+		</storycontent>
+		<!--Node used to init story-->
+		<storycontent Id="2" Label="a" Name="none"  Title="none" Description="none">
+			
+		</storycontent>
+	</story>
+</root>

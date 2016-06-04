@@ -1,0 +1,135 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, Economics1.BUDGET_TYPES.budgetoutcome.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.BudgetSystemToOutcome.Name, Model.URIModels.BudgetSystemToOutcome.PKId.ToString(),
+                Model.URINetworkPartName, Economics1.BUDGET_TYPES.budgetoutcome.ToString(), string.Empty);
+    if (Model.URINodeName == Economics1.BUDGET_TYPES.budgetoutcome.ToString())
+    {
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.BudgetSystemToOutcome.Name,
+                        "Name", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @Html.DivStart(string.Empty, string.Empty)
+            @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                        "GetSelectsLink", "Select Output Series", "spanSelectionFiles",
+                        Model.URIDataManager.ContentURIPattern, searchurl,
+                        Prices.OUTPUT_PRICE_TYPES.outputseries.ToString(), string.Empty, Model.URIDataManager.CalcParams))
+            @Html.DivEnd()   
+        }
+        else 
+        {
+            @Html.H4("Output", "ui-bar-b")
+        }
+        if (Model.URIModels.BudgetSystemToOutcome.BudgetSystemToOutput != null)
+        {
+            if (Model.URIModels.BudgetSystemToOutcome.BudgetSystemToOutput.Count > 0)
+            {
+                foreach (var output in Model.URIModels.BudgetSystemToOutcome.BudgetSystemToOutput)
+                {
+                    ViewData.Model.URIModels.BudgetSystemToOutput = output;
+                    @Html.DivCollapseStart(Model, output.PKId)
+                    <h4>@output.Name</h4>
+                    @Html.Partial("ContentModelViews/_BudgetToOutput", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else
+    {
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.BudgetSystemToOutcome.Name,
+                 "Name", Model.URIDataManager.EditViewEditType, bCanDelete)
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("Date", "Date:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                          Model.URIModels.BudgetSystemToOutcome.Date.ToShortDateString(), "Date", GeneralRules.DATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("Num", "Label:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.BudgetSystemToOutcome.Num, "Num", GeneralRules.STRING, "15",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("Amount", "Amount:")
+        string sFormatted = StylesheetHelper.WriteFormattedNumber("Amount", Model.URIModels.BudgetSystemToOutcome.Amount.ToString(), GeneralRules.FLOAT, "4");
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     sFormatted, "Amount", GeneralRules.FLOAT, "4",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("Unit", "Unit:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                     Model.URIModels.BudgetSystemToOutcome.Unit, "Unit", GeneralRules.STRING, "75",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("EffectiveLife", "Effective Life:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                                              Model.URIModels.BudgetSystemToOutcome.EffectiveLife.ToString(), "EffectiveLife", GeneralRules.FLOAT, "4",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("SalvageValue", "Salvage Value:")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                                    Model.URIModels.BudgetSystemToOutcome.SalvageValue.ToString(), "SalvageValue", GeneralRules.DECIMAL, "8",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("IncentiveAmount", "Incentive Amount:")
+                         sFormatted = StylesheetHelper.WriteFormattedNumber("IncentiveAmount", Model.URIModels.BudgetSystemToOutcome.IncentiveAmount.ToString(), GeneralRules.DECIMAL, "8");
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                               sFormatted, "IncentiveAmount", GeneralRules.DECIMAL, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("IncentiveRate", "Incentive Rate:")
+                         sFormatted = StylesheetHelper.WriteFormattedNumber("IncentiveRate", Model.URIModels.BudgetSystemToOutcome.IncentiveRate.ToString(), GeneralRules.FLOAT, "4");
+         @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                sFormatted, "IncentiveRate", GeneralRules.FLOAT, "4",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("ResourceWeight", "Weight:")
+                         sFormatted = StylesheetHelper.WriteFormattedNumber("ResourceWeight", Model.URIModels.BudgetSystemToOutcome.ResourceWeight.ToString(), GeneralRules.FLOAT, "4");
+         @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                    sFormatted, "ResourceWeight", GeneralRules.FLOAT, "4",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.DivEnd()
+        @Html.DivEnd()
+    
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.BudgetSystemToOutcome.Description, "Description",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        
+    }
+    
+}

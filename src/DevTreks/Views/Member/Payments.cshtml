@@ -1,0 +1,184 @@
+﻿@using DevTreks.Helpers;
+@using AppHelpers = DevTreks.Data.AppHelpers;
+@using DataHelpers = DevTreks.Data.Helpers.GeneralHelpers;
+@using DevTreks.Models;
+
+
+@model DevTreks.ViewModels.MemberViewModel
+
+@{
+    ViewBag.Title = AppHelper.GetResource("PAY");
+}
+
+<div id="divPayments">
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini="true", data_inline="true" }) > @Html.Encode(ViewData["Title"]) </strong></p>
+@{
+    if (ViewData.Model.Member != null)
+    {
+       <div>
+        @{
+            @Html.SpanError(ViewData.Model.ErrorMessage)
+        }
+        </div>
+    }
+
+    using (Html.BeginForm("UpdatePaymentHandling", "Member"))
+    {
+        if (ViewData.Model.Member.MemberRole
+                != AppHelpers.Members.MEMBER_ROLE_TYPES.coordinator.ToString())
+        {
+            //write html
+            <h6>@AppHelper.GetResource("DEBITCARD_NOTAUTHORIZED")</h6>
+        }
+        else
+        {
+            if (ViewData.Model.Member.ClubDefault != null)
+            {
+                if (ViewData.Model.Member.ClubDefault.AccountToCredit == null)
+                {
+                    ViewData.Model.Member.ClubDefault.AccountToCredit = new List<AccountToCredit>();
+                }
+                ViewData.Model.Member.ClubDefault.AccountToCredit.Add(new AccountToCredit());
+                //always make a dynamic request for club credit information 
+                //(don't store in model for security)
+                string sCardFullName = (ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardFullName != string.Empty) ?
+                    ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardFullName : AppHelper.GetResource("NONE");
+                string sCardFullNumber = (ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardFullNumber != string.Empty) ?
+                    ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardFullNumber : AppHelper.GetResource("NONE");
+                string sCardShortNumber = (ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardShortNumber != string.Empty) ?
+                    ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardShortNumber : AppHelper.GetResource("NONE");
+                string sCardType = (ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardType != string.Empty) ?
+                    ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardType : DataHelpers.NONE;
+                string sCardEndMonth = (ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardEndMonth != string.Empty) ?
+                    ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardEndMonth : DataHelpers.NONE;
+                string sCardEndYear = (ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardEndYear != string.Empty) ?
+                    ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardEndYear : DataHelpers.NONE;
+                string sCardState = (ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardState != string.Empty) ?
+                    ViewData.Model.Member.ClubDefault.AccountToCredit.FirstOrDefault().CardState : DataHelpers.NONE;
+                string sErrorMsg = string.Empty;
+                <ul data-role="listview" data-inset="true">
+                <li data-role="list-divider">@AppHelper.GetResource("DEBITCARD_TITLE")</li>
+                <li class="ui-field-contain">
+                   @Html.LabelStrong("txtCardFullName", AppHelper.GetResource("DEBITCARD_NAME"))
+                   @Html.TextBox("txtCardFullName", sCardFullName)  
+                   @*@Html.TextBox("txtCardFullName", sCardFullName, new { Class = "Input300" })  *@
+                </li>
+                <li class="ui-field-contain">    
+                   @Html.LabelStrong("txtCardFullNumber", AppHelper.GetResource("DEBITCARD_NUMBER"))
+                   @Html.TextBox("txtCardFullNumber", sCardFullNumber)  
+                   <br />
+                   <strong>@AppHelper.GetResource("DEBITCARD_ENCRYPT")</strong>    
+                </li>
+                <li class="ui-field-contain">    
+                   @Html.LabelStrong("txtCardShortNumber", AppHelper.GetResource("DEBITCARD_3DIGITNUMBER"))
+                   @Html.TextBox("txtCardShortNumber", sCardShortNumber)       
+                </li>
+                <li class="ui-field-contain">    
+                   @Html.LabelStrong("selectcardtype", AppHelper.GetResource("DEBITCARD_TYPE"))
+                   @CreditCardTypes("selectcardtype", sCardType)      
+                </li>
+                <li class="ui-field-contain">    
+                    @Html.LabelStrong("selectcardmonth", AppHelper.GetResource("DEBITCARD_EXPMONTH"))
+                    @CreditCardMonths("selectcardmonth", sCardEndMonth) 
+                </li>
+                <li class="ui-field-contain">    
+                   @Html.LabelStrong("selectcardyear", AppHelper.GetResource("DEBITCARD_EXPYEAR"))
+                   @CreditCardYears("selectcardyear", sCardEndYear)      
+                </li>
+                </ul>
+                @*@CreditCardLocations("selectcardyear", sCardEndYear)*@
+                
+            }
+            else
+            {
+                string sErrorMsg = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        string.Empty, "MEMBERHELPER_NOCLUBINUSE");
+                ViewData.Model.ErrorMessage = sErrorMsg;
+            }
+        }
+
+   
+    <br />
+    <br />
+        if (ViewData.Model.Member.MemberRole
+        == DevTreks.Data.AppHelpers.Members.MEMBER_ROLE_TYPES.coordinator.ToString())
+        {
+        <input type="submit" name="payments" value="@AppHelper.GetResource("PAY_UPDATE")" class="SubmitButton1Enabled225" />
+        <p>
+            @AppHelper.GetResource("PAYMENTS_1")
+        </p>
+        <p>
+            @AppHelper.GetResource("PAYMENTS_2")
+        </p>
+        }
+    }
+    }
+</div>
+
+@helper CreditCardTypes(string selectName, string value)
+    {
+    <select id="@selectName" name="@selectName">
+    @{
+        bool bIsSelected = (value == "visa") ? true : false;
+        @Html.Option("Visa", "visa", bIsSelected)
+        bIsSelected = (value == "mastercard") ? true : false;
+        @Html.Option("Master Card", "mastercard", bIsSelected)
+        bIsSelected = (value == "americanexpress") ? true : false;
+        @Html.Option("American Express", "americanexpress", bIsSelected)
+        bIsSelected = (value == "dinersclub") ? true : false;
+        @Html.Option("Diners Club", "dinersclub", bIsSelected)
+    }
+    </select>
+}
+
+@helper CreditCardMonths(string selectName, string value)
+    {
+    <select id="@selectName" name="@selectName">
+    @{
+        bool bIsSelected = (value == "01") ? true : false;
+        @Html.Option("01", "01", bIsSelected)
+        bIsSelected = (value == "02") ? true : false;
+        @Html.Option("02", "02", bIsSelected)
+        bIsSelected = (value == "03") ? true : false;
+        @Html.Option("03", "03", bIsSelected)
+        bIsSelected = (value == "04") ? true : false;
+        @Html.Option("04", "04", bIsSelected)
+        bIsSelected = (value == "05") ? true : false;
+        @Html.Option("05", "05", bIsSelected)
+        bIsSelected = (value == "06") ? true : false;
+        @Html.Option("06", "06", bIsSelected)
+        bIsSelected = (value == "07") ? true : false;
+        @Html.Option("07", "07", bIsSelected)
+        bIsSelected = (value == "08") ? true : false;
+        @Html.Option("08", "08", bIsSelected)
+        bIsSelected = (value == "09") ? true : false;
+        @Html.Option("09", "09", bIsSelected)
+        bIsSelected = (value == "10") ? true : false;
+        @Html.Option("10", "10", bIsSelected)
+        bIsSelected = (value == "11") ? true : false;
+        @Html.Option("11", "11", bIsSelected)
+        bIsSelected = (value == "12") ? true : false;
+        @Html.Option("12", "12", bIsSelected)
+    }
+    </select>
+}
+
+@helper CreditCardYears(string selectName, string value)
+    {
+    <select id="@selectName" name="@selectName">
+    @{
+        bool bIsSelected = (value == "11") ? true : false;
+        @Html.Option("11", "11", bIsSelected)
+        bIsSelected = (value == "12") ? true : false;
+        @Html.Option("12", "12", bIsSelected)
+        bIsSelected = (value == "13") ? true : false;
+        @Html.Option("13", "13", bIsSelected)
+        bIsSelected = (value == "14") ? true : false;
+        @Html.Option("14", "14", bIsSelected)
+        bIsSelected = (value == "15") ? true : false;
+        @Html.Option("15", "15", bIsSelected)
+        bIsSelected = (value == "16") ? true : false;
+        @Html.Option("16", "16", bIsSelected)
+    }
+    </select>
+}

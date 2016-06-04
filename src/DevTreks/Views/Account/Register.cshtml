@@ -1,42 +1,51 @@
-﻿@model RegisterViewModel
+﻿@using DevTreks.Helpers
+
+@model RegisterViewModel
+
 @{
-    ViewData["Title"] = "Register";
+    ViewBag.Title = AppHelper.GetResource("JOININ_JOININ");
 }
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini = "true", data_inline = "true" }) > @ViewData["Title"] </strong></p>
+<p><strong>Create a new DevTreks login with email and password.</strong></p>
+<h2>@ViewBag.Title.</h2>
 
-<h2>@ViewData["Title"].</h2>
-
-<form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+<form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
     <h4>Create a new account.</h4>
     <hr />
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Email" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Email" class="form-control" />
-            <span asp-validation-for="Email" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="Password" class="form-control" />
-            <span asp-validation-for="Password" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <label asp-for="ConfirmPassword" class="col-md-2 control-label"></label>
-        <div class="col-md-10">
-            <input asp-for="ConfirmPassword" class="form-control" />
-            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-default">Register</button>
-        </div>
-    </div>
-</form>
+    @Html.ValidationSummary()
+    <p>
+        <strong>@AppHelper.GetResource("JOININ_0A")</strong>
+    </p>
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">Details</li>
 
-@section Scripts {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}
+        <li class="ui-field-contain">
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email)
+        </li>
+        <li class="ui-field-contain">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password)
+        </li>
+
+        <li class="ui-field-contain">
+            @Html.LabelFor(m => m.ConfirmPassword)
+            @Html.PasswordFor(m => m.ConfirmPassword)
+        </li>
+
+        <li class="ui-field-contain">
+            <button type="submit">Register</button>
+        </li>
+    </ul>
+
+    <p>
+        <strong>@AppHelper.GetResource("JOININ_1")</strong>
+    </p>
+    <p>
+        <strong>@AppHelper.GetResource("JOININ_2")</strong>
+    </p>
+    <p>
+        <strong>@AppHelper.GetResource("JOININ_5")</strong>
+    </p>
+
+</form>

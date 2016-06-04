@@ -1,0 +1,12 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Jace Class Library",
+  "authors": [ "Jace License is on codeplex" ],
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.ComponentModel.Composition": "4.0.0.0"
+      }
+    }
+  }
+}

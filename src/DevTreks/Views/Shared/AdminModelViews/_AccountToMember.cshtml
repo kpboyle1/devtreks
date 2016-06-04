@@ -1,0 +1,65 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.AccountToMember == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.DivStart(string.Empty, string.Empty, "fieldcontain", "b", string.Empty, string.Empty, "true")
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToMember.Member.MemberLastName, Model.URIModels.AccountToMember.PKId.ToString(),
+            Model.URINetworkPartName, Members.MEMBER_TYPES.member.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+       @Model.URINodeName, Members.MEMBER_TYPES.member.ToString(),
+       Model.URIDataManager.ServerActionType, Model.URIMember);
+        if (bCanDelete)
+        {
+            string sFullName = string.Concat(Model.URIModels.AccountToMember.Member.MemberLastName, ", ", Model.URIModels.AccountToMember.Member.MemberFirstName);
+            @HtmlHelperExtensions.MakeDeleteOptionsWithFieldSet(Html, searchurl, sFullName);
+        }
+    if (Model.URIDataManager.EditViewEditType == GeneralHelpers.VIEW_EDIT_TYPES.full
+        && Model.URIMember.MemberRole == Members.MEMBER_ROLE_TYPES.coordinator.ToString())
+    {
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.AccountToMember.MemberRole.ToString(),
+            "MemberRole", GeneralRules.STRING, "25", "Member Role:",
+            Model.URIDataManager.EditViewEditType, "Select225", Members.GetMemberRolesDictionary())
+    }
+    else
+    {
+        @Html.LabelStrong("MemberRole", "Member Role:")
+        @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.none, string.Empty,
+                 Model.URIModels.AccountToMember.MemberRole, "MemberRole", string.Empty, string.Empty,
+                 string.Empty, string.Empty)
+    }
+    @Html.LabelStrong("MemberEmail", "Email")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.none, string.Empty,
+                 Model.URIModels.AccountToMember.Member.MemberEmail, "MemberEmail", string.Empty, string.Empty,
+                 string.Empty, string.Empty)
+    @HtmlHelperExtensions.MakeTextArea(Html, "MemberDesc", Model.URIModels.AccountToMember.Member.MemberDesc, "MemberDesc",
+            "Description", GeneralHelpers.VIEW_EDIT_TYPES.none, string.Empty, string.Empty)
+    @Html.LabelStrong("MemberOrganization", "Organization")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.none, string.Empty,
+                 Model.URIModels.AccountToMember.Member.MemberOrganization, "MemberOrganization", string.Empty, string.Empty,
+                 string.Empty, string.Empty)
+    @Html.LabelStrong("MemberPhone", "Phone")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.none, string.Empty,
+                 Model.URIModels.AccountToMember.Member.MemberPhone, "MemberPhone", string.Empty, string.Empty,
+                 string.Empty, string.Empty)
+    @HtmlHelperExtensions.MakeTextArea(Html, "MemberUrl", Model.URIModels.AccountToMember.Member.MemberUrl, "MemberUrl",
+            "URI", GeneralHelpers.VIEW_EDIT_TYPES.none, string.Empty, string.Empty)
+    @*string name = string.Concat(StylesheetHelper.GetURIPattern("none", "0", "0", "account", ""), ";IsDefaultClub;boolean;1");
+    string id = string.Concat("defaultclub", Model.URIModels.AccountToMember.PKId.ToString());
+    @Html.Raw("<br/>")
+    @HtmlHelperExtensions.MakeRadioTrueFalseOption(Html, id, name, Model.URIModels.AccountToMember.PKId.ToString(),
+            Model.URIModels.AccountToMember.IsDefaultClub, "Is Default Club")
+    @Html.Raw("<br/>")*@
+    @Html.DivEnd()
+}

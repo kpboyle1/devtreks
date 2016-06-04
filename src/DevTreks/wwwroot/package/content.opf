@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf">
+<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+	<dc:title>Irrigation, Ahuachapan</dc:title>
+	<dc:creator opf:file-as="Boyle, Kevin P." opf:role="aut">Kevin P. Boyle</dc:creator>
+	<dc:creator opf:file-as="Samples Jr., Alvin." role="edt">Alvin Samples, Jr.</dc:creator>
+	<dc:creator opf:file-as="Samples, Grace" role="dsr">Grace Samples</dc:creator>
+	<dc:subject>Irrigated smallholder agriculture</dc:subject>
+	<dc:subject>Agriculture in Central America</dc:subject>
+	<dc:description>Case studies highlighting irrigation technologies being used in Central America</dc:description>
+	<dc:publisher>www.devtreks.org</dc:publisher>
+	<dc:contributor opf:file-as="ARS" role="clb">ARS</dc:contributor>
+	<dc:date opf:event="publication">2008-02-01</dc:date>
+	<dc:date opf:event="modification">2008-07-01</dc:date>
+	<dc:type>01. Case studies; 04. Irrigation Improvements (agtreks standard ontology)</dc:type>
+	<dc:format>application/xhtml+xml</dc:format>
+	<dc:identifier id="TechPackId">uri:www.devtreks.org/agtreks/Irrigation, Ahuachapan_3_3_techpack</dc:identifier>
+	<dc:source>On-line case study. USDA, NRCS, 2006</dc:source>
+	<dc:language>en-US</dc:language>
+	<dc:relation>www.ssiapps.sc.egov.usda.gov/casestudy01</dc:relation>
+	<dc:coverage>refer to dublin core</dc:coverage>
+	<dc:rights>Copyright 2008 by Kevin P. Boyle</dc:rights>
+</metadata>
+
+<manifest>
+	<!-- ncx -->
+	<item id="ncx" href="toc.ncx" media-type="application/x-dtbncx+xml"/>
+	<item id="titlepage" href="title_page.html" media-type="application//xhtml+xml" />
+
+</manifest>
+
+<spine toc="ncx">
+	<!-- reading order (sorted by labels in db) -->
+	<itemref idref="titlepage" />
+</spine>
+<guide toc="ncx">
+	<!-- fundamental structural components (first label-sorted doc in techdoc folder assumed to be intro) -->
+</guide>
+</package>

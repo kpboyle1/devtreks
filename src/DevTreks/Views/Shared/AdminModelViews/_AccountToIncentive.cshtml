@@ -1,0 +1,72 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.AccountToIncentive == null)
+    {
+        //show existing error message only
+        return;
+    }
+    if (Model.URIModels.AccountToIncentive.Incentive == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.Raw("<strong>Incentives are not being used in this release.</strong>")
+    @Html.DivEnd()
+    @Html.DivEnd()
+    bool bCanDelete = AppHelper.CanDeleteNode(
+        @Model.URINodeName, Agreement.AGREEMENT_TYPES.service.ToString(),
+        Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    if (Model.URIModels.AccountToService.IsOwner == false
+        || Model.URIMember.MemberRole != Members.MEMBER_ROLE_TYPES.coordinator.ToString()
+        || Model.URIDataManager.EditViewEditType != GeneralHelpers.VIEW_EDIT_TYPES.full)
+    {
+        bCanDelete = false;
+    }
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToIncentive.Incentive.IncentiveName, Model.URIModels.AccountToIncentive.PKId.ToString(),
+            Model.URINetworkPartName, Agreement.AGREEMENT_TYPES.incentive.ToString(), string.Empty);
+    string basesearchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToIncentive.Incentive.IncentiveName, Model.URIModels.AccountToIncentive.Incentive.PKId.ToString(),
+            Model.URINetworkPartName, Agreement.AGREEMENT_BASE_TYPES.incentivebase.ToString(), string.Empty);
+   
+    @HtmlHelperExtensions.MakeName(Html, searchurl, @Model.URIModels.AccountToIncentive.Incentive.IncentiveName, string.Empty,
+                 Model.URIDataManager.EditViewEditType, bCanDelete)
+    
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("IncentiveAmount1", "Incentive Amount:")
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-a")
+    string sFormatted = StylesheetHelper.WriteFormattedNumber("IncentiveAmount1", Model.URIModels.AccountToIncentive.Incentive.IncentiveAmount1.ToString(), GeneralRules.DECIMAL, "8");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, basesearchurl,
+                    sFormatted, "IncentiveAmount1", GeneralRules.DECIMAL, "8", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("IncentiveRate1", "Incentive Rate:")
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-a")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("IncentiveRate1", Model.URIModels.AccountToIncentive.Incentive.IncentiveRate1.ToString(), GeneralRules.FLOAT, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, basesearchurl,
+                            sFormatted, "IncentiveRate1", GeneralRules.FLOAT, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.LabelStrong("TotalCosts", "Total Cost:")
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, string.Empty,
+            Model.URIModels.AccountToIncentive.TotalCost.ToString(), "TotalCosts", GeneralRules.FLOAT, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    }

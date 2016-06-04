@@ -1,0 +1,31 @@
+﻿@using DevTreks.Helpers;
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "Output";
+}
+<div>
+    @{
+        if (Model.URIModels.Service != null)
+        {
+            @Html.Partial("ContentModelViews/_OutputService", ViewData.Model)
+        }
+        else if (Model.URIModels.OutputClass != null)
+        {
+            @Html.Partial("ContentModelViews/_OutputClass", ViewData.Model)
+        }
+        else if (Model.URIModels.Output != null)
+        {
+            @Html.Partial("ContentModelViews/_Output", ViewData.Model)
+        }
+        else if (Model.URIModels.OutputSeries != null)
+        {
+            @Html.Partial("ContentModelViews/_OutputSeries", ViewData.Model)
+        }
+        <br />
+        <div>
+            @Html.LinkMobile("feedback", string.Concat("mailto:", @Model.URIClub.AccountEmail, "?subject=", @Model.URIFull),
+                string.Empty, string.Concat("Feedback About ", @Model.URIPattern), "button", "true", "false",
+                "info", "left")
+        </div>
+    }
+</div>

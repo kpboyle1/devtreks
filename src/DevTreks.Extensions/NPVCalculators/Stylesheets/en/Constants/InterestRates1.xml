@@ -1,0 +1,44 @@
+﻿<root>
+	<interestrategroup Id="1" InterestRateGroupId="1" Name="US OMB Interest Rates" Description="US OMB interest rates" AccountId="1">
+		<interestrate Id="0" Name="none" RateYear="12/31/0000"
+			RealRate="0.0" NominalRate="0.0" InterestRatesDate="02/01/0000" InterestRateGroupId="1"/>
+		<interestrate Id="1" Name="2000 3-Year Rates" RateYear="12/31/2000"
+			RealRate="0.038" NominalRate="0.059" InterestRatesDate="02/01/2000" InterestRateGroupId="1"/>
+		<interestrate Id="2" Name="2000 7-Year Rates" RateYear="12/31/2000"
+			RealRate="0.04" NominalRate="0.06" InterestRatesDate="02/01/2000" InterestRateGroupId="1"/>
+		<interestrate Id="3" Name="2000 30-Year Rates" RateYear="12/31/2000"
+			RealRate="0.042" NominalRate="0.063" InterestRatesDate="02/01/2000" InterestRateGroupId="1"/>
+		<interestrate Id="4" Name="2001 3-Year Rates" RateYear="12/31/2001"
+			RealRate="0.032" NominalRate="0.054" InterestRatesDate="02/01/2001" InterestRateGroupId="1"/>
+		<interestrate Id="5" Name="2001 7-Year Rates" RateYear="12/31/2001"
+			RealRate="0.032" NominalRate="0.054" InterestRatesDate="02/01/2001" InterestRateGroupId="1"/>
+		<interestrate Id="6" Name="2001 30-Year Rates" RateYear="12/31/2001"
+			RealRate="0.032" NominalRate="0.053" InterestRatesDate="02/01/2001" InterestRateGroupId="1"/>
+		<interestrate Id="7" Name="2002 3-Year Rates" RateYear="12/31/2002"
+			RealRate="0.021" NominalRate="0.041" InterestRatesDate="02/01/2002" InterestRateGroupId="1"/>
+		<interestrate Id="8" Name="2002 7-Year Rates" RateYear="12/31/2002"
+			RealRate="0.03" NominalRate="0.048" InterestRatesDate="02/01/2002" InterestRateGroupId="1"/>
+		<interestrate Id="9" Name="2002 30-Year Rates" RateYear="12/31/2002"
+			RealRate="0.039" NominalRate="0.058" InterestRatesDate="02/01/2002" InterestRateGroupId="1"/>
+		<interestrate Id="10" Name="2003 3-Year Rates" RateYear="12/31/2003"
+			RealRate="0.016" NominalRate="0.031" InterestRatesDate="02/01/2003" InterestRateGroupId="1"/>
+		<interestrate Id="11" Name="2003 7-Year Rates" RateYear="12/31/2003"
+			RealRate="0.022" NominalRate="0.039" InterestRatesDate="02/01/2003" InterestRateGroupId="1"/>
+		<interestrate Id="12" Name="2003 30-Year Rates" RateYear="12/31/2003"
+			RealRate="0.032" NominalRate="0.051" InterestRatesDate="02/01/2003" InterestRateGroupId="1"/>
+		<interestrate Id="16" Name="AAEA Samples" RateYear="12/31/2003"
+			RealRate="0.075" NominalRate="0.0818" InterestRatesDate="01/01/2003" InterestRateGroupId="1"/>
+		<interestrate Id="17" Name="AAEA Samples092" RateYear="12/31/2003"
+			RealRate="0.05" NominalRate="0.092" InterestRatesDate="01/01/2003" InterestRateGroupId="1"/>
+		<interestrate Id="18" Name="AAEA Samples071" RateYear="12/31/2003"
+			RealRate="0.05" NominalRate="0.071" InterestRatesDate="01/01/2003" InterestRateGroupId="1"/>
+		<interestrate Id="19" Name="Central America 2004 3- Year Rates (14,5 and 7.5)" RateYear="12/31/2004"
+			RealRate="0.075" NominalRate="0.145" InterestRatesDate="01/01/2004" InterestRateGroupId="1"/>
+		<interestrate Id="20" Name="2004 3-Year Rates" RateYear="12/31/2004"
+			RealRate="0.016" NominalRate="0.031" InterestRatesDate="02/01/2004" InterestRateGroupId="1"/>
+		<interestrate Id="21" Name="2004 7-Year Rates" RateYear="12/31/2004"
+			RealRate="0.022" NominalRate="0.039" InterestRatesDate="02/01/2004" InterestRateGroupId="1"/>
+		<interestrate Id="22" Name="2004 30-Year Rates" RateYear="12/31/2004"
+			RealRate="0.032" NominalRate="0.051" InterestRatesDate="02/01/2004" InterestRateGroupId="1"/>
+	</interestrategroup>
+</root>

@@ -1,0 +1,73 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, LinkedViews.LINKEDVIEWS_TYPES.linkedviewgroup.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    if (Model.URINodeName == LinkedViews.LINKEDVIEWS_TYPES.linkedviewgroup.ToString())
+    {
+
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.LinkedViewClass.LinkedViewClassName, string.Empty,
+                  GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "Linked View Pack",
+                LinkedViews.LINKEDVIEWS_TYPES.linkedviewpack.ToString())
+        }
+        else 
+        {
+             @Html.H4("Linked View Pack", "ui-bar-b")
+        }
+        if (Model.URIModels.LinkedViewClass.LinkedViewPack != null)
+        {
+            if (Model.URIModels.LinkedViewClass.LinkedViewPack.Count > 0)
+            {
+                foreach (var linkedviewpack in Model.URIModels.LinkedViewClass.LinkedViewPack)
+                {
+                    ViewData.Model.URIModels.LinkedViewPack = linkedviewpack;
+                    @Html.DivCollapseStart(Model, linkedviewpack.PKId)
+                    <h4>@linkedviewpack.LinkedViewPackName</h4>
+                    @Html.Partial("ContentModelViews/_LinkedViewPack", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else
+    {
+        string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.LinkedViewClass.LinkedViewClassName, Model.URIModels.LinkedViewClass.PKId.ToString(),
+                Model.URINetworkPartName, LinkedViews.LINKEDVIEWS_TYPES.linkedviewgroup.ToString(), string.Empty);
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.LinkedViewClass.LinkedViewClassName, "LinkedViewClassName",
+                         Model.URIDataManager.EditViewEditType, bCanDelete)
+    
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("TypeId", "Type:")
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.LinkedViewClass.TypeId.ToString(),
+                 "TypeId", GeneralRules.INTEGER, "4",
+                 Model.URIDataManager.EditViewEditType, "Select225", LinkedViews.GetLinkedViewType(Model))
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("LinkedViewClassNum", "Label")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                      Model.URIModels.LinkedViewClass.LinkedViewClassNum, "LinkedViewClassNum", GeneralRules.STRING, "15",
+                 "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.LinkedViewClass.LinkedViewClassDesc, "LinkedViewClassDesc",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+
+    }
+    
+    }

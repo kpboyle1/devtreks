@@ -1,7 +1,57 @@
-﻿@{
-    ViewData["Title"] = "About";
+﻿
+@using DevTreks.Helpers;
+@{
+    ViewBag.Title = AppHelper.GetResource("DEVTREKS_ABOUT");
+    //layout set in _viewstart
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini="true", data_inline="true" }) > @Html.Encode(ViewData["Title"]) </strong></p>
+@Html.H4(@AppHelper.GetResource("SOCIALBUDGET_WHATIS") , "ui-bar-b")
+<p>
+    @AppHelper.GetResource("SOCIALBUDGET_IS")
+</p>
+<p>
+    @AppHelper.GetResource("SOCIALBUDGET_IS2")
+</p>
+@Html.H4(@AppHelper.GetResource("SOCIALBUDGET_HOWDOES") , "ui-bar-b")
+<p>
+        @Html.Encode(ViewData["Message"]) 
+</p>
+<p>@AppHelper.GetResource("SOCIALBUDGET_DOES2")</p>
+<p>@AppHelper.GetResource("SOCIALBUDGET_DOES3")</p>
+<p>@AppHelper.GetResource("SOCIALBUDGET_DOES4")</p>
+<p>
+    </p>
+@Html.H4(@AppHelper.GetResource("SOCIAL_BUDGET_DEFS") , "ui-bar-b")
+<p><strong>@AppHelper.GetResource("SOCIAL_BUDGET_GOAL")@Html.Encode(ViewData["Goal"]) </strong></p>
+    <p>
+    <strong>@AppHelper.GetResource("SOCIAL_BUDGET_MEMBER")</strong> 
+    @AppHelper.GetResource("SOCIAL_BUDGET_MEMBER2")
+</p>
+<p>
+    <strong>@AppHelper.GetResource("SOCIAL_BUDGET_CLUB")</strong> 
+    @AppHelper.GetResource("SOCIAL_BUDGET_CLUB2")
+</p>
+<p>
+    <strong>@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE")</strong> 
+    @AppHelper.GetResource("SOCIAL_BUDGET_SERVICE2")
+    <br />@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE3")
+    <br />@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE4")
+    <br />@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE5")
+    <br />@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE6")
+    <br />@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE7")
+    <br />@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE8")
+    <br />@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE9")
+    <br />@AppHelper.GetResource("SOCIAL_BUDGET_SERVICE10")
+</p>
+<p>
+    <strong>@AppHelper.GetResource("SOCIAL_BUDGET_NETWORK")</strong> 
+    @AppHelper.GetResource("SOCIAL_BUDGET_NETWORK2")
+</p>
+<p><strong>@AppHelper.GetResource("SOCIAL_BUDGET_DECISION")</strong> 
+    @AppHelper.GetResource("SOCIAL_BUDGET_DECISION2")</p>
+@Html.H4(@AppHelper.GetResource("DEVTREKS_NGO") , "ui-bar-b")
+<p>@Html.Image("logo", StylesheetHelper.GetImagesUrl("devtreks-logo.jpg"), "DevTreks logo", "15%", "15%", string.Empty)@AppHelper.GetResource("DEVTREKS_SUPPORT")</p>
+@section Footer {
+    @HtmlHelperExtensions.WriteCurrentVersion(Html)
+}
 
-<p>Use this area to provide additional information.</p>

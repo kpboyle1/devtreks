@@ -1,26 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using DevTreks.Models;
 
-namespace DevTreks.Data
+namespace DevTreks.Models
 {
+    /// <summary>
+    ///Purpose:	Manage db logins
+    ///Author   www.devtreks.org
+    ///Date:    2016, March
+    ///Note:	This is only used by UI layer to manage logins.
+    ///         Rest of db is managed on data layer.
+    /// </summary>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            // Customize the ASP.NET Identity model and override the defaults if needed.
-            // For example, you can rename the ASP.NET Identity table names and more.
-            // Add your customizations after calling base.OnModelCreating(builder);
+            //the Identity model makes the commented out code unnecessary
+            
         }
+        //2.0.0 change: Aspnet Identity model removed and replaced with std services/reposit pattern
+        //for inserting new member with 1 to 1 to aspnetuser insertion
     }
 }

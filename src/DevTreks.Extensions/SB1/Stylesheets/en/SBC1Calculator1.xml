@@ -1,0 +1,8 @@
+﻿<root>
+	<linkedview Id="1" Version="1.9.0" CalculatorType="sb101" 
+		WhatIfTagName="none" FileExtensionType="sb101" 
+		CalculatorName="Stock Budgeting 1 Input Calculator" 
+    StylesheetResourceFileName="SBC1Calculator1.xslt" 
+		Stylesheet2ResourceFileName="SB1StocksIns1.xslt"
+		RelatedCalculatorsType="sb01" Overwrite="0"  />
+</root>

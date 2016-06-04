@@ -1,0 +1,7 @@
+﻿<root>
+	<linkedview Id="1" Version="1.3.2" CalculatorType="foodfactUSA1" 
+		WhatIfTagName="none" FileExtensionType="foodfactUSA1" 
+		CalculatorName="Food Facts Calculator" StylesheetResourceFileName="FoodNutrition1In1.xslt" 
+		Stylesheet2ResourceFileName="FN1StocksIns1.xslt"
+		RelatedCalculatorsType="foodnutrition" Overwrite="0"  />
+</root>

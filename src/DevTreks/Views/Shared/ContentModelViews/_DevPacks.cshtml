@@ -1,0 +1,31 @@
+﻿@using DevTreks.Helpers;
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "DevPack";
+}
+<div>
+    @{
+        if (Model.URIModels.Service != null)
+        {
+            @Html.Partial("ContentModelViews/_DevPackService", ViewData.Model)
+        }
+        else if (Model.URIModels.DevPackClass != null)
+        {
+            @Html.Partial("ContentModelViews/_DevPackClass", ViewData.Model)
+        }
+        else if (Model.URIModels.DevPackClassToDevPack != null)
+        {
+            @Html.Partial("ContentModelViews/_DevPack", ViewData.Model)
+        }
+        else if (Model.URIModels.DevPackToDevPackPart != null)
+        {
+            @Html.Partial("ContentModelViews/_DevPackPart", ViewData.Model)
+        }
+        <br />
+        <div>
+            @Html.LinkMobile("feedback", string.Concat("mailto:", @Model.URIClub.AccountEmail, "?subject=", @Model.URIFull),
+                string.Empty, string.Concat("Feedback About ", @Model.URIPattern), "button", "true", "false",
+                "info", "left")
+        </div>
+    }
+</div>

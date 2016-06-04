@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<datasourceprice Id="0" Name="none"/>
+	<datasourceprice Id="1" Name="Fred Meyers Grocery Store" Description="Discount grocery store" URI=""/>
+	<datasourceprice Id="2" Name="Trader Joes Grocery Store" Description="Regular grocery store" URI=""/>
+	<datasourceprice Id="3" Name="Northwest Market Grocery Store" Description="Regular grocery store" URI=""/>
+	<datasourceprice Id="4" Name="Ace" Description="General purpose hardware store" URI=""/>
+	<datasourceprice Id="5" Name="Safeway" Description="General purpose grocery store" URI=""/>
+	<datasourceprice Id="6" Name="Whole Foods" Description="Organic food grocer" URI=""/>
+</root>

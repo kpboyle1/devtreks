@@ -1,0 +1,154 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using System.IO;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    @HtmlHelperExtensions.MakeSynchDocLinks(Html, Model)
+    bool bIsSearch = false;
+    @HtmlHelperExtensions.MakeHorizStartAtRowButtons(Html,
+        Model, Model.URIDataManager.StartRow, Model.URIDataManager.PageSize,
+        Model.URIDataManager.RowCount, Model.URIDataManager.ParentStartRow,
+        bIsSearch)
+    //display linked views
+    bool bHasLinkedView = false;
+    if (Model.URIDataManager.LinkedView != null)
+    {
+        if (Model.URIDataManager.LinkedView.Count > 0)
+        {
+            bHasLinkedView = true;
+        }
+    }
+    if (bHasLinkedView)
+    {
+        //155 eliminated DisplayModels because it required an EF hit with no multimedia
+        <div>
+        <ul data-role="listview" data-inset="true" data-theme="a">
+            @if (Model.URIDataManager.LinkedView != null)
+            {
+                string resourcePackId = "0";
+                foreach (var linkedviewparent in Model.URIDataManager.LinkedView)
+                {
+                    int i = 1;
+                    foreach (ContentURI child in linkedviewparent)
+                    {
+                        if (i == 1)
+                        {
+                            resourcePackId = ContentURI.GetURIPatternPart(child.URIDataManager.ParentURIPattern,
+                            ContentURI.URIPATTERNPART.id);
+                            @Html.LIStart("list-divider")
+                            @Html.Raw(ContentURI.GetURIPatternPart(child.URIDataManager.ParentURIPattern,
+                                                ContentURI.URIPATTERNPART.name));
+                            @Html.LIEnd();
+                        }
+                        @Html.LIStart(string.Empty)
+                        @*@DisplayChildCell(Model, child, resourcePackId)*@
+                        ContentURI resourceURI = LinqHelpers.GetContentURIListIsMainImage(
+                        child.URIDataManager.Resource);
+                        @Html.FieldsetStart(string.Empty, string.Empty, "controlgroup", "horizontal", "true")
+                        //write the image
+                        @Html.DivStart(string.Empty, string.Empty)
+                        if (DevTreks.Data.AppHelpers.Resources.IsResourceImage(resourceURI))
+                        {
+                            @Html.Image(string.Concat("uriimage_",
+                                        child.URIId.ToString()), resourceURI.URIDataManager.FileSystemPath,
+                                    resourceURI.URIDataManager.Description, "50%", "50%", string.Empty)
+                        }
+                        else
+                        {
+                            <br />
+                        }
+                        @Html.DivEnd()
+                            //write the name and description
+                        @Html.DivStart(string.Empty, string.Empty)
+                        @Html.StrongStart()
+                        this.Write(child.URIName);
+                        @Html.StrongEnd()
+                        this.Write(" : ");
+                        this.Write(child.URIDataManager.Description);
+                        @Html.DivEnd();
+                        @Html.FieldsetEnd()
+                        if (!string.IsNullOrEmpty(child.URIDataManager.FileSystemPath))
+                        {
+                            string resourceFileName = System.IO.Path.GetFileName(child.URIDataManager.FileSystemPath);
+                            if (!string.IsNullOrEmpty(resourceFileName)
+                                && resourceFileName != GeneralHelpers.NONE)
+                            {
+                                string resourceurl = StylesheetHelper.GetURIPattern(resourceFileName, child.URIId.ToString(), @Model.URINetworkPartName,
+                                    Resources.RESOURCES_TYPES.resource.ToString(), string.Empty);
+                                if (!string.IsNullOrEmpty(resourceurl))
+                                {
+                                    string resourceparam = Resources.GetResourceFilePath(Model, false, Model.URIDataManager.ServerSubActionType.ToString(),
+                                        @Model.URINetworkPartName, resourcePackId, child.URIId.ToString(), resourceFileName);
+                                    //StylesheetHelper styleHelper = new StylesheetHelper();
+                                    //string resourceparam = styleHelper.GetResourceUrlByResource(@resourceurl, resourcePackId, @Model.URIDataManager.ServerSubActionType.ToString());
+                                    if (!string.IsNullOrEmpty(resourceparam))
+                                    {
+                                        @Html.DivStart(string.Empty, string.Empty)
+                                        @Html.LabelItalic("resourcelink", "Click button to download resource.")
+                                        <br/>
+                                        @Html.LinkMobile(string.Concat("resourcelink", child.URIId), @resourceparam, string.Empty, string.Concat("Download ", resourceFileName), "button", "true", "true", string.Empty, string.Empty)
+	                                    <br/>
+                                        @Html.DivEnd();
+                                    }
+                                }
+                            }
+                        }
+                        @Html.LIEnd();
+                        i++;
+                    }
+                }
+            }
+        </ul>
+        </div>
+    }
+ }
+@helper DisplayChildCell(ContentURI uri, ContentURI child, string resourcePackId)
+{
+    ContentURI resourceURI = LinqHelpers.GetContentURIListIsMainImage(
+        child.URIDataManager.Resource);
+        @Html.FieldsetStart(string.Empty, string.Empty, "controlgroup", "horizontal", "true")
+        //write the image
+    @Html.DivStart(string.Empty, string.Empty)
+    if (resourceURI != null)
+    {
+        @Html.Image(string.Concat("uriimage_",
+                 child.URIId.ToString()), resourceURI.URIDataManager.FileSystemPath,
+                resourceURI.URIDataManager.Description, "50%", "50%", string.Empty)
+    }
+    else
+    {
+        <br />
+    }
+    @Html.DivEnd()
+        //write the name and description
+    @Html.DivStart(string.Empty, string.Empty)
+    @Html.StrongStart()
+    this.Write(child.URIName);
+    @Html.StrongEnd()
+    this.Write(" : ");
+    this.Write(child.URIDataManager.Description);
+    @Html.DivEnd();
+    @Html.FieldsetEnd()
+    string resourceurl = StylesheetHelper.GetURIPattern(child.URIName, child.URIId.ToString(), @Model.URINetworkPartName,
+        Resources.RESOURCES_TYPES.resource.ToString(), string.Empty);
+    if (!string.IsNullOrEmpty(resourceurl))
+    {
+        StylesheetHelper styleHelper = new StylesheetHelper();
+        string resourceparam = styleHelper.GetResourceUrlByResource(@resourceurl, resourcePackId, @Model.URIDataManager.ServerSubActionType.ToString());
+        if (!string.IsNullOrEmpty(resourceparam))
+        {
+            @Html.DivStart(string.Empty, string.Empty)
+            @Html.LabelItalic("resourcelink", "Click button to download resource.")
+            <br/>
+            @Html.LinkMobile(string.Concat("resourcelink", child.URIId), @resourceparam, string.Empty, string.Concat("Download ", child.URIName), "button", "true", "true", string.Empty, string.Empty)
+	        <br/>
+            @Html.DivEnd();
+        }
+    }
+    
+}

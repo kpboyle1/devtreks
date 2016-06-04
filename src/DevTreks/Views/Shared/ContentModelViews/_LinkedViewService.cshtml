@@ -1,0 +1,37 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = false;
+    @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Service.ServiceName,
+        "ServiceName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+    if (Model.URIDataManager.EditViewEditType
+        == GeneralHelpers.VIEW_EDIT_TYPES.full
+        && Model.URINodeName.StartsWith(Agreement.AGREEMENT_TYPES.service.ToString()))
+    {
+        @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "LinkedView Group",
+        LinkedViews.LINKEDVIEWS_TYPES.linkedviewgroup.ToString());
+    }
+    else 
+    {
+        @Html.H4("Linked View Groups", "ui-bar-b")
+    }
+    if (Model.URIModels.Service.LinkedViewClass != null)
+    {
+        if (Model.URIModels.Service.LinkedViewClass.Count > 0)
+        {
+            foreach (var linkedviewclass in Model.URIModels.Service.LinkedViewClass)
+            {
+                ViewData.Model.URIModels.LinkedViewClass = linkedviewclass;
+                @Html.DivCollapseStart(Model, linkedviewclass.PKId)
+                <h4>@linkedviewclass.LinkedViewClassName</h4>
+                @Html.Partial("ContentModelViews/_LinkedViewClass", ViewData.Model)
+                @Html.DivEnd()
+            }
+        }
+    }
+    }

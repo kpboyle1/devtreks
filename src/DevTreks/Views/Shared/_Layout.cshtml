@@ -1,68 +1,114 @@
-﻿<!DOCTYPE html>
+﻿@using System.Threading.Tasks;
+@using DevTreks.Helpers;
+
+<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DevTreks</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    @Html.Raw(HtmlExtensions.GetMetaDescription(@ViewBag.Description))
+    <title>@ViewBag.Title</title>
     <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/A_desert2.css" />
+        <link rel="stylesheet" href="~/css/B_jquery.mobile.icons-1.4.5.min.css" />
+        <link rel="stylesheet" href="~/css/C_jquery.mobile.structure-1.4.5.css" />
+        <link rel="stylesheet" href="~/css/D_Site1.css" />
     </environment>
     <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-controller="Home" asp-action="Index" class="navbar-brand">DevTreks</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
-                </ul>
-                @await Html.PartialAsync("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2016 - DevTreks</p>
-        </footer>
-    </div>
-
     <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/A_jquery-2.2.3.js" asp-append-version="false"></script>
+        <script src="~/js/B_SharedUtils1.js" asp-append-version="false"></script>
+        <script src="~/js/C_Form1.js" asp-append-version="false"></script>
+        <script src="~/js/D_Select1.js" asp-append-version="false"></script>
+        <script src="~/js/E_ChangeTabView1.js" asp-append-version="false"></script>
+        <script src="~/js/F_ChangeClickView1.js" asp-append-version="false"></script>
+        <script src="~/js/G_OnClickPresenter1.js" asp-append-version="false"></script>
+        <script src="~/js/H_OnSearchClickPresenter1.js" asp-append-version="false"></script>
+        <script src="~/js/I_LoadFile1.js" asp-append-version="false"></script>
+        <script src="~/js/J_DevTreksJQ1.js" asp-append-version="false"></script>
+        <script src="~/js/K_jquery.mobile-1.4.5.js" asp-append-version="false"></script>
     </environment>
     <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
-    @RenderSection("scripts", required: false)
+	<link rel="icon" type="image/png" href="~/images/devtreks-icon.png" />
+</head>
+<body>
+<div data-role="page">
+ <div id="baseheader" data-role="header">
+    <div id="basemenu" data-role="navbar">
+        <ul>
+            <li><a id="menuhome" href="#" data-theme="a" class="ui-mini"> 
+                @Html.Encode(ViewData["NetworkGroup"]) 
+            </a></li>
+            <li><a id="menusearch" href="#" data-theme="a" class="ui-mini"> 
+                @AppHelper.GetResource("TAB_SEARCH")
+            </a></li>
+            <li><a id="menupreview" href="#" data-theme="a" class="ui-mini"> 
+                @AppHelper.GetResource("TAB_PREVIEW")
+            </a></li>
+            <li><a id="menuselect" href="#" data-theme="a" class="ui-mini"> 
+                @AppHelper.GetResource("TAB_SELECT")
+            </a></li>
+        </ul>
+    </div>
+    <div id="basemenu2" data-role="navbar">
+        <ul>
+             <li><a id="menuedit" href="#" data-theme="a" class="ui-mini"> 
+                @AppHelper.GetResource("TAB_EDIT")
+            </a></li>
+            <li><a id="menupack" href="#" data-theme="a" class="ui-mini" > 
+                @AppHelper.GetResource("TAB_PACK")
+            </a></li>
+            <li><a id="menulinkedviews" href="#" data-theme="a" class="ui-mini" > 
+                @AppHelper.GetResource("TAB_VIEWS")
+            </a></li>
+            <li><a id="menumember" href="#" data-theme="a" class="ui-mini" > 
+                @AppHelper.GetResource("TAB_CLUB")
+            </a></li>
+        </ul>
+    </div>
+</div>
+<div><span id="spanGettingData"></span><span id="spanDisplayError"></span></div>
+<div id="basecontent" class="ui-content" role="main">
+    <div id="divhome">
+        <br />
+        <br />
+        <h4>@Html.ActionLink(AppHelper.GetResource("GO_TO") + Html.Encode(ViewData["NetworkGroup"]) + " Home", "index", Html.Encode(ViewData["NetworkGroup"]), routeValues: null, htmlAttributes: new { data_role = "button", data_mini="true", data_inline="true" })</h4>
+        <br /><br /><br />@AppHelper.GetResource("HOME_CLEARS")
+        <br />
+    </div>
+    <div id="divsearch">
+        @RenderSection("Search", true)
+    </div>
+    <div id="divpreview">
+        @RenderSection("Preview", true)
+    </div>
+    <div id="divselect">
+        @RenderSection("Select", true)
+    </div>
+    <div id="divedit">
+        @RenderSection("Edit", true)
+    </div>
+    <div id="divpack">
+        @RenderSection("Pack", true)
+    </div>
+    <div id="divlinkedviews">
+        @RenderSection("LinkedView", true)
+    </div>
+    <div id="divmember">
+        @RenderSection("Member", true)
+    </div>
+    <br />
+    <label id="lblMessage" style="display:none"></label>
+    <br />
+    <br />
+        @RenderSection("UploadFile", true)
+    @*2.0.0 refactored out: @Html.Partial("ContentPartialViews/_SwitchUnits")*@
+    </div>
+</div>
 </body>
 </html>

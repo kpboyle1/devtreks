@@ -1,0 +1,76 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.AccountToNetwork == null)
+    {
+        //show existing error message only
+        return;
+    }
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToNetwork.Network.NetworkName, Model.URIModels.AccountToNetwork.PKId.ToString(),
+            Model.URINetworkPartName, Networks.NETWORK_TYPES.network.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+        @Model.URINodeName, Networks.NETWORK_TYPES.network.ToString(),
+        Model.URIDataManager.ServerActionType, Model.URIMember);
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    if (bCanDelete)
+    {
+        @HtmlHelperExtensions.MakeDeleteOptionsWithFieldSet(Html, searchurl, Model.URIModels.AccountToNetwork.Network.NetworkName);
+    }
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("NetworkRole", "Club Role in Network:")
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.Raw(Model.URIModels.AccountToNetwork.NetworkRole)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    if (Model.URIDataManager.EditViewEditType == GeneralHelpers.VIEW_EDIT_TYPES.full)
+    {
+        string name = string.Concat(StylesheetHelper.GetURIPattern("none", "0", "0", "network", ""), ";IsDefaultNetwork;boolean;1");
+        string id = string.Concat("defaultnetwork", Model.URIModels.AccountToNetwork.PKId.ToString());
+        @HtmlHelperExtensions.MakeRadioTrueFalseOption(Html, id, name, Model.URIModels.AccountToNetwork.PKId.ToString(), 
+            Model.URIModels.AccountToNetwork.IsDefaultNetwork, "Is Default Network")
+    }
+    else
+    {
+        @Html.Raw(string.Concat("Is Default Network: ", Model.URIModels.AccountToNetwork.IsDefaultNetwork.ToString()))
+    }
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.LabelStrong("NetworkDesc", "Description: ")
+    @Html.Raw(Model.URIModels.AccountToNetwork.Network.NetworkDesc)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    //@Html.DivStart(string.Empty, "ui-grid-a")
+    //@Html.DivStart(string.Empty, "ui-block-a")
+    //@Html.LabelStrong("DefaultGetDataFromType", "Default Get Data From:")
+    //@Html.DivEnd()
+    //@Html.DivStart(string.Empty, "ui-block-a")
+    //@HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.AccountToNetwork.DefaultGetDataFromType,
+     //    "DefaultGetDataFromType", GeneralRules.STRING, "15",
+     //   Model.URIDataManager.EditViewEditType, "Select150", Network.GetNetworkStoreDataDictionary())
+    //@Html.DivEnd()
+    //@Html.DivEnd()
+   //@Html.DivStart(string.Empty, "ui-grid-a")
+   // @Html.DivStart(string.Empty, "ui-block-a")
+    //@Html.LabelStrong("DefaultStoreDataAtType", "Default Store Data At:")
+    //@Html.DivEnd()
+   // @Html.DivStart(string.Empty, "ui-block-a")
+    //@HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.AccountToNetwork.DefaultStoreDataAtType,
+         //   "DefaultStoreDataAtType", GeneralRules.STRING, "15",
+         //   Model.URIDataManager.EditViewEditType, "Select150", Network.GetNetworkStoreDataDictionary())
+    //@Html.DivEnd()
+    //@Html.DivEnd()
+ }

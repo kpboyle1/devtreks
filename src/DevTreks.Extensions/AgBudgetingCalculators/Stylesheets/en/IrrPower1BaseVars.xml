@@ -1,0 +1,7 @@
+﻿<root>
+<linkedview Id="1" Version="1.6.3" CalculatorType="irrpower" WhatIfTagName="none"
+	FileExtensionType="irrpower" RelatedCalculatorsType="irrpower" 
+	StylesheetResourceFileName="IrrigationPower1.xslt" Stylesheet2ResourceFileName="IrrPower1StocksIns1.xslt"
+	CalculatorName="Irrigation Costs" Overwrite="0" 
+  OptionForTime="1" OptionForInflation="1" OptionForFuelConsumption="1" />
+</root> 

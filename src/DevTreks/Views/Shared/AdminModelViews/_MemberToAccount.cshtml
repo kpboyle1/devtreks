@@ -1,0 +1,47 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.AccountToMember == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.DivStart(string.Empty, string.Empty, "fieldcontain", "b", string.Empty, string.Empty, "true")
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToMember.Member.MemberLastName,
+        Model.URIModels.AccountToMember.PKId.ToString(),
+        Model.URINetworkPartName, Members.MEMBER_TYPES.member.ToString(), string.Empty);
+    //the normal Model.URIMember is not passed to this method; 
+    bool bCanDelete = AppHelper.CanDeleteNode(
+        @Model.URINodeName, Members.MEMBER_TYPES.member.ToString(),
+        Model.URIDataManager.ServerActionType, Model.URIModels.AccountToMember);
+    if (bCanDelete)
+    {
+        @HtmlHelperExtensions.MakeDeleteOptionsWithFieldSet(Html, searchurl, 
+            Model.URIModels.AccountToMember.ClubDefault.AccountName)
+    }
+    string sNetworkText = string.Empty;
+    if (bCanDelete)
+    {
+        sNetworkText = string.Concat("Role: ", Model.URIModels.AccountToMember.MemberRole, "; ", Model.URIModels.AccountToMember.ClubDefault.AccountName);
+        string name = string.Concat(StylesheetHelper.GetURIPattern("none", "0", "0", "account", ""), ";IsDefaultClub;boolean;1");
+        string id = string.Concat("defaultclub", Model.URIModels.AccountToMember.AccountId.ToString());
+        //update will use the aToM.AccountId 
+        @HtmlHelperExtensions.MakeRadioTrueFalseOption(Html, id, name, Model.URIModels.AccountToMember.AccountId.ToString(),
+            Model.URIModels.AccountToMember.IsDefaultClub, "Is Default Club")
+    }
+    else
+    {
+        sNetworkText = string.Concat("Is Default: ", Model.URIModels.AccountToMember.IsDefaultClub.ToString(), "; Role: ", 
+            Model.URIModels.AccountToMember.MemberRole);
+    }
+    @Html.DivEnd()
+    <p>@Html.Raw(sNetworkText)</p>
+}

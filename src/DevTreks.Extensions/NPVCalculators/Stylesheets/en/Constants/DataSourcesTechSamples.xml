@@ -1,0 +1,8 @@
+﻿<root>
+	<datasourcetech Id="1" Name="Iowa State Cooperative Extension" Description="2003 Iowa Crop Production Cost Budgets" URI=""/>
+	<datasourcetech Id="2" Name="USDA, NASS" Description="United States Department of Agriculture, National Agricultural Statistical Services" URI="http://www.usda.gov/nass/"/>
+	<datasourcetech Id="3" Name="AAEA Samples" Description="American Agricultural Economics Association Samples" URI="http://www.aaea.org"/>
+	<datasourcetech Id="4" Name="BASIM Proyecto, El Salvador" Description="Entrevistas con techincos agronomos del proyecto Agua y agricultores." URI=""/>
+	<datasourcetech Id="5" Name="Iowa State Northeast Research and Demonstration Farm" Description="Iowa State; Nashua, Floyd County, Iowa" URI="http://www.ag.iastate.edu/farms/northeast.html"/>
+	<datasourcetech Id="6" Name="USDC, NIST" Description="UNIFORMATII samples" URI=""/>
+</root>

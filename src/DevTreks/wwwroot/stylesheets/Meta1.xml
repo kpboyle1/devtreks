@@ -1,0 +1,37 @@
+<root>
+<meta Id="1" Label="a">
+  <title Id="1" Label="a" Name="none" Description="none" /> 
+  <creator Id="1" Label="a" Name="none" Description="none" /> 
+  <subject Id="1" Label="a" Name="none" Description="none" />
+  <description Id="1" Label="a" Name="none" Description="none" />
+  <publisher Id="1" Label="a" Name="none" Description="none" />
+  <contributor Id="1" Label="a" Name="none" Description="none" />
+  <date Id="1" Label="a" Name="none" Description="none" /> 
+  <type Id="1" Label="a" Name="none" Description="none" /> 
+  <format Id="1" Label="a" Name="none" Description="none" />
+  <identifier Id="1" Label="a" Name="none" Description="none" />
+  <source Id="1" Label="a" Name="none" Description="none" />
+  <language Id="1" Label="a" Name="none" Description="none" />
+  <relation Id="1" Label="a" Name="none" Description="none" />
+  <coverage Id="1" Label="a" Name="none" Description="none" />
+  <rights Id="1" Label="a" Name="none" Description="none" />
+</meta>
+<!--Node used to init metadata-->
+<meta Id="2" Label="a">
+	<title Id="2" Label="a" Name="none" Description="none" /> 
+  <creator Id="2" Label="a" Name="none" Description="none" /> 
+  <subject Id="2" Label="a" Name="none" Description="none" />
+  <description Id="2" Label="a" Name="none" Description="none" />
+  <publisher Id="2" Label="a" Name="none" Description="none" />
+  <contributor Id="2" Label="a" Name="none" Description="none" />
+  <date Id="2" Label="a" Name="none" Description="none" /> 
+  <type Id="2" Label="a" Name="none" Description="none" /> 
+  <format Id="2" Label="a" Name="none" Description="none" />
+  <identifier Id="2" Label="a" Name="none" Description="none" />
+  <source Id="2" Label="a" Name="none" Description="none" />
+  <language Id="2" Label="a" Name="none" Description="none" />
+  <relation Id="2" Label="a" Name="none" Description="none" />
+  <coverage Id="2" Label="a" Name="none" Description="none" />
+  <rights Id="2" Label="a" Name="none" Description="none" />
+</meta>
+</root>

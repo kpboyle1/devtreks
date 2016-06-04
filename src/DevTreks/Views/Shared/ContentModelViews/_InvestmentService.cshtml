@@ -1,0 +1,37 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = false;
+    @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Service.ServiceName,
+        "ServiceName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+    if (Model.URIDataManager.EditViewEditType
+        == GeneralHelpers.VIEW_EDIT_TYPES.full
+        && Model.URINodeName.StartsWith(Agreement.AGREEMENT_TYPES.service.ToString()))
+    {
+        @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "Investment Group",
+        Economics1.INVESTMENT_TYPES.investmentgroup.ToString());
+    }
+    else 
+    {
+        @Html.H4("Investment Groups", "ui-bar-b")
+    }
+    if (Model.URIModels.Service.CostSystem != null)
+    {
+        if (Model.URIModels.Service.CostSystem.Count > 0)
+        {
+            foreach (var investmentclass in Model.URIModels.Service.CostSystem)
+            {
+                ViewData.Model.URIModels.CostSystem = investmentclass;
+                @Html.DivCollapseStart(Model, investmentclass.PKId)
+                <h4>@investmentclass.Name</h4>
+                @Html.Partial("ContentModelViews/_InvestmentClass", ViewData.Model)
+                @Html.DivEnd()
+            }
+        }
+    }
+    }

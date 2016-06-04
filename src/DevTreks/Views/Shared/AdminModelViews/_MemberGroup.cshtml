@@ -1,0 +1,127 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "Members";
+}
+@{
+    if (Model.URINodeName == Members.MEMBER_BASE_TYPES.memberbasegroup.ToString())
+    {
+        bool bCanDelete = false;
+        //MemberClass is not used -members must register and select a membergroup; 
+        //this view only is used to edit member.defaultclub
+        if (Model.URIModels.MemberClass != null)
+        {
+            @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.MemberClass.MemberClassName,
+                "MemberClassName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+            if (Model.URIModels.MemberClass.Member != null)
+            {
+                if (Model.URIModels.MemberClass.Member.Count > 0)
+                {
+                    @Html.H4("Members", "ui-bar-b")
+                    foreach (var member in Model.URIModels.MemberClass.Member)
+                    {
+                        ViewData.Model.URIModels.Member = member;
+                        @Html.DivCollapseStart(Model, member.PKId)
+                        string sMemberName = string.Concat(member.MemberFirstName, ", ", member.MemberLastName);
+                        <h4>@sMemberName</h4>
+                        @Html.Partial("AdminModelViews/_Member", ViewData.Model)
+                        @Html.DivEnd()
+                    }
+                }
+            }
+        }
+        else if (Model.URIModels.Member != null)
+        {
+            //2.0.0 new: memberbasegroup will return here
+            //members must always be allowed to switch clubs 
+            //-if they switch to a club where they are contributor
+            //the StartEdit html extension won't display the edit buttons (not a fulleditview)
+            if (Model.URIDataManager.EditViewEditType
+                != GeneralHelpers.VIEW_EDIT_TYPES.full)
+            {
+                @HtmlHelperExtensions.EditButtons(Html, Model)
+            }
+            string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Member.MemberLastName,
+                Model.URIModels.Member.PKId.ToString(),
+                Model.URINetworkPartName, Members.MEMBER_BASE_TYPES.memberbasegroup.ToString(),
+                string.Empty);
+            bCanDelete = false;
+            @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Member.MemberLastName,
+                    "MemberLastName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+            //only allow members with coordinator roles to make these edits
+            if (Model.URIDataManager.EditViewEditType
+                == GeneralHelpers.VIEW_EDIT_TYPES.full)
+            {
+                @HtmlHelperExtensions.MakeDefaultClubButtons(Html, Model, searchurl)
+            }
+            else
+            {
+                    @Html.H4("Member", "ui-bar-b")
+            }
+            if (Model.URIModels.Member.AccountToMember != null)
+            {
+                if (Model.URIModels.Member.AccountToMember.Count > 0)
+                {
+                    foreach (var accounttomember in Model.URIModels.Member.AccountToMember)
+                    {
+                        //membersmodelhelper includes basemember and clubdefault with each collection member
+                        @Html.DivCollapseStart(Model, accounttomember.PKId)
+                        string sClubName = string.Concat(accounttomember.ClubDefault.AccountName);
+                        <h4>@sClubName</h4>
+                        ViewData.Model.URIModels.AccountToMember = accounttomember;
+                        @Html.Partial("AdminModelViews/_MemberToAccount", ViewData.Model)
+                        @Html.DivEnd()
+                    }
+                }
+            }
+        }
+    }
+    else if (Model.URINodeName == Members.MEMBER_TYPES.memberaccountgroup.ToString())
+    {
+        if (Model.URIModels.Account == null)
+        {
+            //show existing error message only
+            return;
+        }
+        string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Account.AccountName, Model.URIModels.Account.PKId.ToString(),
+            Model.URINetworkPartName, Members.MEMBER_TYPES.memberaccountgroup.ToString(), string.Empty);
+        bool bCanDelete = false;
+            @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Account.AccountName,
+                     "AccountName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+            if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+            {
+            @HtmlExtensions.DivStart(Html, string.Empty, string.Empty)
+            @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                "GetSelectsLink", "Select Members", "spanSelectionFiles",
+                Model.URIDataManager.ContentURIPattern, searchurl,
+                Members.MEMBER_BASE_TYPES.memberbase.ToString(), string.Empty, string.Empty))
+            @HtmlExtensions.DivEnd(Html)
+            @Html.Raw("<br />")
+        }
+        else
+        {
+                @Html.H4("Members", "ui-bar-b")
+            }
+            if (Model.URIModels.Account.AccountToMember != null)
+            {
+                if (Model.URIModels.Account.AccountToMember.Count > 0)
+                {
+                    foreach (var accounttomember in Model.URIModels.Account.AccountToMember)
+                    {
+                        @Html.DivCollapseStart(Model, accounttomember.PKId)
+                        string sMemberName = string.Concat(accounttomember.Member.MemberFirstName, ", ", 
+                            accounttomember.Member.MemberLastName);
+                        @Html.H4(@sMemberName, string.Empty)
+                        ViewData.Model.URIModels.AccountToMember = accounttomember;
+                        @Html.Partial("AdminModelViews/_AccountToMember", ViewData.Model)
+                        @Html.DivEnd()
+                    }
+                }
+            }
+        }
+
+    }

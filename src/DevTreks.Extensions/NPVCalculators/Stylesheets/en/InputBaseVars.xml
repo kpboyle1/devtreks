@@ -1,0 +1,9 @@
+﻿<root>
+	<linkedview Id="1" Version="1.3" CalculatorType="input" 
+		WhatIfTagName="none" FileExtensionType="input" 
+		RelatedCalculatorsType="npv" CalculatorName="Input Discounting Calculator" 
+		StylesheetResourceFileName="InputCalculator.xslt" 
+		Stylesheet2ResourceFileName="Inputs1.xslt"
+    Overwrite="0"/>
+</root>
+ 

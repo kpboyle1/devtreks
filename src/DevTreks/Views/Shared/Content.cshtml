@@ -1,0 +1,98 @@
+﻿@using DevTreks.Helpers;
+@using DataHelpers = DevTreks.Data.Helpers.GeneralHelpers
+@model DevTreks.ViewModels.ContentViewModel
+
+@{
+    if (ViewData.Model.ContentURIData != null)
+    {
+        ViewBag.Title = ViewData.Model.ContentURIData.URIName;
+        if (ViewData.Model.ContentURIData.URIDataManager != null)
+        {
+            ViewBag.Description = ViewData.Model.ContentURIData.URIDataManager.Description;
+        }
+    }
+    if (string.IsNullOrEmpty(ViewBag.Title))
+    {
+        ViewBag.Title = AppHelper.GetResource("DEVTREKS_TITLE");
+    }
+    if (string.IsNullOrEmpty(ViewBag.Description))
+    {
+        ViewBag.Description = AppHelper.GetResource("DEVTREKS_GOAL");
+    }
+    Layout = "_Layout";
+    //or Layout = "~/Views/Shared/_Layout";   
+}
+
+@section Search
+{
+     @Html.H4(@AppHelper.GetResource("PANELS_SYNCH"), "ui-bar-b")
+}
+@section Preview
+{
+    @if (ViewData.Model.ContentURIData.URIDataManager.ServerActionType ==
+        DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.preview)
+    {
+        @Html.Partial("_ContentBody", ViewData.Model.ContentURIData)
+    }
+    else
+    {
+        @Html.H4(@AppHelper.GetResource("PANELS_SYNCH"), "ui-bar-b")
+    }
+}
+@section Select
+{
+    @if (ViewData.Model.ContentURIData.URIDataManager.ServerActionType ==
+        DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.select)
+    {
+        @Html.Partial("_ContentBody", ViewData.Model.ContentURIData)
+    }
+    else
+    {
+        @Html.H4(@AppHelper.GetResource("PANELS_SYNCH"), "ui-bar-b")
+   }  
+}
+@section Edit
+{
+    @if (ViewData.Model.ContentURIData.URIDataManager.ServerActionType ==
+        DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.edit)
+    {
+        @Html.Partial("_ContentBody", ViewData.Model.ContentURIData)
+    }
+    else
+    {
+        @Html.H4(@AppHelper.GetResource("PANELS_SYNCH"), "ui-bar-b")
+   }  
+}
+@section Pack
+{
+    @Html.Partial("SubActionsViews/_Package", ViewData.Model.ContentURIData)
+}
+@section LinkedView
+{
+   @if (ViewData.Model.ContentURIData.URIDataManager.ServerActionType ==
+        DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.linkedviews)
+    {
+        @Html.Partial("_ContentBody", ViewData.Model.ContentURIData)
+    }
+    else
+    {
+        @Html.H4(@AppHelper.GetResource("PANELS_SYNCH"), "ui-bar-b")
+    }
+}
+@section Member
+{
+    @if (ViewData.Model.ContentURIData.URIDataManager.ServerSubActionType
+        != DevTreks.Data.Helpers.GeneralHelpers.SERVER_SUBACTION_TYPES.uploadfile)
+    {
+        @Html.Partial("_Member", ViewData.Model.ContentURIData)
+    }
+    else 
+    {
+        @Html.H4(@AppHelper.GetResource("PANELS_SYNCH"), "ui-bar-b")
+    }
+}
+
+@section UploadFile
+{
+    @HtmlHelperExtensions.FileUpload(Html, ViewData.Model.ContentURIData)
+}

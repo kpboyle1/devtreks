@@ -1,0 +1,47 @@
+﻿<root>
+	<nominalrategroup Id="1" InterestRateGroupId="1" Name="Abstract Real Rates" Description="0 to 15 percent in half percent increments.">
+		<nominalrate Id="0" Name="none" NominalRate="0.0"/>
+		<nominalrate Id="1" Name="0.5 percent" NominalRate=".005"/>
+		<nominalrate Id="2" Name="1.0 percent" NominalRate=".010"/>
+		<nominalrate Id="3" Name="1.5 percent" NominalRate=".015"/>
+		<nominalrate Id="4" Name="2.0 percent" NominalRate=".020"/>
+		<nominalrate Id="5" Name="2.5 percent" NominalRate=".025"/>
+		<nominalrate Id="6" Name="3.0 percent" NominalRate=".030"/>
+		<nominalrate Id="7" Name="3.5 percent" NominalRate=".035"/>
+		<nominalrate Id="8" Name="4.0 percent" NominalRate=".040"/>
+		<nominalrate Id="9" Name="4.5 percent" NominalRate=".045"/>
+		<nominalrate Id="10" Name="5.0 percent" NominalRate=".050"/>
+		<nominalrate Id="11" Name="5.5 percent" NominalRate=".055"/>
+		<nominalrate Id="12" Name="6.0 percent" NominalRate=".060"/>
+		<nominalrate Id="13" Name="6.5 percent" NominalRate=".065"/>
+		<nominalrate Id="14" Name="7.0 percent" NominalRate=".070"/>
+		<nominalrate Id="15" Name="7.5 percent" NominalRate=".075"/>
+		<nominalrate Id="16" Name="8.0 percent" NominalRate=".080"/>
+		<nominalrate Id="17" Name="8.5 percent" NominalRate=".085"/>
+		<nominalrate Id="18" Name="9.0 percent" NominalRate=".090"/>
+		<nominalrate Id="19" Name="9.5 percent" NominalRate=".095"/>
+		<nominalrate Id="20" Name="10.0 percent" NominalRate=".100"/>
+		<nominalrate Id="21" Name="10.5 percent" NominalRate=".105"/>
+		<nominalrate Id="22" Name="11.0 percent" NominalRate=".110"/>
+		<nominalrate Id="23" Name="11.5 percent" NominalRate=".115"/>
+		<nominalrate Id="24" Name="12.0 percent" NominalRate=".120"/>
+		<nominalrate Id="25" Name="12.5 percent" NominalRate=".125"/>
+		<nominalrate Id="26" Name="13.0 percent" NominalRate=".130"/>
+		<nominalrate Id="27" Name="13.5 percent" NominalRate=".135"/>
+		<nominalrate Id="28" Name="14.0 percent" NominalRate=".140"/>
+		<nominalrate Id="29" Name="14.5 percent" NominalRate=".145"/>
+		<nominalrate Id="30" Name="15.0 percent" NominalRate=".150"/>
+		<nominalrate Id="31" Name="15.5 percent" NominalRate=".155"/>
+		<nominalrate Id="32" Name="16.0 percent" NominalRate=".160"/>
+		<nominalrate Id="33" Name="16.5 percent" NominalRate=".165"/>
+		<nominalrate Id="34" Name="17.0 percent" NominalRate=".170"/>
+		<nominalrate Id="35" Name="17.5 percent" NominalRate=".175"/>
+		<nominalrate Id="36" Name="18.0 percent" NominalRate=".180"/>
+		<nominalrate Id="37" Name="18.5 percent" NominalRate=".185"/>
+		<nominalrate Id="38" Name="19.0 percent" NominalRate=".190"/>
+		<nominalrate Id="39" Name="19.5 percent" NominalRate=".195"/>
+		<nominalrate Id="40" Name="20.0 percent" NominalRate=".200"/>
+	</nominalrategroup>
+</root>
+
+

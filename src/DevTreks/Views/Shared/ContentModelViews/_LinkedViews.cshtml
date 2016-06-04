@@ -1,0 +1,31 @@
+﻿@using DevTreks.Helpers;
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "LinkedView";
+}
+<div>
+    @{
+        if (Model.URIModels.Service != null)
+        {
+            @Html.Partial("ContentModelViews/_LinkedViewService", ViewData.Model)
+        }
+        else if (Model.URIModels.LinkedViewClass != null)
+        {
+            @Html.Partial("ContentModelViews/_LinkedViewClass", ViewData.Model)
+        }
+        else if (Model.URIModels.LinkedViewPack != null)
+        {
+            @Html.Partial("ContentModelViews/_LinkedViewPack", ViewData.Model)
+        }
+        else if (Model.URIModels.LinkedView != null)
+        {
+            @Html.Partial("ContentModelViews/_LinkedView", ViewData.Model)
+        }
+        <br />
+        <div>
+            @Html.LinkMobile("feedback", string.Concat("mailto:", @Model.URIClub.AccountEmail, "?subject=", @Model.URIFull),
+                string.Empty, string.Concat("Feedback About ", @Model.URIPattern), "button", "true", "false",
+                "info", "left")
+        </div>
+    }
+</div>

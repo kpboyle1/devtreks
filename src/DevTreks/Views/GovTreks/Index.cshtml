@@ -1,0 +1,38 @@
+﻿
+@using DevTreks.Helpers;
+@{
+    ViewBag.Title = AppHelper.GetResource("GOVTREKS_TITLE"); 
+}
+
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini="true", data_inline="true" }) > @Html.Encode(ViewData["Title"]) </strong></p>
+
+<div data-role="navbar">
+    @await Html.PartialAsync("_LoginPartial")
+ </div>
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_STORY")</li>
+        <li>@Html.Link("A100", "/govtreks/search/localgov/resourcepack/none/0/none", "Home", AppHelper.GetResource("VIEWS_MEDIA"))</li>
+        <li>@Html.Link("A200", "/govtreks/search/localgov/linkedviewpack/none/0/none", "Home", AppHelper.GetResource("VIEWS_LINKEDVIEWS"))</li>
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_NUMBER")</li>
+        <li>@Html.Link("A400", "/govtreks/search/localgov/input/none/0/none", "Home",  AppHelper.GetResource("VIEWS_INPUTS"))</li>
+        <li>@Html.Link("A500", "/govtreks/search/localgov/output/none/0/none?Keywords=none", "Home",  AppHelper.GetResource("VIEWS_OUTPUTS"))</li>
+        <li>@Html.Link("A300", "/govtreks/search/localgov/outcome/none/0/none", "Home",  AppHelper.GetResource("VIEWS_OUTCOMES"))</li>
+        <li>@Html.Link("A600", "/govtreks/search/localgov/operation/none/0/none", "Home",  AppHelper.GetResource("VIEWS_OPERATIONS"))</li>
+        <li>@Html.Link("A700", "/govtreks/search/localgov/component/none/0/none", "Home",  AppHelper.GetResource("VIEWS_COMPONENTS"))</li>
+        <li>@Html.Link("A800", "/govtreks/search/localgov/budgettimeperiod/none/0/none", "Home",  AppHelper.GetResource("VIEWS_OPBUDGETS"))</li>
+        <li>@Html.Link("A900", "/govtreks/search/localgov/investmenttimeperiod/none/0/none", "Home",  AppHelper.GetResource("VIEWS_CAPBUDGETS"))</li>
+        <li>@Html.Link("A300", "/govtreks/search/localgov/devpackpart/none/0/none", "Home", AppHelper.GetResource("VIEWS_DEVPACKS"))</li>
+        <li>@Html.Link("A1000", "/govtreks/search/localgov/linkedviewpack/none/0/none?typeid=2", "Home",  AppHelper.GetResource("VIEWS_CALCULATORS"))</li>
+        <li>@Html.Link("A1100", "/govtreks/search/localgov/linkedviewpack/none/0/none?typeid=1", "Home",  AppHelper.GetResource("VIEWS_ANALYZERS"))</li>
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_NETWORK")</li>
+        <li>@Html.Link("A1", "/commontreks/member/allnetworks/club/none/0/none", "Home",  AppHelper.GetResource("VIEWS_CLUBS"))</li>
+        <li>@Html.Link("A1", "/commontreks/search/allnetworks/network/none/0/none", "Home",  AppHelper.GetResource("VIEWS_NETWORKS"))</li>
+        <li>@Html.Link("A1", "/commontreks/search/allnetworks/service/none/0/none", "Home",  AppHelper.GetResource("VIEWS_SERVICES"))</li>
+    </ul>
+@section Footer {
+     @Html.Image("logo", StylesheetHelper.GetImagesUrl("devtreks-logo.jpg"), "DevTreks logo", "15%", "15%", string.Empty)@HtmlHelperExtensions.WriteCurrentVersion(Html)
+}
+
+
+
+

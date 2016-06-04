@@ -1,0 +1,9 @@
+﻿@using DevTreks.Helpers;
+
+
+@model DevTreks.ViewModels.SearchViewModel
+
+@HtmlHelperExtensions.SearchBody1(Html, Model, this.Context)
+@HtmlHelperExtensions.SearchBody2(Html, Model)
+@HtmlHelperExtensions.SearchBody3(Html, Model, this.Context)
+

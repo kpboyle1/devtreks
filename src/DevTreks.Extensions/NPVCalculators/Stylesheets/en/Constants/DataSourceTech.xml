@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<datasourcetech Id="0" Name="none"/>
+	<datasourcetech Id="1" Name="Cooperator 1" Description="Resident cooperator who supplies family budget data" URI=""/>
+	<datasourcetech Id="2" Name="Cooperator 2" Description="Resident cooperator who supplies family budget data" URI=""/>
+	<datasourcetech Id="3" Name="Cooperator 3" Description="Resident cooperator who supplies family budget data" URI=""/>
+</root>

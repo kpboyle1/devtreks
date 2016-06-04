@@ -1,0 +1,158 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, DevPacks.DEVPACKS_TYPES.devpack.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackName, Model.URIModels.DevPackClassToDevPack.PKId.ToString(),
+                Model.URINetworkPartName, DevPacks.DEVPACKS_TYPES.devpack.ToString(), string.Empty);
+    if (Model.URINodeName == DevPacks.DEVPACKS_TYPES.devpack.ToString())
+    {
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackName,
+                        "DevPackClassToDevPackName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @*@Html.DivStart(string.Empty, string.Empty)
+            @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                        "GetSelectsLink", "Select DevPack Part", "spanSelectionFiles",
+                        Model.URIDataManager.ContentURIPattern, searchurl,
+                        DevPacks.DEVPACKS_TYPES.devpackpart.ToString(), string.Empty, Model.URIDataManager.CalcParams))
+            @Html.DivEnd()*@  
+            @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "DevPack Part",
+                DevPacks.DEVPACKS_TYPES.devpackpart.ToString())
+            @*@Html.DivStart(string.Empty, string.Empty)
+            @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting2", "#",
+                        "GetSelectsLink", "Select DevPack", "spanSelectionFiles",
+                        Model.URIDataManager.ContentURIPattern, searchurl,
+                        DevPacks.DEVPACKS_TYPES.devpack.ToString(), string.Empty, Model.URIDataManager.CalcParams))
+            @Html.DivEnd()*@  
+            @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "DevPack",
+                DevPacks.DEVPACKS_TYPES.devpack.ToString())
+        }
+        //recursive children that will be disrupted by ViewData.Model.URIModels.DevPackClassToDevPack = devpack; 
+        var devPackParts = Model.URIModels.DevPackClassToDevPack.DevPackToDevPackPart;
+        var devPack2 = Model.URIModels.DevPackClassToDevPack.DevPackClassToDevPack2;
+        //recursive children devpacks
+        if (Model.URIModels.DevPackClassToDevPack.DevPackClassToDevPack1 != null)
+        {
+            if (Model.URIModels.DevPackClassToDevPack.DevPackClassToDevPack1.Count > 0)
+            {
+                @Html.H4("Recursive DevPack", "ui-bar-b")
+                foreach (var devpack in Model.URIModels.DevPackClassToDevPack.DevPackClassToDevPack1)
+                {
+                    ViewData.Model.URIModels.DevPackClassToDevPack = devpack;
+                    @Html.DivCollapseStart(Model, devpack.PKId)
+                    <h4>@devpack.DevPackClassAndPackName</h4>
+                    @Html.Partial("ContentModelViews/_DevPack1", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+        //regular devpackpart children
+        if (devPackParts != null)
+        {
+            if (devPackParts.Count > 0)
+            {
+                @Html.H4("DevPack Parts", "ui-bar-b")
+                foreach (var devpackpart in devPackParts)
+                {
+                    ViewData.Model.URIModels.DevPackToDevPackPart = devpackpart;
+                    @Html.DivCollapseStart(Model, devpackpart.PKId)
+                    <h4>@devpackpart.DevPackToDevPackPartName</h4>
+                    @Html.Partial("ContentModelViews/_DevPackPart", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+        //2.0.0 : won't be hit with this model
+        if (devPack2 != null)
+        {
+            if (devPack2.DevPackToDevPackPart != null)
+            {
+                if (devPack2.DevPackToDevPackPart.Count > 0)
+                {
+                    @Html.H4("DevPack Parts", "ui-bar-b")
+                    foreach (var devpackpart in devPack2.DevPackToDevPackPart)
+                    {
+                        ViewData.Model.URIModels.DevPackToDevPackPart = devpackpart;
+                        @Html.DivCollapseStart(Model, devpackpart.PKId)
+                        <h4>@devpackpart.DevPackToDevPackPartName</h4>
+                        @Html.Partial("ContentModelViews/_DevPackPart", ViewData.Model)
+                        @Html.DivEnd()
+                    }
+                }
+            }
+        }
+    }
+    else
+    {
+        string basesearchurl = StylesheetHelper.GetURIPattern(Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackName, Model.URIModels.DevPackClassToDevPack.DevPack.PKId.ToString(),
+            Model.URINetworkPartName, DevPacks.DEVPACKS_BASE_TYPES.devpackbase.ToString(), string.Empty);
+        //note fileextension is set internally
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackName,
+                      "DevPackClassAndPackName", Model.URIDataManager.EditViewEditType, bCanDelete)
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("DevPackClassAndPackSortLabel", "Label: ")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                          Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackSortLabel, "DevPackClassAndPackSortLabel", GeneralRules.STRING, "15",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.DevPackClassToDevPack.DevPackClassAndPackDesc, "DevPackClassAndPackDesc",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+        @HtmlHelperExtensions.WriteViewLinks(Html, searchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIDataManager.CalcParams,
+                 DevPacks.DEVPACKS_TYPES.devpack.ToString(), "oldid")
+        GeneralHelpers.VIEW_EDIT_TYPES viewType = Model.URIDataManager.EditViewEditType;
+        if (viewType != GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            //only owners can edit
+            viewType = GeneralHelpers.VIEW_EDIT_TYPES.part;
+            basesearchurl = string.Empty;
+        }
+        @Html.H4("Owner Properties", "ui-bar-b")
+        bCanDelete = false;
+        @HtmlHelperExtensions.MakeName(Html, @basesearchurl, @Model.URIModels.DevPackClassToDevPack.DevPack.DevPackName,
+                           "DevPackName", viewType, bCanDelete)
+        @HtmlHelperExtensions.MakeSelectList(Html, basesearchurl, Model.URIModels.DevPackClassToDevPack.DevPack.DevPackDocStatus.ToString(),
+                 "DevPackDocStatus", GeneralRules.SHORTINTEGER, "2", "Status",
+                 viewType, "Select225", GeneralHelpers.GetDocStatusDictionary())
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("DevPackNum", "Label: ")
+        @Html.InputTextUpdate(viewType, basesearchurl,
+                               Model.URIModels.DevPackClassToDevPack.DevPack.DevPackNum, "DevPackNum", GeneralRules.STRING, "15",
+            "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("DevPackLastChangedDate", "Date Changed: ")
+        @Html.InputTextUpdate(viewType, basesearchurl,
+                          Model.URIModels.DevPackClassToDevPack.DevPack.DevPackLastChangedDate.ToShortDateString(), "DevPackLastChangedDate", GeneralRules.SHORTDATE, "8",
+                "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, basesearchurl, Model.URIModels.DevPackClassToDevPack.DevPack.DevPackDesc, "DevPackDesc",
+            "Description", viewType, "Text75H100PCW", "255")
+        @HtmlHelperExtensions.MakeTextArea(Html, basesearchurl, Model.URIModels.DevPackClassToDevPack.DevPack.DevPackKeywords, "DevPackKeywords",
+            "Key Words", viewType, "Text75H100PCW", "255")
+        if (viewType == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @HtmlHelperExtensions.MakeMetaDocUpload(Html, Model, basesearchurl, @Model.URIDataManager.ContentURIPattern, @Model.URIModels.DevPackClassToDevPack.DevPack.PKId.ToString(),
+                 @Model.URIModels.DevPackClassToDevPack.DevPack.DevPackMetaDataXml, "DevPackMetaDataXml", @viewType,
+                "4", @Model.URIFileExtensionType)
+        }
+    }
+
+    }

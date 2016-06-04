@@ -1,0 +1,13 @@
+﻿<root>
+	<linkedview Id="1" Version="1.7.0" CalculatorType="component2" 
+		WhatIfTagName="none" FileExtensionType="component2" 
+		CalculatorName="Component Timeliness NPV Calculator" StylesheetResourceFileName="OpAndComp2.xslt" 
+		Stylesheet2ResourceFileName="Components1.xslt"
+		RelatedCalculatorsType="npv" Overwrite="0"
+    PlannedStartDate="06/15/2014" LaborAvailable="8" WorkdayProbability="100"
+    TimelinessPenalty1="0.00" TimelinessPenaltyDaysFromStart1="0" 
+    TimelinessPenalty2="0.00" TimelinessPenaltyDaysFromStart2="0" 
+    WorkdaysLimit="0" OutputName="none" OutputUnit="none" 
+    OutputYield="0" OutputPrice="0" CompositionUnit="each" CompositionAmount="1" OutputTimes="1" />
+</root>
+

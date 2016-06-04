@@ -1,0 +1,247 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.AccountToService == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.DivStart(string.Empty, string.Empty)
+    if (Model.URIModels.AccountToService.IsOwner)
+    {
+        @Html.Raw("<strong>Service Owned</strong>")
+    }
+    else
+    {
+        @Html.Raw("<strong>Service Subscription</strong>")
+    }
+    @Html.DivEnd()
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToService.Name, Model.URIModels.AccountToService.PKId.ToString(),
+            Model.URINetworkPartName, Agreement.AGREEMENT_TYPES.service.ToString(), string.Empty);
+    string basesearchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToService.Service.ServiceName, Model.URIModels.AccountToService.Service.PKId.ToString(),
+            Model.URINetworkPartName, Agreement.AGREEMENT_BASE_TYPES.servicebase.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+       @Model.URINodeName, Agreement.AGREEMENT_TYPES.service.ToString(),
+       Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    if (Model.URIMember.MemberRole != Members.MEMBER_ROLE_TYPES.coordinator.ToString()
+        || Model.URIDataManager.EditViewEditType != GeneralHelpers.VIEW_EDIT_TYPES.full)
+    {
+        bCanDelete = false;
+    }
+    @HtmlHelperExtensions.MakeName(Html, searchurl, @Model.URIModels.AccountToService.Name, "Name",
+                 Model.URIDataManager.EditViewEditType, bCanDelete)
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("ServiceClassId", "Application:  ")
+    Dictionary<string, string> servicegroups = GeneralHelpers.GetSubAppTypeDictionary();
+    foreach (KeyValuePair<string, string> kvp in servicegroups)
+    {
+        if (kvp.Key == Model.URIModels.AccountToService.Service.ServiceClassId.ToString())
+        {
+            @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, basesearchurl,
+                kvp.Value, "ServiceClassId",
+                GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+        }
+    }
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("Amount1", "# of members: ")
+    string sFormatted = StylesheetHelper.WriteFormattedNumber("Amount1", Model.URIModels.AccountToService.Amount1.ToString(), GeneralRules.FLOAT, "4");
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+            sFormatted, "Amount1", GeneralRules.FLOAT, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("ServicePrice1", "Price per member:")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, basesearchurl,
+        Model.URIModels.AccountToService.Service.ServicePrice1.ToString(), "ServicePrice1",
+        GeneralRules.DECIMAL, "8", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("ServiceUnit1", "Price unit:")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, basesearchurl,
+        Model.URIModels.AccountToService.Service.ServiceUnit1, "ServiceUnit1",
+        GeneralRules.STRING, "25", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("TotalCost", "Monthly Cost:")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+                Model.URIModels.AccountToService.TotalCost.ToString(), "TotalCost",
+        GeneralRules.DECIMAL, "8", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    
+    @Html.DivStart(string.Empty, string.Empty)
+    @Html.Raw(StylesheetHelper.MakeDevTreksLink("viewservice", "#", "JSLink", "View Service",
+        Model.URIDataManager.ContentURIPattern, @searchurl, GeneralHelpers.CLIENTACTION_TYPES.postrequest.ToString(),
+        GeneralHelpers.SERVER_ACTION_TYPES.select.ToString(), GeneralHelpers.SERVER_SUBACTION_TYPES.respondwithhtml.ToString(),
+        GeneralHelpers.NONE, string.Empty))
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("StartDate", "Start Date:")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+        Model.URIModels.AccountToService.StartDate.ToShortDateString(), "StartDate",
+        GeneralRules.DATE, "8", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("LastChangedDate", "Last Changed Date:")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+        Model.URIModels.AccountToService.LastChangedDate.ToShortDateString(), "LastChangedDate",
+                GeneralRules.SHORTDATE, "8", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("Status", "Current Status:")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+        Model.URIModels.AccountToService.Status, "Status",
+        GeneralRules.STRING, "25", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("StatusDate", "Status Date:")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+        Model.URIModels.AccountToService.StatusDate.ToShortDateString(), "StatusDate",
+        GeneralRules.DATE, "8", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivEnd()
+    //152 relies standard DevTreks security
+    bool bIsOwner = Model.URIModels.AccountToService.IsOwner;
+    GeneralHelpers.VIEW_EDIT_TYPES viewType = Model.URIDataManager.EditViewEditType;
+    if (!bIsOwner)
+    {
+        //only owners can edit
+        viewType = GeneralHelpers.VIEW_EDIT_TYPES.part;
+        basesearchurl = string.Empty;
+    }
+    if (Model.URIModels.AccountToService.IsOwner
+        && Model.URIMember.MemberRole == Members.MEMBER_ROLE_TYPES.coordinator.ToString()
+        && viewType == GeneralHelpers.VIEW_EDIT_TYPES.full)
+    {
+        @Html.DivStart(string.Empty, string.Empty, "fieldcontain", string.Empty)
+        @Html.LabelStrong("ServiceName", "Owner Name:")
+        @Html.InputTextUpdate(viewType, basesearchurl,
+                 Model.URIModels.AccountToService.Service.ServiceName, "ServiceName",
+                           GeneralRules.STRING, "75", "Input350Bold", string.Empty)
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, basesearchurl, Model.URIModels.AccountToService.Service.ServiceDesc,
+                "ServiceDesc", "Owner Description", viewType,
+                "Text75H100PCW", "255")
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("AuthorizationLevel", "Public edit authorization: ")
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.AccountToService.AuthorizationLevel.ToString(),
+                "AuthorizationLevel", GeneralRules.SHORTINTEGER, "2",
+             viewType, "Select150", Agreement.GetAuthorizationLevelDictionary())
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("NetworkId", "Primary network:")
+        @HtmlHelperExtensions.MakeSelectList(Html, basesearchurl, Model.URIModels.AccountToService.Service.NetworkId.ToString(),
+                      "NetworkId", GeneralRules.INTEGER, "4",
+            viewType, "Select150", Networks.GetNetworkDictionary(Model.URIModels.Account.AccountToNetwork.ToList()))
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @Html.Raw(StylesheetHelper.MakeDevTreksLink("setcategories", "#", "JSLink", "Edit Classifications",
+             Model.URIDataManager.ContentURIPattern, @basesearchurl, GeneralHelpers.CLIENTACTION_TYPES.postrequest.ToString(),
+                  GeneralHelpers.SERVER_ACTION_TYPES.edit.ToString(), GeneralHelpers.SERVER_SUBACTION_TYPES.respondwithlist.ToString(),
+             GeneralHelpers.SUBACTION_VIEWS.categories.ToString(), string.Empty))
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("ServicePrice1", "Price Per Member:")
+        @Html.InputTextUpdate(viewType, basesearchurl,
+                      Model.URIModels.AccountToService.Service.ServicePrice1.ToString(), "ServicePrice1",
+                      GeneralRules.DECIMAL, "8", string.Empty, string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("ServiceNum", "Label:")
+        @Html.InputTextUpdate(viewType, basesearchurl,
+                                Model.URIModels.AccountToService.Service.ServiceNum, "ServiceNum",
+                      GeneralRules.STRING, "25", string.Empty, string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("ServiceCurrency1", "Currency:")
+        @HtmlHelperExtensions.MakeSelectList(Html, basesearchurl, Model.URIModels.AccountToService.Service.ServiceCurrency1.ToString(),
+                     "ServiceCurrency1", GeneralRules.STRING, "50",
+                  viewType, "Select100", Agreement.GetCurrencyDictionary())
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("ServiceUnit1", "Unit:")
+        @HtmlHelperExtensions.MakeSelectList(Html, basesearchurl, Model.URIModels.AccountToService.Service.ServiceUnit1.ToString(),
+                     "ServiceUnit1", GeneralRules.STRING, "50",
+                 viewType, "Select100", Agreement.GetServiceUnitDictionary())
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @*//leave incentives out until they are needed; keep it simple for now
+        @HtmlHelperExtensions.MakeSelectListRow(Html, basesearchurl, Model.URIModels.AccountToService.Service.ServiceUnit1,
+                "ServiceUnit1", GeneralRules.STRING, "25", "Owner Unit: ",
+             viewType, "4", "Select225", Agreement.GetServiceUnitDictionary())
+        @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, searchurl, Model.URINetworkPartName, "Add Incentive",
+                Agreement.AGREEMENT_TYPES.incentive.ToString(), "4")*@
+        @Html.DivStart(string.Empty, string.Empty, "fieldcontain", string.Empty)
+        @Html.LabelStrong("HostServiceFee", string.Concat("Web Hosting Fee (Rate: ", Model.URIModels.AccountToService.HostServiceRate.ToString(), ")"))
+        @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, searchurl,
+                      Model.URIModels.AccountToService.HostServiceFee.ToString(), "HostServiceFee",
+                 GeneralRules.STRING, "75", "Input75Bold", string.Empty)
+        @Html.DivEnd()
+    }
+    else
+    {
+        @Html.DivStart(string.Empty, string.Empty, "fieldcontain", string.Empty)
+        @HtmlHelperExtensions.MakeSelectList(Html, string.Empty, Model.URIModels.AccountToService.AuthorizationLevel.ToString(),
+                 "AuthorizationLevel", GeneralRules.SHORTINTEGER, "2", "Public edit authorization: ",
+                GeneralHelpers.VIEW_EDIT_TYPES.part, "Select225", Agreement.GetAuthorizationLevelDictionary())
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("NetworkName", "Primary network:")
+        @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, string.Empty,
+             Model.URIModels.AccountToService.Service.Network.NetworkName, "NetworkName",
+            GeneralRules.STRING, "75", string.Empty, string.Empty)
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("ServiceCurrency1", "Currency:        ")
+        @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, string.Empty,
+                  Model.URIModels.AccountToService.Service.ServiceCurrency1, "ServiceCurrency1",
+            GeneralRules.STRING, "75", string.Empty, string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+    }
+
+    //if (Model.URIModels.AccountToService.AccountToIncentive != null)
+    //{
+        //if (Model.URIModels.AccountToService.AccountToIncentive.Count > 0)
+        //{
+            //@Html.H4("Incentives", "ui-bar-b")
+        //}
+        //foreach (var incentive in Model.URIModels.AccountToService.AccountToIncentive)
+        //{
+            //if (incentive.Incentive != null)
+            //{
+                //ViewData.Model.URIModels.AccountToIncentive = incentive;
+                //@Html.Partial("AdminModelViews/_AccountToIncentive", ViewData.Model)
+            //}
+        //}
+    //}
+    @Html.DivStart(string.Empty, string.Empty, "fieldcontain", string.Empty)
+    @Html.LabelStrong("NetCost", "Monthly Service SubTotal:")
+    @Html.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.part, string.Empty,
+                    Model.URIModels.AccountToService.NetCost.ToString(), "NetCost", GeneralRules.FLOAT, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    }

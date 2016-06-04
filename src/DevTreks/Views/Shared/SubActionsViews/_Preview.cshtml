@@ -1,0 +1,58 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    @HtmlHelperExtensions.MakeSynchDocLinks(Html, Model)
+    if (!(string.IsNullOrEmpty(Model.ErrorMessage)))
+    {
+        @Html.DivStart(string.Empty, string.Empty)
+        @Html.SpanError(Model.ErrorMessage);
+        @Html.DivEnd()
+     }
+    bool bIsSearch = false;
+    @HtmlHelperExtensions.MakeHorizStartAtRowButtons(Html,
+        Model, Model.URIDataManager.StartRow, Model.URIDataManager.PageSize,
+        Model.URIDataManager.RowCount, Model.URIDataManager.ParentStartRow,
+        bIsSearch)
+    //display linked views
+    bool bHasLinkedView = false;
+    if (Model.URIDataManager.LinkedView != null)
+    {
+        if (Model.URIDataManager.LinkedView.Count > 0)
+        {
+            bHasLinkedView = true;
+        }
+    }
+    if (bHasLinkedView)
+    {
+        if (Model.URIDataManager.AppType
+            == GeneralHelpers.APPLICATION_TYPES.resources)
+        {
+            if (Model.URINodeName 
+                == DevTreks.Data.AppHelpers.Resources.RESOURCES_TYPES.resource.ToString())
+            {
+                @Html.DivStart(string.Empty, string.Empty)
+                @HtmlHelperExtensions.EditLinkedViewLink(Html, Model)
+                @Html.DivEnd()
+             }
+        }
+        else
+        {
+            @Html.DivStart(string.Empty, string.Empty)
+            @HtmlHelperExtensions.EditLinkedViewLink(Html, Model)
+            @Html.DivEnd()
+        }
+        @Html.DivStart(string.Empty, string.Empty)
+        @HtmlHelperExtensions.DisplayLinkedView(Html, Model)
+        @Html.DivEnd()
+    }
+    else
+    {
+        @HtmlHelperExtensions.DisplayPreviews(Html, Model)
+    }
+}

@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<linkedview Id="1" Version="1.7.3" AnalyzerType=""  CalculatorType="" WhatIfTagName="none" 
+		RelatedCalculatorType="" RelatedCalculatorsType="me2" FileExtensionType="" 
+		FilesToAnalyzeExtensionType="" CalculatorName="" 
+		StylesheetResourceFileName="ME2StocksOutcome1.xslt" 
+		Stylesheet2ResourceFileName=""
+		CalculatorDate="" Option1="none" Option2="none" Option3="" Option4="none"
+		Option5="yes" CalculatorDescription="" />
+</root>
+

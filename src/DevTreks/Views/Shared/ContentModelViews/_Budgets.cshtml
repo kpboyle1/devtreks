@@ -1,0 +1,47 @@
+﻿@using DevTreks.Helpers;
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "Budgets";
+}
+<div>
+    @{
+        if (Model.URIModels.Service != null)
+        {
+            @Html.Partial("ContentModelViews/_BudgetService", ViewData.Model)
+        }
+        else if (Model.URIModels.BudgetSystem != null)
+        {
+            @Html.Partial("ContentModelViews/_BudgetClass", ViewData.Model)
+        }
+        else if (Model.URIModels.BudgetSystemToEnterprise != null)
+        {
+            @Html.Partial("ContentModelViews/_BudgetToEnterprise", ViewData.Model)
+        }
+        else if (Model.URIModels.BudgetSystemToTime != null)
+        {
+            @Html.Partial("ContentModelViews/_BudgetToTime", ViewData.Model)
+        }
+        else if (Model.URIModels.BudgetSystemToOutcome != null)
+        {
+            @Html.Partial("ContentModelViews/_BudgetToOutcome", ViewData.Model)
+        }
+        else if (Model.URIModels.BudgetSystemToOutput != null)
+        {
+            @Html.Partial("ContentModelViews/_BudgetToOutput", ViewData.Model)
+        }
+        else if (Model.URIModels.BudgetSystemToOperation != null)
+        {
+            @Html.Partial("ContentModelViews/_BudgetToOperation", ViewData.Model)
+        }
+        else if (Model.URIModels.BudgetSystemToInput != null)
+        {
+            @Html.Partial("ContentModelViews/_BudgetToInput", ViewData.Model)
+        }
+        <br />
+        <div>
+            @Html.LinkMobile("feedback", string.Concat("mailto:", @Model.URIClub.AccountEmail, "?subject=", @Model.URIFull),
+                string.Empty, string.Concat("Feedback About ", @Model.URIPattern), "button", "true", "false",
+                "info", "left")
+        </div>
+    }
+</div>

@@ -1,0 +1,26 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data;
+
+@model ContentURI
+  
+
+@if (ViewData.Model.URIMember != null)
+{
+    if (ViewData.Model.ErrorMessage != string.Empty)
+    {
+        <div>
+        @{
+            @Html.SpanError(ViewData.Model.ErrorMessage)
+            ViewData.Model.ErrorMessage = string.Empty;
+        }
+        </div>                                                  
+    }
+}
+@if (!DevTreks.Helpers.HtmlMemberExtensions.UserIsLoggedIn(this.Context))
+{
+    @HtmlHelperExtensions.MemberNotLoggedIn(Html, Model)
+}
+else
+{
+    @HtmlHelperExtensions.MemberLoggedIn(Html, Model, this.Context)
+}

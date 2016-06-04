@@ -1,0 +1,39 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.AppHelpers;
+
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "Members";
+}
+<div>
+ @{
+        if (Model.URINodeName == Members.MEMBER_BASE_TYPES.memberbasegroup.ToString())
+        {
+            @Html.Partial("AdminModelViews/_MemberGroup", ViewData.Model)
+        }
+        else if (Model.URINodeName == Members.MEMBER_TYPES.memberaccountgroup.ToString())
+        {
+            @Html.Partial("AdminModelViews/_MemberGroup", ViewData.Model)
+        }
+        else if (Model.URINodeName == Members.MEMBER_BASE_TYPES.memberbase.ToString())
+        {
+            <br />
+            <div>
+                @Html.Partial("AdminModelViews/_Member", ViewData.Model)
+            </div>
+        }
+        else if (Model.URINodeName == Members.MEMBER_TYPES.member.ToString())
+        {
+            <br />
+            <div>
+                @Html.Partial("AdminModelViews/_AccountToMember", ViewData.Model)
+            </div>
+        }
+        <br />
+        <div>
+            @Html.LinkMobile("feedback", string.Concat("mailto:", @Model.URIClub.AccountEmail, "?subject=", @Model.URIFull),
+                string.Empty, string.Concat("Feedback About ", @Model.URIPattern), "button", "true", "false",
+                "info", "left")
+        </div>
+    }
+</div>

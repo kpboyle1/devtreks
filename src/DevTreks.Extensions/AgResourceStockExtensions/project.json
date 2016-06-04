@@ -1,0 +1,17 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "AgResourceStockExtensions Class Library",
+  "authors": [ "Kevin P. Boyle" ],
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.ComponentModel.Composition": "4.0.0.0"
+      }
+    }
+  },
+  "dependencies": {
+    "AgBudgetingCalculators": "1.0.0-*",
+    "CalculatorsContracts": "1.0.0-*",
+    "NPVCalculators": "1.0.0-*"
+  }
+}

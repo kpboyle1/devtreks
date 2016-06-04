@@ -1,0 +1,35 @@
+﻿@using DevTreks.Helpers;
+
+@{
+    ViewBag.Title = AppHelper.GetResource("COMMONTREKS_TITLE"); 
+}
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini="true", data_inline="true" }) > @Html.Encode(ViewData["Title"]) </strong></p>
+
+<div data-role="navbar">
+    @await Html.PartialAsync("_LoginPartial")
+ </div>
+    <p><strong>This CommonTreks only uses the Media Service and only delivers software tutorials.</strong></p>
+    <ul data-role="listview" data-inset="true">
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_STORY")</li>
+        <li>@Html.Link("A100", "/commontreks/search/commons/resourcepack/none/0/none", "Home", AppHelper.GetResource("VIEWS_MEDIA"))</li>
+        <li>@AppHelper.GetResource("VIEWS_LINKEDVIEWS")</li>
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_NUMBER")</li>
+        <li>@AppHelper.GetResource("VIEWS_INPUTS")</li>
+        <li>@AppHelper.GetResource("VIEWS_OUTPUTS")</li>
+        <li>@AppHelper.GetResource("VIEWS_OUTCOMES")</li>
+        <li>@AppHelper.GetResource("VIEWS_OPERATIONS")</li>
+        <li>@AppHelper.GetResource("VIEWS_COMPONENTS")</li>
+        <li>@AppHelper.GetResource("VIEWS_OPBUDGETS")</li>
+        <li>@AppHelper.GetResource("VIEWS_CAPBUDGETS")</li>
+        <li>@AppHelper.GetResource("VIEWS_DEVPACKS")</li>
+        <li>@AppHelper.GetResource("VIEWS_CALCULATORS")</li>
+        <li>@AppHelper.GetResource("VIEWS_ANALYZERS")</li>
+        <li data-role="list-divider">@AppHelper.GetResource("SERVICES_NETWORK")</li>
+        <li>@AppHelper.GetResource("VIEWS_CLUBS")</li>
+        <li>@AppHelper.GetResource("VIEWS_NETWORKS")</li>
+        <li>@AppHelper.GetResource("VIEWS_SERVICES")</li>
+    </ul>
+@section Footer {
+    @Html.Image("logo", StylesheetHelper.GetImagesUrl("devtreks-logo.jpg"), "DevTreks logo", "15%", "15%", string.Empty)@HtmlHelperExtensions.WriteCurrentVersion(Html)
+}
+

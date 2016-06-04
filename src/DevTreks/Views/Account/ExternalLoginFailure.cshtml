@@ -1,8 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Login Failure";
+﻿@using DevTreks.DisplayHelpers;
+@{
+    ViewBag.Title = "Login Failure";
 }
 
-<header>
-    <h2>@ViewData["Title"].</h2>
-    <p class="text-danger">Unsuccessful login with service.</p>
-</header>
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini = "true", data_inline = "true" }) > @ViewData["Title"] </strong></p>
+<p><strong>>@ViewBag.Title.</strong></p>
+<p><strong>Unsuccessful login with service.</strong></p>
+<p>
+    <strong>@AppHelper.GetResource("JOININ_5")</strong>
+</p>

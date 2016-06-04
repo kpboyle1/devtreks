@@ -1,0 +1,65 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    if (!(string.IsNullOrEmpty(Model.ErrorMessage)))
+    {
+        <div>
+            @{
+                @Html.SpanError(Model.ErrorMessage)
+            }
+        </div>
+    }
+}
+@Html.FormStart("frmPack", string.Empty)
+<div id="divFileList" style="display:none">
+    <h4>Files in Package</h4>
+    <ol id="olFileList">
+    </ol>
+    <div id="divDownloadPackLink"></div>
+	<br />
+    <span id="spanMakingPack"></span>
+    <input id="btnClearPack" name="btnClearPack" type="button" class="SubmitButton1Enabled175" 
+        value="@AppHelper.GetResource("PACKAGE_CLEAR")" data-mini="true" data-inline="true" data-icon="delete" />
+    <h4>Package Options</h4>
+    <fieldset data-role="controlgroup" data-mini="true" >
+	<legend>File Type</legend>
+		<input name="rdoFileList" type="radio" id="filetype1" value="xhtml" checked="checked"/>
+     	<label for="filetype1">Xhtml Files</label>
+		<input name="rdoFileList" type="radio" id="filetype2" value="xml" />
+     	<label for="filetype2">Xml Files</label>
+		<input name="rdoFileList" type="radio" id="filetype3" value="csv" />
+     	<label for="filetype3">Text Files</label>
+	</fieldset>
+	<fieldset data-role="controlgroup" data-mini="true" >
+		<legend>Add Children Data</legend>
+		<input name="rdoRelatedDataType" type="radio" id="related1" value="no" checked="checked"/>
+     	<label for="related1">No</label>
+		<input name="rdoRelatedDataType" type="radio" id="related2" value="yes" />
+     	<label for="related2">Yes</label>
+	</fieldset>
+	<fieldset data-role="controlgroup" data-mini="true" >
+		<legend>Package Type</legend>
+		<input name="rdoPackageType" type="radio" id="packtype1" value="plainzip" checked="checked"/>
+     	<label for="packtype1">Plain zip</label>
+		
+	</fieldset>
+
+    <br />
+    @{
+        string sURIPattern = GeneralHelpers.MakeURIPattern(
+            "DevTreksPackage","0","commons","none","temp");
+        string sContentURIPattern = GeneralHelpers.MakeContentURIPattern("commontreks",
+            GeneralHelpers.SERVER_ACTION_TYPES.pack.ToString(), sURIPattern,
+            GeneralHelpers.SERVER_SUBACTION_TYPES.makepackage.ToString(),
+            string.Empty, string.Empty);
+        //the class is used to determine unobtrusive js event
+        @Html.InputUnobtrusiveMobile("btnMakePackage", "SubmitButton1Enabled150",
+            "button", sContentURIPattern, "downloaddoc", string.Empty, 
+            AppHelper.GetResource("PACKAGE_MAKE"), "false", "true", "plus", "left")
+    }
+</div>
+@Html.FormEnd()
+<br />

@@ -1,0 +1,172 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.AccountToLocal == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.DivStart(string.Empty, string.Empty, "fieldcontain", "b", string.Empty, string.Empty, "true")
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToLocal.LinkedViewName, Model.URIModels.AccountToLocal.PKId.ToString(),
+            Model.URINetworkPartName, Locals.LOCAL_TYPES.local.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+       @Model.URINodeName, Locals.LOCAL_TYPES.local.ToString(),
+       Model.URIDataManager.ServerActionType, Model.URIMember);
+    @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.AccountToLocal.LinkedViewName,
+        "LinkedViewName", Model.URIDataManager.EditViewEditType, bCanDelete)
+    string sNetworkText = string.Empty;
+    if (bCanDelete)
+    {
+        string name = string.Concat(StylesheetHelper.GetURIPattern("none", "0", "0",
+            Locals.LOCAL_TYPES.local.ToString(), ""), ";IsDefaultLinkedView;boolean;1");
+        string id = string.Concat("defaultlocal", Model.URIModels.AccountToLocal.PKId.ToString());
+        @HtmlHelperExtensions.MakeRadioTrueFalseOption(Html, id, name, Model.URIModels.AccountToLocal.PKId.ToString(),
+                 Model.URIModels.AccountToLocal.IsDefaultLinkedView, "Is Default Local")
+    }
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("UnitGroupId", "Unit Group Id: ")
+    string sFormatted = StylesheetHelper.WriteFormattedNumber("UnitGroupId", 
+        Model.URIModels.AccountToLocal.UnitGroupId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "UnitGroupId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("UnitGroup", "Unit Group Name:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.UnitGroup.ToString(), "UnitGroup",
+        GeneralRules.STRING, "50", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("CurrencyGroupId", "Currency Group Id: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("CurrencyGroupId",
+        Model.URIModels.AccountToLocal.CurrencyGroupId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "CurrencyGroupId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("CurrencyGroup", "Currency Group Name:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.CurrencyGroup.ToString(), "CurrencyGroup",
+        GeneralRules.STRING, "50", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-block-a")
+   @Html.LabelStrong("DataSourceTechId", "Data Source Tech Id: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("DataSourceTechId",
+        Model.URIModels.AccountToLocal.DataSourceTechId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "DataSourceTechId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("DataSourceTech", "Data Source Tech Name:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.DataSourceTech.ToString(), "DataSourceTech",
+        GeneralRules.STRING, "50", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("GeoCodeTechId", "GeoCode Tech Id: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("GeoCodeTechId",
+        Model.URIModels.AccountToLocal.GeoCodeTechId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "GeoCodeTechId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("GeoCodeTech", "GeoCode Tech Name:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.GeoCodeTech.ToString(), "GeoCodeTech",
+        GeneralRules.STRING, "50", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("DataSourcePriceId", "Data Source Price Id: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("DataSourcePriceId",
+        Model.URIModels.AccountToLocal.DataSourcePriceId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "DataSourcePriceId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("DataSourcePrice", "Data Source Price Name: ")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.DataSourcePrice.ToString(), "DataSourcePrice",
+        GeneralRules.STRING, "50", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("GeoCodePriceId", "GeoCode Price Id: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("GeoCodePriceId",
+        Model.URIModels.AccountToLocal.GeoCodePriceId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "GeoCodePriceId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("GeoCodePrice", "GeoCode Price Name:")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.GeoCodePrice.ToString(), "GeoCodePrice",
+        GeneralRules.STRING, "50", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("RatingGroupId", "Rating Group Id: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("RatingGroupId",
+        Model.URIModels.AccountToLocal.RatingGroupId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "RatingGroupId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("RatingGroup", "Rating Group Name: ")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.RatingGroup.ToString(), "RatingGroup",
+        GeneralRules.STRING, "50", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("RealRateId", "Real Rate Id: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("RealRateId",
+        Model.URIModels.AccountToLocal.RealRateId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "RealRateId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("RealRate", "Real Rate: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("RealRate",
+       Model.URIModels.AccountToLocal.RealRate.ToString(), GeneralRules.FLOAT, "8");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.RealRate.ToString(), "RealRate",
+        GeneralRules.FLOAT, "8", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("NominalRateId", "Nominal Rate Id: ")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("NominalRateId",
+        Model.URIModels.AccountToLocal.NominalRateId.ToString(), GeneralRules.INTEGER, "4");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+            sFormatted, "NominalRateId", GeneralRules.INTEGER, "4", string.Empty, string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.LabelStrong("NominalRate", "Nominal Rate:")
+    sFormatted = StylesheetHelper.WriteFormattedNumber("NominalRate",
+       Model.URIModels.AccountToLocal.NominalRate.ToString(), GeneralRules.FLOAT, "8");
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.AccountToLocal.NominalRate.ToString(), "NominalRate",
+        GeneralRules.FLOAT, "8", string.Empty, string.Empty)
+    @Html.DivEnd()
+
+
+    @Html.DivEnd()
+
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, 
+        Model.URIModels.AccountToLocal.LocalDesc, "LocalDesc", "Description", 
+        Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+}

@@ -8,12 +8,22 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using DevTreks.Models;
-using DevTreks.Models.AccountViewModels;
 using DevTreks.Services;
+using DevTreks.ViewModels.Account;
 
 namespace DevTreks.Controllers
 {
+    /// <summary>
+    ///Purpose  Security and login managment
+    ///Author:	www.devtreks.org
+    ///Date:    2016, June
+    ///Note:    Login/security handled by ApplicationUser and AppDbContext in UI Models folder. 
+    ///         AspNetUser.Id key is added to Member.AspNetUserId field. Member is then 
+    ///         associated with 1 or more clubs and club management handles remaining security
+    ///         and account management.
+    /// </summary>
     [Authorize]
     public class AccountController : Controller
     {
@@ -22,8 +32,13 @@ namespace DevTreks.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
-
+        //standard di/services pattern: 
+        //optionsAccessor is dep injected during Startup config
+        //_uri inits repository and passes options w/connection to DbContext
+        private IMemberService _memberService { get; set; }
+        private DevTreks.Data.ContentURI _uri { get; set; }
         public AccountController(
+            IOptions<DevTreks.Data.ContentURI> uri,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
@@ -35,6 +50,9 @@ namespace DevTreks.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            //standard services/repository pattern
+            _uri = new DevTreks.Data.ContentURI(uri.Value);
+            _memberService = new MemberService(_uri);
         }
 
         //
@@ -109,15 +127,25 @@ namespace DevTreks.Controllers
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
-                    // Send an email with this link
-                    //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
-                    //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
-                    //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    _logger.LogInformation(3, "User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    //need to insert new user into members table
+                    bool bHasNewMember
+                        = await InsertNewMemberAsync(user.Id, user.Email);
+                    if (bHasNewMember)
+                    {
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
+                        // Send an email with this link
+                        //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                        //var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: HttpContext.Request.Scheme);
+                        //await _emailSender.SendEmailAsync(model.Email, "Confirm your account",
+                        //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        _logger.LogInformation(3, "User created a new account with password.");
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "You could not be registered as a new member with DevTreks. Please contact DevTreks.");
+                    }
                 }
                 AddErrors(result);
             }
@@ -211,12 +239,23 @@ namespace DevTreks.Controllers
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    result = await _userManager.AddLoginAsync(user, info);
-                    if (result.Succeeded)
+                    //2.0.0 TEST THIS to make sure that a new member is not added 2x
+                    //need to insert new user into members table
+                    bool bHasNewMember
+                        = await InsertNewMemberAsync(user.Id, user.Email);
+                    if (bHasNewMember)
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        _logger.LogInformation(6, "User created an account using {Name} provider.", info.LoginProvider);
-                        return RedirectToLocal(returnUrl);
+                        result = await _userManager.AddLoginAsync(user, info);
+                        if (result.Succeeded)
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            _logger.LogInformation(6, "User created an account using {Name} provider.", info.LoginProvider);
+                            return RedirectToLocal(returnUrl);
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "You could not be registered as a new member with DevTreks. Please contact DevTreks.");
                     }
                 }
                 AddErrors(result);
@@ -462,7 +501,18 @@ namespace DevTreks.Controllers
                 return RedirectToAction(nameof(HomeController.Index), "Home");
             }
         }
-
+        //DevTreks membership insert relies on successful aspnet user insert
+        private async Task<bool> InsertNewMemberAsync(string aspNetUserId, string email)
+        {
+            bool bHasAdded = false;
+            if (!string.IsNullOrEmpty(aspNetUserId)
+                && !string.IsNullOrEmpty(email))
+            {
+                bHasAdded = await _memberService.InsertNewMemberAsync(
+                    aspNetUserId, email);
+            }
+            return bHasAdded;
+        }
         #endregion
     }
 }

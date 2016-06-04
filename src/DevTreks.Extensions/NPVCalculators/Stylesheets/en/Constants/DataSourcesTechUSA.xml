@@ -1,0 +1,8 @@
+﻿<root>
+	<datasourcetech Id="0" Name="none"/>
+	<datasourcetech Id="1" Name="Department of Agriculture" Description="USDA data sources" URI=""/>
+	<datasourcetech Id="2" Name="Census" Description="USA Census data sources" URI=""/>
+	<datasourcetech Id="3" Name="Department of Commerce" Description="Department of Commerce data sources" URI=""/>
+	<datasourcetech Id="4" Name="Bureau of Labor Statistics" Description="Bureau of Labor Statistics data sources" URI=""/>
+	<datasourcetech Id="5" Name="Department of Energy" Description="Department of Energy data sources" URI=""/>
+</root>

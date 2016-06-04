@@ -1,0 +1,7 @@
+﻿<root>
+	<linkedview Id="1" Version="1.7.0" CalculatorType="operation" 
+		WhatIfTagName="none" FileExtensionType="operation" 
+		CalculatorName="Operations NPV Calculator" StylesheetResourceFileName="OpAndComp1.xslt" 
+		Stylesheet2ResourceFileName="Operations1.xslt"
+		RelatedCalculatorsType="npv"  Overwrite="0" />
+</root>

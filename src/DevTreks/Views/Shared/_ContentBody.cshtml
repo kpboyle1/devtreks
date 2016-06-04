@@ -1,0 +1,105 @@
+﻿@using DevTreks.Data.Helpers;
+
+@using DevTreks.Helpers;
+
+    @model DevTreks.Data.ContentURI
+    @{
+    if (ViewData.Model.URIDataManager.ServerActionType
+        == DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.preview)
+    {
+        
+        @Html.Partial("SubActionsViews/_Preview", ViewData.Model)
+        @HtmlHelperExtensions.LoadURILinks(Html, Model);
+    }
+    else if (ViewData.Model.URIDataManager.ServerActionType
+            == DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.select)
+    {
+        @Html.Partial("SubActionsViews/_Select", ViewData.Model)
+        @HtmlHelperExtensions.LoadURILinks(Html, Model);
+    }
+    else if (ViewData.Model.URIDataManager.ServerActionType
+        == DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.edit)
+    {
+        if (ViewData.Model.URIDataManager.ServerSubActionType
+            == DevTreks.Data.Helpers.GeneralHelpers.SERVER_SUBACTION_TYPES.respondwithlist
+            || ViewData.Model.URIDataManager.ServerSubActionType
+            == DevTreks.Data.Helpers.GeneralHelpers.SERVER_SUBACTION_TYPES.submitlistedits)
+        {
+            @Html.Partial("SubActionsViews/_EditLists", ViewData.Model)
+            @HtmlHelperExtensions.LoadURILinks(Html, Model);
+        }
+        //deprecated in 2.0.0 in favor of uniform EF form edits
+        @*else if (ViewData.Model.URIDataManager.ServerSubActionType
+                == DevTreks.Data.Helpers.GeneralHelpers.SERVER_SUBACTION_TYPES.respondwithform
+                || ViewData.Model.URIDataManager.ServerSubActionType
+                == DevTreks.Data.Helpers.GeneralHelpers.SERVER_SUBACTION_TYPES.submitformedits)
+        {
+            @Html.Partial("SubActionsViews/_EditForms", ViewData.Model)
+            @HtmlHelperExtensions.LoadURILinks(Html, Model);
+        }*@
+        else
+        {
+        if (Model.URIDataManager.SubActionView
+            == DevTreks.Data.EditHelpers.AddHelperLinq.SELECTION_OPTIONS.buildnewdocview.ToString())
+        {
+            //generate stateful html from xml
+                    @Html.Partial("SubActionsViews/_Edit", ViewData.Model)
+                }
+                else
+                {
+                    //generate dynamic html from models
+                    @Html.Partial("SubActionsViews/_EditModels", ViewData.Model)
+                }
+                @HtmlHelperExtensions.LoadURILinks(Html, Model);
+            }
+        }
+    else if (ViewData.Model.URIDataManager.ServerActionType
+       == DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.linkedviews)
+    {
+        bool bHasLinkedView = false;
+        if (Model.URIDataManager.LinkedView != null)
+        {
+            if (Model.URIDataManager.LinkedView.Count > 0)
+            {
+                bHasLinkedView = true;
+            }
+        }
+        if (bHasLinkedView
+            || Model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks)
+        {
+            if (ViewData.Model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.resources)
+            {
+                //resources are not in the EF model but are in the Model.URIDataManager.LVs-display them with download link
+                @Html.Partial("AdminModelViews/_DisplayModels", Model)
+            }
+            else
+            {
+                @Html.Partial("SubActionsViews/_LinkedViews", ViewData.Model)
+            }
+        }
+        else
+        {
+            @HtmlHelperExtensions.MakeSynchDocLinks(Html, Model)
+            <p>@AppHelper.GetResource("LINKEDVIEWS_NONE_AVAILABLE")</p>
+        }
+        @HtmlHelperExtensions.LoadURILinks(Html, Model);
+    }
+    else if (ViewData.Model.URIDataManager.ServerActionType
+         == DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.member)
+    {
+       @Html.Partial("_Member", ViewData.Model)
+       @HtmlHelperExtensions.LoadURILinks(Html, Model);
+    }
+    else if (ViewData.Model.URIDataManager.ServerActionType
+         == DevTreks.Data.Helpers.GeneralHelpers.SERVER_ACTION_TYPES.pack)
+    {
+       @Html.Partial("SubActionsViews/_Package", ViewData.Model)
+    }
+    else
+    {
+        @Html.H4("Synchronize panels by clicking the 'Synch' links found at the top of the panel.", "ui-bar-b")
+       
+        <br />
+        <br />
+    }
+}

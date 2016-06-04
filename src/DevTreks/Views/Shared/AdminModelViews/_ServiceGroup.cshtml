@@ -1,0 +1,118 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "Service";
+}
+@{
+    if (Model.URINodeName == Agreement.AGREEMENT_BASE_TYPES.servicebasegroup.ToString())
+    {
+        if (Model.URIModels.ServiceClass == null)
+        {
+            //show existing error message only
+            return;
+        }
+        //current design does not allow this view
+        bool bCanDelete = false;
+        @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.ServiceClass.ServiceClassName,
+                 "ServiceClassName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+
+        if (Model.URIModels.ServiceClass.Service != null)
+        {
+            if (Model.URIModels.ServiceClass.Service.Count > 0)
+            {
+                @Html.H4("Service", "ui-bar-b")
+                foreach (var service in Model.URIModels.ServiceClass.Service)
+                {
+                    ViewData.Model.URIModels.Service = service;
+                    @Html.DivCollapseStart(Model, service.PKId)
+                    <h4>@service.ServiceName</h4>
+                    @Html.Partial("AdminModelViews/_Service", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else if (Model.URINodeName == Agreement.AGREEMENT_TYPES.serviceaccount.ToString())
+    {
+        if (Model.URIModels.Account == null)
+        {
+            //show existing error message only
+            return;
+        }
+        string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Account.AccountName, Model.URIModels.Account.PKId.ToString(),
+            Model.URINetworkPartName, Agreement.AGREEMENT_TYPES.serviceaccount.ToString(), string.Empty);
+        @Html.DivStart(string.Empty, string.Empty, "fieldcontain", string.Empty)
+        @Html.LabelStrong("AccountEmail", "Club:  ")
+        @Html.Span("AccountEmail", string.Empty,
+            string.Concat(Model.URIModels.Account.AccountName, ", ", Model.URIModels.Account.AccountEmail))
+        @Html.DivEnd()
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @HtmlHelperExtensions.MakeServiceAgreementButtons(Html, Model, searchurl)
+
+            @*string adddefaultparams = string.Concat("&amp;parentnode=", Model.URIPattern, "&amp;defaultnode=",
+                StylesheetHelper.GetURIPattern("00Default", "1", Model.URINetworkPartName,
+                Agreement.AGREEMENT_TYPES.service.ToString(), string.Empty));
+            @Html.DivStart(string.Empty, "ui-grid-a")
+            @Html.DivStart(string.Empty, "ui-block-a")
+            @Html.Raw(@StylesheetHelper.MakeDevTreksButton(string.Concat("adddefault_", Agreement.AGREEMENT_TYPES.service.ToString()), "SubmitButton1Enabled150",
+                "Add Service:", Model.URIDataManager.ContentURIPattern, string.Empty,
+                GeneralHelpers.CLIENTACTION_TYPES.postrequest.ToString(), GeneralHelpers.SERVER_ACTION_TYPES.edit.ToString(),
+                GeneralHelpers.SERVER_SUBACTION_TYPES.adddefaults.ToString(),
+                GeneralHelpers.NONE, @adddefaultparams))
+            @Html.DivEnd()
+            @Html.DivStart(string.Empty, "ui-block-b")
+            string selectName = string.Concat("adddefault_", searchurl);
+            @Html.LabelHidden("lblServiceGroup", "Service", "ui-hidden-accessible")
+            <select class="Select250" id="lblServiceGroup" name="@selectName" data-mini="true">
+            @{
+                bool bIsSelected = false;
+                Dictionary<string, string> servicegroups = GeneralHelpers.GetSubAppTypeDictionary();
+                foreach (KeyValuePair<string, string> kvp in servicegroups)
+                {
+                        @Html.Option(kvp.Value, kvp.Key, bIsSelected)
+                }
+                }
+            </select>
+            @Html.DivEnd()
+            @Html.DivEnd()
+            @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                "GetSelectsLink", "Select Existing Service", "spanSelectionFiles",
+                Model.URIDataManager.ContentURIPattern, searchurl, 
+                Agreement.AGREEMENT_TYPES.service.ToString(), string.Empty, string.Empty))*@
+        }
+
+        if (Model.URIModels.Account.AccountToService != null)
+        {
+            if (Model.URIModels.Account.AccountToService.Count > 0)
+            {
+                foreach (var accounttoservice in Model.URIModels.Account.AccountToService)
+                {
+                    if (accounttoservice.Service != null) 
+                    {
+                        ViewData.Model.URIModels.AccountToService = accounttoservice;
+                        @Html.DivCollapseStart(Model, Model.URIModels.AccountToService.Service.PKId)
+                        <h4>@accounttoservice.Name</h4>
+                        @Html.Partial("AdminModelViews/_AccountToService", ViewData.Model)
+                        @Html.DivEnd()
+                    }
+                }
+            }
+        }
+    }
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("NetCost", "Net Service Agreement Monthly Cost:  ")
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.Raw(Model.URIModels.Account.NetCost.ToString())
+    @Html.DivEnd()
+    @Html.DivEnd()
+    }

@@ -1,0 +1,13 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Numerics Class Library",
+  "authors": [ "MathNet library license can be found on codeplex" ],
+  "frameworks": {
+    "net451": {
+      "frameworkAssemblies": {
+        "System.ComponentModel.Composition": "4.0.0.0",
+        "System.Numerics": "4.0.0.0"
+      }
+    }
+  }
+}

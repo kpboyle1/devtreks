@@ -1,0 +1,86 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    ViewBag.Title = "Network";
+}
+@{
+    if (Model.URINodeName == Networks.NETWORK_BASE_TYPES.networkbasegroup.ToString())
+    {
+        if (Model.URIModels.NetworkClass == null)
+        {
+            //show existing error message only
+            return;
+        }
+        bool bCanDelete = false;
+        @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.NetworkClass.NetworkClassName,
+            "NetworkClassName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+
+        if (Model.URIModels.NetworkClass.Network != null)
+        {
+            if (Model.URIModels.NetworkClass.Network.Count > 0)
+            {
+                @Html.H4("Network", "ui-bar-b")
+                foreach (var network in Model.URIModels.NetworkClass.Network)
+                {
+                   @Html.DivCollapseStart(Model, network.PKId)
+                    <h4>@network.NetworkName</h4>
+                    ViewData.Model.URIModels.Network = network;
+                    @Html.Partial("AdminModelViews/_Network", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else if (Model.URINodeName == Networks.NETWORK_TYPES.networkaccountgroup.ToString())
+    {
+        if (Model.URIModels.Account == null) 
+        {
+            Model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    string.Empty, "VIEWS_NOACCOUNTINIT");
+        }
+        else 
+        {
+            string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.Account.AccountName, Model.URIModels.Account.PKId.ToString(),
+                Model.URINetworkPartName, Networks.NETWORK_TYPES.networkaccountgroup.ToString(), string.Empty);
+            bool bCanDelete = false;
+            @HtmlHelperExtensions.MakeName(Html, string.Empty, Model.URIModels.Account.AccountName,
+                     "AccountName", GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+            if (Model.URIDataManager.EditViewEditType
+                == GeneralHelpers.VIEW_EDIT_TYPES.full)
+            {
+                <div>
+                    @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                            "GetSelectsLink", "Select Network", "spanSelectionFiles",
+                            Model.URIDataManager.ContentURIPattern, searchurl, 
+                            Networks.NETWORK_BASE_TYPES.networkbase.ToString(), string.Empty, string.Empty))
+                </div>
+                <br />
+            }
+            else 
+            {
+                @Html.H4("Network", "ui-bar-b")
+            }
+            if (Model.URIModels.Account.AccountToNetwork != null)
+            {
+                if (Model.URIModels.Account.AccountToNetwork.Count > 0)
+                {
+                    foreach (var accounttonetwork in Model.URIModels.Account.AccountToNetwork)
+                    {
+                        @Html.DivCollapseStart(Model, accounttonetwork.PKId)
+                        ViewData.Model.URIModels.AccountToNetwork = accounttonetwork;
+                        <h4>@accounttonetwork.Network.NetworkName</h4>
+                        @Html.Partial("AdminModelViews/_AccountToNetwork", ViewData.Model)
+                        @Html.DivEnd()
+                    }
+                }
+            }
+        }
+    }
+
+}

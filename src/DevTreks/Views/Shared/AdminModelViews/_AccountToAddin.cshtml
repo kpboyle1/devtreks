@@ -1,0 +1,44 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    if (Model.URIModels.AccountToAddIn == null)
+    {
+        //show existing error message only
+        return;
+    }
+    @Html.DivStart(string.Empty, string.Empty, "fieldcontain", "b", string.Empty, string.Empty, "true")
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToAddIn.LinkedViewName, Model.URIModels.AccountToAddIn.PKId.ToString(),
+            Model.URINetworkPartName, AddIns.ADDIN_TYPES.addin.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+        @Model.URINodeName, AddIns.ADDIN_TYPES.addin.ToString(), 
+        Model.URIDataManager.ServerActionType, Model.URIMember);
+    @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.AccountToAddIn.LinkedViewName,
+        "LinkedViewName", Model.URIDataManager.EditViewEditType, bCanDelete)
+    string sNetworkText = string.Empty;
+    if (bCanDelete)
+    {
+        sNetworkText = string.Concat(
+           Model.URIModels.AccountToAddIn.LinkedView.LinkedViewDesc);
+        string name = string.Concat(StylesheetHelper.GetURIPattern("none", "0", "0",
+        AddIns.ADDIN_TYPES.addin.ToString(), ""), ";IsDefaultLinkedView;boolean;1");
+        string id = string.Concat("defaultaddin", Model.URIModels.AccountToAddIn.PKId.ToString());
+        @HtmlHelperExtensions.MakeRadioTrueFalseOption(Html, id, name, Model.URIModels.AccountToAddIn.PKId.ToString(),
+                 Model.URIModels.AccountToAddIn.IsDefaultLinkedView, "Is Default Addin")
+    }
+    else
+    {
+        sNetworkText = string.Concat("Is Default: ", Model.URIModels.AccountToAddIn.IsDefaultLinkedView.ToString(),
+            " ;", Model.URIModels.AccountToAddIn.LinkedView.LinkedViewDesc);
+
+    }
+    @Html.DivEnd()
+    <p>@Html.Raw(sNetworkText)</p>
+}

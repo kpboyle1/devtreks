@@ -1,0 +1,8 @@
+﻿<root>
+	<linkedview Id="1" Version="1.6.5" CalculatorType="foodnutSR02" 
+		WhatIfTagName="none" FileExtensionType="foodnutSR02" 
+		CalculatorName="Food Nutrition, USDA Standard Reference, Calculator" 
+    StylesheetResourceFileName="MNBCalculator1.xslt" 
+		Stylesheet2ResourceFileName="MN1StocksOuts1.xslt"
+		RelatedCalculatorsType="mn01" Overwrite="0"  />
+</root>

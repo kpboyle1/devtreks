@@ -1,0 +1,15 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "DevTreks.Models Class Library",
+  "authors": [ "kpboyle1" ],
+  "frameworks": {
+    "net451": {}
+  },
+  "dependencies": {
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.Tools": {
+      "version": "1.0.0-preview1-final",
+      "type": "build"
+    }
+  }
+}

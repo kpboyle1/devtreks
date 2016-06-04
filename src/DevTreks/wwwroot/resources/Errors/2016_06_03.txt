@@ -1,0 +1,17 @@
+
+Log Entry : 5:05:26 PM Friday, June 3, 2016
+  :
+  :Point of contention: <br /> This contention message can be erased by clicking on any tab.<br />Application: resources<br />SubApplication: resources<br />Node Name: resourcepack<br />Id: 408<br />Service Id: 3763<br />Account Id: DevTreks.Models.Account<br />Admin Message:System.IO.IOException: The target file "ExtensionsDev" is a directory, not a file.
+   at System.IO.File.InternalCopy(String sourceFileName, String destFileName, Boolean overwrite, Boolean checkHost)
+   at DevTreks.ViewModels.ContentViewModel.<CopyExtensions>d__38.MoveNext() in C:\DevTreks\src\DevTreks\ViewModels\ContentViewModel.cs:line 940
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.GetResult()
+   at DevTreks.ViewModels.ContentViewModel.<SetViewAsync>d__12.MoveNext() in C:\DevTreks\src\DevTreks\ViewModels\ContentViewModel.cs:line 83
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at DevTreks.Controllers.GreenTreksController.<ContentAjaxAction>d__34.MoveNext() in C:\DevTreks\src\DevTreks\Controllers\GreenTreksController.cs:line 263</ br><br />
+-------------------------------

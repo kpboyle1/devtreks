@@ -1,0 +1,20 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+
+
+@model DevTreks.Data.ContentURI
+@{
+    @HtmlHelperExtensions.MakeSynchDocLinks(Html, Model)
+    if (!(string.IsNullOrEmpty(Model.ErrorMessage)))
+    {
+        <div>
+            @{
+                @Html.SpanError(Model.ErrorMessage)
+            }
+        </div>
+    }
+    @HtmlHelperExtensions.DisplaySelectPanel(Html, Model)
+ }
+

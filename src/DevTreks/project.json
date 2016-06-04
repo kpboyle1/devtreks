@@ -1,11 +1,14 @@
 ﻿{
-  "userSecretsId": "aspnet-DevTreks-0e680c03-cf1f-4f5f-89f9-beebc4ec950c",
+  "userSecretsId": "aspnet5-DevTreks-f5b9d570-db7a-4fa2-9e37-78fade0218a3",
 
   "dependencies": {
+    "DevTreks.Data": "1.0.0-*",
+    "DoStepsHost": "1.0.0-*",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Localization": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
     "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.0.0-preview1-final",
@@ -33,7 +36,8 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview1-final",
       "type": "build"
-    }
+    },
+    "System.Text.Encodings.Web": "4.0.0-rc2-24027"
   },
 
   "tools": {
@@ -71,20 +75,30 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true
-  },
-
-  "publishOptions": {
+    "preserveCompilationContext": true,
     "include": [
-      "wwwroot",
-      "Views",
-      "appsettings.json",
-      "web.config"
-    ]
+      "..\\atest.txt",
+      "..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net451\\AgBudgetingCalculators.dll"
+    ],
+    "copyToOutput": {
+      "include": [
+        "..\\atest.txt",
+        "..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net451\\AgBudgetingCalculators.dll"
+      ]
+    }
   },
 
-  "scripts": {
-    "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ],
-    "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+    "publishOptions": {
+      "include": [
+        "wwwroot",
+        "Views",
+        "appsettings.json",
+        "web.config"
+      ]
+    },
+
+    "scripts": {
+      "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ],
+      "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
+    }
   }
-}

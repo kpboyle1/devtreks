@@ -1,0 +1,80 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.DevPackClass.DevPackClassName, Model.URIModels.DevPackClass.PKId.ToString(),
+                Model.URINetworkPartName, DevPacks.DEVPACKS_TYPES.devpackgroup.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(
+      @Model.URINodeName, DevPacks.DEVPACKS_TYPES.devpackgroup.ToString(),
+      Model.URIDataManager.ServerActionType, Model.URIMember);
+
+    if (Model.URINodeName == DevPacks.DEVPACKS_TYPES.devpackgroup.ToString())
+    {
+
+        //only collections can be edited (conserve db hits)
+       @HtmlHelperExtensions.MakeName(Html, string.Empty, @Model.URIModels.DevPackClass.DevPackClassName, string.Empty,
+                  GeneralHelpers.VIEW_EDIT_TYPES.part, bCanDelete)
+        if (Model.URIDataManager.EditViewEditType
+            == GeneralHelpers.VIEW_EDIT_TYPES.full)
+        {
+            @*@Html.DivStart(string.Empty, string.Empty)
+            @Html.Raw(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                        "GetSelectsLink", "Select DevPack", "spanSelectionFiles",
+                        Model.URIDataManager.ContentURIPattern, searchurl,
+                        DevPacks.DEVPACKS_TYPES.devpack.ToString(), string.Empty, Model.URIDataManager.CalcParams))
+            @Html.DivEnd()*@     
+            @HtmlHelperExtensions.MakeAddDefaultNodeButton(Html, Model, "DevPack",
+                DevPacks.DEVPACKS_TYPES.devpack.ToString())
+        }
+        else 
+        {
+            @Html.H4("DevPack", "ui-bar-b")
+        }
+        if (Model.URIModels.DevPackClass.DevPackClassToDevPack != null)
+        {
+            if (Model.URIModels.DevPackClass.DevPackClassToDevPack.Count > 0)
+            {
+                foreach (var devpack in Model.URIModels.DevPackClass.DevPackClassToDevPack)
+                {
+                    ViewData.Model.URIModels.DevPackClassToDevPack = devpack;
+                    @Html.DivCollapseStart(Model, devpack.PKId)
+                    <h4>@devpack.DevPackClassAndPackName</h4>
+                    @Html.Partial("ContentModelViews/_DevPack", ViewData.Model)
+                    @Html.DivEnd()
+                }
+            }
+        }
+    }
+    else
+    {
+        
+        @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.DevPackClass.DevPackClassName, "DevPackClassName",
+                         Model.URIDataManager.EditViewEditType, bCanDelete)
+    
+        @Html.DivStart(string.Empty, "ui-grid-a")
+        @Html.DivStart(string.Empty, "ui-block-a")
+        @Html.LabelStrong("TypeId", "Type:")
+        @HtmlHelperExtensions.MakeSelectList(Html, searchurl, Model.URIModels.DevPackClass.TypeId.ToString(),
+                 "TypeId", GeneralRules.INTEGER, "4",
+                 Model.URIDataManager.EditViewEditType, "Select225", DevPacks.GetDevPackType(Model))
+        @Html.DivEnd()
+        @Html.DivStart(string.Empty, "ui-block-b")
+        @Html.LabelStrong("DevPackClassNum", "Label")
+        @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+                      Model.URIModels.DevPackClass.DevPackClassNum, "DevPackClassNum", GeneralRules.STRING, "15",
+                 "Input75Center", string.Empty)
+        @Html.DivEnd()
+        @Html.DivEnd()
+        @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.DevPackClass.DevPackClassDesc, "DevPackClassDesc",
+            "Description", Model.URIDataManager.EditViewEditType, "Text75H100PCW", "255")
+
+    }
+    
+    }

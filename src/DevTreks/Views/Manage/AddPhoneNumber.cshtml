@@ -2,9 +2,9 @@
 @{
     ViewData["Title"] = "Add Phone Number";
 }
-
+<p><strong>@Html.ActionLink("Home", "Index", "Home", routeValues: null, htmlAttributes: new { data_role = "button", data_mini = "true", data_inline = "true" }) > @ViewData["Title"] </strong></p>
 <h2>@ViewData["Title"].</h2>
-<form asp-controller="Manage" asp-action="AddPhoneNumber" method="post" class="form-horizontal">
+<form asp-controller="Manage" asp-action="AddPhoneNumber" method="post" class="form-horizontal" role="form">
     <h4>Add a phone number.</h4>
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+	<linkedview Id="1" Version="1.1.2" AnalyzerType="resources01" CalculatorType="" 
+		StylesheetResourceFileName="ResourceAnalysisOC1.xslt" Stylesheet2ResourceFileName=""
+		WhatIfTagName="none" RelatedCalculatorType="" RelatedCalculatorsType=""
+		FileExtensionType="" FilesToAnalyzeExtensionType="" 
+		CalculatorName="" CalculatorDate="" Option1="" Option2="" Option3="" Option4=""
+		CalculatorDescription="" />
+</root>

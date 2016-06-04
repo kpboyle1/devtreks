@@ -1,109 +1,104 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@{
+    ViewBag.Title = AppHelper.GetResource("DEVTREKS_TITLE");
 }
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Package Management" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Bring in libraries from NuGet, Bower, and npm, and automate tasks using Grunt or Gulp.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525029&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner4.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
+@Html.Image("logo", "/images/devtreks-logo.jpg", "DevTreks logo", "15%", "15%", string.Empty)
+<span><strong> @ViewData["Title"]</strong></span>
+<div data-role="navbar">
+    <ul>
+        <li>@Html.Link("whatsnew2", "/commontreks/preview/commons/resourcepack/A Introduction To DevTreks/502/none", "Home", "What's New")</li>
+        <li>@Html.ActionLink(AppHelper.GetResource("ABOUT_DEVTREKS"), "about", "home")</li>
+        <li><strong><a id="sourcecode" href="https://github.com/kpboyle1/devtreks1">source</a></strong></li>
+        <li><strong><a id="database" href="http://devtreks.codeplex.com/">database</a></strong></li>
+    </ul>
 </div>
-
-<div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518007">Gulp</a> and <a href="http://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
-            <li>Theming using <a href="http://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398600">Add a Controller and View</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699562">Add an appsetting in config and access it in app.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699318">Add client packages using Bower.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run & Deploy</h2>
-        <ul>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="http://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure Web Apps</a></li>
-        </ul>
-    </div>
+<div data-role="navbar">
+    @await Html.PartialAsync("_LoginPartial")
 </div>
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">@AppHelper.GetResource("LOGGEDIN_WELCOME")</li>
+
+    <li>@Html.ActionLink("CommonTreks", "index", "CommonTreks")</li>
+
+    <li>@Html.ActionLink("AgTreks", "index", "AgTreks")</li>
+
+    <li>@Html.ActionLink("HomeTreks", "index", "HomeTreks")</li>
+
+    <li>@Html.ActionLink("BuildTreks", "index", "BuildTreks")</li>
+
+    <li>@Html.ActionLink("HealthTreks", "index", "HealthTreks")</li>
+    <li>@Html.ActionLink("GreenTreks", "index", "GreenTreks")</li>
+    <li>@Html.ActionLink("GovTreks (under planning)", "index", "GovTreks")</li>
+</ul>
+@if (FileStorageIO.GetPlatformType(this.Context.Request.PathBase) == FileStorageIO.PLATFORM_TYPES.azure)
+{
+<ul data-role="listview" data-inset="true">
+
+    <li data-role="list-divider">Admin Tutorials</li>
+    <li>@Html.Link("A02", "/commontreks/preview/commons/resourcepack/Search and Quality Control/1536/none/", "Home", "Sitemaps and Search (2014-10)")</li>
+
+    <li>@Html.Link("A01", "/commontreks/preview/commons/resourcepack/Social Budgeting/350/none", "Home", "Social Budgeting (2016-05)")</li>
+    <li>@Html.Link("A00", "/commontreks/preview/commons/resourcepack/Deployment/348/none", "Home", "Source Code and Deployment (2016-06)")</li>
+</ul>
+<ul data-role="listview" data-inset="true">
+
+    <li data-role="list-divider">General Calculator Tutorials</li>
+    <li>@Html.Link("A102", "/commontreks/preview/commons/resourcepack/Work Breakdown Structures/467/none", "Home", "Work Breakdown Structures (2014-08)")</li>
+
+    <li>@Html.Link("A103", "/commontreks/preview/commons/resourcepack/Calculators and Analyzers/515/none", "Home", "Calculators and Analyzers (2016-05)")</li>
+
+    <li>@Html.Link("A104", "/commontreks/preview/commons/resourcepack/Story Telling 1/491/none", "Home", "Story Telling (2016-05)")</li>
+
+    <li>@Html.Link("A107", "/commontreks/preview/commons/resourcepack/NPV Calculation 1, Operating Budgets/461/none/", "Home", "NPV Calculation 1, Operating Budgets (2016-01)")</li>
+
+    <li>@Html.Link("A108", "/commontreks/preview/commons/resourcepack/NPV Calculation 2, Capital Budgets/445/none/", "Home", "NPV Calculation 2, Capital Budgets (2016-01)")</li>
+
+    <li>@Html.Link("A109", "/commontreks/preview/commons/resourcepack/Life Cycle Analysis 1/497/none/", "Home", "Life Cycle Calculation (2016-01)")</li>
+
+    <li>@Html.Link("A110", "/commontreks/preview/commons/resourcepack/Monitoring and Evaluation Calculation 1/476/none", "Home", "Monitoring and Evaluation Calculation 1 (2015-12)")</li>
+</ul>
+<ul data-role="listview" data-inset="true">
+
+    <li data-role="list-divider">General Analyzer Tutorials</li>
+    <li>@Html.Link("B106", "/commontreks/preview/commons/resourcepack/Performance Analysis 1/509/none", "Home", "Performance Analysis 1 (2014-11)")</li>
+
+    <li>@Html.Link("B101", "/commontreks/preview/commons/resourcepack/Benefit Cost Analysis 1/506/none", "Home", "Benefit Cost Analysis 1 (2016-01)")</li>
+
+    <li>@Html.Link("B102", "/commontreks/preview/commons/resourcepack/Life Cycle Analysis 2/501/none/", "Home", "Life Cycle Analysis (2016-01)")</li>
+
+    <li>@Html.Link("B103", "/commontreks/preview/commons/resourcepack/Earned Value Management 1/504/none/", "Home", "Earned Value Management 1 (2016-01)")</li>
+
+    <li>@Html.Link("B104", "/commontreks/preview/commons/resourcepack/Change Analysis 1/507/none", "Home", "Change Analysis 1 (2014-08)")</li>
+
+    <li>@Html.Link("B105", "/commontreks/preview/commons/resourcepack/Price Analysis 1/508/none", "Home", "Price Analysis 1 (2014-08)")</li>
+    @*<li>@Html.Link("B107", "/commontreks/preview/commons/resourcepack/M and E Analysis 1/518/none/", "Home", "Monitoring and Evaluation Analysis 1 (2014-08)")</li>*@
+	<li>@Html.Link("B108", "/commontreks/preview/commons/resourcepack/M and E Analysis 2/519/none/", "Home", "Monitoring and Evaluation Analysis 2 (2015-12)")</li>
+	<li>@Html.Link("B109", "/commontreks/preview/commons/resourcepack/Resource Stock Analysis 1/1525/none/", "Home", "Resource Stock Analysis 1 (2016-06)")</li>
+    <li>@Html.Link("B110", "/commontreks/preview/commons/resourcepack/DevPack Analysis/1535/none/", "Home", "DevPack Analysis (2016-05)")</li>
+    </ul>
+<ul data-role="listview" data-inset="true">
+	<li data-role="list-divider">Professional Tutorials</li>
+	<li>@Html.Link("C101", "/commontreks/preview/commons/resourcepack/Ag Production Analysis 1/464/none", "Home", "Ag Production Analysis 1 (2014-08)")</li>
+	<li>@Html.Link("C102", "/commontreks/preview/commons/resourcepack/Construction Analysis 1/474/none", "Home", "Construction Analysis 1 (2014-08)")</li>
+	<li>@Html.Link("C103", "/commontreks/preview/commons/resourcepack/Health Care Analysis 1/449/none", "Home", "Health Care Analysis 1 (2014-08)")</li>
+    <li>@Html.Link("C104", "/commontreks/preview/commons/resourcepack/Malnutrition Analysis 1/450/none", "Home", "Malnutrition Analysis 1 (2014-08)")</li>
+	<li>@Html.Link("C105", "/commontreks/preview/commons/resourcepack/Machinery Costs 1/437/none", "Home", "Capital Input (Machinery) Analysis 1 (2014-08)")</li>
+    <li>@Html.Link("C106", "/commontreks/preview/commons/resourcepack/Technology Assessment 1/1526/none/", "Home", "Technology Assessment 1 (2016-06)")</li>
+    <li>@Html.Link("C107", "/commontreks/preview/commons/resourcepack/Technology Assessment 2/1544/none", "Home", "Technology Assessment 2 (2016-06)")</li>
+</ul>
+<ul data-role="listview" data-inset="true">
+    <li data-role="list-divider">Information about donations, grants, and fees:</li>
+    <li>Refer to the Source Code tutorial.</li>
+</ul>
+}
+@section Footer {
+    <p>
+        <strong>Need Another Treks?</strong><strong>
+        <br />
+        @AppHelper.GetResource("TREKS_MORE")</strong>
+        <br />
+        devtrekkers@gmail.com
+    </p>
+    @HtmlHelperExtensions.WriteCurrentVersion(Html)
+}

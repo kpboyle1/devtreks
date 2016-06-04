@@ -1,0 +1,34 @@
+﻿@using DevTreks.Helpers;
+@using DevTreks.Data.Helpers;
+@using DevTreks.Data.AppHelpers;
+@using DevTreks.Data;
+@using DevTreks.Models;
+@using DevTreks.Data.RuleHelpers;
+
+
+@model DevTreks.Data.ContentURI
+
+@{
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.DevPackPartToResourcePack.ResourcePack.ResourcePackName, Model.URIModels.DevPackPartToResourcePack.PKId.ToString(),
+            Model.URINetworkPartName, DevPacks.DEVPACKS_TYPES.devpackresourcepack.ToString(), string.Empty);
+    bool bCanDelete = AppHelper.CanDeleteNode(@Model.URINodeName,
+        DevPacks.DEVPACKS_TYPES.devpackresourcepack.ToString(),
+        Model.URIDataManager.ServerActionType, Model.URIMember);
+   if (bCanDelete)
+    {
+            @HtmlHelperExtensions.MakeDeleteOptionsWithFieldSet(Html, searchurl, @Model.URIModels.DevPackPartToResourcePack.ResourcePack.ResourcePackName)
+    }
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-grid-a")
+    @Html.DivStart(string.Empty, "ui-block-a")
+    @Html.LabelStrong("SortLabel", "Sort Label: ")
+    @Html.InputTextUpdate(Model.URIDataManager.EditViewEditType, searchurl,
+        Model.URIModels.DevPackPartToResourcePack.SortLabel, "SortLabel", GeneralRules.STRING, "15",
+        "Input75Center", string.Empty)
+    @Html.DivEnd()
+    @Html.DivStart(string.Empty, "ui-block-b")
+    @Html.DivEnd()
+    @Html.DivEnd()    
+    @HtmlHelperExtensions.MakeTextArea(Html, searchurl, Model.URIModels.DevPackPartToResourcePack.ResourcePack.ResourcePackDesc, "ResourcePackDesc",
+                    "Description", GeneralHelpers.VIEW_EDIT_TYPES.part, "Text75H100PCW", "255")
+}
