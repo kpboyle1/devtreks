@@ -72,7 +72,9 @@ namespace DevTreks
 
             //refer to https://docs.asp.net/en/1.0.0-rc2/fundamentals/localization.html
             //doesn't include the errors project -don't refactor because not clear why this is actually needed
-            services.AddLocalization(options => options.ResourcesPath = "DevTreks.Resources");
+            services.AddLocalization(options => options.ResourcesPath = "..\\DevTreks.Exceptions");
+            services.AddLocalization(options => options.ResourcesPath = "..\\DevTreks.Resources");
+            
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
@@ -137,7 +139,8 @@ namespace DevTreks
             services.AddMvc();
 
             //refer to https://docs.asp.net/en/1.0.0-rc2/fundamentals/localization.html
-            services.AddLocalization(options => options.ResourcesPath = "DevTreks.Resources");
+            services.AddLocalization(options => options.ResourcesPath = "..\\DevTreks.Resources");
+            services.AddLocalization(options => options.ResourcesPath = "..\\DevTreks.Exceptions");
 
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();

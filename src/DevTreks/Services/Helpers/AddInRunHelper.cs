@@ -68,7 +68,7 @@ namespace DevTreks.Services.Helpers
                 = FillInURIsToAnalyzeList(docToCalcURI, calcDocURI, hostTypeName);
             if (docToCalcURI.ErrorMessage != string.Empty)
             {
-                docToCalcURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                docToCalcURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     docToCalcURI.ErrorMessage, "ERROR_INTRO");
                 return false;
             }
@@ -86,7 +86,7 @@ namespace DevTreks.Services.Helpers
             }
             if (docToCalcURI.ErrorMessage != string.Empty)
             {
-                docToCalcURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                docToCalcURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     docToCalcURI.ErrorMessage, "ERROR_INTRO");
             }
             return bStepIsDone;
@@ -631,7 +631,7 @@ namespace DevTreks.Services.Helpers
             }
             else
             {
-                docToCalcURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                docToCalcURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "CONTENTSERVICE_NOCALCSRUN2");
             }
             return childrenLinkedView;

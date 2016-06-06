@@ -18,7 +18,8 @@ namespace DevTreks.Resources
             //Startup.cs localizes resources on current thread
         }
         //init resource manager		
-        private static ResourceManager DevTreksResMngr = new ResourceManager(typeof(DevTreksResources).Namespace + ".DevTreksResources", Assembly.GetAssembly(typeof(DevTreksResources)));
+        private static ResourceManager DevTreksResMngr = new ResourceManager(typeof(DevTreksResources).Namespace 
+            + ".DevTreksResources", Assembly.GetAssembly(typeof(DevTreksResources)));
         
         //return a localized string to the client for the DevTreks views
         public static string GetDevTreksString(string resourceName)

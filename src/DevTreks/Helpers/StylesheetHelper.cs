@@ -132,7 +132,7 @@ namespace DevTreks.Helpers
                     if (stylesheetReader == null)
                     {
                         uri.ErrorMessage
-                            = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                            = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 string.Empty, "STYLEHELPER_NOSTYLEFROMCACHE");
                     }
                     GetDisplayObjects(stylesheetURI, ref extensionObject);
@@ -140,14 +140,14 @@ namespace DevTreks.Helpers
                 else
                 {
                     uri.ErrorMessage
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "STYLEHELPER_NOSTYLE");
                 }
             }
             else
             {
                 uri.ErrorMessage
-                    = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "STYLEHELPER_NOSTYLE");
             }
             return stylesheetReader;
@@ -1042,7 +1042,7 @@ namespace DevTreks.Helpers
                     sNetworkDocPath);
             if (string.IsNullOrEmpty(sURIPath))
             {
-                writer.Write(DevTreks.Exceptions.Errors
+                writer.Write(DevTreks.Exceptions.DevTreksErrors
                     .MakeStandardErrorMsg(string.Empty, "NETWORKS_NOTSELECTED"));
             }
             else
@@ -1086,7 +1086,7 @@ namespace DevTreks.Helpers
                 }
                 if (!string.IsNullOrEmpty(sErrorMsg))
                 {
-                    sErrorMsg = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                    sErrorMsg = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                         "NETWORKS_NOTSELECTED");
                     //the stylesheet looks for a starting "Error" string before display
                     sFullNetworkDocPath = sErrorMsg;
@@ -1378,7 +1378,7 @@ namespace DevTreks.Helpers
             //string sURIPath = DataHelpers.FileStorageIO.GetResourceURIPath(resourceURI, sFullDocPath);
             if (string.IsNullOrEmpty(sURIPath))
             {
-                writer.Write(DevTreks.Exceptions.Errors.MakeStandardErrorMsg(label,
+                writer.Write(DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(label,
                     "STYLEHELPER_NOLINKEDLIST2"));
             }
             else

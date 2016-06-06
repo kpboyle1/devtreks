@@ -50,7 +50,7 @@ namespace DevTreks.ViewModels
         public async Task<string> UpdatePaymentHandling(HttpContext context, IMemberService memberService,
             AccountToMember loggedInMember)
         {
-            string sError = Exceptions.Errors.MakeStandardErrorMsg(
+            string sError = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                  string.Empty, "MEMBERVIEW_NOPAYS");
             //await memberService.UpdatePaymentHandlingAsync(loggedInMember);
             return sError;

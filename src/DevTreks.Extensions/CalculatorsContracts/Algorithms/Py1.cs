@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 
 namespace DevTreks.Extensions.Algorithms
 {

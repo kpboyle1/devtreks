@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
-
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 using MathNet.Numerics.Distributions;
 //probab risk
 using MathNet.Numerics.LinearAlgebra;

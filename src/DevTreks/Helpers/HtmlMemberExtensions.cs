@@ -346,19 +346,19 @@ namespace DevTreks.Helpers
             //        }
             //        else
             //        {
-            //            uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+            //            uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
             //                string.Empty, "MEMBERVIEW_NOPAYS");
             //        }
             //    }
             //    else
             //    {
-            //        uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+            //        uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
             //            string.Empty, "MEMBERVIEW_BADDEFAULTCLUB");
             //    }
             //}
             //else
             //{
-            //    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+            //    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
             //            string.Empty, "MEMBERVIEW_BADDEFAULTCLUB");
             //}
             //writer.Write("<br />");

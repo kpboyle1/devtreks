@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 using System.Xml;
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 
 namespace DevTreks.Extensions
 {

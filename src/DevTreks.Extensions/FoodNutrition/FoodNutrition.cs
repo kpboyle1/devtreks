@@ -5,6 +5,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 
 namespace DevTreks.Extensions
 {
@@ -21,7 +22,7 @@ namespace DevTreks.Extensions
     //(note that these attributes will change in the future)
     [DoStepsAttribute(CONTRACT_TYPE = CALULATOR_CONTRACT_TYPES.defaultcalculatormanager,
         CalculatorsExtensionName = "FoodNutrition")]
-    public class HealthCare : DoStepsHostView
+    public class FoodNutrition : DoStepsHostView
     {
         public override async Task<bool> RunCalculatorStep(
             ExtensionContentURI extDocToCalcURI, ExtensionContentURI extCalcDocURI,

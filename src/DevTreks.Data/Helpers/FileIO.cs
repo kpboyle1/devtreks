@@ -37,7 +37,7 @@ namespace DevTreks.Data.Helpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.GetMessage("DISPLAYHELPER_NOHTMLFILE");
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage("DISPLAYHELPER_NOHTMLFILE");
                 }
             }
             return bHasFile;
@@ -123,7 +123,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.GetMessage("DISPLAYHELPER_NOHTMLFILE");
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage("DISPLAYHELPER_NOHTMLFILE");
             }
         }
         public async void WriteTextFilesAsync(List<string> dataWriteURLs)
@@ -212,7 +212,7 @@ namespace DevTreks.Data.Helpers
             }
             catch (Exception x)
             {
-                sb.Append(DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                sb.Append(DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "RESOURCES_NOFILEREAD"));
             }
             return sb.ToString();
@@ -254,7 +254,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.GetMessage("DISPLAYHELPER_NOHTMLFILE");
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage("DISPLAYHELPER_NOHTMLFILE");
             }
         }
         

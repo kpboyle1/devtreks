@@ -102,7 +102,7 @@ namespace DevTreks.Data.Helpers
             DirectoryInfo dir = null;
             if (!FileStorageIO.DirectoryExists(uri, docPath))
             {
-                errorMsg = Exceptions.Errors.MakeStandardErrorMsg(
+                errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "DIRECTORY_NOEXIST");
                 return;
             }
@@ -326,7 +326,7 @@ namespace DevTreks.Data.Helpers
             }
             catch (Exception x)
             {
-                errorMsg = Exceptions.Errors.MakeStandardErrorMsg(
+                errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     x.ToString(), "FILEIO_CANTSAVEFILE");
                 File.Delete(filePath);
             }
@@ -377,13 +377,13 @@ namespace DevTreks.Data.Helpers
             }
             catch (Exception x)
             {
-                errorMsg = Exceptions.Errors.MakeStandardErrorMsg(
+                errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     x.ToString(), "FILEIO_CANTSAVEFILE");
                 File.Delete(filePath);
             }
             if (!bCanWrite)
             {
-                errorMsg = Exceptions.Errors.MakeStandardErrorMsg(
+                errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "FILEIO_STREAMCLOSED");
             }
             oTextWriter = null;

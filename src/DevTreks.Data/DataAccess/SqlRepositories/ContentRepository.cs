@@ -791,7 +791,7 @@ namespace DevTreks.Data.SqlRepositories
                     bIsDeleted = await devpackHelper.DeleteDevPack(argumentsEdits);
                     break;
                 default:
-                    uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "CONTENTREP_BADAPP");
                     break;
             }
@@ -887,7 +887,7 @@ namespace DevTreks.Data.SqlRepositories
                     bIsUpdated = await devpackelper.UpdateDevPack(edits);
                     break;
                 default:
-                    uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "CONTENTREP_BADAPP");
                     break;
             }
@@ -969,7 +969,7 @@ namespace DevTreks.Data.SqlRepositories
                 //add the selection
                 if (oArgumentsAdds.SelectionsToAdd.Count < 1)
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "EDIT_NOURISTOEDIT");
                     return false;
                 }
@@ -1058,7 +1058,7 @@ namespace DevTreks.Data.SqlRepositories
                         bIsOkToSave = await devpackHelper.AddDevPack(oArgumentsAdds);
                         break;
                     default:
-                        uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                        uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "CONTENTREP_BADAPP");
                         break;
                 }
@@ -1143,7 +1143,7 @@ namespace DevTreks.Data.SqlRepositories
                 reader);
             if (bIsSaved == false)
             {
-                uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "SQLCONTENT_NOSAVE");
             }
             return bIsSaved;
@@ -1157,7 +1157,7 @@ namespace DevTreks.Data.SqlRepositories
                 isMetaData, fileName, reader);
             if (bIsSaved == false)
             {
-                uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "SQLCONTENT_NOSAVE");
             }
             return bIsSaved;
@@ -1170,7 +1170,7 @@ namespace DevTreks.Data.SqlRepositories
                 fileName, fileLength, mimeType, postedFileStream);
             if (bIsSaved == false)
             {
-                uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "SQLCONTENT_NOSAVE2");
             }
             return bIsSaved;
@@ -1394,7 +1394,7 @@ namespace DevTreks.Data.SqlRepositories
             if (uri.URIId == 0)
             {
                 //an uploaded file that is bad (not formatted as xml), or a bad filename, could be the cause
-                uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "SQLCONTENT_NORESOURCES");
                 return new List<ContentURI>();
             }
@@ -1418,7 +1418,7 @@ namespace DevTreks.Data.SqlRepositories
             if (uri.URIId == 0)
             {
                 //an uploaded file that is bad (not formatted as xml), or a bad filename, could be the cause
-                uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "SQLCONTENT_NORESOURCES");
                 return sResourceURLs;
             }
@@ -1466,7 +1466,7 @@ namespace DevTreks.Data.SqlRepositories
             if (uri.URIId == 0)
             {
                 //an uploaded file that is bad (not formatted as xml), or a bad filename, could be the cause
-                uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "SQLCONTENT_NORESOURCES");
                 return sResourceURLs;
             }
@@ -1825,14 +1825,14 @@ namespace DevTreks.Data.SqlRepositories
             if (stylesheetURI == null)
             {
                 displayURI.ErrorMessage
-                    = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "STYLEHELPER_NOSTYLE");
             }
             else if (!Helpers.FileStorageIO.URIAbsoluteExists(stylesheetURI,
                 stylesheetURI.URIDataManager.FileSystemPath))
             {
                 displayURI.ErrorMessage
-                    = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "STYLEHELPER_NOSTYLE");
             }
             else
@@ -1957,7 +1957,7 @@ namespace DevTreks.Data.SqlRepositories
                 }
                 else
                 {
-                    calcDocURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    calcDocURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "ADDINSTYLE_NOSTYLESHEET");
                 }
             }

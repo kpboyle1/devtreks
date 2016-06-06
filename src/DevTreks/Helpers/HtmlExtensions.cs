@@ -1563,7 +1563,7 @@ namespace DevTreks.Helpers
         public static HtmlString SpanError(string errorMessage)
         {
             var tagBuilder = new TagBuilder("span");
-            tagBuilder.MergeAttribute("id", DevTreks.Exceptions.Errors.DISPLAY_ERROR_ID2);
+            tagBuilder.MergeAttribute("id", DevTreks.Exceptions.DevTreksErrors.DISPLAY_ERROR_ID2);
             tagBuilder.InnerHtml.AppendHtml(string.Concat("<strong>", errorMessage, "</strong>"));
             tagBuilder.TagRenderMode = TagRenderMode.Normal;
             return (WriteTagBuilderHtml(tagBuilder));
@@ -1576,7 +1576,7 @@ namespace DevTreks.Helpers
         public static HtmlString PError(string errorMessage)
         {
             var tagBuilder = new TagBuilder("p");
-            tagBuilder.MergeAttribute("id", DevTreks.Exceptions.Errors.DISPLAY_ERROR_ID2);
+            tagBuilder.MergeAttribute("id", DevTreks.Exceptions.DevTreksErrors.DISPLAY_ERROR_ID2);
             tagBuilder.InnerHtml.AppendHtml(string.Concat("<strong>", errorMessage, "</strong>"));
             tagBuilder.TagRenderMode = TagRenderMode.Normal;
             return (WriteTagBuilderHtml(tagBuilder));

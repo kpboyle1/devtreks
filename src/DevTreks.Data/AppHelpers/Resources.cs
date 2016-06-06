@@ -349,7 +349,7 @@ namespace DevTreks.Data.AppHelpers
             else if (fileExt == FILEEXTENSION_TYPES.swf.ToString()) sMimeType = "video/swf";
             else
             {
-                errorMsg = Exceptions.Errors.MakeStandardErrorMsg("No support for: " + fileExt, "RESOURCES_NOFILETYPE");
+                errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg("No support for: " + fileExt, "RESOURCES_NOFILETYPE");
             }
             return sMimeType;
         }

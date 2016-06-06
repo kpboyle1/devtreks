@@ -175,7 +175,7 @@ namespace DevTreks.Data.EditHelpers
                 else
                 {
                     uri.ErrorMessage
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                             "ADDS_NOSELECTIONS");
                 }
                 //v 1.3.1: this duplicates XmlLinq.AddElementToParentUsingURI, when AddMoreDefaultElements is used
@@ -508,7 +508,7 @@ namespace DevTreks.Data.EditHelpers
                 else
                 {
                     uri.ErrorMessage 
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                             "ADDS_NOSELECTION");
                 }
             }
@@ -587,7 +587,7 @@ namespace DevTreks.Data.EditHelpers
                         else
                         {
                             addsArguments.ErrorMessage
-                                = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                                = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                                 "ADDS_NODBRECORD");
                         }
                     }
@@ -640,7 +640,7 @@ namespace DevTreks.Data.EditHelpers
             else
             {
                 addsArguments.ErrorMessage
-                    = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                    = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                                 "ADDS_NODEFAULTNODETOCOPY");
             }
             return selectedElement;
@@ -673,7 +673,7 @@ namespace DevTreks.Data.EditHelpers
         //        || string.IsNullOrEmpty(addsArguments.DevTrekNodeName))
         //    {
         //        addsArguments.ErrorMessage
-        //            = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+        //            = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
         //            "ADDS_NOSQLPARAMS");
         //    }
         //}
@@ -970,7 +970,7 @@ namespace DevTreks.Data.EditHelpers
             else
             {
                 addsArguments.ErrorMessage
-                     = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                     = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                         "ADDS_CANTADDCHILDTOPARENT");
             }
         }

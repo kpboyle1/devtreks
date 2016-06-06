@@ -101,7 +101,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                errorMsg = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                errorMsg = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "EPUB_NOCONTAINER");
             }
             return sContainerNewPath;
@@ -121,7 +121,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                errorMsg = DevTreks.Exceptions.Errors.MakeStandardErrorMsg("", "EPUB_NOFILE");
+                errorMsg = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg("", "EPUB_NOFILE");
             }
             return sEPubToPath;
         }

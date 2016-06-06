@@ -424,7 +424,7 @@ namespace DevTreks.Data.SqlRepositories
             }
             catch (Exception e)
             {
-               uri. ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+               uri. ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     e.InnerException.ToString(), "ERROR_INTRO");
             }
             return bIsUpdated;
@@ -481,7 +481,7 @@ namespace DevTreks.Data.SqlRepositories
         //    }
         //    catch (Exception e)
         //    {
-        //        uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+        //        uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
         //            e.InnerException.ToString(), "ERROR_INTRO");
         //    }
         //    return bIsUpdated;
@@ -575,7 +575,7 @@ namespace DevTreks.Data.SqlRepositories
                         }
                         catch (Exception e)
                         {
-                            uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                            uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 e.InnerException.ToString(), "MEMBERREPOSIT_UPcDateAGREEMENTAMOUNT");
                         }
                     }

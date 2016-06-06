@@ -11,6 +11,7 @@ using System.Linq;
 using System.Xml.Linq;
 using System.Text;
 using System.IO;
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 
 
 namespace DevTreks.Extensions

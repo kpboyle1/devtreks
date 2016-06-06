@@ -12,23 +12,24 @@
   },
   "dependencies": {
     "DevTreks.Data": "1.0.0-*",
+    "DevTreks.Exceptions": "1.0.0-*",
     "Jace": "1.0.0-*",
     "Numerics": "1.0.0-*"
-  },
-  //2.0.0 changes: https://github.com/aspnet/Announcements/issues/175
-  "buildOptions": {
-    "embed": {
-      "include": [ "" ],
-      "exclude": [ "" ],
-      "includeFiles": [
-        "GeneralMessages/Messages.resx"
-      ],
-      "excludeFiles": [ "" ],
-      "builtIns": { },
-      "mappings": {
-        "dest1": "./src1",
-        "dest2": [ "./src2" ]
-      }
-    }
+
   }
+  //2.0.0 moved error messages into DevTreksErrors: https://github.com/aspnet/Announcements/issues/175
+  //"buildOptions": {
+  //  "embed": {
+  //    "include": [ "" ],
+  //    "exclude": [ "" ],
+  //    "includeFiles": [
+  //      "GeneralMessages/Errors.resx"
+  //    ],
+  //    "excludeFiles": [ "" ],
+  //    "builtIns": { },
+  //    "mappings": {
+  //      "GeneralMessages/Errors.resx": "GeneralMessages/Errors.resx"
+  //    }
+  //  }
+  //}
 }

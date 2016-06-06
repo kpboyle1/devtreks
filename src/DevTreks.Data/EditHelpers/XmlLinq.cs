@@ -1340,7 +1340,7 @@ namespace DevTreks.Data.EditHelpers
             {
                 //generate an error msg
                 addsArguments.ErrorMessage
-                    = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                    = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                     "ADDS_NOANCESTORFOUND");
             }
             return bHasInsertedNode;
@@ -1452,7 +1452,7 @@ namespace DevTreks.Data.EditHelpers
                 else
                 {
                     addsArguments.ErrorMessage
-                    = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                    = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                         "ADDS_COULDNOTADDELEMENT");
                 }
             }
@@ -1763,7 +1763,7 @@ namespace DevTreks.Data.EditHelpers
                 if (bHasUpdated == false)
                 {
                     addsArguments.ErrorMessage
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                         "ADDS_MISSINGFROMSELECTIONSLIST");
                 }
             }
@@ -1869,7 +1869,7 @@ namespace DevTreks.Data.EditHelpers
             }
             else
             {
-                calcDocURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty,
+                calcDocURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty,
                     "CALCDOC_NOLINKEDVIEWNODES");
             }
             return bHasAdded;

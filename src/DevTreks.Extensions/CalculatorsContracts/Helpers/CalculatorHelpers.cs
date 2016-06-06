@@ -8,7 +8,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Globalization;
-
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 using DevTreksHelpers = DevTreks.Data.Helpers;
 using DevTreksAppHelpers = DevTreks.Data.AppHelpers;
 using DevTreksEditHelpers = DevTreks.Data.EditHelpers;
@@ -192,6 +192,12 @@ namespace DevTreks.Extensions
                     = Errors.MakeStandardErrorMsg("CALCULATORS_ID_MISMATCH");
             }
             return bHasSaved;
+        }
+        public static string GetMessage(string resourceName)
+        {
+            string sMessage = string.Empty;
+            sMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage(resourceName);
+            return sMessage;
         }
         public static void AddLocalConstants(Constants.LOCALCONSTANTS_TYPES constantType,
             CalculatorParameters calcParameters)

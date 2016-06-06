@@ -75,17 +75,17 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true,
-    "include": [
-      "..\\atest.txt",
-      "..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net451\\AgBudgetingCalculators.dll"
-    ],
-    "copyToOutput": {
-      "include": [
-        "..\\atest.txt",
-        "..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net451\\AgBudgetingCalculators.dll"
-      ]
-    }
+    "preserveCompilationContext": true
+    //"include": [
+    //  "..\\atest.txt",
+    //  "..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net451\\AgBudgetingCalculators.dll"
+    //],
+    //"copyToOutput": {
+    //  "include": [
+    //    "..\\atest.txt",
+    //    "..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net451\\AgBudgetingCalculators.dll"
+    //  ]
+    //}
   },
 
     "publishOptions": {

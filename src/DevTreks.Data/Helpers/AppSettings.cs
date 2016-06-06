@@ -825,7 +825,7 @@ namespace DevTreks.Data.Helpers
             string sXhtmlDocPath = string.Empty;
             if (string.IsNullOrEmpty(xmlDocPath))
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "IOHELPER_CANTBUILD");
                 return sXhtmlDocPath;
             }

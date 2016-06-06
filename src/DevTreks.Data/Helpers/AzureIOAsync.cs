@@ -368,7 +368,7 @@ namespace DevTreks.Data.Helpers
             else
             {
                 errorMsg
-                    = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "RESOURCES_NOBLOB");
             }
             return sURIPath;
@@ -393,7 +393,7 @@ namespace DevTreks.Data.Helpers
                 else
                 {
                     uri.ErrorMessage
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "RESOURCES_NOBLOB");
                 }
             }
@@ -407,7 +407,7 @@ namespace DevTreks.Data.Helpers
                 else
                 {
                     uri.ErrorMessage
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "RESOURCES_NOFILE");
                 }
             }

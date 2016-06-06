@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 
 namespace DevTreks.Extensions
 {

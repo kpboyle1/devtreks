@@ -44,7 +44,7 @@ namespace DevTreks.Services
             _repository = rep;
             if (_repository == null)
                 throw new InvalidOperationException(
-                    DevTreks.Exceptions.Errors.GetMessage("REPOSITORY_NOTNULL"));
+                    DevTreks.Exceptions.DevTreksErrors.GetMessage("REPOSITORY_NOTNULL"));
         }
         public ContentURI GetURI(string name, int id, string networkPartName,
             string nodeName, string fileExtensionType)
@@ -412,7 +412,7 @@ namespace DevTreks.Services
                 if (uri.URIDataManager.ServerSubActionType
                     == DataHelpers.GeneralHelpers.SERVER_SUBACTION_TYPES.downloadfile)
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.GetMessage("CONTENTSERVICE_HASNEWXMLDOC");
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage("CONTENTSERVICE_HASNEWXMLDOC");
                 }
             }
             return bHasSet;
@@ -593,7 +593,7 @@ namespace DevTreks.Services
 
             if (!string.IsNullOrEmpty(sInsertedIdsArray))
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "CONTENTSERVICE_NOLINKEDVIEWADD");
             }
             else
@@ -635,7 +635,7 @@ namespace DevTreks.Services
             }
             if (!bIsOkToSave)
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "EDITS_NOCANDO");
             }
             else
@@ -685,7 +685,7 @@ namespace DevTreks.Services
                 }
                 if (iServiceGroupId == 0 || iNetworkId == 0)
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "CONTSERVICE_CANTADDCATEGORY");
                 }
                 else
@@ -703,7 +703,7 @@ namespace DevTreks.Services
             }
             if (!bIsOkToSave)
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "EDITS_NOCANDO");
             }
             else
@@ -850,7 +850,7 @@ namespace DevTreks.Services
                 if (!bIsOkToSave)
                 {
                     //error
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "CONTENTSERVICE_CANTSAVESELECTS");
                 }
             }
@@ -906,7 +906,7 @@ namespace DevTreks.Services
             }
             else
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "CONTENTSERVICE_NOFORMELS");
             }
             return bIsAdded;
@@ -974,7 +974,7 @@ namespace DevTreks.Services
                     {
                         if (docToCalcURI.ErrorMessage == string.Empty)
                         {
-                            docToCalcURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                            docToCalcURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 string.Empty, "CONTENTSERVICE_NOCALCSRUN");
                         }
                     }
@@ -1014,7 +1014,7 @@ namespace DevTreks.Services
                 }
                 else
                 {
-                    docToCalcURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    docToCalcURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "CONTENTSERVICE_NOCALCSRUN2");
                 }
             }

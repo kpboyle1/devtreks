@@ -487,7 +487,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bHasSaved)
             {
-                sErrorMsg = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEPOSTEDFILE");
+                sErrorMsg = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEPOSTEDFILE");
             }
             return sErrorMsg;
         }
@@ -517,7 +517,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bFileHasSaved)
             {
-                sErrorMsg = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEXML");
+                sErrorMsg = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEXML");
             }
             return sErrorMsg;
         }
@@ -550,7 +550,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bFileHasSaved)
             {
-                errorMsg = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEXML");
+                errorMsg = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEXML");
             }
             return bFileHasSaved;
         }
@@ -620,7 +620,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bFileHasSaved)
             {
-                errorMsg = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEXML");
+                errorMsg = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEXML");
             }
             return bFileHasSaved;
         }
@@ -647,7 +647,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bFileHasSaved)
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
             }
         }
         public string SaveTextURI(ContentURI uri, StringWriter writer,
@@ -672,7 +672,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bFileHasSaved)
             {
-                sErrorMsg = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
+                sErrorMsg = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
             }
             return sErrorMsg;
         }
@@ -698,7 +698,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bFileHasSaved)
             {
-                sErrorMsg = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
+                sErrorMsg = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
             }
             return sErrorMsg;
         }
@@ -722,7 +722,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bFileHasSaved)
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
             }
             return bFileHasSaved;
         }
@@ -768,7 +768,7 @@ namespace DevTreks.Data.Helpers
             }
             if (!bFileHasSaved)
             {
-                errorMsg = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
+                errorMsg = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEHTMLORTEXT");
             }
             return bFileHasSaved;
         }
@@ -1449,7 +1449,7 @@ namespace DevTreks.Data.Helpers
                 else
                 {
                     errorMsg
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "RESOURCES_NOFILE");
                 }
             }
@@ -1474,7 +1474,7 @@ namespace DevTreks.Data.Helpers
         //        else
         //        {
         //            errorMsg
-        //                = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+        //                = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
         //                string.Empty, "RESOURCES_NOFILE");
         //        }
         //    }

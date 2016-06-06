@@ -1364,17 +1364,17 @@ namespace DevTreks.Helpers
                         }
                         else
                         {
-                            result.Write(DevTreks.Exceptions.Errors.GetMessage("MEMBERVIEW_BADURIFULL"));
+                            result.Write(DevTreks.Exceptions.DevTreksErrors.GetMessage("MEMBERVIEW_BADURIFULL"));
                         }
                     }
                     else
                     {
-                        result.Write(DevTreks.Exceptions.Errors.GetMessage("MEMBERVIEW_BADURIFULL"));
+                        result.Write(DevTreks.Exceptions.DevTreksErrors.GetMessage("MEMBERVIEW_BADURIFULL"));
                     }
                 }
                 else
                 {
-                    @result.Write(DevTreks.Exceptions.Errors.GetMessage("MEMBERVIEW_BADURIFULL"));
+                    @result.Write(DevTreks.Exceptions.DevTreksErrors.GetMessage("MEMBERVIEW_BADURIFULL"));
                 }
                 return new HtmlString(result.ToString());
             }
@@ -1390,7 +1390,7 @@ namespace DevTreks.Helpers
                 }
                 else
                 {
-                    result.Write(DevTreks.Exceptions.Errors.GetMessage("MEMBERVIEW_BADDEFAULTCLUB"));
+                    result.Write(DevTreks.Exceptions.DevTreksErrors.GetMessage("MEMBERVIEW_BADDEFAULTCLUB"));
                 }
                 return new HtmlString(result.ToString());
             }
@@ -1414,7 +1414,7 @@ namespace DevTreks.Helpers
                 }
                 else
                 {
-                    result.Write(DevTreks.Exceptions.Errors.GetMessage("MEMBERVIEW_BADDEFAULTCLUB"));
+                    result.Write(DevTreks.Exceptions.DevTreksErrors.GetMessage("MEMBERVIEW_BADDEFAULTCLUB"));
                 }
                 return new HtmlString(result.ToString());
             }
@@ -1438,7 +1438,7 @@ namespace DevTreks.Helpers
                 }
                 else
                 {
-                    result.Write(DevTreks.Exceptions.Errors.GetMessage("MEMBERVIEW_BADDEFAULTCLUB"));
+                    result.Write(DevTreks.Exceptions.DevTreksErrors.GetMessage("MEMBERVIEW_BADDEFAULTCLUB"));
                 }
                 return new HtmlString(result.ToString());
             }
@@ -5730,13 +5730,13 @@ namespace DevTreks.Helpers
                     }
                     else
                     {
-                        model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "DISPLAYHELPER_NOLINKEDVIEWS");
                     }
                 }
                 else
                 {
-                    model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "DISPLAYHELPER_NOLINKEDVIEWS");
                 }
                 result.Write("<br />");
@@ -5884,19 +5884,19 @@ namespace DevTreks.Helpers
                         }
                         else
                         {
-                            model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                            model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 string.Empty, "MEMHELPER_NOCATEGORIES");
                         }
                     }
                     else
                     {
-                        model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "MEMHELPER_NOCATEGORIES");
                     }
                 }
                 else
                 {
-                    model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "MEMHELPER_NOSERVICE");
                 }
                 result.WriteLine(helper.DivEnd());
@@ -6051,7 +6051,7 @@ namespace DevTreks.Helpers
                 }
                 else
                 {
-                    model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MEMHELPER_NOSERVICES");
                 }
                 return new HtmlString(result.ToString());
@@ -6099,7 +6099,7 @@ namespace DevTreks.Helpers
                 }
                 if (bHasAService == false)
                 {
-                    model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                        string.Empty, "MEMHELPER_NOSERVICES2");
                 }
                 return new HtmlString(result.ToString());
@@ -6249,13 +6249,13 @@ namespace DevTreks.Helpers
                     }
                     else
                     {
-                        model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "MEMBERHELPER_NOTMEMBER");
                     }
                 }
                 else
                 {
-                    model.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    model.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "MEMBERHELPER_NOTMEMBER");
                 }
                 result.WriteLine(helper.FieldsetEnd());
@@ -6374,7 +6374,7 @@ namespace DevTreks.Helpers
                         else
                         {
                             model.ErrorMessage
-                                = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                                = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                     string.Empty, "STYLEHELPER_NOSTYLE");
                             return new HtmlString(model.ErrorMessage);
                         }
@@ -6415,7 +6415,7 @@ namespace DevTreks.Helpers
                     {
                         string sErrorCheck = x.ToString();
                         model.ErrorMessage
-                           = string.Concat(sErrorCheck, DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                           = string.Concat(sErrorCheck, DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                            string.Empty, "STYLEHELPER_BADXMLORHTML"));
                     }
                     //help the GC out;
@@ -6424,7 +6424,7 @@ namespace DevTreks.Helpers
                 else
                 {
                     model.ErrorMessage
-                            = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                            = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "STYLEHELPER_NOSTYLE");
                 }
                 return new HtmlString(result.ToString());

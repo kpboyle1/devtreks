@@ -83,7 +83,7 @@ namespace DevTreks.Services.Helpers
             if (docToCalcURI.URIClub.ClubDocFullPath == string.Empty)
             {
                 docToCalcURI.ErrorMessage
-                    = Errors.MakeStandardErrorMsg(
+                    = DevTreksErrors.MakeStandardErrorMsg(
                             docToCalcURI.ErrorMessage, "ADDINSTATE_NOINITDOC");
                 return bHasSet;
             }
@@ -387,7 +387,7 @@ namespace DevTreks.Services.Helpers
                 if (calcDocURI.URIClub.ClubDocFullPath == string.Empty)
                 {
                     docToCalcURI.ErrorMessage
-                        = Errors.MakeStandardErrorMsg(
+                        = DevTreksErrors.MakeStandardErrorMsg(
                             docToCalcURI.ErrorMessage, "ADDINSTATE_NOADDINDOC");
                 }
             }
@@ -600,7 +600,7 @@ namespace DevTreks.Services.Helpers
             else
             {
                 selectedLinkedViewURI.ErrorMessage
-                    = Errors.MakeStandardErrorMsg(
+                    = DevTreksErrors.MakeStandardErrorMsg(
                         selectedLinkedViewURI.ErrorMessage, "ADDINSTATE_NOSELECTEDVIEWDOC");
             }
             bHasSet = true;
@@ -1141,7 +1141,7 @@ namespace DevTreks.Services.Helpers
             }
             if (bHasLinkedView == false)
             {
-                docToCalcURI.ErrorMessage = Errors.MakeStandardErrorMsg(
+                docToCalcURI.ErrorMessage = DevTreksErrors.MakeStandardErrorMsg(
                     docToCalcURI.ErrorMessage, "ADDINSTATE_NOADDINDOC");
                 sTempCalcDocPath = string.Empty;
                 if (calcDocURI != null)
@@ -1220,7 +1220,7 @@ namespace DevTreks.Services.Helpers
                                 {
                                     bLinkedLinkedViewExists = false;
                                     docToCalcURI.ErrorMessage
-                                        = Errors.MakeStandardErrorMsg(
+                                        = DevTreksErrors.MakeStandardErrorMsg(
                                             docToCalcURI.ErrorMessage, "ADDINSTATE_NOADDINDOC2");
                                 }
                             }
@@ -1229,7 +1229,7 @@ namespace DevTreks.Services.Helpers
                         {
                             bLinkedLinkedViewExists = false;
                             docToCalcURI.ErrorMessage
-                                = Errors.MakeStandardErrorMsg(
+                                = DevTreksErrors.MakeStandardErrorMsg(
                                     docToCalcURI.ErrorMessage, "ADDINSTATE_NOADDINDOC2");
                         }
                     }
@@ -1421,7 +1421,7 @@ namespace DevTreks.Services.Helpers
                 {
                     if (bNeedsBaseDoc)
                     {
-                        docToCalcURI.ErrorMessage = Errors.MakeStandardErrorMsg(
+                        docToCalcURI.ErrorMessage = DevTreksErrors.MakeStandardErrorMsg(
                                string.Empty, "ADDINHELPER_NOBASECALCS");
                     }
                 }

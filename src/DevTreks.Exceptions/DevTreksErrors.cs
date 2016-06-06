@@ -12,9 +12,9 @@ namespace DevTreks.Exceptions
     ///Date:		2016, June
     ///References:	https://docs.asp.net/en/1.0.0-rc2/fundamentals/localization.html
     /// </summary>
-    public sealed class Errors
+    public sealed class DevTreksErrors
 	{
-		private Errors()
+		private DevTreksErrors()
 		{
 			//no private instances needed; this class uses static methods only
 		}
@@ -24,11 +24,12 @@ namespace DevTreks.Exceptions
         //error messages that are generated while writing an html response are displayed in:
         public const string DISPLAY_ERROR_ID2 = "spanDisplayError2";
         public const string ERRORFOLDERNAME = "Errors";
-		private readonly static string EXCEPTIONMANAGER_NAME = typeof(Errors).Name;
+		private readonly static string EXCEPTIONMANAGER_NAME = typeof(DevTreksErrors).Name;
 		private const string EXCEPTIONMANAGEMENT_CONFIG_SECTION = "exceptionManagement";
         private readonly static string HTML_BREAK = "<br />";
 		// Resource Manager for localized text.
-		private static ResourceManager rm = new ResourceManager(typeof(Errors).Namespace + ".ErrorMessages",Assembly.GetAssembly(typeof(Errors)));
+		private static ResourceManager rm = new ResourceManager(typeof(DevTreksErrors).Namespace 
+            + ".DevTreksErrors", Assembly.GetAssembly(typeof(DevTreksErrors)));
 		//error message delimiters
 		private const string STRING_DELIMITER = ";";
 		private static char[] STRING_DELIMITERS = new char[] {';'};
@@ -51,7 +52,7 @@ namespace DevTreks.Exceptions
 				if (aMessages.Length >= 0) 
 				{
 					oString.Append(GetMessage("TITLE_MESSAGE"));
-					oString.Append(GetMessage(aMessages[0]));
+					oString.Append(aMessages[0]);
 					oString.Append(HTML_BREAK);
                     oString.Append(GetMessage("TAB_CLICK_TO_ERASE"));
                     oString.Append(HTML_BREAK);
@@ -138,7 +139,7 @@ namespace DevTreks.Exceptions
                 if (aMessages.Length >= 0)
                 {
                     oString.Append(GetMessage("TITLE_MESSAGE"));
-                    oString.Append(GetMessage(aMessages[0]));
+                    oString.Append(aMessages[0]);
                     oString.Append(HTML_BREAK);
                     oString.Append(GetMessage("TAB_CLICK_TO_ERASE"));
                     oString.Append(HTML_BREAK);
@@ -197,6 +198,12 @@ namespace DevTreks.Exceptions
             }
             return sFullError;
         }
+        public static string MakeStandardErrorMsg(string resourceName)
+        {
+            string sErrorMsg = string.Empty;
+            sErrorMsg = GetMessage(resourceName);
+            return sErrorMsg;
+        }
         public static string MakeStandardErrorMsg(string errorMessage, string resourceName)
         {
             string sErrorMsg = string.Empty;
@@ -211,6 +218,11 @@ namespace DevTreks.Exceptions
                 sErrorMsg = string.Concat(GetMessage("TITLE_MESSAGE"), errorMessage,
                     GetMessage("TAB_CLICK_TO_ERASE"));
             }
+            int iKeepLength = (errorMessage.Length > 100) ? 100 : errorMessage.Length - 1;
+            if (iKeepLength > 0)
+            {
+                sErrorMsg += sErrorMsg.Remove(iKeepLength);
+            }
             return sErrorMsg;
         }
 
@@ -224,11 +236,29 @@ namespace DevTreks.Exceptions
 			string sResourceValue = rm.GetString(resourceName);
 			return sResourceValue;
 		}
-		/// <summary>
-		/// Append a new error message to the log file
-		/// </summary>
-		/// <param name="errMessage"></param>
-		public static void AppendToErrorLog(string errMessage, int recursions, 
+        //public static string GetMessage(string resourceName, CultureInfo culture)
+        //{
+        //    //keep for debugging embedded resources
+        //    string sResourceValue = string.Empty;
+        //    try
+        //    {
+        //        sResourceValue = rm.GetString(resourceName);
+        //    }
+        //    catch (Exception x)
+        //    {
+        //        string sErr = x.Message;
+        //    }
+        //    if (sResourceValue == null)
+        //    {
+        //        sResourceValue = string.Empty;
+        //    }
+        //    return sResourceValue;
+        //}
+        /// <summary>
+        /// Append a new error message to the log file
+        /// </summary>
+        /// <param name="errMessage"></param>
+        public static void AppendToErrorLog(string errMessage, int recursions, 
             string defaultErrorRootFullPath)
 		{
 			//relative path to standard write directory

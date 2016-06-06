@@ -489,7 +489,7 @@ namespace DevTreks.Data.Helpers
                         }
                         else
                         {
-                            uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                            uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 string.Empty, "CONTENTHELPER_SELECTHASNOPARENT");
                         }
                     }
@@ -1026,7 +1026,7 @@ namespace DevTreks.Data.Helpers
                 }
                 else
                 {
-                    uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "CONTENTHELPER_FILENOUPLOAD");
                 }
             }
@@ -1103,7 +1103,7 @@ namespace DevTreks.Data.Helpers
                  }
                  else
                  {
-                     uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                     uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                          string.Empty, "CONTENTHELPER_NOSAVECALCS");
                  }
              }

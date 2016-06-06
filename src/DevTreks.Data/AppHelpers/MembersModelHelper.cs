@@ -67,7 +67,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MODELHELPERS_CANTMAKEMODEL");
                 }
             }
@@ -84,7 +84,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MODELHELPERS_CANTMAKEMODEL1");
                 }
             }
@@ -114,7 +114,7 @@ namespace DevTreks.Data.AppHelpers
                     }
                     else
                     {
-                        uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "MODELHELPERS_CANTMAKEMODEL1");
                     }
                     uri.URIModels.Account = mc;
@@ -122,7 +122,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MODELHELPERS_CANTMAKEMODEL");
                 }
             }
@@ -139,7 +139,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MODELHELPERS_CANTMAKEMODEL1");
                 }
             }
@@ -203,7 +203,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 catch (Exception e)
                 {
-                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         e.ToString(), "ERROR_INTRO");
                 }
                 if (_dtoContentURI.ErrorMessage.Length > 0)
@@ -231,7 +231,7 @@ namespace DevTreks.Data.AppHelpers
                 Helpers.GeneralHelpers.GetParentIdAndNodeName(addedURI, out iParentId, out sParentNodeName);
                 if (!string.IsNullOrEmpty(addedURI.ErrorMessage))
                 {
-                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "INSERT_NOPARENT");
                     return false;
                 }
@@ -356,7 +356,7 @@ namespace DevTreks.Data.AppHelpers
                     }
                     catch (Exception e)
                     {
-                        _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             e.ToString(), "ERROR_INTRO");
                     }
                     if (_dtoContentURI.ErrorMessage.Length > 0)
@@ -418,7 +418,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 catch (Exception e)
                 {
-                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         e.ToString(), "ERROR_INTRO");
                 }
                 if (_dtoContentURI.ErrorMessage.Length > 0)
@@ -530,7 +530,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 catch (Exception e)
                 {
-                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         e.ToString(), "ERROR_INTRO");
                 }
                 if (_dtoContentURI.ErrorMessage.Length > 0)
@@ -553,7 +553,7 @@ namespace DevTreks.Data.AppHelpers
                 if (iUserNameCount != 0)
                 {
                     _dtoContentURI.ErrorMessage
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "EDIT_USERNAMEINUSE");
                 }
             }
@@ -567,7 +567,7 @@ namespace DevTreks.Data.AppHelpers
                 if (iEmailCount != 0)
                 {
                     _dtoContentURI.ErrorMessage
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "EDIT_EMAILINUSE");
                 }
             }
@@ -586,7 +586,7 @@ namespace DevTreks.Data.AppHelpers
                 if (bJoinIdsMatch)
                 {
                     _dtoContentURI.ErrorMessage
-                        = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "EDIT_NOFOUNDERCHANGE");
                 }
             }
@@ -645,7 +645,7 @@ namespace DevTreks.Data.AppHelpers
             else
             {
                 //add an error message
-                _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "MODELHELPERS_BADXMLCONTENT");
             }
             return bHasSavedDoc;

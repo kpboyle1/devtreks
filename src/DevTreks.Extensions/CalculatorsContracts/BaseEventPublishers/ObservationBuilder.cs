@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 using System.IO;
-
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 using DevTreksAppHelpers = DevTreks.Data.AppHelpers;
 using DevTreksHelpers = DevTreks.Data.Helpers;
 

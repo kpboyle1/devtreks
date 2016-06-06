@@ -51,7 +51,7 @@ namespace DevTreks.Helpers
             else
             {
                 //xml document or file upload error
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(string.Empty, "APPHELPER_WHOKNOWS");
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(string.Empty, "APPHELPER_WHOKNOWS");
             }
         }
         public static void PublishErrorMessage(DevTreks.Data.ContentURI uri)
@@ -79,8 +79,8 @@ namespace DevTreks.Helpers
                     uri.ErrorMessage};
                 //160 changed from getneworkpath to this
                 string sErrorPath = string.Concat(DevTreks.Data.Helpers.AppSettings.GetResourceRootPath(uri, false), 
-                    DevTreks.Exceptions.Errors.ERRORFOLDERNAME, DataHelpers.FILE_PATH_DELIMITER);
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.Publish(DataHelpers.MakeStringWithDelimiter(arrErrorMessage,
+                    DevTreks.Exceptions.DevTreksErrors.ERRORFOLDERNAME, DataHelpers.FILE_PATH_DELIMITER);
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.Publish(DataHelpers.MakeStringWithDelimiter(arrErrorMessage,
                     DataHelpers.STRING_DELIMITER), sErrorPath);
             }
         }
@@ -98,7 +98,7 @@ namespace DevTreks.Helpers
             string sErrorMessage = string.Empty;
             if (!string.IsNullOrEmpty(errorName))
             {
-                sErrorMessage = DevTreks.Exceptions.Errors.GetMessage(errorName);
+                sErrorMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage(errorName);
             }
             return sErrorMessage;
         }
@@ -106,9 +106,9 @@ namespace DevTreks.Helpers
             Exception error, string errorName)
         {
             //version 160 changed getnetworkpath
-            string sErrorValue = DevTreks.Exceptions.Errors.Publish(error, errorName,
+            string sErrorValue = DevTreks.Exceptions.DevTreksErrors.Publish(error, errorName,
                string.Concat(DevTreks.Data.Helpers.AppSettings.GetResourceRootPath(uri, false), 
-               DevTreks.Exceptions.Errors.ERRORFOLDERNAME, DataHelpers.FILE_PATH_DELIMITER));
+               DevTreks.Exceptions.DevTreksErrors.ERRORFOLDERNAME, DataHelpers.FILE_PATH_DELIMITER));
             return sErrorValue;
         }
 

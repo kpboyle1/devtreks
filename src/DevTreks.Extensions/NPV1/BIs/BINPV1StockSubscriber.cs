@@ -109,7 +109,8 @@ namespace DevTreks.Extensions
             //some calcparams have to be passed back to this.calcparams
             UpdateCalculatorParams(currentElement.Name.LocalName);
             return bHasCalculations;
-        }        public static double GetMultiplierForTimePeriod(TimePeriod tp)
+        }
+        public static double GetMultiplierForTimePeriod(TimePeriod tp)
         {
             //this subscriber does not use these multipliers
             double multiplier = 1;

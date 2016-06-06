@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Globalization;
 using System.Threading.Tasks;
+using Errors = DevTreks.Exceptions.DevTreksErrors;
 
 using MathNet.Numerics.LinearAlgebra;
 

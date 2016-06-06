@@ -108,7 +108,7 @@ namespace DevTreks.Data.EditHelpers
                     }
                     else
                     {
-                        uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "UPcDate_BADPROPERTY");
                     }
                 }
@@ -187,7 +187,7 @@ namespace DevTreks.Data.EditHelpers
             else
             {
                 errorMsg +=
-                    DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Concat("Property = ", propertyValue), "UPcDate_BADPROPERTY");
             }
         }
@@ -332,7 +332,7 @@ namespace DevTreks.Data.EditHelpers
             if (!bHasGoodXml)
             {
                 //add an error message
-                uri.ErrorMessage += DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage += DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "MODELHELPERS_BADXMLCONTENT");
             }
             return bHasGoodXml;
@@ -362,7 +362,7 @@ namespace DevTreks.Data.EditHelpers
             else
             {
                 //add an error message
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "MODELHELPERS_BADXMLCONTENT");
             }
             return bHasGoodXml;

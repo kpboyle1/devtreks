@@ -308,7 +308,7 @@ namespace DevTreks.Services.Helpers
                 else
                 {
                     //files should already be on hand
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "EDITHELPER_NOEDITDOC");
                 }
             }
@@ -326,7 +326,7 @@ namespace DevTreks.Services.Helpers
                 else
                 {
                     //files should already be on hand
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "EDITHELPER_NOSELECTEDLV");
                 }
             }
@@ -354,7 +354,7 @@ namespace DevTreks.Services.Helpers
                 else
                 {
                     //files should already be on hand
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "EDITHELPER_NOEDITDOC");
                 }
             }
@@ -375,7 +375,7 @@ namespace DevTreks.Services.Helpers
                 if (oDevTrekDoc == null)
                 {
                     //database xmldoc fields should already be on hand
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "EDITHELPER_NOSELECTEDLV");
                 }
             }

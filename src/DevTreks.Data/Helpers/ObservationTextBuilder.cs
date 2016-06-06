@@ -47,7 +47,7 @@ namespace DevTreks.Data.Helpers
             if (fileOrFolderPaths == null)
             {
                 docToCalcURI.ErrorMessage
-                    = DevTreks.Exceptions.Errors.GetMessage("OBSERVATIONS_NOFILES_SAVETEXT");
+                    = DevTreks.Exceptions.DevTreksErrors.GetMessage("OBSERVATIONS_NOFILES_SAVETEXT");
                 return false;
             }
             else
@@ -55,7 +55,7 @@ namespace DevTreks.Data.Helpers
                 if (fileOrFolderPaths.Count <= 0)
                 {
                     docToCalcURI.ErrorMessage
-                        = DevTreks.Exceptions.Errors.GetMessage("OBSERVATIONS_NOFILES_SAVETEXT");
+                        = DevTreks.Exceptions.DevTreksErrors.GetMessage("OBSERVATIONS_NOFILES_SAVETEXT");
                     return false;
                 }
             }

@@ -59,7 +59,7 @@ namespace DevTreks.Data.AppHelpers
                     }
                     else
                     {
-                        uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "MODELHELPERS_CANTMAKEMODEL1");
                     }
                     uri.URIModels.Service = s;
@@ -69,7 +69,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MODELHELPERS_CANTMAKEMODEL");
                 }
             }
@@ -99,7 +99,7 @@ namespace DevTreks.Data.AppHelpers
                     }
                     else
                     {
-                        uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "MODELHELPERS_CANTMAKEMODEL1");
                     }
                     uri.URIModels.OutputClass = rc;
@@ -107,7 +107,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MODELHELPERS_CANTMAKEMODEL");
                 }
             }
@@ -138,7 +138,7 @@ namespace DevTreks.Data.AppHelpers
                     }
                     else
                     {
-                        uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                        uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "MODELHELPERS_CANTMAKEMODEL1");
                     }
                     //set the parent object
@@ -147,7 +147,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MODELHELPERS_CANTMAKEMODEL");
                 }
             }
@@ -165,7 +165,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 else
                 {
-                    uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "MODELHELPERS_CANTMAKEMODEL1");
                 }
             }
@@ -260,7 +260,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 catch (Exception e)
                 {
-                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         e.ToString(), "ERROR_INTRO");
                 }
                 if (_dtoContentURI.ErrorMessage.Length > 0)
@@ -281,7 +281,7 @@ namespace DevTreks.Data.AppHelpers
                 Helpers.GeneralHelpers.GetParentIdAndNodeName(addedURI, out iParentId, out sParentNodeName);
                 if (!string.IsNullOrEmpty(addedURI.ErrorMessage))
                 {
-                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "INSERT_NOPARENT");
                     return false;
                 }
@@ -515,7 +515,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 catch (Exception e)
                 {
-                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         e.ToString(), "ERROR_INTRO");
                 }
                 if (_dtoContentURI.ErrorMessage.Length > 0)
@@ -649,7 +649,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 catch (Exception e)
                 {
-                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                    _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         e.ToString(), "ERROR_INTRO");
                 }
                 if (_dtoContentURI.ErrorMessage.Length > 0)
@@ -854,7 +854,7 @@ namespace DevTreks.Data.AppHelpers
             else
             {
                 //add an error message
-                _dtoContentURI.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                _dtoContentURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "MODELHELPERS_BADXMLCONTENT");
             }
             return bHasSavedDoc;

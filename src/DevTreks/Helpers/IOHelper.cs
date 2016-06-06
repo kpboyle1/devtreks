@@ -309,14 +309,14 @@ namespace DevTreks.Helpers
                                 {
                                     if (fileUploadURI.ErrorMessage == string.Empty)
                                     {
-                                        fileUploadURI.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                                        fileUploadURI.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                             string.Empty, "IOHELPER_CANTSAVE");
                                     }
                                 }
                             }
                             else
                             {
-                                fileUploadURI.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                                fileUploadURI.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                     string.Empty, "IOHELPER_TOOBIG");
                             }
                         }
@@ -438,14 +438,14 @@ namespace DevTreks.Helpers
                         }
                         else
                         {
-                            uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                            uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 string.Empty, "IOHELPER_NONAME");
                             return sInitPackageFilePath;
                         }
                     }
                     else
                     {
-                        uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                        uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "IOHELPER_NOINSTRUCTS");
                         return sInitPackageFilePath;
                     }
@@ -541,7 +541,7 @@ namespace DevTreks.Helpers
                         }
                         else
                         {
-                            uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                            uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 string.Empty, "IOHELPER_CANTBUILD");
                         }
                     }
@@ -554,7 +554,7 @@ namespace DevTreks.Helpers
             }
             else
             {
-                uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "IOHELPER_CANTZIP");
             }
             if (zipArgs.Count > 0 && uri.ErrorMessage == string.Empty)
@@ -849,7 +849,7 @@ namespace DevTreks.Helpers
                             uri, initPackageFilePath, uri.URIDataManager.DefaultWebDomain);
                         if (string.IsNullOrEmpty(sDownloadFilePath))
                         {
-                            uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                            uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 string.Empty, "IOHELPER_CANTZIP2");
                         }
                     }
@@ -874,7 +874,7 @@ namespace DevTreks.Helpers
                         //DataHelpers.FileStorageIO.DeleteDirectory(uri, initPackageFilePath, bIncludeSubDirs);
                         if (!bIsSaved)
                         {
-                            uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                            uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                                 string.Empty, "BLOB_CANTSAVEZIPBLOB");
                         }
                     }
@@ -907,13 +907,13 @@ namespace DevTreks.Helpers
                 }
                 else
                 {
-                    uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                    uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "IOHELPER_CANTFINDZIP");
                 }
             }
             else
             {
-                uri.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     sErrorMessage, "IOHELPER_CANTZIP2");
             }
         }

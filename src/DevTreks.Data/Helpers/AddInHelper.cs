@@ -392,7 +392,7 @@ namespace DevTreks.Data.Helpers
                 if (sFileExtensionType == Helpers.GeneralHelpers.NONE
                     || string.IsNullOrEmpty(sFileExtensionType))
                 {
-                    errorMsg = Exceptions.Errors.MakeStandardErrorMsg(
+                    errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "ADDINHELPER_NOBASECALCS");
                 }
             }
@@ -442,7 +442,7 @@ namespace DevTreks.Data.Helpers
                     if (sFileExtensionType == Helpers.GeneralHelpers.NONE
                         || string.IsNullOrEmpty(sFileExtensionType))
                     {
-                        errorMsg = Exceptions.Errors.MakeStandardErrorMsg(
+                        errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "ADDINHELPER_NOBASECALCS");
                     }
                 }
@@ -572,7 +572,7 @@ namespace DevTreks.Data.Helpers
                     }
                     else
                     {
-                        errorMsg = Exceptions.Errors.MakeStandardErrorMsg(
+                        errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                             string.Empty, "ADDIN_NOSUMMARYDOC");
                     }
                 }
@@ -587,7 +587,7 @@ namespace DevTreks.Data.Helpers
                 }
                 else
                 {
-                    errorMsg = Exceptions.Errors.MakeStandardErrorMsg(
+                    errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "ADDIN_NOSUMMARYDOC");
                 }
             }
@@ -743,7 +743,7 @@ namespace DevTreks.Data.Helpers
             }
             if (urisToAnalyze.Count == 0)
             {
-                docToCalcURI.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                docToCalcURI.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "ADDIN_NOANALYSISLIST");
             }
         }
@@ -755,7 +755,7 @@ namespace DevTreks.Data.Helpers
                 = navCalcDocNode.GetAttribute(Calculator.cFilesToAnalyzeExtensionType, string.Empty);
             if (string.IsNullOrEmpty(sFilesToAnalyzeExtensionType))
             {
-                errorMsg = DevTreks.Exceptions.Errors.GetMessage("EDIT_CHOOSEFILE");
+                errorMsg = DevTreks.Exceptions.DevTreksErrors.GetMessage("EDIT_CHOOSEFILE");
             }
             return sFilesToAnalyzeExtensionType;
         }

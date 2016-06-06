@@ -1024,7 +1024,7 @@ namespace DevTreks.Data.AppHelpers
             }
             else
             {
-                docToCalcURI.ErrorMessage = Exceptions.Errors.MakeStandardErrorMsg(
+                docToCalcURI.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                    "", "ECONOMICS_NOTEMPFILE");
             }
         }

@@ -574,7 +574,7 @@ namespace DevTreks.Data.AppHelpers
                 }
                 catch
                 {
-                    docToCalcURI.ErrorMessage = DevTreks.Exceptions.Errors.GetMessage("FILESTORAGE_FILENOSAVEXMLSUM");
+                    docToCalcURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.GetMessage("FILESTORAGE_FILENOSAVEXMLSUM");
                 }
                 //finally
                 //{

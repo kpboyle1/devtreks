@@ -2632,7 +2632,7 @@ namespace DevTreks.Data.Helpers
             parentId = Helpers.GeneralHelpers.ConvertStringToInt(sParentId);
             if (parentId <= 0 || string.IsNullOrEmpty(parentNodename))
             {
-                uri.ErrorMessage = DevTreks.Exceptions.Errors.MakeStandardErrorMsg(
+                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "INSERT_NOPARENT");
             }
         }

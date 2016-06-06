@@ -34,7 +34,7 @@ namespace DevTreks.Services
             _repository = rep;
             if (_repository == null)
                 throw new InvalidOperationException(
-                    DevTreks.Exceptions.Errors.GetMessage("REPOSITORY_NOTNULL"));
+                    DevTreks.Exceptions.DevTreksErrors.GetMessage("REPOSITORY_NOTNULL"));
         }
         public async Task<bool> InsertNewMemberAsync(
             string aspNetUserId, string email)
