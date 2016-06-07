@@ -164,7 +164,13 @@ namespace DevTreks.Controllers
             _logger.LogInformation(4, "User logged out.");
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
-
+        //no form postback (less secure)
+        public async Task<IActionResult> LogOut()
+        {
+            await _signInManager.SignOutAsync();
+            _logger.LogInformation(4, "User logged out.");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
+        }
         //
         // POST: /Account/ExternalLogin
         [HttpPost]

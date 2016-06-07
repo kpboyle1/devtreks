@@ -2374,6 +2374,7 @@ namespace DevTreks.Helpers
                 result.WriteLine(helper.ULStart(string.Empty, string.Empty));
                 result.WriteLine(helper.LIStart(string.Empty, string.Empty));
                 //note this is not a form postback and does not use AccountController.LogOff
+                //it uses custom action AccountController.LogOut
                 helper.ActionLink(AppHelper.GetResource("LOGOUT"),
                     "LogOut", "Account",
                     routeValues: null,
