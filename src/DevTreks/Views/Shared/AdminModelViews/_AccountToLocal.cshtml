@@ -15,12 +15,12 @@
         return;
     }
     @Html.DivStart(string.Empty, string.Empty, "fieldcontain", "b", string.Empty, string.Empty, "true")
-    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToLocal.LinkedViewName, Model.URIModels.AccountToLocal.PKId.ToString(),
+    string searchurl = StylesheetHelper.GetURIPattern(Model.URIModels.AccountToLocal.LocalName, Model.URIModels.AccountToLocal.PKId.ToString(),
             Model.URINetworkPartName, Locals.LOCAL_TYPES.local.ToString(), string.Empty);
     bool bCanDelete = AppHelper.CanDeleteNode(
        @Model.URINodeName, Locals.LOCAL_TYPES.local.ToString(),
        Model.URIDataManager.ServerActionType, Model.URIMember);
-    @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.AccountToLocal.LinkedViewName,
+    @HtmlHelperExtensions.MakeName(Html, @searchurl, @Model.URIModels.AccountToLocal.LocalName,
         "LinkedViewName", Model.URIDataManager.EditViewEditType, bCanDelete)
     string sNetworkText = string.Empty;
     if (bCanDelete)

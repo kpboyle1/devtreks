@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -32,12 +32,12 @@ namespace DevTreks.Models
             this.Network = new Network();
         }
         public int PKId { get; set; }
-        public int AccountId { get; set; }
+        public bool IsDefaultNetwork { get; set; }
         public string DefaultGetDataFromType { get; set; }
         public string DefaultStoreDataAtType { get; set; }
-        public bool IsDefaultNetwork { get; set; }
-        public int NetworkId { get; set; }
         public string NetworkRole { get; set; }
+        public int AccountId { get; set; }
+        public int NetworkId { get; set; }
 
         public virtual Account Account { get; set; }
         public virtual Network Network { get; set; }

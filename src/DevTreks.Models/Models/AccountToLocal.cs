@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -9,7 +9,7 @@ namespace DevTreks.Models
         public AccountToLocal(bool init)
         {
             this.PKId = 0;
-            this.LinkedViewName = string.Empty;
+            this.LocalName = string.Empty;
             this.LocalDesc = string.Empty;
             this.UnitGroupId = 0;
             this.UnitGroup = string.Empty;
@@ -29,17 +29,14 @@ namespace DevTreks.Models
             this.GeoCodePrice = string.Empty;
             this.RatingGroupId = 0;
             this.RatingGroup = string.Empty;
-            this.LinkingNodeId = 0;
-            this.LinkedViewId = 0;
+            this.AccountId = 0;
             this.IsDefaultLinkedView = false;
-            this.LinkingXmlDoc = string.Empty;
             this.Account = new Account();
-            //this.LinkedView = new LinkedView();
         }
         public AccountToLocal(AccountToLocal copyLocal)
         {
             this.PKId = copyLocal.PKId;
-            this.LinkedViewName = copyLocal.LinkedViewName;
+            this.LocalName = copyLocal.LocalName;
             this.LocalDesc = copyLocal.LocalDesc;
             this.UnitGroupId = copyLocal.UnitGroupId;
             this.UnitGroup = copyLocal.UnitGroup;
@@ -59,41 +56,34 @@ namespace DevTreks.Models
             this.GeoCodePrice = copyLocal.GeoCodePrice;
             this.RatingGroupId = copyLocal.RatingGroupId;
             this.RatingGroup = copyLocal.RatingGroup;
-            this.LinkingNodeId = copyLocal.LinkingNodeId;
-            this.LinkedViewId = copyLocal.LinkedViewId;
+            this.AccountId = copyLocal.AccountId;
             this.IsDefaultLinkedView = copyLocal.IsDefaultLinkedView;
-            this.LinkingXmlDoc = copyLocal.LinkingXmlDoc;
-
             this.Account = new Account();
-            //this.LinkedView = new LinkedView();
         }
         public int PKId { get; set; }
-        public int CurrencyGroupId { get; set; }
-        public string CurrencyGroup { get; set; }
-        public int DataSourcePriceId { get; set; }
-        public string DataSourcePrice { get; set; }
-        public int DataSourceTechId { get; set; }
-        public string DataSourceTech { get; set; }
-        public int GeoCodePriceId { get; set; }
-        public string GeoCodePrice { get; set; }
-        public int GeoCodeTechId { get; set; }
-        public string GeoCodeTech { get; set; }
-        public bool IsDefaultLinkedView { get; set; }
-        public string LinkingXmlDoc { get; set; }
-        public int LinkedViewId { get; set; }
-        public string LinkedViewName { get; set; }
-        public int LinkingNodeId { get; set; }
+        public string LocalName { get; set; }
         public string LocalDesc { get; set; }
-        public int NominalRateId { get; set; }
-        public double NominalRate { get; set; }
-        public int RatingGroupId { get; set; }
-        public string RatingGroup { get; set; }
-        public int RealRateId { get; set; }
-        public double RealRate { get; set; }
         public int UnitGroupId { get; set; }
         public string UnitGroup { get; set; }
+        public int CurrencyGroupId { get; set; }
+        public string CurrencyGroup { get; set; }
+        public int RealRateId { get; set; }
+        public float RealRate { get; set; }
+        public int NominalRateId { get; set; }
+        public float NominalRate { get; set; }
+        public int DataSourceTechId { get; set; }
+        public string DataSourceTech { get; set; }
+        public int GeoCodeTechId { get; set; }
+        public string GeoCodeTech { get; set; }
+        public int DataSourcePriceId { get; set; }
+        public string DataSourcePrice { get; set; }
+        public int GeoCodePriceId { get; set; }
+        public string GeoCodePrice { get; set; }
+        public int RatingGroupId { get; set; }
+        public string RatingGroup { get; set; }
+        public int AccountId { get; set; }
+        public bool IsDefaultLinkedView { get; set; }
 
-        //public virtual LinkedView LinkedView { get; set; }
         public virtual Account Account { get; set; }
     }
 }

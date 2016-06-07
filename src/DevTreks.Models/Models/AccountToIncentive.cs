@@ -1,3 +1,5 @@
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DevTreks.Models
@@ -34,4 +36,3 @@ namespace DevTreks.Models
         public decimal NetCost { get; set; }
     }
 }
-

@@ -1,5 +1,6 @@
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DevTreks.Models
 {
@@ -44,43 +45,15 @@ namespace DevTreks.Models
             this.OutputClass = new List<OutputClass>();
             this.ResourceClass = new List<ResourceClass>();
         }
-        public Service(Service service)
-        {
-            this.PKId = service.PKId;
-            this.ServiceNum = service.ServiceNum;
-            this.ServiceName = service.ServiceName;
-            this.ServiceDesc = service.ServiceDesc;
-            this.ServicePrice1 = service.ServicePrice1;
-            this.ServiceUnit1 = service.ServiceUnit1;
-            this.ServiceCurrency1 = service.ServiceCurrency1;
-            this.NetworkId = service.NetworkId;
-            this.ServiceClassId = service.ServiceClassId;
-            this.Network = new Network();
-            this.ServiceClass = new ServiceClass();
-            this.AccountToService = new List<AccountToService>();
-            this.BudgetSystem = new List<BudgetSystem>();
-            this.ComponentClass = new List<ComponentClass>();
-            this.CostSystem = new List<CostSystem>();
-            this.DevPackClass = new List<DevPackClass>();
-            this.InputClass = new List<InputClass>();
-            this.LinkedViewClass = new List<LinkedViewClass>();
-            this.OperationClass = new List<OperationClass>();
-            this.OutcomeClass = new List<OutcomeClass>();
-            this.OutputClass = new List<OutputClass>();
-            this.ResourceClass = new List<ResourceClass>();
-
-            //non db
-            this.IsSelected = service.IsSelected;
-        }
         public int PKId { get; set; }
-        public int NetworkId { get; set; }
-        public int ServiceClassId { get; set; }
-        public string ServiceCurrency1 { get; set; }
-        public string ServiceDesc { get; set; }
-        public string ServiceName { get; set; }
         public string ServiceNum { get; set; }
+        public string ServiceName { get; set; }
+        public string ServiceDesc { get; set; }
         public decimal ServicePrice1 { get; set; }
         public string ServiceUnit1 { get; set; }
+        public string ServiceCurrency1 { get; set; }
+        public int NetworkId { get; set; }
+        public int ServiceClassId { get; set; }
 
         public virtual ICollection<AccountToService> AccountToService { get; set; }
         public virtual ICollection<BudgetSystem> BudgetSystem { get; set; }

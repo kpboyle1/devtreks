@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -11,9 +11,9 @@ namespace DevTreks.Models
         }
 
         public int PKId { get; set; }
-        public string LinkedViewClassDesc { get; set; }
-        public string LinkedViewClassName { get; set; }
         public string LinkedViewClassNum { get; set; }
+        public string LinkedViewClassName { get; set; }
+        public string LinkedViewClassDesc { get; set; }
         public int ServiceId { get; set; }
         public int TypeId { get; set; }
 

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -27,12 +27,15 @@ namespace DevTreks.Models
             this.LinkedView = new LinkedView();
         }
         public int PKId { get; set; }
-        public bool IsDefaultLinkedView { get; set; }
-        public int LinkedViewId { get; set; }
         public string LinkedViewName { get; set; }
         public int LinkingNodeId { get; set; }
+        public int LinkedViewId { get; set; }
+        public bool IsDefaultLinkedView { get; set; }
 
         public virtual LinkedView LinkedView { get; set; }
+        //stay consistent with rest of admin models
         public virtual Account Account { get; set; }
+        //actual
+        //public virtual Account LinkingNode { get; set; }
     }
 }

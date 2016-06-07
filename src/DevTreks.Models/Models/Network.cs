@@ -1,5 +1,6 @@
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DevTreks.Models
 {
@@ -50,21 +51,20 @@ namespace DevTreks.Models
             this.Service = new List<Service>();
         }
         public int PKId { get; set; }
-        public string AdminConnection { get; set; }
-        public int GeoRegionId { get; set; }
-        public int NetworkClassId { get; set; }
-        public string NetworkDesc { get; set; }
         public string NetworkName { get; set; }
         public string NetworkURIPartName { get; set; }
+        public string NetworkDesc { get; set; }
+        public string AdminConnection { get; set; }
+        public string WebFileSystemPath { get; set; }
         public string WebConnection { get; set; }
         public string WebDbPath { get; set; }
-        public string WebFileSystemPath { get; set; }
+        public int NetworkClassId { get; set; }
+        public int GeoRegionId { get; set; }
 
         public virtual ICollection<AccountToNetwork> AccountToNetwork { get; set; }
         public virtual ICollection<Service> Service { get; set; }
         public virtual GeoRegion GeoRegion { get; set; }
         public virtual NetworkClass NetworkClass { get; set; }
-
         [NotMapped]
         public virtual bool IsDefault { get; set; }
         [NotMapped]

@@ -42,8 +42,11 @@ namespace DevTreks.Data.SqlRepositories
             var builder = new DbContextOptionsBuilder<DevTreksContext>();
             builder.UseSqlServer(Helpers.AppSettings.GetConnection(uri));
             _dataContext = new DevTreksContext(builder.Options);
-            _dataContext.BinaryMaxLength = GenHelpers.ConvertMBStorageToInt(
-                uri.URIDataManager.FileSizeDBStorageValidation);
+
+            //retain for testing file uploads
+            //_dataContext.BinaryMaxLength = GenHelpers.ConvertMBStorageToInt(
+            //    uri.URIDataManager.FileSizeDBStorageValidation);
+
             //Do not use _sqlIOAsync(uri) here. Pass a method parameter uri to 
             //a new SqlIOAsync(uri). That uri contains more that just config settings 
             //and is often needed to build the full data models.

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -93,27 +93,27 @@ namespace DevTreks.Models
             this.AccountToMember = new List<AccountToMember>();
         }
         public int PKId { get; set; }
-        public string AspNetUserId { get; set; }
-        public int GeoRegionId { get; set; }
+        public string UserName { get; set; }
+        public string MemberEmail { get; set; }
+        public DateTime MemberJoinedDate { get; set; }
+        public DateTime MemberLastChangedDate { get; set; }
+        public string MemberFirstName { get; set; }
+        public string MemberLastName { get; set; }
+        public string MemberDesc { get; set; }
+        public string MemberOrganization { get; set; }
         public string MemberAddress1 { get; set; }
         public string MemberAddress2 { get; set; }
         public string MemberCity { get; set; }
-        public int MemberClassId { get; set; }
+        public string MemberState { get; set; }
         public string MemberCountry { get; set; }
-        public string MemberDesc { get; set; }
-        public string MemberEmail { get; set; }
-        public string MemberFax { get; set; }
-        public string MemberFirstName { get; set; }
-        public DateTime MemberJoinedDate { get; set; }
-        public DateTime MemberLastChangedDate { get; set; }
-        public string MemberLastName { get; set; }
-        public string MemberOrganization { get; set; }
+        public string MemberZip { get; set; }
         public string MemberPhone { get; set; }
         public string MemberPhone2 { get; set; }
-        public string MemberState { get; set; }
+        public string MemberFax { get; set; }
         public string MemberUrl { get; set; }
-        public string MemberZip { get; set; }
-        public string UserName { get; set; }
+        public int MemberClassId { get; set; }
+        public int GeoRegionId { get; set; }
+        public string AspNetUserId { get; set; }
 
         public virtual ICollection<AccountToMember> AccountToMember { get; set; }
         public virtual GeoRegion GeoRegion { get; set; }

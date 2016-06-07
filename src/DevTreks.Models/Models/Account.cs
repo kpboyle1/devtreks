@@ -1,10 +1,9 @@
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DevTreks.Models
 {
-    //accounts == clubs (with members); login and password use Aspnet.Identity
     public partial class Account
     {
         public Account()
@@ -17,9 +16,6 @@ namespace DevTreks.Models
             AccountToNetwork = new HashSet<AccountToNetwork>();
             AccountToService = new HashSet<AccountToService>();
         }
-        //clues respondwithlist about the specific list to load
-        public const string MemberClubList = "memberclublist";
-
         public Account(bool init)
         {
             this.PKId = 0;
@@ -74,12 +70,12 @@ namespace DevTreks.Models
             this.AccountToPayment = new List<AccountToPayment>();
         }
         public int PKId { get; set; }
-        public int AccountClassId { get; set; }
-        public string AccountDesc { get; set; }
-        public string AccountEmail { get; set; }
-        public string AccountLongDesc { get; set; }
         public string AccountName { get; set; }
+        public string AccountDesc { get; set; }
+        public string AccountLongDesc { get; set; }
+        public string AccountEmail { get; set; }
         public string AccountURI { get; set; }
+        public int AccountClassId { get; set; }
         public int GeoRegionId { get; set; }
 
         public virtual ICollection<AccountToAddIn> AccountToAddIn { get; set; }
@@ -92,7 +88,6 @@ namespace DevTreks.Models
         public virtual AccountClass AccountClass { get; set; }
         public virtual GeoRegion GeoRegion { get; set; }
 
-        
         [NotMapped]
         public string ClubDocFullPath { get; set; }
         [NotMapped]
@@ -105,5 +100,7 @@ namespace DevTreks.Models
         public decimal TotalCost { get; set; }
         [NotMapped]
         public decimal NetCost { get; set; }
+        //clues respondwithlist about the specific list to load
+        public const string MemberClubList = "memberclublist";
     }
 }

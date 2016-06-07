@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -35,15 +35,15 @@ namespace DevTreks.Models
             this.Account = new Account();
         }
         public int PKId { get; set; }
-        public int AccountId { get; set; }
-        public string ClubInUseAuthorizationLevel { get; set; }
-        public int ClubInUseId { get; set; }
-        public DateTime EditDate { get; set; }
-        public string EditedDocFullPath { get; set; }
-        public string EditedDocURI { get; set; }
         public int MemberId { get; set; }
         public string MemberRole { get; set; }
+        public int ClubInUseId { get; set; }
+        public string ClubInUseAuthorizationLevel { get; set; }
+        public string EditedDocURI { get; set; }
+        public string EditedDocFullPath { get; set; }
         public string ServerSubAction { get; set; }
+        public DateTime EditDate { get; set; }
+        public int AccountId { get; set; }
 
         public virtual Account Account { get; set; }
     }

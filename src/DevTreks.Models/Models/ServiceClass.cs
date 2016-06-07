@@ -1,5 +1,6 @@
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DevTreks.Models
 {
@@ -30,9 +31,9 @@ namespace DevTreks.Models
             this.IsSelected = serviceGroup.IsSelected;
         }
         public int PKId { get; set; }
-        public string ServiceClassDesc { get; set; }
-        public string ServiceClassName { get; set; }
         public string ServiceClassNum { get; set; }
+        public string ServiceClassName { get; set; }
+        public string ServiceClassDesc { get; set; }
 
         public virtual ICollection<Service> Service { get; set; }
         [NotMapped]

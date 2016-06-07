@@ -14,8 +14,9 @@ namespace DevTreks.Data.AppHelpers
     /// <summary>
     ///Purpose:		Entity Framework Locals support class
     ///Author:		www.devtreks.org
-    ///Date:		2016, April
-    ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
+    ///Date:		2016, June
+    ///Notes:	    2.0.0 simplified by removing reliance on LV calculator and 
+    ///             including properties in the model formally defined by calculator
     /// </summary>
     public class LocalsModelHelper
     {
@@ -38,23 +39,28 @@ namespace DevTreks.Data.AppHelpers
                 var mc = await _dataContext.Account.SingleOrDefaultAsync(x => x.PKId == uri.URIId);
                 if (mc != null)
                 {
+
                     var qry = _dataContext
-                        .AccountToLocal
-                        //.Include(t => t.LinkedView)
-                        .Where(a => a.Account.PKId == uri.URIId)
-                        .OrderBy(m => m.LinkedViewName)
-                        .Skip(iStartRow)
-                        .Take(iPageSize);
+                       .AccountToLocal
+                       .Where(a => a.AccountId == uri.URIId)
+                       .Skip(iStartRow)
+                       .Take(iPageSize);
+                    //var qry = _dataContext
+                    //    .AccountToLocal
+                    //    .Where(a => a.Account.PKId == uri.URIId)
+                    //    .Skip(iStartRow)
+                    //    .Take(iPageSize);
                     if (qry != null)
                     {
                         mc.AccountToLocal = await qry.ToAsyncEnumerable().ToList();
                         if (mc.AccountToLocal != null)
                         {
-                            uri.URIDataManager.RowCount =
-                               _dataContext
-                               .AccountToLocal
-                                .Where(a => a.Account.PKId == uri.URIId)
-                               .Count();
+                            uri.URIDataManager.RowCount = mc.AccountToLocal.Count;
+                            //uri.URIDataManager.RowCount =
+                            //   _dataContext
+                            //   .AccountToLocal
+                            //    .Where(a => a.Account.PKId == uri.URIId)
+                            //   .Count();
                         }
                     }
                     else
@@ -76,7 +82,7 @@ namespace DevTreks.Data.AppHelpers
                     //    .Collection("AccountToLocal")
                     //    .Query().Cast<AccountToLocal>()
                     //    .Include("LinkedView")
-                    //    .OrderBy(m => m.LinkedViewName)
+                    //    .OrderBy(m => m.LocalName)
                     //    .Skip(iStartRow)
                     //    .Take(iPageSize);
                     ////set the data transfer objects
@@ -85,6 +91,16 @@ namespace DevTreks.Data.AppHelpers
                     //    mc.AccountToLocal = await qry.ToListAsync();
                     //}
                     //uri.URIModels.Account = mc;
+                    //2.0.0 rc2 bug : qry stopped working with refactored accounttolocal
+                    AppHelpers.Accounts oClubHelper = new AppHelpers.Accounts();
+                    List<AccountToLocal> colClubLocals
+                        = await oClubHelper.GetLocalsByClubIdAsync(uri, uri.URIId);
+                    mc.AccountToLocal = colClubLocals;
+                    if (mc.AccountToLocal != null)
+                    {
+                        uri.URIDataManager.RowCount = mc.AccountToLocal.Count;
+                    }
+                    uri.URIModels.Account = mc;
                 }
                 else
                 {
@@ -97,7 +113,6 @@ namespace DevTreks.Data.AppHelpers
             {
                 var qry = _dataContext
                     .AccountToLocal
-                    //.Include(t => t.LinkedView)
                     .Where(r => r.PKId == uri.URIId);
 
                 if (qry != null)
@@ -180,7 +195,7 @@ namespace DevTreks.Data.AppHelpers
                 {
                     var newAccountToLocal = new AccountToLocal
                     {
-                        LinkedViewName = addedURI.URIName,
+                        LocalName = addedURI.URIName,
                         LocalDesc = Helpers.GeneralHelpers.NONE,
                         UnitGroupId = 0,
                         UnitGroup = string.Empty,
@@ -201,12 +216,9 @@ namespace DevTreks.Data.AppHelpers
                         RatingGroupId = 0,
                         RatingGroup = string.Empty,
                         IsDefaultLinkedView = false,
-                        LinkingXmlDoc = string.Empty,
                         //parentid is the same as dtoURI
-                        LinkingNodeId = _dtoContentURI.URIId,
+                        AccountId = _dtoContentURI.URIId,
                         Account = null,
-                        LinkedViewId = 0,
-                        //LinkedView = null
                     };
                     _dataContext.AccountToLocal.Add(newAccountToLocal);
                     _dataContext.Entry(newAccountToLocal).State = EntityState.Added;
@@ -217,38 +229,38 @@ namespace DevTreks.Data.AppHelpers
                 {
                     //2.0.0 deprecated local linked view calculators, 
                     //retain for potential uses
-                    var newAccountToLocal = new AccountToLocal
-                    {
-                        LinkedViewName = addedURI.URIName,
-                        LocalDesc = Helpers.GeneralHelpers.NONE,
-                        UnitGroupId = 0,
-                        UnitGroup = string.Empty,
-                        CurrencyGroupId = 0,
-                        CurrencyGroup = string.Empty,
-                        RealRateId = 0,
-                        RealRate = 0,
-                        NominalRateId = 0,
-                        NominalRate = 0,
-                        DataSourceTechId = 0,
-                        DataSourceTech = string.Empty,
-                        GeoCodeTechId = 0,
-                        GeoCodeTech = string.Empty,
-                        DataSourcePriceId = 0,
-                        DataSourcePrice = string.Empty,
-                        GeoCodePriceId = 0,
-                        GeoCodePrice = string.Empty,
-                        RatingGroupId = 0,
-                        RatingGroup = string.Empty,
-                        IsDefaultLinkedView = false,
-                        LinkingXmlDoc = string.Empty,
-                        LinkingNodeId = _dtoContentURI.URIId,
-                        Account = null,
-                        LinkedViewId = addedURI.URIId,
-                        //LinkedView = null
-                    };
-                    _dataContext.AccountToLocal.Add(newAccountToLocal);
-                    _dataContext.Entry(newAccountToLocal).State = EntityState.Added;
-                    addedMs.Add(newAccountToLocal);
+                    //var newAccountToLocal = new AccountToLocal
+                    //{
+                    //    LocalName = addedURI.URIName,
+                    //    LocalDesc = Helpers.GeneralHelpers.NONE,
+                    //    UnitGroupId = 0,
+                    //    UnitGroup = string.Empty,
+                    //    CurrencyGroupId = 0,
+                    //    CurrencyGroup = string.Empty,
+                    //    RealRateId = 0,
+                    //    RealRate = 0,
+                    //    NominalRateId = 0,
+                    //    NominalRate = 0,
+                    //    DataSourceTechId = 0,
+                    //    DataSourceTech = string.Empty,
+                    //    GeoCodeTechId = 0,
+                    //    GeoCodeTech = string.Empty,
+                    //    DataSourcePriceId = 0,
+                    //    DataSourcePrice = string.Empty,
+                    //    GeoCodePriceId = 0,
+                    //    GeoCodePrice = string.Empty,
+                    //    RatingGroupId = 0,
+                    //    RatingGroup = string.Empty,
+                    //    IsDefaultLinkedView = false,
+                    //    LinkingXmlDoc = string.Empty,
+                    //    AccountId = _dtoContentURI.URIId,
+                    //    Account = null,
+                    //    LinkedViewId = addedURI.URIId,
+                    //    //LinkedView = null
+                    //};
+                    //_dataContext.AccountToLocal.Add(newAccountToLocal);
+                    //_dataContext.Entry(newAccountToLocal).State = EntityState.Added;
+                    //addedMs.Add(newAccountToLocal);
                 }
             }
             return bHasSet;
@@ -413,7 +425,7 @@ namespace DevTreks.Data.AppHelpers
                 var currentObject = await _dataContext.AccountToLocal.SingleOrDefaultAsync(x => x.PKId == _dtoContentURI.URIId);
                 if (currentObject != null)
                 {
-                    bHasGoodAncestors = await AddDescendants(currentObject.LinkingNodeId,
+                    bHasGoodAncestors = await AddDescendants(currentObject.AccountId,
                         Locals.LOCAL_TYPES.localaccountgroup.ToString(), root);
                 }
             }

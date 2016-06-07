@@ -926,7 +926,7 @@ namespace DevTreks.Helpers
             using (StringWriter result = new StringWriter())
             {
                 result.WriteLine(
-                    "Current version: DevTreks.2.0.0-beta2, June 03, 2016");
+                    "Current version: DevTreks.2.0.0-beta2, June 10, 2016");
                 return new HtmlString(result.ToString());
             }
         }
@@ -1715,7 +1715,7 @@ namespace DevTreks.Helpers
                             l => l.IsDefaultLinkedView == true && l.PKId != 0);
                         if (defaultLocal != null)
                         {
-                            sLocalsName = defaultLocal.LinkedViewName;
+                            sLocalsName = defaultLocal.LocalName;
                         }
                         else
                         {

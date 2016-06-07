@@ -449,7 +449,7 @@ namespace DevTreks.Data.AppHelpers
                     {
                         AccountToLocal atol = new AccountToLocal(true);
                         atol.PKId = dataReader.GetInt32(0);
-                        atol.LinkedViewName = dataReader.GetString(1);
+                        atol.LocalName = dataReader.GetString(1);
                         atol.LocalDesc = dataReader.GetString(2);
                         atol.UnitGroupId = dataReader.GetInt32(3);
                         atol.UnitGroup = dataReader.GetString(4);
@@ -469,11 +469,12 @@ namespace DevTreks.Data.AppHelpers
                         atol.GeoCodePrice = dataReader.GetString(18);
                         atol.RatingGroupId = dataReader.GetInt32(19);
                         atol.RatingGroup = dataReader.GetString(20);
-                        atol.LinkingNodeId = dataReader.GetInt32(21);
-                        atol.LinkedViewId = dataReader.GetInt32(22);
-                        atol.IsDefaultLinkedView = dataReader.GetBoolean(23);
-                        atol.LinkingXmlDoc = atol.LinkedViewName;
+                        atol.AccountId = dataReader.GetInt32(21);
+                        atol.IsDefaultLinkedView = dataReader.GetBoolean(22);
                         atol.Account = new Account();
+                        //2.0.0 deprecated
+                        //atol.LinkedViewId = dataReader.GetInt32(22);
+                        //atol.LinkingXmlDoc = atol.LinkedViewName;
                         //atol.LinkedView = new LinkedView();
                         colClubLocals.Add(atol);
                     }

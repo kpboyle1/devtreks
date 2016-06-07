@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -11,9 +11,9 @@ namespace DevTreks.Models
         }
 
         public int PKId { get; set; }
-        public int UnitClassId { get; set; }
-        public string UnitName { get; set; }
         public string UnitNameAbbrev { get; set; }
+        public string UnitName { get; set; }
+        public int UnitClassId { get; set; }
 
         public virtual ICollection<UnitConversion> UnitConversion { get; set; }
     }

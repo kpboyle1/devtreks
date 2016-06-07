@@ -1,9 +1,8 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
 {
-    
     public partial class AccountClass
     {
         public AccountClass()
@@ -27,9 +26,9 @@ namespace DevTreks.Models
             this.Account = new List<Account>();
         }
         public int PKId { get; set; }
-        public string AccountClassDesc { get; set; }
-        public string AccountClassName { get; set; }
         public string AccountClassNum { get; set; }
+        public string AccountClassName { get; set; }
+        public string AccountClassDesc { get; set; }
 
         public virtual ICollection<Account> Account { get; set; }
     }

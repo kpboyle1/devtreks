@@ -1,3 +1,5 @@
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DevTreks.Models
@@ -38,10 +40,10 @@ namespace DevTreks.Models
                 ? string.Empty : clubMember.URIFull;
         }
         public int PKId { get; set; }
-        public int AccountId { get; set; }
         public bool IsDefaultClub { get; set; }
-        public int MemberId { get; set; }
         public string MemberRole { get; set; }
+        public int AccountId { get; set; }
+        public int MemberId { get; set; }
 
         public virtual Account ClubDefault { get; set; }
         public virtual Member Member { get; set; }

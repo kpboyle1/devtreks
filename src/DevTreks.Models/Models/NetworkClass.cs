@@ -1,5 +1,6 @@
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DevTreks.Models
 {
@@ -33,14 +34,13 @@ namespace DevTreks.Models
             this.IsSelected = networkGroup.IsSelected;
         }
         public int PKId { get; set; }
-        public string NetworkClassControllerName { get; set; }
-        public string NetworkClassDesc { get; set; }
         public string NetworkClassLabel { get; set; }
         public string NetworkClassName { get; set; }
+        public string NetworkClassDesc { get; set; }
+        public string NetworkClassControllerName { get; set; }
         public string NetworkClassUserLanguage { get; set; }
 
         public virtual ICollection<Network> Network { get; set; }
-
         [NotMapped]
         public virtual bool IsSelected { get; set; }
     }

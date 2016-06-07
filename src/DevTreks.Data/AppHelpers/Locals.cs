@@ -26,7 +26,7 @@ namespace DevTreks.Data.AppHelpers
         public const string LOCAL_NAMESPACE_NODE_QRY = @"https://www.devtreks.org";
         public const string LOCALGROUP_NS = "y0:localaccountgroup";
         //db fields for updating
-        public const string LOCAL_NAME     = "LinkedViewName";
+        public const string LOCAL_NAME     = "LocalName";
         public const string LOCAL_DESCRIPTION = "LocalDescription";
         //attribute names
         public const string REAL_RATE_ID = "RealRateId";
@@ -144,13 +144,14 @@ namespace DevTreks.Data.AppHelpers
             }
             //else can insert members into base table during initial registration
         }
-        public static string GetLocalsJoinQueryName(ContentURI uri)
-        {
-            string sQryName = string.Empty;//get local.xmldoc field
-            //holding localization nodes
-            sQryName = "0GetLocalXml";
-            return sQryName;
-        }
+        //2.0.0 deprecated
+        //public static string GetLocalsJoinQueryName(ContentURI uri)
+        //{
+        //    string sQryName = string.Empty;//get local.xmldoc field
+        //    //holding localization nodes
+        //    sQryName = "0GetLocalXml";
+        //    return sQryName;
+        //}
         
         public static void ChangeAttributesForInsertion(XElement insertedLocal)
         {
@@ -259,7 +260,7 @@ namespace DevTreks.Data.AppHelpers
             if (uri.URIMember != null && context != null)
             {
                 local = await context.AccountToLocal
-                    .Where(cl => cl.LinkingNodeId == uri.URIMember.AccountId
+                    .Where(cl => cl.AccountId == uri.URIMember.AccountId
                     && cl.IsDefaultLinkedView == true)
                     .FirstOrDefaultAsync();
             }

@@ -380,7 +380,6 @@ namespace DevTreks.Data.AppHelpers
                         LinkedViewPack = null,
 
                         AccountToAddIn = null,
-                        AccountToLocal = null,
                         LinkedViewToBudgetSystem = null,
                         LinkedViewToBudgetSystemToEnterprise = null,
                         LinkedViewToBudgetSystemToTime = null,

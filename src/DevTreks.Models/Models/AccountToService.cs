@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -57,17 +57,17 @@ namespace DevTreks.Models
             this.OwningClubId = service.OwningClubId;
         }
         public int PKId { get; set; }
-        public int AccountId { get; set; }
-        public int Amount1 { get; set; }
-        public short AuthorizationLevel { get; set; }
-        public DateTime EndDate { get; set; }
-        public bool IsOwner { get; set; }
-        public DateTime LastChangedDate { get; set; }
         public string Name { get; set; }
-        public int ServiceId { get; set; }
-        public DateTime StartDate { get; set; }
+        public int Amount1 { get; set; }
         public string Status { get; set; }
         public DateTime StatusDate { get; set; }
+        public short AuthorizationLevel { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime LastChangedDate { get; set; }
+        public bool IsOwner { get; set; }
+        public int AccountId { get; set; }
+        public int ServiceId { get; set; }
 
         public virtual ICollection<AccountToIncentive> AccountToIncentive { get; set; }
         public virtual ICollection<AccountToPayment> AccountToPayment { get; set; }

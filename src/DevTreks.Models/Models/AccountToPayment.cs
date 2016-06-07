@@ -1,12 +1,11 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
 {
     public partial class AccountToPayment
     {
-        //clues respondwithlist about the specific list to load and display
-        public const string PaymentList = "clubpaymentlist";
+        
         public AccountToPayment() { }
         public AccountToPayment(bool init)
         {
@@ -37,16 +36,18 @@ namespace DevTreks.Models
             this.AccountToService = new AccountToService();
         }
         public int PKId { get; set; }
-        public int AccountToServiceId { get; set; }
-        public decimal CreditDue { get; set; }
-        public DateTime CreditDueDate { get; set; }
-        public decimal CreditPaid { get; set; }
-        public DateTime CreditPaidDate { get; set; }
         public decimal PaymentDue { get; set; }
         public DateTime PaymentDueDate { get; set; }
         public decimal PaymentPaid { get; set; }
         public DateTime PaymentPaidDate { get; set; }
+        public decimal CreditDue { get; set; }
+        public DateTime CreditDueDate { get; set; }
+        public decimal CreditPaid { get; set; }
+        public DateTime CreditPaidDate { get; set; }
+        public int AccountToServiceId { get; set; }
 
         public virtual AccountToService AccountToService { get; set; }
+        //clues respondwithlist about the specific list to load and display
+        public const string PaymentList = "clubpaymentlist";
     }
 }

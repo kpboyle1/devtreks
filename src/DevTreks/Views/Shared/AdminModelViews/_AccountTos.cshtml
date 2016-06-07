@@ -107,7 +107,7 @@
                         foreach (var local in Model.URIModels.Account.AccountToLocal)
                         {
                             @Html.DivCollapseStart(Model, local.PKId)
-                            @Html.H4(@local.LinkedViewName, string.Empty)
+                            @Html.H4(@local.LocalName, string.Empty)
                             ViewData.Model.URIModels.AccountToLocal = local;
                             @Html.Partial("AdminModelViews/_AccountToLocal", ViewData.Model)
                             @Html.DivEnd()

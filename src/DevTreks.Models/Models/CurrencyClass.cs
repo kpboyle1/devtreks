@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -11,9 +11,9 @@ namespace DevTreks.Models
         }
 
         public int PKId { get; set; }
+        public string CurrencyClassName { get; set; }
         public string CurrencyClassAbbrev { get; set; }
         public string CurrencyClassDesc { get; set; }
-        public string CurrencyClassName { get; set; }
 
         public virtual ICollection<Currency> Currency { get; set; }
     }

@@ -92,30 +92,40 @@ namespace DevTreks.Data.AppHelpers
             string addInName = string.Empty;
             if (uri.URIMember != null)
             {
-                if (uri.URIDataManager.UseDefaultLocal)
-                {
-                    var defaultAddIn = await context.AccountToLocal
+                var defaultAddIn = await context.AccountToAddIn
                         .Where(ca => ca.LinkingNodeId == uri.URIMember.AccountId
                         && ca.IsDefaultLinkedView == true)
                         .FirstOrDefaultAsync();
-                    if (defaultAddIn != null)
-                    {
-                        addInId = defaultAddIn.LinkedViewId;
-                        addInName = defaultAddIn.LinkedViewName;
-                    }
-                }
-                else
+                if (defaultAddIn != null)
                 {
-                    var defaultAddIn = await context.AccountToAddIn
-                        .Where(ca => ca.LinkingNodeId == uri.URIMember.AccountId
-                        && ca.IsDefaultLinkedView == true)
-                        .FirstOrDefaultAsync();
-                    if (defaultAddIn != null)
-                    {
-                        addInId = defaultAddIn.LinkedViewId;
-                        addInName = defaultAddIn.LinkedViewName;
-                    }
+                    addInId = defaultAddIn.LinkedViewId;
+                    addInName = defaultAddIn.LinkedViewName;
                 }
+                //2.0.0 deprecated using linkedviews for locals
+                //if (uri.URIDataManager.UseDefaultLocal)
+                //{
+                //    var defaultAddIn = await context.AccountToLocal
+                //        .Where(ca => ca.LinkingNodeId == uri.URIMember.AccountId
+                //        && ca.IsDefaultLinkedView == true)
+                //        .FirstOrDefaultAsync();
+                //    if (defaultAddIn != null)
+                //    {
+                //        addInId = defaultAddIn.LinkedViewId;
+                //        addInName = defaultAddIn.LinkedViewName;
+                //    }
+                //}
+                //else
+                //{
+                //    var defaultAddIn = await context.AccountToAddIn
+                //        .Where(ca => ca.LinkingNodeId == uri.URIMember.AccountId
+                //        && ca.IsDefaultLinkedView == true)
+                //        .FirstOrDefaultAsync();
+                //    if (defaultAddIn != null)
+                //    {
+                //        addInId = defaultAddIn.LinkedViewId;
+                //        addInName = defaultAddIn.LinkedViewName;
+                //    }
+                //}
             }
             addins.Add(addInId, addInName);
             return addins;

@@ -945,22 +945,23 @@ namespace DevTreks.Data.Helpers
                     //sQryName = Resources.GetResourceQueryName(docToCalcURI.URINodeName);
                     reader = await GetXmlReaderDocAsync(docToCalcURI, sQryName);
                     break;
-                case GeneralHelpers.APPLICATION_TYPES.locals:
-                    sQryName = AppHelpers.Locals.GetLocalsJoinQueryName(docToCalcURI);
-                    if (docToCalcURI.URINodeName == AppHelpers.Locals.LOCAL_TYPES.localaccountgroup.ToString())
-                    {
-                        ContentURI linkedViewAddIn 
-                            = Helpers.LinqHelpers.GetLinkedViewIsSelectedAddIn(docToCalcURI);
-                        if (linkedViewAddIn != null)
-                        {
-                            reader = await GetXmlReaderDocAsync(linkedViewAddIn, sQryName);
-                        }
-                    }
-                    else
-                    {
-                        reader = await GetXmlReaderDocAsync(docToCalcURI, sQryName);
-                    }
-                    break;
+                //case GeneralHelpers.APPLICATION_TYPES.locals:
+                //    //2.0.0 deprecated
+                //    sQryName = AppHelpers.Locals.GetLocalsJoinQueryName(docToCalcURI);
+                //    if (docToCalcURI.URINodeName == AppHelpers.Locals.LOCAL_TYPES.localaccountgroup.ToString())
+                //    {
+                //        ContentURI linkedViewAddIn 
+                //            = Helpers.LinqHelpers.GetLinkedViewIsSelectedAddIn(docToCalcURI);
+                //        if (linkedViewAddIn != null)
+                //        {
+                //            reader = await GetXmlReaderDocAsync(linkedViewAddIn, sQryName);
+                //        }
+                //    }
+                //    else
+                //    {
+                //        reader = await GetXmlReaderDocAsync(docToCalcURI, sQryName);
+                //    }
+                //    break;
                 default:
                     break;
             }

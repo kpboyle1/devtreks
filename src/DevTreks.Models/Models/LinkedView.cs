@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace DevTreks.Models
@@ -8,7 +8,6 @@ namespace DevTreks.Models
         public LinkedView()
         {
             AccountToAddIn = new HashSet<AccountToAddIn>();
-            AccountToLocal = new HashSet<AccountToLocal>();
             LinkedViewToBudgetSystem = new HashSet<LinkedViewToBudgetSystem>();
             LinkedViewToBudgetSystemToEnterprise = new HashSet<LinkedViewToBudgetSystemToEnterprise>();
             LinkedViewToBudgetSystemToTime = new HashSet<LinkedViewToBudgetSystemToTime>();
@@ -48,45 +47,6 @@ namespace DevTreks.Models
             LinkedViewPack = new LinkedViewPack();
 
             AccountToAddIn = new List<AccountToAddIn>();
-            AccountToLocal = new List<AccountToLocal>();
-            LinkedViewToBudgetSystem = new List<LinkedViewToBudgetSystem>();
-            LinkedViewToBudgetSystemToEnterprise = new List<LinkedViewToBudgetSystemToEnterprise>();
-            LinkedViewToBudgetSystemToTime = new List<LinkedViewToBudgetSystemToTime>();
-            LinkedViewToComponent = new List<LinkedViewToComponent>();
-            LinkedViewToComponentClass = new List<LinkedViewToComponentClass>();
-            LinkedViewToCostSystem = new List<LinkedViewToCostSystem>();
-            LinkedViewToCostSystemToPractice = new List<LinkedViewToCostSystemToPractice>();
-            LinkedViewToCostSystemToTime = new List<LinkedViewToCostSystemToTime>();
-            LinkedViewToDevPackJoin = new List<LinkedViewToDevPackJoin>();
-            LinkedViewToDevPackPartJoin = new List<LinkedViewToDevPackPartJoin>();
-            LinkedViewToInput = new List<LinkedViewToInput>();
-            LinkedViewToInputClass = new List<LinkedViewToInputClass>();
-            LinkedViewToInputSeries = new List<LinkedViewToInputSeries>();
-            LinkedViewToResourcePack = new List<LinkedViewToResourcePack>();
-            LinkedViewToOperation = new List<LinkedViewToOperation>();
-            LinkedViewToOperationClass = new List<LinkedViewToOperationClass>();
-            LinkedViewToOutput = new List<LinkedViewToOutput>();
-            LinkedViewToOutputClass = new List<LinkedViewToOutputClass>();
-            LinkedViewToOutputSeries = new List<LinkedViewToOutputSeries>();
-            LinkedViewToResource = new List<LinkedViewToResource>();
-        }
-        public LinkedView(LinkedView rt)
-        {
-            PKId = rt.PKId;
-            LinkedViewNum = rt.LinkedViewNum;
-            LinkedViewName = rt.LinkedViewName;
-            LinkedViewDesc = rt.LinkedViewDesc;
-            LinkedViewFileExtensionType = rt.LinkedViewFileExtensionType;
-            LinkedViewLastChangedDate = rt.LinkedViewLastChangedDate;
-            LinkedViewFileName = rt.LinkedViewFileName;
-            LinkedViewXml = rt.LinkedViewXml;
-            LinkedViewAddInName = rt.LinkedViewAddInName;
-            LinkedViewAddInHostName = rt.LinkedViewAddInHostName;
-            LinkedViewPackId = rt.LinkedViewPackId;
-            LinkedViewPack = new LinkedViewPack();
-
-            AccountToAddIn = new List<AccountToAddIn>();
-            AccountToLocal = new List<AccountToLocal>();
             LinkedViewToBudgetSystem = new List<LinkedViewToBudgetSystem>();
             LinkedViewToBudgetSystemToEnterprise = new List<LinkedViewToBudgetSystemToEnterprise>();
             LinkedViewToBudgetSystemToTime = new List<LinkedViewToBudgetSystemToTime>();
@@ -109,19 +69,18 @@ namespace DevTreks.Models
             LinkedViewToResource = new List<LinkedViewToResource>();
         }
         public int PKId { get; set; }
-        public string LinkedViewAddInHostName { get; set; }
-        public string LinkedViewAddInName { get; set; }
+        public string LinkedViewNum { get; set; }
+        public string LinkedViewName { get; set; }
         public string LinkedViewDesc { get; set; }
         public string LinkedViewFileExtensionType { get; set; }
-        public string LinkedViewXml { get; set; }
-        public string LinkedViewFileName { get; set; }
         public DateTime LinkedViewLastChangedDate { get; set; }
-        public string LinkedViewName { get; set; }
-        public string LinkedViewNum { get; set; }
+        public string LinkedViewFileName { get; set; }
+        public string LinkedViewXml { get; set; }
+        public string LinkedViewAddInName { get; set; }
+        public string LinkedViewAddInHostName { get; set; }
         public int LinkedViewPackId { get; set; }
 
         public virtual ICollection<AccountToAddIn> AccountToAddIn { get; set; }
-        public virtual ICollection<AccountToLocal> AccountToLocal { get; set; }
         public virtual ICollection<LinkedViewToBudgetSystem> LinkedViewToBudgetSystem { get; set; }
         public virtual ICollection<LinkedViewToBudgetSystemToEnterprise> LinkedViewToBudgetSystemToEnterprise { get; set; }
         public virtual ICollection<LinkedViewToBudgetSystemToTime> LinkedViewToBudgetSystemToTime { get; set; }
