@@ -257,9 +257,12 @@ namespace DevTreks
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //errors are displayed on html pages
+                //app.UseExceptionHandler("/Home/Error");
 
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
+                //this was used with rc1, but new docs suggest building db in startup.cs
+                //find out how rc2 works
                 try
                 {
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()

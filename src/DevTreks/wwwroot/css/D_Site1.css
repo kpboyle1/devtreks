@@ -1,7 +1,7 @@
 ﻿/*
 Name:       Site1.css
 Author:     www.devtreks.org
-Date:       2016, March
+Date:       2016, June
 Purpose:    Cross device css styles
 */
 
@@ -9,12 +9,6 @@ body
 {
     font-family: Helvetica, Arial, sans-serif;
     font-size: .85em;
-}
-/* default widths less than 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
 }
 input.Input25
 {
@@ -102,15 +96,5 @@ td.Top
 	{ color:#000; border:solid 1px #000; }
 }
 
-
-/* Mobile styles*/
-/*@media only screen and (min-width: 450px)
-{
-    //advantages to having horizontal scroll for body, but this doesn't do the job
-    jQuery mobile overwritten styles: horizontal scroll bar
-    body.ui-mobile-viewport,
-    div.ui-mobile-viewport { overflow-x: auto; }
-.ui-content { border-width: 0; overflow: visible; overflow-x: auto; padding: 15px; }
-}*/
 
 

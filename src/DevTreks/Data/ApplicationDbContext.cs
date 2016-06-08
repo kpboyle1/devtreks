@@ -13,9 +13,17 @@ namespace DevTreks.Models
     /// </summary>
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        private static bool _created = false;
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            //this was added on june 07 from
+            //http://docs.asp.net/en/latest/migration/identity.html
+            //if (!_created)
+            //{
+            //    Database.AsMigrationsEnabled().ApplyMigrations();
+            //    _created = true;
+            //}
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

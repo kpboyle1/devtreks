@@ -915,8 +915,10 @@ namespace DevTreks.ViewModels
         }
         private async Task CopyExtensions(ContentURI uri)
         {
-            //2.0.0 workaround for post build scripts and buildoption copy not working
+            //2.0.0 workaround for post build scripts and buildOptions copy not working
             //probably better than post build scripts for cross platform use
+            //BUT, it requires running a release build in Visual Studio, logging in,
+            //and previewing data on the Preview panel
             if (ContentURIData.URIMember.ClubInUse.PrivateAuthorizationLevel
                 == AccountHelper.AUTHORIZATION_LEVELS.fulledits)
             {
