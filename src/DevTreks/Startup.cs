@@ -35,13 +35,24 @@ namespace DevTreks
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
+
+
+            //configuring user secrets 
             if (env.IsDevelopment())
             {
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
             }
-
+            else
+            {
+                //this does not work in production: devtreks.exe returns message
+                //can't find project json in path where app published
+                //builder.AddJsonFile("project.json", optional: true, reloadOnChange: true);
+                //has to manually add project.json to release publish path
+                builder.AddUserSecrets();
+            }
             builder.AddEnvironmentVariables();
+
             Configuration = builder.Build();
             ContentURI = new DevTreks.Data.ContentURI();
             //azure or localhost?
@@ -56,13 +67,23 @@ namespace DevTreks
             }
             return bIsAzure;
         }
-
+        private static string FixSecretConnection(string secretConnection)
+        {
+            //allow this to generate a null exception if secretConnection
+            //can't be found (in rc2 release)
+            string sSecretConnection = secretConnection.Replace("\\\\", "\\");
+            return sSecretConnection;
+        }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureDevelopmentServices(IServiceCollection services)
         {
-            // Add framework services.
+            //work around for testing user secrets (adds 2 extra slashes)
+            string sSecretConnection = Configuration["DevTreksLocalDb"];
+            sSecretConnection = FixSecretConnection(sSecretConnection);
+            // Add framework services for ASPNET Identity
             services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["ConnectionStrings:DebugConnection"]));
+                options.UseSqlServer(sSecretConnection));
+            //options.UseSqlServer(Configuration["ConnectionStrings:DebugConnection"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -86,13 +107,18 @@ namespace DevTreks
             //inject config settings in controller and pass to views and repositories
             services.Configure<DevTreks.Data.ContentURI>(ContentURI =>
             {
+                //azure is debugged by commenting in and out the azure for localhost:5000 appsettings
                 string connection = string.Empty;
                 string path = string.Empty;
-                //azure is debugged by commenting in and out the azure for localhost:5000 appsettings
-                connection = Configuration["ConnectionStrings:DebugConnection"];
+                // Add framework services for DevTreks models
+                //user secrets tests
+                connection = sSecretConnection;
+                //regular tests
+                //connection = Configuration["ConnectionStrings:DebugConnection"];
                 ContentURI.URIDataManager.DefaultConnection = connection;
-                //azure release has to modify this
-                connection = Configuration["ConnectionStrings:DebugStorageConnection"];
+                //localhost release can modify to second line
+                connection = Configuration["DevTreksLocalStorage"];
+                //connection = Configuration["ConnectionStrings:DebugStorageConnection"];
                 ContentURI.URIDataManager.StorageConnection = connection;
                 path = Configuration["DebugPaths:DefaultRootFullFilePath"];
                 ContentURI.URIDataManager.DefaultRootFullFilePath = path;
@@ -128,9 +154,13 @@ namespace DevTreks
         }
         public void ConfigureProductionServices(IServiceCollection services)
         {
+            //work around for testing user secrets (adds 2 extra slashes)
+            string sSecretConnection = Configuration["DevTreksLocalDb"];
+            sSecretConnection = FixSecretConnection(sSecretConnection);
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(Configuration["ConnectionStrings:ReleaseConnection"]));
+                options.UseSqlServer(sSecretConnection));
+            //options.UseSqlServer(Configuration["ConnectionStrings:ReleaseConnection"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -176,11 +206,12 @@ namespace DevTreks
                     //web server on localhost
                     if (ContentURI.URIDataManager.DefaultRootWebStoragePath.Contains("localhost"))
                     {
-                        //visual studio debugging uses 
-                        connection = Configuration["ConnectionStrings:ReleaseConnection"];
+                        //localhost releases 
+                        connection = sSecretConnection;
+                        //connection = Configuration["ConnectionStrings:ReleaseConnection"];
                         ContentURI.URIDataManager.DefaultConnection = connection;
-                        //not used on web servers
-                        connection = Configuration["ConnectionStrings:ReleaseStorageConnection"];
+                        connection = Configuration["DevTreksLocalStorage"];
+                        //connection = Configuration["ConnectionStrings:ReleaseStorageConnection"];
                         ContentURI.URIDataManager.StorageConnection = connection;
                     }
                     else
@@ -274,9 +305,6 @@ namespace DevTreks
                 }
                 catch { }
             }
-            //rc2 moved to Program.cs and webconfig
-            //app.UseIISPlatformHandler(options => options.AuthenticationDescriptions.Clear());
-
             app.UseStaticFiles();
 
             app.UseIdentity();
