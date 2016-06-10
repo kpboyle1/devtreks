@@ -35,8 +35,6 @@ namespace DevTreks
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
-
-
             //configuring user secrets 
             if (env.IsDevelopment())
             {
@@ -48,7 +46,7 @@ namespace DevTreks
                 //this does not work in production: devtreks.exe returns message
                 //can't find project json in path where app published
                 //builder.AddJsonFile("project.json", optional: true, reloadOnChange: true);
-                //has to manually add project.json to release publish path
+                //project.json has to be manually added to release publish path (until publishOptions work)
                 builder.AddUserSecrets();
             }
             builder.AddEnvironmentVariables();
@@ -77,13 +75,17 @@ namespace DevTreks
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureDevelopmentServices(IServiceCollection services)
         {
+            //comment out if secrets are not being used
             //work around for testing user secrets (adds 2 extra slashes)
-            string sSecretConnection = Configuration["DevTreksLocalDb"];
-            sSecretConnection = FixSecretConnection(sSecretConnection);
-            // Add framework services for ASPNET Identity
+            //string sSecretConnection = Configuration["DevTreksLocalDb"];
+            //sSecretConnection = FixSecretConnection(sSecretConnection);
+            //// Add framework services for ASPNET Identity
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(sSecretConnection));
+
+            //comment out if secrets are being used
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(sSecretConnection));
-            //options.UseSqlServer(Configuration["ConnectionStrings:DebugConnection"]));
+                options.UseSqlServer(Configuration["ConnectionStrings:DebugConnection"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -92,7 +94,7 @@ namespace DevTreks
             services.AddMvc();
 
             //refer to https://docs.asp.net/en/1.0.0-rc2/fundamentals/localization.html
-            //doesn't include the errors project -don't refactor because not clear why this is actually needed
+            //apparently, this is for Razor -not compiled binary use
             services.AddLocalization(options => options.ResourcesPath = "..\\DevTreks.Exceptions");
             services.AddLocalization(options => options.ResourcesPath = "..\\DevTreks.Resources");
             
@@ -110,15 +112,15 @@ namespace DevTreks
                 //azure is debugged by commenting in and out the azure for localhost:5000 appsettings
                 string connection = string.Empty;
                 string path = string.Empty;
-                // Add framework services for DevTreks models
-                //user secrets tests
-                connection = sSecretConnection;
-                //regular tests
-                //connection = Configuration["ConnectionStrings:DebugConnection"];
+                //comment out if secrets are not being used
+                //connection = sSecretConnection;
+                //comment out if secrets are being used
+                connection = Configuration["ConnectionStrings:DebugConnection"];
                 ContentURI.URIDataManager.DefaultConnection = connection;
-                //localhost release can modify to second line
-                connection = Configuration["DevTreksLocalStorage"];
-                //connection = Configuration["ConnectionStrings:DebugStorageConnection"];
+                //comment out if secrets are not being used
+                //connection = Configuration["DevTreksLocalStorage"];
+                //comment out if secrets are being used
+                connection = Configuration["ConnectionStrings:DebugStorageConnection"];
                 ContentURI.URIDataManager.StorageConnection = connection;
                 path = Configuration["DebugPaths:DefaultRootFullFilePath"];
                 ContentURI.URIDataManager.DefaultRootFullFilePath = path;
@@ -154,13 +156,16 @@ namespace DevTreks
         }
         public void ConfigureProductionServices(IServiceCollection services)
         {
+            //comment out if secrets are not being used
             //work around for testing user secrets (adds 2 extra slashes)
             string sSecretConnection = Configuration["DevTreksLocalDb"];
             sSecretConnection = FixSecretConnection(sSecretConnection);
             // Add framework services.
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(sSecretConnection));
-            //options.UseSqlServer(Configuration["ConnectionStrings:ReleaseConnection"]));
+            //comment out if secrets are being used
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration["ConnectionStrings:ReleaseConnection"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -169,6 +174,7 @@ namespace DevTreks
             services.AddMvc();
 
             //refer to https://docs.asp.net/en/1.0.0-rc2/fundamentals/localization.html
+            //note that DevTreks uses compiled binaries -not Razor views
             services.AddLocalization(options => options.ResourcesPath = "..\\DevTreks.Resources");
             services.AddLocalization(options => options.ResourcesPath = "..\\DevTreks.Exceptions");
 
@@ -206,11 +212,14 @@ namespace DevTreks
                     //web server on localhost
                     if (ContentURI.URIDataManager.DefaultRootWebStoragePath.Contains("localhost"))
                     {
-                        //localhost releases 
+                        //comment out if secrets are not being used
                         connection = sSecretConnection;
+                        //comment out if secrets are being used
                         //connection = Configuration["ConnectionStrings:ReleaseConnection"];
                         ContentURI.URIDataManager.DefaultConnection = connection;
+                        //comment out if secrets are not being used
                         connection = Configuration["DevTreksLocalStorage"];
+                        //comment out if secrets are being used
                         //connection = Configuration["ConnectionStrings:ReleaseStorageConnection"];
                         ContentURI.URIDataManager.StorageConnection = connection;
                     }
@@ -262,7 +271,10 @@ namespace DevTreks
             //refer to the services.AddLocalization url
             var supportedCultures = new[]
             {
+                //this is also the syntax used to hold the resource dlls
+                //in the publish path
                 new CultureInfo("en"),
+                //very limited testing so far
                 new CultureInfo("es")
              };
 
@@ -288,12 +300,12 @@ namespace DevTreks
             }
             else
             {
-                //errors are displayed on html pages
+                //errors are displayed on html pages -don't use a separate page
                 //app.UseExceptionHandler("/Home/Error");
 
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
                 //this was used with rc1, but new docs suggest building db in startup.cs
-                //find out how rc2 works
+                //find out how rc2 works for azure
                 try
                 {
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
