@@ -826,50 +826,7 @@ namespace DevTreks.Helpers
                 return new HtmlString(result.ToString());
             }
         }
-        //retain for debug
-        //public static HtmlString MakeMetaDocUpload(this IHtmlHelper helper,
-        //    string searchurl, string contenturipattern,
-        //    string nodeid, string xml, string propertyName,
-        //    GeneralHelpers.VIEW_EDIT_TYPES viewType,
-        //    string cellNumber, string fileExtType)
-        //{
-        //    using (StringWriter result = new StringWriter())
-        //    {
-        //        result.WriteLine(helper.RowStart(string.Empty, string.Empty));
-        //        result.WriteLine(helper.CellStart(string.Empty, string.Empty, cellNumber));
-        //        string sMetaDataId = string.Concat("metadata_", nodeid, viewType.ToString());
-        //        result.WriteLine(helper.InputUnobtrusiveMobile(string.Concat("btnMetaData_", nodeid), "ShowElement", "button",
-        //                 sMetaDataId, "Toggle Authorship", "true", "true", string.Empty, string.Empty));
-        //        result.Write("<br/>");
-        //        result.Write("<br/>");
-        //        result.WriteLine(helper.DivStart(sMetaDataId, "display:none"));
-        //        //< div id = "@sMetaDataId" name = "@sMetaDataId" style = "display:none" >
-        //        if (fileExtType != GeneralHelpers.FILENAME_EXTENSIONS.temp.ToString()
-        //            && viewType == GeneralHelpers.VIEW_EDIT_TYPES.full)
-        //        {
-        //            string buttonid = string.Concat("btnDisplayFileUpload_", nodeid);
-        //            string formparam = EditHelper.MakeStandardEditName(searchurl, propertyName, GeneralRules.XML, "2000");
-        //            string spanid = string.Concat("spanMetaFileUpload_", nodeid);
-        //            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-        //            result.WriteLine(StylesheetHelper.MakeUploadButton(
-        //                buttonid, "UploadFile", "Show MetaData Doc Upload",
-        //                spanid, contenturipattern, searchurl, string.Empty,
-        //                string.Empty, formparam));
-        //            result.WriteLine(helper.Span(spanid, string.Empty, string.Empty));
-        //            result.WriteLine(helper.DivEnd());
-        //        }
-        //        result.Write("<br/>");
-        //        if (!string.IsNullOrEmpty(xml))
-        //        {
-        //            result.WriteLine(helper.Span(string.Empty, string.Empty,
-        //                string.Concat("metada from xml:", xml)));
-        //        }
-        //        result.WriteLine(helper.DivEnd());
-        //        result.WriteLine(helper.CellEnd());
-        //        result.WriteLine(helper.RowEnd());
-        //        return new HtmlString(result.ToString());
-        //    }
-        //}
+        
         public static HtmlString MakeFileUpload(this IHtmlHelper helper,
             string searchurl, string contenturipattern,
             string nodeid, string fileName, string propertyName,

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using DevTreks.Models;
 
 namespace DevTreks.Models
 {
@@ -17,6 +16,7 @@ namespace DevTreks.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+            //rc2 doesn't use because it's outdated
             //this was added on june 07 from
             //http://docs.asp.net/en/latest/migration/identity.html
             //if (!_created)

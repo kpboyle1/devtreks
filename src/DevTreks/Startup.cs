@@ -56,15 +56,7 @@ namespace DevTreks
             //azure or localhost?
             PlatformType = env.WebRootPath;
         }
-        private static bool IsAzurePlatform()
-        {
-            bool bIsAzure = false;
-            if (PlatformType.StartsWith("https"))
-            {
-                bIsAzure = true;
-            }
-            return bIsAzure;
-        }
+        
         private static string FixSecretConnection(string secretConnection)
         {
             //allow this to generate a null exception if secretConnection
@@ -158,14 +150,14 @@ namespace DevTreks
         {
             //comment out if secrets are not being used
             //work around for testing user secrets (adds 2 extra slashes)
-            string sSecretConnection = Configuration["DevTreksLocalDb"];
-            sSecretConnection = FixSecretConnection(sSecretConnection);
-            // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(sSecretConnection));
-            //comment out if secrets are being used
+            //string sSecretConnection = Configuration["DevTreksLocalDb"];
+            //sSecretConnection = FixSecretConnection(sSecretConnection);
+            //// Add framework services.
             //services.AddDbContext<ApplicationDbContext>(options =>
-            //    options.UseSqlServer(Configuration["ConnectionStrings:ReleaseConnection"]));
+            //    options.UseSqlServer(sSecretConnection));
+            //comment out if secrets are being used
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(Configuration["ConnectionStrings:ReleaseConnection"]));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -191,6 +183,18 @@ namespace DevTreks
                 string connection = string.Empty;
                 string path = string.Empty;
                 //azure and web server use release paths
+                //comment out if secrets are not being used
+                //connection = sSecretConnection;
+                //comment out if secrets are being used
+                connection = Configuration["ConnectionStrings:ReleaseConnection"];
+                ContentURI.URIDataManager.DefaultConnection = connection;
+                //comment out if secrets are not being used
+                //connection = Configuration["DevTreksLocalStorage"];
+                //comment out if secrets are being used
+                connection = Configuration["ConnectionStrings:ReleaseStorageConnection"];
+                ContentURI.URIDataManager.StorageConnection = connection;
+
+
                 path = Configuration["ReleasePaths:DefaultRootFullFilePath"];
                 ContentURI.URIDataManager.DefaultRootFullFilePath = path;
                 //getplatformtype expects this to be string empty to debug azure on localhost
@@ -200,48 +204,40 @@ namespace DevTreks
                 ContentURI.URIDataManager.DefaultWebDomain = path;
                 path = Configuration["ReleasePaths:ExtensionsPath"];
                 ContentURI.URIDataManager.ExtensionsPath = path;
-                if (IsAzurePlatform())
-                {
-                    connection = Configuration["AzureConnection"];
-                    ContentURI.URIDataManager.DefaultConnection = connection;
-                    connection = Configuration["AzureStorage"];
-                    ContentURI.URIDataManager.StorageConnection = connection;
-                }
-                else
-                {
-                    //web server on localhost
-                    if (ContentURI.URIDataManager.DefaultRootWebStoragePath.Contains("localhost"))
-                    {
-                        //comment out if secrets are not being used
-                        connection = sSecretConnection;
-                        //comment out if secrets are being used
-                        //connection = Configuration["ConnectionStrings:ReleaseConnection"];
-                        ContentURI.URIDataManager.DefaultConnection = connection;
-                        //comment out if secrets are not being used
-                        connection = Configuration["DevTreksLocalStorage"];
-                        //comment out if secrets are being used
-                        //connection = Configuration["ConnectionStrings:ReleaseStorageConnection"];
-                        ContentURI.URIDataManager.StorageConnection = connection;
-                    }
-                    else
-                    {
-                        //azure debug using localhost uses debug paths
-                        path = Configuration["DebugPaths:DefaultRootFullFilePath"];
-                        ContentURI.URIDataManager.DefaultRootFullFilePath = path;
-                        //test the use of internet urls to 
-                        path = Configuration["DebugPaths:DefaultRootWebStoragePath"];
-                        ContentURI.URIDataManager.DefaultRootWebStoragePath = path;
-                        path = Configuration["DebugPaths:DefaultWebDomain"];
-                        ContentURI.URIDataManager.DefaultWebDomain = path;
-                        path = Configuration["DebugPaths:ExtensionsPath"];
-                        ContentURI.URIDataManager.ExtensionsPath = path;
-                        //connections
-                        connection = Configuration["DevTreksLocalConnection"];
-                        ContentURI.URIDataManager.DefaultConnection = connection;
-                        connection = Configuration["DevTreksLocalStorage"];
-                        ContentURI.URIDataManager.StorageConnection = connection;
-                    }
-                }
+
+               
+                //    //web server on localhost
+                //    if (ContentURI.URIDataManager.DefaultRootWebStoragePath.Contains("localhost"))
+                //    {
+                //        //comment out if secrets are not being used
+                //        //connection = sSecretConnection;
+                //        //comment out if secrets are being used
+                //        connection = Configuration["ConnectionStrings:ReleaseConnection"];
+                //        ContentURI.URIDataManager.DefaultConnection = connection;
+                //        //comment out if secrets are not being used
+                //        //connection = Configuration["DevTreksLocalStorage"];
+                //        //comment out if secrets are being used
+                //        connection = Configuration["ConnectionStrings:ReleaseStorageConnection"];
+                //        ContentURI.URIDataManager.StorageConnection = connection;
+                //    }
+                //    else
+                //    {
+                //        //azure debug using localhost uses debug paths
+                //        path = Configuration["DebugPaths:DefaultRootFullFilePath"];
+                //        ContentURI.URIDataManager.DefaultRootFullFilePath = path;
+                //        //test the use of internet urls to 
+                //        path = Configuration["DebugPaths:DefaultRootWebStoragePath"];
+                //        ContentURI.URIDataManager.DefaultRootWebStoragePath = path;
+                //        path = Configuration["DebugPaths:DefaultWebDomain"];
+                //        ContentURI.URIDataManager.DefaultWebDomain = path;
+                //        path = Configuration["DebugPaths:ExtensionsPath"];
+                //        ContentURI.URIDataManager.ExtensionsPath = path;
+                //        //connections
+                //        connection = Configuration["DevTreksLocalConnection"];
+                //        ContentURI.URIDataManager.DefaultConnection = connection;
+                //        connection = Configuration["DevTreksLocalStorage"];
+                //        ContentURI.URIDataManager.StorageConnection = connection;
+                //}
                 path = Configuration["Site:FileSizeValidation"];
                 ContentURI.URIDataManager.FileSizeValidation = path;
                 path = Configuration["Site:FileSizeDBStorageValidation"];
@@ -304,8 +300,7 @@ namespace DevTreks
                 //app.UseExceptionHandler("/Home/Error");
 
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
-                //this was used with rc1, but new docs suggest building db in startup.cs
-                //find out how rc2 works for azure
+                //this was used with rc1, but new rc2 instructions for using AppDbContext are outdated
                 try
                 {
                     using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
