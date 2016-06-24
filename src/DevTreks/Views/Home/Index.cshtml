@@ -31,7 +31,8 @@
     <li>@Html.ActionLink("GreenTreks", "index", "GreenTreks")</li>
     <li>@Html.ActionLink("GovTreks (under planning)", "index", "GovTreks")</li>
 </ul>
-@if (FileStorageIO.GetPlatformType(this.Context.Request.PathBase) == FileStorageIO.PLATFORM_TYPES.azure)
+@*2.0.0 refactor after testing*@
+@if ("azureurl" == "azureurl")
 {
 <ul data-role="listview" data-inset="true">
 

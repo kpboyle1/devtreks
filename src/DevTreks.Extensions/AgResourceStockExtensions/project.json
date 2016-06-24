@@ -3,7 +3,7 @@
   "description": "AgResourceStockExtensions Class Library",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
-    "net451": {
+    "net461" : {
       "frameworkAssemblies": {
         "System.ComponentModel.Composition": "4.0.0.0"
       }

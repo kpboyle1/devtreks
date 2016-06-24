@@ -3,7 +3,7 @@
   "description": "DevTreks.Data Class Library",
   "authors": [ "kpboyle1" ],
   "frameworks": {
-    "net451": {
+    "net461" : {
       "frameworkAssemblies": {
         "System.ComponentModel.Composition": "4.0.0.0",
         "System.IO.Compression.FileSystem": "4.0.0.0"

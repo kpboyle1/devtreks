@@ -47,11 +47,11 @@ namespace DevTreks
                 //can't find project json in path where app published
                 //builder.AddJsonFile("project.json", optional: true, reloadOnChange: true);
                 //project.json has to be manually added to release publish path (until publishOptions work)
-                builder.AddUserSecrets();
+                //builder.AddUserSecrets();
             }
             builder.AddEnvironmentVariables();
-
             Configuration = builder.Build();
+
             ContentURI = new DevTreks.Data.ContentURI();
             //azure or localhost?
             PlatformType = env.WebRootPath;
@@ -299,18 +299,23 @@ namespace DevTreks
                 //errors are displayed on html pages -don't use a separate page
                 //app.UseExceptionHandler("/Home/Error");
 
+                //code for creating aspnet identify tables in rc2 -commented out after tables were created
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
                 //this was used with rc1, but new rc2 instructions for using AppDbContext are outdated
-                try
-                {
-                    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
-                        .CreateScope())
-                    {
-                        serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
-                             .Database.Migrate();
-                    }
-                }
-                catch { }
+                //try
+                //{
+                //    //existing aspnet identify tables should be deleted
+                //    //this code will generate new identify tables for the new core 1 technologies
+                //    //after the tables are created in the database, register existing users, and 
+                //    //add the AspNetUsers.Id primary key field to the Member.AspNetId foreign key.
+                //    using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
+                //        .CreateScope())
+                //    {
+                //        serviceScope.ServiceProvider.GetService<ApplicationDbContext>()
+                //             .Database.Migrate();
+                //    }
+                //}
+                //catch { }
             }
             app.UseStaticFiles();
 

@@ -23,7 +23,7 @@
            }
         </li>
 @*2.0.0 refactor out after testing*@
-@if (FileStorageIO.GetPlatformType(this.Context.Request.PathBase) != FileStorageIO.PLATFORM_TYPES.azure)
+@if ("azureurl" != "azureurl")
 {
         <li data-role="list-divider">External Logins: @Model.Logins.Count</li>
         <li class="ui-field-contain">

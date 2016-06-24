@@ -4,6 +4,6 @@
   "authors": [ "kpboyle1" ],
 
   "frameworks": {
-    "net451": {}
+    "net461": {}
   }
 }
