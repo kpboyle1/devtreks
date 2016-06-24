@@ -1,19 +1,19 @@
 Appendix B. ReadMe.txt
-
 Version: 2.0.0.beta2, June 10, 2016
+(updated for azure deployment on 
+June 24, 2016)
 
 Introduction
-
 DevTreks is a multitier ASP.NET Core 1 database 
 application. The web project, DevTreks, uses an 
 MVC pattern. The data layer, DevTreks.Data, uses 
-an EF 7 data repository pattern. EF 7 data models 
-are stored in the DevTreks.Models folder. 
+an EF Core 1 data repository pattern. EF data models 
+are stored in the DevTreks.Models project. 
 Localization strings are stored in the 
 DevTreks.Exceptions and DevTreks.Resources projects. 
-The DevTreks.Extensions folder holds subfolders 
+The DevTreks.Extensions folder holds projects 
 that use a Managed Extensibility Framework pattern. 
-Each folder holds a separate group of calculators 
+Each project holds a separate group of calculators 
 and analyzers. 
 
 Always visit the What's New link on the home site 
@@ -23,10 +23,9 @@ tutorials are usually associated with the current
 release. The Deployment tutorial explains how the 
 source code works. The Calculators and Analyzers 
 tutorials explains how calculators and analyzers 
-work. The Club Administration tutorial explains how 
-to manage networks, clubs, and members for social 
-budgeting.
-
+work. The Social Budgeting tutorial explains how 
+to manage networks, clubs, and members for 
+delivering social budgeting data services.
 
 home site
 https://www.devtreks.org
@@ -48,17 +47,15 @@ technologies are officially released as RTM.
 Sql Server 2016 Express. That platform was released 
 June 1, 2016. It is an official RTM version (not 
 a release candidate). The connection properties can 
-be found in the Database Connection section.
+be found in this file’s Database Connection section.
 
-3.	This release has not been deployed to the 
-production Azure site. Although Version 2.0.0.beta1 
-was debugged using the Azure storage emulator, the 
-current version could not be debugged because the 
-old storage emulator stopped working and the new 
-version won’t install correctly. The new database 
-server might have something to do with it 
-–previous Sql servers se fue. Testing on Azure is 
-still likely. 
+3.	This release has been deployed to the new Azure 
+web site successfully. Deploying on Azure required: 
+1) removing the following reference from the web 
+project’s project.json file:  
+"System.Text.Encodings.Web": "4.0.0-rc2-24027". 
+2) In addition, each project.json frameworks section 
+was changed from “net451” to “net461”.
 
 
 Database Connections
