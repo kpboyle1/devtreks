@@ -56,10 +56,12 @@ namespace DevTreks.Helpers
             {
                 result.WriteLine(helper.DivStart(string.Empty, string.Empty,
                    "controlgroup", "horizontal"));
-                result.WriteLine(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
-                    "GetSelectsLink", "Select Club", "spanSelectionFiles",
-                    model.URIDataManager.ContentURIPattern, searchurl,
-                    DataAppHelpers.Accounts.ACCOUNT_TYPES.account.ToString(), string.Empty, string.Empty));
+                //2.0.0: eliminated because members can't add themselves to existing clubs
+                //a club coordinator must add them to the club using standard club management
+                //result.WriteLine(StylesheetHelper.MakeGetSelectionsLink("selectexisting1", "#",
+                //    "GetSelectsLink", "Select Club", "spanSelectionFiles",
+                //    model.URIDataManager.ContentURIPattern, searchurl,
+                //    DataAppHelpers.Accounts.ACCOUNT_TYPES.account.ToString(), string.Empty, string.Empty));
                 //2.0.0 simplification for inserting new club by member (std EF add default pattern)
                 //this can't be std. WriteTo 
                 result.WriteLine(MakeAddDefaultNodeButton(helper, model, "Add New Club",

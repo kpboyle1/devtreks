@@ -204,40 +204,7 @@ namespace DevTreks
                 ContentURI.URIDataManager.DefaultWebDomain = path;
                 path = Configuration["ReleasePaths:ExtensionsPath"];
                 ContentURI.URIDataManager.ExtensionsPath = path;
-
-               
-                //    //web server on localhost
-                //    if (ContentURI.URIDataManager.DefaultRootWebStoragePath.Contains("localhost"))
-                //    {
-                //        //comment out if secrets are not being used
-                //        //connection = sSecretConnection;
-                //        //comment out if secrets are being used
-                //        connection = Configuration["ConnectionStrings:ReleaseConnection"];
-                //        ContentURI.URIDataManager.DefaultConnection = connection;
-                //        //comment out if secrets are not being used
-                //        //connection = Configuration["DevTreksLocalStorage"];
-                //        //comment out if secrets are being used
-                //        connection = Configuration["ConnectionStrings:ReleaseStorageConnection"];
-                //        ContentURI.URIDataManager.StorageConnection = connection;
-                //    }
-                //    else
-                //    {
-                //        //azure debug using localhost uses debug paths
-                //        path = Configuration["DebugPaths:DefaultRootFullFilePath"];
-                //        ContentURI.URIDataManager.DefaultRootFullFilePath = path;
-                //        //test the use of internet urls to 
-                //        path = Configuration["DebugPaths:DefaultRootWebStoragePath"];
-                //        ContentURI.URIDataManager.DefaultRootWebStoragePath = path;
-                //        path = Configuration["DebugPaths:DefaultWebDomain"];
-                //        ContentURI.URIDataManager.DefaultWebDomain = path;
-                //        path = Configuration["DebugPaths:ExtensionsPath"];
-                //        ContentURI.URIDataManager.ExtensionsPath = path;
-                //        //connections
-                //        connection = Configuration["DevTreksLocalConnection"];
-                //        ContentURI.URIDataManager.DefaultConnection = connection;
-                //        connection = Configuration["DevTreksLocalStorage"];
-                //        ContentURI.URIDataManager.StorageConnection = connection;
-                //}
+                
                 path = Configuration["Site:FileSizeValidation"];
                 ContentURI.URIDataManager.FileSizeValidation = path;
                 path = Configuration["Site:FileSizeDBStorageValidation"];
@@ -296,12 +263,11 @@ namespace DevTreks
             }
             else
             {
-                //errors are displayed on html pages -don't use a separate page
+                //errors are displayed on html content pages -don't use a separate page
                 //app.UseExceptionHandler("/Home/Error");
 
                 //code for creating aspnet identify tables in rc2 -commented out after tables were created
                 // For more details on creating database during deployment see http://go.microsoft.com/fwlink/?LinkID=615859
-                //this was used with rc1, but new rc2 instructions for using AppDbContext are outdated
                 //try
                 //{
                 //    //existing aspnet identify tables should be deleted
@@ -320,8 +286,9 @@ namespace DevTreks
             app.UseStaticFiles();
 
             app.UseIdentity();
-
             // To configure external authentication please see http://go.microsoft.com/fwlink/?LinkID=532715
+
+            //MVC routes
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
