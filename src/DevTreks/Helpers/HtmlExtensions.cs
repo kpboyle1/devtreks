@@ -4,6 +4,7 @@ using DevTreks.Data;
 using DevTreks.Helpers;
 using System.IO;
 using System.Text;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text.Encodings.Web;
 
@@ -12,7 +13,7 @@ namespace DevTreks.Helpers
     /// <summary>
     ///Purpose:		static utility methods for the presentation layer xhtml manipulation
     ///Author:		www.devtreks.org
-    ///Date:		2016, April
+    ///Date:		2016, June
     ///References:	www.devtreks.org
     /// </summary>
     /// Notes    
@@ -92,7 +93,6 @@ namespace DevTreks.Helpers
         }
         private static string WriteTagBuilderString(TagBuilder tb)
         {
-            string sTest = string.Empty;
             using (StringWriter sw = new StringWriter())
             {
                 HtmlEncoder enc = HtmlEncoder.Default;
@@ -114,9 +114,6 @@ namespace DevTreks.Helpers
         public static HtmlString PStart(this IHtmlHelper helper)
         {
             return PStart();
-            //var tagBuilder = new TagBuilder("p");
-            //tagBuilder.TagRenderMode = TagRenderMode.StartTag;
-            //return (WriteTagBuilderHtml(tagBuilder));
         }
         public static HtmlString PStart()
         {

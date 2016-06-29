@@ -1,27 +1,31 @@
-﻿{
+{
   "version": "1.0.0-*",
   "description": "DevTreks.Data Class Library",
   "authors": [ "kpboyle1" ],
-  "frameworks": {
-    "net461" : {
-      "frameworkAssemblies": {
-        "System.ComponentModel.Composition": "4.0.0.0",
-        "System.IO.Compression.FileSystem": "4.0.0.0"
-      }
-    }
-  },
   "dependencies": {
     "DevTreks.Exceptions": "1.0.0-*",
     "DevTreks.Models": "1.0.0-*",
     "DevTreks.Resources": "1.0.0-*",
-    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
     "Microsoft.EntityFrameworkCore.Tools": {
-      "version": "1.0.0-preview1-final",
+      "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.IdentityModel.Protocols": "2.0.0-rc1-211161024",
     "System.IO.Compression": "4.0.0",
     "Microsoft.WindowsAzure.ConfigurationManager": "3.2.1",
     "WindowsAzure.Storage": "7.0.0"
+  },
+
+  "frameworks": {
+    "net461": {
+      "frameworkAssemblies": {
+        "System.ComponentModel.Composition": "4.0.0.0",
+        "System.IO.Compression.FileSystem": "4.0.0.0",
+        "System.Net": "4.0.0.0",
+        "System.Net.Http": "4.0.0.0",
+        "System.Xml": "4.0.0.0",
+        "System.Xml.Linq": "4.0.0.0"
+      }
+    }
   }
 }

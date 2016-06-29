@@ -8,6 +8,7 @@ using System.Xml.Xsl;
 using System.Net;
 using System.Text;
 using System.IO;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Text.Encodings.Web;
 using DevTreks.Data.RuleHelpers;
@@ -79,7 +80,6 @@ namespace DevTreks.Helpers
                 string adddefaultparams = string.Concat("&parentnode=", model.URIPattern, "&defaultnode=",
                StylesheetHelper.GetURIPattern("00Default", "1", model.URINetworkPartName,
                     DataAppHelpers.Agreement.AGREEMENT_TYPES.service.ToString(), string.Empty));
-                //StringBuilder sb = new StringBuilder();
                 result.WriteLine(helper.DivStart(string.Empty, "ui-grid-a"));
                 result.WriteLine(helper.DivStart(string.Empty, "ui-block-a"));
                 result.WriteLine(StylesheetHelper.MakeDevTreksButton(string.Concat("adddefault_", DataAppHelpers.Agreement.AGREEMENT_TYPES.service.ToString()), 
@@ -885,7 +885,7 @@ namespace DevTreks.Helpers
             using (StringWriter result = new StringWriter())
             {
                 result.WriteLine(
-                    "Current version: DevTreks.2.0.0-beta2a, June 24, 2016");
+                    "Current version: DevTreks.2.0.0, June 30, 2016");
                 return new HtmlString(result.ToString());
             }
         }

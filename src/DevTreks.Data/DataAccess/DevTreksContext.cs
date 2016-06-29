@@ -458,7 +458,7 @@ namespace DevTreks.Data.DataAccess
                     .HasForeignKey(d => d.ServiceId)
                     .HasConstraintName("fkAccountToServiceToService");
             });
-
+            //ASPNET Identity models are handled in the data folder in the web project
             //modelBuilder.Entity<AspNetRoleClaims>(entity =>
             //{
             //    entity.Property(e => e.RoleId)

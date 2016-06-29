@@ -6,7 +6,7 @@ namespace DevTreks.Models
     /// <summary>
     ///Purpose:	Manage db logins
     ///Author   www.devtreks.org
-    ///Date:    2016, March
+    ///Date:    2016, June
     ///Note:	This is only used by UI layer to manage logins.
     ///         Rest of db is managed on data layer.
     /// </summary>
@@ -16,14 +16,7 @@ namespace DevTreks.Models
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-            //rc2 doesn't use because it's outdated
-            //this was added on june 07 from
-            //http://docs.asp.net/en/latest/migration/identity.html
-            //if (!_created)
-            //{
-            //    Database.AsMigrationsEnabled().ApplyMigrations();
-            //    _created = true;
-            //}
+            
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
