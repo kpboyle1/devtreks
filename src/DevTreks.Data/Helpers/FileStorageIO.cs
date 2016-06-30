@@ -12,7 +12,7 @@ namespace DevTreks.Data.Helpers
     /// <summary>
     ///Purpose:		General utilities storing files on cloud and web server file storage systems
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
+    ///Date:		2016, June
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public class FileStorageIO

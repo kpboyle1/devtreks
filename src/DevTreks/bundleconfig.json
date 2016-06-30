@@ -1,0 +1,37 @@
+﻿// Configure bundling and minification for the project.
+// More info at https://go.microsoft.com/fwlink/?LinkId=808241
+[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    // An array of relative input file paths. Globbing patterns supported
+    "inputFiles": [
+      "wwwroot/css/A_desert2.css",
+      "wwwroot/css/B_jquery.mobile.icons-1.4.5.css",
+      "wwwroot/css/C_mobile.structure-1.4.5.css",
+      "wwwroot/css/D_Site1.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/A_jquery-2.2.3.js",
+      "wwwroot/js/B_SharedUtils1.js",
+      "wwwroot/js/C_Form1.js",
+      "wwwroot/js/D_Select1.js",
+      "wwwroot/js/E_ChangeTabView1.js",
+      "wwwroot/js/F_ChangeClickView1.js",
+      "wwwroot/js/G_OnClickPresenter1.js",
+      "wwwroot/js/H_OnSearchClickPresenter1.js",
+      "wwwroot/js/I_LoadFile1.js",
+      "wwwroot/js/J_DevTreksJQ1.js",
+      "wwwroot/js/K_jquery.mobile-1.4.5.js"
+    ],
+    // Optionally specify minification options
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    // Optinally generate .map file
+    "sourceMap": false
+  }
+]

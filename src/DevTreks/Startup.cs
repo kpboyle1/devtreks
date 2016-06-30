@@ -24,8 +24,9 @@ namespace DevTreks
         public IConfigurationRoot Configuration { get; set; }
         //set config and httpcontext settings
         DevTreks.Data.ContentURI ContentURI { get; set; }
+        private static string DefaultRootFullFilePath { get; set; }
         //distinguish localhost from azure
-        private static string PlatformType { get; set; }
+        //private static string PlatformType { get; set; }
 
         public Startup(IHostingEnvironment env)
         {
@@ -53,8 +54,12 @@ namespace DevTreks
             Configuration = builder.Build();
 
             ContentURI = new DevTreks.Data.ContentURI();
-            //azure or localhost?
-            PlatformType = env.WebRootPath;
+            //set the webroot full file path: C:\\DevTreks\\src\\DevTreks\\wwwroot
+            ContentURI.URIDataManager.DefaultRootFullFilePath = 
+                string.Concat(env.WebRootPath, "\\");
+            DefaultRootFullFilePath = string.Concat(env.WebRootPath, "\\");
+            //appPath is one path up from webroot: C:\\DevTreks\\src\\DevTreks
+            //string sCheck = env.ContentRootPath;
         }
         
         private static string FixSecretConnection(string secretConnection)
@@ -114,14 +119,18 @@ namespace DevTreks
                 //comment out if secrets are being used
                 connection = Configuration["ConnectionStrings:DebugStorageConnection"];
                 ContentURI.URIDataManager.StorageConnection = connection;
-                path = Configuration["DebugPaths:DefaultRootFullFilePath"];
-                ContentURI.URIDataManager.DefaultRootFullFilePath = path;
+
+                ContentURI.URIDataManager.DefaultRootFullFilePath
+                    = DefaultRootFullFilePath;
+                //path = Configuration["DebugPaths:DefaultRootFullFilePath"];
+                //ContentURI.URIDataManager.DefaultRootFullFilePath = path;
                 path = Configuration["DebugPaths:DefaultRootWebStoragePath"];
                 ContentURI.URIDataManager.DefaultRootWebStoragePath = path;
                 path = Configuration["DebugPaths:DefaultWebDomain"];
                 ContentURI.URIDataManager.DefaultWebDomain = path;
-                path = Configuration["DebugPaths:ExtensionsPath"];
-                ContentURI.URIDataManager.ExtensionsPath = path;
+                //path = Configuration["DebugPaths:ExtensionsPath"];
+                ContentURI.URIDataManager.ExtensionsPath 
+                    = string.Concat(ContentURI.URIDataManager.DefaultRootFullFilePath, "Extensions\\");
                 path = Configuration["Site:FileSizeValidation"];
                 ContentURI.URIDataManager.FileSizeValidation = path;
                 path = Configuration["Site:FileSizeDBStorageValidation"];
@@ -194,17 +203,20 @@ namespace DevTreks
                 connection = Configuration["ConnectionStrings:ReleaseStorageConnection"];
                 ContentURI.URIDataManager.StorageConnection = connection;
 
-
-                path = Configuration["ReleasePaths:DefaultRootFullFilePath"];
-                ContentURI.URIDataManager.DefaultRootFullFilePath = path;
+                ContentURI.URIDataManager.DefaultRootFullFilePath
+                    = DefaultRootFullFilePath;
+                //path = Configuration["ReleasePaths:DefaultRootFullFilePath"];
+                //ContentURI.URIDataManager.DefaultRootFullFilePath = path;
                 //getplatformtype expects this to be string empty to debug azure on localhost
                 path = Configuration["ReleasePaths:DefaultRootWebStoragePath"];
                 ContentURI.URIDataManager.DefaultRootWebStoragePath = path;
                 path = Configuration["ReleasePaths:DefaultWebDomain"];
                 ContentURI.URIDataManager.DefaultWebDomain = path;
-                path = Configuration["ReleasePaths:ExtensionsPath"];
-                ContentURI.URIDataManager.ExtensionsPath = path;
-                
+                ContentURI.URIDataManager.ExtensionsPath
+                    = string.Concat(ContentURI.URIDataManager.DefaultRootFullFilePath, "Extensions\\");
+                //path = Configuration["ReleasePaths:ExtensionsPath"];
+                //ContentURI.URIDataManager.ExtensionsPath = path;
+
                 path = Configuration["Site:FileSizeValidation"];
                 ContentURI.URIDataManager.FileSizeValidation = path;
                 path = Configuration["Site:FileSizeDBStorageValidation"];
