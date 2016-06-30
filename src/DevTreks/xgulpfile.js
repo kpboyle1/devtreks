@@ -1,4 +1,5 @@
-﻿/// <binding Clean='clean' />
+﻿///deprecated this file in 2.0.0 but retain for reference
+/// <binding Clean='clean' />
 "use strict";
 
 var gulp = require("gulp"),

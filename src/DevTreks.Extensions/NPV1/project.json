@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "description": "NPV1 Class Library",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
@@ -12,6 +12,6 @@
     }
   },
   "dependencies": {
-    "CalculatorsContracts": "1.0.0-*"
+    "CalculatorsContracts": "1.0.0"
   }
 }

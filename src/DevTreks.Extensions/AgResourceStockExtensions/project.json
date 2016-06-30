@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "description": "AgResourceStockExtensions Class Library",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
@@ -12,8 +12,8 @@
     }
   },
   "dependencies": {
-    "AgBudgetingCalculators": "1.0.0-*",
-    "CalculatorsContracts": "1.0.0-*",
-    "NPVCalculators": "1.0.0-*"
+    "AgBudgetingCalculators": "1.0.0",
+    "CalculatorsContracts": "1.0.0",
+    "NPVCalculators": "1.0.0"
   }
 }

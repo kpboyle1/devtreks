@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "description": "NPVCalculators Class Library",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
@@ -12,9 +12,9 @@
     }
   },
   "dependencies": {
-    "AgBudgetingCalculators": "1.0.0-*",
-    "CalculatorsContracts": "1.0.0-*",
-    "FoodNutrition": "1.0.0-*",
-    "HealthCare": "1.0.0-*"
+    "AgBudgetingCalculators": "1.0.0",
+    "CalculatorsContracts": "1.0.0",
+    "FoodNutrition": "1.0.0",
+    "HealthCare": "1.0.0"
   }
 }

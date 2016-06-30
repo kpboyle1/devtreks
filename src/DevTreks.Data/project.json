@@ -1,11 +1,11 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "description": "DevTreks.Data Class Library",
   "authors": [ "kpboyle1" ],
   "dependencies": {
-    "DevTreks.Exceptions": "1.0.0-*",
-    "DevTreks.Models": "1.0.0-*",
-    "DevTreks.Resources": "1.0.0-*",
+    "DevTreks.Exceptions": "1.0.0",
+    "DevTreks.Models": "1.0.0",
+    "DevTreks.Resources": "1.0.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
     "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview2-final",

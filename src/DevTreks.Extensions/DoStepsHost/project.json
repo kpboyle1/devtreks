@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "description": "DoStepsHost Class Library",
   "authors": [ "kpboyle1" ],
   "frameworks": {
@@ -12,7 +12,7 @@
     }
   },
   "dependencies": {
-    "CalculatorsContracts": "1.0.0-*",
-    "DevTreks.Data": "1.0.0-*"
+    "CalculatorsContracts": "1.0.0",
+    "DevTreks.Data": "1.0.0"
   }
 }

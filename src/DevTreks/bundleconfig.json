@@ -7,7 +7,7 @@
     "inputFiles": [
       "wwwroot/css/A_desert2.css",
       "wwwroot/css/B_jquery.mobile.icons-1.4.5.css",
-      "wwwroot/css/C_mobile.structure-1.4.5.css",
+      "wwwroot/css/C_jquery.mobile.structure-1.4.5.css",
       "wwwroot/css/D_Site1.css"
     ]
   },

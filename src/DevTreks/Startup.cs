@@ -25,8 +25,6 @@ namespace DevTreks
         //set config and httpcontext settings
         DevTreks.Data.ContentURI ContentURI { get; set; }
         private static string DefaultRootFullFilePath { get; set; }
-        //distinguish localhost from azure
-        //private static string PlatformType { get; set; }
 
         public Startup(IHostingEnvironment env)
         {
@@ -55,8 +53,6 @@ namespace DevTreks
 
             ContentURI = new DevTreks.Data.ContentURI();
             //set the webroot full file path: C:\\DevTreks\\src\\DevTreks\\wwwroot
-            ContentURI.URIDataManager.DefaultRootFullFilePath = 
-                string.Concat(env.WebRootPath, "\\");
             DefaultRootFullFilePath = string.Concat(env.WebRootPath, "\\");
             //appPath is one path up from webroot: C:\\DevTreks\\src\\DevTreks
             //string sCheck = env.ContentRootPath;

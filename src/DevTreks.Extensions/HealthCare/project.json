@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-*",
+  "version": "1.0.0",
   "description": "The Health Care Class Library runs resource stock calculators and analyzers.",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
@@ -12,8 +12,8 @@
     }
   },
   "dependencies": {
-    "CalculatorsContracts": "1.0.0-*",
-    "Jace": "1.0.0-*",
-    "Numerics": "1.0.0-*"
+    "CalculatorsContracts": "1.0.0",
+    "Jace": "1.0.0",
+    "Numerics": "1.0.0"
   }
 }
