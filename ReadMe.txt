@@ -1,5 +1,5 @@
 Appendix B. ReadMe.txt
-Version: 2.0.0, June 29, 2016
+Version: 2.0.0, July 05, 2016
 
 Introduction
 DevTreks is a multitier ASP.NET Core 1 database 
@@ -37,7 +37,7 @@ https://devtreks.codeplex.com/
 
 What's New in Version 2.0.0
 1.	This release refactors DevTreks to Microsoft’s 
-ASPNET and Entity Framework Core 1.0 technologies. 
+ASP.NET and Entity Framework Core 1.0 technologies. 
 
 2.	The development database server uses Sql Server 
 2016 Express RTM. The Azure database server uses RTM 12. 
@@ -45,10 +45,8 @@ The connection properties can be found in this file’s
 Database Connection section.
 
 3.	This release has been deployed to localhost 
-but can’t be published to Azure yet. Azure still appears 
-to have a file (Microsoft.DotNet.ProjectModel) that is 
-incompatible with new MVC apps. The libraries are less 
-than 1 week old and publishing will be tried again next week.
+and to an Azure App Service web app. Appendixes C and D 
+in the Source Code reference explains deployment further.
 
 Database Connections
 Server version: Sql Server 2016 Express, RTM
