@@ -850,7 +850,7 @@ namespace DevTreks.Services
                 if (!bIsOkToSave)
                 {
                     //error
-                    uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
+                    uri.ErrorMessage += DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "CONTENTSERVICE_CANTSAVESELECTS");
                 }
             }
@@ -906,7 +906,7 @@ namespace DevTreks.Services
             }
             else
             {
-                uri.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
+                uri.ErrorMessage += DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                     string.Empty, "CONTENTSERVICE_NOFORMELS");
             }
             return bIsAdded;
@@ -1014,7 +1014,7 @@ namespace DevTreks.Services
                 }
                 else
                 {
-                    docToCalcURI.ErrorMessage = DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
+                    docToCalcURI.ErrorMessage += DevTreks.Exceptions.DevTreksErrors.MakeStandardErrorMsg(
                         string.Empty, "CONTENTSERVICE_NOCALCSRUN2");
                 }
             }

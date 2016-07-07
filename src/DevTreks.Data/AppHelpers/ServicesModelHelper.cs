@@ -14,7 +14,7 @@ namespace DevTreks.Data.AppHelpers
     /// <summary>
     ///Purpose:		Entity Framework Service support class
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
+    ///Date:		2016, July
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES:       Base tables are always edited using their corresponding join records.
     /// </summary>
@@ -276,11 +276,16 @@ namespace DevTreks.Data.AppHelpers
                         && _dtoContentURI.URINodeName == Agreement.AGREEMENT_TYPES.serviceaccount.ToString())
                     {
                         //base table gets inserted first
-                        int iNetworkId = 0;
-                        if (_dtoContentURI.URINetwork != null)
-                        {
-                            iNetworkId = _dtoContentURI.URINetwork.PKId;
-                        }
+                        //2.0.0 refactor: EF no longer allows fks = 0; so changed to new NetworkId = 1
+                        //new table row inserted for this purpose in table Network (see Source Code documentation)
+                        int iNetworkId = 1;
+                        
+                        //int iNetworkId = 0;
+                        //if (_dtoContentURI.URINetwork != null)
+                        //{
+                        //    iNetworkId = _dtoContentURI.URINetwork.PKId;
+                        //}
+
                         var newService = new Service
                         {
                             ServiceNum = Helpers.GeneralHelpers.NONE,
@@ -303,6 +308,7 @@ namespace DevTreks.Data.AppHelpers
                             InputClass = null,
                             LinkedViewClass = null,
                             OperationClass = null,
+                            OutcomeClass = null,
                             OutputClass = null,
                             ResourceClass = null
                         };

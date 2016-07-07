@@ -17,6 +17,7 @@
     "Jace": "1.0.0",
     "Numerics": "1.0.0"
   }
+
   //2.0.0 moved error messages into DevTreksErrors: https://github.com/aspnet/Announcements/issues/175
   //"buildOptions": {
   //  "embed": {

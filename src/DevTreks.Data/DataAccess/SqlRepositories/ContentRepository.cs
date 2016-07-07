@@ -794,8 +794,8 @@ namespace DevTreks.Data.SqlRepositories
                     bIsDeleted = await devpackHelper.DeleteDevPack(argumentsEdits);
                     break;
                 default:
-                    uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
-                            string.Empty, "CONTENTREP_BADAPP");
+                    uri.ErrorMessage = string.IsNullOrEmpty(uri.ErrorMessage) ? Exceptions.DevTreksErrors.MakeStandardErrorMsg(
+                            string.Empty, "CONTENTREP_BADAPP") : uri.ErrorMessage;
                     break;
             }
             return bIsDeleted;
@@ -890,8 +890,8 @@ namespace DevTreks.Data.SqlRepositories
                     bIsUpdated = await devpackelper.UpdateDevPack(edits);
                     break;
                 default:
-                    uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
-                            string.Empty, "CONTENTREP_BADAPP");
+                    uri.ErrorMessage = string.IsNullOrEmpty(uri.ErrorMessage) ? Exceptions.DevTreksErrors.MakeStandardErrorMsg(
+                            string.Empty, "CONTENTREP_BADAPP") : uri.ErrorMessage;
                     break;
             }
             return bIsUpdated;
@@ -1061,8 +1061,8 @@ namespace DevTreks.Data.SqlRepositories
                         bIsOkToSave = await devpackHelper.AddDevPack(oArgumentsAdds);
                         break;
                     default:
-                        uri.ErrorMessage = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
-                            string.Empty, "CONTENTREP_BADAPP");
+                        uri.ErrorMessage = string.IsNullOrEmpty(uri.ErrorMessage) ? Exceptions.DevTreksErrors.MakeStandardErrorMsg(
+                            string.Empty, "CONTENTREP_BADAPP") : uri.ErrorMessage;
                         break;
                 }
             }

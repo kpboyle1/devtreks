@@ -1156,27 +1156,33 @@ namespace DevTreks.Data.AppHelpers
                         for (i = 0; i < arrResourceURLs.Length; i++)
                         {
                             sResourceParams = arrResourceURLs[i];
-                            arrResourceParams = sResourceParams.Split(Helpers.GeneralHelpers.STRING_DELIMITERS);
-                            if (arrResourceParams != null)
+                            if (!string.IsNullOrEmpty(sResourceParams))
                             {
-                                if (arrResourceParams.Length > 0)
+                                arrResourceParams = sResourceParams.Split(Helpers.GeneralHelpers.STRING_DELIMITERS);
+                                if (arrResourceParams != null)
                                 {
-                                    sResourceURL = arrResourceParams[0];
-                                    sResourceURIPattern = arrResourceParams[2];
-                                    if (!string.IsNullOrEmpty(sResourceURL)
-                                        && (!string.IsNullOrEmpty(sResourceURIPattern)))
+                                    if (arrResourceParams.Length > 0)
                                     {
-                                        ContentURI resourceURI
-                                            = ContentURI.ConvertShortURIPattern(sResourceURIPattern, uriInit);
-                                        AddParentURIPropertiesToResourceURI(uriInit, resourceURI);
-                                        if (platformType == FileStorageIO.PLATFORM_TYPES.webserver)
+                                        sResourceURL = arrResourceParams[0];
+                                        if (arrResourceParams.Count() > 1)
                                         {
-                                            bHasDeleted = DeleteResourceURL(resourceURI, sResourceURL);
-                                        }
-                                        else if (platformType == FileStorageIO.PLATFORM_TYPES.azure)
-                                        {
-                                            bHasDeleted = FileStorageIO.DeleteURI(resourceURI,
-                                                sResourceURL);
+                                            sResourceURIPattern = arrResourceParams[2];
+                                            if (!string.IsNullOrEmpty(sResourceURL)
+                                                && (!string.IsNullOrEmpty(sResourceURIPattern)))
+                                            {
+                                                ContentURI resourceURI
+                                                    = ContentURI.ConvertShortURIPattern(sResourceURIPattern, uriInit);
+                                                AddParentURIPropertiesToResourceURI(uriInit, resourceURI);
+                                                if (platformType == FileStorageIO.PLATFORM_TYPES.webserver)
+                                                {
+                                                    bHasDeleted = DeleteResourceURL(resourceURI, sResourceURL);
+                                                }
+                                                else if (platformType == FileStorageIO.PLATFORM_TYPES.azure)
+                                                {
+                                                    bHasDeleted = FileStorageIO.DeleteURI(resourceURI,
+                                                        sResourceURL);
+                                                }
+                                            }
                                         }
                                     }
                                 }

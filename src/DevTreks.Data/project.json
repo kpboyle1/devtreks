@@ -15,7 +15,6 @@
     "Microsoft.WindowsAzure.ConfigurationManager": "3.2.1",
     "WindowsAzure.Storage": "7.0.0"
   },
-
   "frameworks": {
     "net461": {
       "frameworkAssemblies": {
