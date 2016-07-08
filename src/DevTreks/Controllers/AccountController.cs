@@ -18,7 +18,7 @@ namespace DevTreks.Controllers
     /// <summary>
     ///Purpose  Security and login managment
     ///Author:	www.devtreks.org
-    ///Date:    2016, June
+    ///Date:    2016, July
     ///Note:    Login/security handled by ApplicationUser and AppDbContext in UI Models folder. 
     ///         AspNetUser.Id key is added to Member.AspNetUserId field. Member is then 
     ///         associated with 1 or more clubs and club management handles remaining security

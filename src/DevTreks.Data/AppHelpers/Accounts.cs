@@ -11,11 +11,13 @@ namespace DevTreks.Data.AppHelpers
     ///Purpose:		Support class holding constants, enums, and common methods 
     ///             for accounts (clubs)
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
+    ///Date:		2016, July
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTE:        Known issues
     ///             1. Clubs can't be deleted by club members, it requires 
     ///                 a custom action on the part of DevTreks administrators. 
+    ///                 Instead, members can choose to delete clubs from their 
+    ///                 list of active club memberships.
     /// </summary>
     public class Accounts
     {

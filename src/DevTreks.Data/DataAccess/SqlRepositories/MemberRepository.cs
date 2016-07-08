@@ -14,7 +14,7 @@ namespace DevTreks.Data.SqlRepositories
     /// <summary>
     ///Purpose:		data access for club, member, and commons models
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
+    ///Date:		2016, July
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public class MemberRepository : IMemberRepositoryEF, IDisposable
@@ -37,26 +37,168 @@ namespace DevTreks.Data.SqlRepositories
             string aspNetUserId, string email)
         {
             bool bHasAdded = false;
-            Member member = _dataContext.Member
-                .FirstOrDefault(u => u.AspNetUserId == aspNetUserId);
-            //check if member already exists
-            if (member == null)
+            if (!string.IsNullOrEmpty(email))
             {
-                //insert email and id into the member table
-                //they can not edit email or user name because
-                //those must be unique email and are used to init member and club
-                Member newMember
-                    = new Member(email, aspNetUserId);
-                _dataContext.Member.Add(newMember);
-                await _dataContext.SaveChangesAsync();
-                bHasAdded = true;
-            }
-            else
-            {
-                bHasAdded = true;
+                Member member = _dataContext.Member
+                    .FirstOrDefault(u => u.AspNetUserId == aspNetUserId);
+                //check if member already exists
+                if (member == null)
+                {
+                    //insert email and id into the member table
+                    //they can not edit email or user name because
+                    //those must be unique email and are used to init member and club
+                    Member newMember
+                        = new Member(email, aspNetUserId);
+                    _dataContext.Member.Add(newMember);
+                    await _dataContext.SaveChangesAsync();
+                    //bHasAdded = true;
+                    if (newMember.PKId != 0)
+                    {
+                        bHasAdded = await InsertNewClubForMemberAsync(newMember.PKId, email);
+                    }
+                }
+                else
+                {
+                    bHasAdded = true;
+                }
             }
             return bHasAdded;
         }
+        public async Task<bool> InsertNewClubForMemberAsync(int memberId, string accountEmail)
+        {
+            bool bHasAdded = false;
+            if (memberId != 0)
+            {
+                string sAccountName = GetNameFromEmail(accountEmail, memberId);
+                var newAccount = new Account
+                {
+                    AccountName = sAccountName,
+                    AccountEmail = accountEmail,
+                    AccountURI = string.Empty,
+                    AccountDesc = string.Empty,
+                    AccountLongDesc = string.Empty,
+                    AccountClassId = 1,
+                    GeoRegionId = 1,
+                    GeoRegion = null,
+                    AccountClass = null,
+                    AccountToAddIn = null,
+                    AccountToAudit = null,
+                    AccountToCredit = null,
+                    AccountToLocal = null,
+                    AccountToMember = null,
+                    AccountToNetwork = null,
+                    AccountToPayment = null,
+                    AccountToService = null
+                };
+                //join table (each member can join one or more accounts (clubs))
+                var newAccountToMember = new AccountToMember
+                {
+                    MemberId = memberId,
+                    //each member is the coordinator of their own club
+                    MemberRole = AppHelpers.Members.MEMBER_ROLE_TYPES.coordinator.ToString(),
+                    IsDefaultClub = true,
+                    //next step after insertion switches the default club to this club
+                    //IsDefaultClub = false,
+                    ClubDefault = null,
+                    Member = null
+                };
+                try
+                {
+                    _dataContext.Account.Add(newAccount);
+                    await _dataContext.SaveChangesAsync();
+                    //foreign key
+                    newAccountToMember.AccountId = newAccount.PKId;
+                    _dataContext.AccountToMember.Add(newAccountToMember);
+                    await _dataContext.SaveChangesAsync();
+                    //_dataContext.Entry(newAccount).State = EntityState.Added;
+                    //await _dataContext.SaveChangesAsync();
+                    //foreign key
+                    //newAccountToMember.AccountId = newAccount.PKId;
+                    //_dataContext.Entry(newAccountToMember).State = EntityState.Added;
+                    //await _dataContext.SaveChangesAsync();
+                    bHasAdded = true;
+                }
+                catch
+                {
+                    throw;
+                }
+            }
+            return bHasAdded;
+        }
+        private string GetNameFromEmail(string accountEmail, int memberId)
+        {
+            string sAccountName = string.Concat("memberId= ", memberId.ToString());
+            int iNameLength = accountEmail.IndexOf(GenHelpers.PARAMETER_DELIMITER);
+            if (iNameLength <= 1 && accountEmail.Length >= 5)
+            {
+                iNameLength = 5;
+            }
+            sAccountName = accountEmail.Substring(0, iNameLength);
+            return sAccountName;
+        }
+        //deprecated in 2.0.0 in favor of uniform EF form edits
+        //public async Task<int> InsertNewClubForMemberAsync(ContentURI uri, string accountName,
+        //    string accountEmail, int accountGroupId, int accountGroupGeoRegionId)
+        //{
+        //    int iAccountId = 0;
+        //    if (uri.URIMember != null)
+        //    {
+        //        if (uri.URIMember.Member != null)
+        //        {
+        //            if (uri.URIMember.Member.PKId != 0)
+        //            {
+        //                var newAccount = new Account
+        //                {
+        //                    AccountName = accountName,
+        //                    AccountEmail = accountEmail,
+        //                    AccountURI = string.Empty,
+        //                    AccountDesc = string.Empty,
+        //                    AccountLongDesc = string.Empty,
+        //                    AccountClassId = accountGroupId,
+        //                    GeoRegionId = accountGroupGeoRegionId,
+        //                    GeoRegion = null,
+        //                    AccountClass = null,
+        //                    AccountToAddIn = null,
+        //                    AccountToAudit = null,
+        //                    AccountToCredit = null,
+        //                    AccountToLocal = null,
+        //                    AccountToMember = null,
+        //                    AccountToNetwork = null,
+        //                    AccountToPayment = null,
+        //                    AccountToService = null
+        //                };
+        //                //join table (each member can join one or more accounts (clubs))
+        //                var newAccountToMember = new AccountToMember
+        //                {
+        //                    MemberId = uri.URIMember.Member.PKId,
+        //                    //each member is the coordinator of their own club
+        //                    MemberRole = AppHelpers.Members.MEMBER_ROLE_TYPES.coordinator.ToString(),
+        //                    //next step after insertion switches the default club to this club
+        //                    IsDefaultClub = false,
+        //                    ClubDefault = null,
+        //                    Member = null
+        //                };
+        //                try
+        //                {
+        //                    _dataContext.Entry(newAccount).State = EntityState.Added;
+        //                    await _dataContext.SaveChangesAsync();
+        //                    newAccountToMember.AccountId = newAccount.PKId;
+        //                    _dataContext.Entry(newAccountToMember).State = EntityState.Added;
+        //                    await _dataContext.SaveChangesAsync();
+        //                    iAccountId = newAccount.PKId;
+        //                    //160
+        //                    newAccountToMember.Member = new Member(uri.URIMember.Member);
+        //                    uri.URIMember = newAccountToMember;
+        //                }
+        //                catch
+        //                {
+        //                    throw;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return iAccountId;
+        //}
         public async Task<Network> GetNetworkByIdAsync(ContentURI uri, int id)
         {
             AppHelpers.Networks oNetworkHelper = new AppHelpers.Networks();
@@ -196,69 +338,7 @@ namespace DevTreks.Data.SqlRepositories
                 .GetServiceByServiceIdAsync(uri, serviceId, bIsOwner);
             return colClubService;
         }
-        //deprecated in 2.0.0 in favor of uniform EF form edits
-        //public async Task<int> InsertNewClubForMemberAsync(ContentURI uri, string accountName,
-        //    string accountEmail, int accountGroupId, int accountGroupGeoRegionId)
-        //{
-        //    int iAccountId = 0;
-        //    if (uri.URIMember != null)
-        //    {
-        //        if (uri.URIMember.Member != null)
-        //        {
-        //            if (uri.URIMember.Member.PKId != 0)
-        //            {
-        //                var newAccount = new Account
-        //                {
-        //                    AccountName = accountName,
-        //                    AccountEmail = accountEmail,
-        //                    AccountURI = string.Empty,
-        //                    AccountDesc = string.Empty,
-        //                    AccountLongDesc = string.Empty,
-        //                    AccountClassId = accountGroupId,
-        //                    GeoRegionId = accountGroupGeoRegionId,
-        //                    GeoRegion = null,
-        //                    AccountClass = null,
-        //                    AccountToAddIn = null,
-        //                    AccountToAudit = null,
-        //                    AccountToCredit = null,
-        //                    AccountToLocal = null,
-        //                    AccountToMember = null,
-        //                    AccountToNetwork = null,
-        //                    AccountToPayment = null,
-        //                    AccountToService = null
-        //                };
-        //                //join table (each member can join one or more accounts (clubs))
-        //                var newAccountToMember = new AccountToMember
-        //                {
-        //                    MemberId = uri.URIMember.Member.PKId,
-        //                    //each member is the coordinator of their own club
-        //                    MemberRole = AppHelpers.Members.MEMBER_ROLE_TYPES.coordinator.ToString(),
-        //                    //next step after insertion switches the default club to this club
-        //                    IsDefaultClub = false,
-        //                    ClubDefault = null,
-        //                    Member = null
-        //                };
-        //                try
-        //                {
-        //                    _dataContext.Entry(newAccount).State = EntityState.Added;
-        //                    await _dataContext.SaveChangesAsync();
-        //                    newAccountToMember.AccountId = newAccount.PKId;
-        //                    _dataContext.Entry(newAccountToMember).State = EntityState.Added;
-        //                    await _dataContext.SaveChangesAsync();
-        //                    iAccountId = newAccount.PKId;
-        //                    //160
-        //                    newAccountToMember.Member = new Member(uri.URIMember.Member);
-        //                    uri.URIMember = newAccountToMember;
-        //                }
-        //                catch
-        //                {
-        //                    throw;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return iAccountId;
-        //}
+        
         public async Task<int> GetDevTreksGroupIdsFromRegionIdAsync(ContentURI uri,
             int accountGeoRegionId, int memberGeoRegionId)
         {
