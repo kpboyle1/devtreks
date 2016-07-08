@@ -34,9 +34,12 @@ namespace DevTreks.Data.Helpers
         public static char[] PARAMETER_DELIMITERS = new char[] { '@' };
         public const string FORMELEMENT_DELIMITER = "&";
         public static char[] FORMELEMENT_DELIMITERS = new char[] { '&' };
-        //2.0.0 refactor: all html is encoded using htmlextensions (can't include amp;)
+        //2.0.0 refactors: all html is encoded using htmlextensions (can't include amp;)
         public const string FORMELEMENT_HTMLDELIMITER = "&";
         //public const string FORMELEMENT_HTMLDELIMITER = "&amp;";
+        //2.0.0 azure storage connection string tests for resourcearrays
+        public const string FORMELEMENT_DELIMITER2 = "zzz";
+        public static char[] FORMELEMENT_DELIMITERS2 = new char[] { 'z', 'z', 'z' };
         public const string EQUALS = "=";
         public const string QUESTION = "?";
         public const string FILEEXTENSION_DELIMITER = ".";

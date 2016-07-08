@@ -6,7 +6,7 @@ namespace DevTreks.Data.Helpers
     /// <summary>
     ///Purpose:		General path functions
     ///Author:		www.devtreks.org
-    ///Date:		2016, April
+    ///Date:		2016, July
     ///References:	2.0.0 moved all path construction
     ///             into this class. These reduce the construction 
     ///             down to a small number transparent, easy-to-understand, methods.
@@ -502,33 +502,51 @@ namespace DevTreks.Data.Helpers
         public static string GetTempCacheRootPath(ContentURI uri)
         {
             string sPathToTempContent = string.Empty;
-            FileStorageIO.PLATFORM_TYPES ePlatform = FileStorageIO.GetPlatformType(uri);
-            if (ePlatform == FileStorageIO.PLATFORM_TYPES.webserver)
+            //store in temp subfolder of resources directory (set permissions once)
+            bool bIsAzureStorage = false;
+            string sRoot = GetResourceRootPath(uri, bIsAzureStorage);
+            if (!sRoot.EndsWith(GeneralHelpers.FILE_PATH_DELIMITER)
+                && (!string.IsNullOrEmpty(sRoot)))
             {
-                //store in temp subfolder of resources directory (set permissions once)
-                bool bIsAzureStorage = false;
-                string sRoot = GetResourceRootPath(uri, bIsAzureStorage);
-                if (!sRoot.EndsWith(GeneralHelpers.FILE_PATH_DELIMITER)
-                    && (!string.IsNullOrEmpty(sRoot)))
-                {
-                    sRoot = string.Concat(sRoot, GeneralHelpers.FILE_PATH_DELIMITER);
-                }
-                sPathToTempContent = string.Format("{0}{1}{2}",
-                    sRoot, uri.URIDataManager.TempDocsURIName,
-                    GeneralHelpers.FILE_PATH_DELIMITER);
+                sRoot = string.Concat(sRoot, GeneralHelpers.FILE_PATH_DELIMITER);
             }
-            else if (ePlatform == FileStorageIO.PLATFORM_TYPES.azure)
-            {
-                AzureIOAsync azureIO = new AzureIOAsync(uri);
-                //store in local temp cache (file system relative to root of virual server)
-                //note: needs a file path delimiter
-                sPathToTempContent = string.Format("{0}{1}{2}",
-                    azureIO.GetLocalResourceDirectoryPath(),
-                    uri.URIDataManager.TempDocsURIName,
-                    GeneralHelpers.FILE_PATH_DELIMITER);
-            }
+            sPathToTempContent = string.Format("{0}{1}{2}",
+                sRoot, uri.URIDataManager.TempDocsURIName,
+                GeneralHelpers.FILE_PATH_DELIMITER);
             return sPathToTempContent;
         }
+        //2.0.0 deprecated: azure and localhost can both use filesystem 
+        //by using appsettings.DefaultRootFullFilePath
+        //public static string GetTempCacheRootPath(ContentURI uri)
+        //{
+        //    string sPathToTempContent = string.Empty;
+        //    FileStorageIO.PLATFORM_TYPES ePlatform = FileStorageIO.GetPlatformType(uri);
+        //    if (ePlatform == FileStorageIO.PLATFORM_TYPES.webserver)
+        //    {
+        //        //store in temp subfolder of resources directory (set permissions once)
+        //        bool bIsAzureStorage = false;
+        //        string sRoot = GetResourceRootPath(uri, bIsAzureStorage);
+        //        if (!sRoot.EndsWith(GeneralHelpers.FILE_PATH_DELIMITER)
+        //            && (!string.IsNullOrEmpty(sRoot)))
+        //        {
+        //            sRoot = string.Concat(sRoot, GeneralHelpers.FILE_PATH_DELIMITER);
+        //        }
+        //        sPathToTempContent = string.Format("{0}{1}{2}",
+        //            sRoot, uri.URIDataManager.TempDocsURIName,
+        //            GeneralHelpers.FILE_PATH_DELIMITER);
+        //    }
+        //    else if (ePlatform == FileStorageIO.PLATFORM_TYPES.azure)
+        //    {
+        //        AzureIOAsync azureIO = new AzureIOAsync(uri);
+        //        //store in local temp cache (file system relative to root of virual server)
+        //        //note: needs a file path delimiter
+        //        sPathToTempContent = string.Format("{0}{1}{2}",
+        //            azureIO.GetLocalResourceDirectoryPath(),
+        //            uri.URIDataManager.TempDocsURIName,
+        //            GeneralHelpers.FILE_PATH_DELIMITER);
+        //    }
+        //    return sPathToTempContent;
+        //}
         //used to build the download package zip file on azure
         public static string GetCloudTempBlobURI(ContentURI uri, string fileName)
         {

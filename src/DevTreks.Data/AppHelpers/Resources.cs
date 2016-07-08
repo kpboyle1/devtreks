@@ -17,7 +17,7 @@ namespace DevTreks.Data.AppHelpers
     ///Purpose:		Support class holding constants, enums, and common methods 
     ///             for pictures, stylesheets, schemas, videos, and audios
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
+    ///Date:		2016, July
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///             1. 
     /// </summary>
@@ -981,11 +981,16 @@ namespace DevTreks.Data.AppHelpers
                             //can't use semicolondelimiters because they're same as STRING_DELIMITER
                             string sConnection = uri.URIDataManager.DefaultConnection.Replace(
                                 Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER);
+                            //can't use @ symbols in passwords (possibly others as well)
+                            sConnection = sConnection.Replace(
+                                Helpers.GeneralHelpers.PARAMETER_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
                             oPaths.Append(sConnection);
                             oPaths.Append(Helpers.GeneralHelpers.STRING_DELIMITER);
                             //azure blob storage (fromdelimiter is safe for 2.0.0 connection strings)
                             sConnection = uri.URIDataManager.StorageConnection.Replace(
                                 Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER);
+                            sConnection = sConnection.Replace(
+                                Helpers.GeneralHelpers.PARAMETER_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
                             oPaths.Append(sConnection);
                             i += 1;
                         }
@@ -1062,12 +1067,12 @@ namespace DevTreks.Data.AppHelpers
                             //db connection
                             //can't use semicolondelimiters because they're same as STRING_DELIMITER
                             string sConnection = uri.URIDataManager.DefaultConnection.Replace(
-                                Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER);
+                                Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
                             oPaths.Append(sConnection);
                             oPaths.Append(Helpers.GeneralHelpers.STRING_DELIMITER);
                             //azure blob storage (paramdelimiter is safe for 2.0.0 connection strings)
                             sConnection = uri.URIDataManager.StorageConnection.Replace(
-                                Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER);
+                                Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
                             oPaths.Append(sConnection);
                             i += 1;
                         }

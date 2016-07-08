@@ -1,5 +1,5 @@
-Appendix B. ReadMe.txt
-Version: 2.0.0, July 05, 2016
+AAppendix B. ReadMe.txt
+Version: 2.0.0, July 08, 2016
 
 Introduction
 DevTreks is a multitier ASP.NET Core 1 database 
@@ -55,9 +55,11 @@ connection string
 Server=localhost\SQLEXPRESS;Database=DevTreksDesk;Trusted_Connection=True;
 
 system administrator
-User: sa
+July 07, 2016 update: SqlExpress 2016 databases can be accessed using a Windows OS logged in user –these haven’t been tested with the new db server and aren’t critical for accessing the db in SSMS
+User: devtreks01_sa or sa
 Pwd: public
 
 DevTreks default member login
 Name: kpboyle1@comcast.net
 Pwd: public2A@
+

@@ -22,7 +22,7 @@ namespace DevTreks.Helpers
     ///Purpose:		assist uploading/downloading files, 
     ///             zipping and packaging of files
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
+    ///Date:		2016, July
     ///References:	www.devtreks.org
     /// </summary>
     public class IOHelper
@@ -859,7 +859,7 @@ namespace DevTreks.Helpers
                             uri, sFileName);
                         //put the package in a blob in the temporary container
                         DataHelpers.FileStorageIO fsIO = new DataHelpers.FileStorageIO();
-                        //2.0.0 uses tempdir on azure and the files MUST be moved to 
+                        //2.0.0 uses same filesystem storage on azure and web and the files MUST be moved to 
                         //prevent exceeding filesystem limit.
                         DataHelpers.FileStorageIO.MoveURIs(
                             uri, initPackageFilePath, sDownloadFilePath);
@@ -870,6 +870,8 @@ namespace DevTreks.Helpers
                         }
                         //2.0.0 the files have been deleted but can't delete the tempdirectory
                         //because generates an error message about being used in other process
+                        //will be recycled in azure when new site deployed
+                        //manually deleted on web servers but better to keep testing why this doesn't work
                         //bool bIncludeSubDirs = true;
                         //DataHelpers.FileStorageIO.DeleteDirectory(uri, initPackageFilePath, bIncludeSubDirs);
                         if (!bIsSaved)

@@ -8,7 +8,7 @@ namespace DevTreks.Data.Helpers
     /// <summary>
     ///Purpose:     front-end zip utility to new system.compression library
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2016, July
     ///References:	MSDN: When you create a new entry, the file is compressed and added to the zip package. The CreateEntry method enables you to specify a directory hierarchy when adding the entry. You include the relative path of the new entry within the zip package. For example, creating a new entry with a relative path of AddedFolder\NewFile.txt creates a compressed text file in a directory named AddedFolder.
     ///If you reference the System.IO.Compression.FileSystem assembly in your project, you can access 
     ///three extension methods(from the ZipFileExtensions class) for the ZipArchive class: 

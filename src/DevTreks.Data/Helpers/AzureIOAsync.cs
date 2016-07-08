@@ -633,13 +633,22 @@ namespace DevTreks.Data.Helpers
         //    }
         //    return bHasClientSettings;
         //}
+        //2.0.0 deprecated: can use the same file system path on azure and filesystem
+        //as long as it references appsettings.DefaultRootFullFilePath
         public string GetLocalResourceDirectoryPath()
         {
-            //2.0.0 KISS refactor 
+            string sLocalRootPath = string.Empty; 
+            //Azure App Service Local Cache
+            //https://azure.microsoft.com/en-us/documentation/articles/app-service-local-cache/
+            //use D:\Home on azure
+            //D:\Home will point to the local cache.D:\local will continue pointing to the temporary VM specific storage.
+
+
+            //deprecated: azure production gives resource too long message
             //https://azure.microsoft.com/en-us/documentation/articles/best-practices-caching/
             //Azure Websites also comes with a Temp folder. The path is defined in the environment variable %TEMP% and accessible using Path.GetTempPath
             //remember to delete files and that other apps on same server could interfere
-            string sLocalRootPath = Path.GetTempPath();
+            //string sLocalRootPath = Path.GetTempPath();
 
             //documentation indicates azure cache could also be used
             //LocalResource cache = RoleEnvironment.GetLocalResource("LocalDriveCache");

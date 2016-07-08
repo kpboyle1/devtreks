@@ -21,7 +21,7 @@ namespace DevTreks.Helpers
     /// <summary>
     ///Purpose:		Class for helping stylesheets and chtml pages display data
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2016, July
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        Known issues:
     ///             1. Caching xhtml is not being done yet.
@@ -334,16 +334,11 @@ namespace DevTreks.Helpers
             ContentURI uri, DataHelpers.GeneralHelpers.DOC_STATE_NUMBER displayDocType,
             IDictionary<string, string> styleParams)
         {
-            //2.0.0 refactored along with passing 2 appsetting.connectionstrings in AddPaginationProps
-            //todo: ad the stylesheethelper methods that need the connection strings
-            //change DisplayDevPacks:WriteSelectListsForLocals, WriteSelectListsForPrices,
-            //and WriteSelectListForNewView in styles and replace on localdb and azuredb
             string sDevTrekFilePath = System.Net.WebUtility.UrlEncode(
                 DataHelpers.AddInHelper.GetDevTrekPath(uri, displayDocType));
             styleParams.Add("fullFilePath", sDevTrekFilePath);
             styleParams.Add("contenturipattern", uri.URIDataManager.ContentURIPattern);
             styleParams.Add("clubEmail", uri.URIClub.AccountEmail);
-            //pass in appsetting.defaultconnection for db and appsetting.storageconnection for azure blob
             AddAppSettingsParams(uri, ref styleParams);
             string sPageParams = SetRowArgs(uri.URIDataManager.StartRow,
                 uri.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
@@ -541,13 +536,7 @@ namespace DevTreks.Helpers
                 stylesheetURI.URIDataManager.ExtensionObjectNamespace = string.Concat("urn:",
                     DataAppHelpers.Resources.DISPLAY_NAMESPACE_TYPES.displaydevpacks.ToString());
             }
-
-            //2.0.0 refactor? or stay with 2 appsettings passed in nonused startrow and endrow?:
-            //else {
-            //    newObject = stylesheetURI;
-            //    stylesheetURI.URIDataManager.ExtensionObjectNamespace = string.Concat("urn:",
-            //        DataAppHelpers.Resources.DISPLAY_NAMESPACE_TYPES.devtreksuri.ToString());
-            //}
+            
         }
         public string WriteGetConstantsButtons(string uriPattern,
            string calcParams)
@@ -1364,12 +1353,18 @@ namespace DevTreks.Helpers
             string sResourceURIPattern = GetResourceParam("2", sResourceArray);
             //2.0.0 addition for appsetting connection strings
             //not a security threat because this is run dynamically -connection strings are not stored statefully
+            //watch for characters in passwords and storage strings that break this
+            //the 2nd delimiter was needed because @ strings in pwds broke the strings
             string sDefaultConnection = GetResourceParam("3", sResourceArray);
             sDefaultConnection = sDefaultConnection.Replace(
                 DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER, DataHelpers.GeneralHelpers.STRING_DELIMITER);
+            sDefaultConnection = sDefaultConnection.Replace(
+                DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER2, DataHelpers.GeneralHelpers.PARAMETER_DELIMITER);
             string sStorageConnection = GetResourceParam("4", sResourceArray);
             sStorageConnection = sStorageConnection.Replace(
                 DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER, DataHelpers.GeneralHelpers.STRING_DELIMITER);
+            sStorageConnection = sStorageConnection.Replace(
+                DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER2, DataHelpers.GeneralHelpers.PARAMETER_DELIMITER);
             ContentURI resourceURI = ContentURI.ConvertShortURIPattern(sResourceURIPattern);
             resourceURI.URIDataManager.DefaultConnection = sDefaultConnection;
             resourceURI.URIDataManager.StorageConnection = sStorageConnection;
@@ -1461,8 +1456,7 @@ namespace DevTreks.Helpers
             string attributeParams)
         {
             string sName = string.Concat(linkedViewURIPattern, attributeParams);
-            //2.0.0 refactor needed: can't get the StorageConnection appsetting to use azure storage
-            //beta2 didn't test this
+            //2.0.0 refactor this
             ContentURI linkedViewURI = ContentURI.ConvertShortURIPattern(linkedViewURIPattern);
             linkedViewURI.URIDataManager.DefaultConnection = resourceURI.URIDataManager.DefaultConnection;
             linkedViewURI.URIDataManager.StorageConnection = resourceURI.URIDataManager.StorageConnection;
