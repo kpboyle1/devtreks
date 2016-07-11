@@ -16,7 +16,7 @@ namespace DevTreks
     ///Purpose:		Configure the web app and start MVC web page
     ///             delivery.
     ///Author:		www.devtreks.org
-    ///Date:		2016, June
+    ///Date:		2016, July
     ///References:	www.devtreks.org
     /// </summary>
     public class Startup
@@ -42,11 +42,7 @@ namespace DevTreks
             }
             else
             {
-                //this does not work in production: devtreks.exe returns message
-                //can't find project json in path where app published
-                //builder.AddJsonFile("project.json", optional: true, reloadOnChange: true);
-                //project.json has to be manually added to release publish path (until publishOptions work)
-                //builder.AddUserSecrets();
+                //not used
             }
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();

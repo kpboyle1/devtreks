@@ -631,7 +631,7 @@
     <value>Is Default Club</value>
   </data>
   <data name="JOININ_1" xml:space="preserve">
-    <value>After registering, you must either start a new club or join an existing club. To start a new club, open any Network Group (i.e. CommonTreks), open the Club panel and click on the Manage Member button. Click on the Insert New Club link. To join an existing club, email one of the club's coordinators and ask them to add you to the club.</value>
+    <value>After registering with this form, you will automatically become the coordinator of a new club.  To join an existing club, email one of the club's coordinators and ask them to add you to the club.</value>
   </data>
   <data name="JOININ_2" xml:space="preserve">
     <value>After you are a member of at least one club, please fill in the rest of your member and club information on the Club panel. </value>
@@ -1273,7 +1273,7 @@
     <value>Please note that you can login, without a DevTreks registration, using a third party login, such as those listed below.</value>
   </data>
   <data name="JOININ_5" xml:space="preserve">
-    <value>The Club Administration video tutorial explains how to administer a club and a network.</value>
+    <value>The Social Budgeting tutorial explains how to administer a club and a network.</value>
   </data>
   <data name="MEMBER_USERNAME" xml:space="preserve">
     <value>If the Login Name is changed, you must log off and log in using the new name. </value>
