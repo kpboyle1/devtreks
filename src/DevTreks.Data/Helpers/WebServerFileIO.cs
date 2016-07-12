@@ -12,7 +12,7 @@ namespace DevTreks.Data.Helpers
     /// <summary>
     ///Purpose:	    webserver (http://localhost) file managment utilities
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2016, July
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///Notes:
     ///For example, when a URI beginning with http:// or https:// is passed in requestUri, 
@@ -175,6 +175,8 @@ namespace DevTreks.Data.Helpers
         public async Task<string> ReadTextAsync(string dataURL)
         {
             string sFile = string.Empty;
+            //2.0.0 may not be cross platform
+            //consider refactor by converting webfile path to filesys path
             using (HttpClient client = new HttpClient())
             {
                 HttpResponseMessage response = await client.GetAsync(dataURL);
@@ -183,7 +185,7 @@ namespace DevTreks.Data.Helpers
                 {
                     //retrieve the website contents from the HttpResponseMessage. 
                     byte[] buffer = await response.Content.ReadAsByteArrayAsync();
-                    //standard protocal in ReadTextAsync
+                    //standard protocol in ReadTextAsync
                     sFile = Encoding.UTF8.GetString(buffer, 0, buffer.Length);
                 }
             }

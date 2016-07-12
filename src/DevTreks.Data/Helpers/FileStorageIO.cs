@@ -12,7 +12,7 @@ namespace DevTreks.Data.Helpers
     /// <summary>
     ///Purpose:		General utilities storing files on cloud and web server file storage systems
     ///Author:		www.devtreks.org
-    ///Date:		2016, June
+    ///Date:		2016, July
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public class FileStorageIO
@@ -36,6 +36,8 @@ namespace DevTreks.Data.Helpers
         public static PLATFORM_TYPES GetPlatformType(string url)
         {
             PLATFORM_TYPES ePlatform = PLATFORM_TYPES.azure;
+            //PLATFORM_TYPES refers to file storage platform only
+            //2.0.0 : only 2 conditions for blob storage
             if (url.Contains(".blob."))
             {
                 ePlatform = PLATFORM_TYPES.azure;
@@ -44,21 +46,18 @@ namespace DevTreks.Data.Helpers
             {
                 ePlatform = PLATFORM_TYPES.azure;
             }
-            else if (url.Contains("www.devtreks.org"))
-            {
-                ePlatform = PLATFORM_TYPES.azure;
-            }
-            else if (url.Contains("localhost"))
-            {
-                ePlatform = PLATFORM_TYPES.webserver;
-            }
             else
             {
-                //if it's not azure or local its a deployed web site
+                //if it's not azure and azure blob, it's in file system
+                //could be a file system path or a web server path
+                //prior conditions caused web server files to attempt retrieval 
+                //from blob storage
                 ePlatform = PLATFORM_TYPES.webserver;
             }
             return ePlatform;
         }
+        
+        
         public static bool IsFileSystemFile(string url)
         {
             bool bIsFileSystem = true;
@@ -133,7 +132,6 @@ namespace DevTreks.Data.Helpers
                     && ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
-                    //this also opens remote files and won't scale
                     //full uri paths had to be retrieved from cloud or web storage
                     bURIExists = azureIO.BlobExists(fullURIPath);
                 }
@@ -177,8 +175,6 @@ namespace DevTreks.Data.Helpers
                     && ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
-                    //this also opens remote files and won't scale
-                    //full uri paths had to be retrieved from cloud or web storage
                     bURIExists = azureIO.BlobExists(fullURIPath);
                 }
             }

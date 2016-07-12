@@ -3038,7 +3038,7 @@ namespace DevTreks.Helpers
             //PackageIO and ZIPIO use that value to relate these headers to all html files in packages (if needed)
             //make the stylesheets' paths (absolute paths being used)
             //these must match the MakeFullHtmlFileHeaders paths (relative paths to css)
-            //2.0.0: use the minified css and js files generated from gulp deployment 
+            //2.0.0: use the minified css and js files 
             //(current files have to be copied after inetpub deployment)
             //css
             await AddHtmlHeaderFileToPackageAsync(uri, DataHelpers.AppSettings.GetWebContentFullPath(uri, "css", "site.min.css"),

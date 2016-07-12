@@ -919,7 +919,7 @@ namespace DevTreks.ViewModels
         {
 
             //2.0.0 workaround for post build scripts and buildOptions copy not working
-            //refactor by getting dnx to copy automatically like any referenced dll
+            //refactor by getting dlls copied automatically like any referenced dll
             //probably better than post build scripts for cross platform use
             //BUT, it requires running a release build in Visual Studio, logging in,
             //and previewing data on the Preview panel
