@@ -552,9 +552,15 @@ namespace DevTreks.Data.Helpers
         {
             string sTempBlobURI = string.Empty;
             string sDir = GetTempWebDirectory(uri, false, GeneralHelpers.Get2RandomInteger());
+            //2.0.0 deprecated guid in name because of azure appserve msg about resource name of blob being too long
+            //blob names are limited to 1024 chars
             sTempBlobURI = string.Concat(sDir, GeneralHelpers.WEBFILE_PATH_DELIMITER,
-                   Guid.NewGuid().ToString(), GeneralHelpers.WEBFILE_PATH_DELIMITER,
-                   fileName);
+                  GeneralHelpers.Get2RandomInteger().ToString(), GeneralHelpers.WEBFILE_PATH_DELIMITER,
+                  fileName);
+
+            //sTempBlobURI = string.Concat(sDir, GeneralHelpers.WEBFILE_PATH_DELIMITER,
+            //       Guid.NewGuid().ToString(), GeneralHelpers.WEBFILE_PATH_DELIMITER,
+            //       fileName);
             return sTempBlobURI;
         }
         public static string GetResourceRootPath(ContentURI uri, bool needsWebPath)

@@ -52,8 +52,9 @@ namespace DevTreks
             DefaultRootFullFilePath = string.Concat(env.WebRootPath, "\\");
             //appPath is one path up from webroot: C:\\DevTreks\\src\\DevTreks
             //string sCheck = env.ContentRootPath;
+            //azure web app: Use the path D:\home\site\wwwroot to refer to your app's root directory.
         }
-        
+
         private static string FixSecretConnection(string secretConnection)
         {
             //allow this to generate a null exception if secretConnection
