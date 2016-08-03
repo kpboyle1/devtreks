@@ -18,7 +18,7 @@ namespace DevTreks.Data.SqlRepositories
     /// <summary>
     ///Purpose:		Principal repository for accessing DevTreks content
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
+    ///Date:		2016, August
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public class ContentRepository : IContentRepositoryEF, IDisposable
@@ -1586,7 +1586,9 @@ namespace DevTreks.Data.SqlRepositories
                     docToCalcURI.URIDataManager.Resource.Add(calcDocURI);
                     bool bNeedsFullPath = false;
                     bool bNeedsOneRecord = false;
-                    string sResourceURLs = await GetResourceURLsAsync(docToCalcURI, bNeedsOneRecord, bNeedsFullPath, 
+                    //2.0.2 switched to calcdocuri from doctocalcuri because when linked to 
+                    //content can't retrieve resources using doctocalcuri
+                    string sResourceURLs = await GetResourceURLsAsync(calcDocURI, bNeedsOneRecord, bNeedsFullPath,
                         AppHelpers.Resources.RESOURCES_GETBY_TYPES.storyuri, string.Empty);
                     styleParams.Add("linkedListsArray", sResourceURLs);
                 }

@@ -21,7 +21,7 @@ namespace DevTreks.Helpers
     /// <summary>
     ///Purpose:		Class for helping stylesheets and chtml pages display data
     ///Author:		www.devtreks.org
-    ///Date:		2016, July
+    ///Date:		2016, August
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        Known issues:
     ///             1. Caching xhtml is not being done yet.
@@ -179,8 +179,7 @@ namespace DevTreks.Helpers
             return sResourceURLArray;
         }
 
-        //2.0.0 refactor: resourceURLs added with stylesheet params
-        //called from story.xslt? double test
+        //2.0.0 refactor: resourceURLs added to stylesheet params (linkedlistsarray)
         public string GetResourceUrl2(string resourceFileName,
             string devTrekURIPattern, string linkedViewURIPattern,
             string needsFullPath, string serverSubActionType, string resourceURLs)
