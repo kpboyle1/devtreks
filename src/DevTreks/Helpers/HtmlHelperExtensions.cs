@@ -21,7 +21,7 @@ namespace DevTreks.Helpers
     /// <summary>
     ///Purpose:		static Html extensions for presentation layer xhtml manipulation
     ///Author:		www.devtreks.org
-    ///Date:		2016, June
+    ///Date:		2016, August
     ///References:	www.devtreks.org
     /// </summary>
     public static class HtmlHelperExtensions
@@ -885,7 +885,7 @@ namespace DevTreks.Helpers
             using (StringWriter result = new StringWriter())
             {
                 result.WriteLine(
-                    "Current version: DevTreks.2.0.0, July 12, 2016");
+                    "Current version: DevTreks.2.0.0, August 10, 2016");
                 return new HtmlString(result.ToString());
             }
         }
@@ -3555,7 +3555,8 @@ namespace DevTreks.Helpers
                         }
                     }
                     if (model.URIDataManager.SubActionView
-                        != DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString())
+                        != DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString()
+                        || model.URIDataManager.UseSelectedLinkedView)
                     {
                         if (!model.URIDataManager.UseSelectedLinkedView)
                         {
@@ -3681,7 +3682,8 @@ namespace DevTreks.Helpers
                         }
                     }
                     if (model.URIDataManager.SubActionView
-                        == DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString())
+                        == DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString()
+                        && !model.URIDataManager.UseSelectedLinkedView)
                     {
                         //v188 added devpacks conditions
                         string sMURI = string.Empty;
@@ -4058,7 +4060,6 @@ namespace DevTreks.Helpers
                         result.WriteLine(helper.SpanItemStart("description"));
                         result.Write(linkedview.URIDataManager.Description);
                         result.WriteLine(helper.SpanEnd());
-                        result.WriteLine(helper.DivEnd());
                         if (!string.IsNullOrEmpty(sURIFull))
                         {
                             result.WriteLine(helper.DivStart(string.Empty, string.Empty));

@@ -1588,13 +1588,18 @@ namespace DevTreks.Data.SqlRepositories
                     bool bNeedsOneRecord = false;
                     //2.0.2 switched to calcdocuri from doctocalcuri because when linked to 
                     //content can't retrieve resources using doctocalcuri
+                    //stories linked to economic content come in with LV id for content calculator, 
+                    //but store lvid in calcDocURI.URIDataManager.BaseId
                     string sResourceURLs = await GetResourceURLsAsync(calcDocURI, bNeedsOneRecord, bNeedsFullPath,
                         AppHelpers.Resources.RESOURCES_GETBY_TYPES.storyuri, string.Empty);
+                    //and some stylesheets need connection strings to azure
+                    //2.0.0 added conn strings to array
+                    sResourceURLs = AppHelpers.Resources.AddConnections(docToCalcURI, sResourceURLs);
                     styleParams.Add("linkedListsArray", sResourceURLs);
                 }
             }
         }
-
+       
         public async Task GetStandardStylesheetParametersForAddInsAsync(
             ContentURI docToCalcURI, ContentURI calcDocURI,
             IDictionary<string, string> styleParams)
@@ -1636,6 +1641,8 @@ namespace DevTreks.Data.SqlRepositories
                     //retrieve from db (storing in hidden form element can lead to confusion)
                     sLinkedListsArray
                         = await GetResourceURIArraysForLinkedListsAsync(calcDocURI);
+                    //2.0.0 added conn strings to array
+                    sLinkedListsArray = AppHelpers.Resources.AddConnections(docToCalcURI, sLinkedListsArray);
                     //the linkedlists are associated with calcdocuri
                     calcDocURI.URIDataManager.LinkedLists = sLinkedListsArray;
                 }

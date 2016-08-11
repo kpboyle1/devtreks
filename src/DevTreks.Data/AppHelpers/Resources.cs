@@ -17,7 +17,7 @@ namespace DevTreks.Data.AppHelpers
     ///Purpose:		Support class holding constants, enums, and common methods 
     ///             for pictures, stylesheets, schemas, videos, and audios
     ///Author:		www.devtreks.org
-    ///Date:		2016, July
+    ///Date:		2016, August
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///             1. 
     /// </summary>
@@ -974,24 +974,10 @@ namespace DevTreks.Data.AppHelpers
                             //name attribute (for caching)
                             oPaths.Append(Helpers.GeneralHelpers.STRING_DELIMITER);
                             oPaths.Append(sResourceURIPattern);
-                            //2.0.0 need appsetting connection strings for internal stylesheet calls
-                            //2.0.0 refactor this if any security threat (servers must only use dynamically)
-                            oPaths.Append(Helpers.GeneralHelpers.STRING_DELIMITER);
-                            //db connection
-                            //can't use semicolondelimiters because they're same as STRING_DELIMITER
-                            string sConnection = uri.URIDataManager.DefaultConnection.Replace(
-                                Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER);
-                            //can't use @ symbols in passwords (possibly others as well)
-                            sConnection = sConnection.Replace(
-                                Helpers.GeneralHelpers.PARAMETER_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
-                            oPaths.Append(sConnection);
-                            oPaths.Append(Helpers.GeneralHelpers.STRING_DELIMITER);
-                            //azure blob storage (fromdelimiter is safe for 2.0.0 connection strings)
-                            sConnection = uri.URIDataManager.StorageConnection.Replace(
-                                Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER);
-                            sConnection = sConnection.Replace(
-                                Helpers.GeneralHelpers.PARAMETER_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
-                            oPaths.Append(sConnection);
+
+                            //2.0.0 late debug deprecated use of additional
+                            //conn strings in linkedlistsarray
+                            
                             i += 1;
                         }
                         sResourcePath = string.Empty;
@@ -1062,18 +1048,9 @@ namespace DevTreks.Data.AppHelpers
                             //name attribute (for caching)
                             oPaths.Append(Helpers.GeneralHelpers.STRING_DELIMITER);
                             oPaths.Append(sResourceURIPattern);
-                            //2.0.0 need appsetting connection strings for internal stylesheet calls
-                            oPaths.Append(Helpers.GeneralHelpers.STRING_DELIMITER);
-                            //db connection
-                            //can't use semicolondelimiters because they're same as STRING_DELIMITER
-                            string sConnection = uri.URIDataManager.DefaultConnection.Replace(
-                                Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
-                            oPaths.Append(sConnection);
-                            oPaths.Append(Helpers.GeneralHelpers.STRING_DELIMITER);
-                            //azure blob storage (paramdelimiter is safe for 2.0.0 connection strings)
-                            sConnection = uri.URIDataManager.StorageConnection.Replace(
-                                Helpers.GeneralHelpers.STRING_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
-                            oPaths.Append(sConnection);
+
+                            //2.0.0 deprecated additional conn strings in resourcearrays
+                            
                             i += 1;
                         }
                         sResourcePath = string.Empty;
@@ -2114,5 +2091,23 @@ namespace DevTreks.Data.AppHelpers
             }
             return sPathToResource;
         }
+        public static string AddConnections(ContentURI docToCalcURI, string resourceURLs)
+        {
+            //2.0.0: some stylesheet functions have to get lists out of db or blob storage
+            //last 2 params of linkedlistsarray holds the conn strings
+            //need to massage the strings a bit
+            //used with StylesheetHelper.SetConnections
+            string sResourceURLs = string.Empty;
+            string sDefaultConnection = docToCalcURI.URIDataManager.DefaultConnection;
+            sDefaultConnection = sDefaultConnection.Replace(
+                Helpers.GeneralHelpers.PARAMETER_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
+            string sStorageConnection = docToCalcURI.URIDataManager.StorageConnection;
+            sStorageConnection = sStorageConnection.Replace(
+                Helpers.GeneralHelpers.PARAMETER_DELIMITER, Helpers.GeneralHelpers.FORMELEMENT_DELIMITER2);
+            sResourceURLs = string.Concat(resourceURLs, Helpers.GeneralHelpers.PARAMETER_DELIMITER, sDefaultConnection,
+                Helpers.GeneralHelpers.PARAMETER_DELIMITER, sStorageConnection);
+            return sResourceURLs;
+        }
+        
     }
 }

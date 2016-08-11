@@ -328,7 +328,7 @@ namespace DevTreks.Helpers
             }
             return sResourceParam;
         }
-
+        
         private async Task GetStandardParamsForStylesheetsAsync(
             ContentURI uri, DataHelpers.GeneralHelpers.DOC_STATE_NUMBER displayDocType,
             IDictionary<string, string> styleParams)
@@ -496,6 +496,10 @@ namespace DevTreks.Helpers
             //all stylesheets still include these params, but these params are not used
             styleParams.Add("startRow", "0");
             styleParams.Add("endRow", uri.URIDataManager.RowCount.ToString());
+            //if needed, consider using to store conn strings, 
+            //but requires changing stylesheets, so better to just add to end of linkedlistsarray
+            //styleParams.Add("startRow", uri.URIDataManager.DefaultConnection);
+            //styleParams.Add("endRow", uri.URIDataManager.StorageConnection);
         }
         public static string SetEndRow(ContentURI uri)
         {
@@ -1352,21 +1356,8 @@ namespace DevTreks.Helpers
             string sResourceURIPattern = GetResourceParam("2", sResourceArray);
             //2.0.0 addition for appsetting connection strings
             //not a security threat because this is run dynamically -connection strings are not stored statefully
-            //watch for characters in passwords and storage strings that break this
-            //the 2nd delimiter was needed because @ strings in pwds broke the strings
-            string sDefaultConnection = GetResourceParam("3", sResourceArray);
-            sDefaultConnection = sDefaultConnection.Replace(
-                DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER, DataHelpers.GeneralHelpers.STRING_DELIMITER);
-            sDefaultConnection = sDefaultConnection.Replace(
-                DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER2, DataHelpers.GeneralHelpers.PARAMETER_DELIMITER);
-            string sStorageConnection = GetResourceParam("4", sResourceArray);
-            sStorageConnection = sStorageConnection.Replace(
-                DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER, DataHelpers.GeneralHelpers.STRING_DELIMITER);
-            sStorageConnection = sStorageConnection.Replace(
-                DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER2, DataHelpers.GeneralHelpers.PARAMETER_DELIMITER);
             ContentURI resourceURI = ContentURI.ConvertShortURIPattern(sResourceURIPattern);
-            resourceURI.URIDataManager.DefaultConnection = sDefaultConnection;
-            resourceURI.URIDataManager.StorageConnection = sStorageConnection;
+            SetConnections(resourceURI, resourcesURIArrays);
             string sURIPath = sFullDocPath;
             //2.0.0 deprecated: path comes originally from this, doesn't need 2 hits to storage.
             //string sURIPath = DataHelpers.FileStorageIO.GetResourceURIPath(resourceURI, sFullDocPath);
@@ -1385,7 +1376,26 @@ namespace DevTreks.Helpers
                     writer);
             }
         }
-        
+        private void SetConnections(ContentURI resourceURI, string resourceURLs)
+        {
+            string sDefaultConnection = string.Empty;
+            string sStorageConnection = string.Empty;
+            //2.0.0 added connections using Data.AppHelpers.Resources.AddConnections()
+            string[] arrResources = resourceURLs.Split(DataHelpers.GeneralHelpers.PARAMETER_DELIMITERS);
+            int iEndPosition = arrResources.Count() - 2;
+            if (iEndPosition > 1)
+            {
+                sDefaultConnection = arrResources[iEndPosition];
+                sDefaultConnection = sDefaultConnection.Replace(
+                    DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER2, DataHelpers.GeneralHelpers.PARAMETER_DELIMITER);
+                iEndPosition = arrResources.Count() - 1;
+                sStorageConnection = arrResources[iEndPosition];
+                sStorageConnection = sStorageConnection.Replace(
+                    DataHelpers.GeneralHelpers.FORMELEMENT_DELIMITER2, DataHelpers.GeneralHelpers.PARAMETER_DELIMITER);
+            }
+            resourceURI.URIDataManager.DefaultConnection = sDefaultConnection;
+            resourceURI.URIDataManager.StorageConnection = sStorageConnection;
+        }
         public string WriteCalculateButtons(string uriPattern,
            string contenturipattern, string calcParams)
         {

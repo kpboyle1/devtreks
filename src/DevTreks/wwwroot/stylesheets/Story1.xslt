@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<!-- Author: www.devtreks.org, 2016, May -->
+<!-- Author: www.devtreks.org, 2016, August -->
 <xsl:stylesheet version="1.0" 
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:DisplayDevPack="urn:displaydevpacks"
@@ -32,9 +32,9 @@
 	<xsl:param name="selectionsNodeNeededName" />
 	<!-- which network is this doc from? -->
 	<xsl:param name="networkId" />
-	<!-- what is the start row? -->
+	<!-- what is the start row or db connection? -->
 	<xsl:param name="startRow" />
-	<!-- what is the end row? -->
+	<!-- what is the end row or storage connection? -->
 	<xsl:param name="endRow" />
 	<!-- what is the club's email? -->
 	<xsl:param name="clubEmail" />
