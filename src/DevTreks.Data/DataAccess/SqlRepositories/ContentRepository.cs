@@ -386,6 +386,10 @@ namespace DevTreks.Data.SqlRepositories
         {
             bool bHasSaved = false;
             uri.ErrorMessage = string.Empty;
+            //2.0.1: MakeBaseDoc uses all children nodes (not the nav pagesize)
+            int iPageSize = uri.URIDataManager.PageSize;
+            //but force a limit to html page generation
+            uri.URIDataManager.PageSize = 1000;
             switch (uri.URIDataManager.SubAppType)
             {
                 case Helpers.GeneralHelpers.SUBAPPLICATION_TYPES.clubs:
@@ -472,6 +476,7 @@ namespace DevTreks.Data.SqlRepositories
                 default:
                     break;
             }
+            uri.URIDataManager.PageSize = iPageSize;
             return bHasSaved;
         }
         

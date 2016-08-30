@@ -111,32 +111,6 @@ namespace DevTreks.Helpers
                DevTreks.Exceptions.DevTreksErrors.ERRORFOLDERNAME, DataHelpers.FILE_PATH_DELIMITER));
             return sErrorValue;
         }
-
-       //retain for testing with es
-        public static void InitResource(HttpContext context)
-        {
-            //init culture-dependent resources
-            if (context != null)
-            {
-                //if (context.Request.UserLanguages != null)
-                //{
-                //    Localizations.DevTreksResources.InitResource(context.Request.UserLanguages[0],
-                //    context.Request.UserLanguages[0]);
-                //}
-            }
-            else 
-            {
-                //if (HttpContext.Current != null)
-                //{
-                //    if (HttpContext.Current.Request.UserLanguages != null)
-                //    {
-                //        Localizations.DevTreksResources.InitResource(HttpContext.Current.Request.UserLanguages[0],
-                //        HttpContext.Current.Request.UserLanguages[0]);
-                //    }
-                //}
-            }
-        }
-        
         
         /// <summary>
         /// This method retrieves localized resource strings.

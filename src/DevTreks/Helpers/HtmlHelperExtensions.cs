@@ -885,7 +885,7 @@ namespace DevTreks.Helpers
             using (StringWriter result = new StringWriter())
             {
                 result.WriteLine(
-                    "Current version: DevTreks.2.0.0, August 11, 2016");
+                    "Current version: DevTreks.2.0.0, August 31, 2016");
                 return new HtmlString(result.ToString());
             }
         }
@@ -3584,8 +3584,10 @@ namespace DevTreks.Helpers
                         {
                             if (bHasGoodSelection)
                             {
-                                if (model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.linkedviews
+                                if ((model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.linkedviews
                                     || model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks)
+                                    && model.URIDataManager.SubActionView
+                                    != DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString())
                                 {
                                     ContentURI selectedViewURI =
                                         LinqHelpers.GetLinkedViewIsSelectedView(model);
@@ -3645,7 +3647,8 @@ namespace DevTreks.Helpers
                                         //copy any missing html views from tempdocs to regular docs
                                         displayURI.SaveHTMLForAddIn(model, GeneralHelpers.DOC_STATE_NUMBER.seconddoc);
                                     }
-                                    if (model.URIDataManager.HasNewXml == false)
+                                    if (model.URIDataManager.HasNewXml == false
+                                        && model.URIDataManager.AppType != GeneralHelpers.APPLICATION_TYPES.devpacks)
                                     {
                                         if (model.URIDataManager.AppType != GeneralHelpers.APPLICATION_TYPES.locals)
                                         {
@@ -3683,7 +3686,8 @@ namespace DevTreks.Helpers
                     }
                     if (model.URIDataManager.SubActionView
                         == DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString()
-                        && !model.URIDataManager.UseSelectedLinkedView)
+                        && (!model.URIDataManager.UseSelectedLinkedView
+                        || model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks))
                     {
                         //v188 added devpacks conditions
                         string sMURI = string.Empty;
@@ -3723,8 +3727,22 @@ namespace DevTreks.Helpers
                             }
                             else
                             {
-                                helper.MakeDownloadDataLink(model)
-                                    .WriteTo(result, HtmlEncoder.Default);
+                                if (model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.linkedviews
+                                    || model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks)
+                                {
+                                    ContentURI selectedViewURI =
+                                        LinqHelpers.GetLinkedViewIsSelectedView(model);
+                                    if (selectedViewURI != null)
+                                    {
+                                        helper.MakeDownloadDataLink(selectedViewURI)
+                                            .WriteTo(result, HtmlEncoder.Default);
+                                    }
+                                }
+                                else
+                                {
+                                    helper.MakeDownloadDataLink(model)
+                                        .WriteTo(result, HtmlEncoder.Default);
+                                }
                                 result.WriteLine("<br/>");
                                 string[] arrURLs = sMURI.Split(DevTreks.Data.Helpers.GeneralHelpers.STRING_DELIMITERS);
                                 if (arrURLs != null)
@@ -4177,7 +4195,7 @@ namespace DevTreks.Helpers
                 }
                 bool bHasFieldset = false;
                 if (model.URIDataManager.AppType
-                        == DevTreks.Data.Helpers.GeneralHelpers.APPLICATION_TYPES.resources)
+                    == DevTreks.Data.Helpers.GeneralHelpers.APPLICATION_TYPES.resources)
                 {
                     //v160 can download from this page
                     if (!string.IsNullOrEmpty(linkedview.URIDataManager.FileSystemPath))

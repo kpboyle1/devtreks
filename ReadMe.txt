@@ -1,5 +1,5 @@
 Appendix B. ReadMe.txt
-Version: 2.0.0, August 11, 2016
+Version: 2.0.0, August 31, 2016
 
 Introduction
 DevTreks is a multitier ASP.NET Core 1 database 
@@ -48,12 +48,8 @@ Database Connection section.
 and to an Azure App Service web app. Appendixes C and D 
 in the Source Code reference explains deployment further.
 
-
-4.	The August 11th update on github fixed 3 bugs –not 
-enough new work to justify a new version number. All tutorials 
-are being upgraded in August and additional bugs may be 
-found and fixed.
-
+4.	The August 11th and 31st updates on github fixed 7 bugs that 
+were discovered during the August, 2016 tutorial upgrades.
 
 Database Connections
 Server version: Sql Server 2016 Express, RTM
@@ -66,9 +62,6 @@ Name: kpboyle1@comcast.net
 Pwd: public2A@
 
 system administrator
-July 07, 2016 update: SqlExpress 2016 databases can be accessed 
-using a Windows OS logged in user –these haven’t been tested 
-with the new db server and aren’t critical for accessing the 
-db in SSMS
+SqlExpress 2016 databases can be accessed using a Windows OS logged in user –these haven’t been tested with the new db server and aren’t critical for accessing the db in SSMS
 User: devtreks01_sa or sa
 Pwd: public

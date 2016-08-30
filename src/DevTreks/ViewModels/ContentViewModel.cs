@@ -928,121 +928,121 @@ namespace DevTreks.ViewModels
             {
                 bool bHasCopied = false;
                 //2 debugs 
-                string sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net461\\AgBudgetingCalculators.dll");
+                string sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Release\\net461\\AgBudgetingCalculators.dll");
                 string sToExtension = Path.GetFullPath("wwwroot\\Extensions\\AgBudgetingCalculators.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Debug\\net461\\AgBudgetingCalculators.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Release\\net461\\AgBudgetingCalculators.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\AgBudgetingCalculators.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgResourceStockExtensions\\bin\\Debug\\net461\\AgResourceStockExtensions.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgResourceStockExtensions\\bin\\Release\\net461\\AgResourceStockExtensions.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\AgResourceStockExtensions.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgResourceStockExtensions\\bin\\Debug\\net461\\AgResourceStockExtensions.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\AgResourceStockExtensions\\bin\\Release\\net461\\AgResourceStockExtensions.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\AgResourceStockExtensions.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\FoodNutrition\\bin\\Debug\\net461\\FoodNutrition.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\FoodNutrition\\bin\\Release\\net461\\FoodNutrition.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\FoodNutrition.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\FoodNutrition\\bin\\Debug\\net461\\FoodNutrition.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\FoodNutrition\\bin\\Release\\net461\\FoodNutrition.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\FoodNutrition.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\HealthCare\\bin\\Debug\\net461\\HealthCare.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\HealthCare\\bin\\Release\\net461\\HealthCare.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\HealthCare.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\HealthCare\\bin\\Debug\\net461\\HealthCare.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\HealthCare\\bin\\Release\\net461\\HealthCare.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\HealthCare.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\Jace\\bin\\Debug\\net461\\Jace.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\Jace\\bin\\Release\\net461\\Jace.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\Jace.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\Jace\\bin\\Debug\\net461\\Jace.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\Jace\\bin\\Release\\net461\\Jace.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\Jace.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\LCA1\\bin\\Debug\\net461\\LCA1.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\LCA1\\bin\\Release\\net461\\LCA1.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\LCA1.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\LCA1\\bin\\Debug\\net461\\LCA1.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\LCA1\\bin\\Release\\net461\\LCA1.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\LCA1.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\ME2\\bin\\Debug\\net461\\ME2.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\ME2\\bin\\Release\\net461\\ME2.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\ME2.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\ME2\\bin\\Debug\\net461\\ME2.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\ME2\\bin\\Release\\net461\\ME2.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\ME2.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\MN1\\bin\\Debug\\net461\\MN1.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\MN1\\bin\\Release\\net461\\MN1.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\MN1.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\MN1\\bin\\Debug\\net461\\MN1.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\MN1\\bin\\Release\\net461\\MN1.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\MN1.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPV1\\bin\\Debug\\net461\\NPV1.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPV1\\bin\\Release\\net461\\NPV1.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\NPV1.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPV1\\bin\\Debug\\net461\\NPV1.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPV1\\bin\\Release\\net461\\NPV1.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\NPV1.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPVCalculators\\bin\\Debug\\net461\\NPVCalculators.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPVCalculators\\bin\\Release\\net461\\NPVCalculators.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\NPVCalculators.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPVCalculators\\bin\\Debug\\net461\\NPVCalculators.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPVCalculators\\bin\\Release\\net461\\NPVCalculators.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\NPVCalculators.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPVCalculators\\bin\\Debug\\net461\\NPVCalculators.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPVCalculators\\bin\\Release\\net461\\NPVCalculators.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\NPVCalculators.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPVCalculators\\bin\\Debug\\net461\\NPVCalculators.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\NPVCalculators\\bin\\Release\\net461\\NPVCalculators.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\NPVCalculators.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
 
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\Numerics\\bin\\Debug\\net461\\Numerics.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\Numerics\\bin\\Release\\net461\\Numerics.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\Numerics.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\Numerics\\bin\\Debug\\net461\\Numerics.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\Numerics\\bin\\Release\\net461\\Numerics.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\Numerics.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
 
                 
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\SB1\\bin\\Debug\\net461\\SB1.dll");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\SB1\\bin\\Release\\net461\\SB1.dll");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\SB1.dll");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);
-                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\SB1\\bin\\Debug\\net461\\SB1.pdb");
+                sFromExtension = Path.GetFullPath("..\\DevTreks.Extensions\\SB1\\bin\\Release\\net461\\SB1.pdb");
                 sToExtension = Path.GetFullPath("wwwroot\\Extensions\\SB1.pdb");
                 bHasCopied = await DataAllHelpers.FileStorageIO.CopyNewerFiles(
                     uri, sFromExtension, sToExtension);

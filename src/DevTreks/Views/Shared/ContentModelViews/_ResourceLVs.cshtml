@@ -25,7 +25,6 @@
     }
     if (bHasLinkedView)
     {
-        //155 eliminated DisplayModels because it required an EF hit with no multimedia
         <div>
         <ul data-role="listview" data-inset="true" data-theme="a">
             @if (Model.URIDataManager.LinkedView != null)
@@ -46,7 +45,6 @@
                             @Html.LIEnd();
                         }
                         @Html.LIStart(string.Empty)
-                        @*@DisplayChildCell(Model, child, resourcePackId)*@
                         ContentURI resourceURI = LinqHelpers.GetContentURIListIsMainImage(
                         child.URIDataManager.Resource);
                         @Html.FieldsetStart(string.Empty, string.Empty, "controlgroup", "horizontal", "true")
@@ -107,48 +105,4 @@
         </div>
     }
  }
-@helper DisplayChildCell(ContentURI uri, ContentURI child, string resourcePackId)
-{
-    ContentURI resourceURI = LinqHelpers.GetContentURIListIsMainImage(
-        child.URIDataManager.Resource);
-        @Html.FieldsetStart(string.Empty, string.Empty, "controlgroup", "horizontal", "true")
-        //write the image
-    @Html.DivStart(string.Empty, string.Empty)
-    if (resourceURI != null)
-    {
-        @Html.Image(string.Concat("uriimage_",
-                 child.URIId.ToString()), resourceURI.URIDataManager.FileSystemPath,
-                resourceURI.URIDataManager.Description, "50%", "50%", string.Empty)
-    }
-    else
-    {
-        <br />
-    }
-    @Html.DivEnd()
-        //write the name and description
-    @Html.DivStart(string.Empty, string.Empty)
-    @Html.StrongStart()
-    this.Write(child.URIName);
-    @Html.StrongEnd()
-    this.Write(" : ");
-    this.Write(child.URIDataManager.Description);
-    @Html.DivEnd();
-    @Html.FieldsetEnd()
-    string resourceurl = StylesheetHelper.GetURIPattern(child.URIName, child.URIId.ToString(), @Model.URINetworkPartName,
-        Resources.RESOURCES_TYPES.resource.ToString(), string.Empty);
-    if (!string.IsNullOrEmpty(resourceurl))
-    {
-        StylesheetHelper styleHelper = new StylesheetHelper();
-        string resourceparam = styleHelper.GetResourceUrlByResource(@resourceurl, resourcePackId, @Model.URIDataManager.ServerSubActionType.ToString());
-        if (!string.IsNullOrEmpty(resourceparam))
-        {
-            @Html.DivStart(string.Empty, string.Empty)
-            @Html.LabelItalic("resourcelink", "Click button to download resource.")
-            <br/>
-            @Html.LinkMobile(string.Concat("resourcelink", child.URIId), @resourceparam, string.Empty, string.Concat("Download ", child.URIName), "button", "true", "true", string.Empty, string.Empty)
-	        <br/>
-            @Html.DivEnd();
-        }
-    }
-    
-}
+

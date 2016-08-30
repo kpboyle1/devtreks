@@ -704,8 +704,6 @@ namespace DevTreks.Data.Helpers
         {
             string sPageSize = string.Empty;
             int iPageSize = 25;
-            //in order to get a network's connection, must first run an commons connection
-            //conditional because unit tests don't have configurationmanager props
             iPageSize = (uri.URIDataManager.PageSize <= 0) ?
                 iPageSize : uri.URIDataManager.PageSize;
             //edit panel has separate page size
