@@ -21,7 +21,7 @@ namespace DevTreks.ViewModels
     /// <summary>
     ///Purpose:		ViewModel class for loading, displaying and editing DevTreks content uris
     ///Author:		www.devtreks.org
-    ///Date:		2016, June
+    ///Date:		2016, September
     ///References:	
     /// </summary>
     public class ContentViewModel 
@@ -61,10 +61,12 @@ namespace DevTreks.ViewModels
                 bIsInitView, partialUriPattern, contentService, memberService);
             //fill the content model
             bHasSet = await SetContentDataForAllMembersAsync(contentService, memberService, bIsInitView);
-            //set any missing images
-            await SetContentURIResourceAsync(contentService);
+            ////set any missing images
+            //await SetContentURIResourceAsync(contentService);
             //set the state of the docs found in the file paths (many views rely on docpaths)
             bHasSet = await SetURIState(contentService);
+            //set any missing images
+            await SetContentURIResourceAsync(contentService);
             //run the server asynch subaction (everything above must be run synch and sequential)
             await RunServerSubActionAsync(contentService, memberService, context);
             //set the restful addresses

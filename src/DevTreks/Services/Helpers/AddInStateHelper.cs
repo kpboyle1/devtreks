@@ -408,13 +408,12 @@ namespace DevTreks.Services.Helpers
                 calcDocURI.URIMember.MemberDocFullPath = calcDocURI.URIClub.ClubDocFullPath;
             }
         }
-        
-        public static string GetAddInURIPattern(ContentURI docToCalcURI)
-        {
-            //doctocalcuri ensures 1 doc, and xmldoc field, holds all calcdocs 
+        //has corresponding DevTreks.Data.Helpers.GetAddInURIPattern for actual file name of calcor/anor
+        public static string GetAddInURIPattern(ContentURI calcDocURI)
+        { 
             string sAddInURIPattern = DataHelpers.GeneralHelpers.MakeURIPattern(
-                 docToCalcURI.URIName, docToCalcURI.URIId.ToString(),
-                 docToCalcURI.URINetworkPartName, docToCalcURI.URINodeName,
+                 calcDocURI.URIName, calcDocURI.URIId.ToString(),
+                 calcDocURI.URINetworkPartName, calcDocURI.URINodeName,
                  DataHelpers.GeneralHelpers.FILENAME_EXTENSIONS.addin.ToString());
             return sAddInURIPattern;
         }

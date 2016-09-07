@@ -634,7 +634,6 @@ namespace DevTreks.Data
             uri.Message = string.Empty;
             uri.Json = string.Empty;
             uri.SchemaPath = string.Empty;
-            //uri.URIDataManager = new ContentURI.DataManager();
             uri.URIModels = new ContentURI.Models();
             uri.URIDataManager.Label = label;
             uri.URIDataManager.Description = description;
@@ -642,7 +641,7 @@ namespace DevTreks.Data
             //note that resourceURIPattern is actually a filesystem rel path
             if (resourceUri != string.Empty)
             {
-                //just set up the resources list here without hitting db (owner can do it later_
+                //just set up the resources list here without hitting db (owner can do it later)
                 string sResourceURIPattern = string.Empty;
                 sResourceURIPattern = uri.URIDataManager.AddResourceToResourceList(uri,
                     sResourceURIPattern, resourceAlt, resourceUri, string.Empty);

@@ -11,7 +11,7 @@ namespace DevTreks.Data.EditHelpers
     /// <summary>
     ///Purpose:		linq to xml utility methods
     ///Author:		www.devtreks.org
-    ///Date:		2013, July
+    ///Date:		2016, September
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public static class XmlLinq
@@ -1557,7 +1557,6 @@ namespace DevTreks.Data.EditHelpers
             EditHelper.ArgumentsEdits addsArguments, ContentURI parentURI,
             XElement root, XElement childEl, string groupingElementName)
         {
-            //StartInsertGram(addsArguments, childEl);
             //keep memory use down by not passing the parent el directly here
             //should verify that parentURI exists in root before coming here
             if (groupingElementName == string.Empty)
@@ -1577,7 +1576,6 @@ namespace DevTreks.Data.EditHelpers
                 .Elements(groupingElementName).FirstOrDefault()
                 .Add(childEl);
             }
-            //FinishInsertGram(addsArguments, childEl);
         }
         private static void AddElementToParentURI(ContentURI parentURI,
             XElement root, XElement childEl, string groupingElementName)
@@ -1604,7 +1602,6 @@ namespace DevTreks.Data.EditHelpers
             EditHelper.ArgumentsEdits addsArguments, ContentURI parentURI,
             XElement root, XElement childEl, string groupingElementName)
         {
-            //StartInsertGram(addsArguments, childEl);
             //keep memory use down by not passing the parent el directly here
             //should verify that parentURI exists in root before coming here
             if (groupingElementName == string.Empty)
@@ -1715,31 +1712,6 @@ namespace DevTreks.Data.EditHelpers
                 }
             }
         }
-        //private static void StartInsertGram(
-        //    EditHelper.ArgumentsEdits addsArguments,
-        //    XElement insertedEl)
-        //{
-        //    if (addsArguments.IsDbEdit == true
-        //         && (!addsArguments.IsAncestorBeingAdded))
-        //    {
-        //        //prepare returnids prior to insert in case 
-        //        //the ids have to be changed to make them unique
-        //        AddHelperDb.InsertGramSetReturnIds(
-        //            addsArguments, insertedEl);
-        //    }
-        //}
-        //private static void FinishInsertGram(
-        //    EditHelper.ArgumentsEdits addsArguments,
-        //    XElement insertedEl)
-        //{
-        //    if (addsArguments.IsDbEdit
-        //        && (!addsArguments.IsAncestorBeingAdded))
-        //    {
-        //        //write an updategram for the insertion
-        //        AddHelperDb.InsertGramWrite(addsArguments,
-        //            insertedEl);
-        //    }
-        //}
         private static void UpdateAddsArgumentsWithNewInsertion(
             EditHelper.ArgumentsEdits addsArguments,
             XElement insertedEl)
@@ -2825,6 +2797,7 @@ namespace DevTreks.Data.EditHelpers
                             {
                                 //1.4.1: developer-centric attributes are always updated 
                                 //analyzer options added otherwise can't get rid of aggtype if the analyzer no longer uses it (i.e. lcachanges)
+                                //2.0.2 tested mediaurl, but it overwrites the user's mediaurl so rejected
                                 if (att.Name == AppHelpers.Calculator.cCalculatorName
                                     ||att.Name == AppHelpers.Calculator.cFileExtensionType
                                     || att.Name == AppHelpers.Calculator.cRelatedCalculatorType

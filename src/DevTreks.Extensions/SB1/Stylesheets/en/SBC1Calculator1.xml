@@ -1,8 +1,9 @@
 ﻿<root>
-	<linkedview Id="1" Version="1.9.0" CalculatorType="sb101" 
+	<linkedview Id="1" Version="2.0.2" CalculatorType="sb101" 
 		WhatIfTagName="none" FileExtensionType="sb101" 
 		CalculatorName="Stock Budgeting 1 Input Calculator" 
     StylesheetResourceFileName="SBC1Calculator1.xslt" 
 		Stylesheet2ResourceFileName="SB1StocksIns1.xslt"
-		RelatedCalculatorsType="sb01" Overwrite="0"  />
+		RelatedCalculatorsType="sb01" Overwrite="0"
+    MediaURL="https://www.devtreks.org/resources/network_carbon/resourcepack_166/resource_1739/Tradeoffs.png"/>
 </root>

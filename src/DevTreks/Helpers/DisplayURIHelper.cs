@@ -540,35 +540,7 @@ namespace DevTreks.Helpers
                     sHtmlFullDocPath);
             }
         }
-        public static string DisplayMediaURI(ContentURI docToCalcURI)
-        {
-            string sMURL = string.Empty;
-            //xhtml state is saved to increase performance and improve packaging
-            string sDocToReadPath
-                = DataHelpers.AddInHelper.GetDevTrekPath(docToCalcURI, DataHelpers.GeneralHelpers.DOC_STATE_NUMBER.seconddoc);
-            XmlReader oReader = null;
-            if (DataHelpers.FileStorageIO.URIAbsoluteExists(docToCalcURI, sDocToReadPath))
-            {
-                oReader = DataHelpers.FileStorageIO.GetXmlReader(docToCalcURI, sDocToReadPath);
-            }
-            if (oReader != null)
-            {
-                using (oReader)
-                {
-                    while (oReader.ReadToFollowing(DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString()))
-                    {
-                        //standard Recommended IRI from Preview panel
-                        sMURL = oReader
-                            .GetAttribute(DataAppHelpers.Calculator.cMediaURL);
-                        if (!string.IsNullOrEmpty(sMURL))
-                        {
-                            break;
-                        }
-                    }
-                }
-            }
-            return sMURL;
-        }
+        
         //hold for potential future use
         public static ContentURI DisplayResourcePackURI(ContentURI docToCalcURI)
         {

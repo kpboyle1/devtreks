@@ -17,7 +17,7 @@ namespace DevTreks.Data.AppHelpers
     ///Purpose:		Support class holding constants, enums, and common methods 
     ///             for pictures, stylesheets, schemas, videos, and audios
     ///Author:		www.devtreks.org
-    ///Date:		2016, August
+    ///Date:		2016, September
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///             1. 
     /// </summary>
@@ -29,8 +29,8 @@ namespace DevTreks.Data.AppHelpers
         //standard uripath to a uri's supporting resources
         //resources can be shared by any uri, so they go in a 'shared'
         //uripath and filesystem folder
-        //i.e. https://www.devtreks.org/Content/Resource/network_crops/resourcepack_3/resource_6/wheat.svg
-        public static string URI_TEMPLATE_PATH = string.Concat("{contentsubfolder}/",
+        //i.e. https://www.devtreks.org/resources/network_carbon/resourcepack_166/resource_1739/Tradeoffs.png
+        public static string URI_TEMPLATE_PATH = string.Concat("{webdomain}/",
             "{resourcessubfolder}/{networkpart}/{resourcepackpart}/",
             "{resourcepart}/{filename}");
         
@@ -2109,5 +2109,94 @@ namespace DevTreks.Data.AppHelpers
             return sResourceURLs;
         }
         
+        public static void SetDefaultResourceURI(ContentURI docToCalcURI, ContentURI calcDocURI)
+        {
+            //a calculator's MediaURL is a more relevant view than the doctocalcs image (i.e. 10 anors displayed with same image)
+            if (calcDocURI.URINodeName == AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString()
+                || docToCalcURI.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks)
+            {
+                string sMURI = string.Empty;
+                if (string.IsNullOrEmpty(calcDocURI.URIClub.ClubDocFullPath))
+                {
+                    //calcdocuri paths need doctocalcuri network not calcdocuri
+                    calcDocURI.URINetworkPartName = docToCalcURI.URINetworkPartName;
+                    string sAddInURIPattern = AddInHelper.GetAddInURIPattern(calcDocURI);
+                    if (docToCalcURI.URINodeName != AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedviewpack.ToString())
+                    {
+                        calcDocURI.URIClub.ClubDocFullPath = docToCalcURI.URIClub.ClubDocFullPath.Replace(
+                            Path.GetFileNameWithoutExtension(docToCalcURI.URIClub.ClubDocFullPath),
+                            ContentHelper.MakeStandardFileNameFromURIPattern(sAddInURIPattern));
+                    }
+                    else
+                    {
+                        string sDelimiter = docToCalcURI.URIClub.ClubDocFullPath
+                            .Contains(GeneralHelpers.WEBFILE_PATH_DELIMITER) 
+                            ? GeneralHelpers.WEBFILE_PATH_DELIMITER : GeneralHelpers.FILE_PATH_DELIMITER;
+                        calcDocURI.URIClub.ClubDocFullPath = 
+                            string.Concat(Path.GetDirectoryName(docToCalcURI.URIClub.ClubDocFullPath),
+                            sDelimiter, AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString(),
+                            GeneralHelpers.FILENAME_DELIMITER, calcDocURI.URIId.ToString(), sDelimiter,
+                            ContentHelper.MakeStandardFileNameFromURIPattern(sAddInURIPattern), 
+                            GeneralHelpers.EXTENSION_XML);
+                    }
+                }
+                //resourcealt description
+                calcDocURI.Message = string.Empty;
+                sMURI = DisplayMediaURI(calcDocURI);
+                if (!string.IsNullOrEmpty(sMURI))
+                {
+                    //also sets new default IsDefaultImage
+                    string sResourceAlt = (!string.IsNullOrEmpty(calcDocURI.Message))
+                        ? calcDocURI.Message : calcDocURI.URIDataManager.Description;
+                    string sResourceURIPattern
+                        = calcDocURI.URIDataManager.AddResourceToResourceList(calcDocURI,
+                        string.Empty, sResourceAlt, sMURI, string.Empty);
+                }
+                else
+                {
+                    //use doctocalc
+                    LinqHelpers.AddList2ToList1(docToCalcURI.URIDataManager.Resource, 
+                        calcDocURI.URIDataManager.Resource);
+                }
+            }
+        }
+        public static string DisplayMediaURI(ContentURI calcDocURI)
+        {
+            //2.0.2 moved from UI layer for more general use
+            string sMURL = string.Empty;
+            string sResourceAlt = string.Empty;
+            //xhtml state is saved to increase performance and improve packaging
+            string sDocToReadPath
+                = AddInHelper.GetDevTrekPath(calcDocURI, GeneralHelpers.DOC_STATE_NUMBER.seconddoc);
+            XmlReader oReader = null;
+            if (FileStorageIO.URIAbsoluteExists(calcDocURI, sDocToReadPath))
+            {
+                oReader = FileStorageIO.GetXmlReader(calcDocURI, sDocToReadPath);
+            }
+            if (oReader != null)
+            {
+                using (oReader)
+                {
+                    while (oReader.ReadToFollowing(LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString()))
+                    {
+                        sResourceAlt = oReader
+                            .GetAttribute(Calculator.cCalculatorDescription);
+                        if (!string.IsNullOrEmpty(sResourceAlt))
+                        {
+                            calcDocURI.Message = sResourceAlt;
+                        }
+                        //standard Recommended IRI from Preview panel
+                        sMURL = oReader
+                            .GetAttribute(Calculator.cMediaURL);
+                        if (!string.IsNullOrEmpty(sMURL))
+                        {
+                            //sMURI will be parsed during display
+                            break;
+                        }
+                    }
+                }
+            }
+            return sMURL;
+        }
     }
 }

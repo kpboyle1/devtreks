@@ -21,7 +21,7 @@ namespace DevTreks.Helpers
     /// <summary>
     ///Purpose:		static Html extensions for presentation layer xhtml manipulation
     ///Author:		www.devtreks.org
-    ///Date:		2016, August
+    ///Date:		2016, September
     ///References:	www.devtreks.org
     /// </summary>
     public static class HtmlHelperExtensions
@@ -562,7 +562,7 @@ namespace DevTreks.Helpers
                     //next panel
                     //select view needs rowargs
                     string sExtraParams = StylesheetHelper.SetRowArgs(uri.URIDataManager.StartRow,
-                        uri.URIDataManager.StartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                        uri.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                         uri.URIDataManager.ParentStartRow);
                     //load in views panel allowed default addins to be loaded (for quickly linking views)
                     sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
@@ -591,7 +591,7 @@ namespace DevTreks.Helpers
                 {
                     //both preview and edit views need rowargs
                     string sExtraParams = StylesheetHelper.SetRowArgs(uri.URIDataManager.StartRow,
-                        uri.URIDataManager.StartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                        uri.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                         uri.URIDataManager.ParentStartRow);
                     sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
                         uri.URIDataManager.ControllerName,
@@ -683,7 +683,7 @@ namespace DevTreks.Helpers
                         string sSelectedLinkedViewURI = string.Empty;
                         string sDocToCalcURI = string.Empty;
                         string sCalcDocURI = string.Empty;
-                        string sCalcParams = DevTreks.Data.AppHelpers.LinkedViews.GetLinkedViewStartParams(
+                        string sCalcParams = DataAppHelpers.LinkedViews.GetLinkedViewStartParams(
                             bNeedsSingleQuotes, uri, string.Empty, ref sCalcDocURI, ref sDocToCalcURI,
                             ref sSelectedLinkedViewURI);
                         string sMainXmlDocPath = IOHelper.GetPackageMainDocPath(uri);
@@ -719,7 +719,7 @@ namespace DevTreks.Helpers
                         != GeneralHelpers.FILENAME_EXTENSIONS.temp.ToString())
                     {
                         string sExtraParams = StylesheetHelper.SetRowArgs(uri.URIDataManager.StartRow,
-                            uri.URIDataManager.StartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                            uri.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                             uri.URIDataManager.ParentStartRow);
                         sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
                             uri.URIDataManager.ControllerName,
@@ -745,7 +745,7 @@ namespace DevTreks.Helpers
                     result.WriteLine(helper.DivStart(string.Empty, "ui-block-b"));
                     result.WriteLine(helper.DivEnd());
                     string sURIPattern = uri.URIPattern;
-                    if (uri.URIPattern.EndsWith(DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
+                    if (uri.URIPattern.EndsWith(DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
                         || uri.URIPattern.EndsWith(DataAppHelpers.DevPacks.DEVPACKS_TYPES.devpackpart.ToString()))
                     {
                         if (uri.URIDataManager.Ancestors.Count >= 7)
@@ -2882,7 +2882,7 @@ namespace DevTreks.Helpers
                 {
                     //edits use pagination and need rowargs
                     string sPageParams = StylesheetHelper.SetRowArgs(model.URIDataManager.StartRow,
-                        model.URIDataManager.StartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                        model.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                         model.URIDataManager.ParentStartRow);
                     string sContentURIPattern = string.Empty;
                     sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
@@ -3059,7 +3059,7 @@ namespace DevTreks.Helpers
                     //next panel
                     //select view needs rowargs
                     string sExtraParams = StylesheetHelper.SetRowArgs(model.URIDataManager.StartRow,
-                        model.URIDataManager.StartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                        model.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                         model.URIDataManager.ParentStartRow);
                     //load in views panel allowed default addins to be loaded (for quickly linking views)
                     sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
@@ -3083,7 +3083,7 @@ namespace DevTreks.Helpers
                 {
                     //both preview and edit views need rowargs
                     string sExtraParams = StylesheetHelper.SetRowArgs(model.URIDataManager.StartRow,
-                        model.URIDataManager.StartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                        model.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                         model.URIDataManager.ParentStartRow);
                     sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
                         model.URIDataManager.ControllerName,
@@ -3158,7 +3158,7 @@ namespace DevTreks.Helpers
                         string sSelectedLinkedViewURI = string.Empty;
                         string sDocToCalcURI = string.Empty;
                         string sCalcDocURI = string.Empty;
-                        string sCalcParams = DevTreks.Data.AppHelpers.LinkedViews.GetLinkedViewStartParams(
+                        string sCalcParams = DataAppHelpers.LinkedViews.GetLinkedViewStartParams(
                             bNeedsSingleQuotes, model, string.Empty, ref sCalcDocURI, ref sDocToCalcURI,
                             ref sSelectedLinkedViewURI);
                         string sMainXmlDocPath = IOHelper.GetPackageMainDocPath(model);
@@ -3189,7 +3189,7 @@ namespace DevTreks.Helpers
                         != GeneralHelpers.FILENAME_EXTENSIONS.temp.ToString())
                     {
                         string sExtraParams = StylesheetHelper.SetRowArgs(model.URIDataManager.StartRow,
-                            model.URIDataManager.StartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                            model.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                             model.URIDataManager.ParentStartRow);
                         sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
                             model.URIDataManager.ControllerName,
@@ -3400,7 +3400,7 @@ namespace DevTreks.Helpers
                             //inits off of selection box name (i.e. gets option)
                             //and automatically opens addin after generating doc
                             string sCalcParams 
-                                = DevTreks.Data.AppHelpers.LinkedViews.AddLinkedViewForSelectionBoxes(
+                                = DataAppHelpers.LinkedViews.AddLinkedViewForSelectionBoxes(
                                     DevTreks.Services.Helpers.AddInStateHelper.NAME_FORADDINVIEW);
                             ////if it needs pagination use this with isAddInSelections = true
                             //bool bIsAddInSelections = true;
@@ -3502,7 +3502,7 @@ namespace DevTreks.Helpers
                         && (!model.ErrorMessage.Contains(AppHelper.GetErrorMessage("CONTENTSERVICE_HASNEWXMLDOC")))
                         && (!model.ErrorMessage.Contains(AppHelper.GetErrorMessage("DISPLAYHELPER_NOCALCULATIONS")))
                         && (model.URIDataManager.SubActionView
-                        != DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString()))
+                        != GeneralHelpers.SUBACTION_VIEWS.graph.ToString()))
                     {
                         result.WriteLine(helper.DivStart(string.Empty, string.Empty));
                         result.Write(helper.SpanError(model.ErrorMessage));
@@ -3533,7 +3533,7 @@ namespace DevTreks.Helpers
                     {
                         //default view is graph and must be set
                         model.URIDataManager.SubActionView
-                            = DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString();
+                            = GeneralHelpers.SUBACTION_VIEWS.graph.ToString();
                     }
                     bHasGoodSelection = helper.WriteLinkedViewSelections2(result, model);
                     result.WriteLine(helper.DivEnd());
@@ -3555,7 +3555,7 @@ namespace DevTreks.Helpers
                         }
                     }
                     if (model.URIDataManager.SubActionView
-                        != DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString()
+                        != GeneralHelpers.SUBACTION_VIEWS.graph.ToString()
                         || model.URIDataManager.UseSelectedLinkedView)
                     {
                         if (!model.URIDataManager.UseSelectedLinkedView)
@@ -3587,7 +3587,7 @@ namespace DevTreks.Helpers
                                 if ((model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.linkedviews
                                     || model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks)
                                     && model.URIDataManager.SubActionView
-                                    != DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString())
+                                    != GeneralHelpers.SUBACTION_VIEWS.graph.ToString())
                                 {
                                     ContentURI selectedViewURI =
                                         LinqHelpers.GetLinkedViewIsSelectedView(model);
@@ -3667,7 +3667,7 @@ namespace DevTreks.Helpers
                     //descriptions mean its not an error (i.e. no third doc)
                     if (!string.IsNullOrEmpty(model.ErrorMessage)
                         && model.URIDataManager.SubActionView
-                            != DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString())
+                            != GeneralHelpers.SUBACTION_VIEWS.graph.ToString())
                     {
                         if (model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.locals
                             && model.URIDataManager.ServerSubActionType == GeneralHelpers.SERVER_SUBACTION_TYPES.runaddin)
@@ -3685,7 +3685,7 @@ namespace DevTreks.Helpers
                         }
                     }
                     if (model.URIDataManager.SubActionView
-                        == DevTreks.Data.Helpers.GeneralHelpers.SUBACTION_VIEWS.graph.ToString()
+                        == GeneralHelpers.SUBACTION_VIEWS.graph.ToString()
                         && (!model.URIDataManager.UseSelectedLinkedView
                         || model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks))
                     {
@@ -3694,16 +3694,41 @@ namespace DevTreks.Helpers
                         if (model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.linkedviews
                             || model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks)
                         {
-                            ContentURI selectedViewURI =
-                                LinqHelpers.GetLinkedViewIsSelectedView(model);
+                            ContentURI selectedViewURI = null;
+                            if (model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks)
+                            {
+                                selectedViewURI =
+                                    LinqHelpers.GetLinkedViewIsSelectedView(model);
+                            }
+                            else
+                            {
+                                selectedViewURI =
+                                    LinqHelpers.GetLinkedViewIsFirst(model);
+                            }
                             if (selectedViewURI != null)
                             {
-                                sMURI = DisplayURIHelper.DisplayMediaURI(selectedViewURI);
+                                //2.0.2 : use MediaURL for displaying lv images ((because doctocalc image is the same for whole list))
+                                //by using MediaURL to set lv.Resource.IsMainImage
+                                DataAppHelpers.Resources.SetDefaultResourceURI(model, selectedViewURI);
+                                ContentURI resourceURI = LinqHelpers.GetContentURIListIsMainImage(
+                                    selectedViewURI.URIDataManager.Resource);
+                                if (resourceURI == null)
+                                    resourceURI = new ContentURI();
+                                sMURI = resourceURI.URIDataManager.FileSystemPath;
                             }
                         }
                         else
                         {
-                            sMURI = DisplayURIHelper.DisplayMediaURI(model);
+                            //2.0.2 : use MediaURL for displaying lv images (not doctocalc image)
+                            //by using MediaURL to set lv.Resource.IsMainImage
+                            ContentURI linkedViewURI =
+                                LinqHelpers.GetLinkedViewIsSelectedAddIn(model);
+                            DataAppHelpers.Resources.SetDefaultResourceURI(model, linkedViewURI);
+                            ContentURI resourceURI = LinqHelpers.GetContentURIListIsMainImage(
+                                linkedViewURI.URIDataManager.Resource);
+                            if (resourceURI == null)
+                                resourceURI = new ContentURI();
+                            sMURI = resourceURI.URIDataManager.FileSystemPath;
                         }
                         if (string.IsNullOrEmpty(sMURI))
                         {
@@ -3716,7 +3741,7 @@ namespace DevTreks.Helpers
                         }
                         else
                         {
-                            if (!sMURI.Contains(DevTreks.Data.AppHelpers.Resources.RESOURCES_TYPES.resource.ToString())
+                            if (!sMURI.Contains(DataAppHelpers.Resources.RESOURCES_TYPES.resource.ToString())
                                 || !sMURI.StartsWith("http"))
                             {
                                 result.WriteLine(helper.PStart());
@@ -3744,113 +3769,8 @@ namespace DevTreks.Helpers
                                         .WriteTo(result, HtmlEncoder.Default);
                                 }
                                 result.WriteLine("<br/>");
-                                string[] arrURLs = sMURI.Split(DevTreks.Data.Helpers.GeneralHelpers.STRING_DELIMITERS);
-                                if (arrURLs != null)
-                                {
-                                    string sMediaURI = string.Empty;
-                                    string resourceFileName = string.Empty;
-                                    string sMediaName = string.Empty;
-                                    for (int i = 0; i < arrURLs.Length; i++)
-                                    {
-                                        sMediaURI = DevTreks.Data.Helpers.GeneralHelpers.GetSubstring(
-                                            sMURI, DevTreks.Data.Helpers.GeneralHelpers.STRING_DELIMITERS, i).Trim();
-                                        if (!sMediaURI.Contains(DevTreks.Data.AppHelpers.Resources.RESOURCES_TYPES.resource.ToString())
-                                            || !sMediaURI.StartsWith("http"))
-                                        {
-                                            int err = i + 1;
-                                            result.WriteLine(helper.PStart());
-                                            result.WriteLine(helper.SpanError(
-                                                string.Concat("Error with Media URL", @err, ":")));
-                                            result.WriteLine(helper.PEnd());
-                                            result.WriteLine(helper.PStart());
-                                            result.WriteLine(helper.SpanError(
-                                                AppHelper.GetErrorMessage("DISPLAYHELPER_BADMEDIAURL")));
-                                            result.WriteLine(helper.PEnd());
-                                            model.ErrorMessage = string.Empty;
-                                        }
-                                        resourceFileName = Path.GetFileName(sMediaURI);
-                                        sMediaName = Path.GetFileNameWithoutExtension(sMediaURI);
-                                        if (DevTreks.Data.AppHelpers.Resources.IsVideo(sMediaURI))
-                                        {
-                                            string sThumbnailURI = StylesheetHelper.GetImagesUrl("devtreks-logo.jpg");
-                                            result.WriteLine(helper.DivItemStart(string.Empty, "video", "none", "http://schema.org/VideoObject"));
-                                            result.WriteLine(helper.SpanStart(string.Empty, string.Empty));
-                                            result.Write(string.Concat("Video:"));
-                                            result.WriteLine(helper.SpanItemStart("name"));
-                                            result.Write(sMediaName);
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.Write("<br/>");
-                                            result.WriteLine(helper.MetaItem(string.Empty, "thumbnailUrl", sThumbnailURI));
-                                            result.WriteLine(helper.MetaItem(string.Empty, "contentUrl", sMediaURI));
-                                            result.WriteLine(helper.VideoItemStart("controls", sThumbnailURI, "300", "300", "none"));
-                                            result.WriteLine(helper.SourceItem(sMediaURI, "video/mp4"));
-                                            result.WriteLine(helper.VideoEnd());
-                                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                                            result.WriteLine(helper.SpanItemStart("description"));
-                                            result.Write(string.Empty);
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                        }
-                                        else if (DevTreks.Data.AppHelpers.Resources.IsImage(sMediaURI))
-                                        {
-                                            result.WriteLine(helper.DivItemStart(string.Empty, string.Empty, "none", "http://schema.org/ImageObject"));
-                                            result.WriteLine(helper.SpanItemStart("name"));
-                                            result.Write(sMediaName);
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.Write("<br/>");
-                                            result.Write(helper.Image(string.Concat("linkedviewimage_",
-                                                 model.URIId.ToString()), sMediaURI,
-                                                 model.URIDataManager.Description, "100%", "100%", string.Empty));
-                                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                                            result.WriteLine(helper.SpanItemStart("description"));
-                                            result.Write(model.URIDataManager.Description);
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                        }
-                                        else if (DevTreks.Data.AppHelpers.Resources.IsStory(sMediaURI))
-                                        {
-                                            result.WriteLine(helper.DivItemStart(string.Empty, string.Empty, "none", "http://schema.org/TechArticle"));
-                                            result.WriteLine(helper.SpanItemStart("name"));
-                                            result.Write(string.Concat(AppHelper.GetResource("TECH_STORY"), ": ", sMediaName));
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.Write("<br/>");
-                                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                                            result.WriteLine(helper.SpanItemStart("description"));
-                                            result.Write(string.Empty);
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                                            result.WriteLine(helper.LinkItemStart(string.Concat("story", model.URIId), "sameAs", sMediaURI));
-                                            result.Write(resourceFileName);
-                                            result.WriteLine(helper.LinkEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                        }
-                                        else
-                                        {
-                                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                                            result.WriteLine(helper.SpanStart(string.Empty, string.Empty));
-                                            result.Write(sMediaName);
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                                            result.WriteLine(helper.SpanStart(string.Empty, string.Empty));
-                                            result.WriteLine(helper.SpanEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                                            result.WriteLine(helper.LinkItemStart(string.Concat("media", model.URIId), "sameAs", sMediaURI));
-                                            result.Write(resourceFileName);
-                                            result.WriteLine(helper.LinkEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                            result.WriteLine(helper.DivEnd());
-                                        }
-                                        result.WriteLine(helper.LinkMobile(string.Concat("resourcelink", model.URIId), sMediaURI, string.Empty, AppHelper.GetResource("DOWNLOAD_RESOURCE"),
-                                            "button", "true", "true", string.Empty,
-                                            string.Empty));
-                                    }
-                                }
+                                bool bNeedsFirstImageOnly = false;
+                                DisplayMedia(helper, result, sMURI, model, bNeedsFirstImageOnly);
                             }
                         }
                     }
@@ -3859,6 +3779,129 @@ namespace DevTreks.Helpers
                 result.WriteLine(helper.DivEnd());
                 result.WriteLine(helper.FormEnd());
                 return new HtmlString(result.ToString());
+            }
+        }
+        private static void DisplayMedia(this IHtmlHelper helper, StringWriter result, string muri,
+            ContentURI model, bool needsFirstImageOnly)
+        {
+            string[] arrURLs = muri.Split(GeneralHelpers.STRING_DELIMITERS);
+            if (arrURLs != null)
+            {
+                string sMediaURI = string.Empty;
+                string resourceFileName = string.Empty;
+                string sMediaName = string.Empty;
+                for (int i = 0; i < arrURLs.Length; i++)
+                {
+                    sMediaURI = GeneralHelpers.GetSubstring(
+                        muri, GeneralHelpers.STRING_DELIMITERS, i).Trim();
+                    if (needsFirstImageOnly)
+                    {
+                        if (!DataAppHelpers.Resources.IsImage(sMediaURI))
+                        {
+                            sMediaURI = string.Empty;
+                        }
+                    }
+                    if (!string.IsNullOrEmpty(sMediaURI))
+                    {
+                        if ((!sMediaURI.Contains(DataAppHelpers.Resources.RESOURCES_TYPES.resource.ToString())
+                            || !sMediaURI.StartsWith("http"))
+                            && needsFirstImageOnly == false)
+                        {
+                            int err = i + 1;
+                            result.WriteLine(helper.PStart());
+                            result.WriteLine(helper.SpanError(
+                                string.Concat("Error with Media URL", @err, ":")));
+                            result.WriteLine(helper.PEnd());
+                            result.WriteLine(helper.PStart());
+                            result.WriteLine(helper.SpanError(
+                                AppHelper.GetErrorMessage("DISPLAYHELPER_BADMEDIAURL")));
+                            result.WriteLine(helper.PEnd());
+                            model.ErrorMessage = string.Empty;
+                        }
+                        resourceFileName = Path.GetFileName(sMediaURI);
+                        sMediaName = Path.GetFileNameWithoutExtension(sMediaURI);
+                        if (DataAppHelpers.Resources.IsVideo(sMediaURI))
+                        {
+                            string sThumbnailURI = StylesheetHelper.GetImagesUrl("devtreks-logo.jpg");
+                            result.WriteLine(helper.DivItemStart(string.Empty, "video", "none", "http://schema.org/VideoObject"));
+                            result.WriteLine(helper.SpanStart(string.Empty, string.Empty));
+                            result.Write(string.Concat("Video:"));
+                            result.WriteLine(helper.SpanItemStart("name"));
+                            result.Write(sMediaName);
+                            result.WriteLine(helper.SpanEnd());
+                            result.WriteLine(helper.SpanEnd());
+                            result.Write("<br/>");
+                            result.WriteLine(helper.MetaItem(string.Empty, "thumbnailUrl", sThumbnailURI));
+                            result.WriteLine(helper.MetaItem(string.Empty, "contentUrl", sMediaURI));
+                            result.WriteLine(helper.VideoItemStart("controls", sThumbnailURI, "300", "300", "none"));
+                            result.WriteLine(helper.SourceItem(sMediaURI, "video/mp4"));
+                            result.WriteLine(helper.VideoEnd());
+                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
+                            result.WriteLine(helper.SpanItemStart("description"));
+                            result.Write(string.Empty);
+                            result.WriteLine(helper.SpanEnd());
+                            result.WriteLine(helper.DivEnd());
+                            result.WriteLine(helper.DivEnd());
+                        }
+                        else if (DataAppHelpers.Resources.IsImage(sMediaURI))
+                        {
+                            result.WriteLine(helper.DivItemStart(string.Empty, string.Empty, "none", "http://schema.org/ImageObject"));
+                            result.WriteLine(helper.SpanItemStart("name"));
+                            result.Write(sMediaName);
+                            result.WriteLine(helper.SpanEnd());
+                            result.Write("<br/>");
+                            result.Write(helper.Image(string.Concat("linkedviewimage_",
+                                 model.URIId.ToString()), sMediaURI,
+                                 model.URIDataManager.Description, "100%", "100%", string.Empty));
+                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
+                            result.WriteLine(helper.SpanItemStart("description"));
+                            result.Write(model.URIDataManager.Description);
+                            result.WriteLine(helper.SpanEnd());
+                            result.WriteLine(helper.DivEnd());
+                            result.WriteLine(helper.DivEnd());
+                        }
+                        else if (DataAppHelpers.Resources.IsStory(sMediaURI))
+                        {
+                            result.WriteLine(helper.DivItemStart(string.Empty, string.Empty, "none", "http://schema.org/TechArticle"));
+                            result.WriteLine(helper.SpanItemStart("name"));
+                            result.Write(string.Concat(AppHelper.GetResource("TECH_STORY"), ": ", sMediaName));
+                            result.WriteLine(helper.SpanEnd());
+                            result.Write("<br/>");
+                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
+                            result.WriteLine(helper.SpanItemStart("description"));
+                            result.Write(string.Empty);
+                            result.WriteLine(helper.SpanEnd());
+                            result.WriteLine(helper.DivEnd());
+                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
+                            result.WriteLine(helper.LinkItemStart(string.Concat("story", model.URIId), "sameAs", sMediaURI));
+                            result.Write(resourceFileName);
+                            result.WriteLine(helper.LinkEnd());
+                            result.WriteLine(helper.DivEnd());
+                            result.WriteLine(helper.DivEnd());
+                        }
+                        else
+                        {
+                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
+                            result.WriteLine(helper.SpanStart(string.Empty, string.Empty));
+                            result.Write(sMediaName);
+                            result.WriteLine(helper.SpanEnd());
+                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
+                            result.WriteLine(helper.SpanStart(string.Empty, string.Empty));
+                            result.WriteLine(helper.SpanEnd());
+                            result.WriteLine(helper.DivEnd());
+                            result.WriteLine(helper.DivStart(string.Empty, string.Empty));
+                            result.WriteLine(helper.LinkItemStart(string.Concat("media", model.URIId), "sameAs", sMediaURI));
+                            result.Write(resourceFileName);
+                            result.WriteLine(helper.LinkEnd());
+                            result.WriteLine(helper.DivEnd());
+                            result.WriteLine(helper.DivEnd());
+                        }
+                        result.WriteLine(helper.LinkMobile(string.Concat("resourcelink", model.URIId), sMediaURI,
+                            string.Empty, AppHelper.GetResource("DOWNLOAD_RESOURCE"),
+                            "button", "true", "true", string.Empty,
+                            string.Empty));
+                    }
+                }
             }
         }
         public static HtmlString DisplayPreviews(this IHtmlHelper helper,
@@ -3927,7 +3970,7 @@ namespace DevTreks.Helpers
                     child.URIDataManager.Resource);
                 //write the image
                 result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                if (DevTreks.Data.AppHelpers.Resources.IsResourceImage(resourceURI))
+                if (DataAppHelpers.Resources.IsResourceImage(resourceURI))
                 {
                     result.Write(helper.Image(string.Concat("uriimage_", child.URIId.ToString()), resourceURI.URIDataManager.FileSystemPath,
                         resourceURI.URIDataManager.Description, "50%", "50%", string.Empty));
@@ -4010,18 +4053,27 @@ namespace DevTreks.Helpers
         {
             using (StringWriter result = new StringWriter())
             {
+                //2.0.2 : use MediaURL for displaying lv images (because doctocalc image is the same for whole list)
+                //by using MediaURL to set lv.Resource.IsMainImage
+                DataAppHelpers.Resources.SetDefaultResourceURI(model, linkedview);
                 ContentURI resourceURI = LinqHelpers.GetContentURIListIsMainImage(
                     linkedview.URIDataManager.Resource);
+                string sMURI = string.Empty;
+                if (resourceURI == null)
+                    resourceURI = new ContentURI();
+                sMURI = resourceURI.URIDataManager.FileSystemPath;
                 if (model.URIDataManager.AppType
-                   != DevTreks.Data.Helpers.GeneralHelpers.APPLICATION_TYPES.resources)
+                   != GeneralHelpers.APPLICATION_TYPES.resources)
                 {
                     //write the image
                     result.WriteLine(helper.DivStart(string.Empty, string.Empty));
-                    if (DevTreks.Data.AppHelpers.Resources.IsResourceImage(resourceURI))
+                    if (DataAppHelpers.Resources.IsResourceImage(resourceURI))
                     {
-                        result.Write(helper.Image(string.Concat("linkedviewimage_",
-                             linkedview.URIId.ToString()), resourceURI.URIDataManager.FileSystemPath,
-                             resourceURI.URIDataManager.Description, "50%", "50%", string.Empty));
+                        bool bNeedsFirstImageOnly = true;
+                        DisplayMedia(helper, result, sMURI, model, bNeedsFirstImageOnly);
+                        //result.Write(helper.Image(string.Concat("linkedviewimage_",
+                        //     linkedview.URIId.ToString()), resourceURI.URIDataManager.FileSystemPath,
+                        //     resourceURI.URIDataManager.Description, "50%", "50%", string.Empty));
                     }
                     else
                     {
@@ -4099,12 +4151,12 @@ namespace DevTreks.Helpers
                     bIsEditList, bIsAddInSelections);
                 string sSelectedViewURIPattern = (model.URIFileExtensionType
                     == GeneralHelpers.FILENAME_EXTENSIONS.temp.ToString())
-                    ? DevTreks.Data.AppHelpers.LinkedViews.GetLinkedViewURIPattern(model) 
+                    ? DataAppHelpers.LinkedViews.GetLinkedViewURIPattern(model) 
                     : linkedview.URIPattern;
                 if (model.URIDataManager.AppType
-                    == DevTreks.Data.Helpers.GeneralHelpers.APPLICATION_TYPES.linkedviews
+                    == GeneralHelpers.APPLICATION_TYPES.linkedviews
                     || (model.URIDataManager.AppType
-                    == DevTreks.Data.Helpers.GeneralHelpers.APPLICATION_TYPES.resources
+                    == GeneralHelpers.APPLICATION_TYPES.resources
                     && model.URINodeName != DataAppHelpers.Resources.RESOURCES_TYPES.resource.ToString()))
                 {
                     //parenturipattern accounts for recursive linkedviewpack parents (uri.uripattern could be an earlier ancestor)
@@ -4114,10 +4166,10 @@ namespace DevTreks.Helpers
                         ? linkedview.URIDataManager.ParentURIPattern : model.URIPattern;
                 }
                 else if (model.URIDataManager.AppType
-                    == DevTreks.Data.Helpers.GeneralHelpers.APPLICATION_TYPES.devpacks)
+                    == GeneralHelpers.APPLICATION_TYPES.devpacks)
                 {
                     if (linkedview.URINodeName
-                        == DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
+                        == DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
                     {
                         //stories associated with devpack 
                         //(uri.URIPattern is same as parentURIPattern in the else clause)
@@ -4136,26 +4188,26 @@ namespace DevTreks.Helpers
                     sURIPatternForClickArgument = model.URIPattern;
                 }
                 if (linkedview.URINodeName
-                    == DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
+                    == DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
                 {
                     if (AddInHelper.IsAddIn(linkedview))
                     {
                         //uri is parent doctocalc; linkedview is now calcdoc
-                        sCalcParams = DevTreks.Data.AppHelpers.LinkedViews.GetLinkedViewStartParams(
+                        sCalcParams = DataAppHelpers.LinkedViews.GetLinkedViewStartParams(
                             bNeedsSingleQuote, string.Empty, sURIPatternForClickArgument,
                             linkedview.URIPattern, string.Empty, string.Empty, string.Empty);
                     }
                     else
                     {
                         //uri is parent doctocalc; linkedview is now selectedlinkedview
-                        sCalcParams = DevTreks.Data.AppHelpers.LinkedViews.GetLinkedViewStartParams(
+                        sCalcParams = DataAppHelpers.LinkedViews.GetLinkedViewStartParams(
                             bNeedsSingleQuote, string.Empty, sURIPatternForClickArgument,
                             string.Empty, string.Empty, sSelectedViewURIPattern, string.Empty);
                     }
                 }
                 else
                 {
-                    sCalcParams = DevTreks.Data.AppHelpers.LinkedViews.GetLinkedViewStartParams(bNeedsSingleQuote,
+                    sCalcParams = DataAppHelpers.LinkedViews.GetLinkedViewStartParams(bNeedsSingleQuote,
                         sSelectionBoxName, sURIPatternForClickArgument,
                         string.Empty, string.Empty, sSelectedViewURIPattern, string.Empty);
                 }
@@ -4195,7 +4247,7 @@ namespace DevTreks.Helpers
                 }
                 bool bHasFieldset = false;
                 if (model.URIDataManager.AppType
-                    == DevTreks.Data.Helpers.GeneralHelpers.APPLICATION_TYPES.resources)
+                    == GeneralHelpers.APPLICATION_TYPES.resources)
                 {
                     //v160 can download from this page
                     if (!string.IsNullOrEmpty(linkedview.URIDataManager.FileSystemPath))
@@ -4328,10 +4380,10 @@ namespace DevTreks.Helpers
                     dataIconPos: "right"));
                 string sBaseLinkedViewURIPattern = linkedview.URIPattern;
                 if (model.URIDataManager.AppType
-                    == DevTreks.Data.Helpers.GeneralHelpers.APPLICATION_TYPES.devpacks)
+                    == GeneralHelpers.APPLICATION_TYPES.devpacks)
                 {
                     if (linkedview.URINodeName
-                        == DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
+                        == DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
                     {
                         //stories associated with devpack 
                         if (linkedview.URIDataManager.BaseId != 0)
@@ -4472,7 +4524,7 @@ namespace DevTreks.Helpers
                                     {
                                         //return to the parent start row
                                         sExtraParams = StylesheetHelper.SetRowArgs(0,
-                                            model.URIDataManager.ParentStartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                                            model.URIDataManager.ParentStartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                                             0);
                                         string sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
                                             model.URIDataManager.ControllerName,
@@ -4573,7 +4625,7 @@ namespace DevTreks.Helpers
                     if (isFolder)
                     {
                         sExtraParams = StylesheetHelper.SetRowArgs(0, 0,
-                            "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                            "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                             model.URIDataManager.StartRow);
                     }
                     else
@@ -4581,7 +4633,7 @@ namespace DevTreks.Helpers
                         //return to the start row
                         sExtraParams = StylesheetHelper.SetRowArgs(0,
                             model.URIDataManager.StartRow, "-1",
-                            DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                            DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                             model.URIDataManager.ParentStartRow);
                     }
                     string sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
@@ -4710,7 +4762,7 @@ namespace DevTreks.Helpers
                         if (selectedLinkedViewURI != null)
                         {
                             if (selectedLinkedViewURI.URINodeName
-                                != DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
+                                != DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
                             {
                                 //they can edit linked views for selectedLinkedView
                                 helper.WriteSelectNewLinkedView(selectedLinkedViewURI)
@@ -5019,7 +5071,7 @@ namespace DevTreks.Helpers
             string sCalcDocURIPattern = string.Empty;
             string sCalcParams = string.Empty;
             //inits off of selection box name (i.e. gets option)
-            sCalcParams = DevTreks.Data.AppHelpers.LinkedViews
+            sCalcParams = DataAppHelpers.LinkedViews
                 .AddLinkedViewForSelectionBoxes(sSelectionBoxName);
             StylesheetHelper.MakeViewsCalcParams(docToCalcURI, isAddInSelections, ref sCalcParams);
             //store the calc params (swith views will use them)
@@ -5529,7 +5581,7 @@ namespace DevTreks.Helpers
                     //link to select new linkedview
                     helper.WriteSelectNewLinkedViewLink(
                         model, nodeToCalcURI, 
-                        DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
+                        DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString())
                         .WriteTo(result, HtmlEncoder.Default);
                     //link to reload model edit panel
                     sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
@@ -5558,7 +5610,7 @@ namespace DevTreks.Helpers
                             = GeneralHelpers.SUBACTION_VIEWS.mobile.ToString();
                   //move this here
                         StylesheetHelper.WriteOpenInLinkedViewPanelLink(
-                            result, nodeToCalcURI, model, DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString());
+                            result, nodeToCalcURI, model, DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString());
                     }
                     result.WriteLine(helper.DivEnd());
                     //which list will be loaded?
@@ -5598,7 +5650,7 @@ namespace DevTreks.Helpers
                             = GeneralHelpers.SUBACTION_VIEWS.mobile.ToString();
                     //move here
                         StylesheetHelper.WriteOpenInLinkedViewPanelLink(
-                            result, nodeToCalcURI, model, DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString());
+                            result, nodeToCalcURI, model, DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString());
                     }
                 }
                 if (model.URIDataManager.LinkedView != null)
@@ -5631,7 +5683,7 @@ namespace DevTreks.Helpers
                                             sFormIdId, string.Concat("Linked View Id : ", linkedview.URIId.ToString())));
                                         //other form els follow normal edit patterns
                                         sFormElementName = EditHelper.MakeStandardEditName(
-                                            linkedview.URIPattern, DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWNAME, GeneralRules.STRING,
+                                            linkedview.URIPattern, DataAppHelpers.LinkedViews.LINKEDVIEWNAME, GeneralRules.STRING,
                                             GeneralRules.NAME_SIZE);
                                         result.WriteLine(helper.InputTextUpdate(GeneralHelpers.VIEW_EDIT_TYPES.full,
                                             sFormElementName, linkedview.URIName, sFormIdId, GeneralRules.STRING, "150",
@@ -5641,7 +5693,7 @@ namespace DevTreks.Helpers
                                         sParentNodeLinkedViewPattern = ContentURI.ChangeURIPatternPart(linkedview.URIPattern,
                                             ContentURI.URIPATTERNPART.node, model.URINodeName);
                                         sFormElementName = EditHelper.MakeStandardEditName(
-                                            model.URIPattern, DevTreks.Data.AppHelpers.LinkedViews.ISDEFAULTLINKEDVIEWID, "boolean", "1");
+                                            model.URIPattern, DataAppHelpers.LinkedViews.ISDEFAULTLINKEDVIEWID, "boolean", "1");
                                         //the linkedview.modelid radio option value is used to change isdefault
                                         sFormIdId = string.Concat("DefaultLV", linkedview.URIId.ToString());
                                         result.WriteLine(helper.InputCheckBox(GeneralHelpers.VIEW_EDIT_TYPES.full,
@@ -5697,7 +5749,7 @@ namespace DevTreks.Helpers
                                             model.URIDataManager.SubActionView
                                                 = GeneralHelpers.SUBACTION_VIEWS.mobile.ToString();
                                             StylesheetHelper.WriteOpenInLinkedViewPanelLink(
-                                                result, model, linkedview, DevTreks.Data.AppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString());
+                                                result, model, linkedview, DataAppHelpers.LinkedViews.LINKEDVIEWS_TYPES.linkedview.ToString());
                                         }
                                         result.WriteLine(helper.FieldsetEnd());
                                     }
@@ -5841,7 +5893,7 @@ namespace DevTreks.Helpers
                                             result.WriteLine(helper.DivEnd());
                                         }
                                         sId = EditHelper.MakeStandardEditName(
-                                            sCategoryURIPattern, DevTreks.Data.AppHelpers.General.LABEL3, GeneralRules.STRING,
+                                            sCategoryURIPattern, DataAppHelpers.General.LABEL3, GeneralRules.STRING,
                                             GeneralRules.LABEL_SIZE);
                                         result.WriteLine(helper.LabelRegular(
                                             sId, string.Concat("Label for Id ", category.URIId)));
@@ -5950,7 +6002,7 @@ namespace DevTreks.Helpers
                 {
                     //edits use pagination and need rowargs
                     string sPageParams = StylesheetHelper.SetRowArgs(model.URIDataManager.StartRow,
-                        model.URIDataManager.StartRow, "-1", DevTreks.Data.AppHelpers.Networks.NETWORK_FILTER_TYPES.none,
+                        model.URIDataManager.StartRow, "-1", DataAppHelpers.Networks.NETWORK_FILTER_TYPES.none,
                         model.URIDataManager.ParentStartRow);
                     string sCPForSubmit = GeneralHelpers.MakeContentURIPattern(
                         model.URIDataManager.ControllerName,
@@ -5981,7 +6033,7 @@ namespace DevTreks.Helpers
                 {
                     //linkedviews use calcparams to package calcs and analyses
                     bool bUseDefaultAddIn = true;
-                    string sCalcParams = DevTreks.Data.AppHelpers.LinkedViews.AddLinkedViewDefaultParam(string.Empty,
+                    string sCalcParams = DataAppHelpers.LinkedViews.AddLinkedViewDefaultParam(string.Empty,
                         bUseDefaultAddIn);
                     string sContentURIPattern = GeneralHelpers.MakeContentURIPattern(
                            model.URIDataManager.ControllerName,

@@ -429,7 +429,7 @@ namespace DevTreks.Data.Helpers
                 SetMemberPath(defaultLinkedView);
             }
         }
-        private static void SetLinkedViewPaths(ContentURI uri,
+        public static void SetLinkedViewPaths(ContentURI uri,
             ContentURI selectedLinkedView)
         {
             string sPathDelimiter

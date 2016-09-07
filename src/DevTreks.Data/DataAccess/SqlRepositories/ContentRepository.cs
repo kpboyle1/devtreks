@@ -18,7 +18,7 @@ namespace DevTreks.Data.SqlRepositories
     /// <summary>
     ///Purpose:		Principal repository for accessing DevTreks content
     ///Author:		www.devtreks.org
-    ///Date:		2016, August
+    ///Date:		2016, September
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public class ContentRepository : IContentRepositoryEF, IDisposable

@@ -1200,6 +1200,15 @@ namespace DevTreks.Data.Helpers
             }
             return bIsAddIn;
         }
+        public static string GetAddInURIPattern(ContentURI calcDocURI)
+        {
+            //all calcors and anors used standard 'addin' fileextension and "AddIn" name
+            string sAddInURIPattern = GeneralHelpers.MakeURIPattern(
+                 GeneralHelpers.ADDIN, calcDocURI.URIId.ToString(),
+                 calcDocURI.URINetworkPartName, calcDocURI.URINodeName,
+                 GeneralHelpers.FILENAME_EXTENSIONS.addin.ToString());
+            return sAddInURIPattern;
+        }
         public static bool CanRunBaseDoc(ContentURI docToCalcURI, string hostorAddinName)
         {
             bool bCanRun = false;

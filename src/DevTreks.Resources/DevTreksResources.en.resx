@@ -1327,7 +1327,7 @@
     <value>Mobile</value>
   </data>
   <data name="DOWNLOAD_RESOURCE" xml:space="preserve">
-    <value>Download Resource</value>
+    <value>Download</value>
   </data>
   <data name="OVERWRITE_CHILDS" xml:space="preserve">
     <value>Overwrite Childs?</value>
