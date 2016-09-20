@@ -749,7 +749,7 @@ namespace DevTreks.Data.SqlRepositories
                     {
                         //delete the file and blob resources
                         Helpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                            = Helpers.FileStorageIO.GetPlatformType(uri);
+                            = uri.URIDataManager.PlatformType;
                         AppHelpers.Resources.DeleteResource(uri, ePlatform, argumentsEdits);
                     }
                     break;
@@ -1432,7 +1432,7 @@ namespace DevTreks.Data.SqlRepositories
             }
             AppHelpers.Resources oResourceHelper = new AppHelpers.Resources();
             Helpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                = Helpers.FileStorageIO.GetPlatformType(uri);
+                = uri.URIDataManager.PlatformType;
             if (getResourceByType
                 == AppHelpers.Resources.RESOURCES_GETBY_TYPES.resourcepackid)
             {
@@ -1480,7 +1480,7 @@ namespace DevTreks.Data.SqlRepositories
             }
             AppHelpers.Resources oResourceHelper = new AppHelpers.Resources();
             Helpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                = Helpers.FileStorageIO.GetPlatformType(uri);
+                = uri.URIDataManager.PlatformType;
             if (getResourceByType
                 == AppHelpers.Resources.RESOURCES_GETBY_TYPES.resourcepackid)
             {

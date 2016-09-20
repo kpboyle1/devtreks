@@ -11,7 +11,7 @@ namespace DevTreks.Extensions.SB1Statistics
     ///<summary>
     ///Purpose:		Run algorithms
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2016, September
     ///NOTES        1. 
     /// </summary> 
     public class SB1Algos : SB1Base
@@ -94,9 +94,9 @@ namespace DevTreks.Extensions.SB1Statistics
             string sPlatForm = CalculatorHelpers.GetPlatform(this.CalcParameters.ExtensionDocToCalcURI, dataURL);
             if (sPlatForm == CalculatorHelpers.PLATFORM_TYPES.azure.ToString())
             {
-                if (this.HasMathType(label, MATH_TYPES.algorithm2, MATH_SUBTYPES.subalgorithm1)
-                    || this.HasMathType(label, MATH_TYPES.algorithm3, MATH_SUBTYPES.subalgorithm1)
-                    || this.HasMathType(label, MATH_TYPES.algorithm4, MATH_SUBTYPES.subalgorithm1))
+                if (this.HasMathType(label, MATH_TYPES.algorithm2)
+                    || this.HasMathType(label, MATH_TYPES.algorithm3)
+                    || this.HasMathType(label, MATH_TYPES.algorithm4))
                 {
                     //if its a good calc returns the string
                     algoindicator = await SetScriptCloudStats(label, colNames, dataURL, jDataURL);
@@ -104,8 +104,8 @@ namespace DevTreks.Extensions.SB1Statistics
             }
             else 
             {
-                if (this.HasMathType(label, MATH_TYPES.algorithm2, MATH_SUBTYPES.subalgorithm1)
-                    || this.HasMathType(label, MATH_TYPES.algorithm3, MATH_SUBTYPES.subalgorithm1))
+                if (this.HasMathType(label, MATH_TYPES.algorithm2)
+                    || this.HasMathType(label, MATH_TYPES.algorithm3))
                 {
                     //if its a good calc returns the string
                     algoindicator = await SetScriptWebStats(label, colNames, dataURL, jDataURL);
@@ -3633,7 +3633,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression1, this.SB1MathType1);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression1, this.SB1MathType1, this.SB1MathSubType1);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount1 = script1.QTPredicted;
                 this.SB1TLAmount1 = script1.QTL;
@@ -3651,7 +3651,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression2, this.SB1MathType2);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression2, this.SB1MathType2, this.SB1MathSubType2);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount2 = script1.QTPredicted;
                 this.SB1TLAmount2 = script1.QTL;
@@ -3668,7 +3668,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression3, this.SB1MathType3);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression3, this.SB1MathType3, this.SB1MathSubType3);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount3 = script1.QTPredicted;
                 this.SB1TLAmount3 = script1.QTL;
@@ -3685,7 +3685,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression4, this.SB1MathType4);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression4, this.SB1MathType4, this.SB1MathSubType4);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount4 = script1.QTPredicted;
                 this.SB1TLAmount4 = script1.QTL;
@@ -3702,7 +3702,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression5, this.SB1MathType5);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression5, this.SB1MathType5, this.SB1MathSubType5);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount5 = script1.QTPredicted;
                 this.SB1TLAmount5 = script1.QTL;
@@ -3719,7 +3719,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression6, this.SB1MathType6);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression6, this.SB1MathType6, this.SB1MathSubType6);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount6 = script1.QTPredicted;
                 this.SB1TLAmount6 = script1.QTL;
@@ -3736,7 +3736,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression7, this.SB1MathType7);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression7, this.SB1MathType7, this.SB1MathSubType7);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount7 = script1.QTPredicted;
                 this.SB1TLAmount7 = script1.QTL;
@@ -3753,7 +3753,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression8, this.SB1MathType8);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression8, this.SB1MathType8, this.SB1MathSubType8);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount8 = script1.QTPredicted;
                 this.SB1TLAmount8 = script1.QTL;
@@ -3770,7 +3770,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression9, this.SB1MathType9);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression9, this.SB1MathType9, this.SB1MathSubType9);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount9 = script1.QTPredicted;
                 this.SB1TLAmount9 = script1.QTL;
@@ -3787,7 +3787,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression10, this.SB1MathType10);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression10, this.SB1MathType10, this.SB1MathSubType10);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount10 = script1.QTPredicted;
                 this.SB1TLAmount10 = script1.QTL;
@@ -3804,7 +3804,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression11, this.SB1MathType11);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression11, this.SB1MathType11, this.SB1MathSubType11);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount11 = script1.QTPredicted;
                 this.SB1TLAmount11 = script1.QTL;
@@ -3821,7 +3821,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression12, this.SB1MathType12);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression12, this.SB1MathType12, this.SB1MathSubType12);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount12 = script1.QTPredicted;
                 this.SB1TLAmount12 = script1.QTL;
@@ -3838,7 +3838,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression13, this.SB1MathType13);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression13, this.SB1MathType13, this.SB1MathSubType13);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount13 = script1.QTPredicted;
                 this.SB1TLAmount13 = script1.QTL;
@@ -3855,7 +3855,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression14, this.SB1MathType14);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression14, this.SB1MathType14, this.SB1MathSubType14);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount14 = script1.QTPredicted;
                 this.SB1TLAmount14 = script1.QTL;
@@ -3872,7 +3872,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression15, this.SB1MathType15);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression15, this.SB1MathType15, this.SB1MathSubType15);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount15 = script1.QTPredicted;
                 this.SB1TLAmount15 = script1.QTL;
@@ -3889,7 +3889,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression16, this.SB1MathType16);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression16, this.SB1MathType16, this.SB1MathSubType16);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount16 = script1.QTPredicted;
                 this.SB1TLAmount16 = script1.QTL;
@@ -3906,7 +3906,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression17, this.SB1MathType17);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression17, this.SB1MathType17, this.SB1MathSubType17);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount17 = script1.QTPredicted;
                 this.SB1TLAmount17 = script1.QTL;
@@ -3923,7 +3923,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression18, this.SB1MathType18);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression18, this.SB1MathType18, this.SB1MathSubType18);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount18 = script1.QTPredicted;
                 this.SB1TLAmount18 = script1.QTL;
@@ -3940,7 +3940,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression19, this.SB1MathType19);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression19, this.SB1MathType19, this.SB1MathSubType19);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount19 = script1.QTPredicted;
                 this.SB1TLAmount19 = script1.QTL;
@@ -3957,7 +3957,7 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.SB1MathExpression20, this.SB1MathType20);
+                    = InitScript1Algo(label, colNames, this.SB1MathExpression20, this.SB1MathType20, this.SB1MathSubType20);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount20 = script1.QTPredicted;
                 this.SB1TLAmount20 = script1.QTL;
@@ -4106,7 +4106,7 @@ namespace DevTreks.Extensions.SB1Statistics
             return script2;
         }
         private DevTreks.Extensions.Algorithms.Script1 InitScript1Algo(string label, string[] colNames,
-           string mathExpression, string algorithm)
+           string mathExpression, string algorithm, string subalgorithm)
         {
             //mathterms define which qamount to send to algorith for predicting a given set of qxs
             List<string> mathTerms = new List<string>();
@@ -4115,24 +4115,11 @@ namespace DevTreks.Extensions.SB1Statistics
             GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
             List<double> qs = GetQsForMathTerms(label, mathTerms);
             DevTreks.Extensions.Algorithms.Script1 script1
-                    = new Algorithms.Script1(mathTerms.ToArray(), colNames, depColNames.ToArray(),
-                        qs.ToArray(), algorithm, this.CalcParameters);
+                = new Algorithms.Script1(mathTerms.ToArray(), colNames, depColNames.ToArray(),
+                        qs.ToArray(), algorithm, subalgorithm, this.CalcParameters);
             return script1;
         }
-        private DevTreks.Extensions.Algorithms.RProject2 InitR2Algo(string label, string[] colNames,
-            string mathExpression)
-        {
-            //mathterms define which qamount to send to algorith for predicting a given set of qxs
-            List<string> mathTerms = new List<string>();
-            //dependent var colNames found in MathExpression
-            List<string> depColNames = new List<string>();
-            GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-            List<double> qs = GetQsForMathTerms(label, mathTerms);
-            DevTreks.Extensions.Algorithms.RProject2 r2
-                    = new Algorithms.RProject2(mathTerms.ToArray(), colNames, depColNames.ToArray(), 
-                        qs.ToArray(), this.SB1Iterations, this.CalcParameters);
-            return r2;
-        }
+        //keep for reference
         //private DevTreks.Extensions.Algorithms.BayesMNRegress1 InitBayesRegress1Algo(string label, string[] colNames,
         //   string mathExpression)
         //{

@@ -245,7 +245,7 @@ namespace DevTreks.Data.AppHelpers
             if (dataReader != null)
             {
                 //discrepency in field order between cloud and local db
-                Helpers.FileStorageIO.PLATFORM_TYPES ePlatform = Helpers.FileStorageIO.GetPlatformType(uri);
+                Helpers.FileStorageIO.PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 using (dataReader)
                 {
                     int i = 0;
@@ -403,7 +403,7 @@ namespace DevTreks.Data.AppHelpers
             if (dataReader != null)
             {
                 //discrepency in field order between cloud and local db
-                Helpers.FileStorageIO.PLATFORM_TYPES ePlatform = Helpers.FileStorageIO.GetPlatformType(uri);
+                Helpers.FileStorageIO.PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 using (dataReader)
                 {
                     while (await dataReader.ReadAsync())
@@ -531,7 +531,7 @@ namespace DevTreks.Data.AppHelpers
             if (dataReader != null)
             {
                 //discrepency in field order between cloud and local db
-                Helpers.FileStorageIO.PLATFORM_TYPES ePlatform = Helpers.FileStorageIO.GetPlatformType(uri);
+                Helpers.FileStorageIO.PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 using (dataReader)
                 {
                     while (await dataReader.ReadAsync())

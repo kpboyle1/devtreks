@@ -3,7 +3,7 @@
   "description": "The Food Nutrition Class Library runs food nutrition stock calculators and analyzers.",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
-    "net461" : {
+    "net461": {
       "frameworkAssemblies": {
         "System.ComponentModel.Composition": "4.0.0.0",
         "System.Xml": "4.0.0.0",
@@ -13,6 +13,12 @@
   },
   "dependencies": {
     "CalculatorsContracts": "1.0.0"
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\FoodNutrition.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\FoodNutrition.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
 
 }

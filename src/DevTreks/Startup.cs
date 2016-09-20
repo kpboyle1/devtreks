@@ -16,7 +16,7 @@ namespace DevTreks
     ///Purpose:		Configure the web app and start MVC web page
     ///             delivery.
     ///Author:		www.devtreks.org
-    ///Date:		2016, July
+    ///Date:		2016, September
     ///References:	www.devtreks.org
     /// </summary>
     public class Startup
@@ -51,7 +51,7 @@ namespace DevTreks
             //set the webroot full file path: C:\\DevTreks\\src\\DevTreks\\wwwroot
             DefaultRootFullFilePath = string.Concat(env.WebRootPath, "\\");
             //appPath is one path up from webroot: C:\\DevTreks\\src\\DevTreks
-            //string sCheck = env.ContentRootPath;
+            string sCheck = env.ContentRootPath;
             //azure web app: Use the path D:\home\site\wwwroot to refer to your app's root directory.
         }
 
@@ -115,15 +115,15 @@ namespace DevTreks
 
                 ContentURI.URIDataManager.DefaultRootFullFilePath
                     = DefaultRootFullFilePath;
-                //path = Configuration["DebugPaths:DefaultRootFullFilePath"];
-                //ContentURI.URIDataManager.DefaultRootFullFilePath = path;
                 path = Configuration["DebugPaths:DefaultRootWebStoragePath"];
                 ContentURI.URIDataManager.DefaultRootWebStoragePath = path;
                 path = Configuration["DebugPaths:DefaultWebDomain"];
                 ContentURI.URIDataManager.DefaultWebDomain = path;
-                //path = Configuration["DebugPaths:ExtensionsPath"];
-                ContentURI.URIDataManager.ExtensionsPath 
+                ContentURI.URIDataManager.ExtensionsPath
                     = string.Concat(ContentURI.URIDataManager.DefaultRootFullFilePath, "Extensions\\");
+                //2.0.2 added appsetting to eliminate calls to GetPlatformType()
+                ContentURI.URIDataManager.PlatformType 
+                    = Data.Helpers.FileStorageIO.GetPlatformType(ContentURI.URIDataManager.DefaultRootWebStoragePath);
                 path = Configuration["Site:FileSizeValidation"];
                 ContentURI.URIDataManager.FileSizeValidation = path;
                 path = Configuration["Site:FileSizeDBStorageValidation"];
@@ -198,8 +198,6 @@ namespace DevTreks
 
                 ContentURI.URIDataManager.DefaultRootFullFilePath
                     = DefaultRootFullFilePath;
-                //path = Configuration["ReleasePaths:DefaultRootFullFilePath"];
-                //ContentURI.URIDataManager.DefaultRootFullFilePath = path;
                 //getplatformtype expects this to be string empty to debug azure on localhost
                 path = Configuration["ReleasePaths:DefaultRootWebStoragePath"];
                 ContentURI.URIDataManager.DefaultRootWebStoragePath = path;
@@ -207,9 +205,9 @@ namespace DevTreks
                 ContentURI.URIDataManager.DefaultWebDomain = path;
                 ContentURI.URIDataManager.ExtensionsPath
                     = string.Concat(ContentURI.URIDataManager.DefaultRootFullFilePath, "Extensions\\");
-                //path = Configuration["ReleasePaths:ExtensionsPath"];
-                //ContentURI.URIDataManager.ExtensionsPath = path;
-
+                //2.0.2 added appsetting to eliminate calls to GetPlatformType()
+                ContentURI.URIDataManager.PlatformType
+                    = Data.Helpers.FileStorageIO.GetPlatformType(ContentURI.URIDataManager.DefaultRootWebStoragePath);
                 path = Configuration["Site:FileSizeValidation"];
                 ContentURI.URIDataManager.FileSizeValidation = path;
                 path = Configuration["Site:FileSizeDBStorageValidation"];

@@ -12,7 +12,7 @@ namespace DevTreks.Data.Helpers
     /// <summary>
     ///Purpose:		General utilities storing files on cloud and web server file storage systems
     ///Author:		www.devtreks.org
-    ///Date:		2016, July
+    ///Date:		2016, September
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public class FileStorageIO
@@ -22,9 +22,10 @@ namespace DevTreks.Data.Helpers
         /// </summary>
         public enum PLATFORM_TYPES
         {
-            webserver = 0,
-            azure = 1,
-            amazon = 2
+            none = 0,
+            webserver = 1,
+            azure = 2,
+            amazon = 3
         }
         public static PLATFORM_TYPES GetPlatformType(ContentURI uri)
         {
@@ -37,13 +38,18 @@ namespace DevTreks.Data.Helpers
         {
             PLATFORM_TYPES ePlatform = PLATFORM_TYPES.azure;
             //PLATFORM_TYPES refers to file storage platform only
-            //2.0.0 : only 2 conditions for blob storage
+            //2.0.0 : only 3 conditions for blob storage
             if (url.Contains(".blob."))
             {
                 ePlatform = PLATFORM_TYPES.azure;
             }
             else if (url.Contains("127.0.0.1"))
             {
+                ePlatform = PLATFORM_TYPES.azure;
+            }
+            else if (url.Contains("azureml"))
+            {
+                //2.0.2 condition added for aml
                 ePlatform = PLATFORM_TYPES.azure;
             }
             else
@@ -95,7 +101,7 @@ namespace DevTreks.Data.Helpers
         public static string GetDelimiterForFileStorage(ContentURI uri)
         {
             string sPathDelimiter = GeneralHelpers.FILE_PATH_DELIMITER;
-            PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+            PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
             if (ePlatform == PLATFORM_TYPES.azure)
             {
                 sPathDelimiter = GeneralHelpers.WEBFILE_PATH_DELIMITER;
@@ -118,7 +124,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (fullURIPath.StartsWith("http")
                     && ePlatform == PLATFORM_TYPES.webserver)
                 {
@@ -230,7 +236,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (fullURIPath.StartsWith("http")
                     && ePlatform == PLATFORM_TYPES.azure)
                 {
@@ -258,7 +264,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (fullURIPath.StartsWith("http")
                     && ePlatform == PLATFORM_TYPES.azure)
                 {
@@ -317,7 +323,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (fullURIPath.StartsWith("http")
                     && ePlatform == PLATFORM_TYPES.azure)
                 {
@@ -337,7 +343,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (directoryPath.StartsWith("http")
                     && ePlatform == PLATFORM_TYPES.azure)
                 {
@@ -351,7 +357,7 @@ namespace DevTreks.Data.Helpers
             string fromDirectory, string toDirectory, 
             bool copySubDirs, bool needsNewSubDirectories)
         {
-            PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+            PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
             if (Path.IsPathRooted(fromDirectory))
             {
                 if (Path.IsPathRooted(toDirectory))
@@ -387,7 +393,7 @@ namespace DevTreks.Data.Helpers
             bool copySubDirs, bool needsNewSubDirectories)
         {
             bool bHasCopied = false;
-            PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+            PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
             if (Path.IsPathRooted(fromDirectory))
             {
                 if (Path.IsPathRooted(toDirectory))
@@ -469,7 +475,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -503,7 +509,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     //azure asynch is different than file system
@@ -537,7 +543,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -562,7 +568,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -582,7 +588,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -607,7 +613,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -632,7 +638,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     //azure asynch not the same as filesystem
@@ -658,7 +664,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     //azure async not the same as filesystem
@@ -684,7 +690,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     //azure asynch not the same as filesystem
@@ -709,7 +715,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -739,7 +745,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 
                 if (ePlatform == PLATFORM_TYPES.webserver)
                 {
@@ -817,7 +823,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 //the webserver code is not debugged
                 if (ePlatform == PLATFORM_TYPES.webserver)
                 {
@@ -840,7 +846,7 @@ namespace DevTreks.Data.Helpers
             {
                 return lines;
             }
-            PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+            PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
             if (Path.IsPathRooted(fullURIPath))
             {
                 FileIO fileIO = new FileIO();
@@ -917,7 +923,7 @@ namespace DevTreks.Data.Helpers
                 else if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
-                    sResponseMsg = await azureIO.InvokeHttpRequestResponseService(baseURL, apiKey,
+                    sResponseMsg = await azureIO.InvokeHttpRequestResponseService(uri, baseURL, apiKey,
                         inputFileLocation, outputFileLocation, script).ConfigureAwait(false);
                 }
             }
@@ -962,7 +968,7 @@ namespace DevTreks.Data.Helpers
             {
                 return lines;
             }
-            PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+            PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
             if (Path.IsPathRooted(fullURIPath))
             {
                 FileIO fileIO = new FileIO();
@@ -999,7 +1005,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.webserver)
                 {
                     //this is not debugged
@@ -1068,7 +1074,7 @@ namespace DevTreks.Data.Helpers
             }
             else
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -1101,7 +1107,7 @@ namespace DevTreks.Data.Helpers
                 && fromURIPath.Equals(toURIPath) == false
                 && (!string.IsNullOrEmpty(toURIPath)))
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (Path.IsPathRooted(fromURIPath))
                 {
                     if (Path.IsPathRooted(toURIPath))
@@ -1161,7 +1167,7 @@ namespace DevTreks.Data.Helpers
                 && fromURIPath.Equals(toURIPath) == false
                 && (!string.IsNullOrEmpty(toURIPath)))
             {
-                PLATFORM_TYPES ePlatform = GetPlatformType(uri);
+                PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
                 if (Path.IsPathRooted(fromURIPath))
                 {
                     if (Path.IsPathRooted(toURIPath))
@@ -1256,7 +1262,7 @@ namespace DevTreks.Data.Helpers
                 else
                 {
                     PLATFORM_TYPES ePlatform 
-                        = GetPlatformType(uri);
+                        = uri.URIDataManager.PlatformType;
                     if (ePlatform == PLATFORM_TYPES.azure)
                     {
                         AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -1282,7 +1288,7 @@ namespace DevTreks.Data.Helpers
                 else
                 {
                     PLATFORM_TYPES ePlatform
-                        = GetPlatformType(uri);
+                        = uri.URIDataManager.PlatformType;
                     if (ePlatform == PLATFORM_TYPES.azure)
                     {
                         AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -1303,7 +1309,7 @@ namespace DevTreks.Data.Helpers
             else
             {
                 PLATFORM_TYPES ePlatform
-                    = GetPlatformType(uri);
+                    = uri.URIDataManager.PlatformType;
                 if (ePlatform == PLATFORM_TYPES.azure)
                 {
                     AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -1336,7 +1342,7 @@ namespace DevTreks.Data.Helpers
                 else
                 {
                     PLATFORM_TYPES ePlatform
-                        = GetPlatformType(uri);
+                        = uri.URIDataManager.PlatformType;
                     if (ePlatform == PLATFORM_TYPES.azure)
                     {
                         AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -1398,7 +1404,7 @@ namespace DevTreks.Data.Helpers
                 else
                 {
                     PLATFORM_TYPES ePlatform
-                        = GetPlatformType(uri);
+                        = uri.URIDataManager.PlatformType;
                     if (ePlatform == PLATFORM_TYPES.azure)
                     {
                         AzureIOAsync azureIO = new AzureIOAsync(uri);
@@ -1430,7 +1436,7 @@ namespace DevTreks.Data.Helpers
         {
             string sURIPath = string.Empty;
             PLATFORM_TYPES ePlatform
-                    = GetPlatformType(uri);
+                    = uri.URIDataManager.PlatformType;
             if (ePlatform == PLATFORM_TYPES.azure)
             {
                 AzureIOAsync azureIO = new AzureIOAsync(uri);

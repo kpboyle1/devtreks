@@ -6,10 +6,10 @@ namespace DevTreks.Data.Helpers
     /// <summary>
     ///Purpose:		General path functions
     ///Author:		www.devtreks.org
-    ///Date:		2016, July
+    ///Date:		2016, September
     ///References:	2.0.0 moved all path construction
     ///             into this class. These reduce the construction 
-    ///             down to a small number transparent, easy-to-understand, methods.
+    ///             down to a small number of transparent, easy-to-understand, methods.
     /// </summary>
     public static class AppSettings
     {
@@ -33,7 +33,8 @@ namespace DevTreks.Data.Helpers
             resourceuriname = 13,
             contenturiname = 14,
             tempdocsuriname = 15,
-            extensions = 16
+            extensions = 16,
+            platformtype = 17
         }
         public static void CopyURIAppSettings(ContentURI fromURI, ContentURI toURI)
         {
@@ -55,6 +56,7 @@ namespace DevTreks.Data.Helpers
             toURI.URIDataManager.ContentURIName = fromURI.URIDataManager.ContentURIName;
             toURI.URIDataManager.TempDocsURIName = fromURI.URIDataManager.TempDocsURIName;
             toURI.URIDataManager.ExtensionsPath = fromURI.URIDataManager.ExtensionsPath;
+            toURI.URIDataManager.PlatformType = fromURI.URIDataManager.PlatformType;
         }
         public static string GetAppSettingString(ContentURI uri,
             APPSETTING_TYPES appSetting)
@@ -140,6 +142,11 @@ namespace DevTreks.Data.Helpers
             {
                 sAppSettingValue = uri.URIDataManager.ExtensionsPath;
             }
+            else if (appSetting
+                == APPSETTING_TYPES.platformtype)
+            {
+                sAppSettingValue = uri.URIDataManager.PlatformType.ToString();
+            }
             else
             {
                 sAppSettingValue = APPSETTING_TYPES.none.ToString();
@@ -150,6 +157,7 @@ namespace DevTreks.Data.Helpers
             string appSetting)
         {
             string sAppSettingValue = string.Empty;
+            appSetting = appSetting.ToLower();
             if (appSetting
                 == APPSETTING_TYPES.contenturiname.ToString())
             {
@@ -201,6 +209,11 @@ namespace DevTreks.Data.Helpers
                 sAppSettingValue = uri.URIDataManager.PageSize.ToString();
             }
             else if (appSetting
+                == APPSETTING_TYPES.rexecutable.ToString())
+            {
+                sAppSettingValue = uri.URIDataManager.RExecutable;
+            }
+            else if (appSetting
                 == APPSETTING_TYPES.pyexecutable.ToString())
             {
                 sAppSettingValue = uri.URIDataManager.PyExecutable;
@@ -229,6 +242,11 @@ namespace DevTreks.Data.Helpers
                 == APPSETTING_TYPES.extensions.ToString())
             {
                 sAppSettingValue = uri.URIDataManager.ExtensionsPath;
+            }
+            else if (appSetting
+                == APPSETTING_TYPES.platformtype.ToString())
+            {
+                sAppSettingValue = uri.URIDataManager.PlatformType.ToString();
             }
             else
             {
@@ -774,7 +792,6 @@ namespace DevTreks.Data.Helpers
 
         public static string GetExtensionsRelPath(ContentURI uri)
         {
-            //can get their filesystem artifacts file, but what about azure (unless copied to Extensions folder?)
             string sPipelinePath = uri.URIDataManager.ExtensionsPath;
             return sPipelinePath;
         }

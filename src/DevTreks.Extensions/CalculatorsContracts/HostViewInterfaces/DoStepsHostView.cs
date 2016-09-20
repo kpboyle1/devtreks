@@ -19,7 +19,7 @@ namespace DevTreks.Extensions
     ///             rather than use DevTreks defaults.
     ///Author:		www.devtreks.org
     ///Date:		2015, January
-    ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
+    ///References:	none
     ///             1. 
     /// </summary>
     public abstract class DoStepsHostView

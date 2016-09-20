@@ -3,7 +3,7 @@
   "description": "AgResourceStockExtensions Class Library",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
-    "net461" : {
+    "net461": {
       "frameworkAssemblies": {
         "System.ComponentModel.Composition": "4.0.0.0",
         "System.Xml": "4.0.0.0",
@@ -15,6 +15,12 @@
     "AgBudgetingCalculators": "1.0.0",
     "CalculatorsContracts": "1.0.0",
     "NPVCalculators": "1.0.0"
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\AgResourceStockExtensions.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\AgResourceStockExtensions.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
 
 }

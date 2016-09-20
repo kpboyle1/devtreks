@@ -6,14 +6,15 @@
     "DevTreks.Exceptions": "1.0.0",
     "DevTreks.Models": "1.0.0",
     "DevTreks.Resources": "1.0.0",
-    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
     "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
     "System.IO.Compression": "4.0.0",
     "Microsoft.WindowsAzure.ConfigurationManager": "3.2.1",
-    "WindowsAzure.Storage": "7.0.0"
+    "Microsoft.AspNet.WebApi.Client": "5.2.3",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
+    "WindowsAzure.Storage": "7.2.0"
   },
   "frameworks": {
     "net461": {

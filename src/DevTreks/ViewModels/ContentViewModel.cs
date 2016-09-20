@@ -61,7 +61,7 @@ namespace DevTreks.ViewModels
                 bIsInitView, partialUriPattern, contentService, memberService);
             //fill the content model
             bHasSet = await SetContentDataForAllMembersAsync(contentService, memberService, bIsInitView);
-            ////set any missing images
+            //2.02 moved to give this method more state to work with
             //await SetContentURIResourceAsync(contentService);
             //set the state of the docs found in the file paths (many views rely on docpaths)
             bHasSet = await SetURIState(contentService);
@@ -71,7 +71,7 @@ namespace DevTreks.ViewModels
             await RunServerSubActionAsync(contentService, memberService, context);
             //set the restful addresses
             DataHelpers.SetFullURIs(ContentURIData);
-            ////set the schema path (uri.schemapath)
+            //2.0.0 deprecated: schemas only used with story telling app
             //SetSchemaPath();
             //see if the view should be changed (error, message ...)
             ViewDataHelper.CheckForNewViews(ContentURIData, ref sViewName);
@@ -82,10 +82,8 @@ namespace DevTreks.ViewModels
             int iAuditItemId = await InsertAuditTrailAsync(contentService);
             //publish error messages
             AppHelper.PublishErrorMessage(ContentURIData);
-            //2.0.0: copy extensions dlls
-            //refactor needed: by either getting dnx 
-            //or build/publishOptions to copy extension dlls to the needed paths
-            await CopyExtensions(ContentURIData);
+            //2.0.2: deprecated in favor of web project's buildOptions.copyToOutput for copying extension dlls to the needed paths
+            //await CopyExtensions(ContentURIData);
             return bHasSet;
         }
         private void SetSearchEngineParams(string title)

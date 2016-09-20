@@ -9,6 +9,12 @@
         "System.Numerics": "4.0.0.0"
       }
     }
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\Numerics.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\Numerics.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
 
 }

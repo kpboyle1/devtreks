@@ -3,7 +3,7 @@
   "description": "NPV1 Class Library",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
-    "net461" : {
+    "net461": {
       "frameworkAssemblies": {
         "System.ComponentModel.Composition": "4.0.0.0",
         "System.Xml": "4.0.0.0",
@@ -13,5 +13,11 @@
   },
   "dependencies": {
     "CalculatorsContracts": "1.0.0"
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\NPV1.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\NPV1.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
 }

@@ -3,7 +3,7 @@
   "description": "The Health Care Class Library runs resource stock calculators and analyzers.",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
-    "net461" : {
+    "net461": {
       "frameworkAssemblies": {
         "System.ComponentModel.Composition": "4.0.0.0",
         "System.Xml": "4.0.0.0",
@@ -15,6 +15,12 @@
     "CalculatorsContracts": "1.0.0",
     "Jace": "1.0.0",
     "Numerics": "1.0.0"
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\HealthCare.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\HealthCare.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
 
 }

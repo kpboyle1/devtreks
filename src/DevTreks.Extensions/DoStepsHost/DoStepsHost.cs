@@ -3,15 +3,10 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.IO;
 using System.Xml.Linq;
-using System.Reflection;
-using System.Security.Policy;
 using System.Threading;
 using System.Threading.Tasks;
 using Errors = DevTreks.Exceptions.DevTreksErrors;
-using Extensions = DevTreks.Extensions;
 using DataHelpers = DevTreks.Data.Helpers;
 using DevTreks.Data;
 
@@ -21,8 +16,8 @@ namespace DevTreks.Extensions
     ///Purpose:		This host extends (MEF) DevTreks with new calculators, 
     ///             analyzers, and storytellers that use distinct steps.
     ///Author:		www.devtreks.org
-    ///Date:		2015, January
-    ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
+    ///Date:		2016, September
+    ///References:	refer to the Calculators and Analyzers tutorial
     ///NOTES        1. 
     ///             See the CalculatorContracts.BaseModel folder.
     /// </summary>
@@ -69,7 +64,7 @@ namespace DevTreks.Extensions
             DoStepsHostView hostview = null;
             try
             {
-                //directory storing extensions (DevTreks\DevTreks.Extensions\Extensions)
+                //directory storing extensions (webproject apppath (c:\Devtreks)
                 //extension projects use the project's post build event to copy their dlls there
                 string sExtensionRoot = DataHelpers.AppSettings.GetExtensionsRelPath(uri);
                 CompositionContainer container
@@ -210,11 +205,6 @@ namespace DevTreks.Extensions
             return bIsStepDone;
         }
         
-        #endregion
-        #region "methods used to generate html views of calculations"
-
-       
-
         #endregion
         #region "static methods used to initialize calculator"
         public static string GetCalcDocVersion(ContentURI calcDocURI,

@@ -3843,8 +3843,7 @@ namespace DevTreks.Extensions
             ExtensionContentURI extURI, string fullPath)
         {
             DevTreksHelpers.FileStorageIO.PLATFORM_TYPES ePlatformType 
-                = DevTreksHelpers.FileStorageIO.GetPlatformType(
-                    extURI.URIDataManager.InitialDocToCalcURI);
+                = extURI.URIDataManager.InitialDocToCalcURI.URIDataManager.PlatformType;
             return ePlatformType;
         }
         public static async Task<string> InvokeHttpRequestResponseServiceAsync(string fromFile)
@@ -3907,6 +3906,13 @@ namespace DevTreks.Extensions
             string sText = fs.ReadText(extURI.URIDataManager.InitialDocToCalcURI,
                 fromFile, out errorMsg);
             return sText;
+        }
+        public static async Task<bool> RunStatScriptAPIClient(StringBuilder sb, 
+            string scriptFilePath, string inputFilePath, string outputFilePath)
+        {
+            bool bHasCsvResults = await DevTreksHelpers.WebServerFileIO.RunStatScriptAPIClient(
+                sb, scriptFilePath, inputFilePath, outputFilePath);
+            return bHasCsvResults;
         }
         public static void SetLocalsCalculation(
           CalculatorParameters calculatorParams, string currentNodeName,

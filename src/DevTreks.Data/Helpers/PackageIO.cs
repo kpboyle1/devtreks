@@ -444,7 +444,7 @@ namespace DevTreks.Data.Helpers
                             sBaseResourceURI);
                     }
                     FileStorageIO.PLATFORM_TYPES ePlatform
-                        = FileStorageIO.GetPlatformType(uri);
+                        = uri.URIDataManager.PlatformType;
                     if (ePlatform == FileStorageIO.PLATFORM_TYPES.webserver)
                     {
                         bHasCopied = await CopyWebServerResourceToPackageAsync(
@@ -597,7 +597,7 @@ namespace DevTreks.Data.Helpers
         {
             bool bHasCopied = false;
             FileStorageIO.PLATFORM_TYPES platform
-                = FileStorageIO.GetPlatformType(uri);
+                = uri.URIDataManager.PlatformType;
             if (platform == FileStorageIO.PLATFORM_TYPES.webserver)
             {
                 bHasCopied = await CopyRelatedDataToWebServerPackageAsync(

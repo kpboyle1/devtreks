@@ -3,7 +3,7 @@
   "description": "The SB1 Class Library runs resource stock calculators and analyzers.",
   "authors": [ "Kevin P. Boyle" ],
   "frameworks": {
-    "net461" : {
+    "net461": {
       "frameworkAssemblies": {
         "System.ComponentModel.Composition": "4.0.0.0",
         "System.Xml": "4.0.0.0",
@@ -15,6 +15,13 @@
     "CalculatorsContracts": "1.0.0-*",
     "Jace": "1.0.0-*",
     "Numerics": "1.0.0-*"
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\SB1.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\SB1.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
-
+  //"xcopy /Y \"%project:Directory%\\bin\\Debug\\net461\\SB1.dll\" \"C:\\DevTreks\\src\\DevTreks\\wwwroot\\Extensions\\SB1.dll\"",
+  //"xcopy /Y C:\\DevTreks\\src\\DevTreks.Extensions\\SB1\\bin\\Debug\\net461\\SB1.dll ..\\..\\DevTreks\\wwwroot\\Extensions"
 }

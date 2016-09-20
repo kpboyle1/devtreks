@@ -765,7 +765,7 @@ namespace DevTreks.Data.Helpers
             ref IDictionary<string, string> fileOrFolderPaths)
         {
             FileStorageIO.PLATFORM_TYPES platform
-                = FileStorageIO.GetPlatformType(uri);
+                = uri.URIDataManager.PlatformType;
             if (platform == FileStorageIO.PLATFORM_TYPES.webserver)
             {
                 GetFirstSubFolderWebServerFiles(uri, urisToAnalyze,
@@ -843,7 +843,7 @@ namespace DevTreks.Data.Helpers
                             sURIdeletedURIPattern = string.Empty;
                             sURIdeletedURIPattern = arrDeleteParams[0];
                             FileStorageIO.PLATFORM_TYPES platform
-                                = FileStorageIO.GetPlatformType(uri);
+                                = uri.URIDataManager.PlatformType;
                             if (platform == FileStorageIO.PLATFORM_TYPES.webserver)
                             {
                                 DeleteOldAddInWebServerFiles(uri, 
@@ -904,7 +904,7 @@ namespace DevTreks.Data.Helpers
             bool includeCalcDocs)
         {
             FileStorageIO.PLATFORM_TYPES platform
-                = FileStorageIO.GetPlatformType(uri);
+                = uri.URIDataManager.PlatformType;
             if (platform == FileStorageIO.PLATFORM_TYPES.webserver)
             {
                 DeleteOldAddInHtmlWebServerFiles(uri, docToCalcPath, URIdeletedURIPattern, includeCalcDocs);

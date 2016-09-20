@@ -1290,7 +1290,7 @@ namespace DevTreks.Data.AppHelpers
                     string sRelFilePath = resourceResults.GetString(0);
                     resource.URIDataManager.FileSystemPath = sRelFilePath;
                     Helpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                        = Helpers.FileStorageIO.GetPlatformType(uri);
+                        = uri.URIDataManager.PlatformType;
                     if (ePlatform == Helpers.FileStorageIO.PLATFORM_TYPES.azure)
                     {
                         //the path has to be to the blob
@@ -1695,7 +1695,7 @@ namespace DevTreks.Data.AppHelpers
              bool needFullPath)
         {
             Helpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                = Helpers.FileStorageIO.GetPlatformType(resourceURI);
+                = resourceURI.URIDataManager.PlatformType;
             if (ePlatform == Helpers.FileStorageIO.PLATFORM_TYPES.azure)
             {
                 Helpers.AzureIOAsync azuriIO = new AzureIOAsync(resourceURI);
@@ -1716,7 +1716,7 @@ namespace DevTreks.Data.AppHelpers
              bool needFullPath)
         {
             Helpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                = Helpers.FileStorageIO.GetPlatformType(resourceURI);
+                = resourceURI.URIDataManager.PlatformType;
             if (ePlatform == Helpers.FileStorageIO.PLATFORM_TYPES.azure)
             {
                 Helpers.AzureIOAsync azuriIO = new AzureIOAsync(resourceURI);
@@ -1764,7 +1764,7 @@ namespace DevTreks.Data.AppHelpers
         {
             //resourcePath is not rooted yet (it's just networkcrops/resourcepack_271 ....
             Helpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                = Helpers.FileStorageIO.GetPlatformType(resourceURI);
+                = resourceURI.URIDataManager.PlatformType;
             if (ePlatform == Helpers.FileStorageIO.PLATFORM_TYPES.azure)
             {
                 Helpers.AzureIOAsync azuriIO = new AzureIOAsync(resourceURI);
@@ -1785,7 +1785,7 @@ namespace DevTreks.Data.AppHelpers
         {
             //resourcePath is not rooted yet (it's just networkcrops/resourcepack_271 ....
             Helpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                = Helpers.FileStorageIO.GetPlatformType(resourceURI);
+                = resourceURI.URIDataManager.PlatformType;
             if (ePlatform == Helpers.FileStorageIO.PLATFORM_TYPES.azure)
             {
                 Helpers.AzureIOAsync azuriIO = new AzureIOAsync(resourceURI);

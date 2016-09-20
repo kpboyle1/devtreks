@@ -3684,13 +3684,15 @@ namespace DevTreks.Helpers
                             result.WriteLine(helper.DivEnd());
                         }
                     }
+                    //v188 added devpacks conditions
                     if (model.URIDataManager.SubActionView
                         == GeneralHelpers.SUBACTION_VIEWS.graph.ToString()
                         && (!model.URIDataManager.UseSelectedLinkedView
                         || model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks))
                     {
-                        //v188 added devpacks conditions
+                        
                         string sMURI = string.Empty;
+                        string sMURIAlt = string.Empty;
                         if (model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.linkedviews
                             || model.URIDataManager.AppType == GeneralHelpers.APPLICATION_TYPES.devpacks)
                         {
@@ -3715,6 +3717,7 @@ namespace DevTreks.Helpers
                                 if (resourceURI == null)
                                     resourceURI = new ContentURI();
                                 sMURI = resourceURI.URIDataManager.FileSystemPath;
+                                sMURIAlt = resourceURI.URIDataManager.Description;
                             }
                         }
                         else
@@ -3729,6 +3732,7 @@ namespace DevTreks.Helpers
                             if (resourceURI == null)
                                 resourceURI = new ContentURI();
                             sMURI = resourceURI.URIDataManager.FileSystemPath;
+                            sMURIAlt = resourceURI.URIDataManager.Description;
                         }
                         if (string.IsNullOrEmpty(sMURI))
                         {
@@ -3769,8 +3773,7 @@ namespace DevTreks.Helpers
                                         .WriteTo(result, HtmlEncoder.Default);
                                 }
                                 result.WriteLine("<br/>");
-                                bool bNeedsFirstImageOnly = false;
-                                DisplayMedia(helper, result, sMURI, model, bNeedsFirstImageOnly);
+                                DisplayMedia(helper, result, sMURI, sMURIAlt, model);
                             }
                         }
                     }
@@ -3781,8 +3784,8 @@ namespace DevTreks.Helpers
                 return new HtmlString(result.ToString());
             }
         }
-        private static void DisplayMedia(this IHtmlHelper helper, StringWriter result, string muri,
-            ContentURI model, bool needsFirstImageOnly)
+        private static void DisplayMedia(this IHtmlHelper helper, StringWriter result, string muri, 
+            string muriAlt, ContentURI model)
         {
             string[] arrURLs = muri.Split(GeneralHelpers.STRING_DELIMITERS);
             if (arrURLs != null)
@@ -3794,18 +3797,20 @@ namespace DevTreks.Helpers
                 {
                     sMediaURI = GeneralHelpers.GetSubstring(
                         muri, GeneralHelpers.STRING_DELIMITERS, i).Trim();
-                    if (needsFirstImageOnly)
+                    if (model.URIDataManager.ServerActionType
+                        == GeneralHelpers.SERVER_ACTION_TYPES.preview)
                     {
-                        if (!DataAppHelpers.Resources.IsImage(sMediaURI))
+                        //show 1 image or video on the Preview panel
+                        if (!DataAppHelpers.Resources.IsImage(sMediaURI)
+                            && !DataAppHelpers.Resources.IsVideo(sMediaURI))
                         {
                             sMediaURI = string.Empty;
                         }
                     }
                     if (!string.IsNullOrEmpty(sMediaURI))
                     {
-                        if ((!sMediaURI.Contains(DataAppHelpers.Resources.RESOURCES_TYPES.resource.ToString())
+                        if (!sMediaURI.Contains(DataAppHelpers.Resources.RESOURCES_TYPES.resource.ToString())
                             || !sMediaURI.StartsWith("http"))
-                            && needsFirstImageOnly == false)
                         {
                             int err = i + 1;
                             result.WriteLine(helper.PStart());
@@ -3838,6 +3843,7 @@ namespace DevTreks.Helpers
                             result.WriteLine(helper.VideoEnd());
                             result.WriteLine(helper.DivStart(string.Empty, string.Empty));
                             result.WriteLine(helper.SpanItemStart("description"));
+                            //don't use the same Calc.Description for multiple urls
                             result.Write(string.Empty);
                             result.WriteLine(helper.SpanEnd());
                             result.WriteLine(helper.DivEnd());
@@ -3851,11 +3857,11 @@ namespace DevTreks.Helpers
                             result.WriteLine(helper.SpanEnd());
                             result.Write("<br/>");
                             result.Write(helper.Image(string.Concat("linkedviewimage_",
-                                 model.URIId.ToString()), sMediaURI,
-                                 model.URIDataManager.Description, "100%", "100%", string.Empty));
+                                model.URIId.ToString()), sMediaURI,
+                                muriAlt, "100%", "100%", string.Empty));
                             result.WriteLine(helper.DivStart(string.Empty, string.Empty));
                             result.WriteLine(helper.SpanItemStart("description"));
-                            result.Write(model.URIDataManager.Description);
+                            result.Write(string.Empty);
                             result.WriteLine(helper.SpanEnd());
                             result.WriteLine(helper.DivEnd());
                             result.WriteLine(helper.DivEnd());
@@ -3896,10 +3902,24 @@ namespace DevTreks.Helpers
                             result.WriteLine(helper.DivEnd());
                             result.WriteLine(helper.DivEnd());
                         }
-                        result.WriteLine(helper.LinkMobile(string.Concat("resourcelink", model.URIId), sMediaURI,
-                            string.Empty, AppHelper.GetResource("DOWNLOAD_RESOURCE"),
-                            "button", "true", "true", string.Empty,
-                            string.Empty));
+                        if (model.URIDataManager.ServerActionType
+                            == GeneralHelpers.SERVER_ACTION_TYPES.preview)
+                        {
+                            if (model.URIDataManager.AppType 
+                                != GeneralHelpers.APPLICATION_TYPES.linkedviews)
+                            {
+                                result.WriteLine(muriAlt);
+                            }
+                            //don't display more than 1 image or video on the Preview panel
+                            break;
+                        }
+                        else
+                        {
+                            result.WriteLine(helper.LinkMobile(string.Concat("resourcelink", model.URIId), sMediaURI,
+                                string.Empty, AppHelper.GetResource("DOWNLOAD_RESOURCE"),
+                                "button", "true", "true", string.Empty,
+                                string.Empty));
+                        }
                     }
                 }
             }
@@ -4059,9 +4079,11 @@ namespace DevTreks.Helpers
                 ContentURI resourceURI = LinqHelpers.GetContentURIListIsMainImage(
                     linkedview.URIDataManager.Resource);
                 string sMURI = string.Empty;
+                string sMURIAlt = string.Empty;
                 if (resourceURI == null)
                     resourceURI = new ContentURI();
                 sMURI = resourceURI.URIDataManager.FileSystemPath;
+                sMURIAlt = resourceURI.URIDataManager.Description;
                 if (model.URIDataManager.AppType
                    != GeneralHelpers.APPLICATION_TYPES.resources)
                 {
@@ -4069,8 +4091,8 @@ namespace DevTreks.Helpers
                     result.WriteLine(helper.DivStart(string.Empty, string.Empty));
                     if (DataAppHelpers.Resources.IsResourceImage(resourceURI))
                     {
-                        bool bNeedsFirstImageOnly = true;
-                        DisplayMedia(helper, result, sMURI, model, bNeedsFirstImageOnly);
+                        //2.0.2 changes
+                        DisplayMedia(helper, result, sMURI, sMURIAlt, model);
                         //result.Write(helper.Image(string.Concat("linkedviewimage_",
                         //     linkedview.URIId.ToString()), resourceURI.URIDataManager.FileSystemPath,
                         //     resourceURI.URIDataManager.Description, "50%", "50%", string.Empty));

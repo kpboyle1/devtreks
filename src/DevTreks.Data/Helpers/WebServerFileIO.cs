@@ -236,16 +236,17 @@ namespace DevTreks.Data.Helpers
                 // with the following:
                 //      result = await DoSomeTask().ConfigureAwait(false)
 
-                //2.0.0 change: HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest).ConfigureAwait(false);
-                //not debugged
-                //http://www.asp.net/web-api/overview/advanced/calling-a-web-api-from-a-net-client
-                var postContent = new Dictionary<string, string>() {
-                        { "inputblobpath", inputFileLocation },
-                        { "outputcsvblobpath", outputFileLocation },
-                        { "script1", script },
-                    };
-                var content = new FormUrlEncodedContent(postContent);
-                HttpResponseMessage response = await client.PostAsync(baseURL, content).ConfigureAwait(false);
+                //2.0.0 change: 
+                HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest).ConfigureAwait(false);
+                ////not debugged
+                ////http://www.asp.net/web-api/overview/advanced/calling-a-web-api-from-a-net-client
+                //var postContent = new Dictionary<string, string>() {
+                //        { "inputblobpath", inputFileLocation },
+                //        { "outputcsvblobpath", outputFileLocation },
+                //        { "script1", script },
+                //    };
+                //var content = new FormUrlEncodedContent(postContent);
+                //HttpResponseMessage response = await client.PostAsync(baseURL, content).ConfigureAwait(false);
                 
 
                 if (response.IsSuccessStatusCode)
@@ -319,8 +320,48 @@ namespace DevTreks.Data.Helpers
             }
             return sResponse;
         }
+        static readonly string _baseAddress = "http://localhost:50032";
+        public static async Task<bool> RunStatScriptAPIClient(StringBuilder sb, 
+            string scriptFilePath, string inputFilePath, string outputFilePath)
+        {
+            bool bHasCsvFile = false;
+            HttpClient client = new HttpClient();
+            StatScript ss = new StatScript();
+            ss.Key = "123";
+            ss.Name = "Test1";
+            ss.DataURL = @"C:\DevTreks\src\DevTreks\wwwroot\resources\network_carbon\resourcepack_526\resource_1771\Regress1.csv";
+            ss.ScriptURL = scriptFilePath;
+            ss.OutputURL = @"C:\DevTreks\src\DevTreks\wwwroot\resources\temp\2146500643\out1.csv";
+            //ss.DataURL = "http://localhost:50032/resources/network_carbon/resourcepack_526/resource_1771/Regress1.csv";
+            //ss.ScriptURL = "http://localhost:50032/resources/network_carbon/resourcepack_526/resource_1765/R1Web.txt";
+            //ss.OutputURL = "http://localhost:50032/resources/temp/2146500643.out1.csv";
+            ss.StatType = StatScript.STAT_TYPE.r.ToString();
+            ss.IsComplete = false;
+            string sGetAddress = string.Concat("http://localhost:50032/api/statscript/");
+
+            // Post to statscript webapi controller
+            Uri address = new Uri(string.Concat(_baseAddress, "/api/statscript"));
+            HttpResponseMessage response = await client.PostAsJsonAsync(address.ToString(), ss);
+
+            // Check that response was successful or throw exception
+            response.EnsureSuccessStatusCode();
+
+            // Read result as StatScript
+            StatScript result = await response.Content.ReadAsAsync<StatScript>();
+            if (result.IsComplete)
+            {
+                bHasCsvFile = result.IsComplete;
+            }
+            else
+            {
+                //errmessage
+            }
+            return bHasCsvFile;
+            //Console.WriteLine("Result: Name: {0} IsComplete: {1}", result.Name, result.IsComplete);
+        }
+
     }
-    
+
     public class ScoreData
     {
 
@@ -337,5 +378,28 @@ namespace DevTreks.Data.Helpers
 
         public ScoreData Instance { get; set; }
 
+    }
+    public class StatScript
+    {
+        public enum STAT_TYPE
+        {
+            none    = 0,
+            r       = 1,
+            py      = 2,
+            aml     = 3
+        }
+        //first 1 prop set by api
+        public string Key { get; set; }
+        //these 4 properties are set by client and sent as POCO object
+        public string Name { get; set; }
+        public string DataURL { get; set; }
+        public string ScriptURL { get; set; }
+        public string OutputURL { get; set; }
+        public string StatType { get; set; }
+        //these 2 properties come from appsettings
+        public string RExecutablePath { get; set; }
+        public string PyExecutablePath { get; set; }
+        //set by api
+        public bool IsComplete { get; set; }
     }
 }

@@ -13,6 +13,12 @@
   },
   "dependencies": {
     "CalculatorsContracts": "1.0.0"
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\AgBudgetingCalculators.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\AgBudgetingCalculators.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
 
 }

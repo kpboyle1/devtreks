@@ -377,7 +377,7 @@ namespace DevTreks.Data.Helpers
         {
             string sURIPath = string.Empty;
             FileStorageIO.PLATFORM_TYPES ePlatform
-                    = FileStorageIO.GetPlatformType(uri);
+                    = uri.URIDataManager.PlatformType;
             if (ePlatform == FileStorageIO.PLATFORM_TYPES.azure)
             {
                 //try to get the blob out of storage
@@ -2392,17 +2392,17 @@ namespace DevTreks.Data.Helpers
             return bHasCopied;
         }
         //azure machine learning R project
-        public async Task<string> InvokeHttpRequestResponseService(string baseURL, string apiKey,
-            string inputBlobLocation, string outputBlobLocation, string script)
+        public async Task<string> InvokeHttpRequestResponseService(ContentURI uri,
+            string baseURL, string apiKey, string inputBlobLocation, 
+            string outputBlobLocation, string script)
         {
             string sResponse = string.Empty;
             string BaseUrl = baseURL;
             string InputFileLocation = inputBlobLocation; 
             string OutputFileLocation = outputBlobLocation; 
             string APIKey = apiKey;
-            //2.0.0 Invoke methods won't be tested until the algos are revisited
             //2.0.0 refactor: get the connection string from AzureIO (get connected service)
-            string sStorageConnectionString = string.Empty;
+            string sStorageConnectionString = uri.URIDataManager.StorageConnection;
             // set a time out for polling status
             const int TimeOutInMilliseconds = 120 * 1000; // Set a timeout of 2 minutes
 
@@ -2423,16 +2423,18 @@ namespace DevTreks.Data.Helpers
                 };
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", APIKey);
-                //2.0.0 changes
-                //var response = await client.PostAsJsonAsync(BaseUrl, request).ConfigureAwait(false);
-                var postContent = new Dictionary<string, string>() {
-                        { "inputblobpath", InputFileLocation },
-                        { "outputcsvblobpath", OutputFileLocation },
-                        { "script1", script },
-                    };
-                var content = new FormUrlEncodedContent(postContent);
-                var response = await client.PostAsync(BaseUrl, content).ConfigureAwait(false);
-                string jobId = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                
+                var response = await client.PostAsJsonAsync(BaseUrl, request).ConfigureAwait(false);
+                string jobId = await response.Content.ReadAsAsync<string>().ConfigureAwait(false);
+                //2.0.0 tests
+                //var postContent = new Dictionary<string, string>() {
+                //        { "inputblobpath", InputFileLocation },
+                //        { "outputcsvblobpath", OutputFileLocation },
+                //        { "script1", script },
+                //    };
+                //var content = new FormUrlEncodedContent(postContent);
+                //var response = await client.PostAsync(BaseUrl, content).ConfigureAwait(false);
+                //string jobId = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                 string jobLocation = BaseUrl + "/" + jobId + "?api-version=2.0";
                 Stopwatch watch = Stopwatch.StartNew();
@@ -2440,11 +2442,12 @@ namespace DevTreks.Data.Helpers
                 while (!done)
                 {
                     response = await client.GetAsync(jobLocation).ConfigureAwait(false);
-                    //2.0.0 changes
+                    BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>().ConfigureAwait(false);
+                    //2.0.0 tests
                     //BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>().ConfigureAwait(false);
-                    var statusString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    //bug introduced in order to compile
-                    BatchScoreStatus status = new BatchScoreStatus();
+                    ////var statusString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    ////bug introduced in order to compile
+                    ////BatchScoreStatus status = new BatchScoreStatus();
                     //status.StatusCode = statusString;
                     if (watch.ElapsedMilliseconds > TimeOutInMilliseconds)
                     {
@@ -2480,8 +2483,7 @@ namespace DevTreks.Data.Helpers
                     }
                     if (!done)
                     {
-                        //2.0.0 change
-                        //Thread.Sleep(1000); // Wait one second
+                        Thread.Sleep(1000); // Wait one second
                     }
                 }
             }

@@ -10,7 +10,7 @@ namespace DevTreks.Extensions.Algorithms
     /// <summary>
     ///Purpose:		Simple AML script algorithms
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2016, September
     ///References:	CTA examples 2 and 3
     ///</summary>
     public class Script2 : Calculator1
@@ -60,8 +60,6 @@ namespace DevTreks.Extensions.Algorithms
         public string QTUUnit { get; set; }
 
         //running this truly async returns to UI w/o saving final calcs or an endless wait
-        //requires that an r dataset file be uploaded to blob resource prior to this
-        //and referenced using jdataurl
         public async Task<bool> RunAlgorithmAsync(string inputFilePath, string scriptFilePath,
             System.Threading.CancellationToken ctk)
         {
@@ -72,7 +70,7 @@ namespace DevTreks.Extensions.Algorithms
                 //but web service expects real azure dataset:
                 //when released, this must be blocked out
                 //r and python debug
-                //inputFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7969/Regress1.csv";
+                inputFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7969/Regress1.csv";
                 
                 //aml debug
                 //inputFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7961/Ex6R.csv";

@@ -17,10 +17,10 @@ namespace DevTreks.Extensions
     ///             used throughout DevTreks. It also allows additional display 
     ///             instructions to be passed back from extensions to the 
     ///             DevTreks view layer. The plan is to give extension builders 
-    ///             greater control over how their extensions are viewed and diplayed.
+    ///             greater control over how their extensions are viewed and displayed.
     ///Author:		www.devtreks.org
-    ///Date:		2016, April
-    ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
+    ///Date:		2016, September
+    ///Notes
     ///</summary>
     public class ExtensionContentURI 
     {
@@ -224,6 +224,7 @@ namespace DevTreks.Extensions
                 this.ContentURIName = string.Empty;
                 this.TempDocsURIName = string.Empty;
                 this.ExtensionsPath = string.Empty;
+                this.PlatformType = DataHelpers.FileStorageIO.PLATFORM_TYPES.none;
 
                 this.Resource = null;
                 this.IsMainStylesheet = false;
@@ -310,6 +311,7 @@ namespace DevTreks.Extensions
                 this.ContentURIName = mngr.ContentURIName;
                 this.TempDocsURIName = mngr.TempDocsURIName;
                 this.ExtensionsPath = mngr.ExtensionsPath;
+                this.PlatformType = mngr.PlatformType;
 
                 //avoid copying collections, should not be needed in calcs
                 //this.Resource = Helpers.LinqHelpers.CopyContentURIs(mngr.Resource);
@@ -397,6 +399,7 @@ namespace DevTreks.Extensions
                 this.ContentURIName = mngr.ContentURIName;
                 this.TempDocsURIName = mngr.TempDocsURIName;
                 this.ExtensionsPath = mngr.ExtensionsPath;
+                this.PlatformType = mngr.PlatformType;
 
                 //avoid copying collections, should not be needed in calcs
                 //this.Resource = CopyContentURIs(mngr.Resource);
@@ -529,6 +532,7 @@ namespace DevTreks.Extensions
             public string ContentURIName { get; set; }
             public string TempDocsURIName { get; set; }
             public string ExtensionsPath { get; set; }
+            public DataHelpers.FileStorageIO.PLATFORM_TYPES PlatformType { get; set; }
             //resources (images, stylesheets) of the uri 
             public IList<ExtensionContentURI> Resource { get; set; }
             //main stylesheet used to transform uri

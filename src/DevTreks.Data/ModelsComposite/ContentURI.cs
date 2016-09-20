@@ -13,7 +13,7 @@ namespace DevTreks.Data
     ///Purpose:		URI model for loading and editing DevTreks content (i.e. 
     ///             generic collections, xml/xthml docs, images ...)
     ///Author:		www.devtreks.org
-    ///Date:		2016, April
+    ///Date:		2016, September
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     /// NOTES       URIs can be discovered and displayed using the contenturipattern
@@ -939,8 +939,8 @@ namespace DevTreks.Data
         /// <summary>
         ///Purpose:		Manage params needed to load and display uri content
         ///Author:		www.devtreks.org
-        ///Date:		2016, March
-        ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
+        ///Date:		2016, September
+        ///Notes:       2.0.2 added PlatformType to eliminate need for GetPlatformType() functions
         /// </summary>
         public class DataManager
         {
@@ -1027,6 +1027,7 @@ namespace DevTreks.Data
                 this.ContentURIName = string.Empty;
                 this.TempDocsURIName = string.Empty;
                 this.ExtensionsPath = string.Empty;
+                this.PlatformType = Helpers.FileStorageIO.PLATFORM_TYPES.none;
             }
             public DataManager(DataManager mngr)
             {
@@ -1115,6 +1116,7 @@ namespace DevTreks.Data
                 this.ContentURIName = mngr.ContentURIName;
                 this.TempDocsURIName = mngr.TempDocsURIName;
                 this.ExtensionsPath = mngr.ExtensionsPath;
+                this.PlatformType = mngr.PlatformType;
             }
             public string ContentURIPattern { get; set; }
             public string ControllerName { get; set; }
@@ -1260,6 +1262,7 @@ namespace DevTreks.Data
             public string ContentURIName { get; set; }
             public string TempDocsURIName { get; set; }
             public string ExtensionsPath { get; set; }
+            public Helpers.FileStorageIO.PLATFORM_TYPES PlatformType { get; set; }
             public static void CopyLinkedView(DataManager mngrFrom,
                 DataManager mngrTo)
             {

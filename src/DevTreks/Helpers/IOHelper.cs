@@ -400,7 +400,7 @@ namespace DevTreks.Helpers
             bool bInitIsOk = false;
             bool bIsPackageDirectory = true;
             DataHelpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                = DataHelpers.FileStorageIO.GetPlatformType(uri);
+                = uri.URIDataManager.PlatformType;
             //resources go in this path
             string sRootPackageDirectory = string.Empty;
             //content files go in this directory because
@@ -842,7 +842,7 @@ namespace DevTreks.Helpers
                 {
                     string sDownloadFilePath = string.Empty;
                     DataHelpers.FileStorageIO.PLATFORM_TYPES ePlatform
-                        = DataHelpers.FileStorageIO.GetPlatformType(uri);
+                        = uri.URIDataManager.PlatformType;
                     if (ePlatform == DataHelpers.FileStorageIO.PLATFORM_TYPES.webserver)
                     {
                         sDownloadFilePath = DataHelpers.AppSettings.SwitchFullandRelTempWebPaths(
