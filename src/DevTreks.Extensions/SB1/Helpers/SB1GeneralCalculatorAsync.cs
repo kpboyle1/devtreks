@@ -45,8 +45,6 @@ namespace DevTreks.Extensions
                 //without Wait() the async returns before UI can display a result
                 RunBasicCalculationsAndSetUpdatesAsync(currentElement).Wait();
                 bHasCalculations = true;
-                //bHasCalculations
-                //    = await RunBasicCalculationsAndSetUpdatesAsync(currentElement).Wait();
             }
             else if (this.GCCalculatorParams.RunCalculatorType
                 == CalculatorHelpers.RUN_CALCULATOR_TYPES.analyzeobjects)

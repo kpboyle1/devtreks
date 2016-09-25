@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -90,57 +91,87 @@ namespace DevTreks.Extensions.Algorithms
                     //python must be installed to automatically run 
                     sScriptExecutable = CalculatorHelpers.GetAppSettingString(
                         this._params.ExtensionDocToCalcURI, "PyExecutable");
-                    //python scripts must be run by executable as '.pyw' files
-                    //save the 'txt' file as a 'pyw' file in temp path
-                    //has to be done each time because can't be sure when scriptfile changed last
-                    if (!scriptFilePath.EndsWith(".pyw"))
+                    if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm1.ToString())
                     {
-                        string sPyScript = CalculatorHelpers.ReadText(_params.ExtensionDocToCalcURI, scriptFilePath, out sError);
-                        if (!string.IsNullOrEmpty(sPyScript))
+                        //python scripts must be run by executable as '.pyw' files
+                        //save the 'txt' file as a 'pyw' file in temp path
+                        //has to be done each time because can't be sure when scriptfile changed last
+                        if (!scriptFilePath.EndsWith(".pyw"))
                         {
-                            string sFileName = Path.GetFileName(scriptFilePath);
-                            string sPyScriptFileName = sFileName.Replace(".txt", ".pyw");
-                            bool bIsLocalCache = false;
-                            string sPyPath = CalculatorHelpers.GetTempDocsPath(_params.ExtensionDocToCalcURI, bIsLocalCache, sPyScriptFileName);
-                            bool bHasFile = CalculatorHelpers.SaveTextInURI(_params.ExtensionDocToCalcURI, sPyScript, sPyPath, out sError);
-                            scriptFilePath = sPyPath;
+                            string sPyScript = CalculatorHelpers.ReadText(_params.ExtensionDocToCalcURI, scriptFilePath, out sError);
+                            if (!string.IsNullOrEmpty(sPyScript))
+                            {
+                                string sFileName = Path.GetFileName(scriptFilePath);
+                                string sPyScriptFileName = sFileName.Replace(".txt", ".pyw");
+                                bool bIsLocalCache = false;
+                                string sPyPath = CalculatorHelpers.GetTempDocsPath(_params.ExtensionDocToCalcURI, bIsLocalCache, sPyScriptFileName);
+                                bool bHasFile = CalculatorHelpers.SaveTextInURI(_params.ExtensionDocToCalcURI, sPyScript, sPyPath, out sError);
+                                scriptFilePath = sPyPath;
+                            }
                         }
                     }
                     sb.AppendLine("python results");
                 }
                 else 
                 {
-                    //check for 2.0.2 -R Open can run from a url
-                    //rscript.exe can't run from a url 
-                    if (scriptFilePath.StartsWith("http"))
+                    if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm1.ToString())
                     {
-                        //convert it to a filesystem path
-                        //make sure that both localhost and localhost:44300 have a copy of the file 
-                        string sRFilePath = CalculatorHelpers.ConvertFullURIToFilePath(
-                             this._params.ExtensionDocToCalcURI, scriptFilePath);
-                        scriptFilePath = sRFilePath;
+                        //check for 2.0.2 -R Open can run from a url
+                        //rscript.exe can't run from a url 
+                        if (scriptFilePath.StartsWith("http"))
+                        {
+                            //convert it to a filesystem path
+                            //make sure that both localhost and localhost:44300 have a copy of the file 
+                            string sRFilePath = CalculatorHelpers.ConvertFullURIToFilePath(
+                                 this._params.ExtensionDocToCalcURI, scriptFilePath);
+                            scriptFilePath = sRFilePath;
+                        }
                     }
                     //r is default
                     sb.AppendLine("r results");
                 }
                 string sLastLine = string.Empty;
-                //subalgo2 is r subalgo3 is Python
-                if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString()
-                    || _subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm3.ToString())
+                //2.0.2: subalgo2 is r subalgo3 is Python
+                if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
                 {
-                    inputFilePath = @"C:\DevTreks\src\DevTreks\wwwroot\resources\network_carbon\resourcepack_526\resource_1771\Regress1.csv";
-                    scriptFilePath = @"C:\DevTreks\src\DevTreks\wwwroot\resources\network_carbon\resourcepack_526\resource_1765\R1Web.txt";
-                    string sOutputURL = @"C:\DevTreks\src\DevTreks\wwwroot\resources\temp\2146500643\out1.csv";
-                    bool bHasCsvFile = await CalculatorHelpers.RunStatScriptAPIClient(
-                        sb, scriptFilePath, inputFilePath, sOutputURL);
-                    if (bHasCsvFile)
+                   
+                    //run on remote servers that have the DevTreksStatsApi WebApi app deployed
+                    bool bIsPyTest = false;
+                    if (_algorithm == Calculator1.MATH_TYPES.algorithm3.ToString())
                     {
-                        //process the sOutputURL csv file
+                        //python is significantly slower than R
+                        bIsPyTest = true;
+                    }
 
+                    DevTreks.Data.Helpers.StatScript statScript
+                       = DevTreks.Data.Helpers.StatScript.GetStatScript(
+                            bIsPyTest, scriptFilePath, inputFilePath);
+                    //use a console app to post to a webapi CreateClient controller action
+                    bool bIsSuccess = await CalculatorHelpers.ClientCreate(statScript);
+                    if (bIsSuccess
+                        && (!string.IsNullOrEmpty(statScript.StatisticalResult)))
+                    {
+                        List <string> lines = CalculatorHelpers
+                            .GetLinesFromUTF8Encoding(statScript.StatisticalResult);
+                        if (lines != null)
+                        {
+                            if (lines.Count > 0)
+                            {
+                                //store the result in the MathResult (or in the MathResult.URL below)
+                                sb.Append(statScript.StatisticalResult);
+                                sLastLine = lines.Last();
+                                if (string.IsNullOrEmpty(sLastLine))
+                                {
+                                    int iSecondToLast = lines.Count - 2;
+                                    sLastLine = lines[iSecondToLast];
+                                }
+                            }
+                        }
                     }
                 }
                 else
                 {
+                    //default subalgo1 runs statpackages on the same server
                     sLastLine = RunScript(sb, sScriptExecutable, scriptFilePath, inputFilePath);
                 }
                 if (this.MathResult.ToLower().StartsWith("http"))

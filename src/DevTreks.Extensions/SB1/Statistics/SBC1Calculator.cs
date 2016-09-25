@@ -161,10 +161,6 @@ namespace DevTreks.Extensions
                 this.SB1CInput.SetInputAttributes(calcParameters,
                     ref currentElement, calcParameters.Updates);
             }
-            else
-            {
-
-            }
             //this sets and removes some atts
             this.SetSB1C1Attributes(string.Empty, calculator);
             //set the totals into calculator

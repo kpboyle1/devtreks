@@ -3907,12 +3907,17 @@ namespace DevTreks.Extensions
                 fromFile, out errorMsg);
             return sText;
         }
-        public static async Task<bool> RunStatScriptAPIClient(StringBuilder sb, 
-            string scriptFilePath, string inputFilePath, string outputFilePath)
+        public static async Task<bool> ClientCreate(DevTreksHelpers.StatScript statScript)
         {
-            bool bHasCsvResults = await DevTreksHelpers.WebServerFileIO.RunStatScriptAPIClient(
-                sb, scriptFilePath, inputFilePath, outputFilePath);
-            return bHasCsvResults;
+            bool bHasResult = await DevTreksHelpers.WebServerFileIO.ClientCreate(
+                statScript);
+            return bHasResult;
+        }
+        public static List<string> GetLinesFromUTF8Encoding(string content)
+        {
+            List<string> lines = DevTreksHelpers.GeneralHelpers.GetLinesFromUTF8Encoding(
+                content);
+            return lines;
         }
         public static void SetLocalsCalculation(
           CalculatorParameters calculatorParams, string currentNodeName,

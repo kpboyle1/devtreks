@@ -55,20 +55,21 @@
   //"./src/DevTreks/wwwroot/Extensions/AgBudgetingCalculators.dll": "./src/DevTreks.Extensions/AgBudgetingCalculators/bin/Release/net461/AgBudgetingCalculators.dll",
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true,
-    "copyToOutput": {
-      "mappings": {
-        //doesn't accept win7-x64 folder name
-        "AgBudgetingCalculators.dll": "../../src/DevTreks.Extensions/AgBudgetingCalculators/bin/Debug/net461/AgBudgetingCalculators.dll",
-        "AgBudgetingCalculators.pdb": "../../src/DevTreks.Extensions/AgBudgetingCalculators/bin/Debug/net461/AgBudgetingCalculators.pdb",
-        "SB1.dll": "../../src/DevTreks.Extensions/SB1/bin/Debug/net461/SB1.dll",
-        "SB1.pdb": "../../src/DevTreks.Extensions/SB1/bin/Debug/net461/SB1.pdb"
-      }
-      //"includeFiles": [
-      //  //copies the file to output path but includes the folder structure
-      //  "..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Release\\net461\\AgBudgetingCalculators.dll"
-      //]
-    }
+    "preserveCompilationContext": true
+      //retain for possible Unix use
+    //"copyToOutput": {
+    //  "mappings": {
+    //    //doesn't accept win7-x64 folder name
+    //    "AgBudgetingCalculators.dll": "../../src/DevTreks.Extensions/AgBudgetingCalculators/bin/Debug/net461/AgBudgetingCalculators.dll",
+    //    "AgBudgetingCalculators.pdb": "../../src/DevTreks.Extensions/AgBudgetingCalculators/bin/Debug/net461/AgBudgetingCalculators.pdb",
+    //    "SB1.dll": "../../src/DevTreks.Extensions/SB1/bin/Debug/net461/SB1.dll",
+    //    "SB1.pdb": "../../src/DevTreks.Extensions/SB1/bin/Debug/net461/SB1.pdb"
+    //  }
+    //  //"includeFiles": [
+    //  //  //copies the file to output path but includes the folder structure
+    //  //  "..\\DevTreks.Extensions\\AgBudgetingCalculators\\bin\\Release\\net461\\AgBudgetingCalculators.dll"
+    //  //]
+    //}
   },
 
   "publishOptions": {

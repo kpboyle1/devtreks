@@ -130,7 +130,7 @@ namespace DevTreks.Data.Helpers
                 {
                     //176 supported dataurl with calculators
                     //this opens the file -which could interfere with the next step that also opens the file
-                    //so just return the error when the file is not opened twice
+                    //so just return the error when the file can not be opened
                     //bURIExists = WebServerFileIO.Exists(fullURIPath);
                     bURIExists = true;
                 }
@@ -775,22 +775,6 @@ namespace DevTreks.Data.Helpers
             return bFileHasSaved;
         }
 
-        //public async Task SaveHtmlURIToWriterAsync(ContentURI uri,
-        //    XmlWriter writer, string fullURIPath)
-        //{
-        //    //reduce memory use of html strings
-        //    string sErrorMsg = string.Empty;
-        //    await writer.WriteRawAsync(await ReadTextAsync(uri, fullURIPath));
-        //    uri.ErrorMessage += sErrorMsg;
-        //}
-        //public void SaveHtmlURIToWriter(ContentURI uri,
-        //    XmlWriter writer, string fullURIPath)
-        //{
-        //    //reduce memory use of html strings
-        //    string sErrorMsg = string.Empty;
-        //    writer.WriteRaw(ReadText(uri, fullURIPath, out sErrorMsg));
-        //    uri.ErrorMessage += sErrorMsg;
-        //}
         public async Task SaveHtmlURIToWriterAsync(ContentURI uri,
             StringWriter writer, string fullURIPath)
         {
@@ -824,7 +808,6 @@ namespace DevTreks.Data.Helpers
             else
             {
                 PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
-                //the webserver code is not debugged
                 if (ePlatform == PLATFORM_TYPES.webserver)
                 {
                     WebServerFileIO webIO = new WebServerFileIO();
