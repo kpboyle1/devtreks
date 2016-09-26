@@ -1,5 +1,5 @@
 Appendix B. ReadMe.txt
-Version: 2.0.0, August 31, 2016
+Version: 2.0.2 Preview, September 26, 2016
 
 Introduction
 DevTreks is a multitier ASP.NET Core 1 database 
@@ -29,39 +29,20 @@ how calculators and analyzers work.
 home site
 https://www.devtreks.org
 
-source code site 
+source code sites
 https://github.com/kpboyle1/devtreks
+https://github.com/kpboyle1/devtreksapi1
 
 database.zip site
 https://devtreks.codeplex.com/
 
-What's New in Version 2.0.0
-1.	This release refactors DevTreks to Microsoft’s 
-ASP.NET and Entity Framework Core 1.0 technologies. 
-
-2.	The development database server uses Sql Server 
-2016 Express RTM. The Azure database server uses RTM 12. 
-The connection properties can be found in this file’s 
-Database Connection section.
-
-3.	This release has been deployed to localhost 
-and to an Azure App Service web app. Appendixes C and D 
-in the Source Code reference explains deployment further.
-
-4.	The August 11th and 31st updates on github fixed 7 bugs that 
-were discovered during the August, 2016 tutorial upgrades.
+What's New in Version 2.0.2
+1.	CTAs (Conservation Technology Assessments): R, Python, Statistical Virtual Machine, and AML: The Technology Assessment 01 tutorial is being upgraded to explain the changes being made for Version 2.0.2, including the use of Anaconda 4 with Python 3.5.2, Microsoft R Open and Intel Math Kernel with R 3.3.0, Statistical Virtual Machines with various statistical packages, and Azure Machine Learning (AML) web services. 
+2.	DevTreks WebApi: A new ASP.NET Core 1 WebApi app exposes a REST interface that accepts POST http commands that contain a JSON string in the request’s body (i.e. http://locahost:5000/api/statscript). The object’s properties include a data URL and a statistical script URL. The host runs the statistical script against the data and returns the JSON string that holds the statistical results. This WebApi app is deployed to the Statistical Virtual Machine mentioned in Item 3. The source code has been added to the devtrekapi1 github repository. 
+3.	CTA-Prevention (Climate Change): The Technology Assessment 02 tutorial is being upgraded and further proofed.
 
 Database Connections
 Server version: Sql Server 2016 Express, RTM
 
 connection string
 Server=localhost\SQLEXPRESS;Database=DevTreksDesk;Trusted_Connection=True;
-
-DevTreks default member login
-Name: kpboyle1@comcast.net
-Pwd: public2A@
-
-system administrator
-SqlExpress 2016 databases can be accessed using a Windows OS logged in user –these haven’t been tested with the new db server and aren’t critical for accessing the db in SSMS
-User: devtreks01_sa or sa
-Pwd: public

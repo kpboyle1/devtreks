@@ -317,7 +317,7 @@ namespace DevTreks.Data.Helpers
             var json = JsonConvert.SerializeObject(statScript);
 
             // Post statscript
-            Uri address = new Uri(string.Concat(statScript.DefaultRootWebStoragePath, "api/statscript"));
+            Uri address = new Uri(string.Concat(statScript.DefaultWebDomain, "api/statscript"));
             try
             {
                 //create controller actionresult says this only returns a url 
@@ -386,6 +386,7 @@ namespace DevTreks.Data.Helpers
             this.PyExecutablePath = string.Empty;
             this.DefaultRootFullFilePath = string.Empty;
             this.DefaultRootWebStoragePath = string.Empty;
+            this.DefaultWebDomain = string.Empty;
             this.StatisticalResult = string.Empty;
             this.IsComplete = false;
             this.IsDevelopment = false;
@@ -404,6 +405,7 @@ namespace DevTreks.Data.Helpers
             this.PyExecutablePath = statScript.PyExecutablePath;
             this.DefaultRootFullFilePath = statScript.DefaultRootFullFilePath;
             this.DefaultRootWebStoragePath = statScript.DefaultRootWebStoragePath;
+            this.DefaultWebDomain = statScript.DefaultWebDomain;
             this.StatisticalResult = statScript.StatisticalResult;
             this.IsComplete = statScript.IsComplete;
             this.IsDevelopment = statScript.IsDevelopment;
@@ -431,6 +433,7 @@ namespace DevTreks.Data.Helpers
         public string PyExecutablePath { get; set; }
         public string DefaultRootFullFilePath { get; set; }
         public string DefaultRootWebStoragePath { get; set; }
+        public string DefaultWebDomain { get; set; }
         public string StatisticalResult { get; set; }
         //set by api
         public bool IsComplete { get; set; }
@@ -462,8 +465,6 @@ namespace DevTreks.Data.Helpers
             //make sure these exist
             testStat.DataURL = inputFilePath;
             testStat.ScriptURL = scriptFilePath;
-            //change to webapi azure site when released
-            testStat.DefaultRootWebStoragePath = "http://localhost:5000/";
             if (isPyScript)
             {
                 //py script

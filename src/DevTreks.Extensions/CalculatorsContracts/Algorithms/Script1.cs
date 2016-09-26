@@ -131,7 +131,7 @@ namespace DevTreks.Extensions.Algorithms
                     sb.AppendLine("r results");
                 }
                 string sLastLine = string.Empty;
-                //2.0.2: subalgo2 is r subalgo3 is Python
+                //2.0.2: algo 2 subalgo2 is r or algo 3 subalgo2 Python
                 if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
                 {
                    
@@ -146,6 +146,18 @@ namespace DevTreks.Extensions.Algorithms
                     DevTreks.Data.Helpers.StatScript statScript
                        = DevTreks.Data.Helpers.StatScript.GetStatScript(
                             bIsPyTest, scriptFilePath, inputFilePath);
+                    string sPlatformType = CalculatorHelpers.GetAppSettingString(
+                        this._params.ExtensionDocToCalcURI, "PlatformType");
+                    if (sPlatformType.Contains("azure"))
+                    {
+                        //change to webapi domain when available
+                        statScript.DefaultWebDomain = "http://localhost:5000/";
+                    }
+                    else
+                    {
+                        //this will be hardcoded
+                        statScript.DefaultWebDomain = "http://localhost:5000/";
+                    }
                     //use a console app to post to a webapi CreateClient controller action
                     bool bIsSuccess = await CalculatorHelpers.ClientCreate(statScript);
                     if (bIsSuccess
