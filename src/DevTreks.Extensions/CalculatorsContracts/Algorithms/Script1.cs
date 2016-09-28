@@ -150,33 +150,48 @@ namespace DevTreks.Extensions.Algorithms
                         this._params.ExtensionDocToCalcURI, "PlatformType");
                     if (sPlatformType.Contains("azure"))
                     {
-                        //change to webapi domain when available
-                        statScript.DefaultWebDomain = "http://localhost:5000/";
+                        //webapi web domain
+                        statScript.DefaultWebDomain = "http://devtreksapi1.southcentralus.cloudapp.azure.com/";
+                        //statScript.DefaultWebDomain = "http://localhost:5000/";
                     }
                     else
                     {
-                        //this will be hardcoded
-                        statScript.DefaultWebDomain = "http://localhost:5000/";
+                        //run tests on cloud webapi site too
+                        statScript.DefaultWebDomain = "http://devtreksapi1.southcentralus.cloudapp.azure.com/";
+                        //statScript.DefaultWebDomain = "http://localhost:5000/";
                     }
                     //use a console app to post to a webapi CreateClient controller action
                     bool bIsSuccess = await CalculatorHelpers.ClientCreate(statScript);
-                    if (bIsSuccess
-                        && (!string.IsNullOrEmpty(statScript.StatisticalResult)))
+                    if (bIsSuccess)
                     {
-                        List <string> lines = CalculatorHelpers
-                            .GetLinesFromUTF8Encoding(statScript.StatisticalResult);
-                        if (lines != null)
+                        if ((!string.IsNullOrEmpty(statScript.StatisticalResult)))
                         {
-                            if (lines.Count > 0)
+                            List<string> lines = CalculatorHelpers
+                                .GetLinesFromUTF8Encoding(statScript.StatisticalResult);
+                            if (lines != null)
                             {
-                                //store the result in the MathResult (or in the MathResult.URL below)
-                                sb.Append(statScript.StatisticalResult);
-                                sLastLine = lines.Last();
-                                if (string.IsNullOrEmpty(sLastLine))
+                                if (lines.Count > 0)
                                 {
-                                    int iSecondToLast = lines.Count - 2;
-                                    sLastLine = lines[iSecondToLast];
+                                    //store the result in the MathResult (or in the MathResult.URL below)
+                                    sb.Append(statScript.StatisticalResult);
+                                    sLastLine = lines.Last();
+                                    if (string.IsNullOrEmpty(sLastLine))
+                                    {
+                                        int iSecondToLast = lines.Count - 2;
+                                        sLastLine = lines[iSecondToLast];
+                                    }
                                 }
+                            }
+                        }
+                        else
+                        {
+                            if ((!string.IsNullOrEmpty(statScript.StatisticalResult)))
+                            {
+                                this.MathResult += statScript.ErrorMessage;
+                            }
+                            else
+                            {
+                                this.MathResult += "The remote server returned a successful response header but failed to generate the statistical results.";
                             }
                         }
                     }
