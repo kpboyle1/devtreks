@@ -11,19 +11,20 @@ namespace DevTreks.Extensions.Algorithms
     ///Purpose:		Simple AML script algorithms
     ///Author:		www.devtreks.org
     ///Date:		2016, September
-    ///References:	CTA examples 2 and 3
+    ///References:	CTA 4 reference
     ///</summary>
     public class Script2 : Calculator1
     {
 
         public Script2(string[] mathTerms, string[] colNames, string[] depColNames,
-            double[] qs, string algorithm, CalculatorParameters calcParams)
+            double[] qs, string algorithm, string subalgorithm, CalculatorParameters calcParams)
             : base()
         {
             _colNames = colNames;
             _depColNames = depColNames;
             _mathTerms = mathTerms;
             _algorithm = algorithm;
+            _subalgorithm = subalgorithm;
             //estimators
             //add an intercept to qs 
             _qs = new double[qs.Count() + 1];
@@ -45,17 +46,18 @@ namespace DevTreks.Extensions.Algorithms
         private double[] _qs { get; set; }
 
         private string _algorithm { get; set; }
+        private string _subalgorithm { get; set; }
         private string _response { get; set; }
 
         //output
         //q6 = marginal productivity
         public double QTSlope { get; set; }
-        //q6M = predicted y
+        //QTM = predicted y
         public double QTPredicted { get; set; }
-        //lower 95% ci
+        //lower % ci
         public double QTL { get; set; }
         public string QTLUnit { get; set; }
-        //upper 95% ci
+        //upper % ci
         public double QTU { get; set; }
         public string QTUUnit { get; set; }
 
@@ -70,7 +72,7 @@ namespace DevTreks.Extensions.Algorithms
                 //but web service expects real azure dataset:
                 //when released, this must be blocked out
                 //r and python debug
-                inputFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7969/Regress1.csv";
+                //inputFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7969/Regress1.csv";
                 
                 //aml debug
                 //inputFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7961/Ex6R.csv";
@@ -97,18 +99,18 @@ namespace DevTreks.Extensions.Algorithms
                 {
                     return bHasCalcs;
                 }
-                if (_algorithm == Calculator1.MATH_TYPES.algorithm3.ToString())
+                if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
                 {
-                    bHasCalcs = await RunAlgorithm3Async(inputFilePath, scriptFilePath);
+                    bHasCalcs = await RunSubAlgorithm2Async(inputFilePath, scriptFilePath);
                 }
-                else if (_algorithm == Calculator1.MATH_TYPES.algorithm4.ToString())
+                else if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm3.ToString())
                 {
-                    bHasCalcs = await RunAlgorithm4Async(inputFilePath, scriptFilePath);
+                    bHasCalcs = await RunSubAlgorithm3Async(inputFilePath, scriptFilePath);
                 }
                 else 
                 {
                     //r is default
-                    bHasCalcs = await RunAlgorithm2Async(inputFilePath, scriptFilePath);
+                    bHasCalcs = await RunSubAlgorithm1Async(inputFilePath, scriptFilePath);
                 }
             }
             catch (Exception ex)
@@ -117,18 +119,19 @@ namespace DevTreks.Extensions.Algorithms
             };
             return bHasCalcs;
         }
-        public async Task<bool> RunAlgorithm2Async(string inputFilePath, string rFile)
+        public async Task<bool> RunSubAlgorithm1Async(string inputFilePath, string rFile)
         {
             bool bHasCalcs = false;
             string sBaseURL =
-                "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/9f23e23f1a724d408126276db8b6017f/jobs";
-            string sPlatForm = CalculatorHelpers.GetPlatform(_params.ExtensionDocToCalcURI, inputFilePath);
+                "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/b10e6b4c4e63438999cc45147bbe006c/jobs";
+            string sPlatForm = _params.ExtensionDocToCalcURI.URIDataManager.PlatformType.ToString();
+            //string sPlatForm = CalculatorHelpers.GetPlatform(_params.ExtensionDocToCalcURI, inputFilePath);
             if (sPlatForm != CalculatorHelpers.PLATFORM_TYPES.azure.ToString())
             {
-                sBaseURL = "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/9f23e23f1a724d408126276db8b6017f/execute?api-version=2.0&details=true";
+                sBaseURL = "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/b10e6b4c4e63438999cc45147bbe006c/execute?api-version=2.0&details=true";
             }
             string sApiKey =
-                "4xs+lIxGYOLEM5u/SrDpSg7CmrWDOIJZzL+dm2igKGfzqToyWTafpSM0v+0J74ZqF1hxsgD7TgJAtYTChOhMHQ==";
+                "fxBeL9LJ3ORm0kW0DtKhT99OfUK6YgBlc59crizYhlxKoEjRd3kuDHvPRuehCQ02VJhPPXcdYTp2pDUynb9gMA==";
             string sError = string.Empty;
             //convert the script file to the script string expected by the algorithm
             List<string> rlines = new List<string>();
@@ -173,7 +176,7 @@ namespace DevTreks.Extensions.Algorithms
                 //instead, double check that output url is actually saved
                 lines = CalculatorHelpers.ReadLines(_params.ExtensionDocToCalcURI, sOutputFullDataURL, out sError);
                 this.ErrorMessage += sError;
-                //this results in endless wait
+                //this results in endless wait-try ReadLinesAsync(sOutputDataURL).ConfigureAwait(false)
                 //lines = await CalculatorHelpers.ReadLinesAsync(sOutputDataURL);
                 if (lines == null)
                 {
@@ -224,10 +227,6 @@ namespace DevTreks.Extensions.Algorithms
                     if (line[iPos] != null)
                         this.QTU = CalculatorHelpers.ConvertStringToDouble(line[iPos]);
                 }
-                //potential future use: convert to JSON object
-                //BatchResponseStructure responseStruct = 
-                //    JsonConvert.DeserializeObject<BatchResponseStructure>(_response);
-
             }
             else
             {
@@ -235,7 +234,7 @@ namespace DevTreks.Extensions.Algorithms
             }
             return bHasCalcs;
         }
-        public async Task<bool> RunAlgorithm3Async(string inputFilePath, string pyFile)
+        public async Task<bool> RunSubAlgorithm2Async(string inputFilePath, string pyFile)
         {
             bool bHasCalcs = false;
             string sBaseURL =
@@ -291,7 +290,7 @@ namespace DevTreks.Extensions.Algorithms
                 //instead, double check that output url is actually saved
                 lines = CalculatorHelpers.ReadLines(_params.ExtensionDocToCalcURI, sOutputFullDataURL, out sError);
                 this.ErrorMessage += sError;
-                //this results in endless wait
+                //this results in endless wait -try ReadLinesAsync(sOutputDataURL).ConfigureAwait(false)
                 //lines = await CalculatorHelpers.ReadLinesAsync(sOutputDataURL);
                 if (lines == null)
                 {
@@ -362,7 +361,7 @@ namespace DevTreks.Extensions.Algorithms
             }
             return bHasCalcs;
         }
-        public async Task<bool> RunAlgorithm4Async(string inputFile1Path, string inputFile2Path)
+        public async Task<bool> RunSubAlgorithm3Async(string inputFile1Path, string inputFile2Path)
         {
             bool bHasCalcs = false;
             string sBaseURL =

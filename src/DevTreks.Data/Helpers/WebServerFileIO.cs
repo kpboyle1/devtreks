@@ -212,10 +212,9 @@ namespace DevTreks.Data.Helpers
                         { "script1", script },
                     }
                 };
-                //const string apiKey = "abc123"; // Replace this with the API key for the web service
+
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
                 client.BaseAddress = new Uri(baseURL);
-                //client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/9f23e23f1a724d408126276db8b6017f/execute?api-version=2.0&details=true");
 
                 // WARNING: The 'await' statement below can result in a deadlock if you are calling this code from the UI thread of an ASP.Net application.
                 // One way to address this would be to call ConfigureAwait(false) so that the execution does not attempt to resume on the original context.
@@ -224,23 +223,12 @@ namespace DevTreks.Data.Helpers
                 // with the following:
                 //      result = await DoSomeTask().ConfigureAwait(false)
 
-                //2.0.0 change: 
+                //2.0.2 change: 
                 HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest).ConfigureAwait(false);
-                ////not debugged
-                ////http://www.asp.net/web-api/overview/advanced/calling-a-web-api-from-a-net-client
-                //var postContent = new Dictionary<string, string>() {
-                //        { "inputblobpath", inputFileLocation },
-                //        { "outputcsvblobpath", outputFileLocation },
-                //        { "script1", script },
-                //    };
-                //var content = new FormUrlEncodedContent(postContent);
-                //HttpResponseMessage response = await client.PostAsync(baseURL, content).ConfigureAwait(false);
-                
 
                 if (response.IsSuccessStatusCode)
-                {
-                    //the web service stores the result file in blob storage 
-                    await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                { 
+                    //the web service stores the result file in blob storage so no need for full response
                     //sResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                     sResponse = string.Concat("Success with status code: ", response.StatusCode);
                 }
@@ -273,8 +261,6 @@ namespace DevTreks.Data.Helpers
                 //const string apiKey = "abc123"; // Replace this with the API key for the web service
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
                 client.BaseAddress = new Uri(baseURL);
-                //client.BaseAddress = new Uri("https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/9f23e23f1a724d408126276db8b6017f/execute?api-version=2.0&details=true");
-
                 // WARNING: The 'await' statement below can result in a deadlock if you are calling this code from the UI thread of an ASP.Net application.
                 // One way to address this would be to call ConfigureAwait(false) so that the execution does not attempt to resume on the original context.
                 // For instance, replace code such as:
@@ -282,7 +268,7 @@ namespace DevTreks.Data.Helpers
                 // with the following:
                 //      result = await DoSomeTask().ConfigureAwait(false)
 
-                //2.0.0 change: HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest).ConfigureAwait(false);
+                //2.0.2 change: HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest).ConfigureAwait(false);
                 //not debugged
                 //http://www.asp.net/web-api/overview/advanced/calling-a-web-api-from-a-net-client
                 var postContent = new Dictionary<string, string>() {
@@ -384,6 +370,7 @@ namespace DevTreks.Data.Helpers
             this.StatType = string.Empty;
             this.RExecutablePath = string.Empty;
             this.PyExecutablePath = string.Empty;
+            this.JuliaExecutablePath = string.Empty;
             this.DefaultRootFullFilePath = string.Empty;
             this.DefaultRootWebStoragePath = string.Empty;
             this.DefaultWebDomain = string.Empty;
@@ -403,6 +390,7 @@ namespace DevTreks.Data.Helpers
             this.StatType = statScript.StatType;
             this.RExecutablePath = statScript.RExecutablePath;
             this.PyExecutablePath = statScript.PyExecutablePath;
+            this.JuliaExecutablePath = statScript.JuliaExecutablePath;
             this.DefaultRootFullFilePath = statScript.DefaultRootFullFilePath;
             this.DefaultRootWebStoragePath = statScript.DefaultRootWebStoragePath;
             this.DefaultWebDomain = statScript.DefaultWebDomain;
@@ -416,7 +404,8 @@ namespace DevTreks.Data.Helpers
             none = 0,
             r = 1,
             py = 2,
-            aml = 3
+            aml = 3,
+            julia = 4
         }
         //first 1 prop set by api
         public string Key { get; set; }
@@ -431,6 +420,7 @@ namespace DevTreks.Data.Helpers
         //the host sets these 4 properties using di from appsettings
         public string RExecutablePath { get; set; }
         public string PyExecutablePath { get; set; }
+        public string JuliaExecutablePath { get; set; }
         public string DefaultRootFullFilePath { get; set; }
         public string DefaultRootWebStoragePath { get; set; }
         public string DefaultWebDomain { get; set; }
@@ -442,9 +432,13 @@ namespace DevTreks.Data.Helpers
         public static STAT_TYPE GetStatType(string executablepath)
         {
             STAT_TYPE eStatType = STAT_TYPE.none;
-            if (executablepath.Contains("python"))
+            if (executablepath.Contains("python".ToLower()))
             {
                 eStatType = STAT_TYPE.py;
+            }
+            else if (executablepath.Contains("julia".ToLower()))
+            {
+                eStatType = STAT_TYPE.julia;
             }
             else
             {
@@ -453,7 +447,7 @@ namespace DevTreks.Data.Helpers
             //aml addressed when subalgo 4 is debugged
             return eStatType;
         }
-        public static StatScript GetStatScript(bool isPyScript, string scriptFilePath, 
+        public static StatScript GetStatScript(string statType, string scriptFilePath, 
             string inputFilePath)
         {
             //used to test the post http (create) controller action in web api
@@ -465,10 +459,15 @@ namespace DevTreks.Data.Helpers
             //make sure these exist
             testStat.DataURL = inputFilePath;
             testStat.ScriptURL = scriptFilePath;
-            if (isPyScript)
+            if (statType == STAT_TYPE.py.ToString())
             {
                 //py script
                 testStat.StatType = StatScript.STAT_TYPE.py.ToString();
+            }
+            else if (statType == STAT_TYPE.julia.ToString())
+            {
+                //py script
+                testStat.StatType = StatScript.STAT_TYPE.julia.ToString();
             }
             else
             {

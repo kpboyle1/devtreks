@@ -137,6 +137,8 @@ namespace DevTreks
                 ContentURI.URIDataManager.RExecutable = path;
                 path = Configuration["Site:PyExecutable"];
                 ContentURI.URIDataManager.PyExecutable = path;
+                path = Configuration["Site:JuliaExecutable"];
+                ContentURI.URIDataManager.JuliaExecutable = path;
                 path = Configuration["Site:HostFeeRate"];
                 ContentURI.URIDataManager.HostFeeRate = path;
                 path = Configuration["URINames:ResourceURIName"];
@@ -221,6 +223,8 @@ namespace DevTreks
                 ContentURI.URIDataManager.RExecutable = path;
                 path = Configuration["Site:PyExecutable"];
                 ContentURI.URIDataManager.PyExecutable = path;
+                path = Configuration["Site:JuliaExecutable"];
+                ContentURI.URIDataManager.JuliaExecutable = path;
                 path = Configuration["Site:HostFeeRate"];
                 ContentURI.URIDataManager.HostFeeRate = path;
                 path = Configuration["URINames:ResourceURIName"];

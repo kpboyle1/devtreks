@@ -12,7 +12,7 @@ namespace DevTreks.Extensions.Algorithms
     ///Purpose:		Run scripting language algorithms
     ///Author:		www.devtreks.org
     ///Date:		2016, September
-    ///References:	CTA examples 2 and 3
+    ///References:	CTA 1, 2, and 3 references
     ///</summary>
     public class Script1 : Calculator1
     {
@@ -131,21 +131,26 @@ namespace DevTreks.Extensions.Algorithms
                     sb.AppendLine("r results");
                 }
                 string sLastLine = string.Empty;
-                //2.0.2: algo 2 subalgo2 is r or algo 3 subalgo2 Python
+                //2.0.2: algo 2 subalgo2 is r or algo 3 subalgo2 Python; subalgo 2 is virtual machine
                 if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
                 {
                    
                     //run on remote servers that have the DevTreksStatsApi WebApi app deployed
-                    bool bIsPyTest = false;
+                    string sStatType = Data.Helpers.StatScript.STAT_TYPE.r.ToString();
                     if (_algorithm == Calculator1.MATH_TYPES.algorithm3.ToString())
                     {
                         //python is significantly slower than R
-                        bIsPyTest = true;
+                        sStatType = Data.Helpers.StatScript.STAT_TYPE.py.ToString();
+                    }
+                    else if (_algorithm == Calculator1.MATH_TYPES.algorithm6.ToString())
+                    {
+                        //julia has not been tested in 2.0.2
+                        sStatType = Data.Helpers.StatScript.STAT_TYPE.julia.ToString();
                     }
 
                     DevTreks.Data.Helpers.StatScript statScript
                        = DevTreks.Data.Helpers.StatScript.GetStatScript(
-                            bIsPyTest, scriptFilePath, inputFilePath);
+                            sStatType, scriptFilePath, inputFilePath);
                     string sPlatformType = CalculatorHelpers.GetAppSettingString(
                         this._params.ExtensionDocToCalcURI, "PlatformType");
                     if (sPlatformType.Contains("azure"))
@@ -279,14 +284,6 @@ namespace DevTreks.Extensions.Algorithms
                         sLastLine = reader.ReadLine();
                         sb.AppendLine(sLastLine);
                     }
-
-                    //sb.Append(reader.ReadToEnd());
-                    //retain for writing to file
-                    //using (StreamWriter sw = new StreamWriter(output3))
-                    //{
-                    //    sb.Append(reader.ReadToEnd());
-                    //    sw.Write(sb.ToString());
-                    //}
                 }
                 process.WaitForExit();
             }

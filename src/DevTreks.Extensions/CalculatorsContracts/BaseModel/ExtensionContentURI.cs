@@ -219,6 +219,7 @@ namespace DevTreks.Extensions
                 this.FileSizeDBStorageValidation = string.Empty;
                 this.RExecutable = string.Empty;
                 this.PyExecutable = string.Empty;
+                this.JuliaExecutable = string.Empty;
                 this.HostFeeRate = string.Empty;
                 this.ResourceURIName = string.Empty;
                 this.ContentURIName = string.Empty;
@@ -306,6 +307,7 @@ namespace DevTreks.Extensions
                 this.FileSizeDBStorageValidation = mngr.FileSizeDBStorageValidation;
                 this.RExecutable = mngr.RExecutable;
                 this.PyExecutable = mngr.PyExecutable;
+                this.JuliaExecutable = mngr.JuliaExecutable;
                 this.HostFeeRate = mngr.HostFeeRate;
                 this.ResourceURIName = mngr.ResourceURIName;
                 this.ContentURIName = mngr.ContentURIName;
@@ -394,6 +396,7 @@ namespace DevTreks.Extensions
                 this.FileSizeDBStorageValidation = mngr.FileSizeDBStorageValidation;
                 this.RExecutable = mngr.RExecutable;
                 this.PyExecutable = mngr.PyExecutable;
+                this.JuliaExecutable = mngr.JuliaExecutable;
                 this.HostFeeRate = mngr.HostFeeRate;
                 this.ResourceURIName = mngr.ResourceURIName;
                 this.ContentURIName = mngr.ContentURIName;
@@ -527,6 +530,7 @@ namespace DevTreks.Extensions
             public string PageSizeEdits { get; set; }
             public string RExecutable { get; set; }
             public string PyExecutable { get; set; }
+            public string JuliaExecutable { get; set; }
             public string HostFeeRate { get; set; }
             public string ResourceURIName { get; set; }
             public string ContentURIName { get; set; }

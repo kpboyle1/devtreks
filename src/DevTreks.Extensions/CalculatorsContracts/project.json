@@ -16,8 +16,13 @@
     "DevTreks.Exceptions": "1.0.0",
     "Jace": "1.0.0",
     "Numerics": "1.0.0"
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\CalculatorsContracts.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\CalculatorsContracts.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
-
   //2.0.0 moved error messages into DevTreksErrors: https://github.com/aspnet/Announcements/issues/175
   //"buildOptions": {
   //  "embed": {

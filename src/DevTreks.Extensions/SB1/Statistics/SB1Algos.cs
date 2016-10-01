@@ -94,9 +94,7 @@ namespace DevTreks.Extensions.SB1Statistics
             string sPlatForm = CalculatorHelpers.GetPlatform(this.CalcParameters.ExtensionDocToCalcURI, dataURL);
             if (sPlatForm == CalculatorHelpers.PLATFORM_TYPES.azure.ToString())
             {
-                if (this.HasMathType(label, MATH_TYPES.algorithm2)
-                    || this.HasMathType(label, MATH_TYPES.algorithm3)
-                    || this.HasMathType(label, MATH_TYPES.algorithm4))
+                if (this.HasMathType(label, MATH_TYPES.algorithm4))
                 {
                     //if its a good calc returns the string
                     algoindicator = await SetScriptCloudStats(label, colNames, dataURL, jDataURL);
@@ -110,7 +108,7 @@ namespace DevTreks.Extensions.SB1Statistics
                     //if its a good calc returns the string
                     algoindicator = await SetScriptWebStats(label, colNames, dataURL, jDataURL);
                 }
-                else if (this.HasMathType(label, MATH_TYPES.algorithm4, MATH_SUBTYPES.subalgorithm1))
+                else if (this.HasMathType(label, MATH_TYPES.algorithm4))
                 {
                     //always runs the cloud web servive (but response can vary)
                     algoindicator = await SetScriptCloudStats(label, colNames, dataURL, jDataURL);
@@ -3253,14 +3251,12 @@ namespace DevTreks.Extensions.SB1Statistics
             string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.SB1CILevel.ToString(), Errors.GetMessage("CI_PCT"));
             string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.SB1CILevel.ToString(), Errors.GetMessage("CI_PCT"));
             if (label == this.SB1Label1
-                && (this.SB1MathType1 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType1 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType1 == MATH_TYPES.algorithm4.ToString())
+                && (this.SB1MathType1 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression1))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression1, this.SB1MathType1);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression1, this.SB1MathType1, this.SB1MathSubType1);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount1 = script2.QTPredicted;
                 this.SB1TLAmount1 = script2.QTL;
@@ -3272,14 +3268,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult1 += script2.MathResult;
             }
             else if (label == this.SB1Label2
-                 && (this.SB1MathType2 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType2 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType2 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType2 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression2))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression2, this.SB1MathType2);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression2, this.SB1MathType2, this.SB1MathSubType2);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount2 = script2.QTPredicted;
                 this.SB1TLAmount2 = script2.QTL;
@@ -3290,14 +3284,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult2 += script2.MathResult;
             }
             else if (label == this.SB1Label3
-                 && (this.SB1MathType3 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType3 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType3 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType3 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression3))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression3, this.SB1MathType3);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression3, this.SB1MathType3, this.SB1MathSubType3);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount3 = script2.QTPredicted;
                 this.SB1TLAmount3 = script2.QTL;
@@ -3308,14 +3300,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult3 += script2.MathResult;
             }
             else if (label == this.SB1Label4
-                 && (this.SB1MathType4 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType4 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType4 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType4 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression4))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression4, this.SB1MathType4);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression4, this.SB1MathType4, this.SB1MathSubType4);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount4 = script2.QTPredicted;
                 this.SB1TLAmount4 = script2.QTL;
@@ -3326,14 +3316,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult4 += script2.MathResult;
             }
             else if (label == this.SB1Label5
-                 && (this.SB1MathType5 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType5 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType5 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType5 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression5))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression5, this.SB1MathType5);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression5, this.SB1MathType5, this.SB1MathSubType5);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount5 = script2.QTPredicted;
                 this.SB1TLAmount5 = script2.QTL;
@@ -3344,14 +3332,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult5 += script2.MathResult;
             }
             else if (label == this.SB1Label6
-                 && (this.SB1MathType6 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType6 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType6 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType6 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression6))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression6, this.SB1MathType6);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression6, this.SB1MathType6, this.SB1MathSubType6);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount6 = script2.QTPredicted;
                 this.SB1TLAmount6 = script2.QTL;
@@ -3362,14 +3348,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult6 += script2.MathResult;
             }
             else if (label == this.SB1Label7
-                 && (this.SB1MathType7 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType7 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType7 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType7 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression7))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression7, this.SB1MathType7);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression7, this.SB1MathType7, this.SB1MathSubType7);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount7 = script2.QTPredicted;
                 this.SB1TLAmount7 = script2.QTL;
@@ -3380,14 +3364,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult7 += script2.MathResult;
             }
             else if (label == this.SB1Label8
-                 && (this.SB1MathType8 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType8 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType8 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType8 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression8))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression8, this.SB1MathType8);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression8, this.SB1MathType8, this.SB1MathSubType8);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount8 = script2.QTPredicted;
                 this.SB1TLAmount8 = script2.QTL;
@@ -3398,14 +3380,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult8 += script2.MathResult;
             }
             else if (label == this.SB1Label9
-                 && (this.SB1MathType9 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType9 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType9 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType9 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression9))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression9, this.SB1MathType9);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression9, this.SB1MathType9, this.SB1MathSubType9);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount9 = script2.QTPredicted;
                 this.SB1TLAmount9 = script2.QTL;
@@ -3416,14 +3396,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult9 += script2.MathResult;
             }
             else if (label == this.SB1Label10
-                 && (this.SB1MathType10 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType10 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType10 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType10 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression10))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression10, this.SB1MathType10);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression10, this.SB1MathType10, this.SB1MathSubType10);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount10 = script2.QTPredicted;
                 this.SB1TLAmount10 = script2.QTL;
@@ -3434,14 +3412,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult10 += script2.MathResult;
             }
             else if (label == this.SB1Label11
-                 && (this.SB1MathType11 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType11 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType11 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType11 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression11))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression11, this.SB1MathType11);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression11, this.SB1MathType11, this.SB1MathSubType11);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount11 = script2.QTPredicted;
                 this.SB1TLAmount11 = script2.QTL;
@@ -3452,14 +3428,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult11 += script2.MathResult;
             }
             else if (label == this.SB1Label12
-                 && (this.SB1MathType12 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType12 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType12 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType12 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression12))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression12, this.SB1MathType12);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression12, this.SB1MathType12, this.SB1MathSubType12);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount12 = script2.QTPredicted;
                 this.SB1TLAmount12 = script2.QTL;
@@ -3470,14 +3444,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult12 += script2.MathResult;
             }
             else if (label == this.SB1Label13
-                 && (this.SB1MathType13 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType13 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType13 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType13 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression13))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression13, this.SB1MathType13);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression13, this.SB1MathType13, this.SB1MathSubType13);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount13 = script2.QTPredicted;
                 this.SB1TLAmount13 = script2.QTL;
@@ -3488,14 +3460,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult13 += script2.MathResult;
             }
             else if (label == this.SB1Label14
-                 && (this.SB1MathType14 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType14 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType14 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType14 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression14))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression14, this.SB1MathType14);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression14, this.SB1MathType14, this.SB1MathSubType14);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount14 = script2.QTPredicted;
                 this.SB1TLAmount14 = script2.QTL;
@@ -3506,14 +3476,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult14 += script2.MathResult;
             }
             else if (label == this.SB1Label15
-                 && (this.SB1MathType15 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType15 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType15 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType15 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression15))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression15, this.SB1MathType15);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression15, this.SB1MathType15, this.SB1MathSubType15);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount15 = script2.QTPredicted;
                 this.SB1TLAmount15 = script2.QTL;
@@ -3524,14 +3492,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult15 += script2.MathResult;
             }
             else if (label == this.SB1Label16
-                 && (this.SB1MathType16 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType16 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType16 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType16 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression16))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression16, this.SB1MathType16);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression16, this.SB1MathType16, this.SB1MathSubType16);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount16 = script2.QTPredicted;
                 this.SB1TLAmount16 = script2.QTL;
@@ -3542,14 +3508,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult16 += script2.MathResult;
             }
             else if (label == this.SB1Label17
-                 && (this.SB1MathType17 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType17 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType17 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType17 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression17))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression17, this.SB1MathType17);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression17, this.SB1MathType17, this.SB1MathSubType17);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount17 = script2.QTPredicted;
                 this.SB1TLAmount17 = script2.QTL;
@@ -3560,14 +3524,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult17 += script2.MathResult;
             }
             else if (label == this.SB1Label18
-                && (this.SB1MathType18 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType18 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType18 == MATH_TYPES.algorithm4.ToString())
+                && (this.SB1MathType18 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression18))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression18, this.SB1MathType18);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression18, this.SB1MathType18, this.SB1MathSubType18);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount18 = script2.QTPredicted;
                 this.SB1TLAmount18 = script2.QTL;
@@ -3578,14 +3540,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult18 += script2.MathResult;
             }
             else if (label == this.SB1Label19
-                 && (this.SB1MathType19 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType19 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType19 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType19 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression19))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression19, this.SB1MathType19);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression19, this.SB1MathType19, this.SB1MathSubType19);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount19 = script2.QTPredicted;
                 this.SB1TLAmount19 = script2.QTL;
@@ -3596,14 +3556,12 @@ namespace DevTreks.Extensions.SB1Statistics
                 this.SB1MathResult19 += script2.MathResult;
             }
             else if (label == this.SB1Label20
-                 && (this.SB1MathType20 == MATH_TYPES.algorithm2.ToString()
-                    || this.SB1MathType20 == MATH_TYPES.algorithm3.ToString()
-                    || this.SB1MathType20 == MATH_TYPES.algorithm4.ToString())
+                 && (this.SB1MathType20 == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.SB1MathExpression20))
             {
                 algoIndicator = label;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.SB1MathExpression20, this.SB1MathType20);
+                    = InitScript2Algo(label, colNames, this.SB1MathExpression20, this.SB1MathType20, this.SB1MathSubType20);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.SB1TMAmount20 = script2.QTPredicted;
                 this.SB1TLAmount20 = script2.QTL;
@@ -4092,7 +4050,7 @@ namespace DevTreks.Extensions.SB1Statistics
             return RMI;
         }
         private DevTreks.Extensions.Algorithms.Script2 InitScript2Algo(string label, string[] colNames,
-           string mathExpression, string algorithm)
+           string mathExpression, string algorithm, string subalgorithm)
         {
             //mathterms define which qamount to send to algorith for predicting a given set of qxs
             List<string> mathTerms = new List<string>();
@@ -4102,7 +4060,7 @@ namespace DevTreks.Extensions.SB1Statistics
             List<double> qs = GetQsForMathTerms(label, mathTerms);
             DevTreks.Extensions.Algorithms.Script2 script2
                     = new Algorithms.Script2(mathTerms.ToArray(), colNames, depColNames.ToArray(),
-                        qs.ToArray(), algorithm, this.CalcParameters);
+                        qs.ToArray(), algorithm, subalgorithm, this.CalcParameters);
             return script2;
         }
         private DevTreks.Extensions.Algorithms.Script1 InitScript1Algo(string label, string[] colNames,

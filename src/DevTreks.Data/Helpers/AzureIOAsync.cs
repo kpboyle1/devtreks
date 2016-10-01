@@ -22,7 +22,7 @@ namespace DevTreks.Data.Helpers
     /// <summary>
     ///Purpose:		General utilities for Azure cloud storage
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2016, September
     ///NOTE:        uriPath below can be the absolute URI to the blob, 
     ///             or a relative URI beginning with the container name.
     ///             Don't use catch-trys -these should be debugged to the 
@@ -2391,17 +2391,16 @@ namespace DevTreks.Data.Helpers
             }
             return bHasCopied;
         }
-        //azure machine learning R project
+        //azure machine learning R and Python scripts
         public async Task<string> InvokeHttpRequestResponseService(ContentURI uri,
-            string baseURL, string apiKey, string inputBlobLocation, 
+            string baseURL, string apiKey, string inputBlobLocation,
             string outputBlobLocation, string script)
         {
             string sResponse = string.Empty;
             string BaseUrl = baseURL;
-            string InputFileLocation = inputBlobLocation; 
-            string OutputFileLocation = outputBlobLocation; 
+            string InputFileLocation = inputBlobLocation;
+            string OutputFileLocation = outputBlobLocation;
             string APIKey = apiKey;
-            //2.0.0 refactor: get the connection string from AzureIO (get connected service)
             string sStorageConnectionString = uri.URIDataManager.StorageConnection;
             // set a time out for polling status
             const int TimeOutInMilliseconds = 120 * 1000; // Set a timeout of 2 minutes
@@ -2410,11 +2409,6 @@ namespace DevTreks.Data.Helpers
             {
                 BatchScoreRequest request = new BatchScoreRequest()
                 {
-                    Input = new AzureBlobDataReference()
-                    {
-                        ConnectionString = sStorageConnectionString,
-                        RelativeLocation = InputFileLocation
-                    },
                     GlobalParameters = new Dictionary<string, string>() {
                         { "inputblobpath", InputFileLocation },
                         { "outputcsvblobpath", OutputFileLocation },
@@ -2423,64 +2417,65 @@ namespace DevTreks.Data.Helpers
                 };
 
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", APIKey);
-                
-                var response = await client.PostAsJsonAsync(BaseUrl, request).ConfigureAwait(false);
-                string jobId = await response.Content.ReadAsAsync<string>().ConfigureAwait(false);
-                //2.0.0 tests
-                //var postContent = new Dictionary<string, string>() {
-                //        { "inputblobpath", InputFileLocation },
-                //        { "outputcsvblobpath", OutputFileLocation },
-                //        { "script1", script },
-                //    };
-                //var content = new FormUrlEncodedContent(postContent);
-                //var response = await client.PostAsync(BaseUrl, content).ConfigureAwait(false);
-                //string jobId = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
+                var response = await client.PostAsJsonAsync(BaseUrl + "?api-version=2.0", request).ConfigureAwait(false);
+                if (!response.IsSuccessStatusCode)
+                {
+                    sResponse = await WriteFailedResponse(response);
+                    return sResponse;
+                }
+
+                string jobId = await response.Content.ReadAsAsync<string>();
+
+                // start the job
+                response = await client.PostAsync(BaseUrl + "/" + jobId + "/start?api-version=2.0", null);
+                if (!response.IsSuccessStatusCode)
+                {
+                    sResponse = await WriteFailedResponse(response);
+                    return sResponse;
+                }
                 string jobLocation = BaseUrl + "/" + jobId + "?api-version=2.0";
                 Stopwatch watch = Stopwatch.StartNew();
                 bool done = false;
                 while (!done)
                 {
-                    response = await client.GetAsync(jobLocation).ConfigureAwait(false);
-                    BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>().ConfigureAwait(false);
-                    //2.0.0 tests
-                    //BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>().ConfigureAwait(false);
-                    ////var statusString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    ////bug introduced in order to compile
-                    ////BatchScoreStatus status = new BatchScoreStatus();
-                    //status.StatusCode = statusString;
+                    response = await client.GetAsync(jobLocation);
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        sResponse = await WriteFailedResponse(response);
+                    }
+                    BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>();
                     if (watch.ElapsedMilliseconds > TimeOutInMilliseconds)
                     {
                         done = true;
-                        //sbResponse.AppendLine("Timed out. Deleting the job ...");
-                        sResponse = "Timed out. Deleting the job ...";
-                        await client.DeleteAsync(jobLocation).ConfigureAwait(false); ;
+                        sResponse = string.Format("Timed out. Deleting job {0} ...", jobId);
+                        await client.DeleteAsync(jobLocation);
                     }
                     switch (status.StatusCode)
                     {
                         case BatchScoreStatusCode.NotStarted:
-                            //sbResponse.AppendLine("Not started...");
+                            //Console.WriteLine(string.Format("Job {0} not yet started...", jobId));
                             break;
                         case BatchScoreStatusCode.Running:
-                            //sbResponse.AppendLine("Running...");
+                            //Console.WriteLine(string.Format("Job {0} running...", jobId));
                             break;
                         case BatchScoreStatusCode.Failed:
-                            //sbResponse.AppendLine("Failed!");
-                            //sbResponse.AppendLine(string.Format("Error details: {0}", status.Details));
+                            //Console.WriteLine(string.Format("Job {0} failed!", jobId));
                             sResponse = string.Format("Error details: {0}", status.Details);
                             done = true;
                             break;
                         case BatchScoreStatusCode.Cancelled:
-                            //sbResponse.AppendLine("Cancelled!");
-                            sResponse = "Cancelled";
+                            sResponse = string.Format("Job {0} cancelled", jobId);
                             done = true;
                             break;
                         case BatchScoreStatusCode.Finished:
                             done = true;
-                            //The word success tells calling procedure that output file can be processed
                             sResponse = string.Concat("Success with status code: ", response.StatusCode);
+                            //don't need the full response
+                            //sResponse += await response.Content.ReadAsStringAsync();
                             break;
                     }
+
                     if (!done)
                     {
                         Thread.Sleep(1000); // Wait one second
@@ -2489,26 +2484,12 @@ namespace DevTreks.Data.Helpers
             }
             return sResponse;
         }
-        //azure machine learning algos
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="baseURL"></param>
-        /// <param name="apiKey"></param>
-        /// <param name="inputBlob1Location">dataset to train model</param>
-        /// <param name="inputBlob2Location">dataset to score</param>
-        /// <param name="outputBlob1Location">score results</param>
-        /// <param name="outputBlob2Location">model results</param>
-        /// <param name="script"></param>
-        /// <returns></returns>
         public async Task<string> InvokeHttpRequestResponseService2(string baseURL, string apiKey,
             string inputBlob1Location, string inputBlob2Location,
             string outputBlob1Location, string outputBlob2Location)
         {
             string sResponse = string.Empty;
             string BaseUrl = baseURL;
-            //string InputFile1Location = inputBlob1Location;
-            //string OutputFile1Location = outputBlob1Location;
             string APIKey = apiKey;
 
             // set a time out for polling status
@@ -2526,61 +2507,40 @@ namespace DevTreks.Data.Helpers
                     }
                 };
 
+
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", APIKey);
 
-                //2.0.0 changes
-                //var response = await client.PostAsJsonAsync(BaseUrl + "?api-version=2.0", request).ConfigureAwait(false);
-                var postContent = new Dictionary<string, string>() {
-                    { "inputdata2", inputBlob2Location },
-                    { "outputdata2", outputBlob2Location },
-                    { "outputdata1", outputBlob1Location },
-                    { "inputdata1", inputBlob1Location },
-                    };
-                var content = new FormUrlEncodedContent(postContent);
-                var response = await client.PostAsync(BaseUrl + "?api-version=2.0", content).ConfigureAwait(false);
-                if (!response.IsSuccessStatusCode)
-                {
-                    sResponse = await WriteFailedResponse(response);
-                }
-
-                //2.0.0 changes
-                //string jobId = await response.Content.ReadAsAsync<string>();
-                string jobId = await response.Content.ReadAsStringAsync();
-                //Console.WriteLine(string.Format("Job ID: {0}", jobId));
-
-
-                // start the job
-                //Console.WriteLine("Starting the job...");
-                response = await client.PostAsync(BaseUrl + "/" + jobId + "/start?api-version=2.0", null);
+                var response = await client.PostAsJsonAsync(BaseUrl + "?api-version=2.0", request).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
                     sResponse = await WriteFailedResponse(response);
                     return sResponse;
                 }
 
-                ////var response = await client.PostAsJsonAsync(BaseUrl, request).ConfigureAwait(false);
-                //string jobId = await response.Content.ReadAsAsync<string>().ConfigureAwait(false);
+                string jobId = await response.Content.ReadAsAsync<string>();
+
+                // start the job
+                response = await client.PostAsync(BaseUrl + "/" + jobId + "/start?api-version=2.0", null);
+                if (!response.IsSuccessStatusCode)
+                {
+                    sResponse = await WriteFailedResponse(response);
+                    return sResponse;
+                }
                 string jobLocation = BaseUrl + "/" + jobId + "?api-version=2.0";
                 Stopwatch watch = Stopwatch.StartNew();
                 bool done = false;
                 while (!done)
                 {
-                    //Console.WriteLine("Checking the job status...");
                     response = await client.GetAsync(jobLocation);
                     if (!response.IsSuccessStatusCode)
                     {
                         sResponse = await WriteFailedResponse(response);
                     }
-                    //2.0.0 changes
-                    //BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>();
-                    var statusString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    //bug introduced in order to compile
-                    BatchScoreStatus status = new BatchScoreStatus();
+                    BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>();
                     if (watch.ElapsedMilliseconds > TimeOutInMilliseconds)
                     {
                         done = true;
                         sResponse = string.Format("Timed out. Deleting job {0} ...", jobId);
-                        //Console.WriteLine(string.Format("Timed out. Deleting job {0} ...", jobId));
                         await client.DeleteAsync(jobLocation);
                     }
                     switch (status.StatusCode)
@@ -2593,31 +2553,239 @@ namespace DevTreks.Data.Helpers
                             break;
                         case BatchScoreStatusCode.Failed:
                             //Console.WriteLine(string.Format("Job {0} failed!", jobId));
-                            //Console.WriteLine(string.Format("Error details: {0}", status.Details));
                             sResponse = string.Format("Error details: {0}", status.Details);
                             done = true;
                             break;
                         case BatchScoreStatusCode.Cancelled:
-                            //Console.WriteLine(string.Format("Job {0} cancelled!", jobId));
+                            sResponse = string.Format("Job {0} cancelled", jobId);
                             done = true;
                             break;
                         case BatchScoreStatusCode.Finished:
                             done = true;
-                            //Console.WriteLine(string.Format("Job {0} finished!", jobId));
                             sResponse = string.Concat("Success with status code: ", response.StatusCode);
+                            //don't need the full response
                             //sResponse += await response.Content.ReadAsStringAsync();
                             break;
                     }
 
                     if (!done)
                     {
-                        //2.0.0 change
-                        //Thread.Sleep(1000); // Wait one second
+                        Thread.Sleep(1000); // Wait one second
                     }
                 }
             }
             return sResponse;
         }
+        //public async Task<string> InvokeHttpRequestResponseService(ContentURI uri,
+        //    string baseURL, string apiKey, string inputBlobLocation, 
+        //    string outputBlobLocation, string script)
+        //{
+        //    string sResponse = string.Empty;
+        //    string BaseUrl = baseURL;
+        //    string InputFileLocation = inputBlobLocation; 
+        //    string OutputFileLocation = outputBlobLocation; 
+        //    string APIKey = apiKey;
+        //    //2.0.0 refactor: get the connection string from AzureIO (get connected service)
+        //    string sStorageConnectionString = uri.URIDataManager.StorageConnection;
+        //    // set a time out for polling status
+        //    const int TimeOutInMilliseconds = 120 * 1000; // Set a timeout of 2 minutes
+
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        BatchScoreRequest request = new BatchScoreRequest()
+        //        {
+        //            Input = new AzureBlobDataReference()
+        //            {
+        //                ConnectionString = sStorageConnectionString,
+        //                RelativeLocation = InputFileLocation
+        //            },
+        //            GlobalParameters = new Dictionary<string, string>() {
+        //                { "inputblobpath", InputFileLocation },
+        //                { "outputcsvblobpath", OutputFileLocation },
+        //                { "script1", script },
+        //             }
+        //        };
+
+        //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", APIKey);
+
+        //        var response = await client.PostAsJsonAsync(BaseUrl, request).ConfigureAwait(false);
+        //        string jobId = await response.Content.ReadAsAsync<string>().ConfigureAwait(false);
+        //        //2.0.0 tests
+        //        //var postContent = new Dictionary<string, string>() {
+        //        //        { "inputblobpath", InputFileLocation },
+        //        //        { "outputcsvblobpath", OutputFileLocation },
+        //        //        { "script1", script },
+        //        //    };
+        //        //var content = new FormUrlEncodedContent(postContent);
+        //        //var response = await client.PostAsync(BaseUrl, content).ConfigureAwait(false);
+        //        //string jobId = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+        //        string jobLocation = BaseUrl + "/" + jobId + "?api-version=2.0";
+        //        Stopwatch watch = Stopwatch.StartNew();
+        //        bool done = false;
+        //        while (!done)
+        //        {
+        //            response = await client.GetAsync(jobLocation).ConfigureAwait(false);
+        //            BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>().ConfigureAwait(false);
+        //            //2.0.0 tests
+        //            //BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>().ConfigureAwait(false);
+        //            ////var statusString = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        //            ////bug introduced in order to compile
+        //            ////BatchScoreStatus status = new BatchScoreStatus();
+        //            //status.StatusCode = statusString;
+        //            if (watch.ElapsedMilliseconds > TimeOutInMilliseconds)
+        //            {
+        //                done = true;
+        //                //sbResponse.AppendLine("Timed out. Deleting the job ...");
+        //                sResponse = "Timed out. Deleting the job ...";
+        //                await client.DeleteAsync(jobLocation).ConfigureAwait(false); ;
+        //            }
+        //            switch (status.StatusCode)
+        //            {
+        //                case BatchScoreStatusCode.NotStarted:
+        //                    //sbResponse.AppendLine("Not started...");
+        //                    break;
+        //                case BatchScoreStatusCode.Running:
+        //                    //sbResponse.AppendLine("Running...");
+        //                    break;
+        //                case BatchScoreStatusCode.Failed:
+        //                    //sbResponse.AppendLine("Failed!");
+        //                    //sbResponse.AppendLine(string.Format("Error details: {0}", status.Details));
+        //                    sResponse = string.Format("Error details: {0}", status.Details);
+        //                    done = true;
+        //                    break;
+        //                case BatchScoreStatusCode.Cancelled:
+        //                    //sbResponse.AppendLine("Cancelled!");
+        //                    sResponse = "Cancelled";
+        //                    done = true;
+        //                    break;
+        //                case BatchScoreStatusCode.Finished:
+        //                    done = true;
+        //                    //The word success tells calling procedure that output file can be processed
+        //                    sResponse = string.Concat("Success with status code: ", response.StatusCode);
+        //                    break;
+        //            }
+        //            if (!done)
+        //            {
+        //                Thread.Sleep(1000); // Wait one second
+        //            }
+        //        }
+        //    }
+        //    return sResponse;
+        //}
+        //azure machine learning algos
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="baseURL"></param>
+        /// <param name="apiKey"></param>
+        /// <param name="inputBlob1Location">dataset to train model</param>
+        /// <param name="inputBlob2Location">dataset to score</param>
+        /// <param name="outputBlob1Location">score results</param>
+        /// <param name="outputBlob2Location">model results</param>
+        /// <param name="script"></param>
+        /// <returns></returns>
+        //public async Task<string> InvokeHttpRequestResponseService2(string baseURL, string apiKey,
+        //    string inputBlob1Location, string inputBlob2Location,
+        //    string outputBlob1Location, string outputBlob2Location)
+        //{
+        //    string sResponse = string.Empty;
+        //    string BaseUrl = baseURL;
+        //    string APIKey = apiKey;
+
+        //    // set a time out for polling status
+        //    const int TimeOutInMilliseconds = 120 * 1000; // Set a timeout of 2 minutes
+
+        //    using (HttpClient client = new HttpClient())
+        //    {
+        //        BatchExecutionRequest request = new BatchExecutionRequest()
+        //        {
+        //            GlobalParameters = new Dictionary<string, string>() {
+        //            { "inputdata2", inputBlob2Location },
+        //            { "outputdata2", outputBlob2Location },
+        //            { "outputdata1", outputBlob1Location },
+        //            { "inputdata1", inputBlob1Location },
+        //            }
+        //        };
+
+        //        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", APIKey);
+
+        //        //2.0.0 changes
+        //        //var response = await client.PostAsJsonAsync(BaseUrl + "?api-version=2.0", request).ConfigureAwait(false);
+        //        var postContent = new Dictionary<string, string>() {
+        //            { "inputdata2", inputBlob2Location },
+        //            { "outputdata2", outputBlob2Location },
+        //            { "outputdata1", outputBlob1Location },
+        //            { "inputdata1", inputBlob1Location },
+        //            };
+        //        var content = new FormUrlEncodedContent(postContent);
+        //        var response = await client.PostAsync(BaseUrl + "?api-version=2.0", content).ConfigureAwait(false);
+        //        if (!response.IsSuccessStatusCode)
+        //        {
+        //            sResponse = await WriteFailedResponse(response);
+        //        }
+
+        //        string jobId = await response.Content.ReadAsAsync<string>();
+
+        //        // start the job
+        //        response = await client.PostAsync(BaseUrl + "/" + jobId + "/start?api-version=2.0", null);
+        //        if (!response.IsSuccessStatusCode)
+        //        {
+        //            sResponse = await WriteFailedResponse(response);
+        //            return sResponse;
+        //        }
+        //        string jobLocation = BaseUrl + "/" + jobId + "?api-version=2.0";
+        //        Stopwatch watch = Stopwatch.StartNew();
+        //        bool done = false;
+        //        while (!done)
+        //        {
+        //            response = await client.GetAsync(jobLocation);
+        //            if (!response.IsSuccessStatusCode)
+        //            {
+        //                sResponse = await WriteFailedResponse(response);
+        //            }
+        //            BatchScoreStatus status = await response.Content.ReadAsAsync<BatchScoreStatus>();
+        //            if (watch.ElapsedMilliseconds > TimeOutInMilliseconds)
+        //            {
+        //                done = true;
+        //                sResponse = string.Format("Timed out. Deleting job {0} ...", jobId);
+        //                await client.DeleteAsync(jobLocation);
+        //            }
+        //            switch (status.StatusCode)
+        //            {
+        //                case BatchScoreStatusCode.NotStarted:
+        //                    //Console.WriteLine(string.Format("Job {0} not yet started...", jobId));
+        //                    break;
+        //                case BatchScoreStatusCode.Running:
+        //                    //Console.WriteLine(string.Format("Job {0} running...", jobId));
+        //                    break;
+        //                case BatchScoreStatusCode.Failed:
+        //                    //Console.WriteLine(string.Format("Job {0} failed!", jobId));
+        //                    //Console.WriteLine(string.Format("Error details: {0}", status.Details));
+        //                    sResponse = string.Format("Error details: {0}", status.Details);
+        //                    done = true;
+        //                    break;
+        //                case BatchScoreStatusCode.Cancelled:
+        //                    sResponse = string.Format("Job {0} cancelled", jobId);
+        //                    done = true;
+        //                    break;
+        //                case BatchScoreStatusCode.Finished:
+        //                    done = true;
+        //                    sResponse = string.Concat("Success with status code: ", response.StatusCode);
+        //                    //don't need the full response
+        //                    //sResponse += await response.Content.ReadAsStringAsync();
+        //                    break;
+        //            }
+
+        //            if (!done)
+        //            {
+        //                //2.0.0 change
+        //                Thread.Sleep(1000); // Wait one second
+        //            }
+        //        }
+        //    }
+        //    return sResponse;
+        //}
         async Task<string> WriteFailedResponse(HttpResponseMessage response)
         {
             string sError = string.Format("The request failed with status code: {0}", response.StatusCode);

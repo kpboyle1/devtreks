@@ -34,7 +34,8 @@ namespace DevTreks.Data.Helpers
             contenturiname = 14,
             tempdocsuriname = 15,
             extensions = 16,
-            platformtype = 17
+            platformtype = 17,
+            juliaexecutable = 18
         }
         public static void CopyURIAppSettings(ContentURI fromURI, ContentURI toURI)
         {
@@ -51,6 +52,7 @@ namespace DevTreks.Data.Helpers
             toURI.URIDataManager.PageSizeEdits = fromURI.URIDataManager.PageSizeEdits;
             toURI.URIDataManager.RExecutable = fromURI.URIDataManager.RExecutable;
             toURI.URIDataManager.PyExecutable = fromURI.URIDataManager.PyExecutable;
+            toURI.URIDataManager.JuliaExecutable = fromURI.URIDataManager.JuliaExecutable;
             toURI.URIDataManager.HostFeeRate = fromURI.URIDataManager.HostFeeRate;
             toURI.URIDataManager.ResourceURIName = fromURI.URIDataManager.ResourceURIName;
             toURI.URIDataManager.ContentURIName = fromURI.URIDataManager.ContentURIName;
@@ -116,6 +118,11 @@ namespace DevTreks.Data.Helpers
                 == APPSETTING_TYPES.pyexecutable)
             {
                 sAppSettingValue = uri.URIDataManager.PyExecutable;
+            }
+            else if (appSetting
+                == APPSETTING_TYPES.juliaexecutable)
+            {
+                sAppSettingValue = uri.URIDataManager.JuliaExecutable.ToString();
             }
             else if (appSetting
                 == APPSETTING_TYPES.resourceuriname)
@@ -217,6 +224,11 @@ namespace DevTreks.Data.Helpers
                 == APPSETTING_TYPES.pyexecutable.ToString())
             {
                 sAppSettingValue = uri.URIDataManager.PyExecutable;
+            }
+            else if (appSetting
+                == APPSETTING_TYPES.juliaexecutable.ToString())
+            {
+                sAppSettingValue = uri.URIDataManager.JuliaExecutable.ToString();
             }
             else if (appSetting
                 == APPSETTING_TYPES.resourceuriname.ToString())

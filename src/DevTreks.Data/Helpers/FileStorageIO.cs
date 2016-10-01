@@ -888,7 +888,8 @@ namespace DevTreks.Data.Helpers
             string inputFileLocation, string outputFileLocation, string script)
         {
             string sResponseMsg = string.Empty;
-            PLATFORM_TYPES ePlatform = GetPlatformType(baseURL);
+            //PLATFORM_TYPES ePlatform = GetPlatformType(baseURL);
+            PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
             if (Path.IsPathRooted(inputFileLocation))
             {
                 //use configure await to make sure the response is returned to algo

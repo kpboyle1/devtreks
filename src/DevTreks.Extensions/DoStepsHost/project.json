@@ -3,7 +3,7 @@
   "description": "DoStepsHost Class Library",
   "authors": [ "kpboyle1" ],
   "frameworks": {
-    "net461" : {
+    "net461": {
       "frameworkAssemblies": {
         "System.ComponentModel.Composition": "4.0.0.0",
         "System.Xml": "4.0.0.0",
@@ -14,5 +14,11 @@
   "dependencies": {
     "CalculatorsContracts": "1.0.0",
     "DevTreks.Data": "1.0.0"
+  },
+  "scripts": {
+    "postcompile": [
+      "xcopy /Y \"%compile:OutputDir%\\DoStepsHost.dll\" \"..\\..\\DevTreks\\wwwroot\\Extensions\"",
+      "xcopy /Y \"%compile:OutputDir%\\DoStepsHost.pdb\" \"..\\..\\DevTreks\\wwwroot\\Extensions\""
+    ]
   }
 }
