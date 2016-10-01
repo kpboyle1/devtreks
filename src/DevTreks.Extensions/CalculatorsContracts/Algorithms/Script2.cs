@@ -101,7 +101,7 @@ namespace DevTreks.Extensions.Algorithms
                 }
                 if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
                 {
-                    bHasCalcs = await RunSubAlgorithm2Async(inputFilePath, scriptFilePath);
+                    bHasCalcs = await RunSubAlgorithm1or2Async(inputFilePath, scriptFilePath);
                 }
                 else if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm3.ToString())
                 {
@@ -110,7 +110,7 @@ namespace DevTreks.Extensions.Algorithms
                 else 
                 {
                     //r is default
-                    bHasCalcs = await RunSubAlgorithm1Async(inputFilePath, scriptFilePath);
+                    bHasCalcs = await RunSubAlgorithm1or2Async(inputFilePath, scriptFilePath);
                 }
             }
             catch (Exception ex)
@@ -119,19 +119,33 @@ namespace DevTreks.Extensions.Algorithms
             };
             return bHasCalcs;
         }
-        public async Task<bool> RunSubAlgorithm1Async(string inputFilePath, string rFile)
+        public async Task<bool> RunSubAlgorithm1or2Async(string inputFilePath, string rFile)
         {
             bool bHasCalcs = false;
             string sBaseURL =
                 "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/b10e6b4c4e63438999cc45147bbe006c/jobs";
+            if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
+            {
+                sBaseURL = "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/abd32060dc014d0e8fe1256e0f694daa/jobs";
+            }
             string sPlatForm = _params.ExtensionDocToCalcURI.URIDataManager.PlatformType.ToString();
-            //string sPlatForm = CalculatorHelpers.GetPlatform(_params.ExtensionDocToCalcURI, inputFilePath);
             if (sPlatForm != CalculatorHelpers.PLATFORM_TYPES.azure.ToString())
             {
                 sBaseURL = "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/b10e6b4c4e63438999cc45147bbe006c/execute?api-version=2.0&details=true";
+                if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
+                {
+                    sBaseURL = "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/abd32060dc014d0e8fe1256e0f694daa/execute?api-version=2.0&details=true";
+                }
             }
+            //r web service is default
             string sApiKey =
                 "fxBeL9LJ3ORm0kW0DtKhT99OfUK6YgBlc59crizYhlxKoEjRd3kuDHvPRuehCQ02VJhPPXcdYTp2pDUynb9gMA==";
+            if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
+            {
+                //python
+                sApiKey =
+                    "/bjDNKx4OWdMIQu6CkvWCIhcfUOCTp9jUE9kD7uylwhOYyhVFOqAFA7M75mJjHS6p6jnAhCvFn1jSl678gzPVA==";
+            }
             string sError = string.Empty;
             //convert the script file to the script string expected by the algorithm
             List<string> rlines = new List<string>();
@@ -189,7 +203,14 @@ namespace DevTreks.Extensions.Algorithms
                     return bHasCalcs;
                 }
                 sb = new StringBuilder();
-                sb.AppendLine("r results");
+                if (_subalgorithm == Calculator1.MATH_SUBTYPES.subalgorithm2.ToString())
+                {
+                    sb.AppendLine("py results");
+                }
+                else
+                {
+                    sb.AppendLine("r results");
+                }
                 //dep var has to be in the R project 1st column
                 string sLine = string.Concat("first variable:  ", _colNames[0]);
                 string[] line = new List<string>().ToArray();
@@ -230,137 +251,11 @@ namespace DevTreks.Extensions.Algorithms
             }
             else
             {
-                this.ErrorMessage += "The calculations could not be run using the web service.";
+                this.ErrorMessage += string.Concat(_response, "The calculations could not be run using the web service.");
             }
             return bHasCalcs;
         }
-        public async Task<bool> RunSubAlgorithm2Async(string inputFilePath, string pyFile)
-        {
-            bool bHasCalcs = false;
-            string sBaseURL =
-                "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/abd32060dc014d0e8fe1256e0f694daa/jobs";
-            string sPlatForm = CalculatorHelpers.GetPlatform(_params.ExtensionDocToCalcURI, inputFilePath);
-            if (sPlatForm != CalculatorHelpers.PLATFORM_TYPES.azure.ToString())
-            {
-                sBaseURL = "https://ussouthcentral.services.azureml.net/workspaces/d454361ecdcb4ec4b03fa1aec5a7c0e2/services/abd32060dc014d0e8fe1256e0f694daa/execute?api-version=2.0&details=true";
-            }
-            string sApiKey =
-                "/bjDNKx4OWdMIQu6CkvWCIhcfUOCTp9jUE9kD7uylwhOYyhVFOqAFA7M75mJjHS6p6jnAhCvFn1jSl678gzPVA==";
-            string sError = string.Empty;
-            //convert the script file to the script string expected by the algorithm
-            List<string> rlines = new List<string>();
-            rlines = CalculatorHelpers.ReadLines(_params.ExtensionDocToCalcURI, pyFile, out sError);
-            this.ErrorMessage += sError;
-            if (rlines == null)
-            {
-                this.ErrorMessage += string.Concat(" ", Errors.MakeStandardErrorMsg("DATAURL_BAD"));
-                return bHasCalcs;
-            }
-            if (rlines.Count == 0)
-            {
-                this.ErrorMessage += string.Concat(" ", Errors.MakeStandardErrorMsg("DATAURL_BAD"));
-                return bHasCalcs;
-            }
-            StringBuilder sbR = new StringBuilder();
-            for (int i = 0; i < rlines.Count(); i++)
-            {
-                sbR.AppendLine(rlines[i]);
-            }
-            string rScript = sbR.ToString();
-
-            //web server expects to store in temp/randomid/name.csv
-            //web service stores in temp blob
-            string sOutputDataURL = CalculatorHelpers.GetTempContainerPath("Pyoutput.csv");
-
-            //web service expects urls that start with container names
-            //regular rproject file must be stored in JDataURL
-            string sInputContainerPath = CalculatorHelpers.GetContainerPathFromFullURIPath("resources", inputFilePath);
-
-            //async wait so that results can be stored in output file location and parsed into string lines
-            SetResponse(sBaseURL, sApiKey, sInputContainerPath, sOutputDataURL, rScript).Wait();
-            StringBuilder sb = new StringBuilder();
-            //if web service successully saved the results, the response will start with Success
-            if (_response.StartsWith("Success"))
-            {
-                //return the output file contents in a string list of lines
-                //must convert container path to full path
-                string sOutputFullDataURL = string.Concat("https://devtreks1.blob.core.windows.net/", sOutputDataURL);
-                List<string> lines = new List<string>();
-                //azure emulator can't process real Azure URL so this won't work
-                //instead, double check that output url is actually saved
-                lines = CalculatorHelpers.ReadLines(_params.ExtensionDocToCalcURI, sOutputFullDataURL, out sError);
-                this.ErrorMessage += sError;
-                //this results in endless wait -try ReadLinesAsync(sOutputDataURL).ConfigureAwait(false)
-                //lines = await CalculatorHelpers.ReadLinesAsync(sOutputDataURL);
-                if (lines == null)
-                {
-                    this.ErrorMessage += string.Concat(" ", Errors.MakeStandardErrorMsg("DATAURL_BAD"));
-                    return bHasCalcs;
-                }
-                if (lines.Count == 0)
-                {
-                    this.ErrorMessage += string.Concat(" ", Errors.MakeStandardErrorMsg("DATAURL_BAD"));
-                    return bHasCalcs;
-                }
-                sb = new StringBuilder();
-                sb.AppendLine("python results");
-                //dep var has to be in the R project 1st column
-                string sLine = string.Concat("first variable:  ", _colNames[0]);
-                string[] line = new List<string>().ToArray();
-                for (int i = 0; i < lines.Count(); i++)
-                {
-                    line = lines[i].Split(Constants.CSV_DELIMITERS);
-                    //lineout[1] = CalculatorHelpers.ConvertStringToDouble(line[0]).ToString("N4", CultureInfo.InvariantCulture);
-                    sb.AppendLine(Shared.GetLine(line, false));
-                }
-                if (this.MathResult.ToLower().StartsWith("http"))
-                {
-                    sError = string.Empty;
-                    bool bHasSaved = CalculatorHelpers.SaveTextInURI(
-                        _params.ExtensionDocToCalcURI, sb.ToString(), this.MathResult, out sError);
-                    if (!string.IsNullOrEmpty(sError))
-                    {
-                        this.MathResult += sError;
-                    }
-                }
-                else
-                {
-                    this.MathResult = sb.ToString();
-                }
-                bHasCalcs = true;
-                //last line of string should have the QTM vars
-                if (line != null)
-                {
-                    int iPos = 0;
-                    if (line[iPos] != null)
-                        this.QTPredicted = CalculatorHelpers.ConvertStringToDouble(line[iPos]);
-                    iPos = 1;
-                    if (line[iPos] != null)
-                        this.QTL = CalculatorHelpers.ConvertStringToDouble(line[iPos]);
-                    iPos = 2;
-                    if (line[iPos] != null)
-                        this.QTU = CalculatorHelpers.ConvertStringToDouble(line[iPos]);
-                    //int iPos = line.Count() - 3;
-                    //if (line[iPos] != null)
-                    //    this.QTPredicted = CalculatorHelpers.ConvertStringToDouble(line[iPos]);
-                    //iPos = line.Count() - 2;
-                    //if (line[iPos] != null)
-                    //    this.QTL = CalculatorHelpers.ConvertStringToDouble(line[iPos]);
-                    //iPos = line.Count() - 1;
-                    //if (line[iPos] != null)
-                    //    this.QTU = CalculatorHelpers.ConvertStringToDouble(line[iPos]);
-                }
-                //potential future use: convert to JSON object
-                //BatchResponseStructure responseStruct = 
-                //    JsonConvert.DeserializeObject<BatchResponseStructure>(_response);
-
-            }
-            else
-            {
-                this.ErrorMessage += "The calculations could not be run using the web service.";
-            }
-            return bHasCalcs;
-        }
+        
         public async Task<bool> RunSubAlgorithm3Async(string inputFile1Path, string inputFile2Path)
         {
             bool bHasCalcs = false;

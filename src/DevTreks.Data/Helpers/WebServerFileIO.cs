@@ -258,27 +258,14 @@ namespace DevTreks.Data.Helpers
                         { "inputdata1", inputBlob1Location },
                     }
                 };
-                //const string apiKey = "abc123"; // Replace this with the API key for the web service
+                
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
                 client.BaseAddress = new Uri(baseURL);
-                // WARNING: The 'await' statement below can result in a deadlock if you are calling this code from the UI thread of an ASP.Net application.
-                // One way to address this would be to call ConfigureAwait(false) so that the execution does not attempt to resume on the original context.
-                // For instance, replace code such as:
-                //      result = await DoSomeTask()
-                // with the following:
-                //      result = await DoSomeTask().ConfigureAwait(false)
 
-                //2.0.2 change: HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest).ConfigureAwait(false);
-                //not debugged
-                //http://www.asp.net/web-api/overview/advanced/calling-a-web-api-from-a-net-client
-                var postContent = new Dictionary<string, string>() {
-                        { "inputdata2", inputBlob2Location },
-                        { "outputdata2", outputBlob2Location },
-                        { "outputdata1", outputBlob1Location },
-                        { "inputdata1", inputBlob1Location },
-                };
-                var content = new FormUrlEncodedContent(postContent);
-                HttpResponseMessage response = await client.PostAsync(baseURL, content).ConfigureAwait(false);
+                HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest);
+                //may be more cross platform
+                //var content = new FormUrlEncodedContent(postContent);
+                //HttpResponseMessage response = await client.PostAsync(baseURL, content).ConfigureAwait(false);
 
                 if (response.IsSuccessStatusCode)
                 {
