@@ -21,7 +21,7 @@ namespace DevTreks.Helpers
     /// <summary>
     ///Purpose:		static Html extensions for presentation layer xhtml manipulation
     ///Author:		www.devtreks.org
-    ///Date:		2016, September
+    ///Date:		2016, October
     ///References:	www.devtreks.org
     /// </summary>
     public static class HtmlHelperExtensions
@@ -885,7 +885,7 @@ namespace DevTreks.Helpers
             using (StringWriter result = new StringWriter())
             {
                 result.WriteLine(
-                    "Current version: DevTreks.2.0.2, September 30, 2016");
+                    "Current version: DevTreks.2.0.2, October 04, 2016");
                 return new HtmlString(result.ToString());
             }
         }

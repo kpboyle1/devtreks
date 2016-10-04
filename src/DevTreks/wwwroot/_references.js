@@ -1,6 +1,7 @@
 ﻿/// <autosync enabled="true" />
 /// <reference path="js/a_jquery-2.2.3.js" />
 /// <reference path="js/b_sharedutils1.js" />
+/// <reference path="js/bundle.min.js" />
 /// <reference path="js/c_form1.js" />
 /// <reference path="js/d_select1.js" />
 /// <reference path="js/e_changetabview1.js" />

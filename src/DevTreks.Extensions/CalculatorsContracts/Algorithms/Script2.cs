@@ -10,7 +10,7 @@ namespace DevTreks.Extensions.Algorithms
     /// <summary>
     ///Purpose:		Simple AML script algorithms
     ///Author:		www.devtreks.org
-    ///Date:		2016, September
+    ///Date:		2016, October
     ///References:	CTA 4 reference
     ///</summary>
     public class Script2 : Calculator1
@@ -73,7 +73,7 @@ namespace DevTreks.Extensions.Algorithms
                 //when released, this must be blocked out
                 //r and python debug
                 //inputFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7969/Regress1.csv";
-                
+
                 //aml debug
                 //inputFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7961/Ex6R.csv";
                 //scriptFilePath = "https://devtreks1.blob.core.windows.net/resources/network_carbon/resourcepack_1534/resource_7971/Regress2.csv";
