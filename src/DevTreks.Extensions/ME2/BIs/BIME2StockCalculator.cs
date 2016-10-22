@@ -215,7 +215,7 @@ namespace DevTreks.Extensions
             bi.Calculators = new List<Calculator1>();
             if (budI.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(budI.Calculators, bi.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, budI.Calculators, bi.Calculators);
             }
             //calculators start with inputs and outputs
             bi.TimePeriods = new List<Extensions.TimePeriod>();
@@ -277,7 +277,7 @@ namespace DevTreks.Extensions
             tp.Calculators = new List<Calculator1>();
             if (timeP.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(timeP.Calculators, tp.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, timeP.Calculators, tp.Calculators);
             }
             //calculators start with inputs and outputs
             tp.OperationComponents = new List<Extensions.OperationComponent>();
@@ -428,7 +428,7 @@ namespace DevTreks.Extensions
             oc.Calculators = new List<Calculator1>();
             if (opComp.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(opComp.Calculators, oc.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, opComp.Calculators, oc.Calculators);
             }
             oc.Inputs = new List<Extensions.Input>();
             if (opComp.Inputs != null)
@@ -439,7 +439,7 @@ namespace DevTreks.Extensions
                     i.Calculators = new List<Calculator1>();
                     if (input.Calculators != null)
                     {
-                        ME2AnalyzerHelper.CopyStockCalculator(input.Calculators, i.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, input.Calculators, i.Calculators);
                     }
                     oc.Inputs.Add(i);
                 }
@@ -547,7 +547,7 @@ namespace DevTreks.Extensions
             outcome.Calculators = new List<Calculator1>();
             if (oc.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, outcome.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, outcome.Calculators);
             }
             outcome.Outputs = new List<Extensions.Output>();
             if (oc.Outputs != null)
@@ -558,7 +558,7 @@ namespace DevTreks.Extensions
                     o.Calculators = new List<Calculator1>();
                     if (output.Calculators != null)
                     {
-                        ME2AnalyzerHelper.CopyStockCalculator(output.Calculators, o.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, output.Calculators, o.Calculators);
                     }
                     outcome.Outputs.Add(o);
                 }
@@ -643,8 +643,7 @@ namespace DevTreks.Extensions
             i.Calculators = new List<Calculator1>();
             if (input.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(input.Calculators, i.Calculators);
-                //ME2AnalyzerHelper.AddInputCalculators(input.Calculators, i.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, input.Calculators, i.Calculators);
             }
             i.Inputs = new List<Extensions.Input>();
             if (input.Inputs != null)
@@ -655,7 +654,7 @@ namespace DevTreks.Extensions
                     inputseries2.Calculators = new List<Calculator1>();
                     if (inputseries.Calculators != null)
                     {
-                        ME2AnalyzerHelper.CopyStockCalculator(inputseries.Calculators, inputseries2.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, inputseries.Calculators, inputseries2.Calculators);
                     }
                     i.Inputs.Add(inputseries2);
                 }
@@ -814,7 +813,7 @@ namespace DevTreks.Extensions
             o.Calculators = new List<Calculator1>();
             if (output.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(output.Calculators, o.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, output.Calculators, o.Calculators);
             }
             o.Outputs = new List<Extensions.Output>();
             if (output.Outputs != null)
@@ -825,7 +824,7 @@ namespace DevTreks.Extensions
                     outputseries2.Calculators = new List<Calculator1>();
                     if (outputseries.Calculators != null)
                     {
-                        ME2AnalyzerHelper.CopyStockCalculator(outputseries.Calculators, outputseries2.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, outputseries.Calculators, outputseries2.Calculators);
                     }
                     o.Outputs.Add(outputseries2);
                 }
@@ -901,12 +900,13 @@ namespace DevTreks.Extensions
             XElement currentCalculationsElement, XElement currentElement)
         {
             ME2Stock me2 = new ME2Stock(this.GCCalculatorParams, this.GCCalculatorParams.AnalyzerParms.AnalyzerType);
-            if (this.ME2DescendentStock != null)
-            {
-                //only property set by analyzer
-                me2.TotalME2Type = this.ME2DescendentStock.TotalME2Type;
-            }
-            ME2Calculator me2Calc = new ME2Calculator();
+            //204 not used
+            //if (this.ME2DescendentStock != null)
+            //{
+            //    //only property set by analyzer
+            //    me2.TotalME2Stage = this.ME2DescendentStock.TotalME2Stage;
+            //}
+            ME2Calculator me2Calc = new ME2Calculator(this.GCCalculatorParams);
             me2.CalcParameters.CurrentElementNodeName = currentElement.Name.LocalName;
             bool bHasCalcs = false;
             if (currentCalculationsElement != null)

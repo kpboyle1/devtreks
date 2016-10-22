@@ -9,29 +9,24 @@ namespace DevTreks.Extensions
 {
     /// <summary>
     ///Purpose:		Typical Object model:  
-    ///             Initital: ME2Stock.Total1.ME2Indicators
+    ///             Initial: ME2Stock.Total1.ME2Indicators
     ///             End: ME2Stock.Stocks.Total1.Stocks.ME2Indicators
     ///             Total1 inherits totals from ME2Stock which inherits from ME2IndStock which has Totals props
     ///             The class aggregates mes.
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148 
     ///</summary>
     public class ME2Total1 : ME2Stock
     {
         //calls the base-class version, and initializes the base class properties.
-        public ME2Total1()
-            : base()
+        public ME2Total1(CalculatorParameters calcParams)
+            : base(calcParams)
         {
             //indicator object
             InitTotalME2Total1Properties(this);
         }
-        //copy constructor
-        public ME2Total1(ME2Total1 calculator)
-            : base (calculator)
-        {
-            this.CopyTotalME2Total1Properties(calculator);
-        }
+
         public void InitTotalME2Total1Properties(ME2Total1 ind)
         {
             ind.ErrorMessage = string.Empty;
@@ -54,13 +49,13 @@ namespace DevTreks.Extensions
             {
                 foreach (ME2Stock totalStock in calculator.Stocks)
                 {
-                    ME2Total1 total = new ME2Total1();
+                    ME2Total1 total = new ME2Total1(this.CalcParameters);
                     if (totalStock.GetType().Equals(total.GetType()))
                     {
                         total = (ME2Total1)totalStock;
                         if (total != null)
                         {
-                            ME2Total1 newTotal = new ME2Total1();
+                            ME2Total1 newTotal = new ME2Total1(this.CalcParameters);
                             //copy the totals and the indicators
                             CopyTotalME2IndicatorStockProperties(newTotal, total);
                             this.Stocks.Add(newTotal);
@@ -93,11 +88,11 @@ namespace DevTreks.Extensions
             //obsStock.Total1.Stocks holds a collection of total1s
             if (this.Stocks != null)
             {
-                int i = 1;
+                int i = 0;
                 string sAttNameExtension = string.Empty;
                 foreach (ME2Stock totalStock in this.Stocks)
                 {
-                    ME2Total1 total = new ME2Total1();
+                    ME2Total1 total = new ME2Total1(this.CalcParameters);
                     if (totalStock.GetType().Equals(total.GetType()))
                     {
                         total = (ME2Total1)totalStock;
@@ -169,7 +164,7 @@ namespace DevTreks.Extensions
                             //need base el id, not me2Stock id
                             observationStock.CopyCalculatorProperties(stock);
                             //where the totals go
-                            observationStock.Total1 = new ME2Total1();
+                            observationStock.Total1 = new ME2Total1(this.CalcParameters);
                             observationStock.Total1.CalcParameters = new CalculatorParameters(stock.CalcParameters);
                             observationStock.Total1.CopyCalculatorProperties(stock);
                         }
@@ -225,15 +220,15 @@ namespace DevTreks.Extensions
             //bool bHasTotals = false;
             if (newCalc.ME2Indicators != null)
             {
-                //set in analyzer, not calculator
-                if (newCalc.TotalME2Type != null)
-                {
-                    baseStat.TotalME2Type = newCalc.TotalME2Type;
-                }
-                else
-                {
-                    baseStat.TotalME2Type = ME2IndicatorStock.ME_TYPES.none.ToString();
-                }
+                //204 not used
+                //if (newCalc.TME2Stage != null)
+                //{
+                //    baseStat.TME2Stage = newCalc.TME2Stage;
+                //}
+                //else
+                //{
+                //    baseStat.TME2Stage = ME2IndicatorStock.ME_STAGES.none.ToString();
+                //}
                 //set up the calcs
                 foreach (ME2Indicator ind in newCalc.ME2Indicators)
                 {
@@ -254,19 +249,9 @@ namespace DevTreks.Extensions
             double multiplier)
         {
             //194 correction - calcs already run; all props are stand alone
-            ind.IndTotal = ind.IndTotal * multiplier;
-            ind.Ind1Amount = ind.Ind1Amount * multiplier;
-            ind.Ind2Amount = ind.Ind2Amount * multiplier;
-            //if (ind.IndMathType == ME2Indicator.QMATH_TYPE.Q1_multiply_Q2.ToString())
-            //{
-            //    //multiplication (i.e. q * p) needs only one property changed
-            //    ind.Ind1Amount = ind.Ind1Amount * multiplier;
-            //}
-            //else
-            //{
-            //    ind.Ind1Amount = ind.Ind1Amount * multiplier;
-            //    ind.Ind2Amount = ind.Ind2Amount * multiplier;
-            //}
+            ind.IndTMAmount = ind.IndTMAmount * multiplier;
+            ind.IndTLAmount = ind.IndTLAmount * multiplier;
+            ind.IndTUAmount = ind.IndTUAmount * multiplier;
         }
         public static void AddME2IndicatorToStocks(this ME2Total1 baseStat, ME2Indicator indicator)
         {
@@ -276,23 +261,48 @@ namespace DevTreks.Extensions
                 baseStat.Stocks = new List<ME2Stock>();
             }
             if (!baseStat.Stocks
-                .Any(s => s.TotalME2Label == indicator.IndLabel))
+                .Any(s => s.TME2Label == indicator.IndLabel))
             {
                 if (indicator.IndLabel != string.Empty)
                 {
-                    ME2Total1 stock = new ME2Total1();
-                    stock.TotalME2Label = indicator.IndLabel;
-                    stock.TotalME2Name = indicator.IndName;
-                    stock.TotalME2Date = indicator.IndDate;
-                    //this has to be set from analyzer props, so add to baseStat prior to coming here
-                    stock.TotalME2Type = baseStat.TotalME2Type;
-                    stock.TotalME2Unit = indicator.IndUnit;
-                    stock.TotalME2Q1Unit = indicator.Ind1Unit;
-                    stock.TotalME2Q2Unit = indicator.Ind2Unit;
-                    stock.TotalME2Description = indicator.IndDescription;
-                    stock.TotalME2Total = indicator.IndTotal;
-                    stock.TotalME2Q1Total = indicator.Ind1Amount;
-                    stock.TotalME2Q2Total = indicator.Ind2Amount;
+                    ME2Total1 stock = new ME2Total1(indicator.CalcParameters);
+                    stock.TME2Description = indicator.IndDescription;
+                    stock.TME2Name = indicator.IndName;
+                    stock.TME2Label = indicator.IndLabel;
+                    stock.TME2Type = indicator.IndType;
+                    stock.TME2RelLabel = indicator.IndRelLabel;
+                    stock.TME2TAmount = indicator.IndTAmount;
+                    stock.TME2TUnit = indicator.IndTUnit;
+                    stock.TME2TD1Amount = indicator.IndTD1Amount;
+                    stock.TME2TD1Unit = indicator.IndTD1Unit;
+                    stock.TME2TD2Amount = indicator.IndTD2Amount;
+                    stock.TME2TD2Unit = indicator.IndTD2Unit;
+                    stock.TME2MathResult = indicator.IndMathResult;
+                    stock.TME2MathSubType = indicator.IndMathSubType;
+                    stock.TME2TMAmount = indicator.IndTMAmount;
+                    stock.TME2TMUnit = indicator.IndTMUnit;
+                    stock.TME2TLAmount = indicator.IndTLAmount;
+                    stock.TME2TLUnit = indicator.IndTLUnit;
+                    stock.TME2TUAmount = indicator.IndTUAmount;
+                    stock.TME2TUUnit = indicator.IndTUUnit;
+                    stock.TME2MathOperator = indicator.IndMathOperator;
+                    stock.TME2MathExpression = indicator.IndMathExpression;
+                    stock.TME2Date = indicator.IndDate;
+                    stock.TME2MathType = indicator.IndMathType;
+                    stock.TME2BaseIO = indicator.IndBaseIO;
+                    stock.TME21Amount = indicator.Ind1Amount;
+                    stock.TME21Unit = indicator.Ind1Unit;
+                    stock.TME22Amount = indicator.Ind2Amount;
+                    stock.TME22Unit = indicator.Ind2Unit;
+                    stock.TME25Amount = indicator.Ind5Amount;
+                    stock.TME25Unit = indicator.Ind5Unit;
+                    stock.TME23Amount = indicator.Ind3Amount;
+                    stock.TME23Unit = indicator.Ind3Unit;
+                    stock.TME24Amount = indicator.Ind4Amount;
+                    stock.TME24Unit = indicator.Ind4Unit;
+                    //test
+                    stock.TME2N = 1;
+
                     //add the indicator to this stock
                     stock.ME2Indicators.Add(indicator);
                     //add the stock to the basestat
@@ -303,19 +313,28 @@ namespace DevTreks.Extensions
             {
                 //this is the same as the ME2Total stock in previous condition
                 ME2Stock stock = baseStat.Stocks
-                    .FirstOrDefault(s => s.TotalME2Label == indicator.IndLabel);
+                    .FirstOrDefault(s => s.TME2Label == indicator.IndLabel);
                 if (stock != null)
                 {
-                    stock.TotalME2Total += indicator.IndTotal;
-                    stock.TotalME2Q1Total += indicator.Ind1Amount;
-                    stock.TotalME2Q2Total += indicator.Ind2Amount;
+                    stock.TME2TAmount += indicator.IndTAmount;
+                    stock.TME2TMAmount += indicator.IndTMAmount;
+                    stock.TME2TLAmount += indicator.IndTLAmount;
+                    stock.TME2TUAmount += indicator.IndTUAmount;
+                    stock.TME21Amount += indicator.Ind1Amount;
+                    stock.TME22Amount += indicator.Ind2Amount;
+                    stock.TME25Amount += indicator.Ind5Amount;
+                    stock.TME23Amount += indicator.Ind3Amount;
+                    stock.TME24Amount += indicator.Ind4Amount;
+                    //test
+                    stock.TME2N++;
+
                     //add the indicator to this stock
                     stock.ME2Indicators.Add(indicator);
                 }
             }
         }
         //only comes into play if aggregated base elements were being agg together
-        //ok for npv and lca, but aggg base element in M&E analysis is standalone
+        //ok for npv and lca, but agg base element in M&E analysis is standalone
         public static void AddSubStock1ToTotalStocks(this ME2Total1 baseStat, ME2Total1 newCalc)
         {
             //make sure that each indicator has a corresponding stock
@@ -324,41 +343,76 @@ namespace DevTreks.Extensions
                 baseStat.Stocks = new List<ME2Stock>();
             }
             if (!baseStat.Stocks
-                .Any(s => s.TotalME2Label == newCalc.TotalME2Label))
+                .Any(s => s.TME2Label == newCalc.TME2Label))
             {
-                if (newCalc.TotalME2Label != string.Empty)
+                if (newCalc.TME2Label != string.Empty)
                 {
-                    baseStat.TotalME2Label = newCalc.TotalME2Label;
-                    baseStat.TotalME2Name = newCalc.TotalME2Name;
-                    baseStat.TotalME2Date = newCalc.TotalME2Date;
-                    baseStat.TotalME2Type = newCalc.TotalME2Type;
-                    baseStat.TotalME2Unit = newCalc.TotalME2Unit;
-                    baseStat.TotalME2Q1Unit = newCalc.TotalME2Q1Unit;
-                    baseStat.TotalME2Q2Unit = newCalc.TotalME2Q2Unit;
-                    baseStat.TotalME2Description = newCalc.TotalME2Description;
-                    //new calc already have been multiplied, but baseStat may have a new one (i.e. parent)
-                    baseStat.TotalME2Total = (newCalc.TotalME2Total * newCalc.Multiplier);
-                    baseStat.TotalME2Q1Total = (newCalc.TotalME2Q1Total * newCalc.Multiplier);
-                    baseStat.TotalME2Q2Total = (newCalc.TotalME2Q2Total * newCalc.Multiplier);
+                    baseStat.TME2Description = newCalc.IndDescription;
+                    baseStat.TME2Name = newCalc.IndName;
+                    baseStat.TME2Label = newCalc.IndLabel;
+                    baseStat.TME2Type = newCalc.IndType;
+                    baseStat.TME2RelLabel = newCalc.IndRelLabel;
+                    baseStat.TME2TUnit = newCalc.IndTUnit;
+                    baseStat.TME2TD1Unit = newCalc.IndTD1Unit;
+                    baseStat.TME2TD2Unit = newCalc.IndTD2Unit;
+                    baseStat.TME2MathResult = newCalc.IndMathResult;
+                    baseStat.TME2MathSubType = newCalc.IndMathSubType;
+                    baseStat.TME2TMUnit = newCalc.IndTMUnit;
+                    baseStat.TME2TLUnit = newCalc.IndTLUnit;
+                    baseStat.TME2TUUnit = newCalc.IndTUUnit;
+                    baseStat.TME2MathOperator = newCalc.IndMathOperator;
+                    baseStat.TME2MathExpression = newCalc.IndMathExpression;
+                    baseStat.TME2Date = newCalc.IndDate;
+                    baseStat.TME2MathType = newCalc.IndMathType;
+                    baseStat.TME2BaseIO = newCalc.IndBaseIO;
+                    baseStat.TME21Unit = newCalc.Ind1Unit;
+                    baseStat.TME22Unit = newCalc.Ind2Unit;
+                    baseStat.TME25Unit = newCalc.Ind5Unit;
+                    baseStat.TME23Unit = newCalc.Ind3Unit;
+                    baseStat.TME24Unit = newCalc.Ind4Unit;
+                    //new calc already have been multiplied, but baseStat 
+                    //may have a new one (i.e. parent)
+                    baseStat.TME2TAmount += (newCalc.IndTAmount * newCalc.Multiplier);
+                    baseStat.TME2TMAmount += (newCalc.IndTMAmount * newCalc.Multiplier);
+                    baseStat.TME2TLAmount += (newCalc.IndTLAmount * newCalc.Multiplier);
+                    baseStat.TME2TUAmount += (newCalc.IndTUAmount * newCalc.Multiplier);
+                    baseStat.TME21Amount += (newCalc.Ind1Amount * newCalc.Multiplier);
+                    baseStat.TME22Amount += (newCalc.Ind2Amount * newCalc.Multiplier);
+                    baseStat.TME25Amount += (newCalc.Ind5Amount * newCalc.Multiplier);
+                    baseStat.TME23Amount += (newCalc.Ind3Amount * newCalc.Multiplier);
+                    baseStat.TME24Amount += (newCalc.Ind4Amount * newCalc.Multiplier);
+                    
                     baseStat.Stocks.Add(newCalc);
                 }
             }
             else
             {
                 ME2Stock stock = baseStat.Stocks
-                    .FirstOrDefault(s => s.TotalME2Label == newCalc.TotalME2Label);
+                    .FirstOrDefault(s => s.TME2Label == newCalc.TME2Label);
                  if (stock != null)
                  {
-                     baseStat.TotalME2Total += (newCalc.TotalME2Total * newCalc.Multiplier);
-                     baseStat.TotalME2Q1Total += (newCalc.TotalME2Q1Total * newCalc.Multiplier);
-                     baseStat.TotalME2Q2Total += (newCalc.TotalME2Q2Total * newCalc.Multiplier);
-                     if (newCalc.ME2Indicators != null)
+                    baseStat.TME2TAmount += (newCalc.IndTAmount * newCalc.Multiplier);
+                    baseStat.TME2TMAmount += (newCalc.IndTMAmount * newCalc.Multiplier);
+                    baseStat.TME2TLAmount += (newCalc.IndTLAmount * newCalc.Multiplier);
+                    baseStat.TME2TUAmount += (newCalc.IndTUAmount * newCalc.Multiplier);
+                    baseStat.TME21Amount += (newCalc.Ind1Amount * newCalc.Multiplier);
+                    baseStat.TME22Amount += (newCalc.Ind2Amount * newCalc.Multiplier);
+                    baseStat.TME25Amount += (newCalc.Ind5Amount * newCalc.Multiplier);
+                    baseStat.TME23Amount += (newCalc.Ind3Amount * newCalc.Multiplier);
+                    baseStat.TME24Amount += (newCalc.Ind4Amount * newCalc.Multiplier);
+                    if (newCalc.ME2Indicators != null)
                      {
                          foreach (ME2Indicator indicator in newCalc.ME2Indicators)
                          {
-                             stock.TotalME2Total += (indicator.IndTotal * newCalc.Multiplier);
-                             stock.TotalME2Q1Total += (indicator.Ind1Amount * newCalc.Multiplier);
-                             stock.TotalME2Q2Total += (indicator.Ind2Amount * newCalc.Multiplier);
+                            baseStat.TME2TAmount += (indicator.IndTAmount * newCalc.Multiplier);
+                            baseStat.TME2TMAmount += (indicator.IndTMAmount * newCalc.Multiplier);
+                            baseStat.TME2TLAmount += (indicator.IndTLAmount * newCalc.Multiplier);
+                            baseStat.TME2TUAmount += (indicator.IndTUAmount * newCalc.Multiplier);
+                            baseStat.TME21Amount += (indicator.Ind1Amount * newCalc.Multiplier);
+                            baseStat.TME22Amount += (indicator.Ind2Amount * newCalc.Multiplier);
+                            baseStat.TME25Amount += (indicator.Ind5Amount * newCalc.Multiplier);
+                            baseStat.TME23Amount += (indicator.Ind3Amount * newCalc.Multiplier);
+                            baseStat.TME24Amount += (indicator.Ind4Amount * newCalc.Multiplier);
                             //add the indicator to this stock
                             stock.ME2Indicators.Add(indicator);
                          }

@@ -13,7 +13,7 @@ namespace DevTreks.Extensions
     ///             2. Run analyses using collections of base els converted to calculators
     ///             3. Save the analyses as xml
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// NOTES        1. Each base element gets converted to a calculator. 
     ///             The calc is a ME2Stock which inherits from CostBenefitCalculator.
@@ -283,7 +283,7 @@ namespace DevTreks.Extensions
             o.Calculators = new List<Calculator1>();
             if (output.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(output.Calculators, o.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, output.Calculators, o.Calculators);
             }
             o.Outputs = new List<Extensions.Output>();
             if (output.Outputs != null)
@@ -294,7 +294,7 @@ namespace DevTreks.Extensions
                     outputseries2.Calculators = new List<Calculator1>();
                     if (outputseries.Calculators != null)
                     {
-                        ME2AnalyzerHelper.CopyStockCalculator(outputseries.Calculators, outputseries2.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, outputseries.Calculators, outputseries2.Calculators);
                     }
                     o.Outputs.Add(outputseries2);
                 }
@@ -453,7 +453,7 @@ namespace DevTreks.Extensions
                             this.GCCalculatorParams.ParentBudgetInvestment.Alternative2 = a;
                             this.GCCalculatorParams.ParentBudgetInvestment.Observations = g.Count();
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(bi.Calculators, biCalcs);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, bi.Calculators, biCalcs);
                         //calculators start with inputs and outputs
                         //this aggregates the tps, opcomps, and outcomes
                         //and adds stock totals to those collections
@@ -498,7 +498,7 @@ namespace DevTreks.Extensions
                         budInvest.Calculators = new List<Calculator1>();
                         if (this.GCCalculatorParams.ParentBudgetInvestment.Calculators != null)
                         {
-                            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams.ParentBudgetInvestment.Calculators,
+                            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, this.GCCalculatorParams.ParentBudgetInvestment.Calculators,
                                 budInvest.Calculators);
                         }
                         foreach (var tp in this.GCCalculatorParams.ParentBudgetInvestment.TimePeriods)
@@ -508,7 +508,7 @@ namespace DevTreks.Extensions
                             SetNewTPFromOldTp(newTp, tp);
                             if (tp.Calculators != null)
                             {
-                                ME2AnalyzerHelper.CopyStockCalculator(tp.Calculators,
+                                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, tp.Calculators,
                                     newTp.Calculators);
                             }
                             budInvest.TimePeriods.Add(newTp);
@@ -721,7 +721,7 @@ namespace DevTreks.Extensions
             tempBI.Calculators = new List<Calculator1>();
             if (this.GCCalculatorParams.ParentBudgetInvestment.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams.ParentBudgetInvestment.Calculators, tempBI.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, this.GCCalculatorParams.ParentBudgetInvestment.Calculators, tempBI.Calculators);
             }
             //create a new tp to hold new collections
             if (qry.Count() > 0)
@@ -746,7 +746,7 @@ namespace DevTreks.Extensions
                             newTP.Alternative2 = a;
                             newTP.Observations = g.Count();
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(tp.Calculators, newTP.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, tp.Calculators, newTP.Calculators);
                         //copy each tp's descendants to the new tp
                         //these will be aggregated separately below
                         SetNewTPFromOldTp(newTP, tp);
@@ -814,7 +814,7 @@ namespace DevTreks.Extensions
             {
                 newTP.Calculators = new List<Calculator1>();
             }
-            ME2AnalyzerHelper.CopyStockCalculator(oldTP.Calculators, newTP.Calculators);
+            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oldTP.Calculators, newTP.Calculators);
             //this will group the ocs, run the analyses, and addthem to this.OCGroup
             bool bHasCalculations = SetOCAggregation(oldTP.OperationComponents);
             //add them to new timeperiod
@@ -864,7 +864,7 @@ namespace DevTreks.Extensions
             oc.Calculators = new List<Calculator1>();
             if (opComp.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(opComp.Calculators, oc.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, opComp.Calculators, oc.Calculators);
             }
             oc.Inputs = new List<Extensions.Input>();
             if (opComp.Inputs != null)
@@ -875,7 +875,7 @@ namespace DevTreks.Extensions
                     i.Calculators = new List<Calculator1>();
                     if (input.Calculators != null)
                     {
-                        ME2AnalyzerHelper.CopyStockCalculator(input.Calculators, i.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, input.Calculators, i.Calculators);
                     }
                     oc.Inputs.Add(i);
                 }
@@ -888,7 +888,7 @@ namespace DevTreks.Extensions
             oc.Calculators = new List<Calculator1>();
             if (outcome.Calculators != null)
             {
-                ME2AnalyzerHelper.CopyStockCalculator(outcome.Calculators, oc.Calculators);
+                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, outcome.Calculators, oc.Calculators);
             }
             oc.Outputs = new List<Extensions.Output>();
             if (outcome.Outputs != null)
@@ -899,7 +899,7 @@ namespace DevTreks.Extensions
                     o.Calculators = new List<Calculator1>();
                     if (output.Calculators != null)
                     {
-                        ME2AnalyzerHelper.CopyStockCalculator(output.Calculators, o.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, output.Calculators, o.Calculators);
                     }
                     oc.Outputs.Add(o);
                 }
@@ -1150,7 +1150,7 @@ namespace DevTreks.Extensions
             if (this.OCGroup == null)
                 this.OCGroup = new OperationComponentGroup();
             OperationComponentGroup ocGroup2 = new OperationComponentGroup(this.GCCalculatorParams, this.OCGroup);
-            ME2AnalyzerHelper.CopyStockCalculator(this.OCGroup.Calculators, ocGroup2.Calculators);
+            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, this.OCGroup.Calculators, ocGroup2.Calculators);
             //create a new tp to hold new collections
             if (qry.Count() > 0)
             {
@@ -1174,7 +1174,7 @@ namespace DevTreks.Extensions
                             opComp.Alternative2 = a;
                             opComp.Observations = g.Count();
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, opComp.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, opComp.Calculators);
                         //calculators start with inputs and outputs
                         if (oc.Inputs != null)
                         {
@@ -1184,7 +1184,7 @@ namespace DevTreks.Extensions
                                 //note this has to be i
                                 input1.Alternative2 = i;
                                 input1.Calculators = new List<Calculator1>();
-                                ME2AnalyzerHelper.CopyStockCalculator(input.Calculators, input1.Calculators);
+                                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, input.Calculators, input1.Calculators);
                                 opComp.Inputs.Add(input1);
                             }
                         }
@@ -1418,7 +1418,7 @@ namespace DevTreks.Extensions
             if (this.OutcomeGroup == null)
                 this.OutcomeGroup = new OutcomeGroup();
             OutcomeGroup ocGroup2 = new OutcomeGroup(this.GCCalculatorParams, this.OutcomeGroup);
-            ME2AnalyzerHelper.CopyStockCalculator(this.OutcomeGroup.Calculators, ocGroup2.Calculators);
+            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, this.OutcomeGroup.Calculators, ocGroup2.Calculators);
             //create a new tp to hold new collections
             if (qry.Count() > 0)
             {
@@ -1441,7 +1441,7 @@ namespace DevTreks.Extensions
                             outcome.Alternative2 = a;
                             outcome.Observations = g.Count();
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, outcome.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, outcome.Calculators);
                         //calculators start with inputs and outputs
                         if (oc.Outputs != null)
                         {
@@ -1453,7 +1453,7 @@ namespace DevTreks.Extensions
                                 output1.Alternative2 = i;
                                 if (output.Calculators != null)
                                 {
-                                    ME2AnalyzerHelper.CopyStockCalculator(output.Calculators, output1.Calculators);
+                                    ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, output.Calculators, output1.Calculators);
                                 }
                                 outcome.Outputs.Add(output1);
                             }
@@ -1738,7 +1738,7 @@ namespace DevTreks.Extensions
                 this.InputGroup = new InputGroup();
             //use new, not byref, objects
             InputGroup inputGroup = new InputGroup(this.GCCalculatorParams, this.InputGroup);
-            ME2AnalyzerHelper.CopyStockCalculator(this.InputGroup.Calculators, inputGroup.Calculators);
+            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, this.InputGroup.Calculators, inputGroup.Calculators);
             //create a new tp to hold new collections
             if (qry.Count() > 0)
             {
@@ -1761,7 +1761,7 @@ namespace DevTreks.Extensions
                             inputNew.Alternative2 = a;
                             inputNew.Observations = g.Count();
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(input.Calculators, inputNew.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, input.Calculators, inputNew.Calculators);
                         if (input.Inputs != null)
                         {
                             foreach (var input2 in input.Inputs)
@@ -1770,7 +1770,7 @@ namespace DevTreks.Extensions
                                 input1.Calculators = new List<Calculator1>();
                                 //this must be i
                                 input1.Alternative2 = i;
-                                ME2AnalyzerHelper.CopyStockCalculator(input2.Calculators, input1.Calculators);
+                                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, input2.Calculators, input1.Calculators);
                                 inputNew.Inputs.Add(input1);
                             }
                         }
@@ -2003,7 +2003,7 @@ namespace DevTreks.Extensions
         {
             //use new, not byref, objects
             Input newInput = new Input(this.GCCalculatorParams, baseInput);
-            ME2AnalyzerHelper.CopyStockCalculator(baseInput.Calculators, newInput.Calculators);
+            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, baseInput.Calculators, newInput.Calculators);
             //create a new tp to hold new collections
             if (qry.Count() > 0)
             {
@@ -2026,7 +2026,7 @@ namespace DevTreks.Extensions
                             inputNew.Alternative2 = a;
                             inputNew.Observations = g.Count();
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(input.Calculators, inputNew.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, input.Calculators, inputNew.Calculators);
                         i += 1;
                     }
                     newInput.Inputs.Add(inputNew);
@@ -2709,7 +2709,7 @@ namespace DevTreks.Extensions
             if (this.OutputGroup == null)
                 this.OutputGroup = new OutputGroup();
             OutputGroup outputGroup = new OutputGroup(this.GCCalculatorParams, this.OutputGroup);
-            ME2AnalyzerHelper.CopyStockCalculator(this.OutputGroup.Calculators, outputGroup.Calculators);
+            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, this.OutputGroup.Calculators, outputGroup.Calculators);
             //create a new tp to hold new collections
             if (qry.Count() > 0)
             {
@@ -2732,7 +2732,7 @@ namespace DevTreks.Extensions
                             outputNew.Alternative2 = a;
                             outputNew.Observations = g.Count();
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(output.Calculators, outputNew.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, output.Calculators, outputNew.Calculators);
                         if (output.Outputs != null)
                         {
                             foreach (var output2 in output.Outputs)
@@ -2741,7 +2741,7 @@ namespace DevTreks.Extensions
                                 output1.Calculators = new List<Calculator1>();
                                 //this must be i
                                 output1.Alternative2 = i;
-                                ME2AnalyzerHelper.CopyStockCalculator(output2.Calculators, output1.Calculators);
+                                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, output2.Calculators, output1.Calculators);
                                 outputNew.Outputs.Add(output1);
                             }
                         }
@@ -2971,7 +2971,7 @@ namespace DevTreks.Extensions
         {
             //use new, not byref, objects
             Output newOutput = new Output(this.GCCalculatorParams, baseOutput);
-            ME2AnalyzerHelper.CopyStockCalculator(baseOutput.Calculators, newOutput.Calculators);
+            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, baseOutput.Calculators, newOutput.Calculators);
             //create a new tp to hold new collections
             if (qry.Count() > 0)
             {
@@ -2994,7 +2994,7 @@ namespace DevTreks.Extensions
                             outputNew.Alternative2 = a;
                             outputNew.Observations = g.Count();
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(output.Calculators, outputNew.Calculators);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, output.Calculators, outputNew.Calculators);
                         i += 1;
                     }
                     newOutput.Outputs.Add(outputNew);
@@ -3242,7 +3242,7 @@ namespace DevTreks.Extensions
                                     = Calculator1.CHANGE_TYPES.baseline.ToString();
                             }
                         }
-                        ME2AnalyzerHelper.CopyStockCalculator(ancestorBaseBI.Calculators, calcs);
+                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, ancestorBaseBI.Calculators, calcs);
                     }
                 }
                 else
@@ -3325,7 +3325,7 @@ namespace DevTreks.Extensions
                                                 = Calculator1.CHANGE_TYPES.xminus1.ToString();
                                         }
                                     }
-                                    ME2AnalyzerHelper.CopyStockCalculator(tp.Calculators, calcs);
+                                    ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, tp.Calculators, calcs);
                                 }
                             }
 
@@ -3357,7 +3357,7 @@ namespace DevTreks.Extensions
                                             calc.ChangeType
                                                 = Calculator1.CHANGE_TYPES.xminus1.ToString();
                                         }
-                                        ME2AnalyzerHelper.CopyStockCalculator(tp.Calculators, calcs);
+                                        ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, tp.Calculators, calcs);
                                     }
                                 }
                             }
@@ -3402,7 +3402,7 @@ namespace DevTreks.Extensions
                                             = Calculator1.CHANGE_TYPES.baseline.ToString();
                                     }
                                 }
-                                ME2AnalyzerHelper.CopyStockCalculator(tp.Calculators, calcs);
+                                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, tp.Calculators, calcs);
                             }
                         }
                     }
@@ -3440,21 +3440,22 @@ namespace DevTreks.Extensions
             //need to try to compare tps only
             //get added to calcs
             List<Calculator1> compCalcs2 = new List<Calculator1>();
-            int i = 1;
+            //score, or zero index, is a comparator to other scores
+            int i = 0;
             //single budget.tp analysis must have unqiue tp labels, or base and xminus1 get mixed up
             foreach (var currentcalc in calcs)
             {
                 currentcalc.Label = string.Concat(currentcalc.Label, i.ToString());
                 i++;
             }
-            i = 1;
+            i = 0;
             foreach (var currentcalc in calcs)
             {
-                if (i != 1)
+                if (i != 0)
                 {
                     //copy the base and x-1 comparators
                     List<Calculator1> compCalcs = new List<Calculator1>();
-                    ME2AnalyzerHelper.CopyStockCalculator(calcs, compCalcs);
+                    ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, calcs, compCalcs);
                     if (compCalcs.Count > 1)
                     {
                         int j = 1;
@@ -3639,7 +3640,7 @@ namespace DevTreks.Extensions
                                         }
                                         if (!bHasBMs)
                                         {
-                                            ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, calcs);
+                                            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, calcs);
                                         }
                                     }
                                 }
@@ -3668,7 +3669,7 @@ namespace DevTreks.Extensions
                                                 calc.ChangeType
                                                     = Calculator1.CHANGE_TYPES.xminus1.ToString();
                                             }
-                                            ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, calcs);
+                                            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, calcs);
                                         }
                                     }
                                 }
@@ -3714,7 +3715,7 @@ namespace DevTreks.Extensions
                                             = Calculator1.CHANGE_TYPES.baseline.ToString();
                                     }
                                 }
-                                ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, calcs);
+                                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, calcs);
                             }
                         }
                     }
@@ -4047,7 +4048,7 @@ namespace DevTreks.Extensions
                                         }
                                         if (!bHasBMs)
                                         {
-                                            ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, calcs);
+                                            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, calcs);
                                         }
                                     }
                                 }
@@ -4078,7 +4079,7 @@ namespace DevTreks.Extensions
                                             }
                                             //progress has to update base calcs too
                                             //they must be passed byref
-                                            ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, calcs);
+                                            ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, calcs);
                                         }
                                     }
                                 }
@@ -4123,7 +4124,7 @@ namespace DevTreks.Extensions
                                             = Calculator1.CHANGE_TYPES.baseline.ToString();
                                     }
                                 }
-                                ME2AnalyzerHelper.CopyStockCalculator(oc.Calculators, calcs);
+                                ME2AnalyzerHelper.CopyStockCalculator(this.GCCalculatorParams, oc.Calculators, calcs);
                             }
                         }
                     }
@@ -6019,7 +6020,7 @@ namespace DevTreks.Extensions
             {
                 //each stock can contain as many ptstocks as totaled
                 //so only one ME2Stock should be used (or inserting/updating els becomes difficult)
-                ME2Stock stock = new ME2Stock();
+                ME2Stock stock = new ME2Stock(this.GCCalculatorParams);
                 foreach (var calc in stocks)
                 {
                     if (calc.GetType().Equals(stock.GetType()))
@@ -6058,7 +6059,7 @@ namespace DevTreks.Extensions
         {
             if (stocks != null)
             {
-                ME2Stock stock = new ME2Stock();
+                ME2Stock stock = new ME2Stock(this.GCCalculatorParams);
                 if (stocks != null)
                 {
                     foreach (var calc in stocks)

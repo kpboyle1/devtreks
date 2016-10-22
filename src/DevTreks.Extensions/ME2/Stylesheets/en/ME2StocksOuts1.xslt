@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- Author: www.devtreks.org, 2014, Jan -->
+<!-- Author: www.devtreks.org, 2016, October -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:y0="urn:DevTreks-support-schemas:Output"
 	xmlns:DisplayDevPacks="urn:displaydevpacks">

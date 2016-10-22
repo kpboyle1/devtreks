@@ -14,7 +14,7 @@ namespace DevTreks.Extensions
     ///             It runs calculations on the nodes returned by that class, 
     ///             and returns a calculated xelement to the publisher for saving.
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        1. This class has not been debugged. It's the same pattern as the 
     ///             devpacks in the MECalculators extension which has been debugged.

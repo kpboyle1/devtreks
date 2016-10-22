@@ -15,7 +15,7 @@ namespace DevTreks.Extensions
     ///             It runs calculations on the nodes returned by that class, 
     ///             and returns a calculated xelement to the publisher for saving.
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        1. This calculator didn't need the SetAncestorObjects event raised 
     ///             by the base class.
@@ -98,7 +98,7 @@ namespace DevTreks.Extensions
             {
                 case ME2CalculatorHelper.CALCULATOR_TYPES.me2:
                     //serialize, run calcs, and deserialize
-                    ME2Calculator me2 = new ME2Calculator();
+                    ME2Calculator me2 = new ME2Calculator(this.GCCalculatorParams);
                     bHasCalculations = me2.SetME2Calculations(calculatorType, this.GCCalculatorParams,
                         ref currentCalculationsElement, ref currentElement);
                     break;

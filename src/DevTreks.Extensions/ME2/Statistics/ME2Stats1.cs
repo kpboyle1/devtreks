@@ -14,61 +14,52 @@ namespace DevTreks.Extensions
     ///             Each analyzer stock (Stat1) holds a collection of Stat1s
     ///             The class statistically analyzes mes.
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148 
     ///</summary>
     public class ME2Stat1 : ME2Stock
     {
         //calls the base-class version, and initializes the base class properties.
-        public ME2Stat1()
-            : base()
+        public ME2Stat1(CalculatorParameters calcParams)
+            : base(calcParams)
         {
             //subprice object
             InitTotalME2Stat1Properties(this);
         }
-        //copy constructor
-        public ME2Stat1(ME2Stat1 calculator)
-            : base(calculator)
-        {
-            CopyTotalME2Stat1Properties(calculator);
-        }
-        //note that display properties, such as name, description, total, unit, observations, 
-        //are in parent ME2IndicatorStock
-        //calculator properties
-        //statistical properties of the totals 
-        //total
+        //note that display properties, such as name, description, unit are in 
+        //parent ME2Stock calculator properties
         //the total properties come from ME2IndicatorStock
-        //public double TotalME2Total { get; set; }
-        //public double TotalME2N { get; set; }
-        public double TotalME2Mean { get; set; }
-        public double TotalME2Median { get; set; }
-        public double TotalME2Variance { get; set; }
-        public double TotalME2StandDev { get; set; }
-        //q1
-        public double TotalME2Q1Mean { get; set; }
-        public double TotalME2Q1Median { get; set; }
-        public double TotalME2Q1Variance { get; set; }
-        public double TotalME2Q1StandDev { get; set; }
-        //q2
-        public double TotalME2Q2Mean { get; set; }
-        public double TotalME2Q2Median { get; set; }
-        public double TotalME2Q2Variance { get; set; }
-        public double TotalME2Q2StandDev { get; set; }
 
-        private const string cTotalME2Mean = "TME2Mean";
-        private const string cTotalME2Median = "TME2Median";
-        private const string cTotalME2Variance = "TME2Variance";
-        private const string cTotalME2StandDev = "TME2StandDev";
+        //most
+        public double TotalME2MMean { get; set; }
+        public double TotalME2MMedian { get; set; }
+        public double TotalME2MVariance { get; set; }
+        public double TotalME2MStandDev { get; set; }
+        //lower
+        public double TotalME2LMean { get; set; }
+        public double TotalME2LMedian { get; set; }
+        public double TotalME2LVariance { get; set; }
+        public double TotalME2LStandDev { get; set; }
+        //uppper
+        public double TotalME2UMean { get; set; }
+        public double TotalME2UMedian { get; set; }
+        public double TotalME2UVariance { get; set; }
+        public double TotalME2UStandDev { get; set; }
 
-        private const string cTotalME2Q1Mean = "TME2Q1Mean";
-        private const string cTotalME2Q1Median = "TME2Q1Median";
-        private const string cTotalME2Q1Variance = "TME2Q1Variance";
-        private const string cTotalME2Q1StandDev = "TME2Q1StandDev";
+        private const string cTotalME2MMean = "TME2MMean";
+        private const string cTotalME2MMedian = "TME2MMedian";
+        private const string cTotalME2MVariance = "TME2MVariance";
+        private const string cTotalME2MStandDev = "TME2MStandDev";
 
-        private const string cTotalME2Q2Mean = "TME2Q2Mean";
-        private const string cTotalME2Q2Median = "TME2Q2Median";
-        private const string cTotalME2Q2Variance = "TME2Q2Variance";
-        private const string cTotalME2Q2StandDev = "TME2Q2StandDev";
+        private const string cTotalME2LMean = "TME2LMean";
+        private const string cTotalME2LMedian = "TME2LMedian";
+        private const string cTotalME2LVariance = "TME2LVariance";
+        private const string cTotalME2LStandDev = "TME2LStandDev";
+
+        private const string cTotalME2UMean = "TME2UMean";
+        private const string cTotalME2UMedian = "TME2UMedian";
+        private const string cTotalME2UVariance = "TME2UVariance";
+        private const string cTotalME2UStandDev = "TME2UStandDev";
 
         public void InitTotalME2Stat1Properties(ME2Stat1 ind)
         {
@@ -76,19 +67,19 @@ namespace DevTreks.Extensions
             ind.CalcParameters = new CalculatorParameters();
             InitTotalME2IndicatorStockProperties(ind);
             //init stats
-            ind.TotalME2N = 0;
-            ind.TotalME2Mean = 0;
-            ind.TotalME2Median = 0;
-            ind.TotalME2Variance = 0;
-            ind.TotalME2StandDev = 0;
-            ind.TotalME2Q1Mean = 0;
-            ind.TotalME2Q1Median = 0;
-            ind.TotalME2Q1Variance = 0;
-            ind.TotalME2Q1StandDev = 0;
-            ind.TotalME2Q2Mean = 0;
-            ind.TotalME2Q2Median = 0;
-            ind.TotalME2Q2Variance = 0;
-            ind.TotalME2Q2StandDev = 0;
+            ind.TME2N = 0;
+            ind.TotalME2MMean = 0;
+            ind.TotalME2MMedian = 0;
+            ind.TotalME2MVariance = 0;
+            ind.TotalME2MStandDev = 0;
+            ind.TotalME2LMean = 0;
+            ind.TotalME2LMedian = 0;
+            ind.TotalME2LVariance = 0;
+            ind.TotalME2LStandDev = 0;
+            ind.TotalME2UMean = 0;
+            ind.TotalME2UMedian = 0;
+            ind.TotalME2UVariance = 0;
+            ind.TotalME2UStandDev = 0;
         }
         public void CopyTotalME2Stat1Properties(ME2Stat1 calculator)
         {
@@ -108,13 +99,13 @@ namespace DevTreks.Extensions
             {
                 foreach (ME2Stock statStock in calculator.Stocks)
                 {
-                    ME2Stat1 stat = new ME2Stat1();
+                    ME2Stat1 stat = new ME2Stat1(this.CalcParameters);
                     if (statStock.GetType().Equals(stat.GetType()))
                     {
                         stat = (ME2Stat1)statStock;
                         if (stat != null)
                         {
-                            ME2Stat1 newStat = new ME2Stat1();
+                            ME2Stat1 newStat = new ME2Stat1(this.CalcParameters);
                             //copy the totals and the indicators
                             CopyTotalME2IndicatorStockProperties(newStat, stat);
                             //copy the stats properties
@@ -130,19 +121,19 @@ namespace DevTreks.Extensions
             ME2Stat1 calculator)
         {
             //stats
-            ind.TotalME2N = calculator.TotalME2N;
-            ind.TotalME2Mean = calculator.TotalME2Mean;
-            ind.TotalME2Median = calculator.TotalME2Median;
-            ind.TotalME2Variance = calculator.TotalME2Variance;
-            ind.TotalME2StandDev = calculator.TotalME2StandDev;
-            ind.TotalME2Q1Mean = calculator.TotalME2Q1Mean;
-            ind.TotalME2Q1Median = calculator.TotalME2Q1Median;
-            ind.TotalME2Q1Variance = calculator.TotalME2Q1Variance;
-            ind.TotalME2Q1StandDev = calculator.TotalME2Q1StandDev;
-            ind.TotalME2Q2Mean = calculator.TotalME2Q2Mean;
-            ind.TotalME2Q2Median = calculator.TotalME2Q2Median;
-            ind.TotalME2Q2Variance = calculator.TotalME2Q2Variance;
-            ind.TotalME2Q2StandDev = calculator.TotalME2Q2StandDev;
+            ind.TME2N = calculator.TME2N;
+            ind.TotalME2MMean = calculator.TotalME2MMean;
+            ind.TotalME2MMedian = calculator.TotalME2MMedian;
+            ind.TotalME2MVariance = calculator.TotalME2MVariance;
+            ind.TotalME2MStandDev = calculator.TotalME2MStandDev;
+            ind.TotalME2LMean = calculator.TotalME2LMean;
+            ind.TotalME2LMedian = calculator.TotalME2LMedian;
+            ind.TotalME2LVariance = calculator.TotalME2LVariance;
+            ind.TotalME2LStandDev = calculator.TotalME2LStandDev;
+            ind.TotalME2UMean = calculator.TotalME2UMean;
+            ind.TotalME2UMedian = calculator.TotalME2UMedian;
+            ind.TotalME2UVariance = calculator.TotalME2UVariance;
+            ind.TotalME2UStandDev = calculator.TotalME2UStandDev;
         }
         //1. totals are first run for the stats 
         public void CopyTotalME2Stat1Properties(ME2Total1 ind,
@@ -159,7 +150,7 @@ namespace DevTreks.Extensions
             //calculator.Stocks is a collection of Total1s
             foreach (ME2Stock me2stock in calculator.Stocks)
             {
-                ME2Total1 newStat = new ME2Total1();
+                ME2Total1 newStat = new ME2Total1(this.CalcParameters);
                 //copy the totals and the indicators
                 CopyTotalME2IndicatorStockProperties(newStat, me2stock);
                 if (newStat != null)
@@ -188,7 +179,7 @@ namespace DevTreks.Extensions
             //calculator.Stocks is a collection of Total1s
             foreach (ME2Stock me2stock in calculator.Stocks)
             {
-                ME2Stat1 newStat = new ME2Stat1();
+                ME2Stat1 newStat = new ME2Stat1(this.CalcParameters);
                 //copy the totals and the indicators
                 CopyTotalME2IndicatorStockProperties(newStat, me2stock);
                 if (newStat != null)
@@ -208,32 +199,32 @@ namespace DevTreks.Extensions
             //stats always based on indicators
             SetTotalME2IndicatorStockProperties(ind, attNameExtension, calculator);
             //stats
-            ind.TotalME2N = CalculatorHelpers.GetAttributeInt(calculator,
-               string.Concat(cTotalME2N, attNameExtension));
-            ind.TotalME2Mean = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Mean, attNameExtension));
-            ind.TotalME2Median = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Median, attNameExtension));
-            ind.TotalME2Variance = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Variance, attNameExtension));
-            ind.TotalME2StandDev = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2StandDev, attNameExtension));
-            ind.TotalME2Q1Mean = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q1Mean, attNameExtension));
-            ind.TotalME2Q1Median = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q1Median, attNameExtension));
-            ind.TotalME2Q1Variance = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q1Variance, attNameExtension));
-            ind.TotalME2Q1StandDev = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q1StandDev, attNameExtension));
-            ind.TotalME2Q2Mean = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q2Mean, attNameExtension));
-            ind.TotalME2Q2Median = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q2Median, attNameExtension));
-            ind.TotalME2Q2Variance = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q2Variance, attNameExtension));
-            ind.TotalME2Q2StandDev = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q2StandDev, attNameExtension));
+            ind.TME2N = CalculatorHelpers.GetAttributeInt(calculator,
+               string.Concat(cTME2N, attNameExtension));
+            ind.TotalME2MMean = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2MMean, attNameExtension));
+            ind.TotalME2MMedian = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2MMedian, attNameExtension));
+            ind.TotalME2MVariance = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2MVariance, attNameExtension));
+            ind.TotalME2MStandDev = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2MStandDev, attNameExtension));
+            ind.TotalME2LMean = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2LMean, attNameExtension));
+            ind.TotalME2LMedian = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2LMedian, attNameExtension));
+            ind.TotalME2LVariance = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2LVariance, attNameExtension));
+            ind.TotalME2LStandDev = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2LStandDev, attNameExtension));
+            ind.TotalME2UMean = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2UMean, attNameExtension));
+            ind.TotalME2UMedian = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2UMedian, attNameExtension));
+            ind.TotalME2UVariance = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2UVariance, attNameExtension));
+            ind.TotalME2UStandDev = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2UStandDev, attNameExtension));
         }
 
         public void SetTotalME2Stat1Property(ME2Stat1 ind,
@@ -242,44 +233,44 @@ namespace DevTreks.Extensions
             string sPropertyValue = string.Empty;
             switch (attName)
             {
-                case cTotalME2N:
-                    ind.TotalME2N = CalculatorHelpers.ConvertStringToInt(attValue);
+                case cTME2N:
+                    ind.TME2N = CalculatorHelpers.ConvertStringToInt(attValue);
                     break;
-                case cTotalME2Mean:
-                    ind.TotalME2Mean = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2MMean:
+                    ind.TotalME2MMean = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Median:
-                    ind.TotalME2Median = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2MMedian:
+                    ind.TotalME2MMedian = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Variance:
-                    ind.TotalME2Variance = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2MVariance:
+                    ind.TotalME2MVariance = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2StandDev:
-                    ind.TotalME2StandDev = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2MStandDev:
+                    ind.TotalME2MStandDev = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q1Mean:
-                    ind.TotalME2Q1Mean = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2LMean:
+                    ind.TotalME2LMean = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q1Median:
-                    ind.TotalME2Q1Median = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2LMedian:
+                    ind.TotalME2LMedian = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q1Variance:
-                    ind.TotalME2Q1Variance = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2LVariance:
+                    ind.TotalME2LVariance = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q1StandDev:
-                    ind.TotalME2Q1StandDev = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2LStandDev:
+                    ind.TotalME2LStandDev = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q2Mean:
-                    ind.TotalME2Q2Mean = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2UMean:
+                    ind.TotalME2UMean = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q2Median:
-                    ind.TotalME2Q2Median = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2UMedian:
+                    ind.TotalME2UMedian = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q2Variance:
-                    ind.TotalME2Q2Variance = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2UVariance:
+                    ind.TotalME2UVariance = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q2StandDev:
-                    ind.TotalME2Q2StandDev = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2UStandDev:
+                    ind.TotalME2UStandDev = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
                 default:
                     break;
@@ -291,44 +282,44 @@ namespace DevTreks.Extensions
             string sPropertyValue = string.Empty;
             switch (attName)
             {
-                case cTotalME2N:
-                    sPropertyValue = ind.TotalME2N.ToString();
+                case cTME2N:
+                    sPropertyValue = ind.TME2N.ToString();
                     break;
-                case cTotalME2Mean:
-                    sPropertyValue = ind.TotalME2Mean.ToString();
+                case cTotalME2MMean:
+                    sPropertyValue = ind.TotalME2MMean.ToString();
                     break;
-                case cTotalME2Median:
-                    sPropertyValue = ind.TotalME2Median.ToString();
+                case cTotalME2MMedian:
+                    sPropertyValue = ind.TotalME2MMedian.ToString();
                     break;
-                case cTotalME2Variance:
-                    sPropertyValue = ind.TotalME2Variance.ToString();
+                case cTotalME2MVariance:
+                    sPropertyValue = ind.TotalME2MVariance.ToString();
                     break;
-                case cTotalME2StandDev:
-                    sPropertyValue = ind.TotalME2StandDev.ToString();
+                case cTotalME2MStandDev:
+                    sPropertyValue = ind.TotalME2MStandDev.ToString();
                     break;
-                case cTotalME2Q1Mean:
-                    sPropertyValue = ind.TotalME2Q1Mean.ToString();
+                case cTotalME2LMean:
+                    sPropertyValue = ind.TotalME2LMean.ToString();
                     break;
-                case cTotalME2Q1Median:
-                    sPropertyValue = ind.TotalME2Q1Median.ToString();
+                case cTotalME2LMedian:
+                    sPropertyValue = ind.TotalME2LMedian.ToString();
                     break;
-                case cTotalME2Q1Variance:
-                    sPropertyValue = ind.TotalME2Q1Variance.ToString();
+                case cTotalME2LVariance:
+                    sPropertyValue = ind.TotalME2LVariance.ToString();
                     break;
-                case cTotalME2Q1StandDev:
-                    sPropertyValue = ind.TotalME2Q1StandDev.ToString();
+                case cTotalME2LStandDev:
+                    sPropertyValue = ind.TotalME2LStandDev.ToString();
                     break;
-                case cTotalME2Q2Mean:
-                    sPropertyValue = ind.TotalME2Q2Mean.ToString();
+                case cTotalME2UMean:
+                    sPropertyValue = ind.TotalME2UMean.ToString();
                     break;
-                case cTotalME2Q2Median:
-                    sPropertyValue = ind.TotalME2Q2Median.ToString();
+                case cTotalME2UMedian:
+                    sPropertyValue = ind.TotalME2UMedian.ToString();
                     break;
-                case cTotalME2Q2Variance:
-                    sPropertyValue = ind.TotalME2Q2Variance.ToString();
+                case cTotalME2UVariance:
+                    sPropertyValue = ind.TotalME2UVariance.ToString();
                     break;
-                case cTotalME2Q2StandDev:
-                    sPropertyValue = ind.TotalME2Q2StandDev.ToString();
+                case cTotalME2UStandDev:
+                    sPropertyValue = ind.TotalME2UStandDev.ToString();
                     break;
                 default:
                     break;
@@ -340,7 +331,7 @@ namespace DevTreks.Extensions
         {
             if (this.Stocks != null)
             {
-                int i = 1;
+                int i = 0;
                 string sAttNameExtension = string.Empty;
                 foreach (ME2Stat1 stat in this.Stocks)
                 {
@@ -358,31 +349,31 @@ namespace DevTreks.Extensions
         private void SetTotalME2Stat1Attributes(ME2Stat1 ind,
             string attNameExtension, ref XmlWriter writer)
         {
-            //ind.TotalME2N is handled with TotalName, TotalLabel ...
+            //ind.TME2N is handled with TotalName, TotalLabel ...
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Mean, attNameExtension), ind.TotalME2Mean.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2MMean, attNameExtension), ind.TotalME2MMean.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Median, attNameExtension), ind.TotalME2Median.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2MMedian, attNameExtension), ind.TotalME2MMedian.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Variance, attNameExtension), ind.TotalME2Variance.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2MVariance, attNameExtension), ind.TotalME2MVariance.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2StandDev, attNameExtension), ind.TotalME2StandDev.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2MStandDev, attNameExtension), ind.TotalME2MStandDev.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q1Mean, attNameExtension), ind.TotalME2Q1Mean.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2LMean, attNameExtension), ind.TotalME2LMean.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q1Median, attNameExtension), ind.TotalME2Q1Median.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2LMedian, attNameExtension), ind.TotalME2LMedian.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q1Variance, attNameExtension), ind.TotalME2Q1Variance.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2LVariance, attNameExtension), ind.TotalME2LVariance.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q1StandDev, attNameExtension), ind.TotalME2Q1StandDev.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2LStandDev, attNameExtension), ind.TotalME2LStandDev.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q2Mean, attNameExtension), ind.TotalME2Q2Mean.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2UMean, attNameExtension), ind.TotalME2UMean.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q2Median, attNameExtension), ind.TotalME2Q2Median.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2UMedian, attNameExtension), ind.TotalME2UMedian.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q2Variance, attNameExtension), ind.TotalME2Q2Variance.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2UVariance, attNameExtension), ind.TotalME2UVariance.ToString("N3", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q2StandDev, attNameExtension), ind.TotalME2Q2StandDev.ToString("N3", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2UStandDev, attNameExtension), ind.TotalME2UStandDev.ToString("N3", CultureInfo.InvariantCulture));
         }
         //calcs holds the collections needing statistical analysis
         public bool RunAnalyses(ME2Stock me2Stock, List<Calculator1> calcs)
@@ -421,7 +412,7 @@ namespace DevTreks.Extensions
                                 obsStock.CopyCalculatorProperties(stock);
                                 if (obsStock.Stat1 != null)
                                 {
-                                    obsStock.Total1 = new ME2Total1();
+                                    obsStock.Total1 = new ME2Total1(this.CalcParameters);
                                     if (obsStock.Stat1.ME2Indicators != null)
                                     {
                                         if (obsStock.Stat1.ME2Indicators.Count > 0)
@@ -462,33 +453,33 @@ namespace DevTreks.Extensions
                     {
                         if (totalStock.Total1.Stocks != null)
                         {
-                            ME2Stock observationStock = new ME2Stock(me2Stock.CalcParameters,
+                            ME2Stock observationStock = new ME2Stock(this.CalcParameters,
                                 me2Stock.CalcParameters.AnalyzerParms.AnalyzerType);
                             //stocks hold the calculatorids (sometimes me2Stock is parent running multiple children)
                             observationStock.CopyCalculatorProperties(totalStock);
                             //where the stats go
-                            observationStock.Stat1 = new ME2Stat1();
+                            observationStock.Stat1 = new ME2Stat1(this.CalcParameters);
                             observationStock.Stat1.CalcParameters = new CalculatorParameters(totalStock.CalcParameters);
                             observationStock.Stat1.CopyCalculatorProperties(totalStock);
                             //each of the stocks is a unique label-dependent total
                             observationStock.Stat1.Stocks = new List<ME2Stock>();
                             foreach (ME2Stock totStock in totalStock.Total1.Stocks)
                             {
-                                ME2Stat1 newStat = new ME2Stat1();
+                                ME2Stat1 newStat = new ME2Stat1(this.CalcParameters);
                                 //copy the totals and the indicators
                                 CopyTotalME2IndicatorStockProperties(newStat, totStock);
                                 if (newStat.ME2Indicators != null)
                                 {
                                     //set N
-                                    newStat.TotalME2N = newStat.ME2Indicators.Count;
+                                    newStat.TME2N = newStat.ME2Indicators.Count;
                                     //set the cost means
-                                    newStat.TotalME2Mean = newStat.TotalME2Total / newStat.ME2Indicators.Count;
-                                    newStat.TotalME2Q1Mean = newStat.TotalME2Q1Total / newStat.ME2Indicators.Count;
-                                    newStat.TotalME2Q2Mean = newStat.TotalME2Q2Total / newStat.ME2Indicators.Count;
+                                    newStat.TotalME2MMean = newStat.TME2TMAmount / newStat.ME2Indicators.Count;
+                                    newStat.TotalME2LMean = newStat.TME2TLAmount / newStat.ME2Indicators.Count;
+                                    newStat.TotalME2UMean = newStat.TME2TUAmount / newStat.ME2Indicators.Count;
                                     //set the median, variance, and standard deviation costs
                                     SetME2TotalStatistics(newStat);
-                                    SetME2Q1TotalStatistics(newStat);
-                                    SetME2Q2TotalStatistics(newStat);
+                                    SetME2LTotalStatistics(newStat);
+                                    SetME2UTotalStatistics(newStat);
                                     if (observationStock.Stat1.Stocks == null)
                                         observationStock.Stat1.Stocks = new List<ME2Stock>();
                                     observationStock.Stat1.Stocks.Add(newStat);
@@ -515,30 +506,30 @@ namespace DevTreks.Extensions
         private static void SetME2TotalStatistics(ME2Stat1 stat)
         {
             //reorder for median
-            IEnumerable<ME2Indicator> inds = stat.ME2Indicators.OrderByDescending(s => s.IndTotal);
+            IEnumerable<ME2Indicator> inds = stat.ME2Indicators.OrderByDescending(s => s.IndTMAmount);
             double j = 1;
             //variance
-            double dbMemberSquaredTotalQ1 = 0;
-            double dbMemberSquaredQ1 = 0;
-            dbMemberSquaredTotalQ1 = 0;
-            double dbMedianQ1 = inds.Count() / 2;
-            double dbRemainderQ1 = Math.IEEERemainder(inds.Count(), 2);
-            double dbLastTotalQ1 = 0;
+            double dbMemberSquaredTotalL = 0;
+            double dbMemberSquaredL = 0;
+            dbMemberSquaredTotalL = 0;
+            double dbMedianL = inds.Count() / 2;
+            double dbRemainderL = Math.IEEERemainder(inds.Count(), 2);
+            double dbLastTotalL = 0;
             foreach (ME2Indicator ind in inds)
             {
-                dbMemberSquaredQ1 = Math.Pow((ind.IndTotal - stat.TotalME2Mean), 2);
-                dbMemberSquaredTotalQ1 += dbMemberSquaredQ1;
-                if (j > dbMedianQ1 && j != 0)
+                dbMemberSquaredL = Math.Pow((ind.IndTMAmount - stat.TotalME2MMean), 2);
+                dbMemberSquaredTotalL += dbMemberSquaredL;
+                if (j > dbMedianL && j != 0)
                 {
-                    if (dbRemainderQ1 == 0)
+                    if (dbRemainderL == 0)
                     {
                         //divide the middle two numbers
-                        stat.TotalME2Median = (ind.IndTotal + dbLastTotalQ1) / 2;
+                        stat.TotalME2MMedian = (ind.IndTMAmount + dbLastTotalL) / 2;
                     }
                     else
                     {
                         //use the middle number
-                        stat.TotalME2Median = ind.IndTotal;
+                        stat.TotalME2MMedian = ind.IndTMAmount;
                     }
                     j = 0;
                 }
@@ -546,54 +537,54 @@ namespace DevTreks.Extensions
                 {
                     j = j + 1;
                 }
-                dbLastTotalQ1 = ind.IndTotal;
+                dbLastTotalL = ind.IndTMAmount;
             }
 
             //don't divide by zero
-            if (stat.TotalME2N > 1)
+            if (stat.TME2N > 1)
             {
                 //sample variance
-                double dbCount = (1 / (stat.TotalME2N - 1));
-                stat.TotalME2Variance = dbMemberSquaredTotalQ1 * dbCount;
-                if (stat.TotalME2Mean != 0)
+                double dbCount = (1 / (stat.TME2N - 1));
+                stat.TotalME2MVariance = dbMemberSquaredTotalL * dbCount;
+                if (stat.TotalME2MMean != 0)
                 {
                     //sample standard deviation
-                    stat.TotalME2StandDev = Math.Sqrt(stat.TotalME2Variance);
+                    stat.TotalME2MStandDev = Math.Sqrt(stat.TotalME2MVariance);
                 }
             }
             else
             {
-                stat.TotalME2Variance = 0;
-                stat.TotalME2StandDev = 0;
+                stat.TotalME2MVariance = 0;
+                stat.TotalME2MStandDev = 0;
             }
         }
-        private static void SetME2Q1TotalStatistics(ME2Stat1 stat)
+        private static void SetME2LTotalStatistics(ME2Stat1 stat)
         {
             //reorder for median
-            IEnumerable<ME2Indicator> inds = stat.ME2Indicators.OrderByDescending(s => s.IndTotal);
+            IEnumerable<ME2Indicator> inds = stat.ME2Indicators.OrderByDescending(s => s.IndTMAmount);
             double j = 1;
             //variance
-            double dbMemberSquaredTotalQ1 = 0;
-            double dbMemberSquaredQ1 = 0;
-            dbMemberSquaredTotalQ1 = 0;
-            double dbMedianQ1 = inds.Count() / 2;
-            double dbRemainderQ1 = Math.IEEERemainder(inds.Count(), 2);
-            double dbLastTotalQ1 = 0;
+            double dbMemberSquaredTotalL = 0;
+            double dbMemberSquaredL = 0;
+            dbMemberSquaredTotalL = 0;
+            double dbMedianL = inds.Count() / 2;
+            double dbRemainderL = Math.IEEERemainder(inds.Count(), 2);
+            double dbLastTotalL = 0;
             foreach (ME2Indicator ind in inds)
             {
-                dbMemberSquaredQ1 = Math.Pow((ind.Ind1Amount - stat.TotalME2Q1Mean), 2);
-                dbMemberSquaredTotalQ1 += dbMemberSquaredQ1;
-                if (j > dbMedianQ1 && j != 0)
+                dbMemberSquaredL = Math.Pow((ind.IndTLAmount - stat.TotalME2LMean), 2);
+                dbMemberSquaredTotalL += dbMemberSquaredL;
+                if (j > dbMedianL && j != 0)
                 {
-                    if (dbRemainderQ1 == 0)
+                    if (dbRemainderL == 0)
                     {
                         //divide the middle two numbers
-                        stat.TotalME2Q1Median = (ind.Ind1Amount + dbLastTotalQ1) / 2;
+                        stat.TotalME2LMedian = (ind.IndTLAmount + dbLastTotalL) / 2;
                     }
                     else
                     {
                         //use the middle number
-                        stat.TotalME2Q1Median = ind.Ind1Amount;
+                        stat.TotalME2LMedian = ind.IndTLAmount;
                     }
                     j = 0;
                 }
@@ -601,54 +592,54 @@ namespace DevTreks.Extensions
                 {
                     j = j + 1;
                 }
-                dbLastTotalQ1 = ind.Ind1Amount;
+                dbLastTotalL = ind.IndTLAmount;
             }
 
             //don't divide by zero
-            if (stat.TotalME2N > 1)
+            if (stat.TME2N > 1)
             {
                 //sample variance
-                double dbCount = (1 / (stat.TotalME2N - 1));
-                stat.TotalME2Q1Variance = dbMemberSquaredTotalQ1 * dbCount;
-                if (stat.TotalME2Q1Mean != 0)
+                double dbCount = (1 / (stat.TME2N - 1));
+                stat.TotalME2LVariance = dbMemberSquaredTotalL * dbCount;
+                if (stat.TotalME2LMean != 0)
                 {
                     //sample standard deviation
-                    stat.TotalME2Q1StandDev = Math.Sqrt(stat.TotalME2Q1Variance);
+                    stat.TotalME2LStandDev = Math.Sqrt(stat.TotalME2LVariance);
                 }
             }
             else
             {
-                stat.TotalME2Q1Variance = 0;
-                stat.TotalME2Q1StandDev = 0;
+                stat.TotalME2LVariance = 0;
+                stat.TotalME2LStandDev = 0;
             }
         }
-        private static void SetME2Q2TotalStatistics(ME2Stat1 stat)
+        private static void SetME2UTotalStatistics(ME2Stat1 stat)
         {
             //reorder for median
-            IEnumerable<ME2Indicator> inds = stat.ME2Indicators.OrderByDescending(s => s.IndTotal);
+            IEnumerable<ME2Indicator> inds = stat.ME2Indicators.OrderByDescending(s => s.IndTMAmount);
             double j = 1;
             //variance
-            double dbMemberSquaredTotalQ1 = 0;
-            double dbMemberSquaredQ1 = 0;
-            dbMemberSquaredTotalQ1 = 0;
-            double dbMedianQ1 = inds.Count() / 2;
-            double dbRemainderQ1 = Math.IEEERemainder(inds.Count(), 2);
-            double dbLastTotalQ1 = 0;
+            double dbMemberSquaredTotalL = 0;
+            double dbMemberSquaredL = 0;
+            dbMemberSquaredTotalL = 0;
+            double dbMedianL = inds.Count() / 2;
+            double dbRemainderL = Math.IEEERemainder(inds.Count(), 2);
+            double dbLastTotalL = 0;
             foreach (ME2Indicator ind in inds)
             {
-                dbMemberSquaredQ1 = Math.Pow((ind.Ind2Amount - stat.TotalME2Q2Mean), 2);
-                dbMemberSquaredTotalQ1 += dbMemberSquaredQ1;
-                if (j > dbMedianQ1 && j != 0)
+                dbMemberSquaredL = Math.Pow((ind.IndTUAmount - stat.TotalME2UMean), 2);
+                dbMemberSquaredTotalL += dbMemberSquaredL;
+                if (j > dbMedianL && j != 0)
                 {
-                    if (dbRemainderQ1 == 0)
+                    if (dbRemainderL == 0)
                     {
                         //divide the middle two numbers
-                        stat.TotalME2Q2Median = (ind.Ind2Amount + dbLastTotalQ1) / 2;
+                        stat.TotalME2UMedian = (ind.IndTUAmount + dbLastTotalL) / 2;
                     }
                     else
                     {
                         //use the middle number
-                        stat.TotalME2Q2Median = ind.Ind2Amount;
+                        stat.TotalME2UMedian = ind.IndTUAmount;
                     }
                     j = 0;
                 }
@@ -656,25 +647,25 @@ namespace DevTreks.Extensions
                 {
                     j = j + 1;
                 }
-                dbLastTotalQ1 = ind.Ind2Amount;
+                dbLastTotalL = ind.IndTUAmount;
             }
 
             //don't divide by zero
-            if (stat.TotalME2N > 1)
+            if (stat.TME2N > 1)
             {
                 //sample variance
-                double dbCount = (1 / (stat.TotalME2N - 1));
-                stat.TotalME2Q2Variance = dbMemberSquaredTotalQ1 * dbCount;
-                if (stat.TotalME2Q2Mean != 0)
+                double dbCount = (1 / (stat.TME2N - 1));
+                stat.TotalME2UVariance = dbMemberSquaredTotalL * dbCount;
+                if (stat.TotalME2UMean != 0)
                 {
                     //sample standard deviation
-                    stat.TotalME2Q2StandDev = Math.Sqrt(stat.TotalME2Q2Variance);
+                    stat.TotalME2UStandDev = Math.Sqrt(stat.TotalME2UVariance);
                 }
             }
             else
             {
-                stat.TotalME2Q2Variance = 0;
-                stat.TotalME2Q2StandDev = 0;
+                stat.TotalME2UVariance = 0;
+                stat.TotalME2UStandDev = 0;
             }
         }
     }

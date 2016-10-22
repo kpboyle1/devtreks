@@ -14,15 +14,17 @@ namespace DevTreks.Extensions
     ///             This calculator can be used with any element (input, outcome), but the 
     ///             stylesheets must be element specific.
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        1. Extends the base object ME2Indicator object
     ///</summary>
     public class ME2Calculator : ME2Indicator
     {
-        public ME2Calculator()
+        public ME2Calculator(CalculatorParameters calcParams)
             : base()
         {
+            //calcParams
+            this.CalcParameters = calcParams;
             //indicators
             InitME2Properties();
         }

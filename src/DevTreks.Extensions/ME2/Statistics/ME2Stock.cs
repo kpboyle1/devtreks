@@ -17,36 +17,27 @@ namespace DevTreks.Extensions
     ///             Important to use separate stocks because each stock represents
     ///             an aggregated observation
     ///Author:		www.devtreks.org
-    ///Date:		2014, February
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148 
     ///</summary>
     public class ME2Stock : ME2IndicatorStock
     {
+        //inheritors
+        public ME2Stock(CalculatorParameters calcParams)
+            : base(calcParams)
+        {
+        }
         //calls the base-class version, and initializes the base class properties.
         public ME2Stock(CalculatorParameters calcParams, string analyzerType)
-            : base()
+            : base(calcParams)
         {
-            if (calcParams != null)
-            {
-                this.CalcParameters = new CalculatorParameters(calcParams);
-            }
             //ME2IndicatorStock has to know which analysis to run
             this.AnalyzerType = analyzerType;
             //subprice object
             InitTotalME2StocksProperties();
         }
-        //copy constructor
-        public ME2Stock(ME2Stock calculator)
-        {
-            CopyTotalME2StocksProperties(calculator);
-        }
-        //inheritors
-        public ME2Stock()
-            : base()
-        {
-        }
         //note the properties contained in ME2IndicatorStock are also used for display
-        public CalculatorParameters CalcParameters { get; set; }
+        //public CalculatorParameters CalcParameters { get; set; }
         //changes and progress use collections of results
         public List<ME2Stock> Stocks { get; set; }
         //totals analyses 
@@ -62,52 +53,52 @@ namespace DevTreks.Extensions
         {
             if (this.Total1 == null)
             {
-                this.Total1 = new ME2Total1();
+                this.Total1 = new ME2Total1(this.CalcParameters);
             }
             if (this.Stat1 == null)
             {
-                this.Stat1 = new ME2Stat1();
+                this.Stat1 = new ME2Stat1(this.CalcParameters);
             }
             if (this.Change1 == null)
             {
-                this.Change1 = new ME2Change1();
+                this.Change1 = new ME2Change1(this.CalcParameters);
             }
             if (this.Progress1 == null)
             {
-                this.Progress1 = new ME2Progress1();
+                this.Progress1 = new ME2Progress1(this.CalcParameters);
             }
             //need to organize stocks by observations
             this.Stocks = new List<ME2Stock>();
-            ME2Stock stock = new ME2Stock();
-            if (this.CalcParameters != null)
-            {
-                stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
-            }
-            else
-            {
-                stock.CalcParameters = new CalculatorParameters();
-            }
+            ME2Stock stock = new ME2Stock(this.CalcParameters);
+            //if (this.CalcParameters != null)
+            //{
+            //    stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
+            //}
+            //else
+            //{
+            //    stock.CalcParameters = new CalculatorParameters();
+            //}
             if (this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mestat1.ToString())
             {
-                stock.Stat1 = new ME2Stat1();
+                stock.Stat1 = new ME2Stat1(this.CalcParameters);
                 stock.Stat1.InitTotalME2Stat1Properties(stock.Stat1);
             }
             else if (this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mechangeyr.ToString()
                 || this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mechangeid.ToString()
                 || this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mechangealt.ToString())
             {
-                stock.Change1 = new ME2Change1();
+                stock.Change1 = new ME2Change1(this.CalcParameters);
                 stock.Change1.InitTotalME2Change1Properties(stock.Change1);
             }
             else if (this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.meprogress1.ToString())
             {
-                stock.Progress1 = new ME2Progress1();
+                stock.Progress1 = new ME2Progress1(this.CalcParameters);
                 stock.Progress1.InitTotalME2Progress1Properties(stock.Progress1);
             }
             else
             {
                 //default are total indicators
-                stock.Total1 = new ME2Total1();
+                stock.Total1 = new ME2Total1(this.CalcParameters);
                 stock.Total1.InitTotalME2Total1Properties(stock.Total1);
             }
             this.Stocks.Add(stock);
@@ -117,55 +108,55 @@ namespace DevTreks.Extensions
             //analyzers hold all calcs and analyses
             if (this.Total1 == null)
             {
-                this.Total1 = new ME2Total1();
+                this.Total1 = new ME2Total1(this.CalcParameters);
             }
             if (this.Stat1 == null)
             {
-                this.Stat1 = new ME2Stat1();
+                this.Stat1 = new ME2Stat1(this.CalcParameters);
             }
             if (this.Change1 == null)
             {
-                this.Change1 = new ME2Change1();
+                this.Change1 = new ME2Change1(this.CalcParameters);
             }
             if (this.Progress1 == null)
             {
-                this.Progress1 = new ME2Progress1();
+                this.Progress1 = new ME2Progress1(this.CalcParameters);
             }
             //need to organize stocks by observations
             this.Stocks = new List<ME2Stock>();
             //MEStock uses this.AnalyzerType for most calcs
             calculator.AnalyzerType = this.AnalyzerType;
             this.CopyCalculatorProperties(calculator);
-            ME2Stock stock = new ME2Stock();
-            if (this.CalcParameters != null)
-            {
-                stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
-            }
-            else
-            {
-                stock.CalcParameters = new CalculatorParameters();
-            }
+            ME2Stock stock = new ME2Stock(this.CalcParameters);
+            //if (this.CalcParameters != null)
+            //{
+            //    stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
+            //}
+            //else
+            //{
+            //    stock.CalcParameters = new CalculatorParameters();
+            //}
             //this copies the ME2Calc.Indicators to the analyzer
             if (this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mestat1.ToString())
             {
-                stock.Stat1 = new ME2Stat1();
+                stock.Stat1 = new ME2Stat1(this.CalcParameters);
                 stock.Stat1.CopyME2Properties(calculator);
             }
             else if (this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mechangeyr.ToString()
                 || this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mechangeid.ToString()
                 || this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mechangealt.ToString())
             {
-                stock.Change1 = new ME2Change1();
+                stock.Change1 = new ME2Change1(this.CalcParameters);
                 stock.Change1.CopyME2Properties(calculator);
             }
             else if (this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.meprogress1.ToString())
             {
-                stock.Progress1 = new ME2Progress1();
+                stock.Progress1 = new ME2Progress1(this.CalcParameters);
                 stock.Progress1.CopyME2Properties(calculator);
             }
             else
             {
-                stock.Total1 = new ME2Total1();
+                stock.Total1 = new ME2Total1(this.CalcParameters);
                 stock.Total1.CopyME2Properties(calculator);
             }
             this.Stocks.Add(stock);
@@ -178,37 +169,37 @@ namespace DevTreks.Extensions
                 //set up the new me2Stock
                 this.CopyCalculatorProperties(calculator);
                 this.AnalyzerType = calculator.AnalyzerType;
-                if (calculator.CalcParameters != null)
-                {
-                    this.CalcParameters = new CalculatorParameters(calculator.CalcParameters);
-                }
-                else
-                {
-                    this.CalcParameters = new CalculatorParameters();
-                }
+                //if (calculator.CalcParameters != null)
+                //{
+                //    this.CalcParameters = new CalculatorParameters(calculator.CalcParameters);
+                //}
+                //else
+                //{
+                //    this.CalcParameters = new CalculatorParameters();
+                //}
                 this.Stocks = new List<ME2Stock>();
                 foreach (ME2Stock obsStock in calculator.Stocks)
                 {
                     //set up the new stock for the stocks collection
-                    ME2Stock stock = new ME2Stock();
+                    ME2Stock stock = new ME2Stock(CalcParameters);
                     //stock gets same props as this (which are copied from calculator
                     stock.CopyCalculatorProperties(this);
                     stock.AnalyzerType = this.AnalyzerType;
-                    if (this.CalcParameters != null)
-                    {
-                        stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
-                    }
-                    else
-                    {
-                        stock.CalcParameters = new CalculatorParameters();
-                    }
+                    //if (this.CalcParameters != null)
+                    //{
+                    //    stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
+                    //}
+                    //else
+                    //{
+                    //    stock.CalcParameters = new CalculatorParameters();
+                    //}
                     //copy the analysis to the stock
                     if (this.AnalyzerType
                         == ME2AnalyzerHelper.ANALYZER_TYPES.mestat1.ToString())
                     {
                         if (obsStock.Stat1 != null)
                         {
-                            stock.Stat1 = new ME2Stat1();
+                            stock.Stat1 = new ME2Stat1(this.CalcParameters);
                             stock.Stat1.CopyCalculatorProperties(this);
                             stock.Stat1.CopyTotalME2Stat1Properties(
                                 obsStock.Stat1);
@@ -221,7 +212,7 @@ namespace DevTreks.Extensions
                     {
                         if (obsStock.Change1 != null)
                         {
-                            stock.Change1 = new ME2Change1();
+                            stock.Change1 = new ME2Change1(this.CalcParameters);
                             stock.Change1.CopyCalculatorProperties(this);
                             stock.Change1.CopyTotalME2Change1Properties(
                                 obsStock.Change1);
@@ -230,10 +221,10 @@ namespace DevTreks.Extensions
                     else if (this.AnalyzerType
                         == ME2AnalyzerHelper.ANALYZER_TYPES.meprogress1.ToString())
                     {
-                        this.Progress1 = new ME2Progress1();
+                        this.Progress1 = new ME2Progress1(this.CalcParameters);
                         if (obsStock.Progress1 != null)
                         {
-                            stock.Progress1 = new ME2Progress1();
+                            stock.Progress1 = new ME2Progress1(this.CalcParameters);
                             stock.Progress1.CopyCalculatorProperties(this);
                             stock.Progress1.CopyTotalME2Progress1Properties(
                                 obsStock.Progress1);
@@ -243,7 +234,7 @@ namespace DevTreks.Extensions
                     {
                         if (obsStock.Total1 != null)
                         {
-                            stock.Total1 = new ME2Total1();
+                            stock.Total1 = new ME2Total1(this.CalcParameters);
                             stock.Total1.CopyCalculatorProperties(this);
                             stock.Total1.CopyTotalME2Total1Properties(
                                 obsStock.Total1);
@@ -262,7 +253,7 @@ namespace DevTreks.Extensions
             {
                 if (this.Stat1 == null)
                 {
-                    this.Stat1 = new ME2Stat1();
+                    this.Stat1 = new ME2Stat1(this.CalcParameters);
                 }
                 this.Stat1.SetCalculatorProperties(calculator);
                 this.Stat1.SetTotalME2Stat1Properties(
@@ -275,7 +266,7 @@ namespace DevTreks.Extensions
             {
                 if (this.Change1 == null)
                 {
-                    this.Change1 = new ME2Change1();
+                    this.Change1 = new ME2Change1(this.CalcParameters);
                 }
                 this.Change1.SetCalculatorProperties(calculator);
                 this.Change1.SetTotalME2Change1Properties(
@@ -286,7 +277,7 @@ namespace DevTreks.Extensions
             {
                 if (this.Progress1 == null)
                 {
-                    this.Progress1 = new ME2Progress1();
+                    this.Progress1 = new ME2Progress1(this.CalcParameters);
                 }
                 this.Progress1.SetCalculatorProperties(calculator);
                 this.Progress1.SetTotalME2Progress1Properties(
@@ -296,7 +287,7 @@ namespace DevTreks.Extensions
             {
                 if (this.Total1 == null)
                 {
-                    this.Total1 = new ME2Total1();
+                    this.Total1 = new ME2Total1(this.CalcParameters);
                 }
                 this.Total1.SetCalculatorProperties(calculator);
                 this.Total1.SetTotalME2Total1Properties(
@@ -313,14 +304,15 @@ namespace DevTreks.Extensions
                 //no set shared object props, they already have props set
                 //don't SetTotalIndicator1StocksProperties because the descendants have their own stock totals
 
-                //analyzers set exactly one ME2Stock property: TotalME2Type (baseline, midterm ...)
-                string sMEType = CalculatorHelpers.GetAttribute(
-                    currentCalculationsElement, ME2IndicatorStock.cTotalME2Type);
-                if (!string.IsNullOrEmpty(sMEType))
-                {
-                    this.TotalME2Type = sMEType;
-                    //the remaining properties derive from aggregated children indicators
-                }
+                //204 not used
+                //analyzers set exactly one ME2Stock property: TMEStage (baseline, midterm ...)
+                //string sMEStage = CalculatorHelpers.GetAttribute(
+                //    currentCalculationsElement, ME2IndicatorStock.cTME2Stage);
+                //if (!string.IsNullOrEmpty(sMEStage))
+                //{
+                //    this.TME2Stage = sMEStage;
+                //    //the remaining properties derive from aggregated children indicators
+                //}
             }
         }
         public virtual void SetTotalME2StocksProperty(string attName,

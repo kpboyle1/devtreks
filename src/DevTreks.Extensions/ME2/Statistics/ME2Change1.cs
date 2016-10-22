@@ -16,30 +16,21 @@ namespace DevTreks.Extensions
     ///             Each analyzer stock (Change1) holds a collection of Change1s
     ///             The class tracks annual changes in totals.
     ///Author:		www.devtreks.org
-    ///Date:		2014, February
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148 
     ///</summary>
     public class ME2Change1 : ME2Stock
     {
         //calls the base-class version, and initializes the base class properties.
-        public ME2Change1()
-            : base()
+        public ME2Change1(CalculatorParameters calcParams)
+            : base(calcParams)
         {
             //subprice object
             InitTotalME2Change1Properties(this);
         }
-        //copy constructor
-        public ME2Change1(ME2Change1 calculator)
-            : base(calculator)
-        {
-            CopyTotalME2Change1Properties(calculator);
-        }
-        //note that display properties, such as name, description, unit are in parent ME2Stock
-        //calculator properties
-        
+        //note that display properties, such as name, description, unit are in 
+        //parent ME2Stock calculator properties
         //the total properties come from ME2IndicatorStock
-        //public double TotalME2Total { get; set; }
-        //public double TotalME2N { get; set; }
         //total change from last time period
         public double TotalME2AmountChange { get; set; }
         //percent change from last time period
@@ -114,13 +105,13 @@ namespace DevTreks.Extensions
             {
                 foreach (ME2Stock statStock in calculator.Stocks)
                 {
-                    ME2Change1 stat = new ME2Change1();
+                    ME2Change1 stat = new ME2Change1(this.CalcParameters);
                     if (statStock.GetType().Equals(stat.GetType()))
                     {
                         stat = (ME2Change1)statStock;
                         if (stat != null)
                         {
-                            ME2Change1 newStat = new ME2Change1();
+                            ME2Change1 newStat = new ME2Change1(this.CalcParameters);
                             //copy the totals and the indicators
                             CopyTotalME2IndicatorStockProperties(newStat, stat);
                             //copy the stats properties
@@ -166,7 +157,7 @@ namespace DevTreks.Extensions
             //calculator.Stocks is a collection of Total1s
             foreach (ME2Stock me2stock in calculator.Stocks)
             {
-                ME2Change1 newChange = new ME2Change1();
+                ME2Change1 newChange = new ME2Change1(this.CalcParameters);
                 //copy the totals and the indicators
                 CopyTotalME2IndicatorStockProperties(newChange, me2stock);
                 if (newChange != null)
@@ -312,7 +303,7 @@ namespace DevTreks.Extensions
         {
             if (this.Stocks != null)
             {
-                int i = 1;
+                int i = 0;
                 string sAttNameExtension = string.Empty;
                 foreach (ME2Change1 stat in this.Stocks)
                 {
@@ -394,7 +385,7 @@ namespace DevTreks.Extensions
                                 obsStock.CopyCalculatorProperties(stock);
                                 if (obsStock.Change1 != null)
                                 {
-                                    obsStock.Total1 = new ME2Total1();
+                                    obsStock.Total1 = new ME2Total1(this.CalcParameters);
                                     if (obsStock.Change1.ME2Indicators != null)
                                     {
                                         if (obsStock.Change1.ME2Indicators.Count > 0)
@@ -475,7 +466,7 @@ namespace DevTreks.Extensions
                     //need the base el id
                     observationStock.CopyCalculatorProperties(observation);
                     //where the stats go
-                    observationStock.Change1 = new ME2Change1();
+                    observationStock.Change1 = new ME2Change1(observation.CalcParameters);
                     observationStock.Change1.CalcParameters = new CalculatorParameters(me2Stock.CalcParameters);
                     observationStock.Change1.CopyCalculatorProperties(observation);
                     foreach (ME2Total1 total in observation.Total1.Stocks)
@@ -521,7 +512,7 @@ namespace DevTreks.Extensions
                         {
                             {
                                 //and fill in the base list
-                                ME2Change1 baseChange = new ME2Change1();
+                                ME2Change1 baseChange = new ME2Change1(observation.CalcParameters);
                                 baseChange.CopyTotalME2IndicatorStockProperties(baseChange, total);
                                 baseTotals.Add(baseChange);
                             }
@@ -548,7 +539,7 @@ namespace DevTreks.Extensions
                         {
                             {
                                 //and fill in the base list
-                                ME2Change1 xminus1Change = new ME2Change1();
+                                ME2Change1 xminus1Change = new ME2Change1(observation.CalcParameters);
                                 xminus1Change.CopyTotalME2IndicatorStockProperties(xminus1Change, total);
                                 xminus1Totals.Add(xminus1Change);
                             }
@@ -675,7 +666,7 @@ namespace DevTreks.Extensions
                         //need the base el id
                         observationStock.CopyCalculatorProperties(observation);
                         //where the stats go
-                        observationStock.Change1 = new ME2Change1();
+                        observationStock.Change1 = new ME2Change1(observation.CalcParameters);
                         observationStock.Change1.CalcParameters = new CalculatorParameters(me2Stock.CalcParameters);
                         //need the base el id
                         observationStock.Change1.CopyCalculatorProperties(observation);
@@ -689,7 +680,7 @@ namespace DevTreks.Extensions
                             foreach (ME2Total1 total in observation.Total1.Stocks)
                             {
                                 //and fill in the base list
-                                ME2Change1 baseChange = new ME2Change1();
+                                ME2Change1 baseChange = new ME2Change1(observation.CalcParameters);
                                 baseChange.CopyTotalME2IndicatorStockProperties(baseChange, total);
                                 baseTotals.Add(baseChange);
                                 //add to observationStock for potential Ancestor calcs use
@@ -706,7 +697,7 @@ namespace DevTreks.Extensions
                             foreach (ME2Total1 total in observation.Total1.Stocks)
                             {
                                 //and fill in the base list
-                                ME2Change1 xminus1Change = new ME2Change1();
+                                ME2Change1 xminus1Change = new ME2Change1(observation.CalcParameters);
                                 xminus1Change.CopyTotalME2IndicatorStockProperties(xminus1Change, total);
                                 xminus1Totals.Add(xminus1Change);
                                 //add to observationStock for potential Ancestor calcs use
@@ -743,13 +734,13 @@ namespace DevTreks.Extensions
             //loop through the indicator label-aggregated totals
             foreach (ME2Total1 total in observation.Total1.Stocks)
             {
-                ME2Change1 newChange = new ME2Change1();
+                ME2Change1 newChange = new ME2Change1(observation.CalcParameters);
                 newChange.InitTotalME2Change1Properties(newChange);
                 newChange.CopyTotalME2IndicatorStockProperties(newChange, total);
                 if (newChange.ME2Indicators != null)
                 {
                     //set N
-                    newChange.TotalME2N = newChange.ME2Indicators.Count;
+                    newChange.TME2N = newChange.ME2Indicators.Count;
                 }
                 //need the same label aggregated total
                 ME2Change1 baseChange = GetBaseChange(baseTotals, newChange);
@@ -757,17 +748,17 @@ namespace DevTreks.Extensions
                 if (baseChange != null)
                 {
                     //total
-                    newChange.TotalME2BaseChange = newChange.TotalME2Total - baseChange.TotalME2Total;
+                    newChange.TotalME2BaseChange = newChange.TME2TMAmount - baseChange.TME2TMAmount;
                     newChange.TotalME2BasePercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2BaseChange, baseChange.TotalME2Total);
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2BaseChange, baseChange.TME2TMAmount);
                     //q1
-                    newChange.TotalME2Q1BaseChange = newChange.TotalME2Q1Total - baseChange.TotalME2Q1Total;
+                    newChange.TotalME2Q1BaseChange = newChange.TME2TLAmount - baseChange.TME2TLAmount;
                     newChange.TotalME2Q1BasePercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q1BaseChange, baseChange.TotalME2Q1Total);
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q1BaseChange, baseChange.TME2TLAmount);
                     //q2
-                    newChange.TotalME2Q2BaseChange = newChange.TotalME2Q2Total - baseChange.TotalME2Q2Total;
+                    newChange.TotalME2Q2BaseChange = newChange.TME2TUAmount - baseChange.TME2TUAmount;
                     newChange.TotalME2Q2BasePercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q2BaseChange, baseChange.TotalME2Q2Total);
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q2BaseChange, baseChange.TME2TUAmount);
                 }
                 else
                 {
@@ -782,17 +773,17 @@ namespace DevTreks.Extensions
                 }
                 if (xminus1Change != null)
                 {
-                    newChange.TotalME2AmountChange = newChange.TotalME2Total - xminus1Change.TotalME2Total;
+                    newChange.TotalME2AmountChange = newChange.TME2TMAmount - xminus1Change.TME2TMAmount;
                     newChange.TotalME2PercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2AmountChange, xminus1Change.TotalME2Total);
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2AmountChange, xminus1Change.TME2TMAmount);
                     //q1
-                    newChange.TotalME2Q1AmountChange = newChange.TotalME2Q1Total - xminus1Change.TotalME2Q1Total;
+                    newChange.TotalME2Q1AmountChange = newChange.TME2TLAmount - xminus1Change.TME2TLAmount;
                     newChange.TotalME2Q1PercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q1AmountChange, xminus1Change.TotalME2Q1Total);
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q1AmountChange, xminus1Change.TME2TLAmount);
                     //q2
-                    newChange.TotalME2Q2AmountChange = newChange.TotalME2Q2Total - xminus1Change.TotalME2Q2Total;
+                    newChange.TotalME2Q2AmountChange = newChange.TME2TUAmount - xminus1Change.TME2TUAmount;
                     newChange.TotalME2Q2PercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q2AmountChange, xminus1Change.TotalME2Q2Total);
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q2AmountChange, xminus1Change.TME2TUAmount);
                 }
                 else
                 {
@@ -813,20 +804,20 @@ namespace DevTreks.Extensions
         {
             ME2Change1 baseChange = null;
             //changes are measured between label-aggregated indicators
-            if (baseTotals.Any(t => t.TotalME2Label == newChange.TotalME2Label))
+            if (baseTotals.Any(t => t.TME2Label == newChange.TME2Label))
             {
                 baseChange = baseTotals
-                    .FirstOrDefault(t => t.TotalME2Label == newChange.TotalME2Label);
+                    .FirstOrDefault(t => t.TME2Label == newChange.TME2Label);
             }
             return baseChange;
         }
         private static ME2Change1 GetXMinus1Change(List<ME2Change1> xminus1Totals, ME2Change1 newChange)
         {
             ME2Change1 xminus1Change = null;
-            if (xminus1Totals.Any(t => t.TotalME2Label == newChange.TotalME2Label))
+            if (xminus1Totals.Any(t => t.TME2Label == newChange.TME2Label))
             {
                 xminus1Change = xminus1Totals
-                    .FirstOrDefault(t => t.TotalME2Label == newChange.TotalME2Label);
+                    .FirstOrDefault(t => t.TME2Label == newChange.TME2Label);
             }
             return xminus1Change;
         }

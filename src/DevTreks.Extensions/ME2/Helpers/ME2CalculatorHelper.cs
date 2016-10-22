@@ -13,7 +13,7 @@ namespace DevTreks.Extensions
     ///<summary>
     ///Purpose:		Helper functions for running resource stock calculators
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        1.
     /// </summary>

@@ -15,30 +15,22 @@ namespace DevTreks.Extensions
     ///             Each analyzer stock (Progress) holds a collection of Progress1s
     ///             The class measures planned vs actual progress.
     ///Author:		www.devtreks.org
-    ///Date:		2015, December
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148 
     ///</summary>
     public class ME2Progress1 : ME2Stock
     {
         //calls the base-class version, and initializes the base class properties.
-        public ME2Progress1()
-            : base()
+        public ME2Progress1(CalculatorParameters calcParams)
+            : base(calcParams)
         {
             //subprice object
             InitTotalME2Progress1Properties(this);
         }
-        //copy constructor
-        public ME2Progress1(ME2Progress1 calculator)
-            : base(calculator)
-        {
-            CopyTotalME2Progress1Properties(calculator);
-        }
         #region
-        //note that display properties, such as name, description, unit are in parent ME2Stock
-        //calculator properties
+        //note that display properties, such as name, description, unit are in 
+        //parent ME2Stock calculator properties
         //the total properties come from ME2IndicatorStock
-        //public double TotalME2Total { get; set; }
-        //public double TotalME2N { get; set; }
         //planned period
         //planned full (sum of all planning periods)
         public double TotalPFTotal { get; set; }
@@ -162,13 +154,13 @@ namespace DevTreks.Extensions
             {
                 foreach (ME2Stock statStock in calculator.Stocks)
                 {
-                    ME2Progress1 stat = new ME2Progress1();
+                    ME2Progress1 stat = new ME2Progress1(this.CalcParameters);
                     if (statStock.GetType().Equals(stat.GetType()))
                     {
                         stat = (ME2Progress1)statStock;
                         if (stat != null)
                         {
-                            ME2Progress1 newStat = new ME2Progress1();
+                            ME2Progress1 newStat = new ME2Progress1(this.CalcParameters);
                             //copy the totals and the indicators
                             CopyTotalME2IndicatorStockProperties(newStat, stat);
                             //copy the stats properties
@@ -466,7 +458,7 @@ namespace DevTreks.Extensions
         {
             if (this.Stocks != null)
             {
-                int i = 1;
+                int i = 0;
                 string sAttNameExtension = string.Empty;
                 foreach (ME2Progress1 stat in this.Stocks)
                 {
@@ -579,7 +571,7 @@ namespace DevTreks.Extensions
                                 obsStock.CopyCalculatorProperties(stock);
                                 if (obsStock.Progress1 != null)
                                 {
-                                    obsStock.Total1 = new ME2Total1();
+                                    obsStock.Total1 = new ME2Total1(this.CalcParameters);
                                     if (obsStock.Progress1.ME2Indicators != null)
                                     {
                                         if (obsStock.Progress1.ME2Indicators.Count > 0)
@@ -646,7 +638,7 @@ namespace DevTreks.Extensions
                     //need the base el id
                     observationStock.CopyCalculatorProperties(stock);
                     //where the stats go
-                    observationStock.Progress1 = new ME2Progress1();
+                    observationStock.Progress1 = new ME2Progress1(stock.CalcParameters);
                     observationStock.Progress1.CalcParameters = new CalculatorParameters(me2Stock.CalcParameters);
                     observationStock.Progress1.CopyCalculatorProperties(stock);
                     if (stock.Total1.Stocks != null)
@@ -686,11 +678,11 @@ namespace DevTreks.Extensions
                         {
                             foreach (ME2Total1 cumtotal in cumTotals)
                             {
-                                if (progress.TotalME2Label == cumtotal.TotalME2Label)
+                                if (progress.TME2Label == cumtotal.TME2Label)
                                 {
-                                    dbPlannedTotal += cumtotal.TotalME2Total;
-                                    dbPlannedTotalQ1 += cumtotal.TotalME2Q1Total;
-                                    dbPlannedTotalQ2 += cumtotal.TotalME2Q2Total;
+                                    dbPlannedTotal += cumtotal.TME2TMAmount;
+                                    dbPlannedTotalQ1 += cumtotal.TME2TLAmount;
+                                    dbPlannedTotalQ2 += cumtotal.TME2TUAmount;
                                 }
                             }
                             progress.TotalPFTotal = dbPlannedTotal;
@@ -718,7 +710,7 @@ namespace DevTreks.Extensions
                     //need the base el id
                     observationStock.CopyCalculatorProperties(stock);
                     //where the stats go
-                    observationStock.Progress1 = new ME2Progress1();
+                    observationStock.Progress1 = new ME2Progress1(stock.CalcParameters);
                     observationStock.Progress1.CalcParameters = new CalculatorParameters(me2Stock.CalcParameters);
                     observationStock.Progress1.CopyCalculatorProperties(stock);
                     if (stock.Total1.Stocks != null)
@@ -757,7 +749,7 @@ namespace DevTreks.Extensions
             {
                 foreach (ME2Total1 total in planned.Total1.Stocks.OrderBy(c => c.Date))
                 {
-                    ME2Progress1 newProgress = new ME2Progress1();
+                    ME2Progress1 newProgress = new ME2Progress1(observationStock.CalcParameters);
                     //194 no dates or correct labels in newprogress
                     newProgress.CopyCalculatorProperties(total);
                     //set props to zero
@@ -766,23 +758,23 @@ namespace DevTreks.Extensions
                     if (newProgress.ME2Indicators != null)
                     {
                         //set N
-                        newProgress.TotalME2N = newProgress.ME2Indicators.Count;
+                        newProgress.TME2N = newProgress.ME2Indicators.Count;
                     };
                     //set planned period totals
-                    newProgress.TotalME2Total = total.TotalME2Total;
-                    newProgress.TotalME2Q1Total = total.TotalME2Q1Total;
-                    newProgress.TotalME2Q2Total = total.TotalME2Q2Total;
+                    newProgress.TME2TMAmount = total.TME2TMAmount;
+                    newProgress.TME2TLAmount = total.TME2TLAmount;
+                    newProgress.TME2TUAmount = total.TME2TUAmount;
                     //set planned cumulative
                     dbPlannedTotal = 0;
                     dbPlannedTotalQ1 = 0;
                     dbPlannedTotalQ2 = 0;
                     foreach (ME2Total1 cumtotal in cumTotals.OrderBy(c => c.Date))
                     {
-                        if (total.TotalME2Label == cumtotal.TotalME2Label)
+                        if (total.TME2Label == cumtotal.TME2Label)
                         {
-                            dbPlannedTotal += cumtotal.TotalME2Total;
-                            dbPlannedTotalQ1 += cumtotal.TotalME2Q1Total;
-                            dbPlannedTotalQ2 += cumtotal.TotalME2Q2Total;
+                            dbPlannedTotal += cumtotal.TME2TMAmount;
+                            dbPlannedTotalQ1 += cumtotal.TME2TLAmount;
+                            dbPlannedTotalQ2 += cumtotal.TME2TUAmount;
                         }
                     }
                     newProgress.TotalPCTotal = dbPlannedTotal;
@@ -806,13 +798,13 @@ namespace DevTreks.Extensions
             {
                 foreach (ME2Total1 total in actual.Total1.Stocks.OrderBy(c => c.Date))
                 {
-                    ME2Progress1 newProgress = new ME2Progress1();
+                    ME2Progress1 newProgress = new ME2Progress1(observationStock.CalcParameters);
                     newProgress.InitTotalME2Progress1Properties(newProgress);
                     newProgress.CopyTotalME2IndicatorStockProperties(newProgress, total);
                     if (newProgress.ME2Indicators != null)
                     {
                         //set N
-                        newProgress.TotalME2N = newProgress.ME2Indicators.Count;
+                        newProgress.TME2N = newProgress.ME2Indicators.Count;
                     };
                     //set planned cumulative
                     dbActualTotal = 0;
@@ -820,11 +812,11 @@ namespace DevTreks.Extensions
                     dbActualTotalQ2 = 0;
                     foreach (ME2Total1 cumtotal in cumTotals.OrderBy(c => c.Date))
                     {
-                        if (total.TotalME2Label == cumtotal.TotalME2Label)
+                        if (total.TME2Label == cumtotal.TME2Label)
                         {
-                            dbActualTotal += cumtotal.TotalME2Total;
-                            dbActualTotalQ1 += cumtotal.TotalME2Q1Total;
-                            dbActualTotalQ2 += cumtotal.TotalME2Q2Total;
+                            dbActualTotal += cumtotal.TME2TMAmount;
+                            dbActualTotalQ1 += cumtotal.TME2TLAmount;
+                            dbActualTotalQ2 += cumtotal.TME2TUAmount;
                         }
                     }
                     newProgress.TotalACTotal = dbActualTotal;
@@ -832,13 +824,13 @@ namespace DevTreks.Extensions
                     newProgress.TotalQ2ACTotal = dbActualTotalQ2;
 
                     //set actual period using last actual total
-                    newProgress.TotalAPTotal = newProgress.TotalME2Total;
+                    newProgress.TotalAPTotal = newProgress.TME2TMAmount;
                     //q1
                     //set actual period using last actual total
-                    newProgress.TotalQ1APTotal = newProgress.TotalME2Q1Total;
+                    newProgress.TotalQ1APTotal = newProgress.TME2TLAmount;
                     //q2
                     //set actual period using last actual total
-                    newProgress.TotalQ2APTotal = newProgress.TotalME2Q2Total;
+                    newProgress.TotalQ2APTotal = newProgress.TME2TUAmount;
                     //set the corresponding planned totals
                     if (planned != null)
                     {
@@ -846,22 +838,22 @@ namespace DevTreks.Extensions
                         {
                             foreach (ME2Progress1 progress in planned.Progress1.Stocks)
                             {
-                                if (progress.TotalME2Label == total.TotalME2Label)
+                                if (progress.TME2Label == total.TME2Label)
                                 {
                                     //set actual.planned cumulative
                                     newProgress.TotalPCTotal = progress.TotalPCTotal;
                                     //set actual.planned period
                                     //Total is always planned period and TotalAPTotal is actual period
-                                    newProgress.TotalME2Total = progress.TotalME2Total;
+                                    newProgress.TME2TMAmount = progress.TME2TMAmount;
                                     //the planned fulltotal to the planned full total
                                     newProgress.TotalPFTotal = progress.TotalPFTotal;
                                     //q1
                                     newProgress.TotalQ1PCTotal = progress.TotalQ1PCTotal;
-                                    newProgress.TotalME2Q1Total = progress.TotalME2Q1Total;
+                                    newProgress.TME2TLAmount = progress.TME2TLAmount;
                                     newProgress.TotalQ1PFTotal = progress.TotalQ1PFTotal;
                                     //q1
                                     newProgress.TotalQ2PCTotal = progress.TotalQ2PCTotal;
-                                    newProgress.TotalME2Q2Total = progress.TotalME2Q2Total;
+                                    newProgress.TME2TUAmount = progress.TME2TUAmount;
                                     newProgress.TotalQ2PFTotal = progress.TotalQ2PFTotal;
                                 }
                             }
@@ -869,30 +861,30 @@ namespace DevTreks.Extensions
                     }
                     //set the variances
                     //partial period change
-                    newProgress.TotalAPChange = newProgress.TotalAPTotal - newProgress.TotalME2Total;
+                    newProgress.TotalAPChange = newProgress.TotalAPTotal - newProgress.TME2TMAmount;
                     //cumulative change
                     newProgress.TotalACChange = newProgress.TotalACTotal - newProgress.TotalPCTotal;
                     //set planned period percent
                     newProgress.TotalPPPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalAPTotal, newProgress.TotalME2Total);
+                        = CalculatorHelpers.GetPercent(newProgress.TotalAPTotal, newProgress.TME2TMAmount);
                     newProgress.TotalPCPercent
                         = CalculatorHelpers.GetPercent(newProgress.TotalACTotal, newProgress.TotalPCTotal);
                     newProgress.TotalPFPercent
                             = CalculatorHelpers.GetPercent(newProgress.TotalACTotal, newProgress.TotalPFTotal);
                     //q1
-                    newProgress.TotalQ1APChange = newProgress.TotalQ1APTotal - newProgress.TotalME2Q1Total;
+                    newProgress.TotalQ1APChange = newProgress.TotalQ1APTotal - newProgress.TME2TLAmount;
                     newProgress.TotalQ1ACChange = newProgress.TotalQ1ACTotal - newProgress.TotalQ1PCTotal;
                     newProgress.TotalQ1PPPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalQ1APTotal, newProgress.TotalME2Q1Total);
+                        = CalculatorHelpers.GetPercent(newProgress.TotalQ1APTotal, newProgress.TME2TLAmount);
                     newProgress.TotalQ1PCPercent
                         = CalculatorHelpers.GetPercent(newProgress.TotalQ1ACTotal, newProgress.TotalQ1PCTotal);
                     newProgress.TotalQ1PFPercent
                             = CalculatorHelpers.GetPercent(newProgress.TotalQ1ACTotal, newProgress.TotalQ1PFTotal);
                     //q2
-                    newProgress.TotalQ2APChange = newProgress.TotalQ2APTotal - newProgress.TotalME2Q2Total;
+                    newProgress.TotalQ2APChange = newProgress.TotalQ2APTotal - newProgress.TME2TUAmount;
                     newProgress.TotalQ2ACChange = newProgress.TotalQ2ACTotal - newProgress.TotalQ2PCTotal;
                     newProgress.TotalQ2PPPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalQ2APTotal, newProgress.TotalME2Q2Total);
+                        = CalculatorHelpers.GetPercent(newProgress.TotalQ2APTotal, newProgress.TME2TUAmount);
                     newProgress.TotalQ2PCPercent
                         = CalculatorHelpers.GetPercent(newProgress.TotalQ2ACTotal, newProgress.TotalQ2PCTotal);
                     newProgress.TotalQ2PFPercent
@@ -912,6 +904,7 @@ namespace DevTreks.Extensions
             if (obsStocks.Any(p => p.Label == actual.Label
                 && p.TargetType == targetType))
             {
+                //2.0.4 went to zero based index, double check that this is not important
                 int iIndex = 1;
                 foreach (ME2Stock planned in obsStocks)
                 {

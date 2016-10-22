@@ -9,7 +9,7 @@ namespace DevTreks.Extensions
     /// <summary>
     ///Purpose:		Run monitoring and evaluation indicator stock calculations for outcomes
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public class OutcomeME2StockCalculator

@@ -12,7 +12,7 @@ namespace DevTreks.Extensions
     ///Purpose:		Run monitoring and evaluation indicator stock calculations for inputs 
     ///             and outputs.
     ///Author:		www.devtreks.org
-    ///Date:		2014, January
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public class IOME2StockCalculator

@@ -13,7 +13,7 @@ namespace DevTreks.Extensions
     ///<summary>
     ///Purpose:		Helper functions for the resource stocks analyzer extension
     ///Author:		www.devtreks.org
-    ///Date:		2014, September
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///             1. Other modules demonstrate how to implement the analyzer patterns. 
     /// </summary>
@@ -949,7 +949,8 @@ namespace DevTreks.Extensions
             }
         }
         
-        public static void CopyStockCalculator(List<Calculator1> oldcalcs, List<Calculator1> newcalcs)
+        public static void CopyStockCalculator(CalculatorParameters calcParams,
+            List<Calculator1> oldcalcs, List<Calculator1> newcalcs)
         {
             if (oldcalcs != null)
             {
@@ -958,7 +959,7 @@ namespace DevTreks.Extensions
                 foreach (Calculator1 calc in oldcalcs)
                 {
                     //don't init newstock with this.GCCalcParam, use the oldcalc.CalcParams
-                    ME2Stock newStock = new ME2Stock();
+                    ME2Stock newStock = new ME2Stock(calcParams);
                     bool bHasCopy = CopyStockCalculator(calc, newStock);
                     if (bHasCopy)
                     {
@@ -1048,11 +1049,46 @@ namespace DevTreks.Extensions
             {
                 //the copy will also copy calcprops and calcparams for newstock and newstock.Stocks
                 newStock.CopyTotalME2StocksProperties(oldStock);
-                //newStock.AnalyzerType = this.GCCalculatorParams.AnalyzerParms.AnalyzerType;
                 bHasCopy = true;
             }
             return bHasCopy;
         }
-        
+        public static bool NeedsAnalyzerIndicator(string indicLabel, CalculatorParameters calcParams)
+        {
+            //not fully implemented yet
+            bool bNeedsInd = true;
+            if (calcParams.ExtensionCalcDocURI == null)
+            {
+                return bNeedsInd;
+            }
+            if (calcParams.ExtensionCalcDocURI.URIDataManager == null)
+            {
+                return bNeedsInd;
+            }
+            if (calcParams.ExtensionCalcDocURI.URIDataManager.HostName.ToLower() ==
+                Constants.ANALYZER_HOSTNAME)
+            {
+                //analyzers can only run up to 15 indicators at one ime
+                bNeedsInd = false;
+            }
+            if (calcParams.AnalyzerParms.AnalyzerType == ANALYZER_TYPES.metotal1.ToString())
+            {
+                bNeedsInd = true;
+            }
+            if (!bNeedsInd)
+            {
+                if (calcParams.UrisToAnalyze != null)
+                {
+                    foreach (var sb in calcParams.UrisToAnalyze)
+                    {
+                        if (sb == indicLabel)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return bNeedsInd;
+        }
     }
 }
