@@ -40,7 +40,7 @@ namespace DevTreks.Extensions
         public double TotalME2LMedian { get; set; }
         public double TotalME2LVariance { get; set; }
         public double TotalME2LStandDev { get; set; }
-        //uppper
+        //upper
         public double TotalME2UMean { get; set; }
         public double TotalME2UMedian { get; set; }
         public double TotalME2UVariance { get; set; }

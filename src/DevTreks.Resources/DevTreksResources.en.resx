@@ -1344,4 +1344,7 @@
   <data name="AUTHORIZATION_NO2" xml:space="preserve">
     <value>  , which does not allow you to change a subscribed club's authorization.</value>
   </data>
+  <data name="SOCIAL_BUDGET_SERVICE11" xml:space="preserve">
+    <value>Are the actions equitable?</value>
+  </data>
 </root>

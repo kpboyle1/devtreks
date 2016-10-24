@@ -98,17 +98,88 @@
 	</xsl:template>
 	<xsl:template match="root/linkedview">
 		<xsl:param name="localName" />
-    <xsl:if test="(@TME2Name1 != '')">
-		<div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+    <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Totals</strong>
       </h4>
-      <xsl:if test="(@TotalME2Type1 != '' and @TotalME2Type1 != 'none')">
+      <xsl:if test="(@TME2Stage != '' and @TME2Stage != 'none')">
         <div>
-			    M and E Type: <strong><xsl:value-of select="@TotalME2Type1"/></strong>
+			    M and E Stage: <strong><xsl:value-of select="@TME2Stage"/></strong>
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name1 != '')">
+    <xsl:if test="(@TME2Name0 != '' and TME2Name0 != 'none')">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 1 Name : <strong><xsl:value-of select="@TME2Name0"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label0"/>
+        </div>
+        <div class="ui-block-a">
+          Observations : <xsl:value-of select="@TME2N0"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Total : <xsl:value-of select="@TME2TMAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          Unit : <xsl:value-of select="@TME2TMUnit0"/>
+        </div>
+        <div class="ui-block-a">
+          Mean : <xsl:value-of select="@TME2MMean0"/>
+        </div>
+        <div class="ui-block-b">
+          Median : <xsl:value-of select="@TME2MMedian0"/>
+        </div>
+        <div class="ui-block-a">
+          Variance : <xsl:value-of select="@TME2MVariance0"/>
+        </div>
+        <div class="ui-block-b">    
+          Std Dev : <xsl:value-of select="@TME2MStandDev0"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Total : <xsl:value-of select="@TME2TLAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Unit : <xsl:value-of select="@TME2TLUnit0"/>    
+        </div>
+        <div class="ui-block-a">
+          Q1 Mean : <xsl:value-of select="@TME2LMean0"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Median : <xsl:value-of select="@TME2LMedian0"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Variance : <xsl:value-of select="@TME2LVariance0"/>
+        </div>
+        <div class="ui-block-b">    
+          Q1 Std Dev : <xsl:value-of select="@TME2LStandDev0"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Total : <xsl:value-of select="@TME2TUAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Unit : <xsl:value-of select="@TME2TUUnit0"/>    
+        </div>
+        <div class="ui-block-a">
+          Q2 Mean : <xsl:value-of select="@TME2UMean0"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Median : <xsl:value-of select="@TME2UMedian0"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Variance : <xsl:value-of select="@TME2UVariance0"/>
+        </div>
+        <div class="ui-block-b">    
+          Q2 Std Dev : <xsl:value-of select="@TME2UStandDev0"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description0" />
+	    </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name1 != '' and TME2Name1 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name1"/></strong>
@@ -122,65 +193,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total1"/>
+            Total : <xsl:value-of select="@TME2TMAmount1"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit1"/>
+            Unit : <xsl:value-of select="@TME2TMUnit1"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean1"/>
+            Mean : <xsl:value-of select="@TME2MMean1"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median1"/>
+            Median : <xsl:value-of select="@TME2MMedian1"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance1"/>
+            Variance : <xsl:value-of select="@TME2MVariance1"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev1"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev1"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total1"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount1"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit1"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit1"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean1"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean1"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median1"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian1"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance1"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance1"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev1"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev1"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total1"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount1"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit1"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit1"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean1"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean1"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median1"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian1"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance1"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance1"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev1"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev1"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description1" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name2 != '')">
+      <xsl:if test="(@TME2Name2 != '' and TME2Name2 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name2"/></strong>
@@ -194,65 +265,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total2"/>
+            Total : <xsl:value-of select="@TME2TMAmount2"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit2"/>
+            Unit : <xsl:value-of select="@TME2TMUnit2"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean2"/>
+            Mean : <xsl:value-of select="@TME2MMean2"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median2"/>
+            Median : <xsl:value-of select="@TME2MMedian2"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance2"/>
+            Variance : <xsl:value-of select="@TME2MVariance2"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev2"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev2"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total2"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount2"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit2"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit2"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean2"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean2"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median2"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian2"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance2"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance2"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev2"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev2"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total2"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount2"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit2"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit2"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean2"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean2"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median2"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian2"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance2"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance2"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev2"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev2"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description2" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name3 != '')">
+      <xsl:if test="(@TME2Name3 != '' and TME2Name3 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name3"/></strong>
@@ -266,65 +337,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total3"/>
+            Total : <xsl:value-of select="@TME2TMAmount3"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit3"/>
+            Unit : <xsl:value-of select="@TME2TMUnit3"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean3"/>
+            Mean : <xsl:value-of select="@TME2MMean3"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median3"/>
+            Median : <xsl:value-of select="@TME2MMedian3"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance3"/>
+            Variance : <xsl:value-of select="@TME2MVariance3"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev3"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev3"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total3"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount3"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit3"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit3"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean3"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean3"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median3"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian3"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance3"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance3"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev3"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev3"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total3"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount3"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit3"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit3"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean3"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean3"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median3"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian3"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance3"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance3"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev3"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev3"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description3" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name4 != '')">
+      <xsl:if test="(@TME2Name4 != '' and TME2Name4 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name4"/></strong>
@@ -338,65 +409,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total4"/>
+            Total : <xsl:value-of select="@TME2TMAmount4"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit4"/>
+            Unit : <xsl:value-of select="@TME2TMUnit4"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean4"/>
+            Mean : <xsl:value-of select="@TME2MMean4"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median4"/>
+            Median : <xsl:value-of select="@TME2MMedian4"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance4"/>
+            Variance : <xsl:value-of select="@TME2MVariance4"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev4"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev4"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total4"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount4"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit4"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit4"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean4"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean4"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median4"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian4"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance4"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance4"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev4"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev4"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total4"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount4"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit4"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit4"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean4"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean4"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median4"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian4"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance4"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance4"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev4"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev4"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description4" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name5 != '')">
+      <xsl:if test="(@TME2Name5 != '' and TME2Name5 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name5"/></strong>
@@ -410,65 +481,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total5"/>
+            Total : <xsl:value-of select="@TME2TMAmount5"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit5"/>
+            Unit : <xsl:value-of select="@TME2TMUnit5"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean5"/>
+            Mean : <xsl:value-of select="@TME2MMean5"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median5"/>
+            Median : <xsl:value-of select="@TME2MMedian5"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance5"/>
+            Variance : <xsl:value-of select="@TME2MVariance5"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev5"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev5"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total5"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount5"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit5"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit5"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean5"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean5"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median5"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian5"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance5"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance5"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev5"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev5"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total5"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount5"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit5"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit5"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean5"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean5"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median5"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian5"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance5"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance5"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev5"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev5"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description5" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name6 != '')">
+      <xsl:if test="(@TME2Name6 != '' and TME2Name6 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name6"/></strong>
@@ -482,65 +553,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total6"/>
+            Total : <xsl:value-of select="@TME2TMAmount6"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit6"/>
+            Unit : <xsl:value-of select="@TME2TMUnit6"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean6"/>
+            Mean : <xsl:value-of select="@TME2MMean6"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median6"/>
+            Median : <xsl:value-of select="@TME2MMedian6"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance6"/>
+            Variance : <xsl:value-of select="@TME2MVariance6"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev6"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev6"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total6"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount6"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit6"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit6"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean6"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean6"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median6"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian6"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance6"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance6"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev6"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev6"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total6"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount6"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit6"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit6"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean6"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean6"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median6"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian6"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance6"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance6"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev6"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev6"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description6" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name7 != '')">
+      <xsl:if test="(@TME2Name7 != '' and TME2Name7 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name7"/></strong>
@@ -554,65 +625,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total7"/>
+            Total : <xsl:value-of select="@TME2TMAmount7"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit7"/>
+            Unit : <xsl:value-of select="@TME2TMUnit7"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean7"/>
+            Mean : <xsl:value-of select="@TME2MMean7"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median7"/>
+            Median : <xsl:value-of select="@TME2MMedian7"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance7"/>
+            Variance : <xsl:value-of select="@TME2MVariance7"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev7"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev7"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total7"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount7"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit7"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit7"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean7"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean7"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median7"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian7"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance7"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance7"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev7"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev7"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total7"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount7"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit7"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit7"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean7"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean7"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median7"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian7"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance7"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance7"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev7"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev7"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description7" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name8 != '')">
+      <xsl:if test="(@TME2Name8 != '' and TME2Name8 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name8"/></strong>
@@ -626,65 +697,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total8"/>
+            Total : <xsl:value-of select="@TME2TMAmount8"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit8"/>
+            Unit : <xsl:value-of select="@TME2TMUnit8"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean8"/>
+            Mean : <xsl:value-of select="@TME2MMean8"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median8"/>
+            Median : <xsl:value-of select="@TME2MMedian8"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance8"/>
+            Variance : <xsl:value-of select="@TME2MVariance8"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev8"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev8"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total8"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount8"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit8"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit8"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean8"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean8"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median8"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian8"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance8"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance8"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev8"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev8"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total8"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount8"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit8"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit8"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean8"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean8"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median8"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian8"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance8"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance8"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev8"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev8"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description8" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name9 != '')">
+      <xsl:if test="(@TME2Name9 != '' and TME2Name9 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name9"/></strong>
@@ -698,65 +769,65 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total9"/>
+            Total : <xsl:value-of select="@TME2TMAmount9"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit9"/>
+            Unit : <xsl:value-of select="@TME2TMUnit9"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean9"/>
+            Mean : <xsl:value-of select="@TME2MMean9"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median9"/>
+            Median : <xsl:value-of select="@TME2MMedian9"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance9"/>
+            Variance : <xsl:value-of select="@TME2MVariance9"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev9"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev9"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total9"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount9"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit9"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit9"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean9"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean9"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median9"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian9"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance9"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance9"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev9"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev9"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total9"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount9"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit9"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit9"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean9"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean9"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median9"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian9"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance9"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance9"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev9"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev9"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description9" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name10 != '')">
+      <xsl:if test="(@TME2Name10 != '' and TME2Name10 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name10"/></strong>
@@ -770,66 +841,425 @@
           <div class="ui-block-b">
           </div>
           <div class="ui-block-a">
-            Total : <xsl:value-of select="@TME2Total10"/>
+            Total : <xsl:value-of select="@TME2TMAmount10"/>
           </div>
           <div class="ui-block-b">
-            Unit : <xsl:value-of select="@TME2Unit10"/>
+            Unit : <xsl:value-of select="@TME2TMUnit10"/>
           </div>
           <div class="ui-block-a">
-            Mean : <xsl:value-of select="@TME2Mean10"/>
+            Mean : <xsl:value-of select="@TME2MMean10"/>
           </div>
           <div class="ui-block-b">
-            Median : <xsl:value-of select="@TME2Median10"/>
+            Median : <xsl:value-of select="@TME2MMedian10"/>
           </div>
           <div class="ui-block-a">
-            Variance : <xsl:value-of select="@TME2Variance10"/>
+            Variance : <xsl:value-of select="@TME2MVariance10"/>
           </div>
           <div class="ui-block-b">    
-            Std Dev : <xsl:value-of select="@TME2StandDev10"/>
+            Std Dev : <xsl:value-of select="@TME2MStandDev10"/>
           </div>
           <div class="ui-block-a">
-            Q1 Total : <xsl:value-of select="@TME2Q1Total10"/>
+            Q1 Total : <xsl:value-of select="@TME2TLAmount10"/>
           </div>
           <div class="ui-block-b">
-            Q1 Unit : <xsl:value-of select="@TME2Q1Unit10"/>    
+            Q1 Unit : <xsl:value-of select="@TME2TLUnit10"/>    
           </div>
           <div class="ui-block-a">
-            Q1 Mean : <xsl:value-of select="@TME2Q1Mean10"/>
+            Q1 Mean : <xsl:value-of select="@TME2LMean10"/>
           </div>
           <div class="ui-block-b">
-            Q1 Median : <xsl:value-of select="@TME2Q1Median10"/>
+            Q1 Median : <xsl:value-of select="@TME2LMedian10"/>
           </div>
           <div class="ui-block-a">
-            Q1 Variance : <xsl:value-of select="@TME2Q1Variance10"/>
+            Q1 Variance : <xsl:value-of select="@TME2LVariance10"/>
           </div>
           <div class="ui-block-b">    
-            Q1 Std Dev : <xsl:value-of select="@TME2Q1StandDev10"/>
+            Q1 Std Dev : <xsl:value-of select="@TME2LStandDev10"/>
           </div>
           <div class="ui-block-a">
-            Q2 Total : <xsl:value-of select="@TME2Q2Total10"/>
+            Q2 Total : <xsl:value-of select="@TME2TUAmount10"/>
           </div>
           <div class="ui-block-b">
-            Q2 Unit : <xsl:value-of select="@TME2Q2Unit10"/>    
+            Q2 Unit : <xsl:value-of select="@TME2TUUnit10"/>    
           </div>
           <div class="ui-block-a">
-            Q2 Mean : <xsl:value-of select="@TME2Q2Mean10"/>
+            Q2 Mean : <xsl:value-of select="@TME2UMean10"/>
           </div>
           <div class="ui-block-b">
-            Q2 Median : <xsl:value-of select="@TME2Q2Median10"/>
+            Q2 Median : <xsl:value-of select="@TME2UMedian10"/>
           </div>
           <div class="ui-block-a">
-            Q2 Variance : <xsl:value-of select="@TME2Q2Variance10"/>
+            Q2 Variance : <xsl:value-of select="@TME2UVariance10"/>
           </div>
           <div class="ui-block-b">    
-            Q2 Std Dev : <xsl:value-of select="@TME2Q2StandDev10"/>
+            Q2 Std Dev : <xsl:value-of select="@TME2UStandDev10"/>
           </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description10" />
 	      </div>
       </xsl:if>
-    </div>
+      <xsl:if test="(@TME2Name11 != '' and TME2Name11 != 'none')">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 1 Name : <strong><xsl:value-of select="@TME2Name11"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label11"/>
+        </div>
+        <div class="ui-block-a">
+          Observations : <xsl:value-of select="@TME2N11"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Total : <xsl:value-of select="@TME2TMAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          Unit : <xsl:value-of select="@TME2TMUnit11"/>
+        </div>
+        <div class="ui-block-a">
+          Mean : <xsl:value-of select="@TME2MMean11"/>
+        </div>
+        <div class="ui-block-b">
+          Median : <xsl:value-of select="@TME2MMedian11"/>
+        </div>
+        <div class="ui-block-a">
+          Variance : <xsl:value-of select="@TME2MVariance11"/>
+        </div>
+        <div class="ui-block-b">    
+          Std Dev : <xsl:value-of select="@TME2MStandDev11"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Total : <xsl:value-of select="@TME2TLAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Unit : <xsl:value-of select="@TME2TLUnit11"/>    
+        </div>
+        <div class="ui-block-a">
+          Q1 Mean : <xsl:value-of select="@TME2LMean11"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Median : <xsl:value-of select="@TME2LMedian11"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Variance : <xsl:value-of select="@TME2LVariance11"/>
+        </div>
+        <div class="ui-block-b">    
+          Q1 Std Dev : <xsl:value-of select="@TME2LStandDev11"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Total : <xsl:value-of select="@TME2TUAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Unit : <xsl:value-of select="@TME2TUUnit11"/>    
+        </div>
+        <div class="ui-block-a">
+          Q2 Mean : <xsl:value-of select="@TME2UMean11"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Median : <xsl:value-of select="@TME2UMedian11"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Variance : <xsl:value-of select="@TME2UVariance11"/>
+        </div>
+        <div class="ui-block-b">    
+          Q2 Std Dev : <xsl:value-of select="@TME2UStandDev11"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description11" />
+	    </div>
     </xsl:if>
+    <xsl:if test="(@TME2Name12 != '' and TME2Name12 != 'none')">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 1 Name : <strong><xsl:value-of select="@TME2Name12"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label12"/>
+        </div>
+        <div class="ui-block-a">
+          Observations : <xsl:value-of select="@TME2N12"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Total : <xsl:value-of select="@TME2TMAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          Unit : <xsl:value-of select="@TME2TMUnit12"/>
+        </div>
+        <div class="ui-block-a">
+          Mean : <xsl:value-of select="@TME2MMean12"/>
+        </div>
+        <div class="ui-block-b">
+          Median : <xsl:value-of select="@TME2MMedian12"/>
+        </div>
+        <div class="ui-block-a">
+          Variance : <xsl:value-of select="@TME2MVariance12"/>
+        </div>
+        <div class="ui-block-b">    
+          Std Dev : <xsl:value-of select="@TME2MStandDev12"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Total : <xsl:value-of select="@TME2TLAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Unit : <xsl:value-of select="@TME2TLUnit12"/>    
+        </div>
+        <div class="ui-block-a">
+          Q1 Mean : <xsl:value-of select="@TME2LMean12"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Median : <xsl:value-of select="@TME2LMedian12"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Variance : <xsl:value-of select="@TME2LVariance12"/>
+        </div>
+        <div class="ui-block-b">    
+          Q1 Std Dev : <xsl:value-of select="@TME2LStandDev12"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Total : <xsl:value-of select="@TME2TUAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Unit : <xsl:value-of select="@TME2TUUnit12"/>    
+        </div>
+        <div class="ui-block-a">
+          Q2 Mean : <xsl:value-of select="@TME2UMean12"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Median : <xsl:value-of select="@TME2UMedian12"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Variance : <xsl:value-of select="@TME2UVariance12"/>
+        </div>
+        <div class="ui-block-b">    
+          Q2 Std Dev : <xsl:value-of select="@TME2UStandDev12"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description12" />
+	    </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name13 != '' and TME2Name13 != 'none')">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 1 Name : <strong><xsl:value-of select="@TME2Name13"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label13"/>
+        </div>
+        <div class="ui-block-a">
+          Observations : <xsl:value-of select="@TME2N13"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Total : <xsl:value-of select="@TME2TMAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          Unit : <xsl:value-of select="@TME2TMUnit13"/>
+        </div>
+        <div class="ui-block-a">
+          Mean : <xsl:value-of select="@TME2MMean13"/>
+        </div>
+        <div class="ui-block-b">
+          Median : <xsl:value-of select="@TME2MMedian13"/>
+        </div>
+        <div class="ui-block-a">
+          Variance : <xsl:value-of select="@TME2MVariance13"/>
+        </div>
+        <div class="ui-block-b">    
+          Std Dev : <xsl:value-of select="@TME2MStandDev13"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Total : <xsl:value-of select="@TME2TLAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Unit : <xsl:value-of select="@TME2TLUnit13"/>    
+        </div>
+        <div class="ui-block-a">
+          Q1 Mean : <xsl:value-of select="@TME2LMean13"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Median : <xsl:value-of select="@TME2LMedian13"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Variance : <xsl:value-of select="@TME2LVariance13"/>
+        </div>
+        <div class="ui-block-b">    
+          Q1 Std Dev : <xsl:value-of select="@TME2LStandDev13"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Total : <xsl:value-of select="@TME2TUAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Unit : <xsl:value-of select="@TME2TUUnit13"/>    
+        </div>
+        <div class="ui-block-a">
+          Q2 Mean : <xsl:value-of select="@TME2UMean13"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Median : <xsl:value-of select="@TME2UMedian13"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Variance : <xsl:value-of select="@TME2UVariance13"/>
+        </div>
+        <div class="ui-block-b">    
+          Q2 Std Dev : <xsl:value-of select="@TME2UStandDev13"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description13" />
+	    </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name14 != '' and TME2Name14 != 'none')">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 1 Name : <strong><xsl:value-of select="@TME2Name14"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label14"/>
+        </div>
+        <div class="ui-block-a">
+          Observations : <xsl:value-of select="@TME2N14"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Total : <xsl:value-of select="@TME2TMAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          Unit : <xsl:value-of select="@TME2TMUnit14"/>
+        </div>
+        <div class="ui-block-a">
+          Mean : <xsl:value-of select="@TME2MMean14"/>
+        </div>
+        <div class="ui-block-b">
+          Median : <xsl:value-of select="@TME2MMedian14"/>
+        </div>
+        <div class="ui-block-a">
+          Variance : <xsl:value-of select="@TME2MVariance14"/>
+        </div>
+        <div class="ui-block-b">    
+          Std Dev : <xsl:value-of select="@TME2MStandDev14"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Total : <xsl:value-of select="@TME2TLAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Unit : <xsl:value-of select="@TME2TLUnit14"/>    
+        </div>
+        <div class="ui-block-a">
+          Q1 Mean : <xsl:value-of select="@TME2LMean14"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Median : <xsl:value-of select="@TME2LMedian14"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Variance : <xsl:value-of select="@TME2LVariance14"/>
+        </div>
+        <div class="ui-block-b">    
+          Q1 Std Dev : <xsl:value-of select="@TME2LStandDev14"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Total : <xsl:value-of select="@TME2TUAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Unit : <xsl:value-of select="@TME2TUUnit14"/>    
+        </div>
+        <div class="ui-block-a">
+          Q2 Mean : <xsl:value-of select="@TME2UMean14"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Median : <xsl:value-of select="@TME2UMedian14"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Variance : <xsl:value-of select="@TME2UVariance14"/>
+        </div>
+        <div class="ui-block-b">    
+          Q2 Std Dev : <xsl:value-of select="@TME2UStandDev14"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description14" />
+	    </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name15 != '' and TME2Name15 != 'none')">
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 1 Name : <strong><xsl:value-of select="@TME2Name15"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label15"/>
+        </div>
+        <div class="ui-block-a">
+          Observations : <xsl:value-of select="@TME2N15"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Total : <xsl:value-of select="@TME2TMAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          Unit : <xsl:value-of select="@TME2TMUnit15"/>
+        </div>
+        <div class="ui-block-a">
+          Mean : <xsl:value-of select="@TME2MMean15"/>
+        </div>
+        <div class="ui-block-b">
+          Median : <xsl:value-of select="@TME2MMedian15"/>
+        </div>
+        <div class="ui-block-a">
+          Variance : <xsl:value-of select="@TME2MVariance15"/>
+        </div>
+        <div class="ui-block-b">    
+          Std Dev : <xsl:value-of select="@TME2MStandDev15"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Total : <xsl:value-of select="@TME2TLAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Unit : <xsl:value-of select="@TME2TLUnit15"/>    
+        </div>
+        <div class="ui-block-a">
+          Q1 Mean : <xsl:value-of select="@TME2LMean15"/>
+        </div>
+        <div class="ui-block-b">
+          Q1 Median : <xsl:value-of select="@TME2LMedian15"/>
+        </div>
+        <div class="ui-block-a">
+          Q1 Variance : <xsl:value-of select="@TME2LVariance15"/>
+        </div>
+        <div class="ui-block-b">    
+          Q1 Std Dev : <xsl:value-of select="@TME2LStandDev15"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Total : <xsl:value-of select="@TME2TUAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Unit : <xsl:value-of select="@TME2TUUnit15"/>    
+        </div>
+        <div class="ui-block-a">
+          Q2 Mean : <xsl:value-of select="@TME2UMean15"/>
+        </div>
+        <div class="ui-block-b">
+          Q2 Median : <xsl:value-of select="@TME2UMedian15"/>
+        </div>
+        <div class="ui-block-a">
+          Q2 Variance : <xsl:value-of select="@TME2UVariance15"/>
+        </div>
+        <div class="ui-block-b">    
+          Q2 Std Dev : <xsl:value-of select="@TME2UStandDev15"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description15" />
+	    </div>
+    </xsl:if>
+    </div>
 	</xsl:template>
 </xsl:stylesheet>
 

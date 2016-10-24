@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<!-- Author: www.devtreks.org, 2014, February -->
+<!-- Author: www.devtreks.org, 2016, October -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:y0="urn:DevTreks-support-schemas:Operation"
 	xmlns:DisplayComps="urn:displaycomps">
@@ -119,7 +119,292 @@
 			  Alternative Type: <strong><xsl:value-of select="@AlternativeType"/></strong>
 	    </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name1_0 != '')">
+    <xsl:if test="(@TME2Name0_0 != '' and @TME2Name0_0 != 'none')">
+      <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
+        <h4 class="ui-bar-b">
+          Indicator 0 
+        </h4>
+        <h4 class="ui-bar-b">
+          Observations 
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:if test="starts-with($att_name, 'TME2N0_')">
+					  <xsl:value-of select="DisplayComps:printValue('TME2N0_', $att_name, $att_value)"/> 
+				  </xsl:if>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Indicator 1 Name
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Name0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Label
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Label0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Date
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Date0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Type
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Type0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange0_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+      </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name1_1 != '' and @TME2Name1_1 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 1 
@@ -187,224 +472,224 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange1_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange1_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name2_1 != '')">
+    <xsl:if test="(@TME2Name2_2 != '' and @TME2Name2_2 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 2 
@@ -472,224 +757,224 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange2_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange2_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name3_2 != '')">
+    <xsl:if test="(@TME2Name3_3 != '' and @TME2Name3_3 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 3 
@@ -757,224 +1042,224 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange3_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange3_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name4_3 != '')">
+    <xsl:if test="(@TME2Name4_4 != '' and @TME2Name4_4 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 4 
@@ -1042,224 +1327,224 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange4_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange4_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name5_4 != '')">
+    <xsl:if test="(@TME2Name5_5 != '' and @TME2Name5_5 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 5 
@@ -1327,224 +1612,224 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange5_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange5_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name6_5 != '')">
+    <xsl:if test="(@TME2Name6_6 != '' and @TME2Name6_6 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 6 
@@ -1612,224 +1897,224 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange6_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange6_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name7_6 != '')">
+    <xsl:if test="(@TME2Name7_7 != '' and @TME2Name7_7 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 7
@@ -1897,224 +2182,224 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange7_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange7_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name8_7 != '')">
+    <xsl:if test="(@TME2Name8_8 != '' and @TME2Name8_8 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 8 
@@ -2182,224 +2467,224 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange8_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange8_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name9_8 != '')">
+    <xsl:if test="(@TME2Name9_9 != '' and @TME2Name9_9 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
           Indicator 9 
@@ -2467,227 +2752,227 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange9_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange9_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
       </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name10_9 != '')">
+    <xsl:if test="(@TME2Name10_10 != '' and @TME2Name10_10 != 'none')">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
         <h4 class="ui-bar-b">
-          Indicator 9 
+          Indicator 10 
         </h4>
         <h4 class="ui-bar-b">
           Observations 
@@ -2752,217 +3037,1642 @@
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Unit
+          Most Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Unit10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total
+          Most
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Total10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Amount Change
+          Most Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2AmountChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Percent Change
+          Most Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2PercentChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Change
+          Most Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BaseChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Total Base Percent Change
+          Most Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Unit
+          Lower Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Unit10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1
+          Lower
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1Total10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Amount Change
+          Lower Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Percent Change
+          Lower Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Change
+          Lower Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q1 Base Percent Change
+          Lower Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Unit
+          Upper Unit
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Unit10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2
+          Upper
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2Total10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Amount Change
+          Upper Amount Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Percent Change
+          Upper Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Change
+          Upper Base Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange10_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
         </div>
         <h4 class="ui-bar-b">
-          Q2 Base Percent Change
+          Upper Base Percent Change
         </h4>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-				  <xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange10_', $att_name, $att_value)"/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange10_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+      </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name11_11 != '' and @TME2Name11_11 != 'none')">
+      <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
+        <h4 class="ui-bar-b">
+          Indicator 11 
+        </h4>
+        <h4 class="ui-bar-b">
+          Observations 
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:if test="starts-with($att_name, 'TME2N11_')">
+					  <xsl:value-of select="DisplayComps:printValue('TME2N11_', $att_name, $att_value)"/> 
+				  </xsl:if>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Indicator 1 Name
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Name11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Label
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Label11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Date
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Date11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Type
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Type11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange11_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+      </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name12_12 != '' and @TME2Name12_12 != 'none')">
+      <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
+        <h4 class="ui-bar-b">
+          Indicator 12 
+        </h4>
+        <h4 class="ui-bar-b">
+          Observations 
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:if test="starts-with($att_name, 'TME2N12_')">
+					  <xsl:value-of select="DisplayComps:printValue('TME2N12_', $att_name, $att_value)"/> 
+				  </xsl:if>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Indicator 1 Name
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Name12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Label
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Label12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Date
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Date12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Type
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Type12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange12_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+      </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name13_13 != '' and @TME2Name13_13 != 'none')">
+      <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
+        <h4 class="ui-bar-b">
+          Indicator 13 
+        </h4>
+        <h4 class="ui-bar-b">
+          Observations 
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:if test="starts-with($att_name, 'TME2N13_')">
+					  <xsl:value-of select="DisplayComps:printValue('TME2N13_', $att_name, $att_value)"/> 
+				  </xsl:if>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Indicator 1 Name
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Name13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Label
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Label13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Date
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Date13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Type
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Type13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange13_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+      </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name14_14 != '' and @TME2Name14_14 != 'none')">
+      <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
+        <h4 class="ui-bar-b">
+          Indicator 14 
+        </h4>
+        <h4 class="ui-bar-b">
+          Observations 
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:if test="starts-with($att_name, 'TME2N14_')">
+					  <xsl:value-of select="DisplayComps:printValue('TME2N14_', $att_name, $att_value)"/> 
+				  </xsl:if>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Indicator 1 Name
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Name14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Label
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Label14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Date
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Date14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Type
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Type14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange14_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+      </div>
+    </xsl:if>
+    <xsl:if test="(@TME2Name15_15 != '' and @TME2Name15_15 != 'none')">
+      <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d" >
+        <h4 class="ui-bar-b">
+          Indicator 15 
+        </h4>
+        <h4 class="ui-bar-b">
+          Observations 
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:if test="starts-with($att_name, 'TME2N15_')">
+					  <xsl:value-of select="DisplayComps:printValue('TME2N15_', $att_name, $att_value)"/> 
+				  </xsl:if>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Indicator 1 Name
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Name15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Label
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Label15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Date
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Date15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Type
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2Type15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMUnit15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TMAmount15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MAmountChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MPercentChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBaseChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Most Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLUnit15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TLAmount15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LAmountChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LPercentChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBaseChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Lower Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Unit
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUUnit15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2TUAmount15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Amount Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UAmountChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UPercentChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBaseChange15_', $att_name, $att_value)"/>
+			  </xsl:for-each>
+        <div class="ui-grid-a">
+			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>
+        </div>
+        <h4 class="ui-bar-b">
+          Upper Base Percent Change
+        </h4>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+				  <xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange15_', $att_name, $att_value)"/>
 			  </xsl:for-each>
         <div class="ui-grid-a">
 			    <xsl:value-of select="DisplayComps:DoPrintMobileValues($fullcolcount)"/>

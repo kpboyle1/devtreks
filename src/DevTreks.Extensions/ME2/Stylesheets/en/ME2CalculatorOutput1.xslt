@@ -87,7 +87,7 @@
 			<p>
 					<strong>Introduction</strong>
 					<br />
-					This tool tracks monitoring and evaluation indicators for output uris. Up to 20 new 
+					This tool tracks monitoring and evaluation indicators for output uris. Up to 15 new 
           M and E indicators can be added for each output. 
 			</p>
 			<p>
@@ -8755,7 +8755,57 @@
             </select>
           </div>
           <div class="ui-block-b">
-            
+            <label for="IndMathOperator0">Math Operator</label>
+            <select class="Select225" id="IndMathOperator0" data-mini="true">
+              <xsl:if test="($viewEditType = 'full')">
+                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndMathOperator0;string;25</xsl:attribute>
+              </xsl:if>
+              <option>
+                <xsl:attribute name="value">makeselection</xsl:attribute>make selection
+              </option>
+              <option>
+                <xsl:attribute name="value">none</xsl:attribute>
+                <xsl:if test="(@IndMathOperator0 = 'none')">
+                  <xsl:attribute name="selected" />
+                </xsl:if>none
+              </option>
+              <option>
+                <xsl:attribute name="value">equalto</xsl:attribute>
+                <xsl:if test="(@IndMathOperator0 = 'equalto')">
+                  <xsl:attribute name="selected" />
+                </xsl:if>equalto
+              </option>
+              <option>
+                <xsl:attribute name="value">lessthan</xsl:attribute>
+                <xsl:if test="(@IndMathOperator0 = 'lessthan')">
+                  <xsl:attribute name="selected" />
+                </xsl:if>lessthan
+              </option>
+              <option>
+                <xsl:attribute name="value">greaterthan</xsl:attribute>
+                <xsl:if test="(@IndMathOperator0 = 'greaterthan')">
+                  <xsl:attribute name="selected" />
+                </xsl:if>greaterthan
+              </option>
+              <option>
+                <xsl:attribute name="value">lessthanorequalto</xsl:attribute>
+                <xsl:if test="(@IndMathOperator0 = 'lessthanorequalto')">
+                  <xsl:attribute name="selected" />
+                </xsl:if>lessthanorequalto
+              </option>
+              <option>
+                <xsl:attribute name="value">greaterthanorequalto</xsl:attribute>
+                <xsl:if test="(@IndMathOperator0 = 'greaterthanorequalto')">
+                  <xsl:attribute name="selected" />
+                </xsl:if>greaterthanorequalto
+              </option>
+              <option>
+                <xsl:attribute name="value">specific</xsl:attribute>
+                <xsl:if test="(@IndMathOperator0 = 'specific')">
+                  <xsl:attribute name="selected" />
+                </xsl:if>specific
+              </option>
+            </select>
           </div>
           <div class="ui-block-a">
             <label for="IndTMAmount0">Score Most Likely</label>

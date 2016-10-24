@@ -132,47 +132,47 @@
 					</input>
 			  </div>
         <div>
-        <label for="TotalME2Type">Monitoring and Evaluation Stage</label>
-				<select id="TotalME2Type" data-mini="true">
+        <label for="TME2Stage">Monitoring and Evaluation Stage</label>
+				<select id="TME2Stage" data-mini="true">
             <xsl:if test="($viewEditType = 'full')">
-              <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;TotalME2Type;string;25</xsl:attribute>
+              <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;TME2Stage;string;25</xsl:attribute>
             </xsl:if>
             <option>
               <xsl:attribute name="value">makeselection</xsl:attribute>make selection
             </option>
             <option>
               <xsl:attribute name="value">none</xsl:attribute>
-              <xsl:if test="(@TotalME2Type = 'none')">
+              <xsl:if test="(@TME2Stage = 'none')">
                 <xsl:attribute name="selected" />
               </xsl:if>none
             </option>
             <option>
               <xsl:attribute name="value">baseline</xsl:attribute>
-              <xsl:if test="(@TotalME2Type = 'baseline')">
+              <xsl:if test="(@TME2Stage = 'baseline')">
                 <xsl:attribute name="selected" />
               </xsl:if>baseline
             </option>
             <option>
               <xsl:attribute name="value">realtime</xsl:attribute>
-              <xsl:if test="(@TotalME2Type = 'realtime')">
+              <xsl:if test="(@TME2Stage = 'realtime')">
                 <xsl:attribute name="selected" />
               </xsl:if>realtime
             </option>
             <option>
               <xsl:attribute name="value">midterm</xsl:attribute>
-              <xsl:if test="(@TotalME2Type = 'midterm')">
+              <xsl:if test="(@TME2Stage = 'midterm')">
                 <xsl:attribute name="selected" />
               </xsl:if>midterm
             </option>
             <option>
               <xsl:attribute name="value">final</xsl:attribute>
-              <xsl:if test="(@TotalME2Type = 'final')">
+              <xsl:if test="(@TME2Stage = 'final')">
                 <xsl:attribute name="selected" />
               </xsl:if>final
             </option>
             <option>
               <xsl:attribute name="value">expost</xsl:attribute>
-              <xsl:if test="(@TotalME2Type = 'expost')">
+              <xsl:if test="(@TME2Stage = 'expost')">
                 <xsl:attribute name="selected" />
               </xsl:if>expost
             </option>

@@ -32,38 +32,38 @@ namespace DevTreks.Extensions
         //parent ME2Stock calculator properties
         //the total properties come from ME2IndicatorStock
         //total change from last time period
-        public double TotalME2AmountChange { get; set; }
+        public double TotalME2MAmountChange { get; set; }
         //percent change from last time period
-        public double TotalME2PercentChange { get; set; }
+        public double TotalME2MPercentChange { get; set; }
         //total change from base lcc or lcb calculator
-        public double TotalME2BaseChange { get; set; }
+        public double TotalME2MBaseChange { get; set; }
         //percent change from base lcc or lcb calculator
-        public double TotalME2BasePercentChange { get; set; }
+        public double TotalME2MBasePercentChange { get; set; }
 
-        public double TotalME2Q1AmountChange { get; set; }
-        public double TotalME2Q1PercentChange { get; set; }
-        public double TotalME2Q1BaseChange { get; set; }
-        public double TotalME2Q1BasePercentChange { get; set; }
+        public double TotalME2LAmountChange { get; set; }
+        public double TotalME2LPercentChange { get; set; }
+        public double TotalME2LBaseChange { get; set; }
+        public double TotalME2LBasePercentChange { get; set; }
 
-        public double TotalME2Q2AmountChange { get; set; }
-        public double TotalME2Q2PercentChange { get; set; }
-        public double TotalME2Q2BaseChange { get; set; }
-        public double TotalME2Q2BasePercentChange { get; set; }
+        public double TotalME2UAmountChange { get; set; }
+        public double TotalME2UPercentChange { get; set; }
+        public double TotalME2UBaseChange { get; set; }
+        public double TotalME2UBasePercentChange { get; set; }
 
-        private const string cTotalME2AmountChange = "TME2AmountChange";
-        private const string cTotalME2PercentChange = "TME2PercentChange";
-        private const string cTotalME2BaseChange = "TME2BaseChange";
-        private const string cTotalME2BasePercentChange = "TME2BasePercentChange";
+        private const string cTotalME2MAmountChange = "TME2MAmountChange";
+        private const string cTotalME2MPercentChange = "TME2MPercentChange";
+        private const string cTotalME2MBaseChange = "TME2MBaseChange";
+        private const string cTotalME2MBasePercentChange = "TME2MBasePercentChange";
 
-        private const string cTotalME2Q1AmountChange = "TME2Q1AmountChange";
-        private const string cTotalME2Q1PercentChange = "TME2Q1PercentChange";
-        private const string cTotalME2Q1BaseChange = "TME2Q1BaseChange";
-        private const string cTotalME2Q1BasePercentChange = "TME2Q1BasePercentChange";
+        private const string cTotalME2LAmountChange = "TME2LAmountChange";
+        private const string cTotalME2LPercentChange = "TME2LPercentChange";
+        private const string cTotalME2LBaseChange = "TME2LBaseChange";
+        private const string cTotalME2LBasePercentChange = "TME2LBasePercentChange";
 
-        private const string cTotalME2Q2AmountChange = "TME2Q2AmountChange";
-        private const string cTotalME2Q2PercentChange = "TME2Q2PercentChange";
-        private const string cTotalME2Q2BaseChange = "TME2Q2BaseChange";
-        private const string cTotalME2Q2BasePercentChange = "TME2Q2BasePercentChange";
+        private const string cTotalME2UAmountChange = "TME2UAmountChange";
+        private const string cTotalME2UPercentChange = "TME2UPercentChange";
+        private const string cTotalME2UBaseChange = "TME2UBaseChange";
+        private const string cTotalME2UBasePercentChange = "TME2UBasePercentChange";
 
         public void InitTotalME2Change1Properties(ME2Change1 ind)
         {
@@ -71,20 +71,20 @@ namespace DevTreks.Extensions
             ind.CalcParameters = new CalculatorParameters();
             InitTotalME2IndicatorStockProperties(ind);
             //set the change
-            ind.TotalME2AmountChange = 0;
-            ind.TotalME2PercentChange = 0;
-            ind.TotalME2BaseChange = 0;
-            ind.TotalME2BasePercentChange = 0;
+            ind.TotalME2MAmountChange = 0;
+            ind.TotalME2MPercentChange = 0;
+            ind.TotalME2MBaseChange = 0;
+            ind.TotalME2MBasePercentChange = 0;
 
-            ind.TotalME2Q1AmountChange = 0;
-            ind.TotalME2Q1PercentChange = 0;
-            ind.TotalME2Q1BaseChange = 0;
-            ind.TotalME2Q1BasePercentChange = 0;
+            ind.TotalME2LAmountChange = 0;
+            ind.TotalME2LPercentChange = 0;
+            ind.TotalME2LBaseChange = 0;
+            ind.TotalME2LBasePercentChange = 0;
 
-            ind.TotalME2Q2AmountChange = 0;
-            ind.TotalME2Q2PercentChange = 0;
-            ind.TotalME2Q2BaseChange = 0;
-            ind.TotalME2Q2BasePercentChange = 0;
+            ind.TotalME2UAmountChange = 0;
+            ind.TotalME2UPercentChange = 0;
+            ind.TotalME2UBaseChange = 0;
+            ind.TotalME2UBasePercentChange = 0;
         }
 
         public void CopyTotalME2Change1Properties(ME2Change1 calculator)
@@ -128,20 +128,20 @@ namespace DevTreks.Extensions
             ME2Change1 calculator)
         {
             ind.ErrorMessage = calculator.ErrorMessage;
-            ind.TotalME2AmountChange = calculator.TotalME2AmountChange;
-            ind.TotalME2PercentChange = calculator.TotalME2PercentChange;
-            ind.TotalME2BaseChange = calculator.TotalME2BaseChange;
-            ind.TotalME2BasePercentChange = calculator.TotalME2BasePercentChange;
+            ind.TotalME2MAmountChange = calculator.TotalME2MAmountChange;
+            ind.TotalME2MPercentChange = calculator.TotalME2MPercentChange;
+            ind.TotalME2MBaseChange = calculator.TotalME2MBaseChange;
+            ind.TotalME2MBasePercentChange = calculator.TotalME2MBasePercentChange;
 
-            ind.TotalME2Q1AmountChange = calculator.TotalME2Q1AmountChange;
-            ind.TotalME2Q1PercentChange = calculator.TotalME2Q1PercentChange;
-            ind.TotalME2Q1BaseChange = calculator.TotalME2Q1BaseChange;
-            ind.TotalME2Q1BasePercentChange = calculator.TotalME2Q1BasePercentChange;
+            ind.TotalME2LAmountChange = calculator.TotalME2LAmountChange;
+            ind.TotalME2LPercentChange = calculator.TotalME2LPercentChange;
+            ind.TotalME2LBaseChange = calculator.TotalME2LBaseChange;
+            ind.TotalME2LBasePercentChange = calculator.TotalME2LBasePercentChange;
 
-            ind.TotalME2Q2AmountChange = calculator.TotalME2Q2AmountChange;
-            ind.TotalME2Q2PercentChange = calculator.TotalME2Q2PercentChange;
-            ind.TotalME2Q2BaseChange = calculator.TotalME2Q2BaseChange;
-            ind.TotalME2Q2BasePercentChange = calculator.TotalME2Q2BasePercentChange;
+            ind.TotalME2UAmountChange = calculator.TotalME2UAmountChange;
+            ind.TotalME2UPercentChange = calculator.TotalME2UPercentChange;
+            ind.TotalME2UBaseChange = calculator.TotalME2UBaseChange;
+            ind.TotalME2UBasePercentChange = calculator.TotalME2UBasePercentChange;
         }
         public void CopyTotalME2Change1Properties(ME2Change1 ind,
             ME2Total1 calculator)
@@ -177,32 +177,32 @@ namespace DevTreks.Extensions
             //stats always based on indicators
             ind.SetTotalME2IndicatorStockProperties(ind, attNameExtension, calculator);
 
-            ind.TotalME2AmountChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2AmountChange, attNameExtension));
-            ind.TotalME2PercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2PercentChange, attNameExtension));
-            ind.TotalME2BaseChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2BaseChange, attNameExtension));
-            ind.TotalME2BasePercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2BasePercentChange, attNameExtension));
+            ind.TotalME2MAmountChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2MAmountChange, attNameExtension));
+            ind.TotalME2MPercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2MPercentChange, attNameExtension));
+            ind.TotalME2MBaseChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2MBaseChange, attNameExtension));
+            ind.TotalME2MBasePercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2MBasePercentChange, attNameExtension));
 
-            ind.TotalME2Q1AmountChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q1AmountChange, attNameExtension));
-            ind.TotalME2Q1PercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q1PercentChange, attNameExtension));
-            ind.TotalME2Q1BaseChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q1BaseChange, attNameExtension));
-            ind.TotalME2Q1BasePercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q1BasePercentChange, attNameExtension));
+            ind.TotalME2LAmountChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2LAmountChange, attNameExtension));
+            ind.TotalME2LPercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2LPercentChange, attNameExtension));
+            ind.TotalME2LBaseChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2LBaseChange, attNameExtension));
+            ind.TotalME2LBasePercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2LBasePercentChange, attNameExtension));
 
-            ind.TotalME2Q2AmountChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q2AmountChange, attNameExtension));
-            ind.TotalME2Q2PercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q2PercentChange, attNameExtension));
-            ind.TotalME2Q2BaseChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q2BaseChange, attNameExtension));
-            ind.TotalME2Q2BasePercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalME2Q2BasePercentChange, attNameExtension));
+            ind.TotalME2UAmountChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2UAmountChange, attNameExtension));
+            ind.TotalME2UPercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2UPercentChange, attNameExtension));
+            ind.TotalME2UBaseChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2UBaseChange, attNameExtension));
+            ind.TotalME2UBasePercentChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalME2UBasePercentChange, attNameExtension));
         }
 
         public void SetTotalME2Change1Property(ME2Change1 ind,
@@ -211,41 +211,41 @@ namespace DevTreks.Extensions
             string sPropertyValue = string.Empty;
             switch (attDateame)
             {
-                case cTotalME2AmountChange:
-                    ind.TotalME2AmountChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2MAmountChange:
+                    ind.TotalME2MAmountChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2PercentChange:
-                    ind.TotalME2PercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2MPercentChange:
+                    ind.TotalME2MPercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2BaseChange:
-                    ind.TotalME2BaseChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2MBaseChange:
+                    ind.TotalME2MBaseChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2BasePercentChange:
-                    ind.TotalME2BasePercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2MBasePercentChange:
+                    ind.TotalME2MBasePercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q1AmountChange:
-                    ind.TotalME2Q1AmountChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2LAmountChange:
+                    ind.TotalME2LAmountChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q1PercentChange:
-                    ind.TotalME2Q1PercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2LPercentChange:
+                    ind.TotalME2LPercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q1BaseChange:
-                    ind.TotalME2Q1BaseChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2LBaseChange:
+                    ind.TotalME2LBaseChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q1BasePercentChange:
-                    ind.TotalME2Q1BasePercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2LBasePercentChange:
+                    ind.TotalME2LBasePercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q2AmountChange:
-                    ind.TotalME2Q2AmountChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2UAmountChange:
+                    ind.TotalME2UAmountChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q2PercentChange:
-                    ind.TotalME2Q2PercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2UPercentChange:
+                    ind.TotalME2UPercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q2BaseChange:
-                    ind.TotalME2Q2BaseChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2UBaseChange:
+                    ind.TotalME2UBaseChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalME2Q2BasePercentChange:
-                    ind.TotalME2Q2BasePercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalME2UBasePercentChange:
+                    ind.TotalME2UBasePercentChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
                 default:
                     break;
@@ -257,41 +257,41 @@ namespace DevTreks.Extensions
             string sPropertyValue = string.Empty;
             switch (attDateame)
             {
-                case cTotalME2AmountChange:
-                    sPropertyValue = ind.TotalME2AmountChange.ToString();
+                case cTotalME2MAmountChange:
+                    sPropertyValue = ind.TotalME2MAmountChange.ToString();
                     break;
-                case cTotalME2PercentChange:
-                    sPropertyValue = ind.TotalME2PercentChange.ToString();
+                case cTotalME2MPercentChange:
+                    sPropertyValue = ind.TotalME2MPercentChange.ToString();
                     break;
-                case cTotalME2BaseChange:
-                    sPropertyValue = ind.TotalME2BaseChange.ToString();
+                case cTotalME2MBaseChange:
+                    sPropertyValue = ind.TotalME2MBaseChange.ToString();
                     break;
-                case cTotalME2BasePercentChange:
-                    sPropertyValue = ind.TotalME2BasePercentChange.ToString();
+                case cTotalME2MBasePercentChange:
+                    sPropertyValue = ind.TotalME2MBasePercentChange.ToString();
                     break;
-                case cTotalME2Q1AmountChange:
-                    sPropertyValue = ind.TotalME2Q1AmountChange.ToString();
+                case cTotalME2LAmountChange:
+                    sPropertyValue = ind.TotalME2LAmountChange.ToString();
                     break;
-                case cTotalME2Q1PercentChange:
-                    sPropertyValue = ind.TotalME2Q1PercentChange.ToString();
+                case cTotalME2LPercentChange:
+                    sPropertyValue = ind.TotalME2LPercentChange.ToString();
                     break;
-                case cTotalME2Q1BaseChange:
-                    sPropertyValue = ind.TotalME2Q1BaseChange.ToString();
+                case cTotalME2LBaseChange:
+                    sPropertyValue = ind.TotalME2LBaseChange.ToString();
                     break;
-                case cTotalME2Q1BasePercentChange:
-                    sPropertyValue = ind.TotalME2Q1BasePercentChange.ToString();
+                case cTotalME2LBasePercentChange:
+                    sPropertyValue = ind.TotalME2LBasePercentChange.ToString();
                     break;
-                case cTotalME2Q2AmountChange:
-                    sPropertyValue = ind.TotalME2Q2AmountChange.ToString();
+                case cTotalME2UAmountChange:
+                    sPropertyValue = ind.TotalME2UAmountChange.ToString();
                     break;
-                case cTotalME2Q2PercentChange:
-                    sPropertyValue = ind.TotalME2Q2PercentChange.ToString();
+                case cTotalME2UPercentChange:
+                    sPropertyValue = ind.TotalME2UPercentChange.ToString();
                     break;
-                case cTotalME2Q2BaseChange:
-                    sPropertyValue = ind.TotalME2Q2BaseChange.ToString();
+                case cTotalME2UBaseChange:
+                    sPropertyValue = ind.TotalME2UBaseChange.ToString();
                     break;
-                case cTotalME2Q2BasePercentChange:
-                    sPropertyValue = ind.TotalME2Q2BasePercentChange.ToString();
+                case cTotalME2UBasePercentChange:
+                    sPropertyValue = ind.TotalME2UBasePercentChange.ToString();
                     break;
                 default:
                     break;
@@ -322,31 +322,31 @@ namespace DevTreks.Extensions
             string attNameExtension, ref XmlWriter writer)
         {
             writer.WriteAttributeString(
-                string.Concat(cTotalME2AmountChange, attNameExtension), ind.TotalME2AmountChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2MAmountChange, attNameExtension), ind.TotalME2MAmountChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2PercentChange, attNameExtension), ind.TotalME2PercentChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2MPercentChange, attNameExtension), ind.TotalME2MPercentChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2BaseChange, attNameExtension), ind.TotalME2BaseChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2MBaseChange, attNameExtension), ind.TotalME2MBaseChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2BasePercentChange, attNameExtension), ind.TotalME2BasePercentChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2MBasePercentChange, attNameExtension), ind.TotalME2MBasePercentChange.ToString("N2", CultureInfo.InvariantCulture));
 
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q1AmountChange, attNameExtension), ind.TotalME2Q1AmountChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2LAmountChange, attNameExtension), ind.TotalME2LAmountChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q1PercentChange, attNameExtension), ind.TotalME2Q1PercentChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2LPercentChange, attNameExtension), ind.TotalME2LPercentChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q1BaseChange, attNameExtension), ind.TotalME2Q1BaseChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2LBaseChange, attNameExtension), ind.TotalME2LBaseChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q1BasePercentChange, attNameExtension), ind.TotalME2Q1BasePercentChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2LBasePercentChange, attNameExtension), ind.TotalME2LBasePercentChange.ToString("N2", CultureInfo.InvariantCulture));
 
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q2AmountChange, attNameExtension), ind.TotalME2Q2AmountChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2UAmountChange, attNameExtension), ind.TotalME2UAmountChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q2PercentChange, attNameExtension), ind.TotalME2Q2PercentChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2UPercentChange, attNameExtension), ind.TotalME2UPercentChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q2BaseChange, attNameExtension), ind.TotalME2Q2BaseChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2UBaseChange, attNameExtension), ind.TotalME2UBaseChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                string.Concat(cTotalME2Q2BasePercentChange, attNameExtension), ind.TotalME2Q2BasePercentChange.ToString("N2", CultureInfo.InvariantCulture));
+                string.Concat(cTotalME2UBasePercentChange, attNameExtension), ind.TotalME2UBasePercentChange.ToString("N2", CultureInfo.InvariantCulture));
         }
         //calcs holds the collections needing statistical analysis
         public bool RunAnalyses(ME2Stock me2Stock, List<Calculator1> calcs)
@@ -748,53 +748,53 @@ namespace DevTreks.Extensions
                 if (baseChange != null)
                 {
                     //total
-                    newChange.TotalME2BaseChange = newChange.TME2TMAmount - baseChange.TME2TMAmount;
-                    newChange.TotalME2BasePercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2BaseChange, baseChange.TME2TMAmount);
+                    newChange.TotalME2MBaseChange = newChange.TME2TMAmount - baseChange.TME2TMAmount;
+                    newChange.TotalME2MBasePercentChange
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2MBaseChange, baseChange.TME2TMAmount);
                     //q1
-                    newChange.TotalME2Q1BaseChange = newChange.TME2TLAmount - baseChange.TME2TLAmount;
-                    newChange.TotalME2Q1BasePercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q1BaseChange, baseChange.TME2TLAmount);
+                    newChange.TotalME2LBaseChange = newChange.TME2TLAmount - baseChange.TME2TLAmount;
+                    newChange.TotalME2LBasePercentChange
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2LBaseChange, baseChange.TME2TLAmount);
                     //q2
-                    newChange.TotalME2Q2BaseChange = newChange.TME2TUAmount - baseChange.TME2TUAmount;
-                    newChange.TotalME2Q2BasePercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q2BaseChange, baseChange.TME2TUAmount);
+                    newChange.TotalME2UBaseChange = newChange.TME2TUAmount - baseChange.TME2TUAmount;
+                    newChange.TotalME2UBasePercentChange
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2UBaseChange, baseChange.TME2TUAmount);
                 }
                 else
                 {
-                    newChange.TotalME2BaseChange = 0;
-                    newChange.TotalME2BasePercentChange = 0;
+                    newChange.TotalME2MBaseChange = 0;
+                    newChange.TotalME2MBasePercentChange = 0;
                     //q1
-                    newChange.TotalME2Q1BaseChange = 0;
-                    newChange.TotalME2Q1BasePercentChange = 0;
+                    newChange.TotalME2LBaseChange = 0;
+                    newChange.TotalME2LBasePercentChange = 0;
                     //q2
-                    newChange.TotalME2Q2BaseChange = 0;
-                    newChange.TotalME2Q2BasePercentChange = 0;
+                    newChange.TotalME2UBaseChange = 0;
+                    newChange.TotalME2UBasePercentChange = 0;
                 }
                 if (xminus1Change != null)
                 {
-                    newChange.TotalME2AmountChange = newChange.TME2TMAmount - xminus1Change.TME2TMAmount;
-                    newChange.TotalME2PercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2AmountChange, xminus1Change.TME2TMAmount);
+                    newChange.TotalME2MAmountChange = newChange.TME2TMAmount - xminus1Change.TME2TMAmount;
+                    newChange.TotalME2MPercentChange
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2MAmountChange, xminus1Change.TME2TMAmount);
                     //q1
-                    newChange.TotalME2Q1AmountChange = newChange.TME2TLAmount - xminus1Change.TME2TLAmount;
-                    newChange.TotalME2Q1PercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q1AmountChange, xminus1Change.TME2TLAmount);
+                    newChange.TotalME2LAmountChange = newChange.TME2TLAmount - xminus1Change.TME2TLAmount;
+                    newChange.TotalME2LPercentChange
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2LAmountChange, xminus1Change.TME2TLAmount);
                     //q2
-                    newChange.TotalME2Q2AmountChange = newChange.TME2TUAmount - xminus1Change.TME2TUAmount;
-                    newChange.TotalME2Q2PercentChange
-                        = CalculatorHelpers.GetPercent(newChange.TotalME2Q2AmountChange, xminus1Change.TME2TUAmount);
+                    newChange.TotalME2UAmountChange = newChange.TME2TUAmount - xminus1Change.TME2TUAmount;
+                    newChange.TotalME2UPercentChange
+                        = CalculatorHelpers.GetPercent(newChange.TotalME2UAmountChange, xminus1Change.TME2TUAmount);
                 }
                 else
                 {
-                    newChange.TotalME2AmountChange = 0;
-                    newChange.TotalME2PercentChange = 0;
+                    newChange.TotalME2MAmountChange = 0;
+                    newChange.TotalME2MPercentChange = 0;
                     //q1
-                    newChange.TotalME2Q1AmountChange = 0;
-                    newChange.TotalME2Q1PercentChange = 0;
+                    newChange.TotalME2LAmountChange = 0;
+                    newChange.TotalME2LPercentChange = 0;
                     //q2
-                    newChange.TotalME2Q2AmountChange = 0;
-                    newChange.TotalME2Q2PercentChange = 0;
+                    newChange.TotalME2UAmountChange = 0;
+                    newChange.TotalME2UPercentChange = 0;
                 }
                 //add new change to observationStock.Change1.Stocks
                 observationStock.Change1.Stocks.Add(newChange);

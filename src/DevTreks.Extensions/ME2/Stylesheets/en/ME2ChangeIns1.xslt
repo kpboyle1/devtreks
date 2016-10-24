@@ -106,7 +106,90 @@
 			  Alternative Type: <strong><xsl:value-of select="@AlternativeType"/></strong>
 	    </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name1 != '')">
+    <xsl:if test="(@TME2Name0 != '' and @TME2Name0 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+          <div class="ui-block-a">
+          Indicator 0 Name : <strong><xsl:value-of select="@TME2Name0"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label0"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date0"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N0"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit0"/>
+        </div>
+        <div class="ui-block-b">
+          Type : <xsl:value-of select="@TME2Type0"/>
+        </div>
+        <div class="ui-block-a">
+          Most : <xsl:value-of select="@TME2TMAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange0"/>
+        </div>
+        <div class="ui-block-a">
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange0"/>
+        </div>
+        <div class="ui-block-b">
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange0"/>
+        </div>
+        <div class="ui-block-a">
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange0"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Lower Total : <xsl:value-of select="@TME2TLAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange0"/>
+        </div>
+        <div class="ui-block-a">
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange0"/>
+        </div>
+        <div class="ui-block-b">
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange0"/>
+        </div>
+        <div class="ui-block-a">
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange0"/>
+        </div>
+        <div class="ui-block-b">
+          Lower Unit : <xsl:value-of select="@TME2TMUnit0"/>
+        </div>
+        <div class="ui-block-a">
+          Upper Total : <xsl:value-of select="@TME2TUAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange0"/>
+        </div>
+        <div class="ui-block-a">
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange0"/>
+        </div>
+        <div class="ui-block-b">
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange0"/>
+        </div>
+        <div class="ui-block-a">
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange0"/>
+        </div>
+        <div class="ui-block-b">
+          Upper Unit : <xsl:value-of select="@TME2TUUnit0"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description0" />
+	    </div>
+    </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name1 != '' and @TME2Name1 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -125,63 +208,63 @@
           Observations : <xsl:value-of select="@TME2N1"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit1"/>
+          Unit : <xsl:value-of select="@TME2TMUnit1"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type1"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total1"/>
+          Most : <xsl:value-of select="@TME2TMAmount1"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange1"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange1"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange1"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange1"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange1"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange1"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange1"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange1"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total1"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount1"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange1"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange1"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange1"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange1"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange1"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange1"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange1"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange1"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit1"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit1"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total1"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount1"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange1"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange1"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange1"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange1"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange1"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange1"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange1"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange1"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit1"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit1"/>
         </div>
       </div>
       <div >
@@ -189,7 +272,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name2 != '')">
+  <xsl:if test="(@TME2Name2 != '' and @TME2Name2 != 'none')">
     <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -208,63 +291,63 @@
           Observations : <xsl:value-of select="@TME2N2"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit2"/>
+          Unit : <xsl:value-of select="@TME2TMUnit2"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type2"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total2"/>
+          Most : <xsl:value-of select="@TME2TMAmount2"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange2"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange2"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange2"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange2"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange2"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange2"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange2"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange2"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total2"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount2"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange2"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange2"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange2"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange2"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange2"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange2"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange2"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange2"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit2"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit2"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total2"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount2"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange2"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange2"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange2"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange2"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange2"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange2"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange2"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange2"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit2"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit2"/>
         </div>
       </div>
       <div >
@@ -272,7 +355,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name3 != '')">
+  <xsl:if test="(@TME2Name3 != '' and @TME2Name3 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -291,63 +374,63 @@
           Observations : <xsl:value-of select="@TME2N3"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit3"/>
+          Unit : <xsl:value-of select="@TME2TMUnit3"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type3"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total3"/>
+          Most : <xsl:value-of select="@TME2TMAmount3"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange3"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange3"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange3"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange3"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange3"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange3"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange3"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange3"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total3"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount3"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange3"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange3"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange3"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange3"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange3"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange3"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange3"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange3"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit3"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit3"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total3"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount3"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange3"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange3"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange3"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange3"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange3"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange3"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange3"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange3"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit3"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit3"/>
         </div>
       </div>
       <div >
@@ -355,7 +438,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name4 != '')">
+  <xsl:if test="(@TME2Name4 != '' and @TME2Name4 != 'none')">
     <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -374,63 +457,63 @@
           Observations : <xsl:value-of select="@TME2N4"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit4"/>
+          Unit : <xsl:value-of select="@TME2TMUnit4"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type4"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total4"/>
+          Most : <xsl:value-of select="@TME2TMAmount4"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange4"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange4"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange4"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange4"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange4"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange4"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange4"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange4"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total4"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount4"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange4"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange4"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange4"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange4"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange4"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange4"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange4"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange4"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit4"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit4"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total4"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount4"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange4"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange4"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange4"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange4"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange4"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange4"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange4"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange4"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit4"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit4"/>
         </div>
       </div>
       <div >
@@ -438,7 +521,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name5 != '')">
+  <xsl:if test="(@TME2Name5 != '' and @TME2Name5 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -457,63 +540,63 @@
           Observations : <xsl:value-of select="@TME2N5"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit5"/>
+          Unit : <xsl:value-of select="@TME2TMUnit5"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type5"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total5"/>
+          Most : <xsl:value-of select="@TME2TMAmount5"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange5"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange5"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange5"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange5"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange5"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange5"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange5"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange5"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total5"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount5"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange5"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange5"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange5"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange5"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange5"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange5"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange5"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange5"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit5"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit5"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total5"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount5"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange5"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange5"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange5"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange5"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange5"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange5"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange5"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange5"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit5"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit5"/>
         </div>
       </div>
       <div >
@@ -521,7 +604,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name6 != '')">
+  <xsl:if test="(@TME2Name6 != '' and @TME2Name6 != 'none')">
     <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -540,63 +623,63 @@
           Observations : <xsl:value-of select="@TME2N6"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit6"/>
+          Unit : <xsl:value-of select="@TME2TMUnit6"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type6"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total6"/>
+          Most : <xsl:value-of select="@TME2TMAmount6"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange6"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange6"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange6"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange6"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange6"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange6"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange6"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange6"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total6"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount6"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange6"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange6"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange6"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange6"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange6"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange6"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange6"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange6"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit6"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit6"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total6"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount6"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange6"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange6"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange6"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange6"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange6"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange6"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange6"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange6"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit6"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit6"/>
         </div>
       </div>
       <div >
@@ -604,7 +687,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name7 != '')">
+  <xsl:if test="(@TME2Name7 != '' and @TME2Name7 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -623,63 +706,63 @@
           Observations : <xsl:value-of select="@TME2N7"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit7"/>
+          Unit : <xsl:value-of select="@TME2TMUnit7"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type7"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total7"/>
+          Most : <xsl:value-of select="@TME2TMAmount7"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange7"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange7"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange7"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange7"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange7"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange7"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange7"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange7"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total7"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount7"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange7"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange7"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange7"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange7"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange7"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange7"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange7"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange7"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit7"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit7"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total7"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount7"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange7"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange7"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange7"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange7"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange7"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange7"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange7"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange7"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit7"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit7"/>
         </div>
       </div>
       <div >
@@ -687,7 +770,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name8 != '')">
+  <xsl:if test="(@TME2Name8 != '' and @TME2Name8 != 'none')">
     <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -706,63 +789,63 @@
           Observations : <xsl:value-of select="@TME2N8"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit8"/>
+          Unit : <xsl:value-of select="@TME2TMUnit8"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type8"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total8"/>
+          Most : <xsl:value-of select="@TME2TMAmount8"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange8"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange8"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange8"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange8"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange8"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange8"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange8"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange8"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total8"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount8"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange8"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange8"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange8"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange8"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange8"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange8"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange8"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange8"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit8"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit8"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total8"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount8"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange8"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange8"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange8"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange8"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange8"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange8"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange8"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange8"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit8"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit8"/>
         </div>
       </div>
       <div >
@@ -770,7 +853,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name9 != '')">
+  <xsl:if test="(@TME2Name9 != '' and @TME2Name9 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -789,63 +872,63 @@
           Observations : <xsl:value-of select="@TME2N9"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit9"/>
+          Unit : <xsl:value-of select="@TME2TMUnit9"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type9"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total9"/>
+          Most : <xsl:value-of select="@TME2TMAmount9"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange9"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange9"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange9"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange9"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange9"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange9"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange9"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange9"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total9"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount9"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange9"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange9"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange9"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange9"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange9"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange9"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange9"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange9"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit9"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit9"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total9"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount9"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange9"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange9"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange9"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange9"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange9"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange9"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange9"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange9"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit9"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit9"/>
         </div>
       </div>
       <div >
@@ -853,7 +936,7 @@
 	    </div>
     </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name10 != '')">
+  <xsl:if test="(@TME2Name10 != '' and @TME2Name10 != 'none')">
     <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -872,67 +955,482 @@
           Observations : <xsl:value-of select="@TME2N10"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit10"/>
+          Unit : <xsl:value-of select="@TME2TMUnit10"/>
         </div>
         <div class="ui-block-b">
           Type : <xsl:value-of select="@TME2Type10"/>
         </div>
         <div class="ui-block-a">
-          Total : <xsl:value-of select="@TME2Total10"/>
+          Most : <xsl:value-of select="@TME2TMAmount10"/>
         </div>
         <div class="ui-block-b">
-          Total AmountChange : <xsl:value-of select="@TME2AmountChange10"/>
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange10"/>
         </div>
         <div class="ui-block-a">
-          Total PercentChange : <xsl:value-of select="@TME2PercentChange10"/>
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange10"/>
         </div>
         <div class="ui-block-b">
-          Total BaseChange : <xsl:value-of select="@TME2BaseChange10"/>
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange10"/>
         </div>
         <div class="ui-block-a">
-          Total BasePercentChange : <xsl:value-of select="@TME2BasePercentChange10"/>
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange10"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q1 Total : <xsl:value-of select="@TME2Q1Total10"/>
+          Lower Total : <xsl:value-of select="@TME2TLAmount10"/>
         </div>
         <div class="ui-block-b">
-          Q1 AmountChange : <xsl:value-of select="@TME2Q1AmountChange10"/>
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange10"/>
         </div>
         <div class="ui-block-a">
-          Q1 PercentChange : <xsl:value-of select="@TME2Q1PercentChange10"/>
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange10"/>
         </div>
         <div class="ui-block-b">
-          Q1 BaseChange : <xsl:value-of select="@TME2Q1BaseChange10"/>
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange10"/>
         </div>
         <div class="ui-block-a">
-          Q1 BasePercentChange : <xsl:value-of select="@TME2Q1BasePercentChange10"/>
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange10"/>
         </div>
         <div class="ui-block-b">
-          Q1 Unit : <xsl:value-of select="@TME2Unit10"/>
+          Lower Unit : <xsl:value-of select="@TME2TMUnit10"/>
         </div>
         <div class="ui-block-a">
-          Q2 Total : <xsl:value-of select="@TME2Q2Total10"/>
+          Upper Total : <xsl:value-of select="@TME2TUAmount10"/>
         </div>
         <div class="ui-block-b">
-          Q2 AmountChange : <xsl:value-of select="@TME2Q2AmountChange10"/>
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange10"/>
         </div>
         <div class="ui-block-a">
-          Q2 PercentChange : <xsl:value-of select="@TME2Q2PercentChange10"/>
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange10"/>
         </div>
         <div class="ui-block-b">
-          Q2 BaseChange : <xsl:value-of select="@TME2Q2BaseChange10"/>
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange10"/>
         </div>
         <div class="ui-block-a">
-          Q2 BasePercentChange : <xsl:value-of select="@TME2Q2BasePercentChange10"/>
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange10"/>
         </div>
         <div class="ui-block-b">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit10"/>
+          Upper Unit : <xsl:value-of select="@TME2TUUnit10"/>
         </div>
       </div>
       <div >
 			  <strong>Description : </strong><xsl:value-of select="@TME2Description10" />
+	    </div>
+    </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name11 != '' and @TME2Name11 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+          <div class="ui-block-a">
+          Indicator 11 Name : <strong><xsl:value-of select="@TME2Name11"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label11"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date11"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N11"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit11"/>
+        </div>
+        <div class="ui-block-b">
+          Type : <xsl:value-of select="@TME2Type11"/>
+        </div>
+        <div class="ui-block-a">
+          Most : <xsl:value-of select="@TME2TMAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange11"/>
+        </div>
+        <div class="ui-block-a">
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange11"/>
+        </div>
+        <div class="ui-block-b">
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange11"/>
+        </div>
+        <div class="ui-block-a">
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange11"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Lower Total : <xsl:value-of select="@TME2TLAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange11"/>
+        </div>
+        <div class="ui-block-a">
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange11"/>
+        </div>
+        <div class="ui-block-b">
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange11"/>
+        </div>
+        <div class="ui-block-a">
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange11"/>
+        </div>
+        <div class="ui-block-b">
+          Lower Unit : <xsl:value-of select="@TME2TMUnit11"/>
+        </div>
+        <div class="ui-block-a">
+          Upper Total : <xsl:value-of select="@TME2TUAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange11"/>
+        </div>
+        <div class="ui-block-a">
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange11"/>
+        </div>
+        <div class="ui-block-b">
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange11"/>
+        </div>
+        <div class="ui-block-a">
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange11"/>
+        </div>
+        <div class="ui-block-b">
+          Upper Unit : <xsl:value-of select="@TME2TUUnit11"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description11" />
+	    </div>
+    </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name12 != '' and @TME2Name12 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+          <div class="ui-block-a">
+          Indicator 12 Name : <strong><xsl:value-of select="@TME2Name12"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label12"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date12"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N12"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit12"/>
+        </div>
+        <div class="ui-block-b">
+          Type : <xsl:value-of select="@TME2Type12"/>
+        </div>
+        <div class="ui-block-a">
+          Most : <xsl:value-of select="@TME2TMAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange12"/>
+        </div>
+        <div class="ui-block-a">
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange12"/>
+        </div>
+        <div class="ui-block-b">
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange12"/>
+        </div>
+        <div class="ui-block-a">
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange12"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Lower Total : <xsl:value-of select="@TME2TLAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange12"/>
+        </div>
+        <div class="ui-block-a">
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange12"/>
+        </div>
+        <div class="ui-block-b">
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange12"/>
+        </div>
+        <div class="ui-block-a">
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange12"/>
+        </div>
+        <div class="ui-block-b">
+          Lower Unit : <xsl:value-of select="@TME2TMUnit12"/>
+        </div>
+        <div class="ui-block-a">
+          Upper Total : <xsl:value-of select="@TME2TUAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange12"/>
+        </div>
+        <div class="ui-block-a">
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange12"/>
+        </div>
+        <div class="ui-block-b">
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange12"/>
+        </div>
+        <div class="ui-block-a">
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange12"/>
+        </div>
+        <div class="ui-block-b">
+          Upper Unit : <xsl:value-of select="@TME2TUUnit12"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description12" />
+	    </div>
+    </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name13 != '' and @TME2Name13 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+          <div class="ui-block-a">
+          Indicator 13 Name : <strong><xsl:value-of select="@TME2Name13"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label13"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date13"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N13"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit13"/>
+        </div>
+        <div class="ui-block-b">
+          Type : <xsl:value-of select="@TME2Type13"/>
+        </div>
+        <div class="ui-block-a">
+          Most : <xsl:value-of select="@TME2TMAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange13"/>
+        </div>
+        <div class="ui-block-a">
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange13"/>
+        </div>
+        <div class="ui-block-b">
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange13"/>
+        </div>
+        <div class="ui-block-a">
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange13"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Lower Total : <xsl:value-of select="@TME2TLAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange13"/>
+        </div>
+        <div class="ui-block-a">
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange13"/>
+        </div>
+        <div class="ui-block-b">
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange13"/>
+        </div>
+        <div class="ui-block-a">
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange13"/>
+        </div>
+        <div class="ui-block-b">
+          Lower Unit : <xsl:value-of select="@TME2TMUnit13"/>
+        </div>
+        <div class="ui-block-a">
+          Upper Total : <xsl:value-of select="@TME2TUAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange13"/>
+        </div>
+        <div class="ui-block-a">
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange13"/>
+        </div>
+        <div class="ui-block-b">
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange13"/>
+        </div>
+        <div class="ui-block-a">
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange13"/>
+        </div>
+        <div class="ui-block-b">
+          Upper Unit : <xsl:value-of select="@TME2TUUnit13"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description13" />
+	    </div>
+    </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name14 != '' and @TME2Name14 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+          <div class="ui-block-a">
+          Indicator 14 Name : <strong><xsl:value-of select="@TME2Name14"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label14"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date14"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N14"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit14"/>
+        </div>
+        <div class="ui-block-b">
+          Type : <xsl:value-of select="@TME2Type14"/>
+        </div>
+        <div class="ui-block-a">
+          Most : <xsl:value-of select="@TME2TMAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange14"/>
+        </div>
+        <div class="ui-block-a">
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange14"/>
+        </div>
+        <div class="ui-block-b">
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange14"/>
+        </div>
+        <div class="ui-block-a">
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange14"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Lower Total : <xsl:value-of select="@TME2TLAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange14"/>
+        </div>
+        <div class="ui-block-a">
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange14"/>
+        </div>
+        <div class="ui-block-b">
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange14"/>
+        </div>
+        <div class="ui-block-a">
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange14"/>
+        </div>
+        <div class="ui-block-b">
+          Lower Unit : <xsl:value-of select="@TME2TMUnit14"/>
+        </div>
+        <div class="ui-block-a">
+          Upper Total : <xsl:value-of select="@TME2TUAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange14"/>
+        </div>
+        <div class="ui-block-a">
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange14"/>
+        </div>
+        <div class="ui-block-b">
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange14"/>
+        </div>
+        <div class="ui-block-a">
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange14"/>
+        </div>
+        <div class="ui-block-b">
+          Upper Unit : <xsl:value-of select="@TME2TUUnit14"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description14" />
+	    </div>
+    </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name15 != '' and @TME2Name15 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+          <div class="ui-block-a">
+          Indicator 15 Name : <strong><xsl:value-of select="@TME2Name15"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label15"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date15"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N15"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit15"/>
+        </div>
+        <div class="ui-block-b">
+          Type : <xsl:value-of select="@TME2Type15"/>
+        </div>
+        <div class="ui-block-a">
+          Most : <xsl:value-of select="@TME2TMAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          Most AmountChange : <xsl:value-of select="@TME2MAmountChange15"/>
+        </div>
+        <div class="ui-block-a">
+          Most PercentChange : <xsl:value-of select="@TME2MPercentChange15"/>
+        </div>
+        <div class="ui-block-b">
+          Most BaseChange : <xsl:value-of select="@TME2MBaseChange15"/>
+        </div>
+        <div class="ui-block-a">
+          Most BasePercentChange : <xsl:value-of select="@TME2MBasePercentChange15"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          Lower Total : <xsl:value-of select="@TME2TLAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          Lower AmountChange : <xsl:value-of select="@TME2LAmountChange15"/>
+        </div>
+        <div class="ui-block-a">
+          Lower PercentChange : <xsl:value-of select="@TME2LPercentChange15"/>
+        </div>
+        <div class="ui-block-b">
+          Lower BaseChange : <xsl:value-of select="@TME2LBaseChange15"/>
+        </div>
+        <div class="ui-block-a">
+          Lower BasePercentChange : <xsl:value-of select="@TME2LBasePercentChange15"/>
+        </div>
+        <div class="ui-block-b">
+          Lower Unit : <xsl:value-of select="@TME2TMUnit15"/>
+        </div>
+        <div class="ui-block-a">
+          Upper Total : <xsl:value-of select="@TME2TUAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          Upper AmountChange : <xsl:value-of select="@TME2UAmountChange15"/>
+        </div>
+        <div class="ui-block-a">
+          Upper PercentChange : <xsl:value-of select="@TME2UPercentChange15"/>
+        </div>
+        <div class="ui-block-b">
+          Upper BaseChange : <xsl:value-of select="@TME2UBaseChange15"/>
+        </div>
+        <div class="ui-block-a">
+          Upper BasePercentChange : <xsl:value-of select="@TME2UBasePercentChange15"/>
+        </div>
+        <div class="ui-block-b">
+          Upper Unit : <xsl:value-of select="@TME2TUUnit15"/>
+        </div>
+      </div>
+      <div >
+			  <strong>Description : </strong><xsl:value-of select="@TME2Description15" />
 	    </div>
     </div>
 	</xsl:if>

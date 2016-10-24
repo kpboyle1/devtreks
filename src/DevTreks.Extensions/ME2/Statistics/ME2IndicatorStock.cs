@@ -29,17 +29,7 @@ namespace DevTreks.Extensions
             //indicator stock object
             InitTotalME2IndicatorStocksProperties();
         }
-        //figure out how analyzers used this property (ME1 only?)
-        public enum ME_STAGES
-        {
-            none        = 0,
-            baseline    = 1,
-            realtime    = 2,
-            midterm     = 3,
-            final       = 4,
-            expost      = 5,
-            other       = 6
-        }
+        
         //calculator properties
         //list of indicator1stocks (costs) using List pattern
         public List<ME2IndicatorStock> ME2IndicatorStocks = new List<ME2IndicatorStock>();

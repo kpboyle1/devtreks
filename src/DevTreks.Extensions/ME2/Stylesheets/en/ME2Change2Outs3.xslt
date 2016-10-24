@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<!-- Author: www.devtreks.org, 2014, February -->
+<!-- Author: www.devtreks.org, 2016, October -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:y0="urn:DevTreks-support-schemas:Output"
 	xmlns:DisplayComps="urn:displaycomps">
@@ -182,7 +182,308 @@
 			</xsl:for-each>
 			<xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		</tr>
-    <xsl:if test="(@TME2Name1_0 != '')">
+    <xsl:if test="(@TME2Name0_0 != '' and @TME2Name0_0 != 'none')">
+      <tr>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Name0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Name0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Change Type</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Type0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Type0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Observations</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2N0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2N0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Date</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Date0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Date0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Label</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Label0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Label0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMUnit0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMAmount0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MAmountChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MPercentChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBaseChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBasePercentChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLUnit0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLAmount0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LAmountChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LPercentChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBaseChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBasePercentChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUUnit0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUAmount0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UAmountChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UPercentChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBaseChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBasePercentChange0"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange0_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+    </xsl:if>
+    <xsl:if test="(@TME2Name1_1 != '' and @TME2Name1_1 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 1</strong></td>
 			  <td>
@@ -249,241 +550,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit1"/>
+				  <xsl:value-of select="@TME2TMUnit1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total1"/>
+				  <xsl:value-of select="@TME2TMAmount1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange1"/>
+				  <xsl:value-of select="@TME2MAmountChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange1"/>
+				  <xsl:value-of select="@TME2MPercentChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange1"/>
+				  <xsl:value-of select="@TME2MBaseChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange1"/>
+				  <xsl:value-of select="@TME2MBasePercentChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit1"/>
+				  <xsl:value-of select="@TME2TLUnit1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total1"/>
+				  <xsl:value-of select="@TME2TLAmount1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange1"/>
+				  <xsl:value-of select="@TME2LAmountChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange1"/>
+				  <xsl:value-of select="@TME2LPercentChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange1"/>
+				  <xsl:value-of select="@TME2LBaseChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange1"/>
+				  <xsl:value-of select="@TME2LBasePercentChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit1"/>
+				  <xsl:value-of select="@TME2TUUnit1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total1"/>
+				  <xsl:value-of select="@TME2TUAmount1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange1"/>
+				  <xsl:value-of select="@TME2UAmountChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange1"/>
+				  <xsl:value-of select="@TME2UPercentChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange1"/>
+				  <xsl:value-of select="@TME2UBaseChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange1"/>
+				  <xsl:value-of select="@TME2UBasePercentChange1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange1_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange1_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name2_1 != '')">
+    <xsl:if test="(@TME2Name2_2 != '' and @TME2Name2_2 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 2</strong></td>
 			  <td>
@@ -550,241 +851,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit2"/>
+				  <xsl:value-of select="@TME2TMUnit2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total2"/>
+				  <xsl:value-of select="@TME2TMAmount2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange2"/>
+				  <xsl:value-of select="@TME2MAmountChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange2"/>
+				  <xsl:value-of select="@TME2MPercentChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange2"/>
+				  <xsl:value-of select="@TME2MBaseChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange2"/>
+				  <xsl:value-of select="@TME2MBasePercentChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit2"/>
+				  <xsl:value-of select="@TME2TLUnit2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total2"/>
+				  <xsl:value-of select="@TME2TLAmount2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange2"/>
+				  <xsl:value-of select="@TME2LAmountChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange2"/>
+				  <xsl:value-of select="@TME2LPercentChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange2"/>
+				  <xsl:value-of select="@TME2LBaseChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange2"/>
+				  <xsl:value-of select="@TME2LBasePercentChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit2"/>
+				  <xsl:value-of select="@TME2TUUnit2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total2"/>
+				  <xsl:value-of select="@TME2TUAmount2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange2"/>
+				  <xsl:value-of select="@TME2UAmountChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange2"/>
+				  <xsl:value-of select="@TME2UPercentChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange2"/>
+				  <xsl:value-of select="@TME2UBaseChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange2"/>
+				  <xsl:value-of select="@TME2UBasePercentChange2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange2_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange2_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name3_2 != '')">
+    <xsl:if test="(@TME2Name3_3 != '' and @TME2Name3_3 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 3</strong></td>
 			  <td>
@@ -851,241 +1152,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit3"/>
+				  <xsl:value-of select="@TME2TMUnit3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total3"/>
+				  <xsl:value-of select="@TME2TMAmount3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange3"/>
+				  <xsl:value-of select="@TME2MAmountChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange3"/>
+				  <xsl:value-of select="@TME2MPercentChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange3"/>
+				  <xsl:value-of select="@TME2MBaseChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange3"/>
+				  <xsl:value-of select="@TME2MBasePercentChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit3"/>
+				  <xsl:value-of select="@TME2TLUnit3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total3"/>
+				  <xsl:value-of select="@TME2TLAmount3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange3"/>
+				  <xsl:value-of select="@TME2LAmountChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange3"/>
+				  <xsl:value-of select="@TME2LPercentChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange3"/>
+				  <xsl:value-of select="@TME2LBaseChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange3"/>
+				  <xsl:value-of select="@TME2LBasePercentChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit3"/>
+				  <xsl:value-of select="@TME2TUUnit3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total3"/>
+				  <xsl:value-of select="@TME2TUAmount3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange3"/>
+				  <xsl:value-of select="@TME2UAmountChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange3"/>
+				  <xsl:value-of select="@TME2UPercentChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange3"/>
+				  <xsl:value-of select="@TME2UBaseChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange3"/>
+				  <xsl:value-of select="@TME2UBasePercentChange3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange3_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange3_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name4_3 != '')">
+    <xsl:if test="(@TME2Name4_4 != '' and @TME2Name4_4 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 4</strong></td>
 			  <td>
@@ -1152,241 +1453,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit4"/>
+				  <xsl:value-of select="@TME2TMUnit4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total4"/>
+				  <xsl:value-of select="@TME2TMAmount4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange4"/>
+				  <xsl:value-of select="@TME2MAmountChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange4"/>
+				  <xsl:value-of select="@TME2MPercentChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange4"/>
+				  <xsl:value-of select="@TME2MBaseChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange4"/>
+				  <xsl:value-of select="@TME2MBasePercentChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit4"/>
+				  <xsl:value-of select="@TME2TLUnit4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total4"/>
+				  <xsl:value-of select="@TME2TLAmount4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange4"/>
+				  <xsl:value-of select="@TME2LAmountChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange4"/>
+				  <xsl:value-of select="@TME2LPercentChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange4"/>
+				  <xsl:value-of select="@TME2LBaseChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange4"/>
+				  <xsl:value-of select="@TME2LBasePercentChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit4"/>
+				  <xsl:value-of select="@TME2TUUnit4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total4"/>
+				  <xsl:value-of select="@TME2TUAmount4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange4"/>
+				  <xsl:value-of select="@TME2UAmountChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange4"/>
+				  <xsl:value-of select="@TME2UPercentChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange4"/>
+				  <xsl:value-of select="@TME2UBaseChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange4"/>
+				  <xsl:value-of select="@TME2UBasePercentChange4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange4_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange4_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name5_4 != '')">
+    <xsl:if test="(@TME2Name5_5 != '' and @TME2Name5_5 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 5</strong></td>
 			  <td>
@@ -1453,241 +1754,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit5"/>
+				  <xsl:value-of select="@TME2TMUnit5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total5"/>
+				  <xsl:value-of select="@TME2TMAmount5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange5"/>
+				  <xsl:value-of select="@TME2MAmountChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange5"/>
+				  <xsl:value-of select="@TME2MPercentChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange5"/>
+				  <xsl:value-of select="@TME2MBaseChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange5"/>
+				  <xsl:value-of select="@TME2MBasePercentChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit5"/>
+				  <xsl:value-of select="@TME2TLUnit5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total5"/>
+				  <xsl:value-of select="@TME2TLAmount5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange5"/>
+				  <xsl:value-of select="@TME2LAmountChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange5"/>
+				  <xsl:value-of select="@TME2LPercentChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange5"/>
+				  <xsl:value-of select="@TME2LBaseChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange5"/>
+				  <xsl:value-of select="@TME2LBasePercentChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit5"/>
+				  <xsl:value-of select="@TME2TUUnit5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total5"/>
+				  <xsl:value-of select="@TME2TUAmount5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange5"/>
+				  <xsl:value-of select="@TME2UAmountChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange5"/>
+				  <xsl:value-of select="@TME2UPercentChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange5"/>
+				  <xsl:value-of select="@TME2UBaseChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange5"/>
+				  <xsl:value-of select="@TME2UBasePercentChange5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange5_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange5_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name6_5 != '')">
+    <xsl:if test="(@TME2Name6_6 != '' and @TME2Name6_6 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 6</strong></td>
 			  <td>
@@ -1754,241 +2055,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit6"/>
+				  <xsl:value-of select="@TME2TMUnit6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total6"/>
+				  <xsl:value-of select="@TME2TMAmount6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange6"/>
+				  <xsl:value-of select="@TME2MAmountChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange6"/>
+				  <xsl:value-of select="@TME2MPercentChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange6"/>
+				  <xsl:value-of select="@TME2MBaseChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange6"/>
+				  <xsl:value-of select="@TME2MBasePercentChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit6"/>
+				  <xsl:value-of select="@TME2TLUnit6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total6"/>
+				  <xsl:value-of select="@TME2TLAmount6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange6"/>
+				  <xsl:value-of select="@TME2LAmountChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange6"/>
+				  <xsl:value-of select="@TME2LPercentChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange6"/>
+				  <xsl:value-of select="@TME2LBaseChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange6"/>
+				  <xsl:value-of select="@TME2LBasePercentChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit6"/>
+				  <xsl:value-of select="@TME2TUUnit6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total6"/>
+				  <xsl:value-of select="@TME2TUAmount6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange6"/>
+				  <xsl:value-of select="@TME2UAmountChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange6"/>
+				  <xsl:value-of select="@TME2UPercentChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange6"/>
+				  <xsl:value-of select="@TME2UBaseChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange6"/>
+				  <xsl:value-of select="@TME2UBasePercentChange6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange6_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange6_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name7_6 != '')">
+    <xsl:if test="(@TME2Name7_7 != '' and @TME2Name7_7 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 7</strong></td>
 			  <td>
@@ -2055,241 +2356,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit7"/>
+				  <xsl:value-of select="@TME2TMUnit7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total7"/>
+				  <xsl:value-of select="@TME2TMAmount7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange7"/>
+				  <xsl:value-of select="@TME2MAmountChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange7"/>
+				  <xsl:value-of select="@TME2MPercentChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange7"/>
+				  <xsl:value-of select="@TME2MBaseChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange7"/>
+				  <xsl:value-of select="@TME2MBasePercentChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit7"/>
+				  <xsl:value-of select="@TME2TLUnit7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total7"/>
+				  <xsl:value-of select="@TME2TLAmount7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange7"/>
+				  <xsl:value-of select="@TME2LAmountChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange7"/>
+				  <xsl:value-of select="@TME2LPercentChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange7"/>
+				  <xsl:value-of select="@TME2LBaseChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange7"/>
+				  <xsl:value-of select="@TME2LBasePercentChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit7"/>
+				  <xsl:value-of select="@TME2TUUnit7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total7"/>
+				  <xsl:value-of select="@TME2TUAmount7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange7"/>
+				  <xsl:value-of select="@TME2UAmountChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange7"/>
+				  <xsl:value-of select="@TME2UPercentChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange7"/>
+				  <xsl:value-of select="@TME2UBaseChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange7"/>
+				  <xsl:value-of select="@TME2UBasePercentChange7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange7_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange7_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name8_7 != '')">
+    <xsl:if test="(@TME2Name8_8 != '' and @TME2Name8_8 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 8</strong></td>
 			  <td>
@@ -2356,241 +2657,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit8"/>
+				  <xsl:value-of select="@TME2TMUnit8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total8"/>
+				  <xsl:value-of select="@TME2TMAmount8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange8"/>
+				  <xsl:value-of select="@TME2MAmountChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange8"/>
+				  <xsl:value-of select="@TME2MPercentChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange8"/>
+				  <xsl:value-of select="@TME2MBaseChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange8"/>
+				  <xsl:value-of select="@TME2MBasePercentChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit8"/>
+				  <xsl:value-of select="@TME2TLUnit8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total8"/>
+				  <xsl:value-of select="@TME2TLAmount8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange8"/>
+				  <xsl:value-of select="@TME2LAmountChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange8"/>
+				  <xsl:value-of select="@TME2LPercentChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange8"/>
+				  <xsl:value-of select="@TME2LBaseChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange8"/>
+				  <xsl:value-of select="@TME2LBasePercentChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit8"/>
+				  <xsl:value-of select="@TME2TUUnit8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total8"/>
+				  <xsl:value-of select="@TME2TUAmount8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange8"/>
+				  <xsl:value-of select="@TME2UAmountChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange8"/>
+				  <xsl:value-of select="@TME2UPercentChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange8"/>
+				  <xsl:value-of select="@TME2UBaseChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange8"/>
+				  <xsl:value-of select="@TME2UBasePercentChange8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange8_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange8_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name9_8 != '')">
+    <xsl:if test="(@TME2Name9_9 != '' and @TME2Name9_9 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 9</strong></td>
 			  <td>
@@ -2657,241 +2958,241 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit9"/>
+				  <xsl:value-of select="@TME2TMUnit9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total9"/>
+				  <xsl:value-of select="@TME2TMAmount9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange9"/>
+				  <xsl:value-of select="@TME2MAmountChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange9"/>
+				  <xsl:value-of select="@TME2MPercentChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange9"/>
+				  <xsl:value-of select="@TME2MBaseChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange9"/>
+				  <xsl:value-of select="@TME2MBasePercentChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit9"/>
+				  <xsl:value-of select="@TME2TLUnit9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total9"/>
+				  <xsl:value-of select="@TME2TLAmount9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange9"/>
+				  <xsl:value-of select="@TME2LAmountChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange9"/>
+				  <xsl:value-of select="@TME2LPercentChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange9"/>
+				  <xsl:value-of select="@TME2LBaseChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange9"/>
+				  <xsl:value-of select="@TME2LBasePercentChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit9"/>
+				  <xsl:value-of select="@TME2TUUnit9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total9"/>
+				  <xsl:value-of select="@TME2TUAmount9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange9"/>
+				  <xsl:value-of select="@TME2UAmountChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange9"/>
+				  <xsl:value-of select="@TME2UPercentChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange9"/>
+				  <xsl:value-of select="@TME2UBaseChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange9"/>
+				  <xsl:value-of select="@TME2UBasePercentChange9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange9_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange9_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name10_9 != '')">
+    <xsl:if test="(@TME2Name10_10 != '' and @TME2Name10_10 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 10</strong></td>
 			  <td>
@@ -2958,236 +3259,1741 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Unit10"/>
+				  <xsl:value-of select="@TME2TMUnit10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Unit10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total</strong></td>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Total10"/>
+				  <xsl:value-of select="@TME2TMAmount10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Total10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2AmountChange10"/>
+				  <xsl:value-of select="@TME2MAmountChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2AmountChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2PercentChange10"/>
+				  <xsl:value-of select="@TME2MPercentChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2PercentChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BaseChange10"/>
+				  <xsl:value-of select="@TME2MBaseChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BaseChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Total Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2BasePercentChange10"/>
+				  <xsl:value-of select="@TME2MBasePercentChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2BasePercentChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Unit10"/>
+				  <xsl:value-of select="@TME2TLUnit10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Unit10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1Total10"/>
+				  <xsl:value-of select="@TME2TLAmount10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1Total10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1AmountChange10"/>
+				  <xsl:value-of select="@TME2LAmountChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1AmountChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1PercentChange10"/>
+				  <xsl:value-of select="@TME2LPercentChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1PercentChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BaseChange10"/>
+				  <xsl:value-of select="@TME2LBaseChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BaseChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q1 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q1BasePercentChange10"/>
+				  <xsl:value-of select="@TME2LBasePercentChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q1BasePercentChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Unit</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Unit10"/>
+				  <xsl:value-of select="@TME2TUUnit10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Unit10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2Total10"/>
+				  <xsl:value-of select="@TME2TUAmount10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2Total10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Amount Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2AmountChange10"/>
+				  <xsl:value-of select="@TME2UAmountChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2AmountChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2PercentChange10"/>
+				  <xsl:value-of select="@TME2UPercentChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2PercentChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BaseChange10"/>
+				  <xsl:value-of select="@TME2UBaseChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BaseChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange10_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
       <tr>
-			  <td scope="row" colspan="1"><strong>Q2 Base Percent Change</strong></td>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Q2BasePercentChange10"/>
+				  <xsl:value-of select="@TME2UBasePercentChange10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
 				  <xsl:variable name="att_name" select="name()"/>
 				  <xsl:variable name="att_value" select="."/>
-					<xsl:value-of select="DisplayComps:printValue('TME2Q2BasePercentChange10_', $att_name, $att_value)"/> 
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange10_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+    </xsl:if>
+    <xsl:if test="(@TME2Name11_11 != '' and @TME2Name11_11 != 'none')">
+      <tr>
+			  <td scope="row" colspan="1"><strong>Indicator 11</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Name11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Name11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Change Type</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Type11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Type11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Observations</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2N11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2N11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Date</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Date11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Date11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Label</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Label11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Label11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMUnit11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMAmount11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MAmountChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MPercentChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBaseChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBasePercentChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLUnit11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLAmount11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LAmountChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LPercentChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBaseChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBasePercentChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUUnit11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUAmount11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UAmountChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UPercentChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBaseChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBasePercentChange11"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange11_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+    </xsl:if>
+    <xsl:if test="(@TME2Name12_12 != '' and @TME2Name12_12 != 'none')">
+      <tr>
+			  <td scope="row" colspan="1"><strong>Indicator 12</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Name12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Name12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Change Type</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Type12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Type12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Observations</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2N12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2N12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Date</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Date12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Date12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Label</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Label12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Label12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMUnit12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMAmount12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MAmountChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MPercentChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBaseChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBasePercentChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLUnit12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLAmount12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LAmountChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LPercentChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBaseChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBasePercentChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUUnit12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUAmount12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UAmountChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UPercentChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBaseChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBasePercentChange12"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange12_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+    </xsl:if>
+    <xsl:if test="(@TME2Name13_13 != '' and @TME2Name13_13 != 'none')">
+      <tr>
+			  <td scope="row" colspan="1"><strong>Indicator 13</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Name13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Name13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Change Type</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Type13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Type13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Observations</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2N13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2N13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Date</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Date13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Date13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Label</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Label13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Label13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMUnit13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMAmount13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MAmountChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MPercentChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBaseChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBasePercentChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLUnit13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLAmount13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LAmountChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LPercentChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBaseChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBasePercentChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUUnit13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUAmount13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UAmountChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UPercentChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBaseChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBasePercentChange13"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange13_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+    </xsl:if>
+    <xsl:if test="(@TME2Name14_14 != '' and @TME2Name14_14 != 'none')">
+      <tr>
+			  <td scope="row" colspan="1"><strong>Indicator 14</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Name14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Name14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Change Type</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Type14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Type14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Observations</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2N14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2N14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Date</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Date14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Date14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Label</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Label14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Label14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMUnit14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMAmount14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MAmountChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MPercentChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBaseChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBasePercentChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLUnit14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLAmount14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LAmountChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LPercentChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBaseChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBasePercentChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUUnit14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUAmount14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UAmountChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UPercentChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBaseChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBasePercentChange14"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange14_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+    </xsl:if>
+    <xsl:if test="(@TME2Name15_15 != '' and @TME2Name15_15 != 'none')">
+      <tr>
+			  <td scope="row" colspan="1"><strong>Indicator 15</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Name15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Name15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Change Type</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Type15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Type15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Observations</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2N15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2N15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Date</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Date15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Date15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Label</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2Label15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2Label15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMUnit15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMUnit15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TMAmount15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TMAmount15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MAmountChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MAmountChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MPercentChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MPercentChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBaseChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBaseChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Most Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2MBasePercentChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2MBasePercentChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLUnit15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLUnit15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TLAmount15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TLAmount15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LAmountChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LAmountChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LPercentChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LPercentChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBaseChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBaseChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Lower Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2LBasePercentChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2LBasePercentChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUUnit15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUUnit15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2TUAmount15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2TUAmount15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Amount Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UAmountChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UAmountChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UPercentChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UPercentChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBaseChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBaseChange15_', $att_name, $att_value)"/> 
+			  </xsl:for-each>
+			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
+		  </tr>
+      <tr>
+			  <td scope="row" colspan="1"><strong>Upper Base Percent Change</strong></td>
+			  <td>
+				  <xsl:value-of select="@TME2UBasePercentChange15"/>
+			  </td>
+			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
+			  <xsl:for-each select="@*">
+				  <xsl:variable name="att_name" select="name()"/>
+				  <xsl:variable name="att_value" select="."/>
+					<xsl:value-of select="DisplayComps:printValue('TME2UBasePercentChange15_', $att_name, $att_value)"/> 
 			  </xsl:for-each>
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>

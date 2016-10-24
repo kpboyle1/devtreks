@@ -33,108 +33,108 @@ namespace DevTreks.Extensions
         //the total properties come from ME2IndicatorStock
         //planned period
         //planned full (sum of all planning periods)
-        public double TotalPFTotal { get; set; }
+        public double TotalMPFTotal { get; set; }
         //planned cumulative (sum of planning periods through corresponding actual period)
-        public double TotalPCTotal { get; set; }
+        public double TotalMPCTotal { get; set; }
         //actual period
-        public double TotalAPTotal { get; set; }
+        public double TotalMAPTotal { get; set; }
         //actual cumulative 
-        public double TotalACTotal { get; set; }
+        public double TotalMACTotal { get; set; }
         //change in actual period amount (actual amount - planned period amount
-        public double TotalAPChange { get; set; }
+        public double TotalMAPChange { get; set; }
         //change in actual cumulative amount (actual amount - planned cumulative amount
-        public double TotalACChange { get; set; }
+        public double TotalMACChange { get; set; }
         //planned period
-        public double TotalPPPercent { get; set; }
+        public double TotalMPPPercent { get; set; }
         //planned cumulative
-        public double TotalPCPercent { get; set; }
+        public double TotalMPCPercent { get; set; }
         //planned full
-        public double TotalPFPercent { get; set; }
+        public double TotalMPFPercent { get; set; }
 
-        public double TotalQ1PFTotal { get; set; }
-        public double TotalQ1PCTotal { get; set; }
-        public double TotalQ1APTotal { get; set; }
-        public double TotalQ1ACTotal { get; set; }
-        public double TotalQ1APChange { get; set; }
-        public double TotalQ1ACChange { get; set; }
-        public double TotalQ1PPPercent { get; set; }
-        public double TotalQ1PCPercent { get; set; }
-        public double TotalQ1PFPercent { get; set; }
+        public double TotalLPFTotal { get; set; }
+        public double TotalLPCTotal { get; set; }
+        public double TotalLAPTotal { get; set; }
+        public double TotalLACTotal { get; set; }
+        public double TotalLAPChange { get; set; }
+        public double TotalLACChange { get; set; }
+        public double TotalLPPPercent { get; set; }
+        public double TotalLPCPercent { get; set; }
+        public double TotalLPFPercent { get; set; }
 
-        public double TotalQ2PFTotal { get; set; }
-        public double TotalQ2PCTotal { get; set; }
-        public double TotalQ2APTotal { get; set; }
-        public double TotalQ2ACTotal { get; set; }
-        public double TotalQ2APChange { get; set; }
-        public double TotalQ2ACChange { get; set; }
-        public double TotalQ2PPPercent { get; set; }
-        public double TotalQ2PCPercent { get; set; }
-        public double TotalQ2PFPercent { get; set; }
+        public double TotalUPFTotal { get; set; }
+        public double TotalUPCTotal { get; set; }
+        public double TotalUAPTotal { get; set; }
+        public double TotalUACTotal { get; set; }
+        public double TotalUAPChange { get; set; }
+        public double TotalUACChange { get; set; }
+        public double TotalUPPPercent { get; set; }
+        public double TotalUPCPercent { get; set; }
+        public double TotalUPFPercent { get; set; }
 
-        private const string cTotalPFTotal = "TPFTotal";
-        private const string cTotalPCTotal = "TPCTotal";
-        private const string cTotalAPTotal = "TAPTotal";
-        private const string cTotalACTotal = "TACTotal";
-        private const string cTotalAPChange = "TAPChange";
-        private const string cTotalACChange = "TACChange";
-        private const string cTotalPPPercent = "TPPPercent";
-        private const string cTotalPCPercent = "TPCPercent";
-        private const string cTotalPFPercent = "TPFPercent";
+        private const string cTotalMPFTotal = "TMPFTotal";
+        private const string cTotalMPCTotal = "TMPCTotal";
+        private const string cTotalMAPTotal = "TMAPTotal";
+        private const string cTotalMACTotal = "TMACTotal";
+        private const string cTotalMAPChange = "TMAPChange";
+        private const string cTotalMACChange = "TMACChange";
+        private const string cTotalMPPPercent = "TMPPPercent";
+        private const string cTotalMPCPercent = "TMPCPercent";
+        private const string cTotalMPFPercent = "TMPFPercent";
 
-        private const string cTotalQ1PFTotal = "TQ1PFTotal";
-        private const string cTotalQ1PCTotal = "TQ1PCTotal";
-        private const string cTotalQ1APTotal = "TQ1APTotal";
-        private const string cTotalQ1ACTotal = "TQ1ACTotal";
-        private const string cTotalQ1APChange = "TQ1APChange";
-        private const string cTotalQ1ACChange = "TQ1ACChange";
-        private const string cTotalQ1PPPercent = "TQ1PPPercent";
-        private const string cTotalQ1PCPercent = "TQ1PCPercent";
-        private const string cTotalQ1PFPercent = "TQ1PFPercent";
+        private const string cTotalLPFTotal = "TLPFTotal";
+        private const string cTotalLPCTotal = "TLPCTotal";
+        private const string cTotalLAPTotal = "TLAPTotal";
+        private const string cTotalLACTotal = "TLACTotal";
+        private const string cTotalLAPChange = "TLAPChange";
+        private const string cTotalLACChange = "TLACChange";
+        private const string cTotalLPPPercent = "TLPPPercent";
+        private const string cTotalLPCPercent = "TLPCPercent";
+        private const string cTotalLPFPercent = "TLPFPercent";
 
-        private const string cTotalQ2PFTotal = "TQ2PFTotal";
-        private const string cTotalQ2PCTotal = "TQ2PCTotal";
-        private const string cTotalQ2APTotal = "TQ2APTotal";
-        private const string cTotalQ2ACTotal = "TQ2ACTotal";
-        private const string cTotalQ2APChange = "TQ2APChange";
-        private const string cTotalQ2ACChange = "TQ2ACChange";
-        private const string cTotalQ2PPPercent = "TQ2PPPercent";
-        private const string cTotalQ2PCPercent = "TQ2PCPercent";
-        private const string cTotalQ2PFPercent = "TQ2PFPercent";
+        private const string cTotalUPFTotal = "TUPFTotal";
+        private const string cTotalUPCTotal = "TUPCTotal";
+        private const string cTotalUAPTotal = "TUAPTotal";
+        private const string cTotalUACTotal = "TUACTotal";
+        private const string cTotalUAPChange = "TUAPChange";
+        private const string cTotalUACChange = "TUACChange";
+        private const string cTotalUPPPercent = "TUPPPercent";
+        private const string cTotalUPCPercent = "TUPCPercent";
+        private const string cTotalUPFPercent = "TUPFPercent";
         public void InitTotalME2Progress1Properties(ME2Progress1 ind)
         {
             ind.ErrorMessage = string.Empty;
             ind.CalcParameters = new CalculatorParameters();
             InitTotalME2IndicatorStockProperties(ind);
 
-            ind.TotalPFTotal = 0;
-            ind.TotalPCTotal = 0;
-            ind.TotalAPTotal = 0;
-            ind.TotalACTotal = 0;
-            ind.TotalAPChange = 0;
-            ind.TotalACChange = 0;
-            ind.TotalPPPercent = 0;
-            ind.TotalPCPercent = 0;
-            ind.TotalPFPercent = 0;
+            ind.TotalMPFTotal = 0;
+            ind.TotalMPCTotal = 0;
+            ind.TotalMAPTotal = 0;
+            ind.TotalMACTotal = 0;
+            ind.TotalMAPChange = 0;
+            ind.TotalMACChange = 0;
+            ind.TotalMPPPercent = 0;
+            ind.TotalMPCPercent = 0;
+            ind.TotalMPFPercent = 0;
 
-            ind.TotalQ1PFTotal = 0;
-            ind.TotalQ1PCTotal = 0;
-            ind.TotalQ1APTotal = 0;
-            ind.TotalQ1ACTotal = 0;
-            ind.TotalQ1APChange = 0;
-            ind.TotalQ1ACChange = 0;
-            ind.TotalQ1PPPercent = 0;
-            ind.TotalQ1PCPercent = 0;
-            ind.TotalQ1PFPercent = 0;
+            ind.TotalLPFTotal = 0;
+            ind.TotalLPCTotal = 0;
+            ind.TotalLAPTotal = 0;
+            ind.TotalLACTotal = 0;
+            ind.TotalLAPChange = 0;
+            ind.TotalLACChange = 0;
+            ind.TotalLPPPercent = 0;
+            ind.TotalLPCPercent = 0;
+            ind.TotalLPFPercent = 0;
 
-            ind.TotalQ2PFTotal = 0;
-            ind.TotalQ2PCTotal = 0;
-            ind.TotalQ2APTotal = 0;
-            ind.TotalQ2ACTotal = 0;
-            ind.TotalQ2APChange = 0;
-            ind.TotalQ2ACChange = 0;
-            ind.TotalQ2PPPercent = 0;
-            ind.TotalQ2PCPercent = 0;
-            ind.TotalQ2PFPercent = 0;
+            ind.TotalUPFTotal = 0;
+            ind.TotalUPCTotal = 0;
+            ind.TotalUAPTotal = 0;
+            ind.TotalUACTotal = 0;
+            ind.TotalUAPChange = 0;
+            ind.TotalUACChange = 0;
+            ind.TotalUPPPercent = 0;
+            ind.TotalUPCPercent = 0;
+            ind.TotalUPFPercent = 0;
         }
         public void CopyTotalME2Progress1Properties(ME2Progress1 calculator)
         {
@@ -176,35 +176,35 @@ namespace DevTreks.Extensions
             ME2Progress1 calculator)
         {
             ind.ErrorMessage = calculator.ErrorMessage;
-            ind.TotalPFTotal = calculator.TotalPFTotal;
-            ind.TotalPCTotal = calculator.TotalPCTotal;
-            ind.TotalAPTotal = calculator.TotalAPTotal;
-            ind.TotalACTotal = calculator.TotalACTotal;
-            ind.TotalAPChange = calculator.TotalAPChange;
-            ind.TotalACChange = calculator.TotalACChange;
-            ind.TotalPPPercent = calculator.TotalPPPercent;
-            ind.TotalPCPercent = calculator.TotalPCPercent;
-            ind.TotalPFPercent = calculator.TotalPFPercent;
+            ind.TotalMPFTotal = calculator.TotalMPFTotal;
+            ind.TotalMPCTotal = calculator.TotalMPCTotal;
+            ind.TotalMAPTotal = calculator.TotalMAPTotal;
+            ind.TotalMACTotal = calculator.TotalMACTotal;
+            ind.TotalMAPChange = calculator.TotalMAPChange;
+            ind.TotalMACChange = calculator.TotalMACChange;
+            ind.TotalMPPPercent = calculator.TotalMPPPercent;
+            ind.TotalMPCPercent = calculator.TotalMPCPercent;
+            ind.TotalMPFPercent = calculator.TotalMPFPercent;
 
-            ind.TotalQ1PFTotal = calculator.TotalQ1PFTotal;
-            ind.TotalQ1PCTotal = calculator.TotalQ1PCTotal;
-            ind.TotalQ1APTotal = calculator.TotalQ1APTotal;
-            ind.TotalQ1ACTotal = calculator.TotalQ1ACTotal;
-            ind.TotalQ1APChange = calculator.TotalQ1APChange;
-            ind.TotalQ1ACChange = calculator.TotalQ1ACChange;
-            ind.TotalQ1PPPercent = calculator.TotalQ1PPPercent;
-            ind.TotalQ1PCPercent = calculator.TotalQ1PCPercent;
-            ind.TotalQ1PFPercent = calculator.TotalQ1PFPercent;
+            ind.TotalLPFTotal = calculator.TotalLPFTotal;
+            ind.TotalLPCTotal = calculator.TotalLPCTotal;
+            ind.TotalLAPTotal = calculator.TotalLAPTotal;
+            ind.TotalLACTotal = calculator.TotalLACTotal;
+            ind.TotalLAPChange = calculator.TotalLAPChange;
+            ind.TotalLACChange = calculator.TotalLACChange;
+            ind.TotalLPPPercent = calculator.TotalLPPPercent;
+            ind.TotalLPCPercent = calculator.TotalLPCPercent;
+            ind.TotalLPFPercent = calculator.TotalLPFPercent;
 
-            ind.TotalQ2PFTotal = calculator.TotalQ2PFTotal;
-            ind.TotalQ2PCTotal = calculator.TotalQ2PCTotal;
-            ind.TotalQ2APTotal = calculator.TotalQ2APTotal;
-            ind.TotalQ2ACTotal = calculator.TotalQ2ACTotal;
-            ind.TotalQ2APChange = calculator.TotalQ2APChange;
-            ind.TotalQ2ACChange = calculator.TotalQ2ACChange;
-            ind.TotalQ2PPPercent = calculator.TotalQ2PPPercent;
-            ind.TotalQ2PCPercent = calculator.TotalQ2PCPercent;
-            ind.TotalQ2PFPercent = calculator.TotalQ2PFPercent;
+            ind.TotalUPFTotal = calculator.TotalUPFTotal;
+            ind.TotalUPCTotal = calculator.TotalUPCTotal;
+            ind.TotalUAPTotal = calculator.TotalUAPTotal;
+            ind.TotalUACTotal = calculator.TotalUACTotal;
+            ind.TotalUAPChange = calculator.TotalUAPChange;
+            ind.TotalUACChange = calculator.TotalUACChange;
+            ind.TotalUPPPercent = calculator.TotalUPPPercent;
+            ind.TotalUPCPercent = calculator.TotalUPCPercent;
+            ind.TotalUPFPercent = calculator.TotalUPFPercent;
         }
 
         public void SetTotalME2Progress1Properties(ME2Progress1 ind,
@@ -213,62 +213,62 @@ namespace DevTreks.Extensions
             //stats always based on indicators
             ind.SetTotalME2IndicatorStockProperties(ind, attNameExtension, calculator);
 
-            ind.TotalPFTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalPFTotal, attNameExtension));
-            ind.TotalPCTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalPCTotal, attNameExtension));
-            ind.TotalAPTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalAPTotal, attNameExtension));
-            ind.TotalACTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalACTotal, attNameExtension));
-            ind.TotalAPChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalAPChange, attNameExtension));
-            ind.TotalACChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalACChange, attNameExtension));
-            ind.TotalPPPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalPPPercent, attNameExtension));
-            ind.TotalPCPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalPCPercent, attNameExtension));
-            ind.TotalPFPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalPFPercent, attNameExtension));
+            ind.TotalMPFTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMPFTotal, attNameExtension));
+            ind.TotalMPCTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMPCTotal, attNameExtension));
+            ind.TotalMAPTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMAPTotal, attNameExtension));
+            ind.TotalMACTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMACTotal, attNameExtension));
+            ind.TotalMAPChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMAPChange, attNameExtension));
+            ind.TotalMACChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMACChange, attNameExtension));
+            ind.TotalMPPPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMPPPercent, attNameExtension));
+            ind.TotalMPCPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMPCPercent, attNameExtension));
+            ind.TotalMPFPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalMPFPercent, attNameExtension));
 
-            ind.TotalQ1PFTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1PFTotal, attNameExtension));
-            ind.TotalQ1PCTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1PCTotal, attNameExtension));
-            ind.TotalQ1APTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1APTotal, attNameExtension));
-            ind.TotalQ1ACTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1ACTotal, attNameExtension));
-            ind.TotalQ1APChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1APChange, attNameExtension));
-            ind.TotalQ1ACChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1ACChange, attNameExtension));
-            ind.TotalQ1PPPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1PPPercent, attNameExtension));
-            ind.TotalQ1PCPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1PCPercent, attNameExtension));
-            ind.TotalQ1PFPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ1PFPercent, attNameExtension));
+            ind.TotalLPFTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLPFTotal, attNameExtension));
+            ind.TotalLPCTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLPCTotal, attNameExtension));
+            ind.TotalLAPTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLAPTotal, attNameExtension));
+            ind.TotalLACTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLACTotal, attNameExtension));
+            ind.TotalLAPChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLAPChange, attNameExtension));
+            ind.TotalLACChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLACChange, attNameExtension));
+            ind.TotalLPPPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLPPPercent, attNameExtension));
+            ind.TotalLPCPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLPCPercent, attNameExtension));
+            ind.TotalLPFPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalLPFPercent, attNameExtension));
 
-            ind.TotalQ2PFTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2PFTotal, attNameExtension));
-            ind.TotalQ2PCTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2PCTotal, attNameExtension));
-            ind.TotalQ2APTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2APTotal, attNameExtension));
-            ind.TotalQ2ACTotal = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2ACTotal, attNameExtension));
-            ind.TotalQ2APChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2APChange, attNameExtension));
-            ind.TotalQ2ACChange = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2ACChange, attNameExtension));
-            ind.TotalQ2PPPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2PPPercent, attNameExtension));
-            ind.TotalQ2PCPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2PCPercent, attNameExtension));
-            ind.TotalQ2PFPercent = CalculatorHelpers.GetAttributeDouble(calculator,
-               string.Concat(cTotalQ2PFPercent, attNameExtension));
+            ind.TotalUPFTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUPFTotal, attNameExtension));
+            ind.TotalUPCTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUPCTotal, attNameExtension));
+            ind.TotalUAPTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUAPTotal, attNameExtension));
+            ind.TotalUACTotal = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUACTotal, attNameExtension));
+            ind.TotalUAPChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUAPChange, attNameExtension));
+            ind.TotalUACChange = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUACChange, attNameExtension));
+            ind.TotalUPPPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUPPPercent, attNameExtension));
+            ind.TotalUPCPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUPCPercent, attNameExtension));
+            ind.TotalUPFPercent = CalculatorHelpers.GetAttributeDouble(calculator,
+               string.Concat(cTotalUPFPercent, attNameExtension));
         }
         public void SetTotalME2Progress1Property(ME2Progress1 ind,
             string attDateame, string attValue)
@@ -276,86 +276,86 @@ namespace DevTreks.Extensions
             string sPropertyValue = string.Empty;
             switch (attDateame)
             {
-                case cTotalPFTotal:
-                    ind.TotalPFTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMPFTotal:
+                    ind.TotalMPFTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalPCTotal:
-                    ind.TotalPCTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMPCTotal:
+                    ind.TotalMPCTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalAPTotal:
-                    ind.TotalAPTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMAPTotal:
+                    ind.TotalMAPTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalACTotal:
-                    ind.TotalACTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMACTotal:
+                    ind.TotalMACTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalAPChange:
-                    ind.TotalAPChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMAPChange:
+                    ind.TotalMAPChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalACChange:
-                    ind.TotalACChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMACChange:
+                    ind.TotalMACChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalPPPercent:
-                    ind.TotalPPPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMPPPercent:
+                    ind.TotalMPPPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalPCPercent:
-                    ind.TotalPCPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMPCPercent:
+                    ind.TotalMPCPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalPFPercent:
-                    ind.TotalPFPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalMPFPercent:
+                    ind.TotalMPFPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1PFTotal:
-                    ind.TotalQ1PFTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLPFTotal:
+                    ind.TotalLPFTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1PCTotal:
-                    ind.TotalQ1PCTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLPCTotal:
+                    ind.TotalLPCTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1APTotal:
-                    ind.TotalQ1APTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLAPTotal:
+                    ind.TotalLAPTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1ACTotal:
-                    ind.TotalQ1ACTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLACTotal:
+                    ind.TotalLACTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1APChange:
-                    ind.TotalQ1APChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLAPChange:
+                    ind.TotalLAPChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1ACChange:
-                    ind.TotalQ1ACChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLACChange:
+                    ind.TotalLACChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1PPPercent:
-                    ind.TotalQ1PPPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLPPPercent:
+                    ind.TotalLPPPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1PCPercent:
-                    ind.TotalQ1PCPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLPCPercent:
+                    ind.TotalLPCPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ1PFPercent:
-                    ind.TotalQ1PFPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalLPFPercent:
+                    ind.TotalLPFPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2PFTotal:
-                    ind.TotalQ2PFTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUPFTotal:
+                    ind.TotalUPFTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2PCTotal:
-                    ind.TotalQ2PCTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUPCTotal:
+                    ind.TotalUPCTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2APTotal:
-                    ind.TotalQ2APTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUAPTotal:
+                    ind.TotalUAPTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2ACTotal:
-                    ind.TotalQ2ACTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUACTotal:
+                    ind.TotalUACTotal = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2APChange:
-                    ind.TotalQ2APChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUAPChange:
+                    ind.TotalUAPChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2ACChange:
-                    ind.TotalQ2ACChange = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUACChange:
+                    ind.TotalUACChange = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2PPPercent:
-                    ind.TotalQ2PPPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUPPPercent:
+                    ind.TotalUPPPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2PCPercent:
-                    ind.TotalQ2PCPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUPCPercent:
+                    ind.TotalUPCPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
-                case cTotalQ2PFPercent:
-                    ind.TotalQ2PFPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
+                case cTotalUPFPercent:
+                    ind.TotalUPFPercent = CalculatorHelpers.ConvertStringToDouble(attValue);
                     break;
                 default:
                     break;
@@ -366,86 +366,86 @@ namespace DevTreks.Extensions
             string sPropertyValue = string.Empty;
             switch (attDateame)
             {
-                case cTotalPFTotal:
-                    sPropertyValue = ind.TotalPFTotal.ToString();
+                case cTotalMPFTotal:
+                    sPropertyValue = ind.TotalMPFTotal.ToString();
                     break;
-                case cTotalPCTotal:
-                    sPropertyValue = ind.TotalPCTotal.ToString();
+                case cTotalMPCTotal:
+                    sPropertyValue = ind.TotalMPCTotal.ToString();
                     break;
-                case cTotalAPTotal:
-                    sPropertyValue = ind.TotalAPTotal.ToString();
+                case cTotalMAPTotal:
+                    sPropertyValue = ind.TotalMAPTotal.ToString();
                     break;
-                case cTotalACTotal:
-                    sPropertyValue = ind.TotalACTotal.ToString();
+                case cTotalMACTotal:
+                    sPropertyValue = ind.TotalMACTotal.ToString();
                     break;
-                case cTotalAPChange:
-                    sPropertyValue = ind.TotalAPChange.ToString();
+                case cTotalMAPChange:
+                    sPropertyValue = ind.TotalMAPChange.ToString();
                     break;
-                case cTotalACChange:
-                    sPropertyValue = ind.TotalACChange.ToString();
+                case cTotalMACChange:
+                    sPropertyValue = ind.TotalMACChange.ToString();
                     break;
-                case cTotalPPPercent:
-                    sPropertyValue = ind.TotalPPPercent.ToString();
+                case cTotalMPPPercent:
+                    sPropertyValue = ind.TotalMPPPercent.ToString();
                     break;
-                case cTotalPCPercent:
-                    sPropertyValue = ind.TotalPCPercent.ToString();
+                case cTotalMPCPercent:
+                    sPropertyValue = ind.TotalMPCPercent.ToString();
                     break;
-                case cTotalPFPercent:
-                    sPropertyValue = ind.TotalPFPercent.ToString();
+                case cTotalMPFPercent:
+                    sPropertyValue = ind.TotalMPFPercent.ToString();
                     break;
-                case cTotalQ1PFTotal:
-                    sPropertyValue = ind.TotalQ1PFTotal.ToString();
+                case cTotalLPFTotal:
+                    sPropertyValue = ind.TotalLPFTotal.ToString();
                     break;
-                case cTotalQ1PCTotal:
-                    sPropertyValue = ind.TotalQ1PCTotal.ToString();
+                case cTotalLPCTotal:
+                    sPropertyValue = ind.TotalLPCTotal.ToString();
                     break;
-                case cTotalQ1APTotal:
-                    sPropertyValue = ind.TotalQ1APTotal.ToString();
+                case cTotalLAPTotal:
+                    sPropertyValue = ind.TotalLAPTotal.ToString();
                     break;
-                case cTotalQ1ACTotal:
-                    sPropertyValue = ind.TotalQ1ACTotal.ToString();
+                case cTotalLACTotal:
+                    sPropertyValue = ind.TotalLACTotal.ToString();
                     break;
-                case cTotalQ1APChange:
-                    sPropertyValue = ind.TotalQ1APChange.ToString();
+                case cTotalLAPChange:
+                    sPropertyValue = ind.TotalLAPChange.ToString();
                     break;
-                case cTotalQ1ACChange:
-                    sPropertyValue = ind.TotalQ1ACChange.ToString();
+                case cTotalLACChange:
+                    sPropertyValue = ind.TotalLACChange.ToString();
                     break;
-                case cTotalQ1PPPercent:
-                    sPropertyValue = ind.TotalQ1PPPercent.ToString();
+                case cTotalLPPPercent:
+                    sPropertyValue = ind.TotalLPPPercent.ToString();
                     break;
-                case cTotalQ1PCPercent:
-                    sPropertyValue = ind.TotalQ1PCPercent.ToString();
+                case cTotalLPCPercent:
+                    sPropertyValue = ind.TotalLPCPercent.ToString();
                     break;
-                case cTotalQ1PFPercent:
-                    sPropertyValue = ind.TotalQ1PFPercent.ToString();
+                case cTotalLPFPercent:
+                    sPropertyValue = ind.TotalLPFPercent.ToString();
                     break;
-                case cTotalQ2PFTotal:
-                    sPropertyValue = ind.TotalQ2PFTotal.ToString();
+                case cTotalUPFTotal:
+                    sPropertyValue = ind.TotalUPFTotal.ToString();
                     break;
-                case cTotalQ2PCTotal:
-                    sPropertyValue = ind.TotalQ2PCTotal.ToString();
+                case cTotalUPCTotal:
+                    sPropertyValue = ind.TotalUPCTotal.ToString();
                     break;
-                case cTotalQ2APTotal:
-                    sPropertyValue = ind.TotalQ2APTotal.ToString();
+                case cTotalUAPTotal:
+                    sPropertyValue = ind.TotalUAPTotal.ToString();
                     break;
-                case cTotalQ2ACTotal:
-                    sPropertyValue = ind.TotalQ2ACTotal.ToString();
+                case cTotalUACTotal:
+                    sPropertyValue = ind.TotalUACTotal.ToString();
                     break;
-                case cTotalQ2APChange:
-                    sPropertyValue = ind.TotalQ2APChange.ToString();
+                case cTotalUAPChange:
+                    sPropertyValue = ind.TotalUAPChange.ToString();
                     break;
-                case cTotalQ2ACChange:
-                    sPropertyValue = ind.TotalQ2ACChange.ToString();
+                case cTotalUACChange:
+                    sPropertyValue = ind.TotalUACChange.ToString();
                     break;
-                case cTotalQ2PPPercent:
-                    sPropertyValue = ind.TotalQ2PPPercent.ToString();
+                case cTotalUPPPercent:
+                    sPropertyValue = ind.TotalUPPPercent.ToString();
                     break;
-                case cTotalQ2PCPercent:
-                    sPropertyValue = ind.TotalQ2PCPercent.ToString();
+                case cTotalUPCPercent:
+                    sPropertyValue = ind.TotalUPCPercent.ToString();
                     break;
-                case cTotalQ2PFPercent:
-                    sPropertyValue = ind.TotalQ2PFPercent.ToString();
+                case cTotalUPFPercent:
+                    sPropertyValue = ind.TotalUPFPercent.ToString();
                     break;
                 default:
                     break;
@@ -477,61 +477,61 @@ namespace DevTreks.Extensions
             string attNameExtension, ref XmlWriter writer)
         {
             writer.WriteAttributeString(
-                    string.Concat(cTotalPFTotal, attNameExtension), ind.TotalPFTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMPFTotal, attNameExtension), ind.TotalMPFTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalPCTotal, attNameExtension), ind.TotalPCTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMPCTotal, attNameExtension), ind.TotalMPCTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalAPTotal, attNameExtension), ind.TotalAPTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMAPTotal, attNameExtension), ind.TotalMAPTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalACTotal, attNameExtension), ind.TotalACTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMACTotal, attNameExtension), ind.TotalMACTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalAPChange, attNameExtension), ind.TotalAPChange.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMAPChange, attNameExtension), ind.TotalMAPChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalACChange, attNameExtension), ind.TotalACChange.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMACChange, attNameExtension), ind.TotalMACChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalPPPercent, attNameExtension), ind.TotalPPPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMPPPercent, attNameExtension), ind.TotalMPPPercent.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalPCPercent, attNameExtension), ind.TotalPCPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMPCPercent, attNameExtension), ind.TotalMPCPercent.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalPFPercent, attNameExtension), ind.TotalPFPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalMPFPercent, attNameExtension), ind.TotalMPFPercent.ToString("N2", CultureInfo.InvariantCulture));
 
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1PFTotal, attNameExtension), ind.TotalQ1PFTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLPFTotal, attNameExtension), ind.TotalLPFTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1PCTotal, attNameExtension), ind.TotalQ1PCTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLPCTotal, attNameExtension), ind.TotalLPCTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1APTotal, attNameExtension), ind.TotalQ1APTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLAPTotal, attNameExtension), ind.TotalLAPTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1ACTotal, attNameExtension), ind.TotalQ1ACTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLACTotal, attNameExtension), ind.TotalLACTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1APChange, attNameExtension), ind.TotalQ1APChange.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLAPChange, attNameExtension), ind.TotalLAPChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1ACChange, attNameExtension), ind.TotalQ1ACChange.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLACChange, attNameExtension), ind.TotalLACChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1PPPercent, attNameExtension), ind.TotalQ1PPPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLPPPercent, attNameExtension), ind.TotalLPPPercent.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1PCPercent, attNameExtension), ind.TotalQ1PCPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLPCPercent, attNameExtension), ind.TotalLPCPercent.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ1PFPercent, attNameExtension), ind.TotalQ1PFPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalLPFPercent, attNameExtension), ind.TotalLPFPercent.ToString("N2", CultureInfo.InvariantCulture));
 
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2PFTotal, attNameExtension), ind.TotalQ2PFTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUPFTotal, attNameExtension), ind.TotalUPFTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2PCTotal, attNameExtension), ind.TotalQ2PCTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUPCTotal, attNameExtension), ind.TotalUPCTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2APTotal, attNameExtension), ind.TotalQ2APTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUAPTotal, attNameExtension), ind.TotalUAPTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2ACTotal, attNameExtension), ind.TotalQ2ACTotal.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUACTotal, attNameExtension), ind.TotalUACTotal.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2APChange, attNameExtension), ind.TotalQ2APChange.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUAPChange, attNameExtension), ind.TotalUAPChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2ACChange, attNameExtension), ind.TotalQ2ACChange.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUACChange, attNameExtension), ind.TotalUACChange.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2PPPercent, attNameExtension), ind.TotalQ2PPPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUPPPercent, attNameExtension), ind.TotalUPPPercent.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2PCPercent, attNameExtension), ind.TotalQ2PCPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUPCPercent, attNameExtension), ind.TotalUPCPercent.ToString("N2", CultureInfo.InvariantCulture));
             writer.WriteAttributeString(
-                    string.Concat(cTotalQ2PFPercent, attNameExtension), ind.TotalQ2PFPercent.ToString("N2", CultureInfo.InvariantCulture));
+                    string.Concat(cTotalUPFPercent, attNameExtension), ind.TotalUPFPercent.ToString("N2", CultureInfo.InvariantCulture));
         }
         #endregion
         //calcs holds the collections needing statistical analysis
@@ -610,13 +610,13 @@ namespace DevTreks.Extensions
         }
         private bool SetProgressAnalysis(ME2Stock me2Stock)
         {
-            bool bHasTotalProgress = false;
+            bool bHasTotalMProgress = false;
             if (me2Stock.Stocks != null)
             {
                 //set//set change numbers
-                bHasTotalProgress = SetProgress(me2Stock); 
+                bHasTotalMProgress = SetProgress(me2Stock); 
             }
-            return bHasTotalProgress;
+            return bHasTotalMProgress;
         }
         private static bool SetProgress(ME2Stock me2Stock)
         {
@@ -670,8 +670,8 @@ namespace DevTreks.Extensions
                     && stock.TargetType == TARGET_TYPES.benchmark.ToString())
                 {
                     double dbPlannedTotal = 0;
-                    double dbPlannedTotalQ1 = 0;
-                    double dbPlannedTotalQ2 = 0;
+                    double dbPlannedTotalL = 0;
+                    double dbPlannedTotalU = 0;
                     if (stock.Progress1.Stocks != null)
                     {
                         foreach (ME2Progress1 progress in stock.Progress1.Stocks)
@@ -681,16 +681,16 @@ namespace DevTreks.Extensions
                                 if (progress.TME2Label == cumtotal.TME2Label)
                                 {
                                     dbPlannedTotal += cumtotal.TME2TMAmount;
-                                    dbPlannedTotalQ1 += cumtotal.TME2TLAmount;
-                                    dbPlannedTotalQ2 += cumtotal.TME2TUAmount;
+                                    dbPlannedTotalL += cumtotal.TME2TLAmount;
+                                    dbPlannedTotalU += cumtotal.TME2TUAmount;
                                 }
                             }
-                            progress.TotalPFTotal = dbPlannedTotal;
-                            progress.TotalQ1PFTotal = dbPlannedTotalQ1;
-                            progress.TotalQ2PFTotal = dbPlannedTotalQ2;
+                            progress.TotalMPFTotal = dbPlannedTotal;
+                            progress.TotalLPFTotal = dbPlannedTotalL;
+                            progress.TotalUPFTotal = dbPlannedTotalU;
                             dbPlannedTotal = 0;
-                            dbPlannedTotalQ1 = 0;
-                            dbPlannedTotalQ2 = 0;
+                            dbPlannedTotalL = 0;
+                            dbPlannedTotalU = 0;
                         }
                     }
                 }
@@ -743,8 +743,8 @@ namespace DevTreks.Extensions
             ME2Stock me2Stock, ME2Stock planned, ME2Stock observationStock)
         {
             double dbPlannedTotal = 0;
-            double dbPlannedTotalQ1 = 0;
-            double dbPlannedTotalQ2 = 0;
+            double dbPlannedTotalL = 0;
+            double dbPlannedTotalU = 0;
             if (planned.Total1.Stocks != null)
             {
                 foreach (ME2Total1 total in planned.Total1.Stocks.OrderBy(c => c.Date))
@@ -766,20 +766,20 @@ namespace DevTreks.Extensions
                     newProgress.TME2TUAmount = total.TME2TUAmount;
                     //set planned cumulative
                     dbPlannedTotal = 0;
-                    dbPlannedTotalQ1 = 0;
-                    dbPlannedTotalQ2 = 0;
+                    dbPlannedTotalL = 0;
+                    dbPlannedTotalU = 0;
                     foreach (ME2Total1 cumtotal in cumTotals.OrderBy(c => c.Date))
                     {
                         if (total.TME2Label == cumtotal.TME2Label)
                         {
                             dbPlannedTotal += cumtotal.TME2TMAmount;
-                            dbPlannedTotalQ1 += cumtotal.TME2TLAmount;
-                            dbPlannedTotalQ2 += cumtotal.TME2TUAmount;
+                            dbPlannedTotalL += cumtotal.TME2TLAmount;
+                            dbPlannedTotalU += cumtotal.TME2TUAmount;
                         }
                     }
-                    newProgress.TotalPCTotal = dbPlannedTotal;
-                    newProgress.TotalQ1PCTotal = dbPlannedTotalQ1;
-                    newProgress.TotalQ2PCTotal = dbPlannedTotalQ2;
+                    newProgress.TotalMPCTotal = dbPlannedTotal;
+                    newProgress.TotalLPCTotal = dbPlannedTotalL;
+                    newProgress.TotalUPCTotal = dbPlannedTotalU;
                     //add new change to observationStock.Progress1.Stocks
                     observationStock.Progress1.Stocks.Add(newProgress);
                 }
@@ -789,8 +789,8 @@ namespace DevTreks.Extensions
             List<int> ids, List<ME2Stock> obsStocks, ME2Stock actual, ME2Stock observationStock)
         {
             double dbActualTotal = 0;
-            double dbActualTotalQ1 = 0;
-            double dbActualTotalQ2 = 0;
+            double dbActualTotalL = 0;
+            double dbActualTotalU = 0;
             //get the corresponding planned totals
             ME2Stock planned = GetProgressStockByLabel(
                 actual, ids, obsStocks, Calculator1.TARGET_TYPES.benchmark.ToString());
@@ -808,29 +808,29 @@ namespace DevTreks.Extensions
                     };
                     //set planned cumulative
                     dbActualTotal = 0;
-                    dbActualTotalQ1 = 0;
-                    dbActualTotalQ2 = 0;
+                    dbActualTotalL = 0;
+                    dbActualTotalU = 0;
                     foreach (ME2Total1 cumtotal in cumTotals.OrderBy(c => c.Date))
                     {
                         if (total.TME2Label == cumtotal.TME2Label)
                         {
                             dbActualTotal += cumtotal.TME2TMAmount;
-                            dbActualTotalQ1 += cumtotal.TME2TLAmount;
-                            dbActualTotalQ2 += cumtotal.TME2TUAmount;
+                            dbActualTotalL += cumtotal.TME2TLAmount;
+                            dbActualTotalU += cumtotal.TME2TUAmount;
                         }
                     }
-                    newProgress.TotalACTotal = dbActualTotal;
-                    newProgress.TotalQ1ACTotal = dbActualTotalQ1;
-                    newProgress.TotalQ2ACTotal = dbActualTotalQ2;
+                    newProgress.TotalMACTotal = dbActualTotal;
+                    newProgress.TotalLACTotal = dbActualTotalL;
+                    newProgress.TotalUACTotal = dbActualTotalU;
 
                     //set actual period using last actual total
-                    newProgress.TotalAPTotal = newProgress.TME2TMAmount;
+                    newProgress.TotalMAPTotal = newProgress.TME2TMAmount;
                     //q1
                     //set actual period using last actual total
-                    newProgress.TotalQ1APTotal = newProgress.TME2TLAmount;
+                    newProgress.TotalLAPTotal = newProgress.TME2TLAmount;
                     //q2
                     //set actual period using last actual total
-                    newProgress.TotalQ2APTotal = newProgress.TME2TUAmount;
+                    newProgress.TotalUAPTotal = newProgress.TME2TUAmount;
                     //set the corresponding planned totals
                     if (planned != null)
                     {
@@ -841,54 +841,54 @@ namespace DevTreks.Extensions
                                 if (progress.TME2Label == total.TME2Label)
                                 {
                                     //set actual.planned cumulative
-                                    newProgress.TotalPCTotal = progress.TotalPCTotal;
+                                    newProgress.TotalMPCTotal = progress.TotalMPCTotal;
                                     //set actual.planned period
-                                    //Total is always planned period and TotalAPTotal is actual period
+                                    //Total is always planned period and TotalMAPTotal is actual period
                                     newProgress.TME2TMAmount = progress.TME2TMAmount;
                                     //the planned fulltotal to the planned full total
-                                    newProgress.TotalPFTotal = progress.TotalPFTotal;
+                                    newProgress.TotalMPFTotal = progress.TotalMPFTotal;
                                     //q1
-                                    newProgress.TotalQ1PCTotal = progress.TotalQ1PCTotal;
+                                    newProgress.TotalLPCTotal = progress.TotalLPCTotal;
                                     newProgress.TME2TLAmount = progress.TME2TLAmount;
-                                    newProgress.TotalQ1PFTotal = progress.TotalQ1PFTotal;
+                                    newProgress.TotalLPFTotal = progress.TotalLPFTotal;
                                     //q1
-                                    newProgress.TotalQ2PCTotal = progress.TotalQ2PCTotal;
+                                    newProgress.TotalUPCTotal = progress.TotalUPCTotal;
                                     newProgress.TME2TUAmount = progress.TME2TUAmount;
-                                    newProgress.TotalQ2PFTotal = progress.TotalQ2PFTotal;
+                                    newProgress.TotalUPFTotal = progress.TotalUPFTotal;
                                 }
                             }
                         }
                     }
                     //set the variances
                     //partial period change
-                    newProgress.TotalAPChange = newProgress.TotalAPTotal - newProgress.TME2TMAmount;
+                    newProgress.TotalMAPChange = newProgress.TotalMAPTotal - newProgress.TME2TMAmount;
                     //cumulative change
-                    newProgress.TotalACChange = newProgress.TotalACTotal - newProgress.TotalPCTotal;
+                    newProgress.TotalMACChange = newProgress.TotalMACTotal - newProgress.TotalMPCTotal;
                     //set planned period percent
-                    newProgress.TotalPPPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalAPTotal, newProgress.TME2TMAmount);
-                    newProgress.TotalPCPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalACTotal, newProgress.TotalPCTotal);
-                    newProgress.TotalPFPercent
-                            = CalculatorHelpers.GetPercent(newProgress.TotalACTotal, newProgress.TotalPFTotal);
+                    newProgress.TotalMPPPercent
+                        = CalculatorHelpers.GetPercent(newProgress.TotalMAPTotal, newProgress.TME2TMAmount);
+                    newProgress.TotalMPCPercent
+                        = CalculatorHelpers.GetPercent(newProgress.TotalMACTotal, newProgress.TotalMPCTotal);
+                    newProgress.TotalMPFPercent
+                            = CalculatorHelpers.GetPercent(newProgress.TotalMACTotal, newProgress.TotalMPFTotal);
                     //q1
-                    newProgress.TotalQ1APChange = newProgress.TotalQ1APTotal - newProgress.TME2TLAmount;
-                    newProgress.TotalQ1ACChange = newProgress.TotalQ1ACTotal - newProgress.TotalQ1PCTotal;
-                    newProgress.TotalQ1PPPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalQ1APTotal, newProgress.TME2TLAmount);
-                    newProgress.TotalQ1PCPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalQ1ACTotal, newProgress.TotalQ1PCTotal);
-                    newProgress.TotalQ1PFPercent
-                            = CalculatorHelpers.GetPercent(newProgress.TotalQ1ACTotal, newProgress.TotalQ1PFTotal);
+                    newProgress.TotalLAPChange = newProgress.TotalLAPTotal - newProgress.TME2TLAmount;
+                    newProgress.TotalLACChange = newProgress.TotalLACTotal - newProgress.TotalLPCTotal;
+                    newProgress.TotalLPPPercent
+                        = CalculatorHelpers.GetPercent(newProgress.TotalLAPTotal, newProgress.TME2TLAmount);
+                    newProgress.TotalLPCPercent
+                        = CalculatorHelpers.GetPercent(newProgress.TotalLACTotal, newProgress.TotalLPCTotal);
+                    newProgress.TotalLPFPercent
+                            = CalculatorHelpers.GetPercent(newProgress.TotalLACTotal, newProgress.TotalLPFTotal);
                     //q2
-                    newProgress.TotalQ2APChange = newProgress.TotalQ2APTotal - newProgress.TME2TUAmount;
-                    newProgress.TotalQ2ACChange = newProgress.TotalQ2ACTotal - newProgress.TotalQ2PCTotal;
-                    newProgress.TotalQ2PPPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalQ2APTotal, newProgress.TME2TUAmount);
-                    newProgress.TotalQ2PCPercent
-                        = CalculatorHelpers.GetPercent(newProgress.TotalQ2ACTotal, newProgress.TotalQ2PCTotal);
-                    newProgress.TotalQ2PFPercent
-                            = CalculatorHelpers.GetPercent(newProgress.TotalQ2ACTotal, newProgress.TotalQ2PFTotal);
+                    newProgress.TotalUAPChange = newProgress.TotalUAPTotal - newProgress.TME2TUAmount;
+                    newProgress.TotalUACChange = newProgress.TotalUACTotal - newProgress.TotalUPCTotal;
+                    newProgress.TotalUPPPercent
+                        = CalculatorHelpers.GetPercent(newProgress.TotalUAPTotal, newProgress.TME2TUAmount);
+                    newProgress.TotalUPCPercent
+                        = CalculatorHelpers.GetPercent(newProgress.TotalUACTotal, newProgress.TotalUPCTotal);
+                    newProgress.TotalUPFPercent
+                            = CalculatorHelpers.GetPercent(newProgress.TotalUACTotal, newProgress.TotalUPFTotal);
                     //add new change to observationStock.Progress1.Stocks
                     observationStock.Progress1.Stocks.Add(newProgress);
                 }
@@ -927,7 +927,7 @@ namespace DevTreks.Extensions
                                     obsStocks, targetType);
                                 if (!bHasMatch)
                                 {
-                                    //if no match use the last one (i.e. input series with 1 bm and 20 actuals)
+                                    //if no match use the last one (i.e. input series with 1 bm and 15 actuals)
                                     plannedMatch = obsStocks.LastOrDefault(p => p.Label == actual.Label
                                          && p.TargetType == targetType);
                                     break;

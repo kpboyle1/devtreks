@@ -48,7 +48,19 @@ namespace DevTreks.Extensions
         public ME2Change1 Change1 { get; set; }
         //progress analyses
         public ME2Progress1 Progress1 { get; set; }
-
+        //analyzers set one Stock property
+        public string TME2Stage { get; set; }
+        public const string cTME2Stage = "TME2Stage";
+        public enum ME_STAGES
+        {
+            none        = 0,
+            baseline    = 1,
+            realtime    = 2,
+            midterm     = 3,
+            final       = 4,
+            expost      = 5,
+            other       = 6
+        }
         public virtual void InitTotalME2StocksProperties()
         {
             if (this.Total1 == null)
@@ -304,15 +316,19 @@ namespace DevTreks.Extensions
                 //no set shared object props, they already have props set
                 //don't SetTotalIndicator1StocksProperties because the descendants have their own stock totals
 
-                //204 not used
+                //204
                 //analyzers set exactly one ME2Stock property: TMEStage (baseline, midterm ...)
-                //string sMEStage = CalculatorHelpers.GetAttribute(
-                //    currentCalculationsElement, ME2IndicatorStock.cTME2Stage);
-                //if (!string.IsNullOrEmpty(sMEStage))
-                //{
-                //    this.TME2Stage = sMEStage;
-                //    //the remaining properties derive from aggregated children indicators
-                //}
+                string sMEStage = CalculatorHelpers.GetAttribute(
+                    currentCalculationsElement, cTME2Stage);
+                if (!string.IsNullOrEmpty(sMEStage))
+                {
+                    this.TME2Stage = sMEStage;
+                    //the remaining properties derive from aggregated children indicators
+                }
+                else
+                {
+                    this.TME2Stage = ME_STAGES.none.ToString();
+                }
             }
         }
         public virtual void SetTotalME2StocksProperty(string attName,

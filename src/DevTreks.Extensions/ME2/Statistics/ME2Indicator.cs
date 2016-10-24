@@ -344,7 +344,7 @@ namespace DevTreks.Extensions
                 //zero based index means 21 inds needed (to prevent null exceptions with inds 16 to 20)
                 for (i = ME2Indicators.Count; i <= 20; i++)
                 {
-                    //many conditional causes use 20 indicators regardless of MaximumNumberOfME2Indicators
+                    //many conditional causes use 15 indicators regardless of MaximumNumberOfME2Indicators
                     //prevent null errors
                     ME2Indicator ind1 = new ME2Indicator();
                     ME2Indicators.Add(ind1);
@@ -3838,6 +3838,7 @@ namespace DevTreks.Extensions
         public void SetTotalMathTypeStock1()
         {
             ME2Indicators[1].IndTAmount = this.GetTotalFromMathExpression(1, _colNames, ME2Indicators[1].IndMathExpression, new List<double>(xcols - 5));
+            ME2Indicators[1].IndTMAmount = ME2Indicators[1].IndTAmount;
             if (!string.IsNullOrEmpty(ErrorMessage))
             {
                 //deprecated: error msg already refers to correct ind
@@ -3849,97 +3850,97 @@ namespace DevTreks.Extensions
         public void SetTotalMathTypeStock2()
         {
             ME2Indicators[2].IndTAmount = this.GetTotalFromMathExpression(2, _colNames, ME2Indicators[2].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[2].IndTMAmount = ME2Indicators[2].IndTAmount;
         }
         public void SetTotalMathTypeStock3()
         {
             ME2Indicators[3].IndTAmount = this.GetTotalFromMathExpression(3, _colNames, ME2Indicators[3].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[3].IndTMAmount = ME2Indicators[3].IndTAmount;
         }
         public void SetTotalMathTypeStock4()
         {
             ME2Indicators[4].IndTAmount = this.GetTotalFromMathExpression(4, _colNames, ME2Indicators[4].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[4].IndTMAmount = ME2Indicators[4].IndTAmount;
         }
         public void SetTotalMathTypeStock5()
         {
             ME2Indicators[5].IndTAmount = this.GetTotalFromMathExpression(5, _colNames, ME2Indicators[5].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[5].IndTMAmount = ME2Indicators[5].IndTAmount;
         }
         public void SetTotalMathTypeStock6()
         {
             ME2Indicators[6].IndTAmount = this.GetTotalFromMathExpression(6, _colNames, ME2Indicators[6].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[6].IndTMAmount = ME2Indicators[6].IndTAmount;
         }
         public void SetTotalMathTypeStock7()
         {
             ME2Indicators[7].IndTAmount = this.GetTotalFromMathExpression(7, _colNames, ME2Indicators[7].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[7].IndTMAmount = ME2Indicators[7].IndTAmount;
         }
         public void SetTotalMathTypeStock8()
         {
             ME2Indicators[8].IndTAmount = this.GetTotalFromMathExpression(8, _colNames, ME2Indicators[8].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[8].IndTMAmount = ME2Indicators[8].IndTAmount;
         }
         public void SetTotalMathTypeStock9()
         {
             ME2Indicators[9].IndTAmount = this.GetTotalFromMathExpression(9, _colNames, ME2Indicators[9].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[9].IndTMAmount = ME2Indicators[9].IndTAmount;
         }
         public void SetTotalMathTypeStock10()
         {
             ME2Indicators[10].IndTAmount = this.GetTotalFromMathExpression(10, _colNames, ME2Indicators[10].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[10].IndTMAmount = ME2Indicators[10].IndTAmount;
         }
         public void SetTotalMathTypeStock11()
         {
             ME2Indicators[11].IndTAmount = this.GetTotalFromMathExpression(11, _colNames, ME2Indicators[11].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[11].IndTMAmount = ME2Indicators[11].IndTAmount;
         }
         public void SetTotalMathTypeStock12()
         {
             ME2Indicators[12].IndTAmount = this.GetTotalFromMathExpression(12, _colNames, ME2Indicators[12].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[12].IndTMAmount = ME2Indicators[12].IndTAmount;
         }
         public void SetTotalMathTypeStock13()
         {
             ME2Indicators[13].IndTAmount = this.GetTotalFromMathExpression(13, _colNames, ME2Indicators[13].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[13].IndTMAmount = ME2Indicators[13].IndTAmount;
         }
         public void SetTotalMathTypeStock14()
         {
             ME2Indicators[14].IndTAmount = this.GetTotalFromMathExpression(14, _colNames, ME2Indicators[14].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[14].IndTMAmount = ME2Indicators[14].IndTAmount;
         }
         public void SetTotalMathTypeStock15()
         {
             ME2Indicators[15].IndTAmount = this.GetTotalFromMathExpression(15, _colNames, ME2Indicators[15].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[15].IndTMAmount = ME2Indicators[15].IndTAmount;
         }
         public void SetTotalMathTypeStock16()
         {
             ME2Indicators[16].IndTAmount = this.GetTotalFromMathExpression(16, _colNames, ME2Indicators[16].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[16].IndTMAmount = ME2Indicators[16].IndTAmount;
         }
         public void SetTotalMathTypeStock17()
         {
             ME2Indicators[17].IndTAmount = this.GetTotalFromMathExpression(17, _colNames, ME2Indicators[17].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[17].IndTMAmount = ME2Indicators[17].IndTAmount;
         }
         public void SetTotalMathTypeStock18()
         {
             ME2Indicators[18].IndTAmount = this.GetTotalFromMathExpression(18, _colNames, ME2Indicators[18].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[18].IndTMAmount = ME2Indicators[18].IndTAmount;
         }
         public void SetTotalMathTypeStock19()
         {
             ME2Indicators[19].IndTAmount = this.GetTotalFromMathExpression(19, _colNames, ME2Indicators[19].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[19].IndTMAmount = ME2Indicators[19].IndTAmount;
         }
         public void SetTotalMathTypeStock20()
         {
             ME2Indicators[20].IndTAmount = this.GetTotalFromMathExpression(20, _colNames, ME2Indicators[20].IndMathExpression, new List<double>(xcols - 5));
-
+            ME2Indicators[20].IndTMAmount = ME2Indicators[20].IndTAmount;
         }
 
         public IDictionary<string, List<List<double>>> GetDataSet(List<string> lines)
@@ -7593,6 +7594,7 @@ namespace DevTreks.Extensions
             }
             //scorem is set when the distribution and mathtype run
             baseCalc.ME2Indicators[0].IndTAmount = baseCalc.GetTotalFromMathExpression(0, colNames, baseCalc.ME2Indicators[0].IndMathExpression, new List<double>(ME2Indicator.xcols - 5));
+            baseCalc.ME2Indicators[0].IndTMAmount = baseCalc.ME2Indicators[0].IndTAmount;
             if (!string.IsNullOrEmpty(baseCalc.ErrorMessage))
             {
                 baseCalc.CalculatorDescription += baseCalc.ErrorMessage;

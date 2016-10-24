@@ -220,15 +220,15 @@ namespace DevTreks.Extensions
             //bool bHasTotals = false;
             if (newCalc.ME2Indicators != null)
             {
-                //204 not used
-                //if (newCalc.TME2Stage != null)
-                //{
-                //    baseStat.TME2Stage = newCalc.TME2Stage;
-                //}
-                //else
-                //{
-                //    baseStat.TME2Stage = ME2IndicatorStock.ME_STAGES.none.ToString();
-                //}
+                //204
+                if (newCalc.TME2Stage != null)
+                {
+                    baseStat.TME2Stage = newCalc.TME2Stage;
+                }
+                else
+                {
+                    baseStat.TME2Stage = ME2Stock.ME_STAGES.none.ToString();
+                }
                 //set up the calcs
                 foreach (ME2Indicator ind in newCalc.ME2Indicators)
                 {

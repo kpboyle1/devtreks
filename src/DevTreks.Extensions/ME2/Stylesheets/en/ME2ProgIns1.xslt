@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- Author: www.devtreks.org, 2014, February -->
+<!-- Author: www.devtreks.org, 2016, October -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 	xmlns:y0="urn:DevTreks-support-schemas:Input"
 	xmlns:DisplayDevPacks="urn:displaydevpacks">
@@ -103,7 +103,137 @@
 			  Target Type: <strong><xsl:value-of select="@TargetType"/></strong>
 	    </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name1 != '')">
+    <xsl:if test="(@TME2Name0 != '' and @TME2Name0 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 0 Name : <strong><xsl:value-of select="@TME2Name0"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label0"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date0"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N0"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit0"/>
+        </div>
+        <div class="ui-block-b">
+           Type : <xsl:value-of select="@TME2Type0"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          Most Plan Full : <xsl:value-of select="@TMPFTotal0"/>
+        </div>
+        <div class="ui-block-a">
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal0"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period : <xsl:value-of select="@TMAPTotal0"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal0"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange0"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange0"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent0"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent0"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent0"/>
+        </div>
+        <div class="ui-block-a">
+          L Unit : <xsl:value-of select="@TME2TLUnit0"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          L Planned Period : <xsl:value-of select="@TME2TLAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          L Plan Full : <xsl:value-of select="@TLPFTotal0"/>
+        </div>
+        <div class="ui-block-a">
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal0"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period : <xsl:value-of select="@TLAPTotal0"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul : <xsl:value-of select="@TLACTotal0"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period Change : <xsl:value-of select="@TLAPChange0"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange0"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent0"/>
+        </div>
+        <div class="ui-block-a">
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent0"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent0"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit0"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount0"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal0"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal0"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal0"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal0"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange0"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange0"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent0"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent0"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent0"/>
+        </div>
+        </div>
+        <div >
+			    <strong>Description : </strong><xsl:value-of select="@TME2Description0" />
+	      </div>
+      </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name1 != '' and @TME2Name1 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -122,110 +252,110 @@
           Observations : <xsl:value-of select="@TME2N1"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit1"/>
+          Unit : <xsl:value-of select="@TME2TMUnit1"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type1"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total1"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount1"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal1"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal1"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal1"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal1"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal1"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal1"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal1"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal1"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange1"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange1"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange1"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange1"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent1"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent1"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent1"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent1"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent1"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent1"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit1"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total1"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal1"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal1"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal1"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal1"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange1"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange1"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent1"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent1"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent1"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit1"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit1"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total1"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount1"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal1"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal1"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal1"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal1"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal1"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal1"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal1"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal1"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange1"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange1"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange1"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange1"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent1"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent1"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent1"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent1"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent1"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent1"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit1"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount1"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal1"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal1"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal1"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal1"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange1"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange1"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent1"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent1"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent1"/>
         </div>
         </div>
         <div >
@@ -233,7 +363,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name2 != '')">
+  <xsl:if test="(@TME2Name2 != '' and @TME2Name2 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -252,110 +382,110 @@
           Observations : <xsl:value-of select="@TME2N2"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit2"/>
+          Unit : <xsl:value-of select="@TME2TMUnit2"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type2"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total2"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount2"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal2"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal2"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal2"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal2"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal2"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal2"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal2"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal2"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange2"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange2"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange2"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange2"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent2"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent2"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent2"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent2"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent2"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent2"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit2"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total2"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal2"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal2"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal2"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal2"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange2"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange2"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent2"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent2"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent2"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit2"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit2"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total2"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount2"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal2"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal2"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal2"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal2"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal2"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal2"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal2"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal2"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange2"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange2"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange2"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange2"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent2"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent2"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent2"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent2"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent2"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent2"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit2"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount2"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal2"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal2"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal2"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal2"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange2"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange2"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent2"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent2"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent2"/>
         </div>
         </div>
         <div >
@@ -363,7 +493,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name3 != '')">
+  <xsl:if test="(@TME2Name3 != '' and @TME2Name3 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -382,110 +512,110 @@
           Observations : <xsl:value-of select="@TME2N3"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit3"/>
+          Unit : <xsl:value-of select="@TME2TMUnit3"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type3"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total3"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount3"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal3"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal3"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal3"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal3"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal3"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal3"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal3"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal3"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange3"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange3"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange3"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange3"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent3"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent3"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent3"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent3"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent3"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent3"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit3"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total3"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal3"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal3"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal3"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal3"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange3"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange3"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent3"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent3"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent3"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit3"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit3"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total3"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount3"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal3"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal3"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal3"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal3"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal3"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal3"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal3"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal3"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange3"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange3"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange3"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange3"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent3"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent3"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent3"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent3"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent3"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent3"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit3"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount3"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal3"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal3"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal3"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal3"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange3"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange3"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent3"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent3"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent3"/>
         </div>
         </div>
         <div >
@@ -493,7 +623,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name4 != '')">
+  <xsl:if test="(@TME2Name4 != '' and @TME2Name4 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -512,110 +642,110 @@
           Observations : <xsl:value-of select="@TME2N4"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit4"/>
+          Unit : <xsl:value-of select="@TME2TMUnit4"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type4"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total4"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount4"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal4"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal4"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal4"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal4"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal4"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal4"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal4"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal4"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange4"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange4"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange4"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange4"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent4"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent4"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent4"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent4"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent4"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent4"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit4"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total4"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal4"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal4"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal4"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal4"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange4"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange4"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent4"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent4"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent4"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit4"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit4"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total4"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount4"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal4"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal4"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal4"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal4"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal4"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal4"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal4"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal4"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange4"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange4"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange4"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange4"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent4"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent4"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent4"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent4"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent4"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent4"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit4"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount4"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal4"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal4"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal4"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal4"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange4"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange4"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent4"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent4"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent4"/>
         </div>
         </div>
         <div >
@@ -623,7 +753,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name5 != '')">
+  <xsl:if test="(@TME2Name5 != '' and @TME2Name5 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -642,110 +772,110 @@
           Observations : <xsl:value-of select="@TME2N5"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit5"/>
+          Unit : <xsl:value-of select="@TME2TMUnit5"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type5"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total5"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount5"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal5"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal5"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal5"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal5"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal5"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal5"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal5"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal5"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange5"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange5"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange5"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange5"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent5"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent5"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent5"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent5"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent5"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent5"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit5"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total5"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal5"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal5"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal5"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal5"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange5"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange5"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent5"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent5"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent5"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit5"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit5"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total5"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount5"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal5"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal5"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal5"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal5"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal5"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal5"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal5"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal5"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange5"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange5"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange5"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange5"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent5"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent5"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent5"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent5"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent5"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent5"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit5"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount5"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal5"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal5"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal5"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal5"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange5"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange5"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent5"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent5"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent5"/>
         </div>
         </div>
         <div >
@@ -753,7 +883,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name6 != '')">
+  <xsl:if test="(@TME2Name6 != '' and @TME2Name6 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -772,110 +902,110 @@
           Observations : <xsl:value-of select="@TME2N6"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit6"/>
+          Unit : <xsl:value-of select="@TME2TMUnit6"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type6"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total6"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount6"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal6"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal6"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal6"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal6"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal6"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal6"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal6"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal6"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange6"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange6"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange6"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange6"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent6"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent6"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent6"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent6"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent6"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent6"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit6"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total6"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal6"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal6"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal6"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal6"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange6"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange6"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent6"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent6"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent6"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit6"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit6"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total6"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount6"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal6"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal6"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal6"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal6"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal6"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal6"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal6"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal6"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange6"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange6"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange6"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange6"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent6"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent6"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent6"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent6"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent6"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent6"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit6"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount6"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal6"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal6"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal6"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal6"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange6"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange6"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent6"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent6"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent6"/>
         </div>
         </div>
         <div >
@@ -883,7 +1013,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name7 != '')">
+  <xsl:if test="(@TME2Name7 != '' and @TME2Name7 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -902,110 +1032,110 @@
           Observations : <xsl:value-of select="@TME2N7"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit7"/>
+          Unit : <xsl:value-of select="@TME2TMUnit7"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type7"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total7"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount7"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal7"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal7"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal7"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal7"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal7"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal7"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal7"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal7"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange7"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange7"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange7"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange7"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent7"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent7"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent7"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent7"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent7"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent7"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit7"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total7"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal7"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal7"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal7"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal7"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange7"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange7"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent7"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent7"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent7"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit7"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit7"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total7"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount7"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal7"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal7"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal7"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal7"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal7"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal7"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal7"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal7"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange7"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange7"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange7"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange7"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent7"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent7"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent7"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent7"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent7"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent7"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit7"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount7"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal7"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal7"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal7"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal7"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange7"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange7"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent7"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent7"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent7"/>
         </div>
         </div>
         <div >
@@ -1013,7 +1143,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name8 != '')">
+  <xsl:if test="(@TME2Name8 != '' and @TME2Name8 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -1032,110 +1162,110 @@
           Observations : <xsl:value-of select="@TME2N8"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit8"/>
+          Unit : <xsl:value-of select="@TME2TMUnit8"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type8"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total8"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount8"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal8"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal8"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal8"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal8"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal8"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal8"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal8"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal8"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange8"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange8"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange8"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange8"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent8"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent8"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent8"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent8"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent8"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent8"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit8"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total8"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal8"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal8"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal8"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal8"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange8"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange8"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent8"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent8"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent8"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit8"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit8"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total8"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount8"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal8"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal8"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal8"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal8"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal8"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal8"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal8"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal8"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange8"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange8"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange8"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange8"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent8"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent8"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent8"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent8"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent8"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent8"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit8"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount8"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal8"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal8"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal8"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal8"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange8"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange8"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent8"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent8"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent8"/>
         </div>
         </div>
         <div >
@@ -1143,7 +1273,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name9 != '')">
+  <xsl:if test="(@TME2Name9 != '' and @TME2Name9 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -1162,110 +1292,110 @@
           Observations : <xsl:value-of select="@TME2N9"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit9"/>
+          Unit : <xsl:value-of select="@TME2TMUnit9"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type9"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total9"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount9"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal9"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal9"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal9"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal9"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal9"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal9"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal9"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal9"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange9"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange9"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange9"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange9"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent9"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent9"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent9"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent9"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent9"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent9"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit9"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total9"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal9"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal9"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal9"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal9"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange9"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange9"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent9"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent9"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent9"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit9"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit9"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total9"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount9"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal9"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal9"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal9"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal9"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal9"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal9"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal9"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal9"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange9"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange9"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange9"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange9"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent9"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent9"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent9"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent9"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent9"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent9"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit9"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount9"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal9"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal9"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal9"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal9"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange9"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange9"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent9"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent9"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent9"/>
         </div>
         </div>
         <div >
@@ -1273,7 +1403,7 @@
 	      </div>
       </div>
 	</xsl:if>
-  <xsl:if test="(@TME2Name10 != '')">
+  <xsl:if test="(@TME2Name10 != '' and @TME2Name10 != 'none')">
       <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
       <h4 class="ui-bar-b">
         <strong>Indicator Details</strong>
@@ -1292,114 +1422,764 @@
           Observations : <xsl:value-of select="@TME2N10"/>
         </div>
         <div class="ui-block-a">
-          Unit : <xsl:value-of select="@TME2Unit10"/>
+          Unit : <xsl:value-of select="@TME2TMUnit10"/>
         </div>
         <div class="ui-block-b">
            Type : <xsl:value-of select="@TME2Type10"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Period : <xsl:value-of select="@TME2Total10"/>
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount10"/>
         </div>
         <div class="ui-block-b">
-          Total Plan Full : <xsl:value-of select="@TPFTotal10"/>
+          Most Plan Full : <xsl:value-of select="@TMPFTotal10"/>
         </div>
         <div class="ui-block-a">
-          Total Plan Cumul : <xsl:value-of select="@TPCTotal10"/>
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal10"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period : <xsl:value-of select="@TAPTotal10"/>
+          Most Actual Period : <xsl:value-of select="@TMAPTotal10"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul : <xsl:value-of select="@TACTotal10"/>
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal10"/>
         </div>
         <div class="ui-block-b">
-          Total Actual Period Change : <xsl:value-of select="@TAPChange10"/>
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange10"/>
         </div>
         <div class="ui-block-a">
-          Total Actual Cumul Change : <xsl:value-of select="@TACChange10"/>
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange10"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Period Percent : <xsl:value-of select="@TPPPercent10"/>
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent10"/>
         </div>
         <div class="ui-block-a">
-          Total Planned Cumul Percent : <xsl:value-of select="@TPCPercent10"/>
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent10"/>
         </div>
         <div class="ui-block-b">
-          Total Planned Full Percent : <xsl:value-of select="@TPFPercent10"/>
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent10"/>
         </div>
         <div class="ui-block-a">
-          Q1 Unit : <xsl:value-of select="@TME2Q1Unit10"/>
-        </div>
-        <div class="ui-block-b">
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Period : <xsl:value-of select="@TME2Q1Total10"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Plan Full : <xsl:value-of select="@TQ1PFTotal10"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Plan Cumul : <xsl:value-of select="@TQ1PCTotal10"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period : <xsl:value-of select="@TQ1APTotal10"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul : <xsl:value-of select="@TQ1ACTotal10"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Actual Period Change : <xsl:value-of select="@TQ1APChange10"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Actual Cumul Change : <xsl:value-of select="@TQ1ACChange10"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Period Percent : <xsl:value-of select="@TQ1PPPercent10"/>
-        </div>
-        <div class="ui-block-a">
-          Q1 Planned Cumul Percent : <xsl:value-of select="@TQ1PCPercent10"/>
-        </div>
-        <div class="ui-block-b">
-          Q1 Planned Full Percent : <xsl:value-of select="@TQ1PFPercent10"/>
-        </div>
-        <div class="ui-block-a">
-          Q2 Unit : <xsl:value-of select="@TME2Q2Unit10"/>
+          L Unit : <xsl:value-of select="@TME2TLUnit10"/>
         </div>
         <div class="ui-block-b">
         </div>
         <div class="ui-block-a">
-          Q2 Planned Period : <xsl:value-of select="@TME2Q2Total10"/>
+          L Planned Period : <xsl:value-of select="@TME2TLAmount10"/>
         </div>
         <div class="ui-block-b">
-          Q2 Plan Full : <xsl:value-of select="@TQ2PFTotal10"/>
+          L Plan Full : <xsl:value-of select="@TLPFTotal10"/>
         </div>
         <div class="ui-block-a">
-          Q2 Plan Cumul : <xsl:value-of select="@TQ2PCTotal10"/>
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal10"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period : <xsl:value-of select="@TQ2APTotal10"/>
+          L Actual Period : <xsl:value-of select="@TLAPTotal10"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul : <xsl:value-of select="@TQ2ACTotal10"/>
+          L Actual Cumul : <xsl:value-of select="@TLACTotal10"/>
         </div>
         <div class="ui-block-b">
-          Q2 Actual Period Change : <xsl:value-of select="@TQ2APChange10"/>
+          L Actual Period Change : <xsl:value-of select="@TLAPChange10"/>
         </div>
         <div class="ui-block-a">
-          Q2 Actual Cumul Change : <xsl:value-of select="@TQ2ACChange10"/>
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange10"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Period Percent : <xsl:value-of select="@TQ2PPPercent10"/>
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent10"/>
         </div>
         <div class="ui-block-a">
-          Q2 Planned Cumul Percent : <xsl:value-of select="@TQ2PCPercent10"/>
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent10"/>
         </div>
         <div class="ui-block-b">
-          Q2 Planned Full Percent : <xsl:value-of select="@TQ2PFPercent10"/>
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent10"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit10"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount10"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal10"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal10"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal10"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal10"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange10"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange10"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent10"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent10"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent10"/>
         </div>
         </div>
         <div >
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description10" />
+	      </div>
+      </div>
+	</xsl:if>
+  <xsl:if test="(@TME2Name11 != '' and @TME2Name11 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 11 Name : <strong><xsl:value-of select="@TME2Name11"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label11"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date11"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N11"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit11"/>
+        </div>
+        <div class="ui-block-b">
+           Type : <xsl:value-of select="@TME2Type11"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          Most Plan Full : <xsl:value-of select="@TMPFTotal11"/>
+        </div>
+        <div class="ui-block-a">
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal11"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period : <xsl:value-of select="@TMAPTotal11"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal11"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange11"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange11"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent11"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent11"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent11"/>
+        </div>
+        <div class="ui-block-a">
+          L Unit : <xsl:value-of select="@TME2TLUnit11"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          L Planned Period : <xsl:value-of select="@TME2TLAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          L Plan Full : <xsl:value-of select="@TLPFTotal11"/>
+        </div>
+        <div class="ui-block-a">
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal11"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period : <xsl:value-of select="@TLAPTotal11"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul : <xsl:value-of select="@TLACTotal11"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period Change : <xsl:value-of select="@TLAPChange11"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange11"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent11"/>
+        </div>
+        <div class="ui-block-a">
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent11"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent11"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit11"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount11"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal11"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal11"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal11"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal11"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange11"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange11"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent11"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent11"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent11"/>
+        </div>
+        </div>
+        <div >
+			    <strong>Description : </strong><xsl:value-of select="@TME2Description11" />
+	      </div>
+      </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name12 != '' and @TME2Name12 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 12 Name : <strong><xsl:value-of select="@TME2Name12"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label12"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date12"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N12"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit12"/>
+        </div>
+        <div class="ui-block-b">
+           Type : <xsl:value-of select="@TME2Type12"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          Most Plan Full : <xsl:value-of select="@TMPFTotal12"/>
+        </div>
+        <div class="ui-block-a">
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal12"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period : <xsl:value-of select="@TMAPTotal12"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal12"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange12"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange12"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent12"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent12"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent12"/>
+        </div>
+        <div class="ui-block-a">
+          L Unit : <xsl:value-of select="@TME2TLUnit12"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          L Planned Period : <xsl:value-of select="@TME2TLAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          L Plan Full : <xsl:value-of select="@TLPFTotal12"/>
+        </div>
+        <div class="ui-block-a">
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal12"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period : <xsl:value-of select="@TLAPTotal12"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul : <xsl:value-of select="@TLACTotal12"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period Change : <xsl:value-of select="@TLAPChange12"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange12"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent12"/>
+        </div>
+        <div class="ui-block-a">
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent12"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent12"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit12"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount12"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal12"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal12"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal12"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal12"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange12"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange12"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent12"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent12"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent12"/>
+        </div>
+        </div>
+        <div >
+			    <strong>Description : </strong><xsl:value-of select="@TME2Description12" />
+	      </div>
+      </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name13 != '' and @TME2Name13 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 13 Name : <strong><xsl:value-of select="@TME2Name13"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label13"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date13"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N13"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit13"/>
+        </div>
+        <div class="ui-block-b">
+           Type : <xsl:value-of select="@TME2Type13"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          Most Plan Full : <xsl:value-of select="@TMPFTotal13"/>
+        </div>
+        <div class="ui-block-a">
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal13"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period : <xsl:value-of select="@TMAPTotal13"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal13"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange13"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange13"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent13"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent13"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent13"/>
+        </div>
+        <div class="ui-block-a">
+          L Unit : <xsl:value-of select="@TME2TLUnit13"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          L Planned Period : <xsl:value-of select="@TME2TLAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          L Plan Full : <xsl:value-of select="@TLPFTotal13"/>
+        </div>
+        <div class="ui-block-a">
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal13"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period : <xsl:value-of select="@TLAPTotal13"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul : <xsl:value-of select="@TLACTotal13"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period Change : <xsl:value-of select="@TLAPChange13"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange13"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent13"/>
+        </div>
+        <div class="ui-block-a">
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent13"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent13"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit13"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount13"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal13"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal13"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal13"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal13"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange13"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange13"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent13"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent13"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent13"/>
+        </div>
+        </div>
+        <div >
+			    <strong>Description : </strong><xsl:value-of select="@TME2Description13" />
+	      </div>
+      </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name14 != '' and @TME2Name14 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 14 Name : <strong><xsl:value-of select="@TME2Name14"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label14"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date14"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N14"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit14"/>
+        </div>
+        <div class="ui-block-b">
+           Type : <xsl:value-of select="@TME2Type14"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          Most Plan Full : <xsl:value-of select="@TMPFTotal14"/>
+        </div>
+        <div class="ui-block-a">
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal14"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period : <xsl:value-of select="@TMAPTotal14"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal14"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange14"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange14"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent14"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent14"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent14"/>
+        </div>
+        <div class="ui-block-a">
+          L Unit : <xsl:value-of select="@TME2TLUnit14"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          L Planned Period : <xsl:value-of select="@TME2TLAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          L Plan Full : <xsl:value-of select="@TLPFTotal14"/>
+        </div>
+        <div class="ui-block-a">
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal14"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period : <xsl:value-of select="@TLAPTotal14"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul : <xsl:value-of select="@TLACTotal14"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period Change : <xsl:value-of select="@TLAPChange14"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange14"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent14"/>
+        </div>
+        <div class="ui-block-a">
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent14"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent14"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit14"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount14"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal14"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal14"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal14"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal14"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange14"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange14"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent14"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent14"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent14"/>
+        </div>
+        </div>
+        <div >
+			    <strong>Description : </strong><xsl:value-of select="@TME2Description14" />
+	      </div>
+      </div>
+	</xsl:if>
+    <xsl:if test="(@TME2Name15 != '' and @TME2Name15 != 'none')">
+      <div data-role="collapsible" data-collapsed="false" data-theme="b" data-content-theme="d" >
+      <h4 class="ui-bar-b">
+        <strong>Indicator Details</strong>
+      </h4>
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          Indicator 15 Name : <strong><xsl:value-of select="@TME2Name15"/></strong>
+        </div>
+        <div class="ui-block-b">
+          Label : <xsl:value-of select="@TME2Label15"/>
+        </div>
+        <div class="ui-block-a">
+          Date : <xsl:value-of select="@TME2Date15"/>
+        </div>
+        <div class="ui-block-b">
+          Observations : <xsl:value-of select="@TME2N15"/>
+        </div>
+        <div class="ui-block-a">
+          Unit : <xsl:value-of select="@TME2TMUnit15"/>
+        </div>
+        <div class="ui-block-b">
+           Type : <xsl:value-of select="@TME2Type15"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Period : <xsl:value-of select="@TME2TMAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          Most Plan Full : <xsl:value-of select="@TMPFTotal15"/>
+        </div>
+        <div class="ui-block-a">
+          Most Plan Cumul : <xsl:value-of select="@TMPCTotal15"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period : <xsl:value-of select="@TMAPTotal15"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul : <xsl:value-of select="@TMACTotal15"/>
+        </div>
+        <div class="ui-block-b">
+          Most Actual Period Change : <xsl:value-of select="@TMAPChange15"/>
+        </div>
+        <div class="ui-block-a">
+          Most Actual Cumul Change : <xsl:value-of select="@TMACChange15"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Period Percent : <xsl:value-of select="@TMPPPercent15"/>
+        </div>
+        <div class="ui-block-a">
+          Most Planned Cumul Percent : <xsl:value-of select="@TMPCPercent15"/>
+        </div>
+        <div class="ui-block-b">
+          Most Planned Full Percent : <xsl:value-of select="@TMPFPercent15"/>
+        </div>
+        <div class="ui-block-a">
+          L Unit : <xsl:value-of select="@TME2TLUnit15"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          L Planned Period : <xsl:value-of select="@TME2TLAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          L Plan Full : <xsl:value-of select="@TLPFTotal15"/>
+        </div>
+        <div class="ui-block-a">
+          L Plan Cumul : <xsl:value-of select="@TLPCTotal15"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period : <xsl:value-of select="@TLAPTotal15"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul : <xsl:value-of select="@TLACTotal15"/>
+        </div>
+        <div class="ui-block-b">
+          L Actual Period Change : <xsl:value-of select="@TLAPChange15"/>
+        </div>
+        <div class="ui-block-a">
+          L Actual Cumul Change : <xsl:value-of select="@TLACChange15"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Period Percent : <xsl:value-of select="@TLPPPercent15"/>
+        </div>
+        <div class="ui-block-a">
+          L Planned Cumul Percent : <xsl:value-of select="@TLPCPercent15"/>
+        </div>
+        <div class="ui-block-b">
+          L Planned Full Percent : <xsl:value-of select="@TLPFPercent15"/>
+        </div>
+        <div class="ui-block-a">
+          U Unit : <xsl:value-of select="@TME2TUUnit15"/>
+        </div>
+        <div class="ui-block-b">
+        </div>
+        <div class="ui-block-a">
+          U Planned Period : <xsl:value-of select="@TME2TUAmount15"/>
+        </div>
+        <div class="ui-block-b">
+          U Plan Full : <xsl:value-of select="@TUPFTotal15"/>
+        </div>
+        <div class="ui-block-a">
+          U Plan Cumul : <xsl:value-of select="@TUPCTotal15"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period : <xsl:value-of select="@TUAPTotal15"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul : <xsl:value-of select="@TUACTotal15"/>
+        </div>
+        <div class="ui-block-b">
+          U Actual Period Change : <xsl:value-of select="@TUAPChange15"/>
+        </div>
+        <div class="ui-block-a">
+          U Actual Cumul Change : <xsl:value-of select="@TUACChange15"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Period Percent : <xsl:value-of select="@TUPPPercent15"/>
+        </div>
+        <div class="ui-block-a">
+          U Planned Cumul Percent : <xsl:value-of select="@TUPCPercent15"/>
+        </div>
+        <div class="ui-block-b">
+          U Planned Full Percent : <xsl:value-of select="@TUPFPercent15"/>
+        </div>
+        </div>
+        <div >
+			    <strong>Description : </strong><xsl:value-of select="@TME2Description15" />
 	      </div>
       </div>
 	</xsl:if>
