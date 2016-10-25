@@ -2033,38 +2033,6 @@
 		  </tr>
       <tr>
         <td>
-					  <xsl:value-of select="@TME21Amount0"/>
-			  </td>
-			  <td>
-					  <xsl:value-of select="@TME21Unit0"/>
-			  </td>
-			  <td>
-					  <xsl:value-of select="@TME22Amount0"/>
-			  </td>
-        <td>
-					  <xsl:value-of select="@TME22Unit0"/>
-			  </td>
-        <td>
-					  <xsl:value-of select="@TME23Amount0"/>
-			  </td>
-			  <td>
-					  <xsl:value-of select="@TME23Unit0"/>
-			  </td>
-			  <td>
-					  <xsl:value-of select="@TME24Amount0"/>
-			  </td>
-        <td>
-					  <xsl:value-of select="@TME24Unit0"/>
-			  </td>
-        <td>
-					  <xsl:value-of select="@TME25Amount0"/>
-			  </td>
-        <td>
-					  <xsl:value-of select="@TME25Unit0"/>
-			  </td>
-		  </tr>
-      <tr>
-        <td>
 					  <xsl:value-of select="@TME2TAmount0"/>
 			  </td>
 			  <td>

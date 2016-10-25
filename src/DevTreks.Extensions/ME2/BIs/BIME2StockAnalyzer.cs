@@ -6044,6 +6044,10 @@ namespace DevTreks.Extensions
                                     }
                                     //for Total1, uses obsStock.Total1.Stocks to write total atts for each Total1 stock member
                                     obsStock.SetDescendantME2StockAttributes(attNameExt, ref writer);
+                                    //204
+                                    //analyzers set exactly one ME2Stock property and att: TMEStage (baseline, midterm ...)
+                                    writer.WriteAttributeString(
+                                        string.Concat(ME2Stock.cTME2Stage, attNameExt), ME2DescendentStock.TME2Stage);
                                     writer.WriteEndElement();
                                     writer.WriteEndElement();
                                     i++;
@@ -6082,6 +6086,10 @@ namespace DevTreks.Extensions
                                         //obsStock.CalculatorId = stock.CalculatorId;
                                         //for Total1, uses obsStock.Total1.Stocks to write total atts for each Total1 stock member
                                         obsStock.SetDescendantME2StockAttributes(attNameExt, ref writer);
+                                        //204
+                                        //analyzers set exactly one ME2Stock property and att: TMEStage (baseline, midterm ...)
+                                        writer.WriteAttributeString(
+                                            string.Concat(ME2Stock.cTME2Stage, attNameExt), ME2DescendentStock.TME2Stage);
                                     }
                                     i++;
                                 }

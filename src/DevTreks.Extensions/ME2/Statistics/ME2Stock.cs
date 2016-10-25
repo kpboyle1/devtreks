@@ -405,6 +405,7 @@ namespace DevTreks.Extensions
                 this.SetCalculatorAttributes(attNameExt, ref writer);
                 //set the calculations
                 this.SetTotalME2StocksAttributes(attNameExt, ref writer);
+                //TMEStage att is set in calling BIAnalyzer because it stores that property
             }
         }
         public virtual void SetTotalME2StocksAttributes(string attNameExt, ref XmlWriter writer)

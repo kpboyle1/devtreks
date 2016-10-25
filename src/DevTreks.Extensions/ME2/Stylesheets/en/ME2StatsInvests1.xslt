@@ -152,10 +152,10 @@
       </h4>
       <xsl:if test="(@TME2Stage != '' and @TME2Stage != 'none')">
         <div>
-			    M and E Stage: <strong><xsl:value-of select="@TME2Stage"/></strong>
-	      </div>
+          M and E Stage: <strong><xsl:value-of select="@TME2Stage"/></strong>
+        </div>
       </xsl:if>
-    <xsl:if test="(@TME2Name0 != '' and TME2Name0 != 'none')">
+    <xsl:if test="(@TME2Name0 != '' and @TME2Name0 != 'none')">
       <div class="ui-grid-a">
         <div class="ui-block-a">
           Indicator 1 Name : <strong><xsl:value-of select="@TME2Name0"/></strong>
@@ -227,7 +227,7 @@
 			  <strong>Description : </strong><xsl:value-of select="@TME2Description0" />
 	    </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name1 != '' and TME2Name1 != 'none')">
+    <xsl:if test="(@TME2Name1 != '' and @TME2Name1 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name1"/></strong>
@@ -299,7 +299,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description1" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name2 != '' and TME2Name2 != 'none')">
+    <xsl:if test="(@TME2Name2 != '' and @TME2Name2 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name2"/></strong>
@@ -371,7 +371,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description2" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name3 != '' and TME2Name3 != 'none')">
+      <xsl:if test="(@TME2Name3 != '' and @TME2Name3 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name3"/></strong>
@@ -443,7 +443,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description3" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name4 != '' and TME2Name4 != 'none')">
+      <xsl:if test="(@TME2Name4 != '' and @TME2Name4 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name4"/></strong>
@@ -515,7 +515,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description4" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name5 != '' and TME2Name5 != 'none')">
+      <xsl:if test="(@TME2Name5 != '' and @TME2Name5 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name5"/></strong>
@@ -587,7 +587,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description5" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name6 != '' and TME2Name6 != 'none')">
+      <xsl:if test="(@TME2Name6 != '' and @TME2Name6 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name6"/></strong>
@@ -659,7 +659,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description6" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name7 != '' and TME2Name7 != 'none')">
+      <xsl:if test="(@TME2Name7 != '' and @TME2Name7 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name7"/></strong>
@@ -731,7 +731,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description7" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name8 != '' and TME2Name8 != 'none')">
+      <xsl:if test="(@TME2Name8 != '' and @TME2Name8 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name8"/></strong>
@@ -803,7 +803,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description8" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name9 != '' and TME2Name9 != 'none')">
+      <xsl:if test="(@TME2Name9 != '' and @TME2Name9 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name9"/></strong>
@@ -875,7 +875,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description9" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name10 != '' and TME2Name10 != 'none')">
+      <xsl:if test="(@TME2Name10 != '' and @TME2Name10 != 'none')">
         <div class="ui-grid-a">
           <div class="ui-block-a">
             Indicator 1 Name : <strong><xsl:value-of select="@TME2Name10"/></strong>
@@ -947,7 +947,7 @@
 			    <strong>Description : </strong><xsl:value-of select="@TME2Description10" />
 	      </div>
       </xsl:if>
-      <xsl:if test="(@TME2Name11 != '' and TME2Name11 != 'none')">
+      <xsl:if test="(@TME2Name11 != '' and @TME2Name11 != 'none')">
       <div class="ui-grid-a">
         <div class="ui-block-a">
           Indicator 1 Name : <strong><xsl:value-of select="@TME2Name11"/></strong>
@@ -1019,7 +1019,7 @@
 			  <strong>Description : </strong><xsl:value-of select="@TME2Description11" />
 	    </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name12 != '' and TME2Name12 != 'none')">
+    <xsl:if test="(@TME2Name12 != '' and @TME2Name12 != 'none')">
       <div class="ui-grid-a">
         <div class="ui-block-a">
           Indicator 1 Name : <strong><xsl:value-of select="@TME2Name12"/></strong>
@@ -1091,7 +1091,7 @@
 			  <strong>Description : </strong><xsl:value-of select="@TME2Description12" />
 	    </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name13 != '' and TME2Name13 != 'none')">
+    <xsl:if test="(@TME2Name13 != '' and @TME2Name13 != 'none')">
       <div class="ui-grid-a">
         <div class="ui-block-a">
           Indicator 1 Name : <strong><xsl:value-of select="@TME2Name13"/></strong>
@@ -1163,7 +1163,7 @@
 			  <strong>Description : </strong><xsl:value-of select="@TME2Description13" />
 	    </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name14 != '' and TME2Name14 != 'none')">
+    <xsl:if test="(@TME2Name14 != '' and @TME2Name14 != 'none')">
       <div class="ui-grid-a">
         <div class="ui-block-a">
           Indicator 1 Name : <strong><xsl:value-of select="@TME2Name14"/></strong>
@@ -1235,7 +1235,7 @@
 			  <strong>Description : </strong><xsl:value-of select="@TME2Description14" />
 	    </div>
     </xsl:if>
-    <xsl:if test="(@TME2Name15 != '' and TME2Name15 != 'none')">
+    <xsl:if test="(@TME2Name15 != '' and @TME2Name15 != 'none')">
       <div class="ui-grid-a">
         <div class="ui-block-a">
           Indicator 1 Name : <strong><xsl:value-of select="@TME2Name15"/></strong>

@@ -1782,36 +1782,6 @@
             Base IO: <xsl:value-of select="@TME2BaseIO0"/>
           </div>
           <div class="ui-block-a">
-            Q1 Amount:  <xsl:value-of select="@TME21Amount0"/>
-          </div>
-          <div class="ui-block-b">
-            Q1 Unit: <xsl:value-of select="@TME21Unit0"/>
-          </div>
-          <div class="ui-block-a">
-            Q2 Amount:  <xsl:value-of select="@TME22Amount0"/>
-          </div>
-          <div class="ui-block-b">
-            Q2 Unit: <xsl:value-of select="@TME22Unit0"/>
-          </div>
-          <div class="ui-block-a">
-            Q3 Amount:  <xsl:value-of select="@TME23Amount0"/>
-          </div>
-          <div class="ui-block-b">
-            Q3 Unit: <xsl:value-of select="@TME23Unit0"/>
-          </div>
-          <div class="ui-block-a">
-            Q4 Amount:  <xsl:value-of select="@TME24Amount0"/>
-          </div>
-          <div class="ui-block-b">
-            Q4 Unit: <xsl:value-of select="@TME24Unit0"/>
-          </div>
-          <div class="ui-block-a">
-            Q5 Amount: <xsl:value-of select="@TME25Amount0"/>
-          </div>
-          <div class="ui-block-b">
-            Q5 Unit: <xsl:value-of select="@TME25Unit0"/>
-          </div>
-          <div class="ui-block-a">
             Math Express: <xsl:value-of select="@TME2MathExpression0"/>
           </div>
           <div class="ui-block-b">

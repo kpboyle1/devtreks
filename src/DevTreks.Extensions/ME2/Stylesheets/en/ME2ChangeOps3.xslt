@@ -173,7 +173,7 @@
     <xsl:if test="(@TME2Name0 != '' and @TME2Name0 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name0" />&#xA0;<xsl:value-of select="@TME2Type0"/></strong>
+				  <strong><xsl:value-of select="@TME2Name0" />&#xA0;<xsl:value-of select="@TME2Label0"/></strong>
         </td>
       </tr>
 			<tr>
@@ -275,7 +275,7 @@
     <xsl:if test="(@TME2Name1 != '' and @TME2Name1 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name1" />&#xA0;<xsl:value-of select="@TME2Type1"/></strong>
+				  <strong><xsl:value-of select="@TME2Name1" />&#xA0;<xsl:value-of select="@TME2Label1"/></strong>
         </td>
       </tr>
 			<tr>
@@ -377,7 +377,7 @@
     <xsl:if test="(@TME2Name2 != '' and @TME2Name2 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name2" />&#xA0;<xsl:value-of select="@TME2Type2"/></strong>
+				  <strong><xsl:value-of select="@TME2Name2" />&#xA0;<xsl:value-of select="@TME2Label2"/></strong>
         </td>
       </tr>
 			<tr>
@@ -479,7 +479,7 @@
     <xsl:if test="(@TME2Name3 != '' and @TME2Name3 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name3" />&#xA0;<xsl:value-of select="@TME2Type3"/></strong>
+				  <strong><xsl:value-of select="@TME2Name3" />&#xA0;<xsl:value-of select="@TME2Label3"/></strong>
         </td>
       </tr>
 			<tr>
@@ -581,7 +581,7 @@
     <xsl:if test="(@TME2Name4 != '' and @TME2Name4 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name4" />&#xA0;<xsl:value-of select="@TME2Type4"/></strong>
+				  <strong><xsl:value-of select="@TME2Name4" />&#xA0;<xsl:value-of select="@TME2Label4"/></strong>
         </td>
       </tr>
 			<tr>
@@ -683,7 +683,7 @@
     <xsl:if test="(@TME2Name5 != '' and @TME2Name5 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name5" />&#xA0;<xsl:value-of select="@TME2Type5"/></strong>
+				  <strong><xsl:value-of select="@TME2Name5" />&#xA0;<xsl:value-of select="@TME2Label5"/></strong>
         </td>
       </tr>
 			<tr>
@@ -785,7 +785,7 @@
     <xsl:if test="(@TME2Name6 != '' and @TME2Name6 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name6" />&#xA0;<xsl:value-of select="@TME2Type6"/></strong>
+				  <strong><xsl:value-of select="@TME2Name6" />&#xA0;<xsl:value-of select="@TME2Label6"/></strong>
         </td>
       </tr>
 			<tr>
@@ -887,7 +887,7 @@
     <xsl:if test="(@TME2Name7 != '' and @TME2Name7 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name7" />&#xA0;<xsl:value-of select="@TME2Type7"/></strong>
+				  <strong><xsl:value-of select="@TME2Name7" />&#xA0;<xsl:value-of select="@TME2Label7"/></strong>
         </td>
       </tr>
 			<tr>
@@ -989,7 +989,7 @@
     <xsl:if test="(@TME2Name8 != '' and @TME2Name8 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name8" />&#xA0;<xsl:value-of select="@TME2Type8"/></strong>
+				  <strong><xsl:value-of select="@TME2Name8" />&#xA0;<xsl:value-of select="@TME2Label8"/></strong>
         </td>
       </tr>
 			<tr>
@@ -1091,7 +1091,7 @@
     <xsl:if test="(@TME2Name9 != '' and @TME2Name9 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name9" />&#xA0;<xsl:value-of select="@TME2Type9"/></strong>
+				  <strong><xsl:value-of select="@TME2Name9" />&#xA0;<xsl:value-of select="@TME2Label9"/></strong>
         </td>
       </tr>
 			<tr>
@@ -1193,7 +1193,7 @@
     <xsl:if test="(@TME2Name10 != '' and @TME2Name10 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name10" />&#xA0;<xsl:value-of select="@TME2Type10"/></strong>
+				  <strong><xsl:value-of select="@TME2Name10" />&#xA0;<xsl:value-of select="@TME2Label10"/></strong>
         </td>
       </tr>
 			<tr>
@@ -1295,7 +1295,7 @@
     <xsl:if test="(@TME2Name11 != '' and @TME2Name11 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name11" />&#xA0;<xsl:value-of select="@TME2Type11"/></strong>
+				  <strong><xsl:value-of select="@TME2Name11" />&#xA0;<xsl:value-of select="@TME2Label11"/></strong>
         </td>
       </tr>
 			<tr>
@@ -1397,7 +1397,7 @@
     <xsl:if test="(@TME2Name12 != '' and @TME2Name12 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name12" />&#xA0;<xsl:value-of select="@TME2Type12"/></strong>
+				  <strong><xsl:value-of select="@TME2Name12" />&#xA0;<xsl:value-of select="@TME2Label12"/></strong>
         </td>
       </tr>
 			<tr>
@@ -1499,7 +1499,7 @@
     <xsl:if test="(@TME2Name13 != '' and @TME2Name13 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name13" />&#xA0;<xsl:value-of select="@TME2Type13"/></strong>
+				  <strong><xsl:value-of select="@TME2Name13" />&#xA0;<xsl:value-of select="@TME2Label13"/></strong>
         </td>
       </tr>
 			<tr>
@@ -1601,7 +1601,7 @@
     <xsl:if test="(@TME2Name14 != '' and @TME2Name14 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name14" />&#xA0;<xsl:value-of select="@TME2Type14"/></strong>
+				  <strong><xsl:value-of select="@TME2Name14" />&#xA0;<xsl:value-of select="@TME2Label14"/></strong>
         </td>
       </tr>
 			<tr>
@@ -1703,7 +1703,7 @@
     <xsl:if test="(@TME2Name15 != '' and @TME2Name15 != 'none')">
       <tr>
 			  <td scope="row" colspan="10">
-				  <strong><xsl:value-of select="@TME2Name15" />&#xA0;<xsl:value-of select="@TME2Type15"/></strong>
+				  <strong><xsl:value-of select="@TME2Name15" />&#xA0;<xsl:value-of select="@TME2Label15"/></strong>
         </td>
       </tr>
 			<tr>
