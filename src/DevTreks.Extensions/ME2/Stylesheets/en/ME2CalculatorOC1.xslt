@@ -8533,7 +8533,7 @@
             </input>
           </div>
          <div class="ui-block-a">
-            <label for="IndTAmount0">Score</label>
+            <label for="IndTAmount0">Total Score</label>
 				    <input id="IndTAmount0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTAmount0;double;8</xsl:attribute>
@@ -8551,7 +8551,7 @@
 				    </input>
           </div>
           <div class="ui-block-a">
-            <label for="IndTD1Amount0">Score D1</label>
+            <label for="IndTD1Amount0">D1</label>
 				    <input id="IndTD1Amount0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTD1Amount0;double;8</xsl:attribute>
@@ -8560,7 +8560,7 @@
 				    </input>
           </div>
           <div class="ui-block-b">
-            <label for="IndTD1Unit0">Score D1 Unit</label>
+            <label for="IndTD1Unit0">D1 Unit</label>
 				    <input id="IndTD1Unit0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTD1Unit0;string;25</xsl:attribute>
@@ -8569,7 +8569,7 @@
 				    </input>
           </div>
           <div class="ui-block-a">
-            <label for="IndTD2Amount0">Score D2</label>
+            <label for="IndTD2Amount0">D2</label>
 				    <input id="IndTD2Amount0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTD2Amount0;double;8</xsl:attribute>
@@ -8578,7 +8578,7 @@
 				    </input>
           </div>
           <div class="ui-block-b">
-            <label for="IndTD2Unit0">Score D2 Unit</label>
+            <label for="IndTD2Unit0">D2 Unit</label>
 				    <input id="IndTD2Unit0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTD2Unit0;string;25</xsl:attribute>
@@ -8587,7 +8587,16 @@
 				    </input>
           </div>
           <div class="ui-block-a">
-            <label for="IndType0">Score Dist Type</label>
+            <label for="IndDate0">Date</label>
+            <input id="IndDate0" type="text" data-mini="true">
+              <xsl:if test="($viewEditType = 'full')">
+                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndDate0;datetime;8</xsl:attribute>
+              </xsl:if>
+              <xsl:attribute name="value"><xsl:value-of select="@IndDate0" /></xsl:attribute>
+            </input>
+          </div>
+          <div class="ui-block-b">
+            <label for="IndType0">Dist Type</label>
             <select class="Select225" id="IndType0" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndType0;string;25</xsl:attribute>
@@ -8669,7 +8678,7 @@
               </option>
             </select>
           </div>
-          <div class="ui-block-b">
+          <div class="ui-block-a">
             <label for="IndIterations0">Iterations</label>
 				    <input id="IndIterations0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
@@ -8678,7 +8687,7 @@
               <xsl:attribute name="value"><xsl:value-of select="@IndIterations0" /></xsl:attribute>
 				    </input>
           </div>
-          <div class="ui-block-a">
+          <div class="ui-block-b">
             <label for="IndCILevel0">Confidence Interval</label>
 				    <input id="IndCILevel0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
@@ -8687,7 +8696,7 @@
               <xsl:attribute name="value"><xsl:value-of select="@IndCILevel0" /></xsl:attribute>
 				    </input>
           </div>
-          <div class="ui-block-b">
+          <div class="ui-block-a">
             <label for="IndRandom0">Random Seed</label>
 				    <input id="IndRandom0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
@@ -8696,8 +8705,8 @@
               <xsl:attribute name="value"><xsl:value-of select="@IndRandom0" /></xsl:attribute>
 				    </input>
           </div>
-          <div class="ui-block-a">
-            <label for="IndBaseIO0">Score BaseIO</label>
+          <div class="ui-block-b">
+            <label for="IndBaseIO0">BaseIO</label>
             <select class="Select225" id="IndBaseIO0" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndBaseIO0;string;25</xsl:attribute>
@@ -8809,7 +8818,7 @@
             </select>
           </div>
           <div class="ui-block-a">
-            <label for="IndTMAmount0">Score Most Likely</label>
+            <label for="IndTMAmount0">Most Likely</label>
 				    <input id="IndTMAmount0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTMAmount0;double;8</xsl:attribute>
@@ -8818,7 +8827,7 @@
 				    </input>
           </div>
           <div class="ui-block-b">
-            <label for="IndTMUnit0">Score Most Unit</label>
+            <label for="IndTMUnit0">Most Unit</label>
 				    <input id="IndTMUnit0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTMUnit0;string;25</xsl:attribute>
@@ -8827,7 +8836,7 @@
 				    </input>
           </div>
           <div class="ui-block-a">
-            <label for="IndTLAmount0">Score Low Estimate</label>
+            <label for="IndTLAmount0">Low Estimate</label>
 				    <input id="IndTLAmount0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTLAmount0;double;8</xsl:attribute>
@@ -8836,7 +8845,7 @@
 				    </input>
           </div>
           <div class="ui-block-b">
-            <label for="IndTLUnit0">Score Low Unit</label>
+            <label for="IndTLUnit0">Low Unit</label>
 				    <input id="IndTLUnit0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTLUnit0;string;25</xsl:attribute>
@@ -8845,7 +8854,7 @@
 				    </input>
           </div>
           <div class="ui-block-a">
-            <label for="IndTUAmount0">Score High Estimate</label>
+            <label for="IndTUAmount0">High Estimate</label>
 				    <input id="IndTUAmount0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTUAmount0;double;8</xsl:attribute>
@@ -8854,7 +8863,7 @@
 				    </input>
           </div>
           <div class="ui-block-b">
-            <label for="IndTUUnit0">Score High Unit</label>
+            <label for="IndTUUnit0">High Unit</label>
 				    <input id="IndTUUnit0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndTUUnit0;string;25</xsl:attribute>
@@ -8863,7 +8872,7 @@
 				    </input>
           </div>
           <div class="ui-block-a">
-            <label for="IndMathType0">Score Math Type</label>
+            <label for="IndMathType0">Math Type</label>
             <select class="Select225" id="IndMathType0" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndMathType0;string;25</xsl:attribute>
@@ -8940,7 +8949,7 @@
             </select>
           </div>
           <div class="ui-block-b">
-            <label for="IndMathSubType0">Score Math Sub Type</label>
+            <label for="IndMathSubType0">Math Sub Type</label>
             <input id="IndMathSubType0" type="text" data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
 						    <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndMathSubType0;string;25</xsl:attribute>
@@ -8950,7 +8959,7 @@
           </div>
        </div>
       <div>
-        <label for="IndMathResult0">Score Math Result</label>
+        <label for="IndMathResult0">Math Result</label>
 			  <textarea id="IndMathResult0" data-mini="true">
           <xsl:if test="($viewEditType = 'full')">
 					  <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndMathResult0;string;2000</xsl:attribute>
@@ -8959,7 +8968,7 @@
 			  </textarea>
       </div>
       <div>
-        <label for="IndURL0">Joint Data</label>
+        <label for="IndURL0">Score URL</label>
 			  <textarea id="IndURL0" data-mini="true">
           <xsl:if test="($viewEditType = 'full')">
 					  <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;IndURL0;string;1500</xsl:attribute>
@@ -9060,22 +9069,22 @@
         <li><strong>Step 2. Target Type:</strong> Used with Progress analyzers to identify benchmark and actual indicators.</li>
         <li><strong>Step 2. Altern Type:</strong> Used with Change by Alternative analyzers to identify alternatives to compare.</li>
         <li><strong>Step 2. Score Math Expression:</strong> A mathematical expression containing one or more of the children indicator Q1 to QTM variables. Use strings that identify both the indicator (I1, I2, … In) and the Qx property (Q … QTM), with a period separator between them. Examples include:((I1.QTM + I2.QTM) * I3.Q3) + I4.QTM)) - (2 * I5.QTM)</li>
-        <li><strong>Step 2. Score Amount and Unit:</strong> The Unit must be manually entered. The Amount will be the result of the Math Expression calculation.</li>
-        <li><strong>Step 2. ScoreD1 Amount and Unit:</strong> First distribution variable for Score.</li>
-        <li><strong>Step 2. ScoreD2 Amount and Unit:</strong> Second distribution for Score.</li>
+        <li><strong>Step 2. Score Total and Unit:</strong> The Unit must be manually entered. The Amount will be the result of the Math Expression calculation.</li>
+        <li><strong>Step 2. D1 Amount and Unit:</strong> First distribution variable for Score.</li>
+        <li><strong>Step 2. D2 Amount and Unit:</strong> Second distribution for Score.</li>
         <li><strong>Step 2. Distribution Type:</strong> The numeric distribution of Score. Refer to the Stock Calculation 1 reference.</li>
-        <li><strong>Step 2. Score Math Type and Math Sub Type:</strong> Mathematical algorithm and subalgorithm to use with Distribution Type, Score, ScoreD1, and ScoreD2 to solve for ScoreM, ScoreL, and ScoreU. Refer to the Stock Calculation 1 reference for the algorithms.</li>
-        <li><strong>Step 2. Score Most Likely, Score Low, Score High, Amounts and Units:</strong> Results of Distribution Type and Math Type calculations.</li>
+        <li><strong>Step 2. Math Type and Math Sub Type:</strong> Mathematical algorithm and subalgorithm to use with Distribution Type, Score, ScoreD1, and ScoreD2 to solve for ScoreM, ScoreL, and ScoreU. Refer to the Stock Calculation 1 reference for the algorithms.</li>
+        <li><strong>Step 2. Most Likely, Low, High, Amounts and Units:</strong> Results of Distribution Type and Math Type calculations.</li>
         <li><strong>Step 2. Iterations:</strong> Number of iterations to use when drawing random number samples for some algorithms.  </li>
         <li><strong>Step 2. Confidence Interval:</strong> Level of confidence interval to use when reporting all Score and Indicator high and low amounts. Should be an integer such as 95, 90, or 40.</li>
         <li><strong>Step 2. Random Seed:</strong> Any positive integer, except 0, will result in the same set of random variables being used each time a calculation is run.</li>
-        <li><strong>Step 2. Score BaseIO:</strong> Base input or output property to update with the Score Most Likely property. </li>
+        <li><strong>Step 2. BaseIO:</strong> Base input or output property to update with the Score Most Likely property. </li>
 			</ul>
       </div>
       <div data-role="collapsible"  data-theme="b" data-content-theme="d">
       <h4 class="ui-bar-b"><strong>References</strong></h4>
       <ul data-role="listview">
-        <li><strong>Refer to the M and E Introduction reference.</strong></li>
+        <li><strong>Refer to the M and E Introduction and Resource Stock Calculation references.</strong></li>
 			</ul>
       </div>
 		</div>
