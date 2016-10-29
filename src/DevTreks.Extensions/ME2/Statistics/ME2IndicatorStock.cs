@@ -12,7 +12,7 @@ namespace DevTreks.Extensions
     ///Purpose:		The ME2IndicatorStock class extends the ME2Calculator class.
     ///             This object acts as a calculator for the Indicators as well.
     ///Author:		www.devtreks.org
-    ///Date:		2016, October
+    ///Date:		2016, November
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES:       1. This class usually is initialized by finding the currentelement's 
     ///             ME2Calculator and setting the underlying ME2Calculator.ME2Indicators collection 

@@ -18,7 +18,7 @@ namespace DevTreks.Extensions
     ///             by most standard DevTreks calculators/analyzers to hold 
     ///             base properties, such as ids and names.
     ///Author:		www.devtreks.org
-    ///Date:		2015, June
+    ///Date:		2016, October
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        1. All properties are stored in Data.Calculator class. 
     ///             Inheritance to Data.Calculator is undesirable because extension
@@ -99,6 +99,7 @@ namespace DevTreks.Extensions
         public string DataColNames { get; set; }
         //188 allowed analyzers to statistically analyze the data in indiv calcors
         public IDictionary<string, List<List<double>>> DataToAnalyze { get; set; }
+        public IDictionary<int, List<List<double>>> Data2ToAnalyze { get; set; }
         //calculator can share with baseelement for some types of aggregations (where calc lists used)
         public string Label { get; set; }
         public string Label2 { get; set; }
@@ -564,6 +565,7 @@ namespace DevTreks.Extensions
             this.MathCILevel = 0;
             this.DataColNames = string.Empty;
             this.DataToAnalyze = new Dictionary<string, List<List<double>>>();
+            this.Data2ToAnalyze = new Dictionary<int, List<List<double>>>();
         }
         public void InitSharedObjectProperties()
         {
@@ -658,38 +660,67 @@ namespace DevTreks.Extensions
         }
         public void CopyData(IDictionary<string, List<List<double>>> data)
         {
-            //if (this.MathType.Contains("algorithm") && this.MathSubType.Contains("subalgorithm"))
-            //{
-                //dataToAnalyze holds QT vectors from each each ind.dataToAnalyze
-                if (this.DataToAnalyze == null)
+            //dataToAnalyze holds QT vectors from each each ind.dataToAnalyze
+            if (this.DataToAnalyze == null)
+            {
+                this.DataToAnalyze = new Dictionary<string, List<List<double>>>();
+            }
+            if (data != null)
+            {
+                foreach (var d in data)
                 {
-                    this.DataToAnalyze = new Dictionary<string, List<List<double>>>();
-                }
-                if (data != null)
-                {
-                    foreach (var d in data)
+                    if (this.DataToAnalyze.ContainsKey(d.Key))
                     {
-                        if (this.DataToAnalyze.ContainsKey(d.Key))
+                        foreach (var db in this.DataToAnalyze)
                         {
-                            foreach (var db in this.DataToAnalyze)
+                            if (db.Key == d.Key)
                             {
-                                if (db.Key == d.Key)
+                                foreach (var v in d.Value)
                                 {
-                                    foreach (var v in d.Value)
-                                    {
-                                        db.Value.Add(v);
-                                    }
+                                    db.Value.Add(v);
                                 }
                             }
                         }
-                        else
-                        {
-                            this.DataToAnalyze.Add(d);
-                        }
-                        
                     }
+                    else
+                    {
+                        this.DataToAnalyze.Add(d);
+                    }
+
                 }
-            //}
+            }
+        }
+        public void CopyData(IDictionary<int, List<List<double>>> data)
+        {
+            //dataToAnalyze holds QT vectors from each each ind.dataToAnalyze
+            if (this.Data2ToAnalyze == null)
+            {
+                this.Data2ToAnalyze = new Dictionary<int, List<List<double>>>();
+            }
+            if (data != null)
+            {
+                foreach (var d in data)
+                {
+                    if (this.Data2ToAnalyze.ContainsKey(d.Key))
+                    {
+                        foreach (var db in this.Data2ToAnalyze)
+                        {
+                            if (db.Key == d.Key)
+                            {
+                                foreach (var v in d.Value)
+                                {
+                                    db.Value.Add(v);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        this.Data2ToAnalyze.Add(d);
+                    }
+
+                }
+            }
         }
         public void CopySharedObjectProperties(Calculator1 calculator)
         {

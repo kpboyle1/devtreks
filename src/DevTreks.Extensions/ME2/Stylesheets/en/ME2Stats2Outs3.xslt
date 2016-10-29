@@ -167,11 +167,11 @@
 	<xsl:template match="root/linkedview">
 		<xsl:param name="localName" />
     <xsl:variable name="fullcolcount" select="@Files + 1"/>
-    <xsl:if test="(@TME2Name0 != '' and @TME2Name0 != 'none')">
+    <xsl:if test="(@TME2Name0_0 != '' and @TME2Name0_0 != 'none')">
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name0"/>
+				  <xsl:value-of select="@TME2Name0_0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -442,11 +442,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name1 != '' and @TME2Name1 != 'none')">
+    <xsl:if test="(@TME2Name1_1 != '' and @TME2Name1_1 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 1</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name1"/>
+				  <xsl:value-of select="@TME2Name1_1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -717,11 +717,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name2 != '' and @TME2Name2 != 'none')">
+   <xsl:if test="(@TME2Name2_2 != '' and @TME2Name2_2 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 2</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name2"/>
+				  <xsl:value-of select="@TME2Name2_2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -994,9 +994,9 @@
     </xsl:if>
     <xsl:if test="(@TME2Name3_3 != '' and @TME2Name3_3 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 3</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name3"/>
+				  <xsl:value-of select="@TME2Name3_3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1267,11 +1267,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name4 != '' and @TME2Name4 != 'none')">
+    <xsl:if test="(@TME2Name4_4 != '' and @TME2Name4_4 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 4</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name4"/>
+				  <xsl:value-of select="@TME2Name4_4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1542,11 +1542,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name5 != '' and @TME2Name5 != 'none')">
+    <xsl:if test="(@TME2Name5_5 != '' and @TME2Name5_5 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 5</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name5"/>
+				  <xsl:value-of select="@TME2Name5_5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1817,11 +1817,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name6 != '' and @TME2Name6 != 'none')">
+    <xsl:if test="(@TME2Name6_6 != '' and @TME2Name6_6 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 6</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name6"/>
+				  <xsl:value-of select="@TME2Name6_6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2092,11 +2092,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name7 != '' and @TME2Name7 != 'none')">
+    <xsl:if test="(@TME2Name7_7 != '' and @TME2Name7_7 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 7</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name7"/>
+				  <xsl:value-of select="@TME2Name7_7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2367,11 +2367,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name8 != '' and @TME2Name8 != 'none')">
+   <xsl:if test="(@TME2Name8_8 != '' and @TME2Name8_8 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 8</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name8"/>
+				  <xsl:value-of select="@TME2Name8_8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2642,11 +2642,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name9 != '' and @TME2Name9 != 'none')">
+    <xsl:if test="(@TME2Name9_9 != '' and @TME2Name9_9 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 9</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name9"/>
+				  <xsl:value-of select="@TME2Name9_9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2917,11 +2917,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name10 != '' and @TME2Name10 != 'none')">
+   <xsl:if test="(@TME2Name10_10 != '' and @TME2Name10_10 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 10</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name10"/>
+				  <xsl:value-of select="@TME2Name10_10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3192,11 +3192,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name11 != '' and @TME2Name11 != 'none')">
+    <xsl:if test="(@TME2Name11_11 != '' and @TME2Name11_11 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 11</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name11"/>
+				  <xsl:value-of select="@TME2Name11_11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3467,11 +3467,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name12 != '' and @TME2Name12 != 'none')">
+    <xsl:if test="(@TME2Name12_12 != '' and @TME2Name12_12 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 12</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name12"/>
+				  <xsl:value-of select="@TME2Name12_12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3742,11 +3742,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name13 != '' and @TME2Name13 != 'none')">
+    <xsl:if test="(@TME2Name13_13 != '' and @TME2Name13_13 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 13</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name13"/>
+				  <xsl:value-of select="@TME2Name13_13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4017,11 +4017,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name14 != '' and @TME2Name14 != 'none')">
+    <xsl:if test="(@TME2Name14_14 != '' and @TME2Name14_14 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 14</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name14"/>
+				  <xsl:value-of select="@TME2Name14_14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4292,11 +4292,11 @@
 			  <xsl:value-of select="DisplayComps:doPrintValues($fullcolcount)"/>
 		  </tr>
     </xsl:if>
-    <xsl:if test="(@TME2Name15 != '' and @TME2Name15 != 'none')">
+    <xsl:if test="(@TME2Name15_15 != '' and @TME2Name15_15 != 'none')">
       <tr>
-			  <td scope="row" colspan="1"><strong>Indicator 15</strong></td>
+			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name15"/>
+				  <xsl:value-of select="@TME2Name15_15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">

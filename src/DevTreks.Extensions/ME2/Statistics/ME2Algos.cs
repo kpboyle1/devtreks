@@ -6,12 +6,12 @@ using Errors = DevTreks.Exceptions.DevTreksErrors;
 
 using MathNet.Numerics.LinearAlgebra;
 
-namespace DevTreks.Extensions.ME3Statistics
+namespace DevTreks.Extensions.ME2Statistics
 {
     ///<summary>
     ///Purpose:		Run algorithms
     ///Author:		www.devtreks.org
-    ///Date:		2016, October
+    ///Date:		2016, November
     ///NOTES        These algorithm patterns derived directly from the equivalent code 
     ///             in the Resource Stock Calculator. They need to evolve to handle 
     ///             large numbers of algorithms.
@@ -31,24 +31,24 @@ namespace DevTreks.Extensions.ME3Statistics
             CopyME2IndicatorsProperties(stockME);
         }
         
-        public async Task<string> SetAlgoPRAStats(string label, string[] colNames,
+        public async Task<int> SetAlgoPRAStats(int index, string[] colNames,
             List<double> qTs, double[] data = null)
         {
             //probabilistic risk using montecarlo
             //if the algo is used with the label, return it as affirmation
-            string algoindicator = string.Empty;
-            if (this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm1)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm2)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm3)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm4))
+            int algoindicator = 0;
+            if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm1)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm2)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm3)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm4))
             {
                 //if its a good calc returns the string
-                algoindicator = await SetPRAIndicatorStats(label, colNames, qTs, data);
+                algoindicator = await SetPRAIndicatorStats(index, colNames, qTs, data);
             }
             return algoindicator;
         }
         
-        public async Task<string> SetAlgoCorrIndicatorStats(string jdataURL, IDictionary<string, List<List<double>>> data,
+        public async Task<string> SetAlgoCorrIndicatorStats(string jdataURL, IDictionary<int, List<List<double>>> data,
             string[] colNames)
         {
             //if the algo is used with the label, return it as affirmation
@@ -62,126 +62,126 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return algoindicators;
         }
-        public async Task<string> SetAlgoIndicatorStats1(string label, List<List<double>> data, string[] colNames)
+        public async Task<int> SetAlgoIndicatorStats1(int index, List<List<double>> data, string[] colNames)
         {
             //if the algo is used with the label, return it as affirmation
-            string algoindicator = string.Empty;
+            int algoindicator = 0;
             
-            if (this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm6))
+            if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm6))
             {
                 //if its a good calc returns the string
-                algoindicator = await SetRGRIndicatorStats(label, colNames, data);
+                algoindicator = await SetRGRIndicatorStats(index, colNames, data);
             }
-            else if (this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm8))
+            else if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm8))
             {
                 if (colNames.Contains("treatment") || colNames.Contains("factor1"))
                 {
                     //random block or random factorial
-                    algoindicator = await SetANVIndicatorStats(label, colNames, data);
+                    algoindicator = await SetANVIndicatorStats(index, colNames, data);
                 }
                 else
                 {
                     //one way anova can use regression
-                    algoindicator = await SetRGRIndicatorStats(label, colNames, data);
+                    algoindicator = await SetRGRIndicatorStats(index, colNames, data);
                 }
             }
             return algoindicator;
         }
-        public async Task<string> SetAlgoIndicatorStats2(string label, string[] colNames, 
+        public async Task<int> SetAlgoIndicatorStats2(int index, string[] colNames, 
             string dataURL, string jDataURL)
         {
             //if the algo is used with the label, return it as affirmation
-            string algoindicator = string.Empty;
+            int algoindicator = 0;
             //assume additional algos will use this data format
             string sPlatForm = CalculatorHelpers.GetPlatform(this.CalcParameters.ExtensionDocToCalcURI, dataURL);
             if (sPlatForm == CalculatorHelpers.PLATFORM_TYPES.azure.ToString())
             {
-                if (this.HasMathType(label, MATH_TYPES.algorithm4))
+                if (this.HasMathType(index, MATH_TYPES.algorithm4))
                 {
                     //if its a good calc returns the string
-                    algoindicator = await SetScriptCloudStats(label, colNames, dataURL, jDataURL);
+                    algoindicator = await SetScriptCloudStats(index, colNames, dataURL, jDataURL);
                 }
             }
             else 
             {
-                if (this.HasMathType(label, MATH_TYPES.algorithm2)
-                    || this.HasMathType(label, MATH_TYPES.algorithm3))
+                if (this.HasMathType(index, MATH_TYPES.algorithm2)
+                    || this.HasMathType(index, MATH_TYPES.algorithm3))
                 {
                     //if its a good calc returns the string
-                    algoindicator = await SetScriptWebStats(label, colNames, dataURL, jDataURL);
+                    algoindicator = await SetScriptWebStats(index, colNames, dataURL, jDataURL);
                 }
-                else if (this.HasMathType(label, MATH_TYPES.algorithm4))
+                else if (this.HasMathType(index, MATH_TYPES.algorithm4))
                 {
                     //always runs the cloud web servive (but response can vary)
-                    algoindicator = await SetScriptCloudStats(label, colNames, dataURL, jDataURL);
+                    algoindicator = await SetScriptCloudStats(index, colNames, dataURL, jDataURL);
                 }
             }
             return algoindicator;
         }
-        public async Task<string> SetAlgoIndicatorStats3(string label, List<List<string>> data,
+        public async Task<int> SetAlgoIndicatorStats3(int index, List<List<string>> data,
             List<List<string>> colData, List<string> lines2, string[] colNames)
         {
             //if the algo is used with the label, return it as affirmation
-            string algoindicator = string.Empty;
+            int algoindicator = 0;
             //assume additional algos will use this data format
-            if (this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+            if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
             {
                 //if its a good exceedance probability calc returns the string
-                algoindicator = await SetDRR1IndicatorStats(label, colNames, data, 
+                algoindicator = await SetDRR1IndicatorStats(index, colNames, data, 
                     colData, lines2);
             }
             return algoindicator;
         }
-        public async Task<string> SetAlgoIndicatorStats4(string label, List<List<string>> data,
+        public async Task<int> SetAlgoIndicatorStats4(int index, List<List<string>> data,
             List<List<string>> colData, List<string> lines2, string[] colNames)
         {
             //if the algo is used with the label, return it as affirmation
-            string algoindicator = string.Empty;
+            int algoindicator = 0;
             //assume additional algos will use this data format
-            if (this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+            if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
             {
                 //if its a good exceedance probability calc returns the string
-                algoindicator = await SetDRR2IndicatorStats(label, colNames, data,
+                algoindicator = await SetDRR2IndicatorStats(index, colNames, data,
                     colData, lines2);
             }
             return algoindicator;
         }
-        public async Task<string> SetAlgoIndicatorCalcs(string label, List<List<double>> data)
+        public async Task<int> SetAlgoIndicatorCalcs(int index, List<List<double>> data)
         {
             //if the algo is used with the label, return it as affirmation
-            string algoindicator = string.Empty;
+            int algoindicator = 0;
             //init the algo using the new indicator
-            if (this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm5))
+            if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm5))
             {
-                DevTreks.Extensions.Algorithms.SimulatedAnnealing1 sa = InitSA1Algo(label);
+                DevTreks.Extensions.Algorithms.SimulatedAnnealing1 sa = InitSA1Algo(index);
                 //if its a good calc returns the string
                 bool bHasCalculation = await sa.RunAlgorithmAsync(data);
                 if (bHasCalculation)
                 {
-                    algoindicator = label;
+                    algoindicator = index;
                 }
                 //set the results
-                SetSA1AlgoRanges(label, sa);
+                SetSA1AlgoRanges(index, sa);
                 //start with any error messages
                 this.ME2Indicators[0].IndMathResult += sa.ErrorMessage;
             }
-            else if (this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm7))
+            else if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm7))
             {
-                DevTreks.Extensions.Algorithms.NeuralNetwork1 nn = InitNN1Algo(label);
+                DevTreks.Extensions.Algorithms.NeuralNetwork1 nn = InitNN1Algo(index);
                 //run the simulation
                 bool bHasCalculation = await nn.RunAlgorithmAsync(data);
                 if (bHasCalculation)
                 {
-                    algoindicator = label;
+                    algoindicator = index;
                 }
                 //set the results
-                SetNN1AlgoRanges(label, nn);
+                SetNN1AlgoRanges(index, nn);
                 //start with any error messages
                 this.ME2Indicators[0].IndMathResult += nn.ErrorMessage;
             }
@@ -189,19 +189,19 @@ namespace DevTreks.Extensions.ME3Statistics
         }
         
         
-        private async Task<string> SetPRAIndicatorStats(string label, string[] colNames,
+        private async Task<int> SetPRAIndicatorStats(int index, string[] colNames,
             List<double> qTs, double[] data = null)
         {
-            string algoIndicator = string.Empty;
+            int algoIndicator = 0;
             string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-            if (label == _score
+            if (index == 0
                 && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(label);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(index);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[0].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[0].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                         this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -211,16 +211,16 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                //label has to be _score
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                //label has to be [0]
+                FillBaseIndicator(pra.IndicatorQT, 0, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[1].IndLabel
+            else if (index == 1
                 && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[1].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(1);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[1].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[1].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -230,15 +230,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 1, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[2].IndLabel
+            else if (index == 2
                 && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[2].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(2);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[2].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[2].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -248,15 +248,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 2, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[3].IndLabel
+            else if (index == 3
                 && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[3].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(3);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[3].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[3].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -266,15 +266,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 3, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[4].IndLabel
+            else if (index == 4
                 && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[4].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(4);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[4].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[4].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -284,15 +284,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 4, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[5].IndLabel
+            else if (index == 5
                 && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[5].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(5);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[5].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[5].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -302,15 +302,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 5, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[6].IndLabel
+            else if (index == 6
                 && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[6].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(6);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[6].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[6].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -320,15 +320,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 6, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[7].IndLabel
+            else if (index == 7
                 && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[7].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(7);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[7].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[7].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -338,15 +338,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 7, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[8].IndLabel
+            else if (index == 8
                 && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[8].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(8);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[8].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[8].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -356,15 +356,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 8, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[9].IndLabel
+            else if (index == 9
                 && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[9].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(9);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[9].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[9].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -374,15 +374,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 9, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[10].IndLabel
+            else if (index == 10
                 && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[10].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(9);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[10].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[10].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -392,15 +392,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 10, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[11].IndLabel
+            else if (index == 11
                 && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[11].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(11);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[11].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[11].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -410,15 +410,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 11, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[12].IndLabel
+            else if (index == 12
                 && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[12].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(12);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[12].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[12].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -428,15 +428,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 12, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[13].IndLabel
+            else if (index == 13
                 && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[13].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(13);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[13].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[13].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -446,15 +446,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 13, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[14].IndLabel
+            else if (index == 14
                 && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[14].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(14);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[14].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[14].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -464,15 +464,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 14, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[15].IndLabel
+            else if (index == 15
                 && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[15].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(15);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[15].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[15].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -482,15 +482,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 15, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[16].IndLabel
+            else if (index == 16
                 && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[16].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(16);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[16].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[16].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -500,15 +500,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 16, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[17].IndLabel
+            else if (index == 17
                 && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[17].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(17);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[17].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[17].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -518,15 +518,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 17, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[18].IndLabel
+            else if (index == 18
                 && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[18].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(18);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[18].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[18].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -536,15 +536,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 18, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[19].IndLabel
+            else if (index == 19
                 && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[19].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(19);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[19].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[19].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                     this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -554,15 +554,15 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 19, sLowerCI, sUpperCI);
             }
-            else if (label == this.ME2Indicators[20].IndLabel
+            else if (index == 20
                 && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
             {
-                algoIndicator = label;
-                IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[20].IndLabel);
+                algoIndicator = index;
+                IndicatorQT1 qt1 = FillIndicator(20);
                 DevTreks.Extensions.Algorithms.PRA1 pra
-                    = InitPRA1Algo(label, this.ME2Indicators[20].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
+                    = InitPRA1Algo(index, this.ME2Indicators[20].IndMathSubType, colNames, qt1, this.ME2Indicators[0].IndCILevel,
                    this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, qTs);
                 if (data == null)
                 {
@@ -572,7 +572,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 {
                     await pra.RunAlgorithmAsync(data);
                 }
-                FillBaseIndicator(pra.IndicatorQT, pra.IndicatorQT.Label, sLowerCI, sUpperCI);
+                FillBaseIndicator(pra.IndicatorQT, 20, sLowerCI, sUpperCI);
             }
             else
             {
@@ -581,34 +581,31 @@ namespace DevTreks.Extensions.ME3Statistics
             
             return algoIndicator;
         }
-        private async Task<string> SetPRACorrIndicatorStats(string jdataURL, string[] colNames, 
-            IDictionary<string, List<List<double>>> data)
+        private async Task<string> SetPRACorrIndicatorStats(string jdataURL, string[] colNames,
+            IDictionary<int, List<List<double>>> data)
         {
             string algoIndicator = string.Empty;
             //do not use the condition if (data.Count > 0) because correlated inds can use random samples
-            
             string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             IndicatorQT1 qt = FillIndicators();
             DevTreks.Extensions.Algorithms.PRA2 pra
                 = InitPRA2Algo(qt, this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom);
-            algoIndicator = await pra.RunAlgorithmAsync(jdataURL, data);
+            IDictionary<string, List<List<double>>> data2 = ConvertDataToString(data);
+            algoIndicator = await pra.RunAlgorithmAsync(jdataURL, data2);
             FillBaseIndicators(pra.IndicatorQT, sLowerCI, sUpperCI);
-            //version 1.9.0 had to move this out of PRA2 (can't access ME2Indicator from there)
+            //version 1.9.0 had to move this out of PRA2 (can't access SB1Base from there)
             if (!string.IsNullOrEmpty(algoIndicator))
             {
-                string[] algoIndicators = algoIndicator.Split(Constants.CSV_DELIMITERS);
-                string[] indicators = new string[] { };
-                //score has to be set regardless of props
-                //if (this.ME2Indicators[0].IndTD1Amount == 0 && this.ME2Indicators[0].IndTD2Amount == 0)
-                
+                int[] algoIndexes = GetIndexes(algoIndicator);
+                int[] indicators = new int[] { };
+
                 //use the randomsample data to generate Score, ScoreM, ScoreL, and ScoreU
-                indicators = SetScoresFromRandomSamples(algoIndicators, pra.RandomSampleData);
-                
+                indicators = SetScoresFromRandomSamples(algoIndexes, pra.RandomSampleData);
+
                 foreach (var indicator in indicators)
                 {
-                    if (!string.IsNullOrEmpty(indicator)
-                        && (!algoIndicator.Contains(indicator)))
+                    if (!ContainsIndex(indicator, algoIndicator))
                     {
                         if (!algoIndicator.EndsWith(Constants.CSV_DELIMITER))
                         {
@@ -625,6 +622,7 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return algoIndicator;
         }
+       
         private IndicatorQT1 FillIndicators()
         {
             IndicatorQT1 qt = new IndicatorQT1();
@@ -635,127 +633,127 @@ namespace DevTreks.Extensions.ME3Statistics
                 if (i == 0
                     && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(_score); 
+                    IndicatorQT1 qt1 = FillIndicator(0); 
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 1
                     && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[1].IndLabel); 
+                    IndicatorQT1 qt1 = FillIndicator(1); 
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 2
                     && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[2].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(2);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 3
                     && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[3].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(3);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 4
                     && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[4].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(4);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 5
                     && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[5].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(5);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 6
                     && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[6].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(6);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 7
                     && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[7].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(7);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 8
                     && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[8].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(8);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 9
                     && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[9].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(9);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 10
                     && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[10].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(9);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 11
                     && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[11].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(11);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 12
                     && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[12].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(12);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 13
                     && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[13].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(13);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 14
                     && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[14].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(14);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 15
                     && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[15].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(15);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 16
                     && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[16].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(16);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 17
                     && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[17].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(17);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 18
                     && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[18].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(18);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 19
                     && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[19].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(19);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else if (i == 20
                     && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
                 {
-                    IndicatorQT1 qt1 = FillIndicator(this.ME2Indicators[20].IndLabel);
+                    IndicatorQT1 qt1 = FillIndicator(20);
                     qt.IndicatorQT1s.Add(qt1);
                 }
                 else
@@ -766,19 +764,19 @@ namespace DevTreks.Extensions.ME3Statistics
             return qt;
         }
         
-        private IndicatorQT1 FillIndicator(string label)
+        private IndicatorQT1 FillIndicator(int index)
         {
             IndicatorQT1 qt = new IndicatorQT1();
-            if (label == _score
+            if (index == 0
                 && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
             {
-                qt = new IndicatorQT1(_score, this.ME2Indicators[0].IndTMAmount, this.ME2Indicators[0].IndTLAmount, ME2Indicators[0].IndTUAmount,
+                qt = new IndicatorQT1(this.ME2Indicators[0].IndLabel, this.ME2Indicators[0].IndTMAmount, this.ME2Indicators[0].IndTLAmount, ME2Indicators[0].IndTUAmount,
                     this.ME2Indicators[0].IndTAmount, this.ME2Indicators[0].IndTD1Amount, this.ME2Indicators[0].IndTD2Amount, this.ME2Indicators[0].IndTMUnit, this.ME2Indicators[0].IndTLUnit, this.ME2Indicators[0].IndTUUnit,
                     this.ME2Indicators[0].IndTUnit, this.ME2Indicators[0].IndTD1Unit, this.ME2Indicators[0].IndTD2Unit, this.ME2Indicators[0].IndMathType, this.ME2Indicators[0].IndMathSubType,
                     this.ME2Indicators[0].IndType, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathResult,
                     0, 0, 0, 0, 0, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
             }
-            else if (label == this.ME2Indicators[1].IndLabel
+            else if (index == 1
                 && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[1].IndLabel, this.ME2Indicators[1].IndTMAmount, this.ME2Indicators[1].IndTLAmount, ME2Indicators[1].IndTUAmount,
@@ -788,7 +786,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[1].Ind1Amount, this.ME2Indicators[1].Ind2Amount, this.ME2Indicators[1].Ind3Amount, this.ME2Indicators[1].Ind4Amount, this.ME2Indicators[1].Ind5Amount,
                     this.ME2Indicators[1].Ind1Unit, this.ME2Indicators[1].Ind2Unit, this.ME2Indicators[1].Ind3Unit, this.ME2Indicators[1].Ind4Unit, this.ME2Indicators[1].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[2].IndLabel
+            else if (index == 2
                 && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[2].IndLabel, this.ME2Indicators[2].IndTMAmount, this.ME2Indicators[2].IndTLAmount, ME2Indicators[2].IndTUAmount,
@@ -798,7 +796,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[2].Ind1Amount, this.ME2Indicators[2].Ind2Amount, this.ME2Indicators[2].Ind3Amount, this.ME2Indicators[2].Ind4Amount, this.ME2Indicators[2].Ind5Amount,
                     this.ME2Indicators[2].Ind1Unit, this.ME2Indicators[2].Ind2Unit, this.ME2Indicators[2].Ind3Unit, this.ME2Indicators[2].Ind4Unit, this.ME2Indicators[2].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[3].IndLabel
+            else if (index == 3
                 && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[3].IndLabel, this.ME2Indicators[3].IndTMAmount, this.ME2Indicators[3].IndTLAmount, ME2Indicators[3].IndTUAmount,
@@ -808,7 +806,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[3].Ind1Amount, this.ME2Indicators[3].Ind2Amount, this.ME2Indicators[3].Ind3Amount, this.ME2Indicators[3].Ind4Amount, this.ME2Indicators[3].Ind5Amount,
                     this.ME2Indicators[3].Ind1Unit, this.ME2Indicators[3].Ind2Unit, this.ME2Indicators[3].Ind3Unit, this.ME2Indicators[3].Ind4Unit, this.ME2Indicators[3].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[4].IndLabel
+            else if (index == 4
                 && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[4].IndLabel, this.ME2Indicators[4].IndTMAmount, this.ME2Indicators[4].IndTLAmount, ME2Indicators[4].IndTUAmount,
@@ -818,7 +816,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[4].Ind1Amount, this.ME2Indicators[4].Ind2Amount, this.ME2Indicators[4].Ind3Amount, this.ME2Indicators[4].Ind4Amount, this.ME2Indicators[4].Ind5Amount,
                     this.ME2Indicators[4].Ind1Unit, this.ME2Indicators[4].Ind2Unit, this.ME2Indicators[4].Ind3Unit, this.ME2Indicators[4].Ind4Unit, this.ME2Indicators[4].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[5].IndLabel
+            else if (index == 5
                 && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[5].IndLabel, this.ME2Indicators[5].IndTMAmount, this.ME2Indicators[5].IndTLAmount, ME2Indicators[5].IndTUAmount,
@@ -828,7 +826,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[5].Ind1Amount, this.ME2Indicators[5].Ind2Amount, this.ME2Indicators[5].Ind3Amount, this.ME2Indicators[5].Ind4Amount, this.ME2Indicators[5].Ind5Amount,
                     this.ME2Indicators[5].Ind1Unit, this.ME2Indicators[5].Ind2Unit, this.ME2Indicators[5].Ind3Unit, this.ME2Indicators[5].Ind4Unit, this.ME2Indicators[5].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[6].IndLabel
+            else if (index == 6
                 && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[6].IndLabel, this.ME2Indicators[6].IndTMAmount, this.ME2Indicators[6].IndTLAmount, ME2Indicators[6].IndTUAmount,
@@ -838,7 +836,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[6].Ind1Amount, this.ME2Indicators[6].Ind2Amount, this.ME2Indicators[6].Ind3Amount, this.ME2Indicators[6].Ind4Amount, this.ME2Indicators[6].Ind5Amount,
                     this.ME2Indicators[6].Ind1Unit, this.ME2Indicators[6].Ind2Unit, this.ME2Indicators[6].Ind3Unit, this.ME2Indicators[6].Ind4Unit, this.ME2Indicators[6].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[7].IndLabel
+            else if (index == 7
                 && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[7].IndLabel, this.ME2Indicators[7].IndTMAmount, this.ME2Indicators[7].IndTLAmount, ME2Indicators[7].IndTUAmount,
@@ -848,7 +846,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[7].Ind1Amount, this.ME2Indicators[7].Ind2Amount, this.ME2Indicators[7].Ind3Amount, this.ME2Indicators[7].Ind4Amount, this.ME2Indicators[7].Ind5Amount,
                     this.ME2Indicators[7].Ind1Unit, this.ME2Indicators[7].Ind2Unit, this.ME2Indicators[7].Ind3Unit, this.ME2Indicators[7].Ind4Unit, this.ME2Indicators[7].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[8].IndLabel
+            else if (index == 8
                 && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[8].IndLabel, this.ME2Indicators[8].IndTMAmount, this.ME2Indicators[8].IndTLAmount, ME2Indicators[8].IndTUAmount,
@@ -858,7 +856,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[8].Ind1Amount, this.ME2Indicators[8].Ind2Amount, this.ME2Indicators[8].Ind3Amount, this.ME2Indicators[8].Ind4Amount, this.ME2Indicators[8].Ind5Amount,
                     this.ME2Indicators[8].Ind1Unit, this.ME2Indicators[8].Ind2Unit, this.ME2Indicators[8].Ind3Unit, this.ME2Indicators[8].Ind4Unit, this.ME2Indicators[8].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[9].IndLabel
+            else if (index == 9
                 && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[9].IndLabel, this.ME2Indicators[9].IndTMAmount, this.ME2Indicators[9].IndTLAmount, ME2Indicators[9].IndTUAmount,
@@ -868,7 +866,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[9].Ind1Amount, this.ME2Indicators[9].Ind2Amount, this.ME2Indicators[9].Ind3Amount, this.ME2Indicators[9].Ind4Amount, this.ME2Indicators[9].Ind5Amount,
                     this.ME2Indicators[9].Ind1Unit, this.ME2Indicators[9].Ind2Unit, this.ME2Indicators[9].Ind3Unit, this.ME2Indicators[9].Ind4Unit, this.ME2Indicators[9].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[10].IndLabel
+            else if (index == 10
                 && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[10].IndLabel, this.ME2Indicators[10].IndTMAmount, this.ME2Indicators[10].IndTLAmount, ME2Indicators[10].IndTUAmount,
@@ -878,7 +876,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[10].Ind1Amount, this.ME2Indicators[10].Ind2Amount, this.ME2Indicators[10].Ind3Amount, this.ME2Indicators[10].Ind4Amount, this.ME2Indicators[10].Ind5Amount,
                     this.ME2Indicators[10].Ind1Unit, this.ME2Indicators[10].Ind2Unit, this.ME2Indicators[10].Ind3Unit, this.ME2Indicators[10].Ind4Unit, this.ME2Indicators[10].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[11].IndLabel
+            else if (index == 11
                 && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[11].IndLabel, this.ME2Indicators[11].IndTMAmount, this.ME2Indicators[11].IndTLAmount, ME2Indicators[11].IndTUAmount,
@@ -888,7 +886,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[11].Ind1Amount, this.ME2Indicators[11].Ind2Amount, this.ME2Indicators[11].Ind3Amount, this.ME2Indicators[11].Ind4Amount, this.ME2Indicators[11].Ind5Amount,
                     this.ME2Indicators[11].Ind1Unit, this.ME2Indicators[11].Ind2Unit, this.ME2Indicators[11].Ind3Unit, this.ME2Indicators[11].Ind4Unit, this.ME2Indicators[11].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[12].IndLabel
+            else if (index == 12
                 && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[12].IndLabel, this.ME2Indicators[12].IndTMAmount, this.ME2Indicators[12].IndTLAmount, ME2Indicators[12].IndTUAmount,
@@ -898,7 +896,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[12].Ind1Amount, this.ME2Indicators[12].Ind2Amount, this.ME2Indicators[12].Ind3Amount, this.ME2Indicators[12].Ind4Amount, this.ME2Indicators[12].Ind5Amount,
                     this.ME2Indicators[12].Ind1Unit, this.ME2Indicators[12].Ind2Unit, this.ME2Indicators[12].Ind3Unit, this.ME2Indicators[12].Ind4Unit, this.ME2Indicators[12].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[13].IndLabel
+            else if (index == 13
                 && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[13].IndLabel, this.ME2Indicators[13].IndTMAmount, this.ME2Indicators[13].IndTLAmount, ME2Indicators[13].IndTUAmount,
@@ -908,7 +906,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[13].Ind1Amount, this.ME2Indicators[13].Ind2Amount, this.ME2Indicators[13].Ind3Amount, this.ME2Indicators[13].Ind4Amount, this.ME2Indicators[13].Ind5Amount,
                     this.ME2Indicators[13].Ind1Unit, this.ME2Indicators[13].Ind2Unit, this.ME2Indicators[13].Ind3Unit, this.ME2Indicators[13].Ind4Unit, this.ME2Indicators[13].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[14].IndLabel
+            else if (index == 14
                 && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[14].IndLabel, this.ME2Indicators[14].IndTMAmount, this.ME2Indicators[14].IndTLAmount, ME2Indicators[14].IndTUAmount,
@@ -918,7 +916,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[14].Ind1Amount, this.ME2Indicators[14].Ind2Amount, this.ME2Indicators[14].Ind3Amount, this.ME2Indicators[14].Ind4Amount, this.ME2Indicators[14].Ind5Amount,
                     this.ME2Indicators[14].Ind1Unit, this.ME2Indicators[14].Ind2Unit, this.ME2Indicators[14].Ind3Unit, this.ME2Indicators[14].Ind4Unit, this.ME2Indicators[14].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[15].IndLabel
+            else if (index == 15
                 && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[15].IndLabel, this.ME2Indicators[15].IndTMAmount, this.ME2Indicators[15].IndTLAmount, ME2Indicators[15].IndTUAmount,
@@ -928,7 +926,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[15].Ind1Amount, this.ME2Indicators[15].Ind2Amount, this.ME2Indicators[15].Ind3Amount, this.ME2Indicators[15].Ind4Amount, this.ME2Indicators[15].Ind5Amount,
                     this.ME2Indicators[15].Ind1Unit, this.ME2Indicators[15].Ind2Unit, this.ME2Indicators[15].Ind3Unit, this.ME2Indicators[15].Ind4Unit, this.ME2Indicators[15].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[16].IndLabel
+            else if (index == 16
                 && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[16].IndLabel, this.ME2Indicators[16].IndTMAmount, this.ME2Indicators[16].IndTLAmount, ME2Indicators[16].IndTUAmount,
@@ -938,7 +936,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[16].Ind1Amount, this.ME2Indicators[16].Ind2Amount, this.ME2Indicators[16].Ind3Amount, this.ME2Indicators[16].Ind4Amount, this.ME2Indicators[16].Ind5Amount,
                     this.ME2Indicators[16].Ind1Unit, this.ME2Indicators[16].Ind2Unit, this.ME2Indicators[16].Ind3Unit, this.ME2Indicators[16].Ind4Unit, this.ME2Indicators[16].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[17].IndLabel
+            else if (index == 17
                 && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[17].IndLabel, this.ME2Indicators[17].IndTMAmount, this.ME2Indicators[17].IndTLAmount, ME2Indicators[17].IndTUAmount,
@@ -948,7 +946,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[17].Ind1Amount, this.ME2Indicators[17].Ind2Amount, this.ME2Indicators[17].Ind3Amount, this.ME2Indicators[17].Ind4Amount, this.ME2Indicators[17].Ind5Amount,
                     this.ME2Indicators[17].Ind1Unit, this.ME2Indicators[17].Ind2Unit, this.ME2Indicators[17].Ind3Unit, this.ME2Indicators[17].Ind4Unit, this.ME2Indicators[17].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[18].IndLabel
+            else if (index == 18
                 && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[18].IndLabel, this.ME2Indicators[18].IndTMAmount, this.ME2Indicators[18].IndTLAmount, ME2Indicators[18].IndTUAmount,
@@ -958,7 +956,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[18].Ind1Amount, this.ME2Indicators[18].Ind2Amount, this.ME2Indicators[18].Ind3Amount, this.ME2Indicators[18].Ind4Amount, this.ME2Indicators[18].Ind5Amount,
                     this.ME2Indicators[18].Ind1Unit, this.ME2Indicators[18].Ind2Unit, this.ME2Indicators[18].Ind3Unit, this.ME2Indicators[18].Ind4Unit, this.ME2Indicators[18].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[19].IndLabel
+            else if (index == 19
                 && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[19].IndLabel, this.ME2Indicators[19].IndTMAmount, this.ME2Indicators[19].IndTLAmount, ME2Indicators[19].IndTUAmount,
@@ -968,7 +966,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[19].Ind1Amount, this.ME2Indicators[19].Ind2Amount, this.ME2Indicators[19].Ind3Amount, this.ME2Indicators[19].Ind4Amount, this.ME2Indicators[19].Ind5Amount,
                     this.ME2Indicators[19].Ind1Unit, this.ME2Indicators[19].Ind2Unit, this.ME2Indicators[19].Ind3Unit, this.ME2Indicators[19].Ind4Unit, this.ME2Indicators[19].Ind5Unit);
             }
-            else if (label == this.ME2Indicators[20].IndLabel
+            else if (index == 20
                 && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
             {
                 qt = new IndicatorQT1(this.ME2Indicators[20].IndLabel, this.ME2Indicators[20].IndTMAmount, this.ME2Indicators[20].IndTLAmount, ME2Indicators[20].IndTUAmount,
@@ -992,107 +990,107 @@ namespace DevTreks.Extensions.ME3Statistics
                 if (i == 0
                     && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], _score, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 0, lowerci, upperci);
                 }
                 else if (i == 1
                     && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 1, lowerci, upperci);
                 }
                 else if (i == 2
                     && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 2, lowerci, upperci);
                 }
                 else if (i == 3
                     && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 3, lowerci, upperci);
                 }
                 else if (i == 4
                     && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 4, lowerci, upperci);
                 }
                 else if (i == 5
                     && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 5, lowerci, upperci);
                 }
                 else if (i == 6
                     && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 6, lowerci, upperci);
                 }
                 else if (i == 7
                     && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 7, lowerci, upperci);
                 }
                 else if (i == 8
                     && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 8, lowerci, upperci);
                 }
                 else if (i == 9
                     && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 9, lowerci, upperci);
                 }
                 else if (i == 10
                     && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 10, lowerci, upperci);
                 }
                 else if (i == 11
                     && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 11, lowerci, upperci);
                 }
                 else if (i == 12
                     && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 12, lowerci, upperci);
                 }
                 else if (i == 13
                     && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 13, lowerci, upperci);
                 }
                 else if (i == 14
                     && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 14, lowerci, upperci);
                 }
                 else if (i == 15
                     && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 15, lowerci, upperci);
                 }
                 else if (i == 16
                     && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 16, lowerci, upperci);
                 }
                 else if (i == 17
                     && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 17, lowerci, upperci);
                 }
                 else if (i == 18
                     && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 18, lowerci, upperci);
                 }
                 else if (i == 19
                     && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 19, lowerci, upperci);
                 }
                 else if (i == 20
                     && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
                 {
-                    FillBaseIndicator(qt1.IndicatorQT1s[i], qt1.IndicatorQT1s[i].Label, lowerci, upperci);
+                    FillBaseIndicator(qt1.IndicatorQT1s[i], 20, lowerci, upperci);
                 }
                 else
                 {
@@ -1100,10 +1098,10 @@ namespace DevTreks.Extensions.ME3Statistics
                 }
             }
         }
-        private void FillBaseIndicator(IndicatorQT1 qt1, string label, string lowerci, string upperci)
+        private void FillBaseIndicator(IndicatorQT1 qt1, int index, string lowerci, string upperci)
         {
             bool bNeedsDistribution = true;
-            if (label == _score
+            if (index == 0
                 && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
             {
                 this.ME2Indicators[0].IndTMAmount = qt1.QTM;
@@ -1124,7 +1122,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[0].IndTD2Unit = qt1.QTD2Unit;
                 }
             }
-            else if (label == this.ME2Indicators[1].IndLabel
+            else if (index == 1
                 && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
             {
                 this.ME2Indicators[1].IndTMAmount = qt1.QTM;
@@ -1155,7 +1153,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[1].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[1].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[2].IndLabel
+            else if (index == 2
                 && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
             {
                 this.ME2Indicators[2].IndTMAmount = qt1.QTM;
@@ -1186,7 +1184,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[2].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[2].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[3].IndLabel
+            else if (index == 3
                 && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
             {
                 this.ME2Indicators[3].IndTMAmount = qt1.QTM;
@@ -1217,7 +1215,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[3].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[3].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[4].IndLabel
+            else if (index == 4
                 && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
             {
                 this.ME2Indicators[4].IndTMAmount = qt1.QTM;
@@ -1248,7 +1246,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[4].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[4].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[5].IndLabel
+            else if (index == 5
                 && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
             {
                 this.ME2Indicators[5].IndTMAmount = qt1.QTM;
@@ -1279,7 +1277,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[5].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[5].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[6].IndLabel
+            else if (index == 6
                 && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
             {
                 this.ME2Indicators[6].IndTMAmount = qt1.QTM;
@@ -1310,7 +1308,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[6].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[6].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[7].IndLabel
+            else if (index == 7
                 && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
             {
                 this.ME2Indicators[7].IndTMAmount = qt1.QTM;
@@ -1341,7 +1339,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[7].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[7].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[8].IndLabel
+            else if (index == 8
                 && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
             {
                 this.ME2Indicators[8].IndTMAmount = qt1.QTM;
@@ -1372,7 +1370,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[8].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[8].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[9].IndLabel
+            else if (index == 9
                 && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
             {
                 this.ME2Indicators[9].IndTMAmount = qt1.QTM;
@@ -1403,7 +1401,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[9].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[9].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[10].IndLabel
+            else if (index == 10
                 && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
             {
                 this.ME2Indicators[10].IndTMAmount = qt1.QTM;
@@ -1434,7 +1432,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[10].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[10].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[11].IndLabel
+            else if (index == 11
                 && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
             {
                 this.ME2Indicators[11].IndTMAmount = qt1.QTM;
@@ -1465,7 +1463,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[11].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[11].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[12].IndLabel
+            else if (index == 12
                 && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
             {
                 this.ME2Indicators[12].IndTMAmount = qt1.QTM;
@@ -1496,7 +1494,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[12].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[12].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[13].IndLabel
+            else if (index == 13
                 && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
             {
                 this.ME2Indicators[13].IndTMAmount = qt1.QTM;
@@ -1527,7 +1525,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[13].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[13].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[14].IndLabel
+            else if (index == 14
                 && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
             {
                 this.ME2Indicators[14].IndTMAmount = qt1.QTM;
@@ -1558,7 +1556,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[14].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[14].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[15].IndLabel
+            else if (index == 15
                 && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
             {
                 this.ME2Indicators[15].IndTMAmount = qt1.QTM;
@@ -1589,7 +1587,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[15].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[15].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[16].IndLabel
+            else if (index == 16
                 && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
             {
                 this.ME2Indicators[16].IndTMAmount = qt1.QTM;
@@ -1620,7 +1618,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[16].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[16].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[17].IndLabel
+            else if (index == 17
                 && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
             {
                 this.ME2Indicators[17].IndTMAmount = qt1.QTM;
@@ -1651,7 +1649,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[17].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[17].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[18].IndLabel
+            else if (index == 18
                 && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
             {
                 this.ME2Indicators[18].IndTMAmount = qt1.QTM;
@@ -1682,7 +1680,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[18].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[18].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[19].IndLabel
+            else if (index == 19
                 && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
             {
                 this.ME2Indicators[19].IndTMAmount = qt1.QTM;
@@ -1713,7 +1711,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[19].Ind5Amount = qt1.Q5;
                 this.ME2Indicators[19].Ind5Unit = qt1.Q5Unit;
             }
-            else if (label == this.ME2Indicators[20].IndLabel
+            else if (index == 20
                 && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
             {
                 this.ME2Indicators[20].IndTMAmount = qt1.QTM;
@@ -1749,7 +1747,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 //ignore the row
             }
         }
-        private string[] SetScoresFromRandomSamples(string[] indicators, Matrix<double> randomSampleData)
+        private int[] SetScoresFromRandomSamples(int[] indicators, Matrix<double> randomSampleData)
         {
             //1. store the Scores for each row in a double
             List<double> scores = new List<double>();
@@ -1758,8 +1756,10 @@ namespace DevTreks.Extensions.ME3Statistics
             //3.calculate indicators that are not correlated but may still be in the ind.SetRowQT or Score.MathExpress as constant QTM
             int iIndNumber = 1;
             //add the scoreMUnit to tell CalculateIndicators not to calculate score yet
-            List<string> newInds = indicators.ToList();
-            newInds.Add(_score);
+            List<int> newInds = indicators.ToList();
+            //204
+            newInds.Add(0);
+            //newInds.Add(_score);
             sb1base._indicators = newInds.ToArray();
             //this assumes that corrs are only run and stored for scores
             sb1base.CalculateIndicators(iIndNumber);
@@ -1783,7 +1783,7 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             string[] colNames = new List<string>().ToArray();
             List<double> qTs = new List<double>();
-            Task<string> tsk = sb1base.SetAlgoPRAStats(_score, qTs, scores.ToArray());
+            Task<int> tsk = sb1base.SetAlgoPRAStats(0, qTs, scores.ToArray());
             string sScoreMathR = string.Concat(this.ME2Indicators[0].IndMathResult, sb1base.ME2Indicators[0].IndMathResult);
             this.CopyME2IndicatorsProperties(sb1base);
             this.ME2Indicators[0].IndMathResult = string.Empty;
@@ -1798,11 +1798,11 @@ namespace DevTreks.Extensions.ME3Statistics
             //return the byref indicators
             return newInds.ToArray();
         }
-        private void SetRowQT(ME2Indicator sb1base, string label, int col, Vector<double> row)
+        private void SetRowQT(ME2Indicator sb1base, int index, int col, Vector<double> row)
         {
             //the indicators were used to set the order of row.cols
             //so their order, col, will correspond to row.column
-            if (label == sb1base.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1810,7 +1810,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[1].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[2].IndLabel)
+            else if (index == 2)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1818,7 +1818,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[2].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[3].IndLabel)
+            else if (index == 3)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1826,7 +1826,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[3].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[4].IndLabel)
+            else if (index == 4)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1834,7 +1834,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[4].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[5].IndLabel)
+            else if (index == 5)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1842,7 +1842,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[5].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[6].IndLabel)
+            else if (index == 6)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1850,7 +1850,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[6].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[7].IndLabel)
+            else if (index == 7)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1858,7 +1858,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[7].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[8].IndLabel)
+            else if (index == 8)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1866,7 +1866,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[8].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[9].IndLabel)
+            else if (index == 9)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1874,7 +1874,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[9].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[10].IndLabel)
+            else if (index == 10)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1882,7 +1882,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[10].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[11].IndLabel)
+            else if (index == 11)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1890,7 +1890,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[11].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[12].IndLabel)
+            else if (index == 12)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1898,7 +1898,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[12].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[13].IndLabel)
+            else if (index == 13)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1906,7 +1906,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[13].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[14].IndLabel)
+            else if (index == 14)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1914,7 +1914,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[14].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[15].IndLabel)
+            else if (index == 15)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1922,7 +1922,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[15].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[16].IndLabel)
+            else if (index == 16)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1930,7 +1930,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[16].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[17].IndLabel)
+            else if (index == 17)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1938,7 +1938,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[17].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[18].IndLabel)
+            else if (index == 18)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1946,7 +1946,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[18].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[19].IndLabel)
+            else if (index == 19)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1954,7 +1954,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     sb1base.ME2Indicators[19].IndTAmount = row[col];
                 }
             }
-            else if (label == sb1base.ME2Indicators[20].IndLabel)
+            else if (index == 20)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
@@ -1967,21 +1967,21 @@ namespace DevTreks.Extensions.ME3Statistics
                 //colindex = 0
             }
         }
-        private async Task<string> SetRGRIndicatorStats(string label, string[] colNames, List<List<double>> data)
+        private async Task<int> SetRGRIndicatorStats(int index, string[] colNames, List<List<double>> data)
         {
-            string algoIndicator = string.Empty;
+            int algoIndicator = 0;
             if (data.Count > 0)
             {
                 string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
                 string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-                if (label == this.ME2Indicators[1].IndLabel
+                if (index == 1
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, 
+                        = InitRGR1Algo(index, 
                             colNames, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[1].IndTMAmount = rgr.QTPredicted;
@@ -1993,14 +1993,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[1].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[1].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[2].IndLabel
+                else if (index == 2
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[2].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[2].IndTLAmount = rgr.QTL;
@@ -2010,14 +2010,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[2].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[2].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[3].IndLabel
+                else if (index == 3
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[3].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[3].IndTLAmount = rgr.QTL;
@@ -2027,14 +2027,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[3].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[3].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[4].IndLabel
+                else if (index == 4
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[4].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[4].IndTLAmount = rgr.QTL;
@@ -2044,14 +2044,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[4].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[4].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[5].IndLabel
+                else if (index == 5
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[5].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[5].IndTLAmount = rgr.QTL;
@@ -2061,14 +2061,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[5].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[5].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[6].IndLabel
+                else if (index == 6
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[6].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[6].IndTLAmount = rgr.QTL;
@@ -2078,14 +2078,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[6].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[6].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[7].IndLabel
+                else if (index == 7
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[7].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[7].IndTLAmount = rgr.QTL;
@@ -2095,14 +2095,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[7].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[7].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[8].IndLabel
+                else if (index == 8
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[8].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[8].IndTLAmount = rgr.QTL;
@@ -2112,14 +2112,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[8].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[8].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[9].IndLabel
+                else if (index == 9
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[9].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[9].IndTLAmount = rgr.QTL;
@@ -2129,14 +2129,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[9].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[9].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[10].IndLabel
+                else if (index == 10
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[10].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[10].IndTLAmount = rgr.QTL;
@@ -2146,14 +2146,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[10].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[10].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[11].IndLabel
+                else if (index == 11
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[11].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[11].IndTLAmount = rgr.QTL;
@@ -2163,14 +2163,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[11].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[11].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[12].IndLabel
+                else if (index == 12
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[12].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[12].IndTLAmount = rgr.QTL;
@@ -2180,14 +2180,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[12].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[12].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[13].IndLabel
+                else if (index == 13
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[13].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[13].IndTLAmount = rgr.QTL;
@@ -2197,14 +2197,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[13].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[13].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[14].IndLabel
+                else if (index == 14
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[14].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[14].IndTLAmount = rgr.QTL;
@@ -2214,14 +2214,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[14].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[14].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[15].IndLabel
+                else if (index == 15
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[15].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[15].IndTLAmount = rgr.QTL;
@@ -2231,14 +2231,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[15].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[15].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[16].IndLabel
+                else if (index == 16
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[16].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[16].IndTLAmount = rgr.QTL;
@@ -2248,14 +2248,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[16].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[16].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[17].IndLabel
+                else if (index == 17
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[17].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[17].IndTLAmount = rgr.QTL;
@@ -2265,14 +2265,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[17].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[17].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[18].IndLabel
+                else if (index == 18
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[18].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[18].IndTLAmount = rgr.QTL;
@@ -2282,14 +2282,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[18].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[18].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[19].IndLabel
+                else if (index == 19
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[19].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[19].IndTLAmount = rgr.QTL;
@@ -2299,14 +2299,14 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[19].IndMathResult = rgr.ErrorMessage;
                     this.ME2Indicators[19].IndMathResult += rgr.MathResult;
                 }
-                else if (label == this.ME2Indicators[20].IndLabel
+                else if (index == 20
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
                 {
-                    algoIndicator = label;
+                    algoIndicator = index;
                     DevTreks.Extensions.Algorithms.Regression1 rgr
-                        = InitRGR1Algo(label, colNames, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                        = InitRGR1Algo(index, colNames, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathSubType, this.ME2Indicators[0].IndCILevel);
                     await rgr.RunAlgorithmAsync(data);
                     this.ME2Indicators[20].IndTMAmount = rgr.QTPredicted;
                     this.ME2Indicators[20].IndTLAmount = rgr.QTL;
@@ -2324,20 +2324,20 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return algoIndicator;
         }
-        private async Task<string> SetANVIndicatorStats(string label, string[] colNames, List<List<double>> data)
+        private async Task<int> SetANVIndicatorStats(int index, string[] colNames, List<List<double>> data)
         {
-            string algoIndicator = string.Empty;
+            int algoIndicator = 0;
             if (data.Count > 0)
             {
                 DevTreks.Extensions.Algorithms.Anova1 anv = new Algorithms.Anova1();
                 string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
                 string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-                if (label == this.ME2Indicators[1].IndLabel
+                if (index == 1
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[1].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[1].IndTLAmount = anv.QTL;
@@ -2347,12 +2347,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[1].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[1].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[2].IndLabel
+                else if (index == 2
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[2].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[2].IndTLAmount = anv.QTL;
@@ -2362,12 +2362,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[2].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[2].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[3].IndLabel
+                else if (index == 3
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[3].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[3].IndTLAmount = anv.QTL;
@@ -2377,12 +2377,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[3].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[3].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[4].IndLabel
+                else if (index == 4
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[4].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[4].IndTLAmount = anv.QTL;
@@ -2392,12 +2392,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[4].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[4].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[5].IndLabel
+                else if (index == 5
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[5].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[5].IndTLAmount = anv.QTL;
@@ -2407,12 +2407,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[5].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[5].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[6].IndLabel
+                else if (index == 6
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[6].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[6].IndTLAmount = anv.QTL;
@@ -2422,12 +2422,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[6].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[6].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[7].IndLabel
+                else if (index == 7
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[7].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[7].IndTLAmount = anv.QTL;
@@ -2437,12 +2437,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[7].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[7].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[8].IndLabel
+                else if (index == 8
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[8].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[8].IndTLAmount = anv.QTL;
@@ -2452,12 +2452,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[8].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[8].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[9].IndLabel
+                else if (index == 9
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[9].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[9].IndTLAmount = anv.QTL;
@@ -2467,12 +2467,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[9].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[9].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[10].IndLabel
+                else if (index == 10
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[10].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[10].IndTLAmount = anv.QTL;
@@ -2482,12 +2482,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[10].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[10].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[11].IndLabel
+                else if (index == 11
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[11].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[11].IndTLAmount = anv.QTL;
@@ -2497,12 +2497,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[11].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[11].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[12].IndLabel
+                else if (index == 12
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[12].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[12].IndTLAmount = anv.QTL;
@@ -2512,12 +2512,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[12].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[12].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[13].IndLabel
+                else if (index == 13
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[13].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[13].IndTLAmount = anv.QTL;
@@ -2527,12 +2527,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[13].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[13].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[14].IndLabel
+                else if (index == 14
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[14].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[14].IndTLAmount = anv.QTL;
@@ -2542,12 +2542,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[14].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[14].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[15].IndLabel
+                else if (index == 15
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[15].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[15].IndTLAmount = anv.QTL;
@@ -2557,12 +2557,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[15].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[15].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[16].IndLabel
+                else if (index == 16
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[16].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[16].IndTLAmount = anv.QTL;
@@ -2572,12 +2572,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[16].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[16].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[17].IndLabel
+                else if (index == 17
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[17].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[17].IndTLAmount = anv.QTL;
@@ -2587,12 +2587,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[17].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[17].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[18].IndLabel
+                else if (index == 18
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[18].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[18].IndTLAmount = anv.QTL;
@@ -2602,12 +2602,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[18].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[18].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[19].IndLabel
+                else if (index == 19
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[19].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[19].IndTLAmount = anv.QTL;
@@ -2617,12 +2617,12 @@ namespace DevTreks.Extensions.ME3Statistics
                     this.ME2Indicators[19].IndMathResult = anv.ErrorMessage;
                     this.ME2Indicators[19].IndMathResult += anv.MathResult;
                 }
-                else if (label == this.ME2Indicators[20].IndLabel
+                else if (index == 20
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    anv = InitANV1Algo(label, colNames, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
                     await anv.RunAlgorithmAsync(data);
                     this.ME2Indicators[20].IndTMAmount = anv.QTPredicted;
                     this.ME2Indicators[20].IndTLAmount = anv.QTL;
@@ -2644,224 +2644,224 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return algoIndicator;
         }
-        private async Task<string> SetDRR1IndicatorStats(string label, string[] colNames, 
+        private async Task<int> SetDRR1IndicatorStats(int index, string[] colNames, 
             List<List<string>> data, List<List<string>> colData, List<string> lines2)
         {
-            string algoIndicator = string.Empty;
+            int algoIndicator = 0;
             if (data.Count > 0)
             {
                 DevTreks.Extensions.Algorithms.DRR1 drr = new Algorithms.DRR1();
                 string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
                 string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-                if (label == _score
+                if (index == 0
                     && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(1, label, colNames, qt1, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(1, index, colNames, qt1, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 0, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[1].IndLabel
+                else if (index == 1
                     && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(1, label, colNames, qt1, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(1, index, colNames, qt1, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 1, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[2].IndLabel
+                else if (index == 2
                     && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(2, label, colNames, qt1, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(2, index, colNames, qt1, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 2, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[3].IndLabel
+                else if (index == 3
                     && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(3, label, colNames, qt1, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(3, index, colNames, qt1, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 3, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[4].IndLabel
+                else if (index == 4
                     && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(4, label, colNames, qt1, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(4, index, colNames, qt1, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 4, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[5].IndLabel
+                else if (index == 5
                     && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(5, label, colNames, qt1, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(5, index, colNames, qt1, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 5, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[6].IndLabel
+                else if (index == 6
                     && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(6, label, colNames, qt1, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(6, index, colNames, qt1, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 6, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[7].IndLabel
+                else if (index == 7
                     && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(7, label, colNames, qt1, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(7, index, colNames, qt1, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 7, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[8].IndLabel
+                else if (index == 8
                     && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(8, label, colNames, qt1, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(8, index, colNames, qt1, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 8, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[9].IndLabel
+                else if (index == 9
                     && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(9, label, colNames, qt1, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(9, index, colNames, qt1, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 9, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[10].IndLabel
+                else if (index == 10
                     && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(10, label, colNames, qt1, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(10, index, colNames, qt1, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 10, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[11].IndLabel
+                else if (index == 11
                     && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(11, label, colNames, qt1, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(11, index, colNames, qt1, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 11, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[12].IndLabel
+                else if (index == 12
                     && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(12, label, colNames, qt1, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(12, index, colNames, qt1, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 12, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[13].IndLabel
+                else if (index == 13
                     && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(13, label, colNames, qt1, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(13, index, colNames, qt1, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 13, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[14].IndLabel
+                else if (index == 14
                     && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(14, label, colNames, qt1, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(14, index, colNames, qt1, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 14, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[15].IndLabel
+                else if (index == 15
                     && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(15, label, colNames, qt1, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(15, index, colNames, qt1, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 15, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[16].IndLabel
+                else if (index == 16
                     && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(16, label, colNames, qt1, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(16, index, colNames, qt1, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 16, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[17].IndLabel
+                else if (index == 17
                     && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(17, label, colNames, qt1, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(17, index, colNames, qt1, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 17, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[18].IndLabel
+                else if (index == 18
                     && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(18, label, colNames, qt1, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(18, index, colNames, qt1, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 18, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[19].IndLabel
+                else if (index == 19
                     && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(19, label, colNames, qt1, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(19, index, colNames, qt1, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 19, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[20].IndLabel
+                else if (index == 20
                     && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    drr = InitDRR1Algo(20, label, colNames, qt1, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    drr = InitDRR1Algo(20, index, colNames, qt1, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await drr.RunAlgorithmAsync(data, colData, lines2);
-                    FillBaseIndicator(drr.IndicatorQT, drr.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(drr.IndicatorQT, 20, sLowerCI, sUpperCI);
                 }
                 else
                 {
@@ -2875,226 +2875,226 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return algoIndicator;
         }
-        private async Task<string> SetDRR2IndicatorStats(string label, string[] colNames,
+        private async Task<int> SetDRR2IndicatorStats(int index, string[] colNames,
             List<List<string>> data, List<List<string>> colData, List<string> lines2)
         {
-            string algoIndicator = string.Empty;
+            int algoIndicator = 0;
             if (data.Count > 0)
             {
                 DevTreks.Extensions.Algorithms.DRR2 rmi = new Algorithms.DRR2();
                 string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
                 string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-                if (label == _score
+                if (index == 0
                     && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
                     //this must to use a zero index
-                    rmi = InitDRR2Algo(0, label, colNames, qt1, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathSubType,
+                    rmi = InitDRR2Algo(0, index, colNames, qt1, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 0, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[1].IndLabel
+                else if (index == 1
                     && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
                     //this must use a 1 index
-                    rmi = InitDRR2Algo(1, label, colNames, qt1, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathSubType,
+                    rmi = InitDRR2Algo(1, index, colNames, qt1, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 1, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[2].IndLabel
+                else if (index == 2
                     && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(2, label, colNames, qt1, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(2, index, colNames, qt1, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 2, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[3].IndLabel
+                else if (index == 3
                     && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(3, label, colNames, qt1, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(3, index, colNames, qt1, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 3, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[4].IndLabel
+                else if (index == 4
                     && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(4, label, colNames, qt1, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(4, index, colNames, qt1, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 4, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[5].IndLabel
+                else if (index == 5
                     && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(5, label, colNames, qt1, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(5, index, colNames, qt1, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 5, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[6].IndLabel
+                else if (index == 6
                     && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(6, label, colNames, qt1, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(6, index, colNames, qt1, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 6, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[7].IndLabel
+                else if (index == 7
                     && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(7, label, colNames, qt1, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(7, index, colNames, qt1, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 7, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[8].IndLabel
+                else if (index == 8
                     && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(8, label, colNames, qt1, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(8, index, colNames, qt1, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 8, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[9].IndLabel
+                else if (index == 9
                     && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(9, label, colNames, qt1, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(9, index, colNames, qt1, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 9, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[10].IndLabel
+                else if (index == 10
                     && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(10, label, colNames, qt1, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(10, index, colNames, qt1, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 10, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[11].IndLabel
+                else if (index == 11
                     && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(11, label, colNames, qt1, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(11, index, colNames, qt1, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 11, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[12].IndLabel
+                else if (index == 12
                     && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(12, label, colNames, qt1, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(12, index, colNames, qt1, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 12, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[13].IndLabel
+                else if (index == 13
                     && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(13, label, colNames, qt1, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(13, index, colNames, qt1, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 13, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[14].IndLabel
+                else if (index == 14
                     && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(14, label, colNames, qt1, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(14, index, colNames, qt1, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 14, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[15].IndLabel
+                else if (index == 15
                     && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(15, label, colNames, qt1, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(15, index, colNames, qt1, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 15, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[16].IndLabel
+                else if (index == 16
                     && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(16, label, colNames, qt1, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(16, index, colNames, qt1, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 16, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[17].IndLabel
+                else if (index == 17
                     && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(17, label, colNames, qt1, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(17, index, colNames, qt1, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 17, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[18].IndLabel
+                else if (index == 18
                     && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(18, label, colNames, qt1, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(18, index, colNames, qt1, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 18, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[19].IndLabel
+                else if (index == 19
                     && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(19, label, colNames, qt1, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(19, index, colNames, qt1, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 19, sLowerCI, sUpperCI);
                 }
-                else if (label == this.ME2Indicators[20].IndLabel
+                else if (index == 20
                     && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
                 {
-                    algoIndicator = label;
-                    IndicatorQT1 qt1 = FillIndicator(label);
-                    rmi = InitDRR2Algo(20, label, colNames, qt1, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathSubType,
+                    algoIndicator = index;
+                    IndicatorQT1 qt1 = FillIndicator(index);
+                    rmi = InitDRR2Algo(20, index, colNames, qt1, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathSubType,
                         this.ME2Indicators[0].IndCILevel, this.ME2Indicators[0].IndIterations, this.ME2Indicators[0].IndRandom, this.Observations);
                     await rmi.RunAlgorithmAsync2(data, colData, lines2);
-                    FillBaseIndicator(rmi.IndicatorQT, rmi.IndicatorQT.Label, sLowerCI, sUpperCI);
+                    FillBaseIndicator(rmi.IndicatorQT, 20, sLowerCI, sUpperCI);
                 }
                 else
                 {
@@ -3118,147 +3118,147 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return bHasMathExpress;
         }
-        public static int GetSiblingIndicatorIndex(string label, int indWithMathExpressIndex, ME2Indicator calcor)
+        public static int GetSiblingIndicatorIndex(int index, int indWithMathExpressIndex, ME2Indicator calcor)
         {
             //indicators are 1 based
             //last sibling indicator holds mathexpression if rules followed
             int iSiblingIndex = 0;
-            if (label == calcor.ME2Indicators[1].IndLabel
-                && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[1].IndMathExpression) == false
+            if (index == 1
+                && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[1].IndMathExpression) == false
                 && indWithMathExpressIndex != 1)
             {
                 iSiblingIndex = 1;
             }
-            else if (label == calcor.ME2Indicators[2].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[2].IndMathExpression) == false
+            else if (index == 2
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[2].IndMathExpression) == false
                 && indWithMathExpressIndex != 2)
             {
                 iSiblingIndex = 2;
             }
-            else if (label == calcor.ME2Indicators[3].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[3].IndMathExpression) == false
+            else if (index == 3
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[3].IndMathExpression) == false
                 && indWithMathExpressIndex != 3)
             {
                 iSiblingIndex = 3;
             }
-            else if (label == calcor.ME2Indicators[4].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[4].IndMathExpression) == false
+            else if (index == 4
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[4].IndMathExpression) == false
                 && indWithMathExpressIndex != 4)
             {
                 iSiblingIndex = 4;
             }
-            else if (label == calcor.ME2Indicators[5].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[5].IndMathExpression) == false
+            else if (index == 5
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[5].IndMathExpression) == false
                 && indWithMathExpressIndex != 5)
             {
                 iSiblingIndex = 5;
             }
-            else if (label == calcor.ME2Indicators[6].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[6].IndMathExpression) == false
+            else if (index == 6
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[6].IndMathExpression) == false
                 && indWithMathExpressIndex != 6)
             {
                 iSiblingIndex = 6;
             }
-            else if (label == calcor.ME2Indicators[7].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[7].IndMathExpression) == false
+            else if (index == 7
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[7].IndMathExpression) == false
                 && indWithMathExpressIndex != 7)
             {
                 iSiblingIndex = 7;
             }
-            else if (label == calcor.ME2Indicators[8].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[8].IndMathExpression) == false
+            else if (index == 8
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[8].IndMathExpression) == false
                 && indWithMathExpressIndex != 8)
             {
                 iSiblingIndex = 8;
             }
-            else if (label == calcor.ME2Indicators[9].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[9].IndMathExpression) == false
+            else if (index == 9
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[9].IndMathExpression) == false
                 && indWithMathExpressIndex != 9)
             {
                 iSiblingIndex = 9;
             }
-            else if (label == calcor.ME2Indicators[10].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[10].IndMathExpression) == false
+            else if (index == 10
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[10].IndMathExpression) == false
                 && indWithMathExpressIndex != 10)
             {
                 iSiblingIndex = 10;
             }
-            else if (label == calcor.ME2Indicators[11].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[11].IndMathExpression) == false
+            else if (index == 11
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[11].IndMathExpression) == false
                 && indWithMathExpressIndex != 11)
             {
                 iSiblingIndex = 11;
             }
-            else if (label == calcor.ME2Indicators[12].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[12].IndMathExpression) == false
+            else if (index == 12
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[12].IndMathExpression) == false
                 && indWithMathExpressIndex != 12)
             {
                 iSiblingIndex = 12;
             }
-            else if (label == calcor.ME2Indicators[13].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[13].IndMathExpression) == false
+            else if (index == 13
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[13].IndMathExpression) == false
                 && indWithMathExpressIndex != 13)
             {
                 iSiblingIndex = 13;
             }
-            else if (label == calcor.ME2Indicators[14].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[14].IndMathExpression) == false
+            else if (index == 14
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[14].IndMathExpression) == false
                 && indWithMathExpressIndex != 14)
             {
                 iSiblingIndex = 14;
             }
-            else if (label == calcor.ME2Indicators[15].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[15].IndMathExpression) == false
+            else if (index == 15
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[15].IndMathExpression) == false
                 && indWithMathExpressIndex != 15)
             {
                 iSiblingIndex = 15;
             }
-            else if (label == calcor.ME2Indicators[16].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[16].IndMathExpression) == false
+            else if (index == 16
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[16].IndMathExpression) == false
                 && indWithMathExpressIndex != 16)
             {
                 iSiblingIndex = 16;
             }
-            else if (label == calcor.ME2Indicators[17].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[17].IndMathExpression) == false
+            else if (index == 17
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[17].IndMathExpression) == false
                 && indWithMathExpressIndex != 17)
             {
                 iSiblingIndex = 17;
             }
-            else if (label == calcor.ME2Indicators[18].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[18].IndMathExpression) == false
+            else if (index == 18
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[18].IndMathExpression) == false
                 && indWithMathExpressIndex != 18)
             {
                 iSiblingIndex = 18;
             }
-            else if (label == calcor.ME2Indicators[19].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[19].IndMathExpression) == false
+            else if (index == 19
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[19].IndMathExpression) == false
                 && indWithMathExpressIndex != 19)
             {
                 iSiblingIndex = 19;
             }
-            else if (label == calcor.ME2Indicators[20].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[20].IndMathExpression) == false
+            else if (index == 20
+                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[20].IndMathExpression) == false
                 && indWithMathExpressIndex != 20)
             {
                 iSiblingIndex = 20;
             }
             return iSiblingIndex;
         }
-        private async Task<string> SetScriptCloudStats(string label, string[] colNames, 
+        private async Task<int> SetScriptCloudStats(int index, string[] colNames, 
             string dataURL, string jDataURL)
         {
-            string algoIndicator = label;
+            int algoIndicator = index;
             System.Threading.CancellationToken ctk = new System.Threading.CancellationToken();
             string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-            if (label == this.ME2Indicators[1].IndLabel
+            if (index == 1
                 && (this.ME2Indicators[1].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathType, this.ME2Indicators[1].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathType, this.ME2Indicators[1].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[1].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[1].IndTLAmount = script2.QTL;
@@ -3269,13 +3269,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[1].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[1].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[2].IndLabel
+            else if (index == 2
                  && (this.ME2Indicators[2].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathType, this.ME2Indicators[2].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathType, this.ME2Indicators[2].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[2].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[2].IndTLAmount = script2.QTL;
@@ -3285,13 +3285,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[2].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[2].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[3].IndLabel
+            else if (index == 3
                  && (this.ME2Indicators[3].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathType, this.ME2Indicators[3].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathType, this.ME2Indicators[3].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[3].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[3].IndTLAmount = script2.QTL;
@@ -3301,13 +3301,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[3].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[3].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[4].IndLabel
+            else if (index == 4
                  && (this.ME2Indicators[4].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathType, this.ME2Indicators[4].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathType, this.ME2Indicators[4].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[4].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[4].IndTLAmount = script2.QTL;
@@ -3317,13 +3317,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[4].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[4].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[5].IndLabel
+            else if (index == 5
                  && (this.ME2Indicators[5].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathType, this.ME2Indicators[5].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathType, this.ME2Indicators[5].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[5].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[5].IndTLAmount = script2.QTL;
@@ -3333,13 +3333,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[5].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[5].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[6].IndLabel
+            else if (index == 6
                  && (this.ME2Indicators[6].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathType, this.ME2Indicators[6].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathType, this.ME2Indicators[6].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[6].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[6].IndTLAmount = script2.QTL;
@@ -3349,13 +3349,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[6].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[6].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[7].IndLabel
+            else if (index == 7
                  && (this.ME2Indicators[7].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathType, this.ME2Indicators[7].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathType, this.ME2Indicators[7].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[7].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[7].IndTLAmount = script2.QTL;
@@ -3365,13 +3365,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[7].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[7].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[8].IndLabel
+            else if (index == 8
                  && (this.ME2Indicators[8].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathType, this.ME2Indicators[8].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathType, this.ME2Indicators[8].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[8].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[8].IndTLAmount = script2.QTL;
@@ -3381,13 +3381,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[8].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[8].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[9].IndLabel
+            else if (index == 9
                  && (this.ME2Indicators[9].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathType, this.ME2Indicators[9].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathType, this.ME2Indicators[9].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[9].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[9].IndTLAmount = script2.QTL;
@@ -3397,13 +3397,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[9].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[9].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[10].IndLabel
+            else if (index == 10
                  && (this.ME2Indicators[10].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathType, this.ME2Indicators[10].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathType, this.ME2Indicators[10].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[10].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[10].IndTLAmount = script2.QTL;
@@ -3413,13 +3413,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[10].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[10].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[11].IndLabel
+            else if (index == 11
                  && (this.ME2Indicators[11].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathType, this.ME2Indicators[11].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathType, this.ME2Indicators[11].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[11].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[11].IndTLAmount = script2.QTL;
@@ -3429,13 +3429,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[11].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[11].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[12].IndLabel
+            else if (index == 12
                  && (this.ME2Indicators[12].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathType, this.ME2Indicators[12].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathType, this.ME2Indicators[12].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[12].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[12].IndTLAmount = script2.QTL;
@@ -3445,13 +3445,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[12].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[12].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[13].IndLabel
+            else if (index == 13
                  && (this.ME2Indicators[13].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathType, this.ME2Indicators[13].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathType, this.ME2Indicators[13].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[13].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[13].IndTLAmount = script2.QTL;
@@ -3461,13 +3461,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[13].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[13].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[14].IndLabel
+            else if (index == 14
                  && (this.ME2Indicators[14].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathType, this.ME2Indicators[14].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathType, this.ME2Indicators[14].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[14].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[14].IndTLAmount = script2.QTL;
@@ -3477,13 +3477,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[14].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[14].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[15].IndLabel
+            else if (index == 15
                  && (this.ME2Indicators[15].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathType, this.ME2Indicators[15].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathType, this.ME2Indicators[15].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[15].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[15].IndTLAmount = script2.QTL;
@@ -3493,13 +3493,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[15].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[15].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[16].IndLabel
+            else if (index == 16
                  && (this.ME2Indicators[16].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathType, this.ME2Indicators[16].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathType, this.ME2Indicators[16].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[16].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[16].IndTLAmount = script2.QTL;
@@ -3509,13 +3509,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[16].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[16].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[17].IndLabel
+            else if (index == 17
                  && (this.ME2Indicators[17].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathType, this.ME2Indicators[17].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathType, this.ME2Indicators[17].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[17].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[17].IndTLAmount = script2.QTL;
@@ -3525,13 +3525,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[17].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[17].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[18].IndLabel
+            else if (index == 18
                 && (this.ME2Indicators[18].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathType, this.ME2Indicators[18].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathType, this.ME2Indicators[18].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[18].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[18].IndTLAmount = script2.QTL;
@@ -3541,13 +3541,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[18].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[18].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[19].IndLabel
+            else if (index == 19
                  && (this.ME2Indicators[19].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathType, this.ME2Indicators[19].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathType, this.ME2Indicators[19].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[19].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[19].IndTLAmount = script2.QTL;
@@ -3557,13 +3557,13 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[19].IndMathResult = script2.ErrorMessage;
                 this.ME2Indicators[19].IndMathResult += script2.MathResult;
             }
-            else if (label == this.ME2Indicators[20].IndLabel
+            else if (index == 20
                  && (this.ME2Indicators[20].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script2 script2
-                    = InitScript2Algo(label, colNames, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathType, this.ME2Indicators[20].IndMathSubType);
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathType, this.ME2Indicators[20].IndMathSubType);
                 bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[20].IndTMAmount = script2.QTPredicted;
                 this.ME2Indicators[20].IndTLAmount = script2.QTL;
@@ -3579,21 +3579,21 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return algoIndicator;
         }
-        private async Task<string> SetScriptWebStats(string label, string[] colNames,
+        private async Task<int> SetScriptWebStats(int index, string[] colNames,
             string dataURL, string jDataURL)
         {
-            string algoIndicator = label;
+            int algoIndicator = index;
             System.Threading.CancellationToken ctk = new System.Threading.CancellationToken();
             string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-            if (label == this.ME2Indicators[1].IndLabel
+            if (index == 1
                 && (this.ME2Indicators[1].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[1].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathType, this.ME2Indicators[1].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[1].IndMathExpression, this.ME2Indicators[1].IndMathType, this.ME2Indicators[1].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[1].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[1].IndTLAmount = script1.QTL;
@@ -3604,14 +3604,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[1].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[1].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[2].IndLabel
+            else if (index == 2
                 && (this.ME2Indicators[2].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[2].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[2].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathType, this.ME2Indicators[2].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[2].IndMathExpression, this.ME2Indicators[2].IndMathType, this.ME2Indicators[2].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[2].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[2].IndTLAmount = script1.QTL;
@@ -3621,14 +3621,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[2].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[2].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[3].IndLabel
+            else if (index == 3
                 && (this.ME2Indicators[3].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[3].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[3].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathType, this.ME2Indicators[3].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[3].IndMathExpression, this.ME2Indicators[3].IndMathType, this.ME2Indicators[3].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[3].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[3].IndTLAmount = script1.QTL;
@@ -3638,14 +3638,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[3].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[3].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[4].IndLabel
+            else if (index == 4
                 && (this.ME2Indicators[4].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[4].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[4].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathType, this.ME2Indicators[4].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[4].IndMathExpression, this.ME2Indicators[4].IndMathType, this.ME2Indicators[4].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[4].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[4].IndTLAmount = script1.QTL;
@@ -3655,14 +3655,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[4].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[4].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[5].IndLabel
+            else if (index == 5
                && (this.ME2Indicators[5].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[5].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[5].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathType, this.ME2Indicators[5].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[5].IndMathExpression, this.ME2Indicators[5].IndMathType, this.ME2Indicators[5].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[5].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[5].IndTLAmount = script1.QTL;
@@ -3672,14 +3672,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[5].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[5].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[6].IndLabel
+            else if (index == 6
                 && (this.ME2Indicators[6].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[6].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[6].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathType, this.ME2Indicators[6].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[6].IndMathExpression, this.ME2Indicators[6].IndMathType, this.ME2Indicators[6].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[6].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[6].IndTLAmount = script1.QTL;
@@ -3689,14 +3689,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[6].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[6].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[7].IndLabel
+            else if (index == 7
                 && (this.ME2Indicators[7].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[7].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[7].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathType, this.ME2Indicators[7].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[7].IndMathExpression, this.ME2Indicators[7].IndMathType, this.ME2Indicators[7].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[7].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[7].IndTLAmount = script1.QTL;
@@ -3706,14 +3706,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[7].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[7].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[8].IndLabel
+            else if (index == 8
                 && (this.ME2Indicators[8].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[8].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[8].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathType, this.ME2Indicators[8].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[8].IndMathExpression, this.ME2Indicators[8].IndMathType, this.ME2Indicators[8].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[8].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[8].IndTLAmount = script1.QTL;
@@ -3723,14 +3723,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[8].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[8].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[9].IndLabel
+            else if (index == 9
                 && (this.ME2Indicators[9].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[9].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[9].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathType, this.ME2Indicators[9].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[9].IndMathExpression, this.ME2Indicators[9].IndMathType, this.ME2Indicators[9].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[9].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[9].IndTLAmount = script1.QTL;
@@ -3740,14 +3740,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[9].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[9].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[10].IndLabel
+            else if (index == 10
                 && (this.ME2Indicators[10].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[10].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[10].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathType, this.ME2Indicators[10].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[10].IndMathExpression, this.ME2Indicators[10].IndMathType, this.ME2Indicators[10].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[10].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[10].IndTLAmount = script1.QTL;
@@ -3757,14 +3757,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[10].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[10].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[11].IndLabel
+            else if (index == 11
                 && (this.ME2Indicators[11].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[11].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[11].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathType, this.ME2Indicators[11].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[11].IndMathExpression, this.ME2Indicators[11].IndMathType, this.ME2Indicators[11].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[11].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[11].IndTLAmount = script1.QTL;
@@ -3774,14 +3774,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[11].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[11].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[12].IndLabel
+            else if (index == 12
                 && (this.ME2Indicators[12].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[12].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[12].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathType, this.ME2Indicators[12].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[12].IndMathExpression, this.ME2Indicators[12].IndMathType, this.ME2Indicators[12].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[12].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[12].IndTLAmount = script1.QTL;
@@ -3791,14 +3791,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[12].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[12].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[13].IndLabel
+            else if (index == 13
                 && (this.ME2Indicators[13].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[13].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[13].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathType, this.ME2Indicators[13].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[13].IndMathExpression, this.ME2Indicators[13].IndMathType, this.ME2Indicators[13].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[13].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[13].IndTLAmount = script1.QTL;
@@ -3808,14 +3808,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[13].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[13].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[14].IndLabel
+            else if (index == 14
                 && (this.ME2Indicators[14].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[14].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[14].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathType, this.ME2Indicators[14].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[14].IndMathExpression, this.ME2Indicators[14].IndMathType, this.ME2Indicators[14].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[14].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[14].IndTLAmount = script1.QTL;
@@ -3825,14 +3825,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[14].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[14].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[15].IndLabel
+            else if (index == 15
                 && (this.ME2Indicators[15].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[15].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[15].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathType, this.ME2Indicators[15].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[15].IndMathExpression, this.ME2Indicators[15].IndMathType, this.ME2Indicators[15].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[15].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[15].IndTLAmount = script1.QTL;
@@ -3842,14 +3842,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[15].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[15].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[16].IndLabel
+            else if (index == 16
                 && (this.ME2Indicators[16].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[16].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[16].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathType, this.ME2Indicators[16].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[16].IndMathExpression, this.ME2Indicators[16].IndMathType, this.ME2Indicators[16].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[16].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[16].IndTLAmount = script1.QTL;
@@ -3859,14 +3859,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[16].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[16].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[17].IndLabel
+            else if (index == 17
                 && (this.ME2Indicators[17].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[17].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[17].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathType, this.ME2Indicators[17].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[17].IndMathExpression, this.ME2Indicators[17].IndMathType, this.ME2Indicators[17].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[17].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[17].IndTLAmount = script1.QTL;
@@ -3876,14 +3876,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[17].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[17].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[18].IndLabel
+            else if (index == 18
                 && (this.ME2Indicators[18].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[18].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[18].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathType, this.ME2Indicators[18].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[18].IndMathExpression, this.ME2Indicators[18].IndMathType, this.ME2Indicators[18].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[18].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[18].IndTLAmount = script1.QTL;
@@ -3893,14 +3893,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[18].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[18].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[19].IndLabel
+            else if (index == 19
                 && (this.ME2Indicators[19].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[19].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[19].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathType, this.ME2Indicators[19].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[19].IndMathExpression, this.ME2Indicators[19].IndMathType, this.ME2Indicators[19].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[19].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[19].IndTLAmount = script1.QTL;
@@ -3910,14 +3910,14 @@ namespace DevTreks.Extensions.ME3Statistics
                 this.ME2Indicators[19].IndMathResult = script1.ErrorMessage;
                 this.ME2Indicators[19].IndMathResult += script1.MathResult;
             }
-            else if (label == this.ME2Indicators[20].IndLabel
+            else if (index == 20
                 && (this.ME2Indicators[20].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[20].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[20].IndMathExpression))
             {
-                algoIndicator = label;
+                algoIndicator = index;
                 DevTreks.Extensions.Algorithms.Script1 script1
-                    = InitScript1Algo(label, colNames, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathType, this.ME2Indicators[20].IndMathSubType);
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[20].IndMathExpression, this.ME2Indicators[20].IndMathType, this.ME2Indicators[20].IndMathSubType);
                 bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
                 this.ME2Indicators[20].IndTMAmount = script1.QTPredicted;
                 this.ME2Indicators[20].IndTLAmount = script1.QTL;
@@ -3934,51 +3934,51 @@ namespace DevTreks.Extensions.ME3Statistics
             return algoIndicator;
         }
        
-        private List<List<string>> GetAlgo8Model(string label, string jDataURL)
-        {
-            string sError = string.Empty;
-            List<string> lines = CalculatorHelpers.ReadLines(this.CalcParameters.ExtensionDocToCalcURI, jDataURL, out sError);
-            List<string> cLines = lines
-                .Where(l => l.StartsWith(label, true, CultureInfo.InvariantCulture))
-                .Select(l => l.ToString()).ToList();
-            List<List<string>> model = new List<List<string>>();
-            if (cLines.Count <= 0)
-            {
-                this.ErrorMessage += string.Concat(" ", Errors.MakeStandardErrorMsg("JDATAURL_BAD"), jDataURL);
-                return model;
-            }
-            foreach (var jdata in cLines)
-            {
-                string[] distributes = jdata.Split(Constants.CSV_DELIMITERS);
-                List<string> lstDist = new List<string>(distributes);
-                model.Add(lstDist);
-            }
-            return model;
-            ////gets build from Joint Data
-            //Dictionary<string, List<double>> model = new Dictionary<string, List<double>>();
-            //string sKey = Calculator1.RUC_TYPES.normal.ToString();
-            //List<double> dist1 = new List<double>();
-            //dist1.Add(15);
-            //dist1.Add(0.01);
-            //model.Add(sKey, dist1);
-            //sKey = Calculator1.RUC_TYPES.gamma.ToString();
-            //dist1 = new List<double>();
-            //dist1.Add(2);
-            //dist1.Add(0.5);
-            //model.Add(sKey, dist1);
-        }
-        private DevTreks.Extensions.Algorithms.PRA1 InitPRA1Algo(string label, string subalgo,
+        //private List<List<string>> GetAlgo8Model(int index, string jDataURL)
+        //{
+        //    string sError = string.Empty;
+        //    List<string> lines = CalculatorHelpers.ReadLines(this.CalcParameters.ExtensionDocToCalcURI, jDataURL, out sError);
+        //    List<string> cLines = lines
+        //        .Where(l => l.StartsWith(index, true, CultureInfo.InvariantCulture))
+        //        .Select(l => l.ToString()).ToList();
+        //    List<List<string>> model = new List<List<string>>();
+        //    if (cLines.Count <= 0)
+        //    {
+        //        this.ErrorMessage += string.Concat(" ", Errors.MakeStandardErrorMsg("JDATAURL_BAD"), jDataURL);
+        //        return model;
+        //    }
+        //    foreach (var jdata in cLines)
+        //    {
+        //        string[] distributes = jdata.Split(Constants.CSV_DELIMITERS);
+        //        List<string> lstDist = new List<string>(distributes);
+        //        model.Add(lstDist);
+        //    }
+        //    return model;
+        //    ////gets build from Joint Data
+        //    //Dictionary<int, List<double>> model = new Dictionary<int, List<double>>();
+        //    //string sKey = Calculator1.RUC_TYPES.normal.ToString();
+        //    //List<double> dist1 = new List<double>();
+        //    //dist1.Add(15);
+        //    //dist1.Add(0.01);
+        //    //model.Add(sKey, dist1);
+        //    //sKey = Calculator1.RUC_TYPES.gamma.ToString();
+        //    //dist1 = new List<double>();
+        //    //dist1.Add(2);
+        //    //dist1.Add(0.5);
+        //    //model.Add(sKey, dist1);
+        //}
+        private DevTreks.Extensions.Algorithms.PRA1 InitPRA1Algo(int index, string subalgo,
             string[] colNames, IndicatorQT1 qt1, int confidInt, int iterations, int random, List<double> qTs)
         {
             //mathterms define which qamount to send to algorith for predicting a given set of qxs
             List<string> mathTerms = new List<string>();
             //dependent var colNames found in MathExpression
             List<string> depColNames = new List<string>();
-            GetDataToAnalyzeColNames(label, qt1.QMathExpression, colNames, ref depColNames, ref mathTerms);
-            List<double> qs = GetQsForMathTerms(label, mathTerms);
+            GetDataToAnalyzeColNames(index, qt1.QMathExpression, colNames, ref depColNames, ref mathTerms);
+            List<double> qs = GetQsForMathTerms(index, mathTerms);
             int totalsNeeded = 0;
             DevTreks.Extensions.Algorithms.PRA1 pra
-                    = new Algorithms.PRA1(label, mathTerms.ToArray(), colNames, depColNames.ToArray(),
+                    = new Algorithms.PRA1(index.ToString(), mathTerms.ToArray(), colNames, depColNames.ToArray(),
                         totalsNeeded, subalgo, confidInt, iterations, random, qTs, qt1, this.CalcParameters);
             return pra;
         }
@@ -3990,36 +3990,36 @@ namespace DevTreks.Extensions.ME3Statistics
                     = new Algorithms.PRA2(confidInt, iterations, random, qt1, this.CalcParameters);
             return pra;
         }
-        private DevTreks.Extensions.Algorithms.Regression1 InitRGR1Algo(string label, string[] colNames, 
+        private DevTreks.Extensions.Algorithms.Regression1 InitRGR1Algo(int index, string[] colNames, 
             string mathExpression, string subalgo, int confidInt)
         {
             //mathterms define which qamount to send to algorith for predicting a given set of qxs
             List<string> mathTerms = new List<string>();
             //dependent var colNames found in MathExpression
             List<string> depColNames = new List<string>();
-            GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-            List<double> qs = GetQsForMathTerms(label, mathTerms);
+            GetDataToAnalyzeColNames(index, mathExpression, colNames, ref depColNames, ref mathTerms);
+            List<double> qs = GetQsForMathTerms(index, mathTerms);
             DevTreks.Extensions.Algorithms.Regression1 rgr
                     = new Algorithms.Regression1(mathTerms.ToArray(), colNames, depColNames.ToArray(), 
                         qs.ToArray(), subalgo, confidInt, this.CalcParameters);
             return rgr;
         }
-        private DevTreks.Extensions.Algorithms.Anova1 InitANV1Algo(string label, string[] colNames,
+        private DevTreks.Extensions.Algorithms.Anova1 InitANV1Algo(int index, string[] colNames,
             string mathExpression, string subalgo, int confidInt, int totalsNeeded)
         {
             //mathterms define which qamount to send to algorith for predicting a given set of qxs
             List<string> mathTerms = new List<string>();
             //dependent var colNames found in MathExpression
             List<string> depColNames = new List<string>();
-            GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-            //List<double> qs = GetQsForMathTerms(label, mathTerms);
+            GetDataToAnalyzeColNames(index, mathExpression, colNames, ref depColNames, ref mathTerms);
+            //List<double> qs = GetQsForMathTerms(index, mathTerms);
             if (totalsNeeded <= 0) totalsNeeded = 3;
             DevTreks.Extensions.Algorithms.Anova1 anv
-                    = new Algorithms.Anova1(label, mathTerms.ToArray(), colNames, depColNames.ToArray(),
+                    = new Algorithms.Anova1(index.ToString(), mathTerms.ToArray(), colNames, depColNames.ToArray(),
                         totalsNeeded, subalgo, confidInt, this.CalcParameters);
             return anv;
         }
-        private DevTreks.Extensions.Algorithms.DRR1 InitDRR1Algo(int indicatorIndex, string label, string[] colNames,
+        private DevTreks.Extensions.Algorithms.DRR1 InitDRR1Algo(int indicatorIndex, int index, string[] colNames,
             IndicatorQT1 qt1, string mathExpression, string subalgo, int confidInt, int iterations, 
             int random, int totalsNeeded)
         {
@@ -4027,15 +4027,15 @@ namespace DevTreks.Extensions.ME3Statistics
             List<string> mathTerms = new List<string>();
             //dependent var colNames found in MathExpression
             List<string> depColNames = new List<string>();
-            GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-            List<double> qs = GetQsForMathTerms(label, mathTerms);
+            GetDataToAnalyzeColNames(index, mathExpression, colNames, ref depColNames, ref mathTerms);
+            List<double> qs = GetQsForMathTerms(index, mathTerms);
             if (totalsNeeded <= 0) totalsNeeded = 3;
             DevTreks.Extensions.Algorithms.DRR1 DRR
-                    = new Algorithms.DRR1(indicatorIndex, label, mathTerms.ToArray(), colNames, depColNames.ToArray(),
+                    = new Algorithms.DRR1(indicatorIndex, index.ToString(), mathTerms.ToArray(), colNames, depColNames.ToArray(),
                         totalsNeeded, subalgo, confidInt, iterations, random, qs, qt1, this.CalcParameters);
             return DRR;
         }
-        private DevTreks.Extensions.Algorithms.DRR2 InitDRR2Algo(int indicatorIndex, string label, string[] colNames,
+        private DevTreks.Extensions.Algorithms.DRR2 InitDRR2Algo(int indicatorIndex, int index, string[] colNames,
             IndicatorQT1 qt1, string mathExpression, string subalgo, int confidInt, int iterations,
             int random, int totalsNeeded)
         {
@@ -4043,72 +4043,72 @@ namespace DevTreks.Extensions.ME3Statistics
             List<string> mathTerms = new List<string>();
             //dependent var colNames found in MathExpression
             List<string> depColNames = new List<string>();
-            GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-            List<double> qs = GetQsForMathTerms(label, mathTerms);
+            GetDataToAnalyzeColNames(index, mathExpression, colNames, ref depColNames, ref mathTerms);
+            List<double> qs = GetQsForMathTerms(index, mathTerms);
             if (totalsNeeded <= 0) totalsNeeded = 3;
             DevTreks.Extensions.Algorithms.DRR2 RMI
-                    = new Algorithms.DRR2(indicatorIndex, label, mathTerms.ToArray(), colNames, depColNames.ToArray(),
+                    = new Algorithms.DRR2(indicatorIndex, index.ToString(), mathTerms.ToArray(), colNames, depColNames.ToArray(),
                         totalsNeeded, subalgo, confidInt, iterations, random, qs, qt1, this.CalcParameters);
             return RMI;
         }
-        private DevTreks.Extensions.Algorithms.Script2 InitScript2Algo(string label, string[] colNames,
+        private DevTreks.Extensions.Algorithms.Script2 InitScript2Algo(int index, string[] colNames,
            string mathExpression, string algorithm, string subalgorithm)
         {
             //mathterms define which qamount to send to algorith for predicting a given set of qxs
             List<string> mathTerms = new List<string>();
             //dependent var colNames found in MathExpression
             List<string> depColNames = new List<string>();
-            GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-            List<double> qs = GetQsForMathTerms(label, mathTerms);
+            GetDataToAnalyzeColNames(index, mathExpression, colNames, ref depColNames, ref mathTerms);
+            List<double> qs = GetQsForMathTerms(index, mathTerms);
             DevTreks.Extensions.Algorithms.Script2 script2
                     = new Algorithms.Script2(mathTerms.ToArray(), colNames, depColNames.ToArray(),
                         qs.ToArray(), algorithm, subalgorithm, this.CalcParameters);
             return script2;
         }
-        private DevTreks.Extensions.Algorithms.Script1 InitScript1Algo(string label, string[] colNames,
+        private DevTreks.Extensions.Algorithms.Script1 InitScript1Algo(int index, string[] colNames,
            string mathExpression, string algorithm, string subalgorithm)
         {
             //mathterms define which qamount to send to algorith for predicting a given set of qxs
             List<string> mathTerms = new List<string>();
             //dependent var colNames found in MathExpression
             List<string> depColNames = new List<string>();
-            GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-            List<double> qs = GetQsForMathTerms(label, mathTerms);
+            GetDataToAnalyzeColNames(index, mathExpression, colNames, ref depColNames, ref mathTerms);
+            List<double> qs = GetQsForMathTerms(index, mathTerms);
             DevTreks.Extensions.Algorithms.Script1 script1
                 = new Algorithms.Script1(mathTerms.ToArray(), colNames, depColNames.ToArray(),
                         qs.ToArray(), algorithm, subalgorithm, this.CalcParameters);
             return script1;
         }
         //keep for reference
-        //private DevTreks.Extensions.Algorithms.BayesMNRegress1 InitBayesRegress1Algo(string label, string[] colNames,
+        //private DevTreks.Extensions.Algorithms.BayesMNRegress1 InitBayesRegress1Algo(int index, string[] colNames,
         //   string mathExpression)
         //{
         //    //mathterms define which qamount to send to algorith for predicting a given set of qxs
         //    List<string> mathTerms = new List<string>();
         //    //dependent var colNames found in MathExpression
         //    List<string> depColNames = new List<string>();
-        //    GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-        //    List<double> qs = GetQsForMathTerms(label, mathTerms);
+        //    GetDataToAnalyzeColNames(index, mathExpression, colNames, ref depColNames, ref mathTerms);
+        //    List<double> qs = GetQsForMathTerms(index, mathTerms);
         //    DevTreks.Extensions.Algorithms.BayesMNRegress1 bayes1
         //            = new Algorithms.BayesMNRegress1(mathTerms.ToArray(), colNames, depColNames.ToArray(), qs.ToArray(), 
         //                this.ME2Indicators[0].IndIterations);
         //    return bayes1;
         //}
-        //private DevTreks.Extensions.Algorithms.BayesInfer1 InitBayes1Algo(string label, string[] colNames,
+        //private DevTreks.Extensions.Algorithms.BayesInfer1 InitBayes1Algo(int index, string[] colNames,
         //    string mathExpression)
         //{
         //    //mathterms define which qamount to send to algorith for predicting a given set of qxs
         //    List<string> mathTerms = new List<string>();
         //    //dependent var colNames found in MathExpression
         //    List<string> depColNames = new List<string>();
-        //    GetDataToAnalyzeColNames(label, mathExpression, colNames, ref depColNames, ref mathTerms);
-        //    List<double> qs = GetQsForMathTerms(label, mathTerms);
+        //    GetDataToAnalyzeColNames(index, mathExpression, colNames, ref depColNames, ref mathTerms);
+        //    List<double> qs = GetQsForMathTerms(index, mathTerms);
         //    DevTreks.Extensions.Algorithms.BayesInfer1 bayes1
         //            = new Algorithms.BayesInfer1(mathTerms.ToArray(), colNames, depColNames.ToArray(), qs.ToArray());
         //    return bayes1;
         //}
         //can't be async so byref is ok
-        public void GetDataToAnalyzeColNames(string label, string mathExpression, string[] colNames, 
+        public void GetDataToAnalyzeColNames(int index, string mathExpression, string[] colNames, 
             ref List<string> depColNames, ref List<string> mathTerms)
         {
             string sMathTerm = string.Empty;
@@ -4118,8 +4118,8 @@ namespace DevTreks.Extensions.ME3Statistics
                 && colNames.Count() >= 5)
             {
                 //regression puts intercept first and is not in the mathexpression
-                if (this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm6)
-                    || this.HasMathType(label, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm8))
+                if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm6)
+                    || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm8))
                 {
                     depColNames.Add("intercept");
                 }
@@ -4145,7 +4145,7 @@ namespace DevTreks.Extensions.ME3Statistics
                         if (bIsUnique)
                         {
 
-                            sMathTerm = ParseMathTerm(label, mathExpression, colNames[j]);
+                            sMathTerm = ParseMathTerm(index, mathExpression, colNames[j]);
                             if (!string.IsNullOrEmpty(sMathTerm))
                             {
                                 //it's unique
@@ -4158,7 +4158,7 @@ namespace DevTreks.Extensions.ME3Statistics
                 }
             }
         }
-        public string ParseMathTerm(string label, string mathExpression, string colName)
+        public string ParseMathTerm(int index, string mathExpression, string colName)
         {
             string sMathTerm = string.Empty;
             string sParsedTerm = string.Empty;
@@ -4181,7 +4181,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     //start index can now be used with endindex
                     int iStartIndex = sParsedQExpression.ToUpper().LastIndexOf("I");
                     sParsedTerm = sParsedMathExpression.Substring(iStartIndex);
-                    sMATHTERM = GetMathTerm(label, sParsedTerm);
+                    sMATHTERM = GetMathTerm(index, sParsedTerm);
                 }
                 if (!string.IsNullOrEmpty(sMATHTERM))
                 {
@@ -4208,13 +4208,13 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return cns;
         }
-        private string GetMathTerm(string label, string parsedIxQx)
+        private string GetMathTerm(int index, string parsedIxQx)
         {
             string sMathTerm = string.Empty;
             bool bHasMathTerm = false;
             //the units must be set correctly
             //and the mathexpress has to contain the var
-            if (label == this.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 0, 0))
                 {
@@ -4261,7 +4261,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[2].IndLabel)
+            if (index == 2)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 1, 0))
                 {
@@ -4308,7 +4308,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[3].IndLabel)
+            if (index == 3)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 2, 0))
                 {
@@ -4355,7 +4355,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[4].IndLabel)
+            if (index == 4)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 3, 0))
                 {
@@ -4402,7 +4402,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[5].IndLabel)
+            if (index == 5)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 4, 0))
                 {
@@ -4449,7 +4449,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[6].IndLabel)
+            if (index == 6)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 5, 0))
                 {
@@ -4496,7 +4496,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[7].IndLabel)
+            if (index == 7)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 6, 0))
                 {
@@ -4543,7 +4543,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[8].IndLabel)
+            if (index == 8)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 7, 0))
                 {
@@ -4590,7 +4590,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[9].IndLabel)
+            if (index == 9)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 8, 0))
                 {
@@ -4637,7 +4637,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[10].IndLabel)
+            if (index == 10)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 9, 0))
                 {
@@ -4684,7 +4684,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[11].IndLabel)
+            if (index == 11)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 10, 0))
                 {
@@ -4731,7 +4731,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[12].IndLabel)
+            if (index == 12)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 11, 0))
                 {
@@ -4778,7 +4778,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[13].IndLabel)
+            if (index == 13)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 12, 0))
                 {
@@ -4825,7 +4825,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[14].IndLabel)
+            if (index == 14)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 13, 0))
                 {
@@ -4872,7 +4872,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[15].IndLabel)
+            if (index == 15)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 14, 0))
                 {
@@ -4919,7 +4919,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[16].IndLabel)
+            if (index == 16)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 15, 0))
                 {
@@ -4966,7 +4966,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[17].IndLabel)
+            if (index == 17)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 16, 0))
                 {
@@ -5013,7 +5013,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[18].IndLabel)
+            if (index == 18)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 17, 0))
                 {
@@ -5060,7 +5060,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[19].IndLabel)
+            if (index == 19)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 18, 0))
                 {
@@ -5107,7 +5107,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (label == this.ME2Indicators[20].IndLabel)
+            if (index == 20)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 19, 0))
                 {
@@ -5160,13 +5160,13 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return sMathTerm;
         }
-        private List<double> GetQsForMathTerms(string label, List<string> mathTerms)
+        private List<double> GetQsForMathTerms(int index, List<string> mathTerms)
         {
             //index has to match mathterms (and adjcolnames)
             List<double> qs = new List<double>(mathTerms.Count);
             //the units must be set correctly
             //and the mathexpress has to contain the var
-            if (label == this.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 0, 0))
                 {
@@ -5189,7 +5189,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[1].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[2].IndLabel)
+            if (index == 2)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 1, 0))
                 {
@@ -5212,7 +5212,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[2].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[3].IndLabel)
+            if (index == 3)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 2, 0))
                 {
@@ -5235,7 +5235,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[3].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[4].IndLabel)
+            if (index == 4)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 3, 0))
                 {
@@ -5258,7 +5258,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[4].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[5].IndLabel)
+            if (index == 5)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 4, 0))
                 {
@@ -5281,7 +5281,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[5].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[6].IndLabel)
+            if (index == 6)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 5, 0))
                 {
@@ -5304,7 +5304,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[6].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[7].IndLabel)
+            if (index == 7)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 6, 0))
                 {
@@ -5327,7 +5327,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[7].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[8].IndLabel)
+            if (index == 8)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 7, 0))
                 {
@@ -5350,7 +5350,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[8].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[9].IndLabel)
+            if (index == 9)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 8, 0))
                 {
@@ -5373,7 +5373,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[9].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[10].IndLabel)
+            if (index == 10)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 9, 0))
                 {
@@ -5396,7 +5396,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[10].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[11].IndLabel)
+            if (index == 11)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 10, 0))
                 {
@@ -5419,7 +5419,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[11].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[12].IndLabel)
+            if (index == 12)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 11, 0))
                 {
@@ -5442,7 +5442,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[12].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[13].IndLabel)
+            if (index == 13)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 12, 0))
                 {
@@ -5465,7 +5465,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[13].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[14].IndLabel)
+            if (index == 14)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 13, 0))
                 {
@@ -5488,7 +5488,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[14].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[15].IndLabel)
+            if (index == 15)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 14, 0))
                 {
@@ -5511,7 +5511,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[15].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[16].IndLabel)
+            if (index == 16)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 15, 0))
                 {
@@ -5534,7 +5534,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[16].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[17].IndLabel)
+            if (index == 17)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 16, 0))
                 {
@@ -5557,7 +5557,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[17].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[18].IndLabel)
+            if (index == 18)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 17, 0))
                 {
@@ -5580,7 +5580,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[18].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[19].IndLabel)
+            if (index == 19)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 18, 0))
                 {
@@ -5603,7 +5603,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[19].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[20].IndLabel)
+            if (index == 20)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 19, 0))
                 {
@@ -5633,12 +5633,12 @@ namespace DevTreks.Extensions.ME3Statistics
             }
                 return qs;
         }
-        private List<double> GetQsForMathTermswUnits(string label, List<string> mathTerms)
+        private List<double> GetQsForMathTermswUnits(int index, List<string> mathTerms)
         {
             List<double> qs = new List<double>();
             //the units must be set correctly
             //and the mathexpress has to contain the var
-            if (label == this.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind1Unit)
                     && this.ME2Indicators[1].Ind1Unit != Constants.NONE
@@ -5671,7 +5671,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[1].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[2].IndLabel)
+            if (index == 2)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind1Unit)
                     && this.ME2Indicators[2].Ind1Unit != Constants.NONE
@@ -5704,7 +5704,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[2].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[3].IndLabel)
+            if (index == 3)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind1Unit)
                     && this.ME2Indicators[3].Ind1Unit != Constants.NONE
@@ -5737,7 +5737,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[3].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[4].IndLabel)
+            if (index == 4)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind1Unit)
                     && this.ME2Indicators[4].Ind1Unit != Constants.NONE
@@ -5770,7 +5770,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[4].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[5].IndLabel)
+            if (index == 5)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind1Unit)
                     && this.ME2Indicators[5].Ind1Unit != Constants.NONE
@@ -5803,7 +5803,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[5].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[6].IndLabel)
+            if (index == 6)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind1Unit)
                     && this.ME2Indicators[6].Ind1Unit != Constants.NONE
@@ -5836,7 +5836,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[6].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[7].IndLabel)
+            if (index == 7)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind1Unit)
                     && this.ME2Indicators[7].Ind1Unit != Constants.NONE
@@ -5869,7 +5869,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[7].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[8].IndLabel)
+            if (index == 8)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind1Unit)
                     && this.ME2Indicators[8].Ind1Unit != Constants.NONE
@@ -5902,7 +5902,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[8].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[9].IndLabel)
+            if (index == 9)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind1Unit)
                     && this.ME2Indicators[9].Ind1Unit != Constants.NONE
@@ -5935,7 +5935,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[9].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[10].IndLabel)
+            if (index == 10)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind1Unit)
                     && this.ME2Indicators[10].Ind1Unit != Constants.NONE
@@ -5968,7 +5968,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[10].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[11].IndLabel)
+            if (index == 11)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind1Unit)
                     && this.ME2Indicators[11].Ind1Unit != Constants.NONE
@@ -6001,7 +6001,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[11].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[12].IndLabel)
+            if (index == 12)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind1Unit)
                     && this.ME2Indicators[12].Ind1Unit != Constants.NONE
@@ -6034,7 +6034,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[12].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[13].IndLabel)
+            if (index == 13)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind1Unit)
                     && this.ME2Indicators[13].Ind1Unit != Constants.NONE
@@ -6067,7 +6067,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[13].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[14].IndLabel)
+            if (index == 14)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind1Unit)
                     && this.ME2Indicators[14].Ind1Unit != Constants.NONE
@@ -6100,7 +6100,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[14].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[15].IndLabel)
+            if (index == 15)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind1Unit)
                     && this.ME2Indicators[15].Ind1Unit != Constants.NONE
@@ -6133,7 +6133,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[15].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[16].IndLabel)
+            if (index == 16)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind1Unit)
                     && this.ME2Indicators[16].Ind1Unit != Constants.NONE
@@ -6166,7 +6166,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[16].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[17].IndLabel)
+            if (index == 17)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind1Unit)
                     && this.ME2Indicators[17].Ind1Unit != Constants.NONE
@@ -6199,7 +6199,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[17].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[18].IndLabel)
+            if (index == 18)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind1Unit)
                     && this.ME2Indicators[18].Ind1Unit != Constants.NONE
@@ -6232,7 +6232,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[18].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[19].IndLabel)
+            if (index == 19)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind1Unit)
                     && this.ME2Indicators[19].Ind1Unit != Constants.NONE
@@ -6265,7 +6265,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[19].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[20].IndLabel)
+            if (index == 20)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind1Unit)
                     && this.ME2Indicators[20].Ind1Unit != Constants.NONE
@@ -6302,11 +6302,11 @@ namespace DevTreks.Extensions.ME3Statistics
         }
        
         
-        private List<double> GetQsForLabel(string label)
+        private List<double> GetQsForLabel(int index)
         {
             List<double> qs = new List<double>();
 
-            if (label == this.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind1Unit)
                     && this.ME2Indicators[1].Ind1Unit != Constants.NONE)
@@ -6334,7 +6334,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[1].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[2].IndLabel)
+            if (index == 2)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind1Unit)
                     && this.ME2Indicators[2].Ind1Unit != Constants.NONE)
@@ -6362,7 +6362,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[2].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[3].IndLabel)
+            if (index == 3)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind1Unit)
                     && this.ME2Indicators[3].Ind1Unit != Constants.NONE)
@@ -6390,7 +6390,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[3].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[4].IndLabel)
+            if (index == 4)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind1Unit)
                     && this.ME2Indicators[4].Ind1Unit != Constants.NONE)
@@ -6418,7 +6418,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[4].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[5].IndLabel)
+            if (index == 5)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind1Unit)
                     && this.ME2Indicators[5].Ind1Unit != Constants.NONE)
@@ -6446,7 +6446,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[5].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[6].IndLabel)
+            if (index == 6)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind1Unit)
                     && this.ME2Indicators[6].Ind1Unit != Constants.NONE)
@@ -6474,7 +6474,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[6].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[7].IndLabel)
+            if (index == 7)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind1Unit)
                     && this.ME2Indicators[7].Ind1Unit != Constants.NONE)
@@ -6502,7 +6502,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[7].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[8].IndLabel)
+            if (index == 8)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind1Unit)
                     && this.ME2Indicators[8].Ind1Unit != Constants.NONE)
@@ -6530,7 +6530,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[8].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[9].IndLabel)
+            if (index == 9)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind1Unit)
                     && this.ME2Indicators[9].Ind1Unit != Constants.NONE)
@@ -6558,7 +6558,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[9].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[10].IndLabel)
+            if (index == 10)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind1Unit)
                     && this.ME2Indicators[10].Ind1Unit != Constants.NONE)
@@ -6586,7 +6586,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[10].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[11].IndLabel)
+            if (index == 11)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind1Unit)
                     && this.ME2Indicators[11].Ind1Unit != Constants.NONE)
@@ -6614,7 +6614,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[11].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[12].IndLabel)
+            if (index == 12)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind1Unit)
                     && this.ME2Indicators[12].Ind1Unit != Constants.NONE)
@@ -6642,7 +6642,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[12].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[13].IndLabel)
+            if (index == 13)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind1Unit)
                     && this.ME2Indicators[13].Ind1Unit != Constants.NONE)
@@ -6670,7 +6670,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[13].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[14].IndLabel)
+            if (index == 14)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind1Unit)
                     && this.ME2Indicators[14].Ind1Unit != Constants.NONE)
@@ -6698,7 +6698,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[14].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[15].IndLabel)
+            if (index == 15)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind1Unit)
                     && this.ME2Indicators[15].Ind1Unit != Constants.NONE)
@@ -6726,7 +6726,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[15].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[16].IndLabel)
+            if (index == 16)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind1Unit)
                     && this.ME2Indicators[16].Ind1Unit != Constants.NONE)
@@ -6754,7 +6754,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[16].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[17].IndLabel)
+            if (index == 17)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind1Unit)
                     && this.ME2Indicators[17].Ind1Unit != Constants.NONE)
@@ -6782,7 +6782,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[17].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[18].IndLabel)
+            if (index == 18)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind1Unit)
                     && this.ME2Indicators[18].Ind1Unit != Constants.NONE)
@@ -6810,7 +6810,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[18].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[19].IndLabel)
+            if (index == 19)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind1Unit)
                     && this.ME2Indicators[19].Ind1Unit != Constants.NONE)
@@ -6838,7 +6838,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     qs.Add(this.ME2Indicators[19].Ind5Amount);
                 }
             }
-            if (label == this.ME2Indicators[20].IndLabel)
+            if (index == 20)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind1Unit)
                     && this.ME2Indicators[20].Ind1Unit != Constants.NONE)
@@ -6868,106 +6868,106 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return qs;
         }
-        private DevTreks.Extensions.Algorithms.SimulatedAnnealing1 InitSA1Algo(string label)
+        private DevTreks.Extensions.Algorithms.SimulatedAnnealing1 InitSA1Algo(int index)
         {
             DevTreks.Extensions.Algorithms.SimulatedAnnealing1 sa
                     = new Algorithms.SimulatedAnnealing1(0, 0, 0, 0, this.CalcParameters);
-            if (label == this.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[1].Ind1Amount, this.ME2Indicators[1].Ind2Amount,
                    this.ME2Indicators[1].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[2].IndLabel)
+            else if (index == 2)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[2].Ind1Amount, this.ME2Indicators[2].Ind2Amount,
                    this.ME2Indicators[2].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[3].IndLabel)
+            else if (index == 3)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[3].Ind1Amount, this.ME2Indicators[3].Ind2Amount,
                    this.ME2Indicators[3].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[4].IndLabel)
+            else if (index == 4)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[4].Ind1Amount, this.ME2Indicators[4].Ind2Amount,
                    this.ME2Indicators[4].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[5].IndLabel)
+            else if (index == 5)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[5].Ind1Amount, this.ME2Indicators[5].Ind2Amount,
                    this.ME2Indicators[5].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[6].IndLabel)
+            else if (index == 6)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[6].Ind1Amount, this.ME2Indicators[6].Ind2Amount,
                    this.ME2Indicators[6].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[7].IndLabel)
+            else if (index == 7)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[7].Ind1Amount, this.ME2Indicators[7].Ind2Amount,
                    this.ME2Indicators[7].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[8].IndLabel)
+            else if (index == 8)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[8].Ind1Amount, this.ME2Indicators[8].Ind2Amount,
                    this.ME2Indicators[8].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[9].IndLabel)
+            else if (index == 9)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[9].Ind1Amount, this.ME2Indicators[9].Ind2Amount,
                    this.ME2Indicators[9].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[10].IndLabel)
+            else if (index == 10)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[10].Ind1Amount, this.ME2Indicators[10].Ind2Amount,
                    this.ME2Indicators[10].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[11].IndLabel)
+            else if (index == 11)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[11].Ind1Amount, this.ME2Indicators[11].Ind2Amount,
                    this.ME2Indicators[11].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[12].IndLabel)
+            else if (index == 12)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[12].Ind1Amount, this.ME2Indicators[12].Ind2Amount,
                    this.ME2Indicators[12].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[13].IndLabel)
+            else if (index == 13)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[13].Ind1Amount, this.ME2Indicators[13].Ind2Amount,
                    this.ME2Indicators[13].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[14].IndLabel)
+            else if (index == 14)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[14].Ind1Amount, this.ME2Indicators[14].Ind2Amount,
                    this.ME2Indicators[14].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[15].IndLabel)
+            else if (index == 15)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[15].Ind1Amount, this.ME2Indicators[15].Ind2Amount,
                    this.ME2Indicators[15].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[16].IndLabel)
+            else if (index == 16)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[16].Ind1Amount, this.ME2Indicators[16].Ind2Amount,
                    this.ME2Indicators[16].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[17].IndLabel)
+            else if (index == 17)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[17].Ind1Amount, this.ME2Indicators[17].Ind2Amount,
                    this.ME2Indicators[17].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[18].IndLabel)
+            else if (index == 18)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[18].Ind1Amount, this.ME2Indicators[18].Ind2Amount,
                    this.ME2Indicators[18].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[19].IndLabel)
+            else if (index == 19)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[19].Ind1Amount, this.ME2Indicators[19].Ind2Amount,
                    this.ME2Indicators[19].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             }
-            else if (label == this.ME2Indicators[20].IndLabel)
+            else if (index == 20)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[20].Ind1Amount, this.ME2Indicators[20].Ind2Amount,
                    this.ME2Indicators[20].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
@@ -6977,151 +6977,151 @@ namespace DevTreks.Extensions.ME3Statistics
             }
             return sa;
         }
-        private void SetSA1AlgoRanges(string label, DevTreks.Extensions.Algorithms.SimulatedAnnealing1 sa)
+        private void SetSA1AlgoRanges(int index, DevTreks.Extensions.Algorithms.SimulatedAnnealing1 sa)
         {
             string[] colNames = new List<string>().ToArray();
             List<double> qTs = new List<double>();
-            if (label == this.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 this.ME2Indicators[1].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[1].IndTMAmount = sa.BestEnergy;
                 //regular high and low estimation
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 //SetTotalRange1();
                 //no condition on type of result yet KISS for now
                 this.ME2Indicators[1].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[2].IndLabel)
+            else if (index == 2)
             {
                 this.ME2Indicators[2].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[2].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[2].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[3].IndLabel)
+            else if (index == 3)
             {
                 this.ME2Indicators[3].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[3].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[3].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[4].IndLabel)
+            else if (index == 4)
             {
                 this.ME2Indicators[4].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[4].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[4].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[5].IndLabel)
+            else if (index == 5)
             {
                 this.ME2Indicators[5].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[5].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[5].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[6].IndLabel)
+            else if (index == 6)
             {
                 this.ME2Indicators[6].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[6].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[6].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[7].IndLabel)
+            else if (index == 7)
             {
                 this.ME2Indicators[7].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[7].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[7].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[8].IndLabel)
+            else if (index == 8)
             {
                 this.ME2Indicators[8].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[8].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[8].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[9].IndLabel)
+            else if (index == 9)
             {
                 this.ME2Indicators[9].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[9].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[9].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[10].IndLabel)
+            else if (index == 10)
             {
                 this.ME2Indicators[10].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[10].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[10].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[11].IndLabel)
+            else if (index == 11)
             {
                 this.ME2Indicators[11].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[11].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[11].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[12].IndLabel)
+            else if (index == 12)
             {
                 this.ME2Indicators[12].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[12].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[12].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[13].IndLabel)
+            else if (index == 13)
             {
                 this.ME2Indicators[13].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[13].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[13].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[14].IndLabel)
+            else if (index == 14)
             {
                 this.ME2Indicators[14].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[14].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[14].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[15].IndLabel)
+            else if (index == 15)
             {
                 this.ME2Indicators[15].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[15].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[15].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[16].IndLabel)
+            else if (index == 16)
             {
                 this.ME2Indicators[16].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[16].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[16].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[17].IndLabel)
+            else if (index == 17)
             {
                 this.ME2Indicators[17].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[17].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[17].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[18].IndLabel)
+            else if (index == 18)
             {
                 this.ME2Indicators[18].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[18].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[18].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[19].IndLabel)
+            else if (index == 19)
             {
                 this.ME2Indicators[19].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[19].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[19].IndMathResult += sa.MathResult;
             }
-            else if (label == this.ME2Indicators[20].IndLabel)
+            else if (index == 20)
             {
                 this.ME2Indicators[20].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[20].IndTMAmount = sa.BestEnergy;
-                SetPRAIndicatorStats(label, colNames, qTs);
+                SetPRAIndicatorStats(index, colNames, qTs);
                 this.ME2Indicators[20].IndMathResult += sa.MathResult;
             }
             else
@@ -7129,16 +7129,16 @@ namespace DevTreks.Extensions.ME3Statistics
                 //ignore the row
             }
         }
-        private DevTreks.Extensions.Algorithms.NeuralNetwork1 InitNN1Algo(string label)
+        private DevTreks.Extensions.Algorithms.NeuralNetwork1 InitNN1Algo(int index)
         {
-            List<double> qs = GetQsForLabel(label);
+            List<double> qs = GetQsForLabel(index);
             DevTreks.Extensions.Algorithms.NeuralNetwork1 nn
                     = new Algorithms.NeuralNetwork1(qs, this.ME2Indicators[0].IndIterations, this.CalcParameters);
             return nn;
         }
-        private void SetNN1AlgoRanges(string label, DevTreks.Extensions.Algorithms.NeuralNetwork1 nn)
+        private void SetNN1AlgoRanges(int index, DevTreks.Extensions.Algorithms.NeuralNetwork1 nn)
         {
-            int iIndicator = GetNN1Index(label);
+            int iIndicator = GetNN1Index(index);
             string[] colNames = new List<string>().ToArray();
             List<double> qTs = new List<double>();
             if (iIndicator == 1)
@@ -7151,7 +7151,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[1].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                     //SetTotalRange1();
                 }
                 //no condition on type of result yet KISS for now
@@ -7167,7 +7167,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[2].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[2].IndMathResult += nn.MathResult;
             }
@@ -7181,7 +7181,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[3].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[3].IndMathResult += nn.MathResult;
             }
@@ -7195,7 +7195,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[4].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[4].IndMathResult += nn.MathResult;
             }
@@ -7209,7 +7209,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[5].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[5].IndMathResult += nn.MathResult;
             }
@@ -7223,7 +7223,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[6].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[6].IndMathResult += nn.MathResult;
             }
@@ -7237,7 +7237,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[7].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[7].IndMathResult += nn.MathResult;
             }
@@ -7251,7 +7251,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[8].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[8].IndMathResult += nn.MathResult;
             }
@@ -7265,7 +7265,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[9].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[9].IndMathResult += nn.MathResult;
             }
@@ -7279,7 +7279,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[10].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[10].IndMathResult += nn.MathResult;
             }
@@ -7293,7 +7293,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[11].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[11].IndMathResult += nn.MathResult;
             }
@@ -7307,7 +7307,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[12].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[12].IndMathResult += nn.MathResult;
             }
@@ -7321,7 +7321,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[13].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[13].IndMathResult += nn.MathResult;
             }
@@ -7335,7 +7335,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[14].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[14].IndMathResult += nn.MathResult;
             }
@@ -7349,7 +7349,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[15].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[15].IndMathResult += nn.MathResult;
             }
@@ -7363,7 +7363,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[16].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[16].IndMathResult += nn.MathResult;
             }
@@ -7377,7 +7377,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[17].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[17].IndMathResult += nn.MathResult;
             }
@@ -7391,7 +7391,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[18].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[18].IndMathResult += nn.MathResult;
             }
@@ -7405,7 +7405,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[19].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[19].IndMathResult += nn.MathResult;
             }
@@ -7419,7 +7419,7 @@ namespace DevTreks.Extensions.ME3Statistics
                     && !string.IsNullOrEmpty(this.ME2Indicators[20].IndType))
                 {
                     //regular high and low estimation
-                    SetPRAIndicatorStats(label, colNames, qTs);
+                    SetPRAIndicatorStats(index, colNames, qTs);
                 }
                 this.ME2Indicators[20].IndMathResult += nn.MathResult;
             }
@@ -7428,87 +7428,87 @@ namespace DevTreks.Extensions.ME3Statistics
                 //ignore the row
             }
         }
-        private int GetNN1Index(string label)
+        private int GetNN1Index(int index)
         {
             //one based so that if zero returned ignore the label
             int iLastIndicatorOneBased = 0;
-            if (label == this.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 iLastIndicatorOneBased = 1;
             }
-            if (label == this.ME2Indicators[2].IndLabel)
+            if (index == 2)
             {
                 iLastIndicatorOneBased = 2;
             }
-            if (label == this.ME2Indicators[3].IndLabel)
+            if (index == 3)
             {
                 iLastIndicatorOneBased = 3;
             }
-            if (label == this.ME2Indicators[4].IndLabel)
+            if (index == 4)
             {
                 iLastIndicatorOneBased = 4;
             }
-            if (label == this.ME2Indicators[5].IndLabel)
+            if (index == 5)
             {
                 iLastIndicatorOneBased = 5;
             }
-            if (label == this.ME2Indicators[6].IndLabel)
+            if (index == 6)
             {
                 iLastIndicatorOneBased = 6;
             }
-            if (label == this.ME2Indicators[7].IndLabel)
+            if (index == 7)
             {
                 iLastIndicatorOneBased = 7;
             }
-            if (label == this.ME2Indicators[8].IndLabel)
+            if (index == 8)
             {
                 iLastIndicatorOneBased = 8;
             }
-            if (label == this.ME2Indicators[9].IndLabel)
+            if (index == 9)
             {
                 iLastIndicatorOneBased = 9;
             }
-            if (label == this.ME2Indicators[10].IndLabel)
+            if (index == 10)
             {
                 iLastIndicatorOneBased = 10;
             }
-            if (label == this.ME2Indicators[11].IndLabel)
+            if (index == 11)
             {
                 iLastIndicatorOneBased = 11;
             }
-            if (label == this.ME2Indicators[12].IndLabel)
+            if (index == 12)
             {
                 iLastIndicatorOneBased = 12;
             }
-            if (label == this.ME2Indicators[13].IndLabel)
+            if (index == 13)
             {
                 iLastIndicatorOneBased = 13;
             }
-            if (label == this.ME2Indicators[14].IndLabel)
+            if (index == 14)
             {
                 iLastIndicatorOneBased = 14;
             }
-            if (label == this.ME2Indicators[15].IndLabel)
+            if (index == 15)
             {
                 iLastIndicatorOneBased = 15;
             }
-            if (label == this.ME2Indicators[16].IndLabel)
+            if (index == 16)
             {
                 iLastIndicatorOneBased = 16;
             }
-            if (label == this.ME2Indicators[17].IndLabel)
+            if (index == 17)
             {
                 iLastIndicatorOneBased = 17;
             }
-            if (label == this.ME2Indicators[18].IndLabel)
+            if (index == 18)
             {
                 iLastIndicatorOneBased = 18;
             }
-            if (label == this.ME2Indicators[19].IndLabel)
+            if (index == 19)
             {
                 iLastIndicatorOneBased = 19;
             }
-            if (label == this.ME2Indicators[20].IndLabel)
+            if (index == 20)
             {
                 iLastIndicatorOneBased = 20;
             }

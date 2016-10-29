@@ -17,9 +17,9 @@ namespace DevTreks.Extensions
     ///             Can be run stand alone, with normal stock totals, or as an 
     ///             analyzer step that keeps track of each meal Qs, or each 
     ///             household member Qs
-    ///Date:		2016, October
+    ///Date:		2016, November
     ///References:	Monitoring and Evaluation Tutorials
-    ///NOTES:       Version 2.0.4 upgraded to the same properties and methods as 
+    ///NOTES:       Version 2.0.4 upgraded to similar properties and methods as 
     ///             the ResourceStockCalculator to promote consistency in the use 
     ///             of indicators and to accomodate risk and uncertainty in 
     ///             indicator measurement.
@@ -45,8 +45,8 @@ namespace DevTreks.Extensions
         public string[] _rowNames { get; set; }
         //186 put this var in class because exceptions will lose their state and not use them when running subsequent calcs
         //don't analyze more than CalcParameters.UrisToAnalyze inds
-        public string[] _indicators = new string[] { };
-        public const string _score = "score";
+        public int[] _indicators = new int[] { };
+        //public const string _score = "score";
         //minus 1 because ++ syntax inits with jdata[0]
         private int _dataIndex = -1;
         //number of x data columns
@@ -246,10 +246,7 @@ namespace DevTreks.Extensions
         {
             if (calculator.ME2Indicators != null)
             {
-                if (ME2Indicators == null)
-                {
-                    ME2Indicators = new List<ME2Indicator>();
-                }
+                ME2Indicators = new List<ME2Indicator>();
                 foreach (ME2Indicator calculatorInd in calculator.ME2Indicators)
                 {
                     ME2Indicator ind = new ME2Indicator();
@@ -921,8 +918,6 @@ namespace DevTreks.Extensions
         public bool RunCalculations()
         {
             bool bHasCalculations = false;
-            //calcParams initiated in ME2Calculator
-            //CalcParameters = calcParameters;
             bHasCalculations = SetCalculations();
             return bHasCalculations;
         }
@@ -1401,245 +1396,245 @@ namespace DevTreks.Extensions
             }
             return bHasMathType;
         }
-        public bool HasMathType(string label, Calculator1.MATH_TYPES algorithm,
+        public bool HasMathType(int index, Calculator1.MATH_TYPES algorithm,
             Calculator1.MATH_SUBTYPES subAlgorithm)
         {
             bool bHasMathType = false;
 
             if (ME2Indicators[0].IndMathType == algorithm.ToString()
                 && ME2Indicators[0].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[0].IndLabel == label)
+                && 0 == index)
             {
                 return true;
             }
             else if (ME2Indicators[1].IndMathType == algorithm.ToString()
                 && ME2Indicators[1].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[1].IndLabel == label)
+                && 1 == index)
             {
                 return true;
             }
             else if (ME2Indicators[2].IndMathType == algorithm.ToString()
                 && ME2Indicators[2].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[2].IndLabel == label)
+                && 2 == index)
             {
                 return true;
             }
             else if (ME2Indicators[3].IndMathType == algorithm.ToString()
                 && ME2Indicators[3].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[3].IndLabel == label)
+                && 3 == index)
             {
                 return true;
             }
             else if (ME2Indicators[4].IndMathType == algorithm.ToString()
                 && ME2Indicators[4].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[4].IndLabel == label)
+                && 4 == index)
             {
                 return true;
             }
             else if (ME2Indicators[5].IndMathType == algorithm.ToString()
                 && ME2Indicators[5].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[5].IndLabel == label)
+                && 5 == index)
             {
                 return true;
             }
             else if (ME2Indicators[6].IndMathType == algorithm.ToString()
                 && ME2Indicators[6].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[6].IndLabel == label)
+                && 6 == index)
             {
                 return true;
             }
             else if (ME2Indicators[7].IndMathType == algorithm.ToString()
                 && ME2Indicators[7].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[7].IndLabel == label)
+                && 7 == index)
             {
                 return true;
             }
             else if (ME2Indicators[8].IndMathType == algorithm.ToString()
                 && ME2Indicators[8].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[8].IndLabel == label)
+                && 8 == index)
             {
                 return true;
             }
             else if (ME2Indicators[9].IndMathType == algorithm.ToString()
                 && ME2Indicators[9].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[9].IndLabel == label)
+                && 9 == index)
             {
                 return true;
             }
             else if (ME2Indicators[10].IndMathType == algorithm.ToString()
                 && ME2Indicators[10].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[10].IndLabel == label)
+                && 10 == index)
             {
                 return true;
             }
             else if (ME2Indicators[11].IndMathType == algorithm.ToString()
                 && ME2Indicators[11].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[11].IndLabel == label)
+                && 11 == index)
             {
                 return true;
             }
             else if (ME2Indicators[12].IndMathType == algorithm.ToString()
                 && ME2Indicators[12].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[12].IndLabel == label)
+                && 12 == index)
             {
                 return true;
             }
             else if (ME2Indicators[13].IndMathType == algorithm.ToString()
                 && ME2Indicators[13].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[13].IndLabel == label)
+                && 13 == index)
             {
                 return true;
             }
             else if (ME2Indicators[14].IndMathType == algorithm.ToString()
                 && ME2Indicators[14].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[14].IndLabel == label)
+                && 14 == index)
             {
                 return true;
             }
             else if (ME2Indicators[15].IndMathType == algorithm.ToString()
                 && ME2Indicators[15].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[15].IndLabel == label)
+                && 15 == index)
             {
                 return true;
             }
             else if (ME2Indicators[16].IndMathType == algorithm.ToString()
                 && ME2Indicators[16].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[16].IndLabel == label)
+                && 16 == index)
             {
                 return true;
             }
             else if (ME2Indicators[17].IndMathType == algorithm.ToString()
                 && ME2Indicators[17].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[17].IndLabel == label)
+                && 17 == index)
             {
                 return true;
             }
             else if (ME2Indicators[18].IndMathType == algorithm.ToString()
                 && ME2Indicators[18].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[18].IndLabel == label)
+                && 18 == index)
             {
                 return true;
             }
             else if (ME2Indicators[19].IndMathType == algorithm.ToString()
                 && ME2Indicators[19].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[19].IndLabel == label)
+                && 19 == index)
             {
                 return true;
             }
             else if (ME2Indicators[20].IndMathType == algorithm.ToString()
                 && ME2Indicators[20].IndMathSubType == subAlgorithm.ToString()
-                && ME2Indicators[20].IndLabel == label)
+                && 20 == index)
             {
                 return true;
             }
             return bHasMathType;
         }
-        public bool HasMathType(string label, Calculator1.MATH_TYPES algorithm)
+        public bool HasMathType(int index, Calculator1.MATH_TYPES algorithm)
         {
             bool bHasMathType = false;
 
             if (ME2Indicators[0].IndMathType == algorithm.ToString()
-                && ME2Indicators[0].IndLabel == label)
+                && 0 == index)
             {
                 return true;
             }
             else if (ME2Indicators[1].IndMathType == algorithm.ToString()
-                && ME2Indicators[1].IndLabel == label)
+                && 1 == index)
             {
                 return true;
             }
             else if (ME2Indicators[2].IndMathType == algorithm.ToString()
-                && ME2Indicators[2].IndLabel == label)
+                && 2 == index)
             {
                 return true;
             }
             else if (ME2Indicators[3].IndMathType == algorithm.ToString()
-                && ME2Indicators[3].IndLabel == label)
+                && 3 == index)
             {
                 return true;
             }
             else if (ME2Indicators[4].IndMathType == algorithm.ToString()
-                && ME2Indicators[4].IndLabel == label)
+                && 4 == index)
             {
                 return true;
             }
             else if (ME2Indicators[5].IndMathType == algorithm.ToString()
-                && ME2Indicators[5].IndLabel == label)
+                && 5 == index)
             {
                 return true;
             }
             else if (ME2Indicators[6].IndMathType == algorithm.ToString()
-                && ME2Indicators[6].IndLabel == label)
+                && 6 == index)
             {
                 return true;
             }
             else if (ME2Indicators[7].IndMathType == algorithm.ToString()
-                && ME2Indicators[7].IndLabel == label)
+                && 7 == index)
             {
                 return true;
             }
             else if (ME2Indicators[8].IndMathType == algorithm.ToString()
-                && ME2Indicators[8].IndLabel == label)
+                && 8 == index)
             {
                 return true;
             }
             else if (ME2Indicators[9].IndMathType == algorithm.ToString()
-                && ME2Indicators[9].IndLabel == label)
+                && 9 == index)
             {
                 return true;
             }
             else if (ME2Indicators[10].IndMathType == algorithm.ToString()
-                && ME2Indicators[10].IndLabel == label)
+                && 10 == index)
             {
                 return true;
             }
             else if (ME2Indicators[11].IndMathType == algorithm.ToString()
-                && ME2Indicators[11].IndLabel == label)
+                && 11 == index)
             {
                 return true;
             }
             else if (ME2Indicators[12].IndMathType == algorithm.ToString()
-                && ME2Indicators[12].IndLabel == label)
+                && 12 == index)
             {
                 return true;
             }
             else if (ME2Indicators[13].IndMathType == algorithm.ToString()
-                && ME2Indicators[13].IndLabel == label)
+                && 13 == index)
             {
                 return true;
             }
             else if (ME2Indicators[14].IndMathType == algorithm.ToString()
-                && ME2Indicators[14].IndLabel == label)
+                && 14 == index)
             {
                 return true;
             }
             else if (ME2Indicators[15].IndMathType == algorithm.ToString()
-                && ME2Indicators[15].IndLabel == label)
+                && 15 == index)
             {
                 return true;
             }
             else if (ME2Indicators[16].IndMathType == algorithm.ToString()
-                && ME2Indicators[16].IndLabel == label)
+                && 16 == index)
             {
                 return true;
             }
             else if (ME2Indicators[17].IndMathType == algorithm.ToString()
-                && ME2Indicators[17].IndLabel == label)
+                && 17 == index)
             {
                 return true;
             }
             else if (ME2Indicators[18].IndMathType == algorithm.ToString()
-                && ME2Indicators[18].IndLabel == label)
+                && 18 == index)
             {
                 return true;
             }
             else if (ME2Indicators[19].IndMathType == algorithm.ToString()
-                && ME2Indicators[19].IndLabel == label)
+                && 19 == index)
             {
                 return true;
             }
             else if (ME2Indicators[20].IndMathType == algorithm.ToString()
-                && ME2Indicators[20].IndLabel == label)
+                && 20 == index)
             {
                 return true;
             }
@@ -1654,16 +1649,15 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[1].IndLabel)
                     && (ME2Indicators[1].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[1].IndLabel)
-                        && NeedsIndicator(ME2Indicators[1].IndLabel))
+                    if (!_indicators.Any(o => o == 1))
                     {
-                        if (HasMathType(ME2Indicators[1].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                            || HasMathType(ME2Indicators[1].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
+                        if (HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                            || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[1].IndURL);
                         }
-                        else if (HasMathType(ME2Indicators[1].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(ME2Indicators[1].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                        else if (HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
+                            || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
                         {
                             ProcessAlgosAsync4(indicatorIndex, ME2Indicators[1].IndURL);
                         }
@@ -1676,7 +1670,7 @@ namespace DevTreks.Extensions
                                 && (!string.IsNullOrEmpty(ME2Indicators[1].IndMathSubType)))
                             {
                                 //use MathType, Distribution, and QTs to set QTM, QTL, and QTU
-                                SetAlgoPRAStats(ME2Indicators[1].IndLabel, qTs);
+                                SetAlgoPRAStats(1, qTs);
                             }
                         }
                         bHasIndicator1 = true;
@@ -1693,16 +1687,15 @@ namespace DevTreks.Extensions
                     {
                         //bad dataruls generate an error and come back in using ind=2
                         //still need to try to process ind1
-                        if (!_indicators.Any(o => o == ME2Indicators[1].IndLabel)
-                            && NeedsIndicator(ME2Indicators[1].IndLabel))
+                        if (!_indicators.Any(o => o == 1))
                         {
-                            if (HasMathType(ME2Indicators[1].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                                || HasMathType(ME2Indicators[1].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
+                            if (HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                                || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                             {
                                 ProcessAlgosAsync3(indicatorIndex, ME2Indicators[1].IndURL);
                             }
-                            else if (HasMathType(ME2Indicators[1].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                               || HasMathType(ME2Indicators[1].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                            else if (HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
+                               || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
                             {
                                 ProcessAlgosAsync4(indicatorIndex, ME2Indicators[1].IndURL);
                             }
@@ -1712,7 +1705,7 @@ namespace DevTreks.Extensions
                                 if (ME2Indicators[1].IndMathSubType != Constants.NONE
                                     && (!string.IsNullOrEmpty(ME2Indicators[1].IndMathSubType)))
                                 {
-                                    SetAlgoPRAStats(ME2Indicators[1].IndLabel, qTs);
+                                    SetAlgoPRAStats(1, qTs);
                                 }
                             }
                         }
@@ -1724,13 +1717,12 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[2].IndLabel)
                     && (ME2Indicators[2].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[2].IndLabel)
-                        && NeedsIndicator(ME2Indicators[2].IndLabel))
+                    if (!_indicators.Any(o => o == 2))
                     {
-                        if (HasMathType(ME2Indicators[2].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                            || HasMathType(ME2Indicators[2].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
-                            || HasMathType(ME2Indicators[2].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(ME2Indicators[2].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                        if (HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                            || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
+                            || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
+                            || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
                         {
                             ProcessAlgosAsync4(indicatorIndex, ME2Indicators[2].IndURL);
                         }
@@ -1740,7 +1732,7 @@ namespace DevTreks.Extensions
                             if (ME2Indicators[2].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[2].IndMathSubType)))
                             {
-                                SetAlgoPRAStats(ME2Indicators[2].IndLabel, qTs);
+                                SetAlgoPRAStats(2, qTs);
                             }
                         }
                     }
@@ -1752,13 +1744,12 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[3].IndLabel)
                     && (ME2Indicators[3].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[3].IndLabel)
-                        && NeedsIndicator(ME2Indicators[3].IndLabel))
+                    if (!_indicators.Any(o => o == 3))
                     {
-                        if (HasMathType(ME2Indicators[3].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                            || HasMathType(ME2Indicators[3].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
-                            || HasMathType(ME2Indicators[3].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(ME2Indicators[3].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                        if (HasMathType(3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                            || HasMathType(3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
+                            || HasMathType(3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
+                            || HasMathType(3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[3].IndURL);
                         }
@@ -1768,7 +1759,7 @@ namespace DevTreks.Extensions
                             if (ME2Indicators[3].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[3].IndMathSubType)))
                             {
-                                SetAlgoPRAStats(ME2Indicators[3].IndLabel, qTs);
+                                SetAlgoPRAStats(3, qTs);
                             }
                         }
                     }
@@ -1780,11 +1771,10 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[4].IndLabel)
                     && (ME2Indicators[4].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[4].IndLabel)
-                        && NeedsIndicator(ME2Indicators[4].IndLabel))
+                    if (!_indicators.Any(o => o == 4))
                     {
-                        if (HasMathType(ME2Indicators[4].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                            || HasMathType(ME2Indicators[4].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
+                        if (HasMathType(4, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                            || HasMathType(4, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[4].IndURL);
                         }
@@ -1794,7 +1784,7 @@ namespace DevTreks.Extensions
                             if (ME2Indicators[4].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[4].IndMathSubType)))
                             {
-                                SetAlgoPRAStats(ME2Indicators[4].IndLabel, qTs);
+                                SetAlgoPRAStats(4, qTs);
                             }
                         }
                     }
@@ -1806,11 +1796,10 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[5].IndLabel)
                     && (ME2Indicators[5].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[5].IndLabel)
-                        && NeedsIndicator(ME2Indicators[5].IndLabel))
+                    if (!_indicators.Any(o => o == 5))
                     {
-                        if (HasMathType(ME2Indicators[5].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                            || HasMathType(ME2Indicators[5].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
+                        if (HasMathType(5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                            || HasMathType(5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync4(indicatorIndex, ME2Indicators[5].IndURL);
                         }
@@ -1820,7 +1809,7 @@ namespace DevTreks.Extensions
                             if (ME2Indicators[5].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[5].IndMathSubType)))
                             {
-                                SetAlgoPRAStats(ME2Indicators[5].IndLabel, qTs);
+                                SetAlgoPRAStats(5, qTs);
                             }
                         }
                     }
@@ -1832,11 +1821,10 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[6].IndLabel)
                     && (ME2Indicators[6].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[6].IndLabel)
-                        && NeedsIndicator(ME2Indicators[6].IndLabel))
+                    if (!_indicators.Any(o => o == 6))
                     {
-                        if (HasMathType(ME2Indicators[6].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                            || HasMathType(ME2Indicators[6].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
+                        if (HasMathType(6, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                            || HasMathType(6, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[6].IndURL);
                         }
@@ -1846,7 +1834,7 @@ namespace DevTreks.Extensions
                             if (ME2Indicators[6].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[6].IndMathSubType)))
                             {
-                                SetAlgoPRAStats(ME2Indicators[6].IndLabel, qTs);
+                                SetAlgoPRAStats(6, qTs);
                             }
                         }
                     }
@@ -1858,11 +1846,10 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[7].IndLabel)
                     && (ME2Indicators[7].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[7].IndLabel)
-                        && NeedsIndicator(ME2Indicators[7].IndLabel))
+                    if (!_indicators.Any(o => o == 7))
                     {
-                        if (HasMathType(ME2Indicators[7].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
-                            || HasMathType(ME2Indicators[7].IndLabel, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
+                        if (HasMathType(7, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
+                            || HasMathType(7, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[7].IndURL);
                         }
@@ -1872,7 +1859,7 @@ namespace DevTreks.Extensions
                             if (ME2Indicators[7].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[7].IndMathSubType)))
                             {
-                                SetAlgoPRAStats(ME2Indicators[7].IndLabel, qTs);
+                                SetAlgoPRAStats(7, qTs);
                             }
                         }
                     }
@@ -1884,14 +1871,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[8].IndLabel)
                     && (ME2Indicators[8].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[8].IndLabel)
-                        && NeedsIndicator(ME2Indicators[8].IndLabel))
+                    if (!_indicators.Any(o => o == 8))
                     {
                         SetTotalMathTypeStock8();
                         if (ME2Indicators[8].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[8].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[8].IndLabel, qTs);
+                            SetAlgoPRAStats(8, qTs);
                         }
                     }
                 }
@@ -1902,14 +1888,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[9].IndLabel)
                     && (ME2Indicators[9].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[9].IndLabel)
-                        && NeedsIndicator(ME2Indicators[9].IndLabel))
+                    if (!_indicators.Any(o => o == 9))
                     {
                         SetTotalMathTypeStock9();
                         if (ME2Indicators[9].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[9].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[9].IndLabel, qTs);
+                            SetAlgoPRAStats(9, qTs);
                         }
                     }
                 }
@@ -1920,14 +1905,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[10].IndLabel)
                     && (ME2Indicators[10].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[10].IndLabel)
-                        && NeedsIndicator(ME2Indicators[10].IndLabel))
+                    if (!_indicators.Any(o => o == 10))
                     {
                         SetTotalMathTypeStock10();
                         if (ME2Indicators[10].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[10].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[10].IndLabel, qTs);
+                            SetAlgoPRAStats(10, qTs);
                         }
                     }
                 }
@@ -1938,14 +1922,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[11].IndLabel)
                     && (ME2Indicators[11].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[11].IndLabel)
-                        && NeedsIndicator(ME2Indicators[11].IndLabel))
+                    if (!_indicators.Any(o => o == 11))
                     {
                         SetTotalMathTypeStock11();
                         if (ME2Indicators[11].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[11].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[11].IndLabel, qTs);
+                            SetAlgoPRAStats(11, qTs);
                         }
                     }
                 }
@@ -1956,14 +1939,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[12].IndLabel)
                     && (ME2Indicators[12].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[12].IndLabel)
-                        && NeedsIndicator(ME2Indicators[12].IndLabel))
+                    if (!_indicators.Any(o => o == 12))
                     {
                         SetTotalMathTypeStock12();
                         if (ME2Indicators[12].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[12].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[12].IndLabel, qTs);
+                            SetAlgoPRAStats(12, qTs);
                         }
                     }
                 }
@@ -1974,14 +1956,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[13].IndLabel)
                     && (ME2Indicators[13].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[13].IndLabel)
-                        && NeedsIndicator(ME2Indicators[13].IndLabel))
+                    if (!_indicators.Any(o => o == 13))
                     {
                         SetTotalMathTypeStock13();
                         if (ME2Indicators[13].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[13].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[13].IndLabel, qTs);
+                            SetAlgoPRAStats(13, qTs);
                         }
                     }
                 }
@@ -1992,14 +1973,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[14].IndLabel)
                     && (ME2Indicators[14].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[14].IndLabel)
-                        && NeedsIndicator(ME2Indicators[14].IndLabel))
+                    if (!_indicators.Any(o => o == 14))
                     {
                         SetTotalMathTypeStock14();
                         if (ME2Indicators[14].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[14].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[14].IndLabel, qTs);
+                            SetAlgoPRAStats(14, qTs);
                         }
                     }
                 }
@@ -2010,14 +1990,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[15].IndLabel)
                     && (ME2Indicators[15].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[15].IndLabel)
-                        && NeedsIndicator(ME2Indicators[15].IndLabel))
+                    if (!_indicators.Any(o => o == 15))
                     {
                         SetTotalMathTypeStock15();
                         if (ME2Indicators[15].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[15].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[15].IndLabel, qTs);
+                            SetAlgoPRAStats(15, qTs);
                         }
                     }
                 }
@@ -2028,14 +2007,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[16].IndLabel)
                     && (ME2Indicators[16].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[16].IndLabel)
-                        && NeedsIndicator(ME2Indicators[16].IndLabel))
+                    if (!_indicators.Any(o => o == 16))
                     {
                         SetTotalMathTypeStock16();
                         if (ME2Indicators[16].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[16].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[16].IndLabel, qTs);
+                            SetAlgoPRAStats(16, qTs);
                         }
                     }
                 }
@@ -2046,14 +2024,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[17].IndLabel)
                     && (ME2Indicators[17].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[17].IndLabel)
-                        && NeedsIndicator(ME2Indicators[17].IndLabel))
+                    if (!_indicators.Any(o => o == 17))
                     {
                         SetTotalMathTypeStock17();
                         if (ME2Indicators[17].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[17].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[17].IndLabel, qTs);
+                            SetAlgoPRAStats(17, qTs);
                         }
                     }
                 }
@@ -2064,14 +2041,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[18].IndLabel)
                     && (ME2Indicators[18].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[18].IndLabel)
-                        && NeedsIndicator(ME2Indicators[18].IndLabel))
+                    if (!_indicators.Any(o => o == 18))
                     {
                         SetTotalMathTypeStock18();
                         if (ME2Indicators[18].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[18].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[18].IndLabel, qTs);
+                            SetAlgoPRAStats(18, qTs);
                         }
                     }
                 }
@@ -2082,14 +2058,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[19].IndLabel)
                     && (ME2Indicators[19].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[19].IndLabel)
-                        && NeedsIndicator(ME2Indicators[19].IndLabel))
+                    if (!_indicators.Any(o => o == 19))
                     {
                         SetTotalMathTypeStock19();
                         if (ME2Indicators[19].IndMathSubType != Constants.NONE
                             && (!string.IsNullOrEmpty(ME2Indicators[19].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[19].IndLabel, qTs);
+                            SetAlgoPRAStats(19, qTs);
                         }
                     }
                 }
@@ -2100,14 +2075,13 @@ namespace DevTreks.Extensions
                 if (!string.IsNullOrEmpty(ME2Indicators[20].IndLabel)
                     && (ME2Indicators[20].IndLabel != Constants.NONE))
                 {
-                    if (!_indicators.Any(o => o == ME2Indicators[20].IndLabel)
-                        && NeedsIndicator(ME2Indicators[20].IndLabel))
+                    if (!_indicators.Any(o => o == 19))
                     {
                         SetTotalMathTypeStock20();
                         if (ME2Indicators[20].IndMathSubType != Constants.NONE
                                 && (!string.IsNullOrEmpty(ME2Indicators[20].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(ME2Indicators[20].IndLabel, qTs);
+                            SetAlgoPRAStats(19, qTs);
                         }
                     }
                 }
@@ -2117,7 +2091,7 @@ namespace DevTreks.Extensions
                 && (ME2Indicators[0].IndMathExpression != Constants.NONE))
             {
                 //don't set scores that have already been calculated (using indicator data sets)
-                if (!_indicators.Any(o => o == _score))
+                if (!_indicators.Any(o => o == 0))
                 {
                     if (!string.IsNullOrEmpty(ErrorMessage))
                     {
@@ -2125,13 +2099,13 @@ namespace DevTreks.Extensions
                         ErrorMessage = string.Empty;
                     }
                     indicatorIndex = 0;
-                    if (HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9))
+                    if (HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9))
                     {
                         ProcessAlgosAsync3(indicatorIndex, DataURL);
                     }
-                    else if (HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                        || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
-                        || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                    else if (HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
+                        || HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
+                        || HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
                     {
                         ProcessAlgosAsync4(indicatorIndex, DataURL);
                     }
@@ -2141,7 +2115,7 @@ namespace DevTreks.Extensions
                         if (ME2Indicators[0].IndMathSubType != Constants.NONE
                             && (!string.IsNullOrEmpty(ME2Indicators[0].IndMathSubType)))
                         {
-                            SetAlgoPRAStats(_score, qTs);
+                            SetAlgoPRAStats(0, qTs);
                         }
                     }
                 }
@@ -2363,7 +2337,7 @@ namespace DevTreks.Extensions
         {
             string sIndicatorsCSV = string.Empty;
             //these algos use doubles in datasets
-            IDictionary<string, List<List<double>>> data = new Dictionary<string, List<List<double>>>();
+            IDictionary<int, List<List<double>>> data = new Dictionary<int, List<List<double>>>();
             List<string> lines = new List<string>();
             //some algorithms may need to stream the lines to cut down on memory
             lines = GetDataLines(dataURL);
@@ -2371,7 +2345,7 @@ namespace DevTreks.Extensions
             if (lines != null)
             {
                 //reset the data
-                data = new Dictionary<string, List<List<double>>>();
+                data = new Dictionary<int, List<List<double>>>();
                 //it's ok for subsequent datasets to overwrite previous results (by design)
                 if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm5)
                     || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm6)
@@ -2391,18 +2365,16 @@ namespace DevTreks.Extensions
                 if (data != null)
                 {
                     //each data key is a different indicator
-                    List<string> algoIndicators = new List<string>(data.Keys.Count);
-                    string algoIndicator = string.Empty;
+                    List<int> algoIndicators = new List<int>(data.Keys.Count);
+                    int algoIndicator = 0;
                     foreach (var ds in data)
                     {
                         if (ds.Value.Count() > 0)
                         {
                             if (ds.Value[0].Count() > 1)
                             {
-                                algoIndicator = string.Empty;
-                                //182: analyzer 10 indicator limitation enforced
-                                if (NeedsIndicator(ds.Key)
-                                    && _indicators.Contains(ds.Key) == false)
+                                algoIndicator = 0;
+                                if (_indicators.Contains(ds.Key) == false)
                                 {
                                     //this supports multiple algos that use the same pattern
                                     if (HasMathType(ds.Key, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm6)
@@ -2431,7 +2403,7 @@ namespace DevTreks.Extensions
                                         //not based on distributions
                                         algoIndicator = SetIndicatorData(ds.Key, ds.Value);
                                     }
-                                    if (!string.IsNullOrEmpty(algoIndicator))
+                                    if (algoIndicator != 0)
                                     {
                                         algoIndicators.Add(algoIndicator);
                                     }
@@ -2451,12 +2423,12 @@ namespace DevTreks.Extensions
             }
             return sIndicatorsCSV;
         }
-        private string GetIndicatorsCSV(List<string> algoIndicators)
+        public static string GetIndicatorsCSV(List<int> algoIndicators)
         {
             string sIndicatorsCSV = string.Empty;
             foreach (var indicator in algoIndicators)
             {
-                if (!string.IsNullOrEmpty(indicator))
+                if (indicator != 0)
                 {
                     sIndicatorsCSV += string.Concat(indicator, Constants.CSV_DELIMITER);
                 }
@@ -2470,28 +2442,28 @@ namespace DevTreks.Extensions
         }
         private async Task<string> ProcessAlgoCorrAsync(string jdataURL, int dataIndex)
         {
-            string algoindicators = string.Empty;
+
+            string sIndicatorIndexes = string.Empty;
             string sError = string.Empty;
             //see if there is a corresponding dataset
             //this requires a 1 to 1 relation between dataurls and jointdataurls
-            IDictionary<string, List<List<double>>> data = GetDataSet1(dataIndex);
+            IDictionary<int, List<List<double>>> data = GetDataSet1(dataIndex);
             //has to replace the algo code above
             if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm2)
                 || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm3)
                 || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm4))
             {
-                //the correlation matrixes make limitation on indicators to analyze difficult, so not implemented
-                algoindicators = await SetAlgoCorrStats(jdataURL, data);
+                sIndicatorIndexes = await SetAlgoCorrStats(jdataURL, data);
             }
-            return algoindicators;
+            return sIndicatorIndexes;
         }
         private async Task<string> ProcessAlgosAsync3(int indicatorIndex, string urls)
         {
-            string sIndicatorsCSV = string.Empty;
+            string sIndicatorCSV = string.Empty;
             List<string> lines = new List<string>();
             List<string> lines2 = new List<string>();
-            IDictionary<string, List<List<string>>> data = new Dictionary<string, List<List<string>>>();
-            IDictionary<string, List<List<string>>> colSets = new Dictionary<string, List<List<string>>>();
+            IDictionary<int, List<List<string>>> data = new Dictionary<int, List<List<string>>>();
+            IDictionary<int, List<List<string>>> colSets = new Dictionary<int, List<List<string>>>();
             if (HasIndicatorData(indicatorIndex)
                 && indicatorIndex != 4)
             {
@@ -2552,46 +2524,45 @@ namespace DevTreks.Extensions
                 //if null already has an error message
                 if (data != null)
                 {
-                    List<string> algoIndicators = new List<string>(data.Keys.Count);
-                    string algoIndicator = string.Empty;
-                    string sLabel = string.Empty;
+                    List<int> algoIndicators = new List<int>(data.Keys.Count);
+                    int algoIndicator = 0;
+                    int iIndex = 0;
                     //this data url should have one and only 1 indicator in it -same as rproject datasets
                     foreach (var ds in data)
                     {
-                        algoIndicator = string.Empty;
-                        sLabel = ds.Key;
+                        algoIndicator = 0;
+                        iIndex = ds.Key;
                         //indicator index means labels aren't critical
                         if (indicatorIndex == 0)
                         {
-                            sLabel = _score;
+                            iIndex = 0;
                         }
                         else if (indicatorIndex == 1)
                         {
-                            sLabel = ME2Indicators[1].IndLabel;
+                            iIndex = 1;
                         }
                         else if (indicatorIndex == 3)
                         {
-                            sLabel = ME2Indicators[3].IndLabel;
+                            iIndex =3;
                         }
                         else if (indicatorIndex == 4)
                         {
-                            sLabel = ME2Indicators[4].IndLabel;
+                            iIndex = 4;
                         }
                         else if (indicatorIndex == 6)
                         {
-                            sLabel = ME2Indicators[6].IndLabel;
+                            iIndex = 6;
                         }
                         else if (indicatorIndex == 7)
                         {
-                            sLabel = ME2Indicators[7].IndLabel;
+                            iIndex = 7;
                         }
-                        if (NeedsIndicator(sLabel)
-                            && _indicators.Contains(sLabel) == false)
+                        if (_indicators.Contains(iIndex) == false)
                         {
                             //these all use 1 dataset
-                            algoIndicator = await SetAlgoStats3(sLabel, ds.Value,
+                            algoIndicator = await SetAlgoStats3(iIndex, ds.Value,
                                 colSets[ds.Key], lines2);
-                            if (!string.IsNullOrEmpty(algoIndicator))
+                            if (algoIndicator != 0)
                             {
                                 algoIndicators.Add(algoIndicator);
                             }
@@ -2601,18 +2572,18 @@ namespace DevTreks.Extensions
                             }
                         }
                     }
-                    sIndicatorsCSV = GetIndicatorsCSV(algoIndicators);
+                    sIndicatorCSV = GetIndicatorsCSV(algoIndicators);
                 }
             }
-            return sIndicatorsCSV;
+            return sIndicatorCSV;
         }
         private async Task<string> ProcessAlgosAsync4(int indicatorIndex, string urls)
         {
-            string sIndicatorsCSV = string.Empty;
+            string sIndicatorCSV = string.Empty;
             List<string> lines = new List<string>();
             List<string> lines2 = new List<string>();
-            IDictionary<string, List<List<string>>> data = new Dictionary<string, List<List<string>>>();
-            IDictionary<string, List<List<string>>> colSets = new Dictionary<string, List<List<string>>>();
+            IDictionary<int, List<List<string>>> data = new Dictionary<int, List<List<string>>>();
+            IDictionary<int, List<List<string>>> colSets = new Dictionary<int, List<List<string>>>();
             if (HasIndicatorData(indicatorIndex))
             {
                 //all use at least 1 dataset
@@ -2643,47 +2614,46 @@ namespace DevTreks.Extensions
                 //if null already has an error message
                 if (data != null)
                 {
-                    List<string> algoIndicators = new List<string>(data.Keys.Count);
-                    string algoIndicator = string.Empty;
-                    string sLabel = string.Empty;
+                    List<int> algoIndicators = new List<int>(data.Keys.Count);
+                    int algoIndicator = 0;
+                    int iIndex = 0;
                     foreach (var ds in data)
                     {
-                        algoIndicator = string.Empty;
-                        sLabel = ds.Key;
+                        algoIndicator = 0;
+                        iIndex = ds.Key;
                         if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                             || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
                         {
                             if (indicatorIndex == 0)
                             {
-                                sLabel = _score;
+                                iIndex = 0;
                             }
                             else if (indicatorIndex == 1)
                             {
-                                sLabel = ME2Indicators[1].IndLabel;
+                                iIndex = 1;
                             }
                         }
                         //198: added 0 and 1 to list
                         if (indicatorIndex == 0)
                         {
-                            sLabel = _score;
+                            iIndex = 0;
                         }
                         else if (indicatorIndex == 1)
                         {
-                            sLabel = ME2Indicators[1].IndLabel;
+                            iIndex = 1;
                         }
                         else if (indicatorIndex == 2)
                         {
-                            sLabel = ME2Indicators[2].IndLabel;
+                            iIndex = 2;
                         }
                         else if (indicatorIndex == 5)
                         {
-                            sLabel = ME2Indicators[5].IndLabel;
+                            iIndex = 5;
                         }
-                        if (NeedsIndicator(sLabel)
-                            && _indicators.Contains(sLabel) == false)
+                        if (_indicators.Contains(iIndex) == false)
                         {
-                            algoIndicator = await SetAlgoStats4(sLabel, ds.Value, colSets[ds.Key], lines2);
-                            if (!string.IsNullOrEmpty(algoIndicator))
+                            algoIndicator = await SetAlgoStats4(iIndex, ds.Value, colSets[ds.Key], lines2);
+                            if (algoIndicator != 0)
                             {
                                 algoIndicators.Add(algoIndicator);
                             }
@@ -2693,14 +2663,14 @@ namespace DevTreks.Extensions
                             }
                         }
                     }
-                    sIndicatorsCSV = GetIndicatorsCSV(algoIndicators);
+                    sIndicatorCSV = GetIndicatorsCSV(algoIndicators);
                 }
             }
-            return sIndicatorsCSV;
+            return sIndicatorCSV;
         }
         private async Task<string> ProcessAlgosAsync2(string dataURL, int jDataURLIndex)
         {
-            string sIndicatorsCSV = string.Empty;
+            string sIndicatorCSV = string.Empty;
             //increment the dataindex and set the corresponding jdataurl
             string sJDataURL = string.Empty;
 
@@ -2740,48 +2710,37 @@ namespace DevTreks.Extensions
                 if (bHasColNames == true)
                 {
                     //each data key is a different indicator
-                    List<string> algoIndicators = new List<string>();
+                    List<int> algoIndicators = new List<int>();
                     //uses colnames with Indicator.MathExpression to determine which indicator to update
-                    string algoIndicator = GetIndicatorLabel(_colNames);
-                    if (_indicators.Contains(algoIndicator) == false)
+                    int iIndicatorIndex = GetIndicatorIndex(_colNames);
+                    if (_indicators.Contains(iIndicatorIndex) == false)
                     {
                         //this supports multiple algos that use the same pattern
                         if (HasMathType(MATH_TYPES.algorithm2)
                             || HasMathType(MATH_TYPES.algorithm3)
                             || HasMathType(MATH_TYPES.algorithm4))
                         {
-                            algoIndicator = await SetAlgoStats2(algoIndicator, dataURL, sJDataURL);
+                            iIndicatorIndex = await SetAlgoStats2(iIndicatorIndex, dataURL, sJDataURL);
                         }
-                        if (!string.IsNullOrEmpty(algoIndicator))
+                        if (iIndicatorIndex != 0)
                         {
-                            algoIndicators.Add(algoIndicator);
+                            algoIndicators.Add(iIndicatorIndex);
                         }
                         else
                         {
                             CalculatorDescription += "Indicator properties are missing or wrong. Do indicator labels correspond to dataset labels? Do indicators have correct algorithms? Please recheck all indicator properties.";
                         }
-                        foreach (var indicator in algoIndicators)
-                        {
-                            if (!string.IsNullOrEmpty(indicator))
-                            {
-                                sIndicatorsCSV += string.Concat(indicator, Constants.CSV_DELIMITER);
-                            }
-                        }
-                        //remove the last delimiter
-                        if (sIndicatorsCSV.EndsWith(Constants.CSV_DELIMITER))
-                        {
-                            sIndicatorsCSV = sIndicatorsCSV.Remove(sIndicatorsCSV.Length - 1, 1);
-                        }
+                        sIndicatorCSV = GetIndicatorsCSV(algoIndicators);
                     }
                 }
             }
-            return sIndicatorsCSV;
+            return sIndicatorCSV;
         }
 
 
         public async Task<string> ProcessAlgosForAnalyzersAsync(List<ME2Stock> stocks)
         {
-            string sIndicatorsCSV = string.Empty;
+            string sIndicatorCSV = string.Empty;
             int i = 0;
             //copy the individual datasets into analyzerStock.DataToAnalyze
             //each change stock will have totals passed back from algo; algo needs to know how many totals are needed for changestocks
@@ -2804,36 +2763,38 @@ namespace DevTreks.Extensions
             if (DataToAnalyze != null)
             {
                 //each data key is a different indicator
-                List<string> algoIndicators = new List<string>(DataToAnalyze.Keys.Count);
-                string algoIndicator = string.Empty;
+                List<int> algoIndicators = new List<int>(DataToAnalyze.Keys.Count);
+                int iIndicatorIndex = 0;
+                int iKey = 0;
                 i = 0;
                 foreach (var ds in DataToAnalyze)
                 {
-                    algoIndicator = string.Empty;
+                    iIndicatorIndex = 0;
+                    iKey = CalculatorHelpers.ConvertStringToInt(ds.Key);
                     AddIndicatorToHoldTotals(i, ds.Key);
                     //this supports multiple algos that use the same pattern
                     if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm6)
                         || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm8))
                     {
                         //regression
-                        algoIndicator = await SetAlgoStats1(ds.Key, ds.Value);
+                        iIndicatorIndex = await SetAlgoStats1(iKey, ds.Value);
                     }
                     else if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm5)
                         || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm7))
                     {
                         //HasDataMatrix checked to make sure they have a good jointdataurl property
                         //process dataurls first (no effect on indicatornum because key is checked)
-                        algoIndicator = await SetAlgoCalcs(ds.Key, ds.Value);
+                        iIndicatorIndex = await SetAlgoCalcs(iKey, ds.Value);
                     }
                     else
                     {
                         //this generates descriptive stats based on data in data url
                         //not based on distributions
-                        algoIndicator = SetIndicatorData(ds.Key, ds.Value);
+                        iIndicatorIndex = SetIndicatorData(iKey, ds.Value);
                     }
-                    if (!string.IsNullOrEmpty(algoIndicator))
+                    if (iIndicatorIndex != 0)
                     {
-                        algoIndicators.Add(algoIndicator);
+                        algoIndicators.Add(iIndicatorIndex);
                     }
                     else
                     {
@@ -2850,30 +2811,19 @@ namespace DevTreks.Extensions
                     }
                     i++;
                 }
-                foreach (var indicator in algoIndicators)
-                {
-                    if (!string.IsNullOrEmpty(indicator))
-                    {
-                        sIndicatorsCSV += string.Concat(indicator, Constants.CSV_DELIMITER);
-                    }
-                }
-                //remove the last delimiter
-                if (sIndicatorsCSV.EndsWith(Constants.CSV_DELIMITER))
-                {
-                    sIndicatorsCSV = sIndicatorsCSV.Remove(sIndicatorsCSV.Length - 1, 1);
-                }
+                sIndicatorCSV = GetIndicatorsCSV(algoIndicators);
             }
-            return sIndicatorsCSV;
+            return sIndicatorCSV;
         }
         private void AddIndicatorToHoldTotals(int indicatorIndex, string label)
         {
             if (indicatorIndex == 0)
             {
                 //these props are used later to run the correct algo
-                ME2Indicators[1].IndLabel = label;
-                ME2Indicators[1].IndMathExpression = MathExpression;
-                ME2Indicators[1].IndMathType = MathType;
-                ME2Indicators[1].IndMathSubType = MathSubType;
+                ME2Indicators[0].IndLabel = label;
+                ME2Indicators[0].IndMathExpression = MathExpression;
+                ME2Indicators[0].IndMathType = MathType;
+                ME2Indicators[0].IndMathSubType = MathSubType;
             }
             else if (indicatorIndex == 1)
             {
@@ -3044,9 +2994,9 @@ namespace DevTreks.Extensions
             return jDataURL;
         }
 
-        private string[] GetIndicators(string[] csvIndicators)
+        private int[] GetIndicators(string[] csvIndicators)
         {
-            List<string> inds = new List<string>();
+            List<int> inds = new List<int>();
             //version 1.9.2 allows multiple subalgos to be run for multiple subinds
             if (_indicators != null)
             {
@@ -3055,448 +3005,373 @@ namespace DevTreks.Extensions
                     inds.Add(indicator);
                 }
             }
+            int iIndicator = 0;
             foreach (var indicatorscsv in csvIndicators)
             {
                 string[] newindicators = indicatorscsv.Split(Constants.CSV_DELIMITERS);
                 foreach (var newindicator in newindicators)
                 {
-                    inds.Add(newindicator);
+                    iIndicator = CalculatorHelpers.ConvertStringToInt(newindicator);
+                    inds.Add(iIndicator);
                 }
             }
             return inds.ToArray();
         }
-        private string[] GetIndicatorsDisplay()
+        public static int[] GetIndexes(string algoIndicator)
         {
-            List<string> inds = new List<string>();
+            string[] algoIndicators = algoIndicator.Split(Constants.CSV_DELIMITERS);
+            List<int> inds = new List<int>();
+            int iIndicator = 0;
+            foreach (var newindicator in algoIndicators)
+            {
+                iIndicator = CalculatorHelpers.ConvertStringToInt(newindicator);
+                inds.Add(iIndicator);
+            }
+            return inds.ToArray();
+        }
+        public static IDictionary<string, List<List<double>>> ConvertDataToString(
+            IDictionary<int, List<List<double>>> data)
+        {
+            IDictionary<string, List<List<double>>> dataSets = new Dictionary<string, List<List<double>>>();
+            foreach(var dataset in data)
+            {
+                dataSets.Add(dataset.Key.ToString(), dataset.Value);
+            }
+            return dataSets;
+        }
+        public static bool ContainsIndex(int index, string algoIndicator)
+        {
+            bool bContainsIndex = false;
+            string[] algoIndicators = algoIndicator.Split(Constants.CSV_DELIMITERS);
+            foreach (var newindicator in algoIndicators)
+            {
+                if (newindicator == index.ToString())
+                {
+                    return true;
+                }
+            }
+            return bContainsIndex;
+        }
+        private int[] GetIndicatorsDisplay()
+        {
+            List<int> inds = new List<int>();
             if (ME2Indicators[1].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[1].IndLabel);
+                inds.Add(1);
             }
             if (ME2Indicators[2].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[2].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[2].IndLabel);
+                inds.Add(2);
             }
             if (ME2Indicators[3].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[3].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[3].IndLabel);
+                inds.Add(3);
             }
             if (ME2Indicators[4].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[4].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[4].IndLabel);
+                inds.Add(4);
             }
             if (ME2Indicators[5].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[5].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[5].IndLabel);
+                inds.Add(5);
             }
             if (ME2Indicators[6].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[6].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[6].IndLabel);
+                inds.Add(6);
             }
             if (ME2Indicators[7].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[7].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[7].IndLabel);
+                inds.Add(7);
             }
             if (ME2Indicators[8].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[8].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[8].IndLabel);
+                inds.Add(8);
             }
             if (ME2Indicators[9].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[9].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[9].IndLabel);
+                inds.Add(9);
             }
             if (ME2Indicators[10].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[10].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[10].IndLabel);
+                inds.Add(10);
             }
             if (ME2Indicators[11].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[11].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[11].IndLabel);
+                inds.Add(11);
             }
             if (ME2Indicators[12].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[12].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[12].IndLabel);
+                inds.Add(12);
             }
             if (ME2Indicators[13].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[13].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[13].IndLabel);
+                inds.Add(13);
             }
             if (ME2Indicators[14].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[14].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[14].IndLabel);
+                inds.Add(14);
             }
             if (ME2Indicators[15].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[15].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[15].IndLabel);
+                inds.Add(15);
             }
             if (ME2Indicators[16].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[16].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[16].IndLabel);
+                inds.Add(16);
             }
             if (ME2Indicators[17].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[17].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[17].IndLabel);
+                inds.Add(17);
             }
             if (ME2Indicators[18].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[18].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[18].IndLabel);
+                inds.Add(18);
             }
             if (ME2Indicators[19].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[19].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[19].IndLabel);
+                inds.Add(19);
             }
             if (ME2Indicators[20].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[20].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
-                inds.Add(ME2Indicators[20].IndLabel);
+                inds.Add(19);
             }
             if (ME2Indicators[0].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[0].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
                 //scores filtered by 'score'
-                inds.Add(_score);
+                inds.Add(0);
             }
             return inds.ToArray();
         }
-        public void AddAllIndicators(List<string> newInds)
+        public void AddAllIndicators(List<int> newInds)
         {
-            if (!newInds.Contains(ME2Indicators[1].IndLabel)
+            if (!newInds.Contains(1)
                 && (!string.IsNullOrEmpty(ME2Indicators[1].IndLabel)))
             {
                 //ui doesn't have label just label constant
-                newInds.Add(ME2Indicators[1].IndLabel);
+                newInds.Add(1);
             }
-            if (!newInds.Contains(ME2Indicators[2].IndLabel)
+            if (!newInds.Contains(2)
                 && (!string.IsNullOrEmpty(ME2Indicators[2].IndLabel)))
             {
-                newInds.Add(ME2Indicators[2].IndLabel);
+                newInds.Add(2);
             }
-            if (!newInds.Contains(ME2Indicators[3].IndLabel)
+            if (!newInds.Contains(3)
                 && (!string.IsNullOrEmpty(ME2Indicators[3].IndLabel)))
             {
-                newInds.Add(ME2Indicators[3].IndLabel);
+                newInds.Add(3);
             }
-            if (!newInds.Contains(ME2Indicators[4].IndLabel)
+            if (!newInds.Contains(4)
                 && (!string.IsNullOrEmpty(ME2Indicators[4].IndLabel)))
             {
-                newInds.Add(ME2Indicators[4].IndLabel);
+                newInds.Add(4);
             }
-            if (!newInds.Contains(ME2Indicators[5].IndLabel)
+            if (!newInds.Contains(5)
                 && (!string.IsNullOrEmpty(ME2Indicators[5].IndLabel)))
             {
-                newInds.Add(ME2Indicators[5].IndLabel);
+                newInds.Add(5);
             }
-            if (!newInds.Contains(ME2Indicators[6].IndLabel)
+            if (!newInds.Contains(6)
                 && (!string.IsNullOrEmpty(ME2Indicators[6].IndLabel)))
             {
-                newInds.Add(ME2Indicators[6].IndLabel);
+                newInds.Add(6);
             }
-            if (!newInds.Contains(ME2Indicators[7].IndLabel)
+            if (!newInds.Contains(7)
                 && (!string.IsNullOrEmpty(ME2Indicators[7].IndLabel)))
             {
-                newInds.Add(ME2Indicators[7].IndLabel);
+                newInds.Add(7);
             }
-            if (!newInds.Contains(ME2Indicators[8].IndLabel)
+            if (!newInds.Contains(8)
                 && (!string.IsNullOrEmpty(ME2Indicators[8].IndLabel)))
             {
-                newInds.Add(ME2Indicators[8].IndLabel);
+                newInds.Add(8);
             }
-            if (!newInds.Contains(ME2Indicators[9].IndLabel)
+            if (!newInds.Contains(9)
                 && (!string.IsNullOrEmpty(ME2Indicators[9].IndLabel)))
             {
-                newInds.Add(ME2Indicators[9].IndLabel);
+                newInds.Add(9);
             }
-            if (!newInds.Contains(ME2Indicators[10].IndLabel)
+            if (!newInds.Contains(10)
                 && (!string.IsNullOrEmpty(ME2Indicators[10].IndLabel)))
             {
-                newInds.Add(ME2Indicators[10].IndLabel);
+                newInds.Add(10);
             }
-            if (!newInds.Contains(ME2Indicators[11].IndLabel)
+            if (!newInds.Contains(11)
                 && (!string.IsNullOrEmpty(ME2Indicators[11].IndLabel)))
             {
-                newInds.Add(ME2Indicators[11].IndLabel);
+                newInds.Add(11);
             }
-            if (!newInds.Contains(ME2Indicators[12].IndLabel)
+            if (!newInds.Contains(12)
                 && (!string.IsNullOrEmpty(ME2Indicators[12].IndLabel)))
             {
-                newInds.Add(ME2Indicators[12].IndLabel);
+                newInds.Add(12);
             }
-            if (!newInds.Contains(ME2Indicators[13].IndLabel)
+            if (!newInds.Contains(13)
                 && (!string.IsNullOrEmpty(ME2Indicators[13].IndLabel)))
             {
-                newInds.Add(ME2Indicators[13].IndLabel);
+                newInds.Add(13);
             }
-            if (!newInds.Contains(ME2Indicators[14].IndLabel)
+            if (!newInds.Contains(14)
                 && (!string.IsNullOrEmpty(ME2Indicators[14].IndLabel)))
             {
-                newInds.Add(ME2Indicators[14].IndLabel);
+                newInds.Add(14);
             }
-            if (!newInds.Contains(ME2Indicators[15].IndLabel)
+            if (!newInds.Contains(15)
                 && (!string.IsNullOrEmpty(ME2Indicators[15].IndLabel)))
             {
-                newInds.Add(ME2Indicators[15].IndLabel);
+                newInds.Add(15);
             }
-            if (!newInds.Contains(ME2Indicators[16].IndLabel)
+            if (!newInds.Contains(16)
                 && (!string.IsNullOrEmpty(ME2Indicators[16].IndLabel)))
             {
-                newInds.Add(ME2Indicators[16].IndLabel);
+                newInds.Add(16);
             }
-            if (!newInds.Contains(ME2Indicators[17].IndLabel)
+            if (!newInds.Contains(17)
                 && (!string.IsNullOrEmpty(ME2Indicators[17].IndLabel)))
             {
-                newInds.Add(ME2Indicators[17].IndLabel);
+                newInds.Add(17);
             }
-            if (!newInds.Contains(ME2Indicators[18].IndLabel)
+            if (!newInds.Contains(18)
                 && (!string.IsNullOrEmpty(ME2Indicators[18].IndLabel)))
             {
-                newInds.Add(ME2Indicators[18].IndLabel);
+                newInds.Add(18);
             }
-            if (!newInds.Contains(ME2Indicators[19].IndLabel)
+            if (!newInds.Contains(19)
                 && (!string.IsNullOrEmpty(ME2Indicators[19].IndLabel)))
             {
-                newInds.Add(ME2Indicators[19].IndLabel);
+                newInds.Add(19);
             }
-            if (!newInds.Contains(ME2Indicators[20].IndLabel)
+            if (!newInds.Contains(19)
                 && (!string.IsNullOrEmpty(ME2Indicators[20].IndLabel)))
             {
-                newInds.Add(ME2Indicators[20].IndLabel);
+                newInds.Add(19);
             }
         }
-
-        private bool NeedsIndicator(string label)
-        {
-            bool bNeedsIndicator = false;
-            if (label == _score)
-            {
-                return true;
-            }
-            string sLabelConstant = GetIndicatorLabelConstant(label);
-            if (string.IsNullOrEmpty(sLabelConstant))
-            {
-                //rule is that the dataset must correspond to an indicator
-                return bNeedsIndicator;
-            }
-            bNeedsIndicator = ME2AnalyzerHelper
-                .NeedsAnalyzerIndicator(sLabelConstant, CalcParameters);
-            //need to also exclude the indicator from being included in reports
-            if (!bNeedsIndicator)
-            {
-                ExcludeIndicator(label);
-            }
-            return bNeedsIndicator;
-        }
-        private string GetIndicatorLabelConstant(string label)
+        //retain for potential use
+        private string ExcludeIndicator(int index)
         {
             string scLabel = string.Empty;
-            if (label == ME2Indicators[1].IndLabel)
+            if (index == 0)
             {
-                //ui doesn't have label just label constant
-                scLabel = string.Concat(cIndLabel, "1");
-            }
-            else if (label == ME2Indicators[2].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "2");
-            }
-            else if (label == ME2Indicators[3].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "3");
-            }
-            else if (label == ME2Indicators[4].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "4");
-            }
-            else if (label == ME2Indicators[5].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "5");
-            }
-            else if (label == ME2Indicators[6].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "6");
-            }
-            else if (label == ME2Indicators[7].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "7");
-            }
-            else if (label == ME2Indicators[8].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "8");
-            }
-            else if (label == ME2Indicators[9].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "9");
-            }
-            else if (label == ME2Indicators[10].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "10");
-            }
-            else if (label == ME2Indicators[11].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "11");
-            }
-            else if (label == ME2Indicators[12].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "12");
-            }
-            else if (label == ME2Indicators[13].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "13");
-            }
-            else if (label == ME2Indicators[14].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "14");
-            }
-            else if (label == ME2Indicators[15].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "15");
-            }
-            else if (label == ME2Indicators[16].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "16");
-            }
-            else if (label == ME2Indicators[17].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "17");
-            }
-            else if (label == ME2Indicators[18].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "18");
-            }
-            else if (label == ME2Indicators[19].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "19");
-            }
-            else if (label == ME2Indicators[20].IndLabel)
-            {
-                scLabel = string.Concat(cIndLabel, "20");
-            }
-            else
-            {
-                //ignore the row
-            }
-            return scLabel;
-        }
-        private string ExcludeIndicator(string label)
-        {
-            string scLabel = string.Empty;
-            if (label == ME2Indicators[0].IndLabel)
-            {
-                //some stylesheets use these to set colheaders
+                ME2Indicators[0].IndLabel = string.Empty;
                 ME2Indicators[0].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[1].IndLabel)
+            else if (index == 1)
             {
                 ME2Indicators[1].IndLabel = string.Empty;
                 ME2Indicators[1].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[2].IndLabel)
+            else if (index == 2)
             {
                 ME2Indicators[2].IndLabel = string.Empty;
                 ME2Indicators[2].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[3].IndLabel)
+            else if (index == 3)
             {
                 ME2Indicators[3].IndLabel = string.Empty;
                 ME2Indicators[3].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[4].IndLabel)
+            else if (index == 4)
             {
                 ME2Indicators[4].IndLabel = string.Empty;
                 ME2Indicators[4].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[5].IndLabel)
+            else if (index == 5)
             {
                 ME2Indicators[5].IndLabel = string.Empty;
                 ME2Indicators[5].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[6].IndLabel)
+            else if (index == 6)
             {
                 ME2Indicators[6].IndLabel = string.Empty;
                 ME2Indicators[6].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[7].IndLabel)
+            else if (index == 7)
             {
                 ME2Indicators[7].IndLabel = string.Empty;
                 ME2Indicators[7].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[8].IndLabel)
+            else if (index == 8)
             {
                 ME2Indicators[8].IndLabel = string.Empty;
                 ME2Indicators[8].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[9].IndLabel)
+            else if (index == 9)
             {
                 ME2Indicators[9].IndLabel = string.Empty;
                 ME2Indicators[9].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[10].IndLabel)
+            else if (index == 10)
             {
                 ME2Indicators[10].IndLabel = string.Empty;
                 ME2Indicators[10].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[11].IndLabel)
+            else if (index == 11)
             {
                 ME2Indicators[11].IndLabel = string.Empty;
                 ME2Indicators[11].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[12].IndLabel)
+            else if (index == 12)
             {
                 ME2Indicators[12].IndLabel = string.Empty;
                 ME2Indicators[12].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[13].IndLabel)
+            else if (index == 13)
             {
                 ME2Indicators[13].IndLabel = string.Empty;
                 ME2Indicators[13].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[14].IndLabel)
+            else if (index == 14)
             {
                 ME2Indicators[14].IndLabel = string.Empty;
                 ME2Indicators[14].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[15].IndLabel)
+            else if (index == 15)
             {
                 ME2Indicators[15].IndLabel = string.Empty;
                 ME2Indicators[15].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[16].IndLabel)
+            else if (index == 16)
             {
                 ME2Indicators[16].IndLabel = string.Empty;
                 ME2Indicators[16].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[17].IndLabel)
+            else if (index == 17)
             {
                 ME2Indicators[17].IndLabel = string.Empty;
                 ME2Indicators[17].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[18].IndLabel)
+            else if (index == 18)
             {
                 ME2Indicators[18].IndLabel = string.Empty;
                 ME2Indicators[18].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[19].IndLabel)
+            else if (index == 19)
             {
                 ME2Indicators[19].IndLabel = string.Empty;
                 ME2Indicators[19].IndName = string.Empty;
             }
-            else if (label == ME2Indicators[20].IndLabel)
+            else if (index == 20)
             {
                 ME2Indicators[20].IndLabel = string.Empty;
                 ME2Indicators[20].IndName = string.Empty;
@@ -3613,7 +3488,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[2].IndMathResult, 1);
                 }
             }
@@ -3625,7 +3499,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[3].IndMathResult, 1);
                 }
             }
@@ -3637,7 +3510,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[4].IndMathResult, 1);
                 }
             }
@@ -3649,7 +3521,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[5].IndMathResult, 1);
                 }
             }
@@ -3661,7 +3532,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[6].IndMathResult, 1);
                 }
             }
@@ -3673,7 +3543,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[7].IndMathResult, 1);
                 }
             }
@@ -3685,7 +3554,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[8].IndMathResult, 1);
                 }
             }
@@ -3697,7 +3565,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[9].IndMathResult, 1);
                 }
             }
@@ -3709,7 +3576,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[10].IndMathResult, 1);
                 }
             }
@@ -3721,7 +3587,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[11].IndMathResult, 1);
                 }
             }
@@ -3733,7 +3598,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[12].IndMathResult, 1);
                 }
             }
@@ -3745,7 +3609,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[13].IndMathResult, 1);
                 }
             }
@@ -3757,7 +3620,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[14].IndMathResult, 1);
                 }
             }
@@ -3769,7 +3631,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[15].IndMathResult, 1);
                 }
             }
@@ -3781,7 +3642,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[16].IndMathResult, 1);
                 }
             }
@@ -3793,7 +3653,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[17].IndMathResult, 1);
                 }
             }
@@ -3805,7 +3664,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[18].IndMathResult, 1);
                 }
             }
@@ -3817,7 +3675,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[19].IndMathResult, 1);
                 }
             }
@@ -3829,7 +3686,6 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    //get the csv lines out of mathresult and skip the first line
                     lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[20].IndMathResult, 1);
                 }
             }
@@ -3839,12 +3695,6 @@ namespace DevTreks.Extensions
         {
             ME2Indicators[1].IndTAmount = this.GetTotalFromMathExpression(1, _colNames, ME2Indicators[1].IndMathExpression, new List<double>(xcols - 5));
             ME2Indicators[1].IndTMAmount = ME2Indicators[1].IndTAmount;
-            if (!string.IsNullOrEmpty(ErrorMessage))
-            {
-                //deprecated: error msg already refers to correct ind
-                //ME2Indicators[1].IndMathResult += ErrorMessage;
-                //ErrorMessage = string.Empty;
-            }
         }
 
         public void SetTotalMathTypeStock2()
@@ -3943,15 +3793,16 @@ namespace DevTreks.Extensions
             ME2Indicators[20].IndTMAmount = ME2Indicators[20].IndTAmount;
         }
 
-        public IDictionary<string, List<List<double>>> GetDataSet(List<string> lines)
+        public IDictionary<int, List<List<double>>> GetDataSet(List<string> lines)
         {
             //standard format is:
             //colNames = Indicator Label, Col1, Col2, QT Amount, Q1 Amount,	Q2 Amount, Q3 Amount, Q4 Amount, Q5 Amount, up to 11 numeric cols
             //matrix of doubles
-            IDictionary<string, List<List<double>>> dataSets = new Dictionary<string, List<List<double>>>();
+            IDictionary<int, List<List<double>>> dataSets = new Dictionary<int, List<List<double>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            List<string> cKeysUsed = new List<string>();
+            int iKey = 0;
+            List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
             {
@@ -3981,9 +3832,10 @@ namespace DevTreks.Extensions
                             sKey = cols[0];
                             if (!string.IsNullOrEmpty(sKey))
                             {
-                                if (!cKeysUsed.Contains(sKey))
+                                iKey = CalculatorHelpers.ConvertStringToInt(sKey);
+                                if (!cKeysUsed.Contains(iKey))
                                 {
-                                    cKeysUsed.Add(sKey);
+                                    cKeysUsed.Add(iKey);
                                     List<string> cLines = lines
                                         .Where(l => l.StartsWith(sKey, true, CultureInfo.InvariantCulture))
                                         .Select(l => l.ToString()).ToList();
@@ -4011,7 +3863,7 @@ namespace DevTreks.Extensions
                                                 dataSet.Add(qvector.ToList());
                                                 //otherwise should use GetDataSetwithQT(), not this function
                                             }
-                                            dataSets.Add(sKey, dataSet);
+                                            dataSets.Add(iKey, dataSet);
                                         }
                                     }
                                     else
@@ -4035,15 +3887,16 @@ namespace DevTreks.Extensions
             }
             return dataSets;
         }
-        public IDictionary<string, List<List<double>>> GetDataSetFull(List<string> lines)
+        public IDictionary<int, List<List<double>>> GetDataSetFull(List<string> lines)
         {
             //standard format is:
             //colNames = Indicator Label, Col1, Col2, QT Amount, Q1 Amount,	Q2 Amount, Q3 Amount, Q4 Amount, Q5 Amount, up to 11 numeric cols
             //matrix of doubles
-            IDictionary<string, List<List<double>>> dataSets = new Dictionary<string, List<List<double>>>();
+            IDictionary<int, List<List<double>>> dataSets = new Dictionary<int, List<List<double>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            List<string> cKeysUsed = new List<string>();
+            int iKey = 0;
+            List<int> cKeysUsed = new List<int>();
             //second iteration fills dataset with complete doubles and exits loop
             int i = 0;
             foreach (var row in lines)
@@ -4074,9 +3927,10 @@ namespace DevTreks.Extensions
                             sKey = cols[0];
                             if (!string.IsNullOrEmpty(sKey))
                             {
-                                if (!cKeysUsed.Contains(sKey))
+                                iKey = CalculatorHelpers.ConvertStringToInt(sKey);
+                                if (!cKeysUsed.Contains(iKey))
                                 {
-                                    cKeysUsed.Add(sKey);
+                                    cKeysUsed.Add(iKey);
                                     //select all but the first row (the header row)
                                     List<string> cLines = lines
                                         .Skip(1)
@@ -4104,7 +3958,7 @@ namespace DevTreks.Extensions
                                                 //ok for algos that don't need to calculate qT from q1 to q10 vars
                                                 dataSet.Add(qvector.ToList());
                                             }
-                                            dataSets.Add(sKey, dataSet);
+                                            dataSets.Add(iKey, dataSet);
                                             //no need for any more iterations, just exist with all rows
                                             return dataSets;
                                         }
@@ -4130,16 +3984,17 @@ namespace DevTreks.Extensions
             }
             return dataSets;
         }
-        public IDictionary<string, List<List<string>>> GetDataSetFull2(List<string> lines)
+        public IDictionary<int, List<List<string>>> GetDataSetFull2(List<string> lines)
         {
             //groups data for running datasets concurrently
             //standard format is:
             //colNames = Indicator Label, Col1, Col2, QT Amount, Q1 Amount,	Q2 Amount, Q3 Amount, Q4 Amount, Q5 Amount, up to 11 numeric cols
             //matrix of doubles
-            IDictionary<string, List<List<string>>> dataSets = new Dictionary<string, List<List<string>>>();
+            IDictionary<int, List<List<string>>> dataSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            List<string> cKeysUsed = new List<string>();
+            int iKey = 0;
+            List<int> cKeysUsed = new List<int>();
             //second iteration fills dataset with complete doubles and exits loop
             int i = 0;
             foreach (var row in lines)
@@ -4170,9 +4025,10 @@ namespace DevTreks.Extensions
                             sKey = cols[0];
                             if (!string.IsNullOrEmpty(sKey))
                             {
-                                if (!cKeysUsed.Contains(sKey))
+                                iKey = CalculatorHelpers.ConvertStringToInt(sKey);
+                                if (!cKeysUsed.Contains(iKey))
                                 {
-                                    cKeysUsed.Add(sKey);
+                                    cKeysUsed.Add(iKey);
                                     //select all but the first row (the header row)
                                     List<string> cLines = lines
                                         .Skip(1)
@@ -4199,7 +4055,7 @@ namespace DevTreks.Extensions
                                             {
                                                 dataSet.Add(qvector.ToList());
                                             }
-                                            dataSets.Add(sKey, dataSet);
+                                            dataSets.Add(iKey, dataSet);
                                             //no need for any more iterations, just exist with all rows
                                             return dataSets;
                                         }
@@ -4225,16 +4081,17 @@ namespace DevTreks.Extensions
             }
             return dataSets;
         }
-        public IDictionary<string, List<List<string>>> GetDataSetFull3(List<string> lines)
+        public IDictionary<int, List<List<string>>> GetDataSetFull3(List<string> lines)
         {
             //groups data for running datasets concurrently
             //standard format is:
             //colNames = Indicator Label, Col1, Col2, QT Amount, Q1 Amount,	Q2 Amount, Q3 Amount, Q4 Amount, Q5 Amount, up to 11 numeric cols
             //matrix of doubles
-            IDictionary<string, List<List<string>>> dataSets = new Dictionary<string, List<List<string>>>();
+            IDictionary<int, List<List<string>>> dataSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            List<string> cKeysUsed = new List<string>();
+            int iKey = 0;
+            List<int> cKeysUsed = new List<int>();
             //second iteration fills dataset with complete doubles and exits loop
             int i = 0;
             foreach (var row in lines)
@@ -4265,9 +4122,10 @@ namespace DevTreks.Extensions
                             sKey = cols[2];
                             if (!string.IsNullOrEmpty(sKey))
                             {
-                                if (!cKeysUsed.Contains(sKey))
+                                iKey = CalculatorHelpers.ConvertStringToInt(sKey);
+                                if (!cKeysUsed.Contains(iKey))
                                 {
-                                    cKeysUsed.Add(sKey);
+                                    cKeysUsed.Add(iKey);
                                     //select all but the first row (the header row)
                                     List<string> cLines = lines
                                         .Skip(1)
@@ -4295,7 +4153,7 @@ namespace DevTreks.Extensions
                                             {
                                                 dataSet.Add(qvector.ToList());
                                             }
-                                            dataSets.Add(sKey, dataSet);
+                                            dataSets.Add(iKey, dataSet);
                                             //no need for any more iterations, just exist with all rows
                                             return dataSets;
                                         }
@@ -4321,13 +4179,14 @@ namespace DevTreks.Extensions
             }
             return dataSets;
         }
-        public IDictionary<string, List<List<string>>> GetColumnSet(List<string> lines)
+        public IDictionary<int, List<List<string>>> GetColumnSet(List<string> lines)
         {
             //matrix of strings
-            IDictionary<string, List<List<string>>> colSets = new Dictionary<string, List<List<string>>>();
+            IDictionary<int, List<List<string>>> colSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            List<string> cKeysUsed = new List<string>();
+            int iKey = 0;
+            List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
             {
@@ -4347,9 +4206,10 @@ namespace DevTreks.Extensions
                             sKey = cols[0];
                             if (!string.IsNullOrEmpty(sKey))
                             {
-                                if (!cKeysUsed.Contains(sKey))
+                                iKey = CalculatorHelpers.ConvertStringToInt(sKey);
+                                if (!cKeysUsed.Contains(iKey))
                                 {
-                                    cKeysUsed.Add(sKey);
+                                    cKeysUsed.Add(iKey);
                                     List<string> cLines = lines
                                         .Where(l => l.StartsWith(sKey, true, CultureInfo.InvariantCulture))
                                         .Select(l => l.ToString()).ToList();
@@ -4374,7 +4234,7 @@ namespace DevTreks.Extensions
                                                 //ok for algos that don't need to calculate qT from q1 to q10 vars
                                                 colSet.Add(qvector.ToList());
                                             }
-                                            colSets.Add(sKey, colSet);
+                                            colSets.Add(iKey, colSet);
                                         }
                                     }
                                     else
@@ -4398,13 +4258,14 @@ namespace DevTreks.Extensions
             }
             return colSets;
         }
-        public IDictionary<string, List<List<string>>> GetColumnSetFull(List<string> lines)
+        public IDictionary<int, List<List<string>>> GetColumnSetFull(List<string> lines)
         {
             //matrix of strings
-            IDictionary<string, List<List<string>>> colSets = new Dictionary<string, List<List<string>>>();
+            IDictionary<int, List<List<string>>> colSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            List<string> cKeysUsed = new List<string>();
+            int iKey = 0;
+            List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
             {
@@ -4424,9 +4285,10 @@ namespace DevTreks.Extensions
                             sKey = cols[0];
                             if (!string.IsNullOrEmpty(sKey))
                             {
-                                if (!cKeysUsed.Contains(sKey))
+                                iKey = CalculatorHelpers.ConvertStringToInt(sKey);
+                                if (!cKeysUsed.Contains(iKey))
                                 {
-                                    cKeysUsed.Add(sKey);
+                                    cKeysUsed.Add(iKey);
                                     List<string> cLines = lines
                                         .Skip(1)
                                         .Select(l => l.ToString()).ToList();
@@ -4451,7 +4313,7 @@ namespace DevTreks.Extensions
                                                 //ok for algos that don't need to calculate qT from q1 to q10 vars
                                                 colSet.Add(qvector.ToList());
                                             }
-                                            colSets.Add(sKey, colSet);
+                                            colSets.Add(iKey, colSet);
                                             //finished so return
                                             return colSets;
                                         }
@@ -4514,6 +4376,323 @@ namespace DevTreks.Extensions
                 }
             }
             return bHasColNames;
+        }
+        private int GetIndicatorIndex(string[] cols)
+        {
+            int iIndIndex = 0;
+            if (cols.Count() > 0)
+            {
+                //must have at least 1 dep col and 1 ind col 
+                //the dep column is not included in Math Expressions
+                iIndIndex = GetIndicatorIndex(cols, cols[0]);
+            }
+            return iIndIndex;
+        }
+        private int GetIndicatorIndex(string[] cols, string col)
+        {
+            int iIndIndex = 0;
+            if (iIndIndex == 0)
+            {
+                //i == 0 is the dep column and not included in MathExpressions
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[1].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 1;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[2].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 2;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[3].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 3;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[4].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 4;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[5].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 5;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[6].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 6;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[7].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 7;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[8].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 8;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[9].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 9;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[10].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 10;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[11].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 11;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[12].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 12;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[13].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 13;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[14].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 14;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[15].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 15;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[16].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 16;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[17].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 17;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[18].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 18;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[19].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 19;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            if (iIndIndex == 0)
+            {
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[20].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        iIndIndex = 20;
+                    }
+                    else
+                    {
+                        iIndIndex = 0;
+                        break;
+                    }
+                }
+            }
+            return iIndIndex;
         }
         private string GetIndicatorLabel(string[] cols)
         {
@@ -4833,15 +5012,16 @@ namespace DevTreks.Extensions
             }
             return sIndLabel;
         }
-        public IDictionary<string, List<List<string>>> GetDataSet2(List<string> lines)
+        public IDictionary<int, List<List<string>>> GetDataSet2(List<string> lines)
         {
             //standard format is:
             //colNames = Indicator Label, Col1, Col2, QT Amount, Q1 Amount,	Q2 Amount, Q3 Amount, Q4 Amount, Q5 Amount, up to 11 numeric cols
             //matrix of doubles
-            IDictionary<string, List<List<string>>> dataSets = new Dictionary<string, List<List<string>>>();
+            IDictionary<int, List<List<string>>> dataSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            List<string> cKeysUsed = new List<string>();
+            int iKey = 0;
+            List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
             {
@@ -4870,9 +5050,10 @@ namespace DevTreks.Extensions
                             sKey = cols[0];
                             if (!string.IsNullOrEmpty(sKey))
                             {
-                                if (!cKeysUsed.Contains(sKey))
+                                iKey = CalculatorHelpers.ConvertStringToInt(sKey);
+                                if (!cKeysUsed.Contains(iKey))
                                 {
-                                    cKeysUsed.Add(sKey);
+                                    cKeysUsed.Add(iKey);
                                     List<string> cLines = lines
                                         .Where(l => l.StartsWith(sKey, true, CultureInfo.InvariantCulture))
                                         .Select(l => l.ToString()).ToList();
@@ -4901,7 +5082,7 @@ namespace DevTreks.Extensions
                                                     dataSet.Add(qvector.ToList());
                                                 }
                                             }
-                                            dataSets.Add(sKey, dataSet);
+                                            dataSets.Add(iKey, dataSet);
                                         }
                                     }
                                     else
@@ -4925,15 +5106,14 @@ namespace DevTreks.Extensions
             }
             return dataSets;
         }
-        private IDictionary<string, List<List<double>>> GetDataSet1(int dataIndex)
+        private IDictionary<int, List<List<double>>> GetDataSet1(int dataIndex)
         {
             //ok to return data with 0 members
-            IDictionary<string, List<List<double>>> data = new Dictionary<string, List<List<double>>>();
+            IDictionary<int, List<List<double>>> data = new Dictionary<int, List<List<double>>>();
             if (!string.IsNullOrEmpty(DataURL)
                 && DataURL != Constants.NONE)
             {
                 string[] dataURLs = DataURL.Split(Constants.STRING_DELIMITERS);
-                //IDictionary<string, List<List<double>>> data = new Dictionary<string, List<List<double>>>();
                 List<string> dlines = new List<string>();
                 if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm2)
                     || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm3)
@@ -4946,7 +5126,7 @@ namespace DevTreks.Extensions
                 if (dlines != null)
                 {
                     //reset the data
-                    data = new Dictionary<string, List<List<double>>>();
+                    data = new Dictionary<int, List<List<double>>>();
                     //it's ok for subsequent datasets to overwrite previous results (by design)
                     data = GetDataSetwithQT(dlines);
                     //if null already has an error message
@@ -4969,20 +5149,21 @@ namespace DevTreks.Extensions
                 }
                 else
                 {
-                    data = new Dictionary<string, List<List<double>>>();
+                    data = new Dictionary<int, List<List<double>>>();
                 }
             }
             return data;
         }
-        public IDictionary<string, List<List<double>>> GetDataSetwithQT(List<string> lines)
+        public IDictionary<int, List<List<double>>> GetDataSetwithQT(List<string> lines)
         {
             //standard format is:
             //colNames = Indicator Label, Col1, Col2, QT Amount, Q1 Amount,	Q2 Amount, Q3 Amount, Q4 Amount, Q5 Amount, up to 11 numeric cols
             //matrix of doubles
-            IDictionary<string, List<List<double>>> dataSets = new Dictionary<string, List<List<double>>>();
+            IDictionary<int, List<List<double>>> dataSets = new Dictionary<int, List<List<double>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            List<string> cKeysUsed = new List<string>();
+            int iKey = 0;
+            List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
             {
@@ -5012,9 +5193,10 @@ namespace DevTreks.Extensions
                             sKey = cols[0];
                             if (!string.IsNullOrEmpty(sKey))
                             {
-                                if (!cKeysUsed.Contains(sKey))
+                                iKey = CalculatorHelpers.ConvertStringToInt(sKey);
+                                if (!cKeysUsed.Contains(iKey))
                                 {
-                                    cKeysUsed.Add(sKey);
+                                    cKeysUsed.Add(iKey);
                                     List<string> cLines = lines
                                         .Where(l => l.StartsWith(sKey, true, CultureInfo.InvariantCulture))
                                         .Select(l => l.ToString()).ToList();
@@ -5032,130 +5214,130 @@ namespace DevTreks.Extensions
                                         var qs = qryQs.ToList();
                                         if (qs.Count > 0)
                                         {
-                                            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
+                                            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
                                             //mathterms define which qamount to send to algorith for predicting a given set of qxs
                                             List<string> mathTerms = new List<string>();
                                             //dependent var colNames found in MathExpression
                                             List<string> depColNames = new List<string>();
-                                            if (sKey == ME2Indicators[1].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
+                                            if (iKey == 1
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[1].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[1].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[2].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[2].IndMathExpression))
+                                            else if (iKey == 2
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[2].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[2].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[2].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[3].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[3].IndMathExpression))
+                                            else if (iKey == 3
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[3].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[3].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[3].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[4].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[4].IndMathExpression))
+                                            else if (iKey == 4
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[4].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[4].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[4].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[5].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[5].IndMathExpression))
+                                            else if (iKey == 5
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[5].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[5].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[5].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[6].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[6].IndMathExpression))
+                                            else if (iKey == 6
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[6].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[6].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[6].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[7].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[7].IndMathExpression))
+                                            else if (iKey == 7
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[7].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[7].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[7].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[8].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[8].IndMathExpression))
+                                            else if (iKey == 8
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[8].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[8].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[8].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[9].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[9].IndMathExpression))
+                                            else if (iKey == 9
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[9].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[9].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[9].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[10].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[10].IndMathExpression))
+                                            else if (iKey == 10
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[10].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[10].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[10].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[11].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[11].IndMathExpression))
+                                            else if (iKey == 11
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[11].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[11].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[11].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[12].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[12].IndMathExpression))
+                                            else if (iKey == 12
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[12].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[12].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[12].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[13].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[13].IndMathExpression))
+                                            else if (iKey == 13
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[13].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[13].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[13].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[14].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[14].IndMathExpression))
+                                            else if (iKey == 14
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[14].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[14].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[14].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[15].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[15].IndMathExpression))
+                                            else if (iKey == 15
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[15].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[15].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[15].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[16].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[16].IndMathExpression))
+                                            else if (iKey == 16
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[16].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[16].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[16].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[17].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[17].IndMathExpression))
+                                            else if (iKey == 17
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[17].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[17].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[17].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[18].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[18].IndMathExpression))
+                                            else if (iKey == 18
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[18].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[18].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[18].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[19].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[19].IndMathExpression))
+                                            else if (iKey == 19
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[19].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[19].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[19].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (sKey == ME2Indicators[20].IndLabel
-                                                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[20].IndMathExpression))
+                                            else if (iKey == 19
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[20].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
-                                                algos.GetDataToAnalyzeColNames(sKey, ME2Indicators[20].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[20].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
                                             else
                                             {
@@ -5163,7 +5345,7 @@ namespace DevTreks.Extensions
                                             }
                                             //has to also calc qT for each row
                                             List<List<double>> dataSet = FillDataSet(sKey, qs, depColNames, mathTerms);
-                                            dataSets.Add(sKey, dataSet);
+                                            dataSets.Add(iKey, dataSet);
                                         }
                                     }
                                     else
@@ -5288,7 +5470,8 @@ namespace DevTreks.Extensions
                     && !HasMathType(MATH_TYPES.algorithm3)
                     && !HasMathType(MATH_TYPES.algorithm4))
                 {
-                    qT = GetQT(key, qT, qCalcs, depColNames, mathTerms);
+                    int iKey = CalculatorHelpers.ConvertStringToInt(key);
+                    qT = GetQT(iKey, qT, qCalcs, depColNames, mathTerms);
                 }
                 var newIndicator = new List<double>(xcols - 5);
                 //keep the order
@@ -5340,155 +5523,155 @@ namespace DevTreks.Extensions
             }
             return dataSet;
         }
-        private double GetQT(string label, double qT, List<double> qCalcs, List<string> depColNames, List<string> mathTerms)
+        private double GetQT(int index, double qT, List<double> qCalcs, List<string> depColNames, List<string> mathTerms)
         {
             double qTCalc = 0;
             List<double> morevars = new List<double>(xcols - 5);
             //need a temporary object to calc QT -calc comes from properties of object
-            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
-            ////mathterms define which qamount to send to algorith for predicting a given set of qxs
-            if (label == algos.ME2Indicators[1].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[1].IndMathExpression))
+            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
+            //mathterms define which qamount to send to algorith for predicting a given set of qxs
+            if (index == 1
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[1].IndMathExpression))
             {
                 //188 allows dep var from dataURLs to be included in math express -more flexible (i.e. anova can't use dummy vars but still wants desc stats for treatments ...)
                 algos.ME2Indicators[1].IndTAmount = qT;
                 //set the calcs for mathexpression
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 //use the temp qs to set qT (must use standard math express format)
                 qTCalc = algos.GetTotalFromMathExpression(1, _colNames, algos.ME2Indicators[1].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[2].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[2].IndMathExpression))
+            else if (index == 2
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[2].IndMathExpression))
             {
                 algos.ME2Indicators[2].IndTAmount = qT;
                 //set the calcs for mathexpression
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(2, _colNames, algos.ME2Indicators[2].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[3].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[3].IndMathExpression))
+            else if (index == 3
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[3].IndMathExpression))
             {
                 algos.ME2Indicators[3].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(3, _colNames, algos.ME2Indicators[3].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[4].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[4].IndMathExpression))
+            else if (index == 4
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[4].IndMathExpression))
             {
                 algos.ME2Indicators[4].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(4, _colNames, algos.ME2Indicators[4].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[5].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[5].IndMathExpression))
+            else if (index == 5
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[5].IndMathExpression))
             {
                 algos.ME2Indicators[5].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(5, _colNames, algos.ME2Indicators[5].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[6].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[6].IndMathExpression))
+            else if (index == 6
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[6].IndMathExpression))
             {
                 algos.ME2Indicators[6].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(6, _colNames, algos.ME2Indicators[6].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[7].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[7].IndMathExpression))
+            else if (index == 7
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[7].IndMathExpression))
             {
                 algos.ME2Indicators[7].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(7, _colNames, algos.ME2Indicators[7].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[8].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[8].IndMathExpression))
+            else if (index == 8
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[8].IndMathExpression))
             {
                 algos.ME2Indicators[8].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(8, _colNames, algos.ME2Indicators[8].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[9].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[9].IndMathExpression))
+            else if (index == 9
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[9].IndMathExpression))
             {
                 algos.ME2Indicators[9].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(9, _colNames, algos.ME2Indicators[9].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[10].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[10].IndMathExpression))
+            else if (index == 10
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[10].IndMathExpression))
             {
                 algos.ME2Indicators[10].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(10, _colNames, algos.ME2Indicators[10].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[11].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[11].IndMathExpression))
+            else if (index == 11
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[11].IndMathExpression))
             {
                 algos.ME2Indicators[11].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(11, _colNames, algos.ME2Indicators[11].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[12].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[12].IndMathExpression))
+            else if (index == 12
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[12].IndMathExpression))
             {
                 algos.ME2Indicators[12].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(12, _colNames, algos.ME2Indicators[12].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[13].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[13].IndMathExpression))
+            else if (index == 13
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[13].IndMathExpression))
             {
                 algos.ME2Indicators[13].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(13, _colNames, algos.ME2Indicators[13].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[14].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[14].IndMathExpression))
+            else if (index == 14
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[14].IndMathExpression))
             {
                 algos.ME2Indicators[14].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(14, _colNames, algos.ME2Indicators[14].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[15].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[15].IndMathExpression))
+            else if (index == 15
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[15].IndMathExpression))
             {
                 algos.ME2Indicators[15].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(15, _colNames, algos.ME2Indicators[15].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[16].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[16].IndMathExpression))
+            else if (index == 16
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[16].IndMathExpression))
             {
                 algos.ME2Indicators[16].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(16, _colNames, algos.ME2Indicators[16].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[17].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[17].IndMathExpression))
+            else if (index == 17
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[17].IndMathExpression))
             {
                 algos.ME2Indicators[17].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(17, _colNames, algos.ME2Indicators[17].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[18].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[18].IndMathExpression))
+            else if (index == 18
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[18].IndMathExpression))
             {
                 algos.ME2Indicators[18].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(18, _colNames, algos.ME2Indicators[18].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[19].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[19].IndMathExpression))
+            else if (index == 19
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[19].IndMathExpression))
             {
                 algos.ME2Indicators[19].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(19, _colNames, algos.ME2Indicators[19].IndMathExpression, morevars);
             }
-            else if (label == algos.ME2Indicators[20].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[20].IndMathExpression))
+            else if (index == 20
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[20].IndMathExpression))
             {
                 algos.ME2Indicators[20].IndTAmount = qT;
-                morevars = SetQsForMathTerms(algos, label, mathTerms, qCalcs);
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
                 qTCalc = algos.GetTotalFromMathExpression(20, _colNames, algos.ME2Indicators[20].IndMathExpression, morevars);
             }
             else
@@ -5497,7 +5680,7 @@ namespace DevTreks.Extensions
             }
             return qTCalc;
         }
-        public List<double> SetQsForMathTerms(ME2Indicator baseCalcor, string label, List<string> mathTerms,
+        public List<double> SetQsForMathTerms(ME2Indicator baseCalcor, int index, List<string> mathTerms,
             List<double> qs)
         {
             List<double> morevars = new List<double>(xcols - 5);
@@ -5510,7 +5693,7 @@ namespace DevTreks.Extensions
             //and will have same size
             //the units must be set correctly
             //and the mathexpress has to contain the var
-            if (label == baseCalcor.ME2Indicators[1].IndLabel)
+            if (index == 1)
             {
                 if (HasMathTerm(mathTerms, 0, 0))
                 {
@@ -5563,7 +5746,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[2].IndLabel)
+            if (index == 2)
             {
                 if (HasMathTerm(mathTerms, 1, 0))
                 {
@@ -5616,7 +5799,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[3].IndLabel)
+            if (index == 3)
             {
                 if (HasMathTerm(mathTerms, 2, 0))
                 {
@@ -5669,7 +5852,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[4].IndLabel)
+            if (index == 4)
             {
                 if (HasMathTerm(mathTerms, 3, 0))
                 {
@@ -5722,7 +5905,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[5].IndLabel)
+            if (index == 5)
             {
                 if (HasMathTerm(mathTerms, 4, 0))
                 {
@@ -5775,7 +5958,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[6].IndLabel)
+            if (index == 6)
             {
                 if (HasMathTerm(mathTerms, 5, 0))
                 {
@@ -5828,7 +6011,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[7].IndLabel)
+            if (index == 7)
             {
                 if (HasMathTerm(mathTerms, 6, 0))
                 {
@@ -5881,7 +6064,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[8].IndLabel)
+            if (index == 8)
             {
                 if (HasMathTerm(mathTerms, 7, 0))
                 {
@@ -5934,7 +6117,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[9].IndLabel)
+            if (index == 9)
             {
                 if (HasMathTerm(mathTerms, 8, 0))
                 {
@@ -5987,7 +6170,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[10].IndLabel)
+            if (index == 10)
             {
                 if (HasMathTerm(mathTerms, 9, 0))
                 {
@@ -6040,7 +6223,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[11].IndLabel)
+            if (index == 11)
             {
                 if (HasMathTerm(mathTerms, 10, 0))
                 {
@@ -6093,7 +6276,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[12].IndLabel)
+            if (index == 12)
             {
                 if (HasMathTerm(mathTerms, 11, 0))
                 {
@@ -6146,7 +6329,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[13].IndLabel)
+            if (index == 13)
             {
                 if (HasMathTerm(mathTerms, 12, 0))
                 {
@@ -6199,7 +6382,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[14].IndLabel)
+            if (index == 14)
             {
                 if (HasMathTerm(mathTerms, 13, 0))
                 {
@@ -6252,7 +6435,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[15].IndLabel)
+            if (index == 15)
             {
                 if (HasMathTerm(mathTerms, 14, 0))
                 {
@@ -6305,7 +6488,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[16].IndLabel)
+            if (index == 16)
             {
                 if (HasMathTerm(mathTerms, 15, 0))
                 {
@@ -6358,7 +6541,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[17].IndLabel)
+            if (index == 17)
             {
                 if (HasMathTerm(mathTerms, 16, 0))
                 {
@@ -6411,7 +6594,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[18].IndLabel)
+            if (index == 18)
             {
                 if (HasMathTerm(mathTerms, 17, 0))
                 {
@@ -6464,7 +6647,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[19].IndLabel)
+            if (index == 19)
             {
                 if (HasMathTerm(mathTerms, 18, 0))
                 {
@@ -6517,7 +6700,7 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (label == baseCalcor.ME2Indicators[20].IndLabel)
+            if (index == 20)
             {
                 if (HasMathTerm(mathTerms, 19, 0))
                 {
@@ -6608,9 +6791,9 @@ namespace DevTreks.Extensions
             }
             return sMathTerm;
         }
-        public string SetIndicatorData(string label, List<List<double>> data)
+        public int SetIndicatorData(int index, List<List<double>> data)
         {
-            string sAlgoIndicator = string.Empty;
+            int iAlgoIndicator = 0;
             if (data.Count > 0)
             {
                 //get colcount from first row
@@ -6642,7 +6825,7 @@ namespace DevTreks.Extensions
                 else
                 {
                     //must have at least 1 dep var
-                    return label;
+                    return index;
                 }
                 //data.count gives col count
                 if (iColCount > 2)
@@ -6731,17 +6914,17 @@ namespace DevTreks.Extensions
                     sb.Append(string.Concat("Q10 mean = ", Math.Round(q10s.Average(), 4), ", "));
                 }
                 int iSiblingIndicator = 0;
-                if (label == ME2Indicators[1].IndLabel
-                    && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
+                if (index == 1
+                    && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
                 {
                     ME2Indicators[1].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
-                    //ME2Indicators[1].IndMathResult = GetObservedMathResult(label, ME2Indicators[1].IndMathSubType, SB1Type1, 
+                    SetAlgoPRAStats(index, qTs.ToList());
+                    //ME2Indicators[1].IndMathResult = GetObservedMathResult(index, ME2Indicators[1].IndMathSubType, SB1Type1, 
                     //    ME2Indicators[1].IndMathType, qTs, qTs.Average());
                     ME2Indicators[1].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
+                    iAlgoIndicator = index;
                     //indicator1 should not have a sibling later, but keep the pattern consistent
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 1, this);
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 1, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6752,14 +6935,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(1, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[2].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[2].IndMathExpression))
+                if (index == 2
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[2].IndMathExpression))
                 {
                     ME2Indicators[2].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[2].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 2, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 2, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6770,14 +6953,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(2, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[3].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[3].IndMathExpression))
+                if (index == 3
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[3].IndMathExpression))
                 {
                     ME2Indicators[3].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[3].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 3, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 3, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6788,14 +6971,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(3, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[4].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[4].IndMathExpression))
+                if (index == 4
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[4].IndMathExpression))
                 {
                     ME2Indicators[4].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[4].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 4, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 4, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6806,14 +6989,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(4, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[5].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[5].IndMathExpression))
+                if (index == 5
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[5].IndMathExpression))
                 {
                     ME2Indicators[5].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[5].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 5, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 5, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6824,14 +7007,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(5, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[6].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[6].IndMathExpression))
+                if (index == 6
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[6].IndMathExpression))
                 {
                     ME2Indicators[6].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[6].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 6, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 6, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6842,14 +7025,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(6, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[7].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[7].IndMathExpression))
+                if (index == 7
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[7].IndMathExpression))
                 {
                     ME2Indicators[7].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[7].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 7, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 7, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6860,14 +7043,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(7, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[8].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[8].IndMathExpression))
+                if (index == 8
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[8].IndMathExpression))
                 {
                     ME2Indicators[8].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[8].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 8, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 8, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6878,14 +7061,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(8, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[9].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[9].IndMathExpression))
+                if (index == 9
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[9].IndMathExpression))
                 {
                     ME2Indicators[9].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[9].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 9, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 9, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6896,14 +7079,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(9, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[10].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[10].IndMathExpression))
+                if (index == 10
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[10].IndMathExpression))
                 {
                     ME2Indicators[10].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[10].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 10, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 10, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6914,14 +7097,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(10, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[11].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[11].IndMathExpression))
+                if (index == 11
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[11].IndMathExpression))
                 {
                     ME2Indicators[11].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[11].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 11, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 11, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6932,14 +7115,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(11, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[12].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[12].IndMathExpression))
+                if (index == 12
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[12].IndMathExpression))
                 {
                     ME2Indicators[12].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[12].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 12, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 12, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6950,14 +7133,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(12, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[13].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[13].IndMathExpression))
+                if (index == 13
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[13].IndMathExpression))
                 {
                     ME2Indicators[13].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[13].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 13, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 13, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6968,14 +7151,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(13, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[14].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[14].IndMathExpression))
+                if (index == 14
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[14].IndMathExpression))
                 {
                     ME2Indicators[14].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[14].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 14, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 14, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -6986,14 +7169,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(14, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[15].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[15].IndMathExpression))
+                if (index == 15
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[15].IndMathExpression))
                 {
                     ME2Indicators[15].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[15].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 15, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 15, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -7004,14 +7187,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(15, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[16].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[16].IndMathExpression))
+                if (index == 16
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[16].IndMathExpression))
                 {
                     ME2Indicators[16].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[16].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 16, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 16, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -7022,14 +7205,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(16, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[17].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[17].IndMathExpression))
+                if (index == 17
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[17].IndMathExpression))
                 {
                     ME2Indicators[17].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[17].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 17, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 17, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -7040,14 +7223,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(17, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[18].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[18].IndMathExpression))
+                if (index == 18
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[18].IndMathExpression))
                 {
                     ME2Indicators[18].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[18].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 18, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 18, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -7058,14 +7241,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(18, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[19].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[19].IndMathExpression))
+                if (index == 19
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[19].IndMathExpression))
                 {
                     ME2Indicators[19].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[19].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 19, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 19, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -7076,14 +7259,14 @@ namespace DevTreks.Extensions
                         SetIndicatorQxMeans(19, q1s, q2s, q3s, q4s, q5s);
                     }
                 }
-                if (label == ME2Indicators[20].IndLabel
-                     && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[20].IndMathExpression))
+                if (index == 20
+                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[20].IndMathExpression))
                 {
                     ME2Indicators[20].IndTAmount = Math.Round(qTs.Average(), 4);
-                    SetAlgoPRAStats(label, qTs.ToList());
+                    SetAlgoPRAStats(index, qTs.ToList());
                     ME2Indicators[20].IndMathResult += sb.ToString();
-                    sAlgoIndicator = label;
-                    iSiblingIndicator = ME3Statistics.ME2Algos.GetSiblingIndicatorIndex(label, 20, this);
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 20, this);
                     if (iSiblingIndicator != 0)
                     {
                         SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
@@ -7099,7 +7282,7 @@ namespace DevTreks.Extensions
                     //ignore the row
                 }
             }
-            return sAlgoIndicator;
+            return iAlgoIndicator;
         }
         public void SetIndicatorQxMeans(int indicatorIndex, IEnumerable<double> q1s, IEnumerable<double> q2s,
             IEnumerable<double> q3s, IEnumerable<double> q4s, IEnumerable<double> q5s)
@@ -7379,110 +7562,110 @@ namespace DevTreks.Extensions
                     ME2Indicators[20].Ind5Amount = Math.Round(q5s.Average(), 4);
             }
         }
-        public void SetSeparateRanges(string label)
+        public void SetSeparateRanges(int index)
         {
             List<double> qTs = new List<double>();
-            if (label == ME2Indicators[1].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
+            if (index == 1
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
             {
                 //regular high and low estimation
-                SetAlgoPRAStats(ME2Indicators[1].IndLabel, qTs);
+                SetAlgoPRAStats(1, qTs);
                 //SetTotalRange1();
             }
-            else if (label == ME2Indicators[2].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[2].IndMathExpression))
+            else if (index == 2
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[2].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[2].IndLabel, qTs);
+                SetAlgoPRAStats(2, qTs);
             }
-            else if (label == ME2Indicators[3].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[3].IndMathExpression))
+            else if (index == 3
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[3].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[3].IndLabel, qTs);
+                SetAlgoPRAStats(3, qTs);
             }
-            else if (label == ME2Indicators[4].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[4].IndMathExpression))
+            else if (index == 4
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[4].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[4].IndLabel, qTs);
+                SetAlgoPRAStats(4, qTs);
             }
-            else if (label == ME2Indicators[5].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[5].IndMathExpression))
+            else if (index == 5
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[5].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[5].IndLabel, qTs);
+                SetAlgoPRAStats(5, qTs);
             }
-            else if (label == ME2Indicators[6].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[6].IndMathExpression))
+            else if (index == 6
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[6].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[6].IndLabel, qTs);
+                SetAlgoPRAStats(6, qTs);
             }
-            else if (label == ME2Indicators[7].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[7].IndMathExpression))
+            else if (index == 7
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[7].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[7].IndLabel, qTs);
+                SetAlgoPRAStats(7, qTs);
             }
-            else if (label == ME2Indicators[8].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[8].IndMathExpression))
+            else if (index == 8
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[8].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[8].IndLabel, qTs);
+                SetAlgoPRAStats(8, qTs);
             }
-            else if (label == ME2Indicators[9].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[9].IndMathExpression))
+            else if (index == 9
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[9].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[9].IndLabel, qTs);
+                SetAlgoPRAStats(9, qTs);
             }
-            else if (label == ME2Indicators[10].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[10].IndMathExpression))
+            else if (index == 10
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[10].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[10].IndLabel, qTs);
+                SetAlgoPRAStats(10, qTs);
             }
-            else if (label == ME2Indicators[11].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[11].IndMathExpression))
+            else if (index == 11
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[11].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[11].IndLabel, qTs);
+                SetAlgoPRAStats(11, qTs);
             }
-            else if (label == ME2Indicators[12].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[12].IndMathExpression))
+            else if (index == 12
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[12].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[12].IndLabel, qTs);
+                SetAlgoPRAStats(12, qTs);
             }
-            else if (label == ME2Indicators[13].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[13].IndMathExpression))
+            else if (index == 13
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[13].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[13].IndLabel, qTs);
+                SetAlgoPRAStats(13, qTs);
             }
-            else if (label == ME2Indicators[14].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[14].IndMathExpression))
+            else if (index == 14
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[14].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[14].IndLabel, qTs);
+                SetAlgoPRAStats(14, qTs);
             }
-            else if (label == ME2Indicators[15].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[15].IndMathExpression))
+            else if (index == 15
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[15].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[15].IndLabel, qTs);
+                SetAlgoPRAStats(15, qTs);
             }
-            else if (label == ME2Indicators[16].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[16].IndMathExpression))
+            else if (index == 16
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[16].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[16].IndLabel, qTs);
+                SetAlgoPRAStats(16, qTs);
             }
-            else if (label == ME2Indicators[17].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[17].IndMathExpression))
+            else if (index == 17
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[17].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[17].IndLabel, qTs);
+                SetAlgoPRAStats(17, qTs);
             }
-            else if (label == ME2Indicators[18].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[18].IndMathExpression))
+            else if (index == 18
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[18].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[18].IndLabel, qTs);
+                SetAlgoPRAStats(18, qTs);
             }
-            else if (label == ME2Indicators[19].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[19].IndMathExpression))
+            else if (index == 19
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[19].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[19].IndLabel, qTs);
+                SetAlgoPRAStats(19, qTs);
             }
-            else if (label == ME2Indicators[20].IndLabel
-                 && ME3Statistics.ME2Algos.HasMathExpression(ME2Indicators[20].IndMathExpression))
+            else if (index == 20
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[20].IndMathExpression))
             {
-                SetAlgoPRAStats(ME2Indicators[20].IndLabel, qTs);
+                SetAlgoPRAStats(20, qTs);
             }
             else
             {
@@ -7490,12 +7673,12 @@ namespace DevTreks.Extensions
             }
         }
 
-        public async Task<string> SetAlgoPRAStats(string label, List<double> qTs, double[] data = null)
+        public async Task<int> SetAlgoPRAStats(int index, List<double> qTs, double[] data = null)
         {
             string sError = string.Empty;
             //init the algos using this
-            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
-            string algindicator = await algos.SetAlgoPRAStats(label, _colNames, qTs, data);
+            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
+            int iIndicatorIndex = await algos.SetAlgoPRAStats(index, _colNames, qTs, data);
             //copy all of the results back to this
             CopyME2IndicatorsProperties(algos);
             //188 added support for analyzers
@@ -7503,13 +7686,13 @@ namespace DevTreks.Extensions
             DataToAnalyze = algos.DataToAnalyze;
             //goes in calcparams because it has to be passed back to anorhelper for manual insertion into calcdoc linkedview
             CalcParameters.MathResult = MathResult;
-            return algindicator;
+            return iIndicatorIndex;
         }
-        private async Task<string> SetAlgoCorrStats(string jdataURL, IDictionary<string, List<List<double>>> data)
+        private async Task<string> SetAlgoCorrStats(string jdataURL, IDictionary<int, List<List<double>>> data)
         {
             string sError = string.Empty;
-            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
-            string algindicators = await algos.SetAlgoCorrIndicatorStats(jdataURL, data, _colNames);
+            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
+            string sIndicatorIndexes = await algos.SetAlgoCorrIndicatorStats(jdataURL, data, _colNames);
             //copy all of the results back to this
             CopyME2IndicatorsProperties(algos);
             //188 added support for analyzers
@@ -7517,14 +7700,14 @@ namespace DevTreks.Extensions
             DataToAnalyze = algos.DataToAnalyze;
             //goes in calcparams because it has to be passed back to anorhelper for manual insertion into calcdoc linkedview
             CalcParameters.MathResult = MathResult;
-            return algindicators;
+            return sIndicatorIndexes;
         }
-        private async Task<string> SetAlgoStats1(string label, List<List<double>> data)
+        private async Task<int> SetAlgoStats1(int index, List<List<double>> data)
         {
             string sError = string.Empty;
             //init the algos using this
-            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
-            string algindicator = await algos.SetAlgoIndicatorStats1(label, data, _colNames);
+            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
+            int iIndicatorIndex = await algos.SetAlgoIndicatorStats1(index, data, _colNames);
             //copy all of the results back to this
             CopyME2IndicatorsProperties(algos);
             //188 added support for analyzers
@@ -7532,59 +7715,58 @@ namespace DevTreks.Extensions
             DataToAnalyze = algos.DataToAnalyze;
             //goes in calcparams because it has to be passed back to anorhelper for manual insertion into calcdoc linkedview
             CalcParameters.MathResult = MathResult;
-            return algindicator;
+            return iIndicatorIndex;
         }
-        private async Task<string> SetAlgoStats2(string label, string dataURL, string jDataURL)
+        private async Task<int> SetAlgoStats2(int index, string dataURL, string jDataURL)
         {
             string sError = string.Empty;
             //init the algos using this
-            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
-            string algindicator
-                = await algos.SetAlgoIndicatorStats2(label, _colNames, dataURL, jDataURL);
+            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
+            int iIndicatorIndex
+                = await algos.SetAlgoIndicatorStats2(index, _colNames, dataURL, jDataURL);
             //copy all of the results back to this
             CopyME2IndicatorsProperties(algos);
-            return algindicator;
+            return iIndicatorIndex;
         }
-        private async Task<string> SetAlgoStats3(string label, List<List<string>> data,
+        private async Task<int> SetAlgoStats3(int index, List<List<string>> data,
             List<List<string>> colData, List<string> lines2)
         {
             string sError = string.Empty;
             //init the algos using this
-            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
-            string algindicator
-                = await algos.SetAlgoIndicatorStats3(label, data, colData, lines2, _colNames);
+            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
+            int iIndicatorIndex
+                = await algos.SetAlgoIndicatorStats3(index, data, colData, lines2, _colNames);
             //copy all of the results back to this
             CopyME2IndicatorsProperties(algos);
-            return algindicator;
+            return iIndicatorIndex;
         }
-        private async Task<string> SetAlgoStats4(string label, List<List<string>> data,
+        private async Task<int> SetAlgoStats4(int index, List<List<string>> data,
             List<List<string>> colData, List<string> lines2)
         {
             string sError = string.Empty;
             //init the algos using this
-            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
-            string algindicator
-                = await algos.SetAlgoIndicatorStats4(label, data, colData, lines2, _colNames);
+            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
+            int iIndicatorIndex
+                = await algos.SetAlgoIndicatorStats4(index, data, colData, lines2, _colNames);
             //copy all of the results back to this
             CopyME2IndicatorsProperties(algos);
-            return algindicator;
+            return iIndicatorIndex;
         }
-        private async Task<string> SetAlgoCalcs(string label, List<List<double>> data)
+        private async Task<int> SetAlgoCalcs(int index, List<List<double>> data)
         {
             string sError = string.Empty;
             //init the algos using this
-            ME3Statistics.ME2Algos algos = new ME3Statistics.ME2Algos(this);
-            string algindicator = await algos.SetAlgoIndicatorCalcs(label, data);
+            ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
+            int iIndicatorIndex = await algos.SetAlgoIndicatorCalcs(index, data);
             //copy all of the results back to this
             CopyME2IndicatorsProperties(algos);
-            return algindicator;
+            return iIndicatorIndex;
         }
 
     }
 
     public static class ME2IndicatorExtensions
     {
-
         public static void SetTotalScore(this ME2Indicator baseCalc, string[] colNames)
         {
             if (baseCalc.ME2Indicators[0].IndMathExpression == string.Empty)

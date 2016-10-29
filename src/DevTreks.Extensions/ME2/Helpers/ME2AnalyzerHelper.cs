@@ -1053,42 +1053,5 @@ namespace DevTreks.Extensions
             }
             return bHasCopy;
         }
-        public static bool NeedsAnalyzerIndicator(string indicLabel, CalculatorParameters calcParams)
-        {
-            //not fully implemented yet
-            bool bNeedsInd = true;
-            if (calcParams.ExtensionCalcDocURI == null)
-            {
-                return bNeedsInd;
-            }
-            if (calcParams.ExtensionCalcDocURI.URIDataManager == null)
-            {
-                return bNeedsInd;
-            }
-            if (calcParams.ExtensionCalcDocURI.URIDataManager.HostName.ToLower() ==
-                Constants.ANALYZER_HOSTNAME)
-            {
-                //analyzers can only run up to 15 indicators at one ime
-                bNeedsInd = false;
-            }
-            if (calcParams.AnalyzerParms.AnalyzerType == ANALYZER_TYPES.metotal1.ToString())
-            {
-                bNeedsInd = true;
-            }
-            if (!bNeedsInd)
-            {
-                if (calcParams.UrisToAnalyze != null)
-                {
-                    foreach (var sb in calcParams.UrisToAnalyze)
-                    {
-                        if (sb == indicLabel)
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            return bNeedsInd;
-        }
     }
 }
