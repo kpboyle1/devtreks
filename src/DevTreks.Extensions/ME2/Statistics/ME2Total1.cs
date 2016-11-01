@@ -263,7 +263,7 @@ namespace DevTreks.Extensions
             if (!baseStat.Stocks
                 .Any(s => s.TME2Label == indicator.IndLabel))
             {
-                if (indicator.IndLabel != string.Empty)
+                if (!string.IsNullOrEmpty(indicator.IndLabel))
                 {
                     ME2Total1 stock = new ME2Total1(indicator.CalcParameters);
                     stock.TME2Description = indicator.IndDescription;
@@ -345,7 +345,7 @@ namespace DevTreks.Extensions
             if (!baseStat.Stocks
                 .Any(s => s.TME2Label == newCalc.TME2Label))
             {
-                if (newCalc.TME2Label != string.Empty)
+                if (!string.IsNullOrEmpty(newCalc.TME2Label))
                 {
                     baseStat.TME2Description = newCalc.IndDescription;
                     baseStat.TME2Name = newCalc.IndName;
@@ -381,7 +381,7 @@ namespace DevTreks.Extensions
                     baseStat.TME25Amount += (newCalc.Ind5Amount * newCalc.Multiplier);
                     baseStat.TME23Amount += (newCalc.Ind3Amount * newCalc.Multiplier);
                     baseStat.TME24Amount += (newCalc.Ind4Amount * newCalc.Multiplier);
-                    
+
                     baseStat.Stocks.Add(newCalc);
                 }
             }
@@ -389,8 +389,8 @@ namespace DevTreks.Extensions
             {
                 ME2Stock stock = baseStat.Stocks
                     .FirstOrDefault(s => s.TME2Label == newCalc.TME2Label);
-                 if (stock != null)
-                 {
+                if (stock != null)
+                {
                     baseStat.TME2TAmount += (newCalc.IndTAmount * newCalc.Multiplier);
                     baseStat.TME2TMAmount += (newCalc.IndTMAmount * newCalc.Multiplier);
                     baseStat.TME2TLAmount += (newCalc.IndTLAmount * newCalc.Multiplier);
@@ -401,9 +401,9 @@ namespace DevTreks.Extensions
                     baseStat.TME23Amount += (newCalc.Ind3Amount * newCalc.Multiplier);
                     baseStat.TME24Amount += (newCalc.Ind4Amount * newCalc.Multiplier);
                     if (newCalc.ME2Indicators != null)
-                     {
-                         foreach (ME2Indicator indicator in newCalc.ME2Indicators)
-                         {
+                    {
+                        foreach (ME2Indicator indicator in newCalc.ME2Indicators)
+                        {
                             baseStat.TME2TAmount += (indicator.IndTAmount * newCalc.Multiplier);
                             baseStat.TME2TMAmount += (indicator.IndTMAmount * newCalc.Multiplier);
                             baseStat.TME2TLAmount += (indicator.IndTLAmount * newCalc.Multiplier);
@@ -415,9 +415,9 @@ namespace DevTreks.Extensions
                             baseStat.TME24Amount += (indicator.Ind4Amount * newCalc.Multiplier);
                             //add the indicator to this stock
                             stock.ME2Indicators.Add(indicator);
-                         }
-                     }
-                 }
+                        }
+                    }
+                }
             }
         }
     }

@@ -130,7 +130,7 @@
 					<xsl:attribute name="value"><xsl:value-of select="@CalculatorName" /></xsl:attribute>
 				</input>
 			</div>
-     <h4 class="ui-bar-b"><strong>Stock Indicators</strong></h4>
+     <h4 class="ui-bar-b"><strong>M and E Indicators</strong></h4>
       <div data-role="collapsible"  data-theme="b" data-content-theme="d" data-mini="true">
         <h4 class="ui-bar-b"><strong>Indicator 1</strong></h4>
         <div>
@@ -5693,7 +5693,7 @@
       </div>
     </div>
 		<div id="divsteptwo">
-      <h4 class="ui-bar-b"><strong>Step 2 of 3. Enter Stock Indicators</strong></h4>
+      <h4 class="ui-bar-b"><strong>Step 2 of 3. Enter M and E Indicators</strong></h4>
 		  <xsl:variable name="calcParams2">'&amp;step=stepthree<xsl:value-of select="$calcParams" />'</xsl:variable>
 			<xsl:if test="($viewEditType = 'full')">
         <xsl:value-of select="DisplayDevPacks:WriteCalculateButtons($selectedFileURIPattern, $contenturipattern, $calcParams2)"/>
@@ -5710,7 +5710,7 @@
         <xsl:value-of select="DisplayDevPacks:WriteStandardCalculatorParams2($searchurl, $viewEditType,
             @WhatIfTagName, @RelatedCalculatorsType)"/>
       </div>
-      <h4 class="ui-bar-b"><strong>More Stock Indicators</strong></h4>
+      <h4 class="ui-bar-b"><strong>More M and E Indicators</strong></h4>
       <div data-role="collapsible"  data-theme="b" data-content-theme="d" data-mini="true">
         <h4 class="ui-bar-b"><strong>Indicator 11</strong></h4>
         <div>

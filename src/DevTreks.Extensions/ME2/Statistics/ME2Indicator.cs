@@ -337,17 +337,7 @@ namespace DevTreks.Extensions
                 }
                 sHasAttribute = string.Empty;
             }
-            if (ME2Indicators.Count < 20)
-            {
-                //zero based index means 21 inds needed (to prevent null exceptions with inds 16 to 20)
-                for (i = ME2Indicators.Count; i <= 20; i++)
-                {
-                    //many conditional causes use 15 indicators regardless of MaximumNumberOfME2Indicators
-                    //prevent null errors
-                    ME2Indicator ind1 = new ME2Indicator();
-                    ME2Indicators.Add(ind1);
-                }
-            }
+            AdjustIndicators();
         }
         private void SetME2IndicatorProperties(ME2Indicator ind, string attNameExtension,
             XElement calculator)
@@ -925,12 +915,28 @@ namespace DevTreks.Extensions
         private bool SetCalculations()
         {
             bool bHasCalcs = false;
+            AdjustIndicators();
             //score, or zero-based index, comes last -it uses the results of indicators
             int iIndicatorNumber = 1;
             Task<bool> bHasCalculations = SetCalculationsAsync(iIndicatorNumber);
             if (bHasCalculations.IsCompleted)
                 bHasCalcs = true;
             return bHasCalcs;
+        }
+        private void AdjustIndicators()
+        {
+            if (ME2Indicators.Count < 20)
+            {
+                int i = 0;
+                //zero based index means 21 inds needed (to prevent null exceptions with inds 16 to 20)
+                for (i = ME2Indicators.Count; i <= 20; i++)
+                {
+                    //many conditional causes use 15 indicators regardless of MaximumNumberOfME2Indicators
+                    //prevent null errors
+                    ME2Indicator ind1 = new ME2Indicator();
+                    ME2Indicators.Add(ind1);
+                }
+            }
         }
         public async Task<bool> SetCalculationsAsync(int indicatorNumber)
         {

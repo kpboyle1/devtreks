@@ -3195,6 +3195,8 @@ namespace DevTreks.Extensions
                             calc.ChangeType
                                 = Calculator1.CHANGE_TYPES.current.ToString();
                         }
+                        //there is no else condition, but double check why
+                        //else { 
                         //second and last can't be xminus1, rest can be
                         if (i != calcs.Count - 1
                             && i != 1)

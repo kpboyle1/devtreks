@@ -131,7 +131,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name0_0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -144,7 +143,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -157,7 +155,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 0</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -170,7 +167,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -183,7 +179,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -196,7 +191,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -209,7 +203,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -222,7 +215,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -235,7 +227,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -248,7 +239,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -261,7 +251,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -274,7 +263,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -287,7 +275,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -300,7 +287,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -313,7 +299,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -326,7 +311,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -339,7 +323,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -352,7 +335,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -365,7 +347,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -378,7 +359,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -391,7 +371,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev0"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -406,7 +385,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 1</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name1_1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -419,7 +397,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 1</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -432,7 +409,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 1</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -445,7 +421,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -458,7 +433,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -471,7 +445,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -484,7 +457,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -497,7 +469,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -510,7 +481,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -523,7 +493,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -536,7 +505,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -549,7 +517,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -562,7 +529,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -575,7 +541,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -588,7 +553,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -601,7 +565,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -614,7 +577,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -627,7 +589,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -640,7 +601,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -653,7 +613,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -666,7 +625,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev1"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -681,7 +639,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 2</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name2_2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -694,7 +651,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 2</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -707,7 +663,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 2</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -720,7 +675,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -733,7 +687,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -746,7 +699,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -759,7 +711,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -772,7 +723,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -785,7 +735,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -798,7 +747,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -811,7 +759,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -824,7 +771,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -837,7 +783,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -850,7 +795,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -863,7 +807,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -876,7 +819,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -889,7 +831,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -902,7 +843,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -915,7 +855,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -941,7 +880,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev2"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -956,7 +894,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 3</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name3_3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -969,7 +906,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 3</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -982,7 +918,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 3</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -995,7 +930,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1008,7 +942,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1021,7 +954,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1034,7 +966,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1047,7 +978,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1060,7 +990,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1073,7 +1002,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1086,7 +1014,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1099,7 +1026,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1112,7 +1038,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1125,7 +1050,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1138,7 +1062,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1151,7 +1074,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1164,7 +1086,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1177,7 +1098,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1190,7 +1110,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1203,7 +1122,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1216,7 +1134,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev3"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1231,7 +1148,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 4</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name4_4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1244,7 +1160,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 4</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1257,7 +1172,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 4</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1270,7 +1184,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1283,7 +1196,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1296,7 +1208,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1309,7 +1220,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1322,7 +1232,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1335,7 +1244,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1348,7 +1256,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1361,7 +1268,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1374,7 +1280,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1387,7 +1292,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1400,7 +1304,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1413,7 +1316,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1426,7 +1328,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1439,7 +1340,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1452,7 +1352,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1465,7 +1364,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1478,7 +1376,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1491,7 +1388,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev4"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1506,7 +1402,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 5</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name5_5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1519,7 +1414,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 5</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1532,7 +1426,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 5</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1545,7 +1438,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1558,7 +1450,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1571,7 +1462,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1584,7 +1474,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1597,7 +1486,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1610,7 +1498,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1623,7 +1510,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1636,7 +1522,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1649,7 +1534,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1662,7 +1546,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1675,7 +1558,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1688,7 +1570,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1701,7 +1582,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1714,7 +1594,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1727,7 +1606,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1740,7 +1618,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1753,7 +1630,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1766,7 +1642,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev5"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1781,7 +1656,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 6</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name6_6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1794,7 +1668,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 6</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1807,7 +1680,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 6</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1820,7 +1692,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1833,7 +1704,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1846,7 +1716,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1859,7 +1728,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1872,7 +1740,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1885,7 +1752,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1898,7 +1764,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1911,7 +1776,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1924,7 +1788,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1937,7 +1800,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1950,7 +1812,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1963,7 +1824,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1976,7 +1836,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -1989,7 +1848,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2002,7 +1860,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2015,7 +1872,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2028,7 +1884,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2041,7 +1896,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev6"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2056,7 +1910,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 7</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name7_7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2069,7 +1922,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 7</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2082,7 +1934,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 7</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2095,7 +1946,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2108,7 +1958,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2121,7 +1970,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2134,7 +1982,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2147,7 +1994,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2160,7 +2006,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2173,7 +2018,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2186,7 +2030,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2199,7 +2042,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2212,7 +2054,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2225,7 +2066,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2238,7 +2078,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2251,7 +2090,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2264,7 +2102,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2277,7 +2114,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2290,7 +2126,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2303,7 +2138,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2316,7 +2150,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev7"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2331,7 +2164,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 8</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name8_8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2344,7 +2176,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 8</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2357,7 +2188,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 8</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2370,7 +2200,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2383,7 +2212,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2396,7 +2224,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2409,7 +2236,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2422,7 +2248,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2435,7 +2260,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2448,7 +2272,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2461,7 +2284,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2474,7 +2296,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2487,7 +2308,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2500,7 +2320,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2513,7 +2332,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2526,7 +2344,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2539,7 +2356,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2552,7 +2368,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2565,7 +2380,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2578,7 +2392,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2591,7 +2404,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev8"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2606,7 +2418,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 9</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name9_9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2619,7 +2430,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 9</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2632,7 +2442,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 9</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2645,7 +2454,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2658,7 +2466,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2671,7 +2478,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2684,7 +2490,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2697,7 +2502,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2710,7 +2514,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2723,7 +2526,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2736,7 +2538,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2749,7 +2550,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2762,7 +2562,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2775,7 +2574,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2788,7 +2586,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2801,7 +2598,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2814,7 +2610,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2827,7 +2622,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2840,7 +2634,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2853,7 +2646,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2866,7 +2658,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev9"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2881,7 +2672,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 10</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name10_10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2894,7 +2684,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 10</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2907,7 +2696,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 10</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2920,7 +2708,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2933,7 +2720,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2946,7 +2732,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2959,7 +2744,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2972,7 +2756,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2985,7 +2768,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -2998,7 +2780,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3011,7 +2792,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3024,7 +2804,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3037,7 +2816,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3050,7 +2828,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3063,7 +2840,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3076,7 +2852,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3089,7 +2864,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3102,7 +2876,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3115,7 +2888,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3128,7 +2900,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3141,7 +2912,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev10"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3156,7 +2926,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 11</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name11_11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3169,7 +2938,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 11</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3182,7 +2950,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 11</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3195,7 +2962,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3208,7 +2974,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3221,7 +2986,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3234,7 +2998,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3247,7 +3010,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3260,7 +3022,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3273,7 +3034,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3286,7 +3046,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3299,7 +3058,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3312,7 +3070,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3325,7 +3082,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3338,7 +3094,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3351,7 +3106,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3364,7 +3118,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3377,7 +3130,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3390,7 +3142,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3403,7 +3154,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3416,7 +3166,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev11"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3431,7 +3180,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 12</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name12_12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3444,7 +3192,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 12</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3457,7 +3204,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 12</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3470,7 +3216,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3483,7 +3228,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3496,7 +3240,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3509,7 +3252,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3522,7 +3264,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3535,7 +3276,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3548,7 +3288,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3561,7 +3300,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3574,7 +3312,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3587,7 +3324,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3600,7 +3336,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3613,7 +3348,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3626,7 +3360,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3639,7 +3372,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3652,7 +3384,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3665,7 +3396,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3678,7 +3408,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3691,7 +3420,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev12"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3706,7 +3434,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 13</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name13_13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3719,7 +3446,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 13</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3732,7 +3458,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 13</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3745,7 +3470,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3758,7 +3482,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3771,7 +3494,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3784,7 +3506,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3797,7 +3518,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3810,7 +3530,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3823,7 +3542,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3836,7 +3554,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3849,7 +3566,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3862,7 +3578,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3875,7 +3590,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3888,7 +3602,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3901,7 +3614,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3914,7 +3626,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3927,7 +3638,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3940,7 +3650,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3953,7 +3662,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3966,7 +3674,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev13"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3981,7 +3688,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 14</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name14_14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -3994,7 +3700,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 14</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4007,7 +3712,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 14</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4020,7 +3724,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4033,7 +3736,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4046,7 +3748,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4059,7 +3760,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4072,7 +3772,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4085,7 +3784,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4098,7 +3796,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4111,7 +3808,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4124,7 +3820,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4137,7 +3832,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4150,7 +3844,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4163,7 +3856,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4176,7 +3868,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4189,7 +3880,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4202,7 +3892,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4215,7 +3904,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4228,7 +3916,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4241,7 +3928,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev14"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4256,7 +3942,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Indicator 15</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Name15_15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4269,7 +3954,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Observations 15</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2N15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4282,7 +3966,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Label 15</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2Label15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4295,7 +3978,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMUnit15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4308,7 +3990,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TMAmount15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4321,7 +4002,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMean15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4334,7 +4014,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MMedian15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4347,7 +4026,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MVariance15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4360,7 +4038,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Most Likely SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2MStandDev15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4373,7 +4050,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4386,7 +4062,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TLAmount15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4399,7 +4074,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMean15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4412,7 +4086,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LMedian15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4425,7 +4098,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LVariance15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4438,7 +4110,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Lower SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2LStandDev15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4451,7 +4122,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Unit</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUUnit15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4464,7 +4134,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Total</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2TUAmount15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4477,7 +4146,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Mean</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMean15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4490,7 +4158,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Median</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UMedian15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4503,7 +4170,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper Variance</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UVariance15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
@@ -4516,7 +4182,6 @@
       <tr>
 			  <td scope="row" colspan="1"><strong>Upper SD</strong></td>
 			  <td>
-				  <xsl:value-of select="@TME2UStandDev15"/>
 			  </td>
 			  <xsl:value-of select="DisplayComps:initValues($fullcolcount)"/>
 			  <xsl:for-each select="@*">
