@@ -634,7 +634,7 @@ namespace DevTreks.Data.AppHelpers
         {
             string sResourcePath = string.Empty;
             bool bNeedsWebFullPath = false;
-            sResourcePath = GetRootedResourcePath(resourceURI, resourceURIPath, bNeedsWebFullPath, 
+            sResourcePath = GetRootedResourcePath(resourceURI, resourceURIPath, bNeedsWebFullPath,
                 Helpers.GeneralHelpers.FILE_PATH_DELIMITER);
             if (Helpers.FileStorageIO.URIAbsoluteExists(resourceURI,
                 sResourcePath) == false)

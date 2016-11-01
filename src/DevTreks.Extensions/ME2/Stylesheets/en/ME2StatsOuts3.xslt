@@ -197,22 +197,22 @@
           Lower
 			  </td>
 			  <td>
-				  <xsl:value-of select="@TME2TLUnit9"/>
+				  <xsl:value-of select="@TME2TLUnit0"/>
 			  </td>
 			  <td>
-					  <xsl:value-of select="@TME2TLAmount9"/>
+					  <xsl:value-of select="@TME2TLAmount0"/>
 			  </td>
 			  <td>
-					  <xsl:value-of select="@TME2LMean9"/>
+					  <xsl:value-of select="@TME2LMean0"/>
 			  </td>
 			  <td>
-					  <xsl:value-of select="@TME2LMedian9"/>
+					  <xsl:value-of select="@TME2LMedian0"/>
 			  </td>
         <td>
-					  <xsl:value-of select="@TME2LVariance9"/>
+					  <xsl:value-of select="@TME2LVariance0"/>
 			  </td>
         <td>
-					  <xsl:value-of select="@TME2LStandDev9"/>
+					  <xsl:value-of select="@TME2LStandDev0"/>
 			  </td>
         <td>
 			  </td>
@@ -226,22 +226,22 @@
           Upper
 			  </td>
 			  <td>
-				    <xsl:value-of select="@TME2TUUnit9"/>
+				    <xsl:value-of select="@TME2TUUnit0"/>
 			  </td>
 			  <td>
-					  <xsl:value-of select="@TME2TUAmount9"/>
+					  <xsl:value-of select="@TME2TUAmount0"/>
 			  </td>
 			  <td>
-					  <xsl:value-of select="@TME2UMean9"/>
+					  <xsl:value-of select="@TME2UMean0"/>
 			  </td>
 			  <td>
-					  <xsl:value-of select="@TME2UMedian9"/>
+					  <xsl:value-of select="@TME2UMedian0"/>
 			  </td>
         <td>
-					  <xsl:value-of select="@TME2UVariance9"/>
+					  <xsl:value-of select="@TME2UVariance0"/>
 			  </td>
         <td>
-					  <xsl:value-of select="@TME2UStandDev9"/>
+					  <xsl:value-of select="@TME2UStandDev0"/>
 			  </td>
         <td>
 			  </td>
@@ -252,7 +252,7 @@
 		  </tr>
       <tr>
 			  <td scope="row" colspan="10">
-				  <xsl:value-of select="@TME2Description9" />
+				  <xsl:value-of select="@TME2Description0" />
 			  </td>
 		  </tr>
     </xsl:if>

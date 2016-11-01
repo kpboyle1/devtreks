@@ -171,7 +171,7 @@
 				  Dist Type
 			  </th>
         <th>
-				  Base IO
+				  Base IO or Obs
 			  </th>
         <th>
           Math Operator

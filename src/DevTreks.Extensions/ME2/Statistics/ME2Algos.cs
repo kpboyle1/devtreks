@@ -1752,7 +1752,7 @@ namespace DevTreks.Extensions.ME2Statistics
             //1. store the Scores for each row in a double
             List<double> scores = new List<double>();
             //2. set a new ME2Indicator object by copying this
-            var sb1base = new ME2Indicator(this);
+            var me2base = new ME2Indicator(this);
             //3.calculate indicators that are not correlated but may still be in the ind.SetRowQT or Score.MathExpress as constant QTM
             int iIndNumber = 1;
             //add the scoreMUnit to tell CalculateIndicators not to calculate score yet
@@ -1760,11 +1760,11 @@ namespace DevTreks.Extensions.ME2Statistics
             //204
             newInds.Add(0);
             //newInds.Add(_score);
-            sb1base._indicators = newInds.ToArray();
+            me2base._indicators = newInds.ToArray();
             //this assumes that corrs are only run and stored for scores
-            sb1base.CalculateIndicators(iIndNumber);
+            me2base.CalculateIndicators(iIndNumber);
             //but don't double display the ScoreMathResult
-            sb1base.ME2Indicators[0].IndMathResult = string.Empty;
+            me2base.ME2Indicators[0].IndMathResult = string.Empty;
             int cc = randomSampleData.ColumnCount;
             //4. use the indicators to set each indicator.QT in the new object from each row of R
             for (int i = 0; i < randomSampleData.RowCount; i++)
@@ -1774,40 +1774,48 @@ namespace DevTreks.Extensions.ME2Statistics
                 int j = 0;
                 foreach (var ind in indicators)
                 {
-                    SetRowQT(sb1base, ind, j, row);
+                    SetRowQT(me2base, ind, j, row);
                     j++;
                 }
                 //set sb1Base.Score
-                sb1base.SetTotalScore(_colNames);
-                scores.Add(sb1base.ME2Indicators[0].IndTAmount);
+                me2base.SetTotalScore(_colNames);
+                scores.Add(me2base.ME2Indicators[0].IndTAmount);
             }
             string[] colNames = new List<string>().ToArray();
             List<double> qTs = new List<double>();
-            Task<int> tsk = sb1base.SetAlgoPRAStats(0, qTs, scores.ToArray());
-            string sScoreMathR = string.Concat(this.ME2Indicators[0].IndMathResult, sb1base.ME2Indicators[0].IndMathResult);
-            this.CopyME2IndicatorsProperties(sb1base);
+            Task<int> tsk = me2base.SetAlgoPRAStats(0, qTs, scores.ToArray());
+            string sScoreMathR = string.Concat(this.ME2Indicators[0].IndMathResult, me2base.ME2Indicators[0].IndMathResult);
+            this.CopyME2IndicatorsProperties(me2base);
             this.ME2Indicators[0].IndMathResult = string.Empty;
             this.ME2Indicators[0].IndMathResult = sScoreMathR;
             //186 add the remaining indicators -they've already been calculated
-            sb1base.AddAllIndicators(newInds);
-            if (!string.IsNullOrEmpty(sb1base.ErrorMessage))
+            me2base.AddAllIndicators(newInds);
+            if (!string.IsNullOrEmpty(me2base.ErrorMessage))
             {
-                this.ME2Indicators[0].IndMathResult += sb1base.ErrorMessage;
+                this.ME2Indicators[0].IndMathResult += me2base.ErrorMessage;
                 this.ErrorMessage = string.Empty;
             }
             //return the byref indicators
             return newInds.ToArray();
         }
-        private void SetRowQT(ME2Indicator sb1base, int index, int col, Vector<double> row)
+        private void SetRowQT(ME2Indicator me2base, int index, int col, Vector<double> row)
         {
             //the indicators were used to set the order of row.cols
             //so their order, col, will correspond to row.column
-            if (index == 1)
+            if (index == 0)
             {
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[1].IndTAmount = row[col];
+                    me2base.ME2Indicators[0].IndTAmount = row[col];
+                }
+            }
+            else if (index == 1)
+            {
+                //make sure the index is in row
+                if (row.Count >= (col + 1))
+                {
+                    me2base.ME2Indicators[1].IndTAmount = row[col];
                 }
             }
             else if (index == 2)
@@ -1815,7 +1823,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[2].IndTAmount = row[col];
+                    me2base.ME2Indicators[2].IndTAmount = row[col];
                 }
             }
             else if (index == 3)
@@ -1823,7 +1831,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[3].IndTAmount = row[col];
+                    me2base.ME2Indicators[3].IndTAmount = row[col];
                 }
             }
             else if (index == 4)
@@ -1831,7 +1839,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[4].IndTAmount = row[col];
+                    me2base.ME2Indicators[4].IndTAmount = row[col];
                 }
             }
             else if (index == 5)
@@ -1839,7 +1847,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[5].IndTAmount = row[col];
+                    me2base.ME2Indicators[5].IndTAmount = row[col];
                 }
             }
             else if (index == 6)
@@ -1847,7 +1855,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[6].IndTAmount = row[col];
+                    me2base.ME2Indicators[6].IndTAmount = row[col];
                 }
             }
             else if (index == 7)
@@ -1855,7 +1863,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[7].IndTAmount = row[col];
+                    me2base.ME2Indicators[7].IndTAmount = row[col];
                 }
             }
             else if (index == 8)
@@ -1863,7 +1871,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[8].IndTAmount = row[col];
+                    me2base.ME2Indicators[8].IndTAmount = row[col];
                 }
             }
             else if (index == 9)
@@ -1871,7 +1879,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[9].IndTAmount = row[col];
+                    me2base.ME2Indicators[9].IndTAmount = row[col];
                 }
             }
             else if (index == 10)
@@ -1879,7 +1887,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[10].IndTAmount = row[col];
+                    me2base.ME2Indicators[10].IndTAmount = row[col];
                 }
             }
             else if (index == 11)
@@ -1887,7 +1895,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[11].IndTAmount = row[col];
+                    me2base.ME2Indicators[11].IndTAmount = row[col];
                 }
             }
             else if (index == 12)
@@ -1895,7 +1903,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[12].IndTAmount = row[col];
+                    me2base.ME2Indicators[12].IndTAmount = row[col];
                 }
             }
             else if (index == 13)
@@ -1903,7 +1911,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[13].IndTAmount = row[col];
+                    me2base.ME2Indicators[13].IndTAmount = row[col];
                 }
             }
             else if (index == 14)
@@ -1911,7 +1919,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[14].IndTAmount = row[col];
+                    me2base.ME2Indicators[14].IndTAmount = row[col];
                 }
             }
             else if (index == 15)
@@ -1919,7 +1927,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[15].IndTAmount = row[col];
+                    me2base.ME2Indicators[15].IndTAmount = row[col];
                 }
             }
             else if (index == 16)
@@ -1927,7 +1935,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[16].IndTAmount = row[col];
+                    me2base.ME2Indicators[16].IndTAmount = row[col];
                 }
             }
             else if (index == 17)
@@ -1935,7 +1943,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[17].IndTAmount = row[col];
+                    me2base.ME2Indicators[17].IndTAmount = row[col];
                 }
             }
             else if (index == 18)
@@ -1943,7 +1951,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[18].IndTAmount = row[col];
+                    me2base.ME2Indicators[18].IndTAmount = row[col];
                 }
             }
             else if (index == 19)
@@ -1951,7 +1959,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[19].IndTAmount = row[col];
+                    me2base.ME2Indicators[19].IndTAmount = row[col];
                 }
             }
             else if (index == 20)
@@ -1959,7 +1967,7 @@ namespace DevTreks.Extensions.ME2Statistics
                 //make sure the index is in row
                 if (row.Count >= (col + 1))
                 {
-                    sb1base.ME2Indicators[20].IndTAmount = row[col];
+                    me2base.ME2Indicators[20].IndTAmount = row[col];
                 }
             }
             else
@@ -1974,7 +1982,26 @@ namespace DevTreks.Extensions.ME2Statistics
             {
                 string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
                 string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-                if (index == 1
+                if (index == 0
+                    && (this.ME2Indicators[0].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
+                    || this.ME2Indicators[0].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
+                    && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
+                {
+                    algoIndicator = index;
+                    DevTreks.Extensions.Algorithms.Regression1 rgr
+                        = InitRGR1Algo(index,
+                            colNames, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathSubType, this.ME2Indicators[0].IndCILevel);
+                    await rgr.RunAlgorithmAsync(data);
+                    this.ME2Indicators[0].IndTMAmount = rgr.QTPredicted;
+                    this.ME2Indicators[0].IndTLAmount = rgr.QTL;
+                    this.ME2Indicators[0].IndTLUnit = sLowerCI;
+                    this.ME2Indicators[0].IndTUAmount = rgr.QTU;
+                    this.ME2Indicators[0].IndTUUnit = sUpperCI;
+                    //no condition on type of result yet KISS for now
+                    this.ME2Indicators[0].IndMathResult = rgr.ErrorMessage;
+                    this.ME2Indicators[0].IndMathResult += rgr.MathResult;
+                }
+                else if (index == 1
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm6.ToString()
                     || this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
@@ -2332,7 +2359,22 @@ namespace DevTreks.Extensions.ME2Statistics
                 DevTreks.Extensions.Algorithms.Anova1 anv = new Algorithms.Anova1();
                 string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
                 string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-                if (index == 1
+                if (index == 0
+                    && (this.ME2Indicators[0].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
+                    && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
+                {
+                    algoIndicator = index;
+                    anv = InitANV1Algo(index, colNames, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathSubType, this.ME2Indicators[0].IndCILevel, this.Observations);
+                    await anv.RunAlgorithmAsync(data);
+                    this.ME2Indicators[0].IndTMAmount = anv.QTPredicted;
+                    this.ME2Indicators[0].IndTLAmount = anv.QTL;
+                    this.ME2Indicators[0].IndTLUnit = sLowerCI;
+                    this.ME2Indicators[0].IndTUAmount = anv.QTU;
+                    this.ME2Indicators[0].IndTUUnit = sUpperCI;
+                    this.ME2Indicators[0].IndMathResult = anv.ErrorMessage;
+                    this.ME2Indicators[0].IndMathResult += anv.MathResult;
+                }
+                else if (index == 1
                     && (this.ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm8.ToString())
                     && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
                 {
@@ -3123,7 +3165,13 @@ namespace DevTreks.Extensions.ME2Statistics
             //indicators are 1 based
             //last sibling indicator holds mathexpression if rules followed
             int iSiblingIndex = 0;
-            if (index == 1
+            if (index == 0
+                && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[0].IndMathExpression) == false
+                && indWithMathExpressIndex != 0)
+            {
+                iSiblingIndex = 0;
+            }
+            else if (index == 1
                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[1].IndMathExpression) == false
                 && indWithMathExpressIndex != 1)
             {
@@ -3252,7 +3300,24 @@ namespace DevTreks.Extensions.ME2Statistics
             System.Threading.CancellationToken ctk = new System.Threading.CancellationToken();
             string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-            if (index == 1
+            if (index == 0
+                && (this.ME2Indicators[0].IndMathType == MATH_TYPES.algorithm4.ToString())
+                && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
+            {
+                algoIndicator = index;
+                DevTreks.Extensions.Algorithms.Script2 script2
+                    = InitScript2Algo(index, colNames, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathType, this.ME2Indicators[0].IndMathSubType);
+                bool bHasCalcs = await script2.RunAlgorithmAsync(dataURL, jDataURL, ctk);
+                this.ME2Indicators[0].IndTMAmount = script2.QTPredicted;
+                this.ME2Indicators[0].IndTLAmount = script2.QTL;
+                this.ME2Indicators[0].IndTLUnit = sLowerCI;
+                this.ME2Indicators[0].IndTUAmount = script2.QTU;
+                this.ME2Indicators[0].IndTUUnit = sUpperCI;
+                //no condition on type of result yet KISS for now
+                this.ME2Indicators[0].IndMathResult = script2.ErrorMessage;
+                this.ME2Indicators[0].IndMathResult += script2.MathResult;
+            }
+            else if (index == 1
                 && (this.ME2Indicators[1].IndMathType == MATH_TYPES.algorithm4.ToString())
                 && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
             {
@@ -3586,7 +3651,25 @@ namespace DevTreks.Extensions.ME2Statistics
             System.Threading.CancellationToken ctk = new System.Threading.CancellationToken();
             string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
-            if (index == 1
+            if (index == 0
+                && (this.ME2Indicators[0].IndMathType == MATH_TYPES.algorithm2.ToString()
+                    || this.ME2Indicators[0].IndMathType == MATH_TYPES.algorithm3.ToString())
+                && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
+            {
+                algoIndicator = index;
+                DevTreks.Extensions.Algorithms.Script1 script1
+                    = InitScript1Algo(index, colNames, this.ME2Indicators[0].IndMathExpression, this.ME2Indicators[0].IndMathType, this.ME2Indicators[0].IndMathSubType);
+                bool bHasCalcs = await script1.RunAlgorithmAsync(dataURL, jDataURL, ctk);
+                this.ME2Indicators[0].IndTMAmount = script1.QTPredicted;
+                this.ME2Indicators[0].IndTLAmount = script1.QTL;
+                this.ME2Indicators[0].IndTLUnit = sLowerCI;
+                this.ME2Indicators[0].IndTUAmount = script1.QTU;
+                this.ME2Indicators[0].IndTUUnit = sUpperCI;
+                //no condition on type of result yet KISS for now
+                this.ME2Indicators[0].IndMathResult = script1.ErrorMessage;
+                this.ME2Indicators[0].IndMathResult += script1.MathResult;
+            }
+            else if (index == 1
                 && (this.ME2Indicators[1].IndMathType == MATH_TYPES.algorithm2.ToString()
                     || this.ME2Indicators[1].IndMathType == MATH_TYPES.algorithm3.ToString())
                 && HasMathExpression(this.ME2Indicators[1].IndMathExpression))
@@ -4214,7 +4297,7 @@ namespace DevTreks.Extensions.ME2Statistics
             bool bHasMathTerm = false;
             //the units must be set correctly
             //and the mathexpress has to contain the var
-            if (index == 1)
+            if (index == 0)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 0, 0))
                 {
@@ -4261,7 +4344,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 2)
+            if (index == 1)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 1, 0))
                 {
@@ -4308,7 +4391,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 3)
+            if (index == 2)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 2, 0))
                 {
@@ -4355,7 +4438,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 4)
+            if (index == 3)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 3, 0))
                 {
@@ -4402,7 +4485,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 5)
+            if (index == 4)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 4, 0))
                 {
@@ -4449,7 +4532,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 6)
+            if (index == 5)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 5, 0))
                 {
@@ -4496,7 +4579,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 7)
+            if (index == 6)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 6, 0))
                 {
@@ -4543,7 +4626,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 8)
+            if (index == 7)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 7, 0))
                 {
@@ -4590,7 +4673,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 9)
+            if (index == 8)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 8, 0))
                 {
@@ -4637,7 +4720,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 10)
+            if (index == 9)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 9, 0))
                 {
@@ -4684,7 +4767,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 11)
+            if (index == 10)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 10, 0))
                 {
@@ -4731,7 +4814,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 12)
+            if (index == 11)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 11, 0))
                 {
@@ -4778,7 +4861,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 13)
+            if (index == 12)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 12, 0))
                 {
@@ -4825,7 +4908,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 14)
+            if (index == 13)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 13, 0))
                 {
@@ -4872,7 +4955,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 15)
+            if (index == 14)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 14, 0))
                 {
@@ -4919,7 +5002,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 16)
+            if (index == 15)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 15, 0))
                 {
@@ -4966,7 +5049,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 17)
+            if (index == 16)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 16, 0))
                 {
@@ -5013,7 +5096,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 18)
+            if (index == 17)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 17, 0))
                 {
@@ -5060,7 +5143,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 19)
+            if (index == 18)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 18, 0))
                 {
@@ -5107,7 +5190,7 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
-            if (index == 20)
+            if (index == 19)
             {
                 if (ME2Indicator.HasMathTerm(parsedIxQx, 19, 0))
                 {
@@ -5154,6 +5237,53 @@ namespace DevTreks.Extensions.ME2Statistics
                     bHasMathTerm = true;
                 }
             }
+            if (index == 20)
+            {
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 0))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 1))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 2))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 3))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 4))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 10))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 11))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 12))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 13))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 14))
+                {
+                    bHasMathTerm = true;
+                }
+                if (ME2Indicator.HasMathTerm(parsedIxQx, 20, 15))
+                {
+                    bHasMathTerm = true;
+                }
+            }
             if (bHasMathTerm)
             {
                 sMathTerm = parsedIxQx;
@@ -5166,462 +5296,485 @@ namespace DevTreks.Extensions.ME2Statistics
             List<double> qs = new List<double>(mathTerms.Count);
             //the units must be set correctly
             //and the mathexpress has to contain the var
-            if (index == 1)
+            if (index == 0)
             {
                 if (ME2Indicator.HasMathTerm(mathTerms, 0, 0))
                 {
-                    qs.Add(this.ME2Indicators[1].Ind1Amount);
+                    qs.Add(this.ME2Indicators[0].Ind1Amount);
                 }
                 if (ME2Indicator.HasMathTerm(mathTerms, 0, 1))
                 {
-                    qs.Add(this.ME2Indicators[1].Ind2Amount);
+                    qs.Add(this.ME2Indicators[0].Ind2Amount);
                 }
                 if (ME2Indicator.HasMathTerm(mathTerms, 0, 2))
                 {
-                    qs.Add(this.ME2Indicators[1].Ind3Amount);
+                    qs.Add(this.ME2Indicators[0].Ind3Amount);
                 }
                 if (ME2Indicator.HasMathTerm(mathTerms, 0, 3))
                 {
-                    qs.Add(this.ME2Indicators[1].Ind4Amount);
+                    qs.Add(this.ME2Indicators[0].Ind4Amount);
                 }
                 if (ME2Indicator.HasMathTerm(mathTerms, 0, 4))
+                {
+                    qs.Add(this.ME2Indicators[0].Ind5Amount);
+                }
+            }
+            if (index == 1)
+            {
+                if (ME2Indicator.HasMathTerm(mathTerms, 1, 0))
+                {
+                    qs.Add(this.ME2Indicators[1].Ind1Amount);
+                }
+                if (ME2Indicator.HasMathTerm(mathTerms, 1, 1))
+                {
+                    qs.Add(this.ME2Indicators[1].Ind2Amount);
+                }
+                if (ME2Indicator.HasMathTerm(mathTerms, 1, 2))
+                {
+                    qs.Add(this.ME2Indicators[1].Ind3Amount);
+                }
+                if (ME2Indicator.HasMathTerm(mathTerms, 1, 3))
+                {
+                    qs.Add(this.ME2Indicators[1].Ind4Amount);
+                }
+                if (ME2Indicator.HasMathTerm(mathTerms, 1, 4))
                 {
                     qs.Add(this.ME2Indicators[1].Ind5Amount);
                 }
             }
             if (index == 2)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 1, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 2, 0))
                 {
                     qs.Add(this.ME2Indicators[2].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 1, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 2, 1))
                 {
                     qs.Add(this.ME2Indicators[2].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 1, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 2, 2))
                 {
                     qs.Add(this.ME2Indicators[2].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 1, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 2, 3))
                 {
                     qs.Add(this.ME2Indicators[2].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 1, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 2, 4))
                 {
                     qs.Add(this.ME2Indicators[2].Ind5Amount);
                 }
             }
             if (index == 3)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 2, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 3, 0))
                 {
                     qs.Add(this.ME2Indicators[3].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 2, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 3, 1))
                 {
                     qs.Add(this.ME2Indicators[3].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 2, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 3, 2))
                 {
                     qs.Add(this.ME2Indicators[3].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 2, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 3, 3))
                 {
                     qs.Add(this.ME2Indicators[3].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 2, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 3, 4))
                 {
                     qs.Add(this.ME2Indicators[3].Ind5Amount);
                 }
             }
             if (index == 4)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 3, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 4, 0))
                 {
                     qs.Add(this.ME2Indicators[4].Ind1Amount);
                 }
-                if ( HasMathTerm(mathTerms, 3, 1))
+                if ( HasMathTerm(mathTerms, 4, 1))
                 {
                     qs.Add(this.ME2Indicators[4].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 3, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 4, 2))
                 {
                     qs.Add(this.ME2Indicators[4].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 3, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 4, 3))
                 {
                     qs.Add(this.ME2Indicators[4].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 3, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 4, 4))
                 {
                     qs.Add(this.ME2Indicators[4].Ind5Amount);
                 }
             }
             if (index == 5)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 4, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 5, 0))
                 {
                     qs.Add(this.ME2Indicators[5].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 4, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 5, 1))
                 {
                     qs.Add(this.ME2Indicators[5].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 4, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 5, 2))
                 {
                     qs.Add(this.ME2Indicators[5].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 4, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 5, 3))
                 {
                     qs.Add(this.ME2Indicators[5].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 4, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 5, 4))
                 {
                     qs.Add(this.ME2Indicators[5].Ind5Amount);
                 }
             }
             if (index == 6)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 5, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 6, 0))
                 {
                     qs.Add(this.ME2Indicators[6].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 5, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 6, 1))
                 {
                     qs.Add(this.ME2Indicators[6].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 5, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 6, 2))
                 {
                     qs.Add(this.ME2Indicators[6].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 5, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 6, 3))
                 {
                     qs.Add(this.ME2Indicators[6].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 5, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 6, 4))
                 {
                     qs.Add(this.ME2Indicators[6].Ind5Amount);
                 }
             }
             if (index == 7)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 6, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 7, 0))
                 {
                     qs.Add(this.ME2Indicators[7].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 6, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 7, 1))
                 {
                     qs.Add(this.ME2Indicators[7].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 6, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 7, 2))
                 {
                     qs.Add(this.ME2Indicators[7].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 6, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 7, 3))
                 {
                     qs.Add(this.ME2Indicators[7].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 6, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 7, 4))
                 {
                     qs.Add(this.ME2Indicators[7].Ind5Amount);
                 }
             }
             if (index == 8)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 7, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 8, 0))
                 {
                     qs.Add(this.ME2Indicators[8].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 7, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 8, 1))
                 {
                     qs.Add(this.ME2Indicators[8].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 7, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 8, 2))
                 {
                     qs.Add(this.ME2Indicators[8].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 7, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 8, 3))
                 {
                     qs.Add(this.ME2Indicators[8].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 7, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 8, 4))
                 {
                     qs.Add(this.ME2Indicators[8].Ind5Amount);
                 }
             }
             if (index == 9)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 8, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 9, 0))
                 {
                     qs.Add(this.ME2Indicators[9].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 8, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 9, 1))
                 {
                     qs.Add(this.ME2Indicators[9].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 8, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 9, 2))
                 {
                     qs.Add(this.ME2Indicators[9].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 8, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 9, 3))
                 {
                     qs.Add(this.ME2Indicators[9].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 8, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 9, 4))
                 {
                     qs.Add(this.ME2Indicators[9].Ind5Amount);
                 }
             }
             if (index == 10)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 9, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 10, 0))
                 {
                     qs.Add(this.ME2Indicators[10].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 9, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 10, 1))
                 {
                     qs.Add(this.ME2Indicators[10].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 9, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 10, 2))
                 {
                     qs.Add(this.ME2Indicators[10].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 9, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 10, 3))
                 {
                     qs.Add(this.ME2Indicators[10].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 9, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 10, 4))
                 {
                     qs.Add(this.ME2Indicators[10].Ind5Amount);
                 }
             }
             if (index == 11)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 10, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 11, 0))
                 {
                     qs.Add(this.ME2Indicators[11].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 10, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 11, 1))
                 {
                     qs.Add(this.ME2Indicators[11].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 10, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 11, 2))
                 {
                     qs.Add(this.ME2Indicators[11].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 10, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 11, 3))
                 {
                     qs.Add(this.ME2Indicators[11].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 10, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 11, 4))
                 {
                     qs.Add(this.ME2Indicators[11].Ind5Amount);
                 }
             }
             if (index == 12)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 11, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 12, 0))
                 {
                     qs.Add(this.ME2Indicators[12].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 11, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 12, 1))
                 {
                     qs.Add(this.ME2Indicators[12].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 11, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 12, 2))
                 {
                     qs.Add(this.ME2Indicators[12].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 11, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 12, 3))
                 {
                     qs.Add(this.ME2Indicators[12].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 11, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 12, 4))
                 {
                     qs.Add(this.ME2Indicators[12].Ind5Amount);
                 }
             }
             if (index == 13)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 12, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 13, 0))
                 {
                     qs.Add(this.ME2Indicators[13].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 12, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 13, 1))
                 {
                     qs.Add(this.ME2Indicators[13].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 12, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 13, 2))
                 {
                     qs.Add(this.ME2Indicators[13].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 12, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 13, 3))
                 {
                     qs.Add(this.ME2Indicators[13].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 12, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 13, 4))
                 {
                     qs.Add(this.ME2Indicators[13].Ind5Amount);
                 }
             }
             if (index == 14)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 13, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 14, 0))
                 {
                     qs.Add(this.ME2Indicators[14].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 13, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 14, 1))
                 {
                     qs.Add(this.ME2Indicators[14].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 13, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 14, 2))
                 {
                     qs.Add(this.ME2Indicators[14].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 13, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 14, 3))
                 {
                     qs.Add(this.ME2Indicators[14].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 13, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 14, 4))
                 {
                     qs.Add(this.ME2Indicators[14].Ind5Amount);
                 }
             }
             if (index == 15)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 14, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 15, 0))
                 {
                     qs.Add(this.ME2Indicators[15].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 14, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 15, 1))
                 {
                     qs.Add(this.ME2Indicators[15].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 14, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 15, 2))
                 {
                     qs.Add(this.ME2Indicators[15].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 14, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 15, 3))
                 {
                     qs.Add(this.ME2Indicators[15].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 14, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 15, 4))
                 {
                     qs.Add(this.ME2Indicators[15].Ind5Amount);
                 }
             }
             if (index == 16)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 15, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 16, 0))
                 {
                     qs.Add(this.ME2Indicators[16].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 15, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 16, 1))
                 {
                     qs.Add(this.ME2Indicators[16].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 15, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 16, 2))
                 {
                     qs.Add(this.ME2Indicators[16].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 15, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 16, 3))
                 {
                     qs.Add(this.ME2Indicators[16].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 15, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 16, 4))
                 {
                     qs.Add(this.ME2Indicators[16].Ind5Amount);
                 }
             }
             if (index == 17)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 16, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 17, 0))
                 {
                     qs.Add(this.ME2Indicators[17].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 16, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 17, 1))
                 {
                     qs.Add(this.ME2Indicators[17].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 16, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 17, 2))
                 {
                     qs.Add(this.ME2Indicators[17].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 16, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 17, 3))
                 {
                     qs.Add(this.ME2Indicators[17].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 16, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 17, 4))
                 {
                     qs.Add(this.ME2Indicators[17].Ind5Amount);
                 }
             }
             if (index == 18)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 17, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 18, 0))
                 {
                     qs.Add(this.ME2Indicators[18].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 17, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 18, 1))
                 {
                     qs.Add(this.ME2Indicators[18].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 17, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 18, 2))
                 {
                     qs.Add(this.ME2Indicators[18].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 17, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 18, 3))
                 {
                     qs.Add(this.ME2Indicators[18].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 17, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 18, 4))
                 {
                     qs.Add(this.ME2Indicators[18].Ind5Amount);
                 }
             }
             if (index == 19)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 18, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 19, 0))
                 {
                     qs.Add(this.ME2Indicators[19].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 18, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 19, 1))
                 {
                     qs.Add(this.ME2Indicators[19].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 18, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 19, 2))
                 {
                     qs.Add(this.ME2Indicators[19].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 18, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 19, 3))
                 {
                     qs.Add(this.ME2Indicators[19].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 18, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 19, 4))
                 {
                     qs.Add(this.ME2Indicators[19].Ind5Amount);
                 }
             }
             if (index == 20)
             {
-                if (ME2Indicator.HasMathTerm(mathTerms, 19, 0))
+                if (ME2Indicator.HasMathTerm(mathTerms, 20, 0))
                 {
                     qs.Add(this.ME2Indicators[20].Ind1Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 19, 1))
+                if (ME2Indicator.HasMathTerm(mathTerms, 20, 1))
                 {
                     qs.Add(this.ME2Indicators[20].Ind2Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 19, 2))
+                if (ME2Indicator.HasMathTerm(mathTerms, 20, 2))
                 {
                     qs.Add(this.ME2Indicators[20].Ind3Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 19, 3))
+                if (ME2Indicator.HasMathTerm(mathTerms, 20, 3))
                 {
                     qs.Add(this.ME2Indicators[20].Ind4Amount);
                 }
-                if (ME2Indicator.HasMathTerm(mathTerms, 19, 4))
+                if (ME2Indicator.HasMathTerm(mathTerms, 20, 4))
                 {
                     qs.Add(this.ME2Indicators[20].Ind5Amount);
                 }
@@ -5633,679 +5786,706 @@ namespace DevTreks.Extensions.ME2Statistics
             }
                 return qs;
         }
-        private List<double> GetQsForMathTermswUnits(int index, List<string> mathTerms)
-        {
-            List<double> qs = new List<double>();
-            //the units must be set correctly
-            //and the mathexpress has to contain the var
-            if (index == 1)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind1Unit)
-                    && this.ME2Indicators[1].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 0, 0))
-                {
-                    qs.Add(this.ME2Indicators[1].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind2Unit)
-                    && this.ME2Indicators[1].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 0, 1))
-                {
-                    qs.Add(this.ME2Indicators[1].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind3Unit)
-                    && this.ME2Indicators[1].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 0, 2))
-                {
-                    qs.Add(this.ME2Indicators[1].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind4Unit)
-                    && this.ME2Indicators[1].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 0, 3))
-                {
-                    qs.Add(this.ME2Indicators[1].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind5Unit)
-                    && this.ME2Indicators[1].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 0, 4))
-                {
-                    qs.Add(this.ME2Indicators[1].Ind5Amount);
-                }
-            }
-            if (index == 2)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind1Unit)
-                    && this.ME2Indicators[2].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 1, 0))
-                {
-                    qs.Add(this.ME2Indicators[2].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind2Unit)
-                    && this.ME2Indicators[2].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 1, 1))
-                {
-                    qs.Add(this.ME2Indicators[2].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind3Unit)
-                    && this.ME2Indicators[2].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 1, 2))
-                {
-                    qs.Add(this.ME2Indicators[2].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind4Unit)
-                    && this.ME2Indicators[2].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 1, 3))
-                {
-                    qs.Add(this.ME2Indicators[2].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind5Unit)
-                    && this.ME2Indicators[2].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 1, 4))
-                {
-                    qs.Add(this.ME2Indicators[2].Ind5Amount);
-                }
-            }
-            if (index == 3)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind1Unit)
-                    && this.ME2Indicators[3].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 2, 0))
-                {
-                    qs.Add(this.ME2Indicators[3].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind2Unit)
-                    && this.ME2Indicators[3].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 2, 1))
-                {
-                    qs.Add(this.ME2Indicators[3].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind3Unit)
-                    && this.ME2Indicators[3].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 2, 2))
-                {
-                    qs.Add(this.ME2Indicators[3].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind4Unit)
-                    && this.ME2Indicators[3].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 2, 3))
-                {
-                    qs.Add(this.ME2Indicators[3].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind5Unit)
-                    && this.ME2Indicators[3].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 2, 4))
-                {
-                    qs.Add(this.ME2Indicators[3].Ind5Amount);
-                }
-            }
-            if (index == 4)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind1Unit)
-                    && this.ME2Indicators[4].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 3, 0))
-                {
-                    qs.Add(this.ME2Indicators[4].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind2Unit)
-                    && this.ME2Indicators[4].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 3, 1))
-                {
-                    qs.Add(this.ME2Indicators[4].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind3Unit)
-                    && this.ME2Indicators[4].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 3, 2))
-                {
-                    qs.Add(this.ME2Indicators[4].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind4Unit)
-                    && this.ME2Indicators[4].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 3, 3))
-                {
-                    qs.Add(this.ME2Indicators[4].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind5Unit)
-                    && this.ME2Indicators[4].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 3, 4))
-                {
-                    qs.Add(this.ME2Indicators[4].Ind5Amount);
-                }
-            }
-            if (index == 5)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind1Unit)
-                    && this.ME2Indicators[5].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 4, 0))
-                {
-                    qs.Add(this.ME2Indicators[5].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind2Unit)
-                    && this.ME2Indicators[5].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 4, 1))
-                {
-                    qs.Add(this.ME2Indicators[5].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind3Unit)
-                    && this.ME2Indicators[5].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 4, 2))
-                {
-                    qs.Add(this.ME2Indicators[5].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind4Unit)
-                    && this.ME2Indicators[5].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 4, 3))
-                {
-                    qs.Add(this.ME2Indicators[5].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind5Unit)
-                    && this.ME2Indicators[5].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 4, 4))
-                {
-                    qs.Add(this.ME2Indicators[5].Ind5Amount);
-                }
-            }
-            if (index == 6)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind1Unit)
-                    && this.ME2Indicators[6].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 5, 0))
-                {
-                    qs.Add(this.ME2Indicators[6].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind2Unit)
-                    && this.ME2Indicators[6].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 5, 1))
-                {
-                    qs.Add(this.ME2Indicators[6].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind3Unit)
-                    && this.ME2Indicators[6].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 5, 2))
-                {
-                    qs.Add(this.ME2Indicators[6].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind4Unit)
-                    && this.ME2Indicators[6].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 5, 3))
-                {
-                    qs.Add(this.ME2Indicators[6].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind5Unit)
-                    && this.ME2Indicators[6].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 5, 4))
-                {
-                    qs.Add(this.ME2Indicators[6].Ind5Amount);
-                }
-            }
-            if (index == 7)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind1Unit)
-                    && this.ME2Indicators[7].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 6, 0))
-                {
-                    qs.Add(this.ME2Indicators[7].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind2Unit)
-                    && this.ME2Indicators[7].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 6, 1))
-                {
-                    qs.Add(this.ME2Indicators[7].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind3Unit)
-                    && this.ME2Indicators[7].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 6, 2))
-                {
-                    qs.Add(this.ME2Indicators[7].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind4Unit)
-                    && this.ME2Indicators[7].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 6, 3))
-                {
-                    qs.Add(this.ME2Indicators[7].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind5Unit)
-                    && this.ME2Indicators[7].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 6, 4))
-                {
-                    qs.Add(this.ME2Indicators[7].Ind5Amount);
-                }
-            }
-            if (index == 8)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind1Unit)
-                    && this.ME2Indicators[8].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 7, 0))
-                {
-                    qs.Add(this.ME2Indicators[8].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind2Unit)
-                    && this.ME2Indicators[8].Ind2Unit != Constants.NONE
-                     && HasMathTerm(mathTerms, 7, 1))
-                {
-                    qs.Add(this.ME2Indicators[8].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind3Unit)
-                    && this.ME2Indicators[8].Ind3Unit != Constants.NONE
-                     && HasMathTerm(mathTerms, 7, 2))
-                {
-                    qs.Add(this.ME2Indicators[8].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind4Unit)
-                    && this.ME2Indicators[8].Ind4Unit != Constants.NONE
-                     && HasMathTerm(mathTerms, 7, 3))
-                {
-                    qs.Add(this.ME2Indicators[8].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind5Unit)
-                    && this.ME2Indicators[8].Ind5Unit != Constants.NONE
-                     && HasMathTerm(mathTerms, 7, 4))
-                {
-                    qs.Add(this.ME2Indicators[8].Ind5Amount);
-                }
-            }
-            if (index == 9)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind1Unit)
-                    && this.ME2Indicators[9].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 8, 0))
-                {
-                    qs.Add(this.ME2Indicators[9].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind2Unit)
-                    && this.ME2Indicators[9].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 8, 1))
-                {
-                    qs.Add(this.ME2Indicators[9].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind3Unit)
-                    && this.ME2Indicators[9].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 8, 2))
-                {
-                    qs.Add(this.ME2Indicators[9].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind4Unit)
-                    && this.ME2Indicators[9].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 8, 3))
-                {
-                    qs.Add(this.ME2Indicators[9].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind5Unit)
-                    && this.ME2Indicators[9].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 8, 4))
-                {
-                    qs.Add(this.ME2Indicators[9].Ind5Amount);
-                }
-            }
-            if (index == 10)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind1Unit)
-                    && this.ME2Indicators[10].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 9, 0))
-                {
-                    qs.Add(this.ME2Indicators[10].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind2Unit)
-                    && this.ME2Indicators[10].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 9, 1))
-                {
-                    qs.Add(this.ME2Indicators[10].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind3Unit)
-                    && this.ME2Indicators[10].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 9, 2))
-                {
-                    qs.Add(this.ME2Indicators[10].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind4Unit)
-                    && this.ME2Indicators[10].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 9, 3))
-                {
-                    qs.Add(this.ME2Indicators[10].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind5Unit)
-                    && this.ME2Indicators[10].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 9, 4))
-                {
-                    qs.Add(this.ME2Indicators[10].Ind5Amount);
-                }
-            }
-            if (index == 11)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind1Unit)
-                    && this.ME2Indicators[11].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 10, 0))
-                {
-                    qs.Add(this.ME2Indicators[11].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind2Unit)
-                    && this.ME2Indicators[11].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 10, 1))
-                {
-                    qs.Add(this.ME2Indicators[11].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind3Unit)
-                    && this.ME2Indicators[11].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 10, 2))
-                {
-                    qs.Add(this.ME2Indicators[11].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind4Unit)
-                    && this.ME2Indicators[11].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 10, 3))
-                {
-                    qs.Add(this.ME2Indicators[11].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind5Unit)
-                    && this.ME2Indicators[11].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 10, 4))
-                {
-                    qs.Add(this.ME2Indicators[11].Ind5Amount);
-                }
-            }
-            if (index == 12)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind1Unit)
-                    && this.ME2Indicators[12].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 11, 0))
-                {
-                    qs.Add(this.ME2Indicators[12].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind2Unit)
-                    && this.ME2Indicators[12].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 11, 1))
-                {
-                    qs.Add(this.ME2Indicators[12].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind3Unit)
-                    && this.ME2Indicators[12].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 11, 2))
-                {
-                    qs.Add(this.ME2Indicators[12].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind4Unit)
-                    && this.ME2Indicators[12].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 11, 3))
-                {
-                    qs.Add(this.ME2Indicators[12].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind5Unit)
-                    && this.ME2Indicators[12].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 11, 4))
-                {
-                    qs.Add(this.ME2Indicators[12].Ind5Amount);
-                }
-            }
-            if (index == 13)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind1Unit)
-                    && this.ME2Indicators[13].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 12, 0))
-                {
-                    qs.Add(this.ME2Indicators[13].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind2Unit)
-                    && this.ME2Indicators[13].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 12, 1))
-                {
-                    qs.Add(this.ME2Indicators[13].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind3Unit)
-                    && this.ME2Indicators[13].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 12, 2))
-                {
-                    qs.Add(this.ME2Indicators[13].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind4Unit)
-                    && this.ME2Indicators[13].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 12, 3))
-                {
-                    qs.Add(this.ME2Indicators[13].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind5Unit)
-                    && this.ME2Indicators[13].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 12, 4))
-                {
-                    qs.Add(this.ME2Indicators[13].Ind5Amount);
-                }
-            }
-            if (index == 14)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind1Unit)
-                    && this.ME2Indicators[14].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 13, 0))
-                {
-                    qs.Add(this.ME2Indicators[14].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind2Unit)
-                    && this.ME2Indicators[14].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 13, 1))
-                {
-                    qs.Add(this.ME2Indicators[14].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind3Unit)
-                    && this.ME2Indicators[14].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 13, 2))
-                {
-                    qs.Add(this.ME2Indicators[14].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind4Unit)
-                    && this.ME2Indicators[14].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 13, 3))
-                {
-                    qs.Add(this.ME2Indicators[14].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind5Unit)
-                    && this.ME2Indicators[14].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 13, 4))
-                {
-                    qs.Add(this.ME2Indicators[14].Ind5Amount);
-                }
-            }
-            if (index == 15)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind1Unit)
-                    && this.ME2Indicators[15].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 14, 0))
-                {
-                    qs.Add(this.ME2Indicators[15].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind2Unit)
-                    && this.ME2Indicators[15].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 14, 1))
-                {
-                    qs.Add(this.ME2Indicators[15].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind3Unit)
-                    && this.ME2Indicators[15].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 14, 2))
-                {
-                    qs.Add(this.ME2Indicators[15].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind4Unit)
-                    && this.ME2Indicators[15].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 14, 3))
-                {
-                    qs.Add(this.ME2Indicators[15].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind5Unit)
-                    && this.ME2Indicators[15].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 14, 4))
-                {
-                    qs.Add(this.ME2Indicators[15].Ind5Amount);
-                }
-            }
-            if (index == 16)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind1Unit)
-                    && this.ME2Indicators[16].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 15, 0))
-                {
-                    qs.Add(this.ME2Indicators[16].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind2Unit)
-                    && this.ME2Indicators[16].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 15, 1))
-                {
-                    qs.Add(this.ME2Indicators[16].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind3Unit)
-                    && this.ME2Indicators[16].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 15, 2))
-                {
-                    qs.Add(this.ME2Indicators[16].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind4Unit)
-                    && this.ME2Indicators[16].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 15, 3))
-                {
-                    qs.Add(this.ME2Indicators[16].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind5Unit)
-                    && this.ME2Indicators[16].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 15, 4))
-                {
-                    qs.Add(this.ME2Indicators[16].Ind5Amount);
-                }
-            }
-            if (index == 17)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind1Unit)
-                    && this.ME2Indicators[17].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 16, 0))
-                {
-                    qs.Add(this.ME2Indicators[17].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind2Unit)
-                    && this.ME2Indicators[17].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 16, 1))
-                {
-                    qs.Add(this.ME2Indicators[17].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind3Unit)
-                    && this.ME2Indicators[17].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 16, 2))
-                {
-                    qs.Add(this.ME2Indicators[17].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind4Unit)
-                    && this.ME2Indicators[17].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 16, 3))
-                {
-                    qs.Add(this.ME2Indicators[17].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind5Unit)
-                    && this.ME2Indicators[17].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 16, 4))
-                {
-                    qs.Add(this.ME2Indicators[17].Ind5Amount);
-                }
-            }
-            if (index == 18)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind1Unit)
-                    && this.ME2Indicators[18].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 17, 0))
-                {
-                    qs.Add(this.ME2Indicators[18].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind2Unit)
-                    && this.ME2Indicators[18].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 17, 1))
-                {
-                    qs.Add(this.ME2Indicators[18].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind3Unit)
-                    && this.ME2Indicators[18].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 17, 2))
-                {
-                    qs.Add(this.ME2Indicators[18].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind4Unit)
-                    && this.ME2Indicators[18].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 17, 3))
-                {
-                    qs.Add(this.ME2Indicators[18].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind5Unit)
-                    && this.ME2Indicators[18].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 17, 4))
-                {
-                    qs.Add(this.ME2Indicators[18].Ind5Amount);
-                }
-            }
-            if (index == 19)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind1Unit)
-                    && this.ME2Indicators[19].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 18, 0))
-                {
-                    qs.Add(this.ME2Indicators[19].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind2Unit)
-                    && this.ME2Indicators[19].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 18, 1))
-                {
-                    qs.Add(this.ME2Indicators[19].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind3Unit)
-                    && this.ME2Indicators[19].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 18, 2))
-                {
-                    qs.Add(this.ME2Indicators[19].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind4Unit)
-                    && this.ME2Indicators[19].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 18, 3))
-                {
-                    qs.Add(this.ME2Indicators[19].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind5Unit)
-                    && this.ME2Indicators[19].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 18, 4))
-                {
-                    qs.Add(this.ME2Indicators[19].Ind5Amount);
-                }
-            }
-            if (index == 20)
-            {
-                if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind1Unit)
-                    && this.ME2Indicators[20].Ind1Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 19, 0))
-                {
-                    qs.Add(this.ME2Indicators[20].Ind1Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind2Unit)
-                    && this.ME2Indicators[20].Ind2Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 19, 1))
-                {
-                    qs.Add(this.ME2Indicators[20].Ind2Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind3Unit)
-                    && this.ME2Indicators[20].Ind3Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 19, 2))
-                {
-                    qs.Add(this.ME2Indicators[20].Ind3Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind4Unit)
-                    && this.ME2Indicators[20].Ind4Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 19, 3))
-                {
-                    qs.Add(this.ME2Indicators[20].Ind4Amount);
-                }
-                if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind5Unit)
-                    && this.ME2Indicators[20].Ind5Unit != Constants.NONE
-                    && HasMathTerm(mathTerms, 19, 4))
-                {
-                    qs.Add(this.ME2Indicators[20].Ind5Amount);
-                }
-            }
-            return qs;
-        }
+        //private List<double> GetQsForMathTermswUnits(int index, List<string> mathTerms)
+        //{
+        //    List<double> qs = new List<double>();
+        //    //the units must be set correctly
+        //    //and the mathexpress has to contain the var
+        //    if (index == 1)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind1Unit)
+        //            && this.ME2Indicators[1].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 0, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[1].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind2Unit)
+        //            && this.ME2Indicators[1].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 0, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[1].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind3Unit)
+        //            && this.ME2Indicators[1].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 0, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[1].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind4Unit)
+        //            && this.ME2Indicators[1].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 0, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[1].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind5Unit)
+        //            && this.ME2Indicators[1].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 0, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[1].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 2)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind1Unit)
+        //            && this.ME2Indicators[2].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 1, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[2].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind2Unit)
+        //            && this.ME2Indicators[2].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 1, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[2].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind3Unit)
+        //            && this.ME2Indicators[2].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 1, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[2].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind4Unit)
+        //            && this.ME2Indicators[2].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 1, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[2].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[2].Ind5Unit)
+        //            && this.ME2Indicators[2].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 1, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[2].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 3)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind1Unit)
+        //            && this.ME2Indicators[3].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 2, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[3].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind2Unit)
+        //            && this.ME2Indicators[3].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 2, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[3].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind3Unit)
+        //            && this.ME2Indicators[3].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 2, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[3].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind4Unit)
+        //            && this.ME2Indicators[3].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 2, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[3].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[3].Ind5Unit)
+        //            && this.ME2Indicators[3].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 2, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[3].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 4)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind1Unit)
+        //            && this.ME2Indicators[4].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 3, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[4].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind2Unit)
+        //            && this.ME2Indicators[4].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 3, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[4].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind3Unit)
+        //            && this.ME2Indicators[4].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 3, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[4].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind4Unit)
+        //            && this.ME2Indicators[4].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 3, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[4].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[4].Ind5Unit)
+        //            && this.ME2Indicators[4].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 3, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[4].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 5)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind1Unit)
+        //            && this.ME2Indicators[5].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 4, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[5].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind2Unit)
+        //            && this.ME2Indicators[5].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 4, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[5].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind3Unit)
+        //            && this.ME2Indicators[5].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 4, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[5].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind4Unit)
+        //            && this.ME2Indicators[5].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 4, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[5].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[5].Ind5Unit)
+        //            && this.ME2Indicators[5].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 4, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[5].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 6)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind1Unit)
+        //            && this.ME2Indicators[6].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 5, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[6].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind2Unit)
+        //            && this.ME2Indicators[6].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 5, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[6].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind3Unit)
+        //            && this.ME2Indicators[6].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 5, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[6].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind4Unit)
+        //            && this.ME2Indicators[6].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 5, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[6].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[6].Ind5Unit)
+        //            && this.ME2Indicators[6].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 5, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[6].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 7)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind1Unit)
+        //            && this.ME2Indicators[7].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 6, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[7].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind2Unit)
+        //            && this.ME2Indicators[7].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 6, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[7].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind3Unit)
+        //            && this.ME2Indicators[7].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 6, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[7].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind4Unit)
+        //            && this.ME2Indicators[7].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 6, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[7].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[7].Ind5Unit)
+        //            && this.ME2Indicators[7].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 6, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[7].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 8)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind1Unit)
+        //            && this.ME2Indicators[8].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 7, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[8].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind2Unit)
+        //            && this.ME2Indicators[8].Ind2Unit != Constants.NONE
+        //             && HasMathTerm(mathTerms, 7, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[8].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind3Unit)
+        //            && this.ME2Indicators[8].Ind3Unit != Constants.NONE
+        //             && HasMathTerm(mathTerms, 7, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[8].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind4Unit)
+        //            && this.ME2Indicators[8].Ind4Unit != Constants.NONE
+        //             && HasMathTerm(mathTerms, 7, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[8].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[8].Ind5Unit)
+        //            && this.ME2Indicators[8].Ind5Unit != Constants.NONE
+        //             && HasMathTerm(mathTerms, 7, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[8].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 9)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind1Unit)
+        //            && this.ME2Indicators[9].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 8, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[9].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind2Unit)
+        //            && this.ME2Indicators[9].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 8, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[9].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind3Unit)
+        //            && this.ME2Indicators[9].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 8, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[9].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind4Unit)
+        //            && this.ME2Indicators[9].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 8, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[9].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[9].Ind5Unit)
+        //            && this.ME2Indicators[9].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 8, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[9].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 10)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind1Unit)
+        //            && this.ME2Indicators[10].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 9, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[10].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind2Unit)
+        //            && this.ME2Indicators[10].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 9, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[10].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind3Unit)
+        //            && this.ME2Indicators[10].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 9, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[10].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind4Unit)
+        //            && this.ME2Indicators[10].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 9, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[10].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[10].Ind5Unit)
+        //            && this.ME2Indicators[10].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 9, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[10].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 11)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind1Unit)
+        //            && this.ME2Indicators[11].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 10, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[11].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind2Unit)
+        //            && this.ME2Indicators[11].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 10, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[11].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind3Unit)
+        //            && this.ME2Indicators[11].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 10, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[11].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind4Unit)
+        //            && this.ME2Indicators[11].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 10, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[11].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[11].Ind5Unit)
+        //            && this.ME2Indicators[11].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 10, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[11].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 12)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind1Unit)
+        //            && this.ME2Indicators[12].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 11, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[12].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind2Unit)
+        //            && this.ME2Indicators[12].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 11, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[12].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind3Unit)
+        //            && this.ME2Indicators[12].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 11, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[12].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind4Unit)
+        //            && this.ME2Indicators[12].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 11, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[12].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[12].Ind5Unit)
+        //            && this.ME2Indicators[12].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 11, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[12].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 13)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind1Unit)
+        //            && this.ME2Indicators[13].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 12, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[13].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind2Unit)
+        //            && this.ME2Indicators[13].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 12, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[13].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind3Unit)
+        //            && this.ME2Indicators[13].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 12, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[13].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind4Unit)
+        //            && this.ME2Indicators[13].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 12, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[13].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[13].Ind5Unit)
+        //            && this.ME2Indicators[13].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 12, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[13].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 14)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind1Unit)
+        //            && this.ME2Indicators[14].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 13, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[14].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind2Unit)
+        //            && this.ME2Indicators[14].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 13, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[14].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind3Unit)
+        //            && this.ME2Indicators[14].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 13, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[14].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind4Unit)
+        //            && this.ME2Indicators[14].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 13, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[14].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[14].Ind5Unit)
+        //            && this.ME2Indicators[14].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 13, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[14].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 15)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind1Unit)
+        //            && this.ME2Indicators[15].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 14, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[15].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind2Unit)
+        //            && this.ME2Indicators[15].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 14, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[15].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind3Unit)
+        //            && this.ME2Indicators[15].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 14, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[15].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind4Unit)
+        //            && this.ME2Indicators[15].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 14, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[15].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[15].Ind5Unit)
+        //            && this.ME2Indicators[15].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 14, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[15].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 16)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind1Unit)
+        //            && this.ME2Indicators[16].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 15, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[16].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind2Unit)
+        //            && this.ME2Indicators[16].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 15, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[16].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind3Unit)
+        //            && this.ME2Indicators[16].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 15, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[16].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind4Unit)
+        //            && this.ME2Indicators[16].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 15, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[16].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[16].Ind5Unit)
+        //            && this.ME2Indicators[16].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 15, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[16].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 17)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind1Unit)
+        //            && this.ME2Indicators[17].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 16, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[17].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind2Unit)
+        //            && this.ME2Indicators[17].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 16, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[17].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind3Unit)
+        //            && this.ME2Indicators[17].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 16, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[17].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind4Unit)
+        //            && this.ME2Indicators[17].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 16, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[17].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[17].Ind5Unit)
+        //            && this.ME2Indicators[17].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 16, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[17].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 18)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind1Unit)
+        //            && this.ME2Indicators[18].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 17, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[18].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind2Unit)
+        //            && this.ME2Indicators[18].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 17, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[18].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind3Unit)
+        //            && this.ME2Indicators[18].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 17, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[18].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind4Unit)
+        //            && this.ME2Indicators[18].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 17, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[18].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[18].Ind5Unit)
+        //            && this.ME2Indicators[18].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 17, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[18].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 19)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind1Unit)
+        //            && this.ME2Indicators[19].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 18, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[19].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind2Unit)
+        //            && this.ME2Indicators[19].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 18, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[19].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind3Unit)
+        //            && this.ME2Indicators[19].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 18, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[19].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind4Unit)
+        //            && this.ME2Indicators[19].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 18, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[19].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[19].Ind5Unit)
+        //            && this.ME2Indicators[19].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 18, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[19].Ind5Amount);
+        //        }
+        //    }
+        //    if (index == 20)
+        //    {
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind1Unit)
+        //            && this.ME2Indicators[20].Ind1Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 19, 0))
+        //        {
+        //            qs.Add(this.ME2Indicators[20].Ind1Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind2Unit)
+        //            && this.ME2Indicators[20].Ind2Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 19, 1))
+        //        {
+        //            qs.Add(this.ME2Indicators[20].Ind2Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind3Unit)
+        //            && this.ME2Indicators[20].Ind3Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 19, 2))
+        //        {
+        //            qs.Add(this.ME2Indicators[20].Ind3Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind4Unit)
+        //            && this.ME2Indicators[20].Ind4Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 19, 3))
+        //        {
+        //            qs.Add(this.ME2Indicators[20].Ind4Amount);
+        //        }
+        //        if (!string.IsNullOrEmpty(this.ME2Indicators[20].Ind5Unit)
+        //            && this.ME2Indicators[20].Ind5Unit != Constants.NONE
+        //            && HasMathTerm(mathTerms, 19, 4))
+        //        {
+        //            qs.Add(this.ME2Indicators[20].Ind5Amount);
+        //        }
+        //    }
+        //    return qs;
+        //}
        
         
         private List<double> GetQsForLabel(int index)
         {
             List<double> qs = new List<double>();
-
+            if (index == 0)
+            {
+                if (!string.IsNullOrEmpty(this.ME2Indicators[0].Ind1Unit)
+                    && this.ME2Indicators[0].Ind1Unit != Constants.NONE)
+                {
+                    qs.Add(this.ME2Indicators[0].Ind1Amount);
+                }
+                if (!string.IsNullOrEmpty(this.ME2Indicators[0].Ind2Unit)
+                    && this.ME2Indicators[0].Ind2Unit != Constants.NONE)
+                {
+                    qs.Add(this.ME2Indicators[0].Ind2Amount);
+                }
+                if (!string.IsNullOrEmpty(this.ME2Indicators[0].Ind3Unit)
+                    && this.ME2Indicators[0].Ind3Unit != Constants.NONE)
+                {
+                    qs.Add(this.ME2Indicators[0].Ind3Amount);
+                }
+                if (!string.IsNullOrEmpty(this.ME2Indicators[0].Ind4Unit)
+                    && this.ME2Indicators[0].Ind4Unit != Constants.NONE)
+                {
+                    qs.Add(this.ME2Indicators[0].Ind4Amount);
+                }
+                if (!string.IsNullOrEmpty(this.ME2Indicators[0].Ind5Unit)
+                    && this.ME2Indicators[0].Ind5Unit != Constants.NONE)
+                {
+                    qs.Add(this.ME2Indicators[0].Ind5Amount);
+                }
+            }
             if (index == 1)
             {
                 if (!string.IsNullOrEmpty(this.ME2Indicators[1].Ind1Unit)
@@ -6872,7 +7052,12 @@ namespace DevTreks.Extensions.ME2Statistics
         {
             DevTreks.Extensions.Algorithms.SimulatedAnnealing1 sa
                     = new Algorithms.SimulatedAnnealing1(0, 0, 0, 0, this.CalcParameters);
-            if (index == 1)
+            if (index == 0)
+            {
+                sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[0].Ind1Amount, this.ME2Indicators[0].Ind2Amount,
+                   this.ME2Indicators[0].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
+            }
+            else if (index == 1)
             {
                 sa = new Algorithms.SimulatedAnnealing1(this.ME2Indicators[1].Ind1Amount, this.ME2Indicators[1].Ind2Amount,
                    this.ME2Indicators[1].Ind3Amount, this.ME2Indicators[0].IndIterations, this.CalcParameters);
@@ -6981,7 +7166,17 @@ namespace DevTreks.Extensions.ME2Statistics
         {
             string[] colNames = new List<string>().ToArray();
             List<double> qTs = new List<double>();
-            if (index == 1)
+            if (index == 0)
+            {
+                this.ME2Indicators[0].IndTAmount = sa.BestEnergy;
+                this.ME2Indicators[0].IndTMAmount = sa.BestEnergy;
+                //regular high and low estimation
+                SetPRAIndicatorStats(index, colNames, qTs);
+                //SetTotalRange1();
+                //no condition on type of result yet KISS for now
+                this.ME2Indicators[0].IndMathResult += sa.MathResult;
+            }
+            else if (index == 1)
             {
                 this.ME2Indicators[1].IndTAmount = sa.BestEnergy;
                 this.ME2Indicators[1].IndTMAmount = sa.BestEnergy;
@@ -7141,7 +7336,23 @@ namespace DevTreks.Extensions.ME2Statistics
             int iIndicator = GetNN1Index(index);
             string[] colNames = new List<string>().ToArray();
             List<double> qTs = new List<double>();
-            if (iIndicator == 1)
+            if (iIndicator == 0)
+            {
+                this.ME2Indicators[0].IndTAmount = nn.QTPredicted;
+                this.ME2Indicators[0].IndTMAmount = nn.QTPredicted;
+                this.ME2Indicators[0].IndTLAmount = nn.QTL;
+                this.ME2Indicators[0].IndTLUnit = nn.QTLUnit;
+                if (this.ME2Indicators[0].IndType != Calculator1.RUC_TYPES.none.ToString()
+                    && !string.IsNullOrEmpty(this.ME2Indicators[0].IndType))
+                {
+                    //regular high and low estimation
+                    SetPRAIndicatorStats(index, colNames, qTs);
+                    //SetTotalRange1();
+                }
+                //no condition on type of result yet KISS for now
+                this.ME2Indicators[0].IndMathResult += nn.MathResult;
+            }
+            else if (iIndicator == 1)
             {
                 this.ME2Indicators[1].IndTAmount = nn.QTPredicted;
                 this.ME2Indicators[1].IndTMAmount = nn.QTPredicted;
@@ -7430,8 +7641,11 @@ namespace DevTreks.Extensions.ME2Statistics
         }
         private int GetNN1Index(int index)
         {
-            //one based so that if zero returned ignore the label
             int iLastIndicatorOneBased = 0;
+            if (index == 0)
+            {
+                iLastIndicatorOneBased = 0;
+            }
             if (index == 1)
             {
                 iLastIndicatorOneBased = 1;

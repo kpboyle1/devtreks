@@ -52,6 +52,7 @@ namespace DevTreks.Extensions
         //number of x data columns
         public const int xcols = 10;
         public static string[] MATHTERMS = new string[] {
+                "I0.Q1","I0.Q2","I0.Q3","I0.Q4","I0.Q5","I0.QTM","I0.QTD1","I0.QTD2","I0.QTL","I0.QTU","I0.QT","I0.Q6","I0.Q7","I0.Q8","I0.Q9","I0.Q10",
                 "I1.Q1","I1.Q2","I1.Q3","I1.Q4","I1.Q5","I1.QTM","I1.QTD1","I1.QTD2","I1.QTL","I1.QTU","I1.QT","I1.Q6","I1.Q7","I1.Q8","I1.Q9","I1.Q10",
                 "I2.Q1","I2.Q2","I2.Q3","I2.Q4","I2.Q5","I2.QTM","I2.QTD1","I2.QTD2","I2.QTL","I2.QTU","I2.QT","I2.Q6","I2.Q7","I2.Q8","I2.Q9","I2.Q10",
                 "I3.Q1","I3.Q2","I3.Q3","I3.Q4","I3.Q5","I3.QTM","I3.QTD1","I3.QTD2","I3.QTL","I3.QTU","I3.QT","I3.Q6","I3.Q7","I3.Q8","I3.Q9","I3.Q10",
@@ -2543,7 +2544,7 @@ namespace DevTreks.Extensions
                         }
                         else if (indicatorIndex == 3)
                         {
-                            iIndex =3;
+                            iIndex = 3;
                         }
                         else if (indicatorIndex == 4)
                         {
@@ -3055,6 +3056,12 @@ namespace DevTreks.Extensions
         private int[] GetIndicatorsDisplay()
         {
             List<int> inds = new List<int>();
+            if (ME2Indicators[0].IndMathType == MATH_TYPES.algorithm5.ToString()
+                && ME2Indicators[0].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
+            {
+                //scores filtered by 'score'
+                inds.Add(0);
+            }
             if (ME2Indicators[1].IndMathType == MATH_TYPES.algorithm5.ToString()
                 && ME2Indicators[1].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
             {
@@ -3155,16 +3162,17 @@ namespace DevTreks.Extensions
             {
                 inds.Add(19);
             }
-            if (ME2Indicators[0].IndMathType == MATH_TYPES.algorithm5.ToString()
-                && ME2Indicators[0].IndMathSubType == MATH_SUBTYPES.subalgorithm1.ToString())
-            {
-                //scores filtered by 'score'
-                inds.Add(0);
-            }
+            
             return inds.ToArray();
         }
         public void AddAllIndicators(List<int> newInds)
         {
+            if (!newInds.Contains(0)
+               && (!string.IsNullOrEmpty(ME2Indicators[0].IndLabel)))
+            {
+                //ui doesn't have label just label constant
+                newInds.Add(0);
+            }
             if (!newInds.Contains(1)
                 && (!string.IsNullOrEmpty(ME2Indicators[1].IndLabel)))
             {
@@ -3261,10 +3269,10 @@ namespace DevTreks.Extensions
             {
                 newInds.Add(19);
             }
-            if (!newInds.Contains(19)
+            if (!newInds.Contains(20)
                 && (!string.IsNullOrEmpty(ME2Indicators[20].IndLabel)))
             {
-                newInds.Add(19);
+                newInds.Add(20);
             }
         }
         //retain for potential use
@@ -3468,7 +3476,19 @@ namespace DevTreks.Extensions
         private List<string> GetMathResultLines(int indicatorIndex)
         {
             List<string> lines = new List<string>();
-            if (indicatorIndex == 1)
+            if (indicatorIndex == 0)
+            {
+                if (ME2Indicators[0].IndMathResult.ToLower().StartsWith("http"))
+                {
+                    lines = GetDataLines(ME2Indicators[0].IndMathResult);
+                }
+                else
+                {
+                    //get the csv lines out of mathresult and skip the first line
+                    lines = CalculatorHelpers.GetLinesandSkip(ME2Indicators[0].IndMathResult, 1);
+                }
+            }
+            else if (indicatorIndex == 1)
             {
                 if (ME2Indicators[1].IndMathResult.ToLower().StartsWith("http"))
                 {
@@ -3690,6 +3710,11 @@ namespace DevTreks.Extensions
                 }
             }
             return lines;
+        }
+        public void SetTotalMathTypeStock0()
+        {
+            ME2Indicators[0].IndTAmount = this.GetTotalFromMathExpression(0, _colNames, ME2Indicators[0].IndMathExpression, new List<double>(xcols - 5));
+            ME2Indicators[0].IndTMAmount = ME2Indicators[0].IndTAmount;
         }
         public void SetTotalMathTypeStock1()
         {
@@ -4391,6 +4416,7 @@ namespace DevTreks.Extensions
         private int GetIndicatorIndex(string[] cols, string col)
         {
             int iIndIndex = 0;
+            //score is IIndeIndex = 0
             if (iIndIndex == 0)
             {
                 //i == 0 is the dep column and not included in MathExpressions
@@ -4708,7 +4734,22 @@ namespace DevTreks.Extensions
         private string GetIndicatorLabel(string[] cols, string col)
         {
             string sIndLabel = string.Empty;
-
+            if (sIndLabel == string.Empty)
+            {
+                //i == 0 is the dep column and not included in MathExpressions
+                for (int i = 1; i < cols.Count(); i++)
+                {
+                    if (ME2Indicators[0].IndMathExpression.ToLower().Contains(cols[i].ToLower()))
+                    {
+                        sIndLabel = ME2Indicators[0].IndLabel;
+                    }
+                    else
+                    {
+                        sIndLabel = string.Empty;
+                        break;
+                    }
+                }
+            }
             if (sIndLabel == string.Empty)
             {
                 //i == 0 is the dep column and not included in MathExpressions
@@ -5219,7 +5260,13 @@ namespace DevTreks.Extensions
                                             List<string> mathTerms = new List<string>();
                                             //dependent var colNames found in MathExpression
                                             List<string> depColNames = new List<string>();
-                                            if (iKey == 1
+                                            if (iKey == 0
+                                                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[0].IndMathExpression))
+                                            {
+                                                //temporary object to run calcs
+                                                algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[0].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
+                                            }
+                                            else if (iKey == 1
                                                  && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
@@ -5333,7 +5380,7 @@ namespace DevTreks.Extensions
                                                 //temporary object to run calcs
                                                 algos.GetDataToAnalyzeColNames(iKey, ME2Indicators[19].IndMathExpression, _colNames, ref depColNames, ref mathTerms);
                                             }
-                                            else if (iKey == 19
+                                            else if (iKey == 20
                                                  && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[20].IndMathExpression))
                                             {
                                                 //temporary object to run calcs
@@ -5530,7 +5577,17 @@ namespace DevTreks.Extensions
             //need a temporary object to calc QT -calc comes from properties of object
             ME2Statistics.ME2Algos algos = new ME2Statistics.ME2Algos(this);
             //mathterms define which qamount to send to algorith for predicting a given set of qxs
-            if (index == 1
+            if (index == 0
+                 && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[0].IndMathExpression))
+            {
+                //188 allows dep var from dataURLs to be included in math express -more flexible (i.e. anova can't use dummy vars but still wants desc stats for treatments ...)
+                algos.ME2Indicators[0].IndTAmount = qT;
+                //set the calcs for mathexpression
+                morevars = SetQsForMathTerms(algos, index, mathTerms, qCalcs);
+                //use the temp qs to set qT (must use standard math express format)
+                qTCalc = algos.GetTotalFromMathExpression(0, _colNames, algos.ME2Indicators[0].IndMathExpression, morevars);
+            }
+            else if (index == 1
                  && ME2Statistics.ME2Algos.HasMathExpression(algos.ME2Indicators[1].IndMathExpression))
             {
                 //188 allows dep var from dataURLs to be included in math express -more flexible (i.e. anova can't use dummy vars but still wants desc stats for treatments ...)
@@ -5693,31 +5750,31 @@ namespace DevTreks.Extensions
             //and will have same size
             //the units must be set correctly
             //and the mathexpress has to contain the var
-            if (index == 1)
+            if (index == 0)
             {
                 if (HasMathTerm(mathTerms, 0, 0))
                 {
-                    baseCalcor.ME2Indicators[1].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[0].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 0, 1))
                 {
-                    baseCalcor.ME2Indicators[1].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[0].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 0, 2))
                 {
-                    baseCalcor.ME2Indicators[1].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[0].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 0, 3))
                 {
-                    baseCalcor.ME2Indicators[1].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[0].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 0, 4))
                 {
-                    baseCalcor.ME2Indicators[1].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[0].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 0, 11))
@@ -5746,31 +5803,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 2)
+            if (index == 1)
             {
                 if (HasMathTerm(mathTerms, 1, 0))
                 {
-                    baseCalcor.ME2Indicators[2].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[1].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 1, 1))
                 {
-                    baseCalcor.ME2Indicators[2].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[1].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 1, 2))
                 {
-                    baseCalcor.ME2Indicators[2].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[1].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 1, 3))
                 {
-                    baseCalcor.ME2Indicators[2].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[1].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 1, 4))
                 {
-                    baseCalcor.ME2Indicators[2].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[1].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 1, 11))
@@ -5799,31 +5856,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 3)
+            if (index == 2)
             {
                 if (HasMathTerm(mathTerms, 2, 0))
                 {
-                    baseCalcor.ME2Indicators[3].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[2].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 2, 1))
                 {
-                    baseCalcor.ME2Indicators[3].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[2].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 2, 2))
                 {
-                    baseCalcor.ME2Indicators[3].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[2].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 2, 3))
                 {
-                    baseCalcor.ME2Indicators[3].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[2].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 2, 4))
                 {
-                    baseCalcor.ME2Indicators[3].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[2].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 2, 11))
@@ -5852,31 +5909,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 4)
+            if (index == 3)
             {
                 if (HasMathTerm(mathTerms, 3, 0))
                 {
-                    baseCalcor.ME2Indicators[4].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[3].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 3, 1))
                 {
-                    baseCalcor.ME2Indicators[4].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[3].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 3, 2))
                 {
-                    baseCalcor.ME2Indicators[4].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[3].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 3, 3))
                 {
-                    baseCalcor.ME2Indicators[4].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[3].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 3, 4))
                 {
-                    baseCalcor.ME2Indicators[4].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[3].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 3, 11))
@@ -5905,31 +5962,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 5)
+            if (index == 4)
             {
                 if (HasMathTerm(mathTerms, 4, 0))
                 {
-                    baseCalcor.ME2Indicators[5].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[4].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 4, 1))
                 {
-                    baseCalcor.ME2Indicators[5].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[4].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 4, 2))
                 {
-                    baseCalcor.ME2Indicators[5].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[4].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 4, 3))
                 {
-                    baseCalcor.ME2Indicators[5].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[4].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 4, 4))
                 {
-                    baseCalcor.ME2Indicators[5].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[4].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 4, 11))
@@ -5958,31 +6015,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 6)
+            if (index == 5)
             {
                 if (HasMathTerm(mathTerms, 5, 0))
                 {
-                    baseCalcor.ME2Indicators[6].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[5].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 5, 1))
                 {
-                    baseCalcor.ME2Indicators[6].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[5].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 5, 2))
                 {
-                    baseCalcor.ME2Indicators[6].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[5].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 5, 3))
                 {
-                    baseCalcor.ME2Indicators[6].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[5].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 5, 4))
                 {
-                    baseCalcor.ME2Indicators[6].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[5].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 5, 11))
@@ -6011,31 +6068,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 7)
+            if (index == 6)
             {
                 if (HasMathTerm(mathTerms, 6, 0))
                 {
-                    baseCalcor.ME2Indicators[7].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[6].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 6, 1))
                 {
-                    baseCalcor.ME2Indicators[7].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[6].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 6, 2))
                 {
-                    baseCalcor.ME2Indicators[7].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[6].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 6, 3))
                 {
-                    baseCalcor.ME2Indicators[7].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[6].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 6, 4))
                 {
-                    baseCalcor.ME2Indicators[7].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[6].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 6, 11))
@@ -6064,31 +6121,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 8)
+            if (index == 7)
             {
                 if (HasMathTerm(mathTerms, 7, 0))
                 {
-                    baseCalcor.ME2Indicators[8].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[7].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 7, 1))
                 {
-                    baseCalcor.ME2Indicators[8].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[7].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 7, 2))
                 {
-                    baseCalcor.ME2Indicators[8].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[7].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 7, 3))
                 {
-                    baseCalcor.ME2Indicators[8].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[7].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 7, 4))
                 {
-                    baseCalcor.ME2Indicators[8].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[7].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 7, 11))
@@ -6117,31 +6174,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 9)
+            if (index == 8)
             {
                 if (HasMathTerm(mathTerms, 8, 0))
                 {
-                    baseCalcor.ME2Indicators[9].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[8].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 8, 1))
                 {
-                    baseCalcor.ME2Indicators[9].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[8].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 8, 2))
                 {
-                    baseCalcor.ME2Indicators[9].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[8].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 8, 3))
                 {
-                    baseCalcor.ME2Indicators[9].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[8].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 8, 4))
                 {
-                    baseCalcor.ME2Indicators[9].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[8].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 8, 11))
@@ -6170,31 +6227,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 10)
+            if (index == 9)
             {
                 if (HasMathTerm(mathTerms, 9, 0))
                 {
-                    baseCalcor.ME2Indicators[10].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[9].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 9, 1))
                 {
-                    baseCalcor.ME2Indicators[10].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[9].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 9, 2))
                 {
-                    baseCalcor.ME2Indicators[10].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[9].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 9, 3))
                 {
-                    baseCalcor.ME2Indicators[10].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[9].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 9, 4))
                 {
-                    baseCalcor.ME2Indicators[10].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[9].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 9, 11))
@@ -6223,31 +6280,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 11)
+            if (index == 10)
             {
                 if (HasMathTerm(mathTerms, 10, 0))
                 {
-                    baseCalcor.ME2Indicators[11].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[10].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 10, 1))
                 {
-                    baseCalcor.ME2Indicators[11].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[10].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 10, 2))
                 {
-                    baseCalcor.ME2Indicators[11].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[10].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 10, 3))
                 {
-                    baseCalcor.ME2Indicators[11].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[10].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 10, 4))
                 {
-                    baseCalcor.ME2Indicators[11].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[10].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 10, 11))
@@ -6276,31 +6333,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 12)
+            if (index == 11)
             {
                 if (HasMathTerm(mathTerms, 11, 0))
                 {
-                    baseCalcor.ME2Indicators[12].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[11].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 11, 1))
                 {
-                    baseCalcor.ME2Indicators[12].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[11].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 11, 2))
                 {
-                    baseCalcor.ME2Indicators[12].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[11].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 11, 3))
                 {
-                    baseCalcor.ME2Indicators[12].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[11].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 11, 4))
                 {
-                    baseCalcor.ME2Indicators[12].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[11].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 11, 11))
@@ -6329,31 +6386,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 13)
+            if (index == 12)
             {
                 if (HasMathTerm(mathTerms, 12, 0))
                 {
-                    baseCalcor.ME2Indicators[13].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[12].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 12, 1))
                 {
-                    baseCalcor.ME2Indicators[13].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[12].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 12, 2))
                 {
-                    baseCalcor.ME2Indicators[13].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[12].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 12, 3))
                 {
-                    baseCalcor.ME2Indicators[13].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[12].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 12, 4))
                 {
-                    baseCalcor.ME2Indicators[13].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[12].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 12, 11))
@@ -6382,31 +6439,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 14)
+            if (index == 13)
             {
                 if (HasMathTerm(mathTerms, 13, 0))
                 {
-                    baseCalcor.ME2Indicators[14].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[13].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 13, 1))
                 {
-                    baseCalcor.ME2Indicators[14].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[13].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 13, 2))
                 {
-                    baseCalcor.ME2Indicators[14].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[13].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 13, 3))
                 {
-                    baseCalcor.ME2Indicators[14].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[13].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 13, 4))
                 {
-                    baseCalcor.ME2Indicators[14].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[13].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 13, 11))
@@ -6435,31 +6492,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 15)
+            if (index == 14)
             {
                 if (HasMathTerm(mathTerms, 14, 0))
                 {
-                    baseCalcor.ME2Indicators[15].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[14].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 14, 1))
                 {
-                    baseCalcor.ME2Indicators[15].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[14].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 14, 2))
                 {
-                    baseCalcor.ME2Indicators[15].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[14].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 14, 3))
                 {
-                    baseCalcor.ME2Indicators[15].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[14].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 14, 4))
                 {
-                    baseCalcor.ME2Indicators[15].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[14].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 14, 11))
@@ -6488,31 +6545,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 16)
+            if (index == 15)
             {
                 if (HasMathTerm(mathTerms, 15, 0))
                 {
-                    baseCalcor.ME2Indicators[16].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[15].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 15, 1))
                 {
-                    baseCalcor.ME2Indicators[16].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[15].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 15, 2))
                 {
-                    baseCalcor.ME2Indicators[16].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[15].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 15, 3))
                 {
-                    baseCalcor.ME2Indicators[16].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[15].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 15, 4))
                 {
-                    baseCalcor.ME2Indicators[16].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[15].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 15, 11))
@@ -6541,31 +6598,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 17)
+            if (index == 16)
             {
                 if (HasMathTerm(mathTerms, 16, 0))
                 {
-                    baseCalcor.ME2Indicators[17].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[16].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 16, 1))
                 {
-                    baseCalcor.ME2Indicators[17].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[16].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 16, 2))
                 {
-                    baseCalcor.ME2Indicators[17].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[16].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 16, 3))
                 {
-                    baseCalcor.ME2Indicators[17].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[16].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 16, 4))
                 {
-                    baseCalcor.ME2Indicators[17].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[16].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 16, 11))
@@ -6594,31 +6651,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 18)
+            if (index == 17)
             {
                 if (HasMathTerm(mathTerms, 17, 0))
                 {
-                    baseCalcor.ME2Indicators[18].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[17].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 17, 1))
                 {
-                    baseCalcor.ME2Indicators[18].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[17].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 17, 2))
                 {
-                    baseCalcor.ME2Indicators[18].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[17].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 17, 3))
                 {
-                    baseCalcor.ME2Indicators[18].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[17].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 17, 4))
                 {
-                    baseCalcor.ME2Indicators[18].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[17].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 17, 11))
@@ -6647,31 +6704,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 19)
+            if (index == 18)
             {
                 if (HasMathTerm(mathTerms, 18, 0))
                 {
-                    baseCalcor.ME2Indicators[19].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[18].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 18, 1))
                 {
-                    baseCalcor.ME2Indicators[19].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[18].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 18, 2))
                 {
-                    baseCalcor.ME2Indicators[19].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[18].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 18, 3))
                 {
-                    baseCalcor.ME2Indicators[19].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[18].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 18, 4))
                 {
-                    baseCalcor.ME2Indicators[19].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[18].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 18, 11))
@@ -6700,31 +6757,31 @@ namespace DevTreks.Extensions
                     i++;
                 }
             }
-            if (index == 20)
+            if (index == 19)
             {
                 if (HasMathTerm(mathTerms, 19, 0))
                 {
-                    baseCalcor.ME2Indicators[20].Ind1Amount = qs[i];
+                    baseCalcor.ME2Indicators[19].Ind1Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 19, 1))
                 {
-                    baseCalcor.ME2Indicators[20].Ind2Amount = qs[i];
+                    baseCalcor.ME2Indicators[19].Ind2Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 19, 2))
                 {
-                    baseCalcor.ME2Indicators[20].Ind3Amount = qs[i];
+                    baseCalcor.ME2Indicators[19].Ind3Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 19, 3))
                 {
-                    baseCalcor.ME2Indicators[20].Ind4Amount = qs[i];
+                    baseCalcor.ME2Indicators[19].Ind4Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 19, 4))
                 {
-                    baseCalcor.ME2Indicators[20].Ind5Amount = qs[i];
+                    baseCalcor.ME2Indicators[19].Ind5Amount = qs[i];
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 19, 11))
@@ -6748,6 +6805,59 @@ namespace DevTreks.Extensions
                     i++;
                 }
                 if (HasMathTerm(mathTerms, 19, 15))
+                {
+                    morevars[4] = qs[i];
+                    i++;
+                }
+            }
+            if (index == 20)
+            {
+                if (HasMathTerm(mathTerms, 20, 0))
+                {
+                    baseCalcor.ME2Indicators[20].Ind1Amount = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 1))
+                {
+                    baseCalcor.ME2Indicators[20].Ind2Amount = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 2))
+                {
+                    baseCalcor.ME2Indicators[20].Ind3Amount = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 3))
+                {
+                    baseCalcor.ME2Indicators[20].Ind4Amount = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 4))
+                {
+                    baseCalcor.ME2Indicators[20].Ind5Amount = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 11))
+                {
+                    morevars[0] = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 12))
+                {
+                    morevars[1] = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 13))
+                {
+                    morevars[2] = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 14))
+                {
+                    morevars[3] = qs[i];
+                    i++;
+                }
+                if (HasMathTerm(mathTerms, 20, 15))
                 {
                     morevars[4] = qs[i];
                     i++;
@@ -6914,6 +7024,24 @@ namespace DevTreks.Extensions
                     sb.Append(string.Concat("Q10 mean = ", Math.Round(q10s.Average(), 4), ", "));
                 }
                 int iSiblingIndicator = 0;
+                if (index == 0
+                    && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[0].IndMathExpression))
+                {
+                    ME2Indicators[0].IndTAmount = Math.Round(qTs.Average(), 4);
+                    SetAlgoPRAStats(index, qTs.ToList());
+                    ME2Indicators[0].IndMathResult += sb.ToString();
+                    iAlgoIndicator = index;
+                    iSiblingIndicator = ME2Statistics.ME2Algos.GetSiblingIndicatorIndex(index, 0, this);
+                    if (iSiblingIndicator != 0)
+                    {
+                        SetIndicatorQxMeans(iSiblingIndicator, q1s, q2s, q3s, q4s, q5s);
+                        SetIndicatorQxMeans(0, q6s, q7s, q8s, q9s, q10s);
+                    }
+                    else
+                    {
+                        SetIndicatorQxMeans(0, q1s, q2s, q3s, q4s, q5s);
+                    }
+                }
                 if (index == 1
                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
                 {
@@ -7565,12 +7693,18 @@ namespace DevTreks.Extensions
         public void SetSeparateRanges(int index)
         {
             List<double> qTs = new List<double>();
-            if (index == 1
+            if (index == 0
+                 && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[0].IndMathExpression))
+            {
+                //regular high and low estimation
+                SetAlgoPRAStats(0, qTs);
+                //SetTotalRange1();
+            }
+            else if (index == 1
                  && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[1].IndMathExpression))
             {
                 //regular high and low estimation
-                SetAlgoPRAStats(1, qTs);
-                //SetTotalRange1();
+                SetAlgoPRAStats(1, qTs);;
             }
             else if (index == 2
                  && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[2].IndMathExpression))
@@ -7821,8 +7955,25 @@ namespace DevTreks.Extensions
                 //lower case
                 sMathExpress = sMathExpress.Replace("q", "Q");
                 sMathExpress = sMathExpress.Replace("i", "I");
-                //
                 //sibling vars
+                sMathExpress = sMathExpress.Replace("I0.Q6", morevars[0].ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.Q7", morevars[1].ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.Q8", morevars[2].ToString("N4", CultureInfo.InvariantCulture));
+                //has to come before I0.Q1
+                sMathExpress = sMathExpress.Replace("I0.Q9", morevars[3].ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.Q10", morevars[4].ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.Q1", baseCalc.ME2Indicators[0].Ind1Amount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.Q2", baseCalc.ME2Indicators[0].Ind2Amount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.Q3", baseCalc.ME2Indicators[0].Ind3Amount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.Q4", baseCalc.ME2Indicators[0].Ind4Amount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.Q5", baseCalc.ME2Indicators[0].Ind5Amount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.QTM", baseCalc.ME2Indicators[0].IndTMAmount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.QTD1", baseCalc.ME2Indicators[0].IndTD1Amount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.QTD2", baseCalc.ME2Indicators[0].IndTD2Amount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.QTL", baseCalc.ME2Indicators[0].IndTLAmount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.QTU", baseCalc.ME2Indicators[0].IndTUAmount.ToString("N4", CultureInfo.InvariantCulture));
+                sMathExpress = sMathExpress.Replace("I0.QT", baseCalc.ME2Indicators[0].IndTAmount.ToString("N4", CultureInfo.InvariantCulture));
+
                 sMathExpress = sMathExpress.Replace("I1.Q6", morevars[0].ToString("N4", CultureInfo.InvariantCulture));
                 sMathExpress = sMathExpress.Replace("I1.Q7", morevars[1].ToString("N4", CultureInfo.InvariantCulture));
                 sMathExpress = sMathExpress.Replace("I1.Q8", morevars[2].ToString("N4", CultureInfo.InvariantCulture));
@@ -8164,9 +8315,16 @@ namespace DevTreks.Extensions
                 sMathExpress = sMathExpress.Replace("I20.QTL", baseCalc.ME2Indicators[20].IndTLAmount.ToString("N4", CultureInfo.InvariantCulture));
                 sMathExpress = sMathExpress.Replace("I20.QTU", baseCalc.ME2Indicators[20].IndTUAmount.ToString("N4", CultureInfo.InvariantCulture));
                 sMathExpress = sMathExpress.Replace("I20.QT", baseCalc.ME2Indicators[20].IndTAmount.ToString("N4", CultureInfo.InvariantCulture));
-
-                //self variables (no self for ind = 0, scores set from other inds)
-                if (indicator == 1)
+                
+                if (indicator == 0)
+                {
+                    sMathExpress = sMathExpress.Replace("Q1", baseCalc.ME2Indicators[0].Ind1Amount.ToString("N4", CultureInfo.InvariantCulture));
+                    sMathExpress = sMathExpress.Replace("Q2", baseCalc.ME2Indicators[0].Ind2Amount.ToString("N4", CultureInfo.InvariantCulture));
+                    sMathExpress = sMathExpress.Replace("Q3", baseCalc.ME2Indicators[0].Ind3Amount.ToString("N4", CultureInfo.InvariantCulture));
+                    sMathExpress = sMathExpress.Replace("Q4", baseCalc.ME2Indicators[0].Ind4Amount.ToString("N4", CultureInfo.InvariantCulture));
+                    sMathExpress = sMathExpress.Replace("Q5", baseCalc.ME2Indicators[0].Ind5Amount.ToString("N4", CultureInfo.InvariantCulture));
+                }
+                else if (indicator == 1)
                 {
                     sMathExpress = sMathExpress.Replace("Q1", baseCalc.ME2Indicators[1].Ind1Amount.ToString("N4", CultureInfo.InvariantCulture));
                     sMathExpress = sMathExpress.Replace("Q2", baseCalc.ME2Indicators[1].Ind2Amount.ToString("N4", CultureInfo.InvariantCulture));
