@@ -17,7 +17,7 @@ namespace DevTreks.Extensions
     ///             Benefits: SB1Stock.Total1.SB12Stock.SB02Stock
     ///             The class aggregates sbstocks.
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2016, November
     ///NOTES        1. Budgets could use a NET set of props rather than TOTALS, but causes too much display customization
     ///</summary>
     public class SB1Total1 : SB1Stock
@@ -106,8 +106,9 @@ namespace DevTreks.Extensions
                 if (ind.CalculatorType
                     == SB1CalculatorHelper.CALCULATOR_TYPES.sb101.ToString())
                 {
+                    //204 deprecated running calcs again -calcs don't change
                     //rerun calcs using input.OCAmount or input.CAPAmount and multiplier (input.times)
-                    await ind.RunSB1C1CalculationsAsync(sb1Stock.CalcParameters);
+                    //await ind.RunSB1C1CalculationsAsync(sb1Stock.CalcParameters);
                     //need a couple of properties set
                     sb1Stock.Total1.SB11Stock.SubApplicationType = this.CalcParameters.SubApplicationType.ToString();
                     sb1Stock.Total1.SB11Stock.AnalyzerType = this.CalcParameters.AnalyzerParms.AnalyzerType;
@@ -132,8 +133,9 @@ namespace DevTreks.Extensions
                 if (ind.CalculatorType
                     == SB1CalculatorHelper.CALCULATOR_TYPES.sb102.ToString())
                 {
+                    //204 deprecated running calcs again -calcs don't change
                     //rerun calcs using input.OCAmount or input.CAPAmount and multiplier (input.times)
-                    await ind.RunSB1B1CalculationsAsync(sb1Stock.CalcParameters);
+                    //await ind.RunSB1B1CalculationsAsync(sb1Stock.CalcParameters);
                     //need a couple of properties set
                     sb1Stock.Total1.SB12Stock.SubApplicationType = this.CalcParameters.SubApplicationType.ToString();
                     sb1Stock.Total1.SB12Stock.AnalyzerType = this.CalcParameters.AnalyzerParms.AnalyzerType;

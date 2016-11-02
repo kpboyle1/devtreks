@@ -140,14 +140,6 @@ namespace DevTreks.Extensions
             calculator.AnalyzerType = this.AnalyzerType;
             this.CopyCalculatorProperties(calculator);
             ME2Stock stock = new ME2Stock(this.CalcParameters);
-            //if (this.CalcParameters != null)
-            //{
-            //    stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
-            //}
-            //else
-            //{
-            //    stock.CalcParameters = new CalculatorParameters();
-            //}
             //this copies the ME2Calc.Indicators to the analyzer
             if (this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mestat1.ToString())
             {
@@ -181,14 +173,6 @@ namespace DevTreks.Extensions
                 //set up the new me2Stock
                 this.CopyCalculatorProperties(calculator);
                 this.AnalyzerType = calculator.AnalyzerType;
-                //if (calculator.CalcParameters != null)
-                //{
-                //    this.CalcParameters = new CalculatorParameters(calculator.CalcParameters);
-                //}
-                //else
-                //{
-                //    this.CalcParameters = new CalculatorParameters();
-                //}
                 this.Stocks = new List<ME2Stock>();
                 foreach (ME2Stock obsStock in calculator.Stocks)
                 {
@@ -197,14 +181,6 @@ namespace DevTreks.Extensions
                     //stock gets same props as this (which are copied from calculator
                     stock.CopyCalculatorProperties(this);
                     stock.AnalyzerType = this.AnalyzerType;
-                    //if (this.CalcParameters != null)
-                    //{
-                    //    stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
-                    //}
-                    //else
-                    //{
-                    //    stock.CalcParameters = new CalculatorParameters();
-                    //}
                     //copy the analysis to the stock
                     if (this.AnalyzerType
                         == ME2AnalyzerHelper.ANALYZER_TYPES.mestat1.ToString())

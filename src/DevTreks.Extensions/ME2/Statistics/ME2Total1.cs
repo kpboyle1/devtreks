@@ -235,8 +235,10 @@ namespace DevTreks.Extensions
                     //multipliers (input.times)
                     ChangeIndicatorByMultiplier(ind, newCalc.Multiplier);
                 }
-                //rerun the calculations (set the multiplier adjusted totals)
-                bHasAnalysis = newCalc.RunCalculations();
+                //204 deprecated rerunning calcs -not necessary when base elements updated properlty
+                //rerun the calculations
+                bHasAnalysis = true;
+                //bHasAnalysis = newCalc.RunCalculations();
                 foreach (ME2Indicator ind in newCalc.ME2Indicators)
                 {
                     //make sure that each indicator has a corresponding stock

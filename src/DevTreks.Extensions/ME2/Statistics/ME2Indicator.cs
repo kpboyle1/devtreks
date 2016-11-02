@@ -257,6 +257,20 @@ namespace DevTreks.Extensions
                 Observations = ME2Indicators.Count;
             }
         }
+        public virtual void AddME2IndicatorsProperties(
+            ME2Indicator calculator)
+        {
+            if (calculator.ME2Indicators != null)
+            {
+                foreach (ME2Indicator calculatorInd in calculator.ME2Indicators)
+                {
+                    ME2Indicator ind = new ME2Indicator();
+                    CopyME2IndicatorProperties(ind, calculatorInd);
+                    ME2Indicators.Add(ind);
+                }
+                Observations = ME2Indicators.Count;
+            }
+        }
         private void CopyME2IndicatorProperties(
             ME2Indicator ind, ME2Indicator calculator)
         {

@@ -386,6 +386,32 @@ namespace DevTreks.Extensions
                                 if (obsStock.Change1 != null)
                                 {
                                     obsStock.Total1 = new ME2Total1(this.CalcParameters);
+                                    ////204 allowed more flexibility with indicators 
+                                    ////ancestors and siblings can have multiple inds with different labels and 1 stock for each ind collection
+                                    if (obsStock.Change1.Stocks != null)
+                                    {
+                                        if (obsStock.Change1.Stocks.Count > 0)
+                                        {
+                                            int k = 0;
+                                            foreach (var addedstock in obsStock.Change1.Stocks)
+                                            {
+                                                if (addedstock.ME2Indicators.Count > 0)
+                                                {
+                                                    if (k == 0)
+                                                    {
+                                                        //this resets indicator list
+                                                        obsStock.Change1.CopyME2IndicatorsProperties(addedstock);
+                                                    }
+                                                    else
+                                                    {
+                                                        //when totals are run it will use ind.Label to add total to proper stock
+                                                        obsStock.Change1.AddME2IndicatorsProperties(addedstock);
+                                                    }
+                                                }
+                                                k++;
+                                            }
+                                        }
+                                    }
                                     if (obsStock.Change1.ME2Indicators != null)
                                     {
                                         if (obsStock.Change1.ME2Indicators.Count > 0)
@@ -510,12 +536,10 @@ namespace DevTreks.Extensions
                         //loop through the indicator label-aggregated totals
                         foreach (ME2Total1 total in benchmark.Total1.Stocks)
                         {
-                            {
-                                //and fill in the base list
-                                ME2Change1 baseChange = new ME2Change1(observation.CalcParameters);
-                                baseChange.CopyTotalME2IndicatorStockProperties(baseChange, total);
-                                baseTotals.Add(baseChange);
-                            }
+                            //and fill in the base list
+                            ME2Change1 baseChange = new ME2Change1(observation.CalcParameters);
+                            baseChange.CopyTotalME2IndicatorStockProperties(baseChange, total);
+                            baseTotals.Add(baseChange);
                         }
                     }
                 }
@@ -537,12 +561,10 @@ namespace DevTreks.Extensions
                         //loop through the indicator label-aggregated totals
                         foreach (ME2Total1 total in xminus1.Total1.Stocks)
                         {
-                            {
-                                //and fill in the base list
-                                ME2Change1 xminus1Change = new ME2Change1(observation.CalcParameters);
-                                xminus1Change.CopyTotalME2IndicatorStockProperties(xminus1Change, total);
-                                xminus1Totals.Add(xminus1Change);
-                            }
+                            //and fill in the base list
+                            ME2Change1 xminus1Change = new ME2Change1(observation.CalcParameters);
+                            xminus1Change.CopyTotalME2IndicatorStockProperties(xminus1Change, total);
+                            xminus1Totals.Add(xminus1Change);
                         }
                     }
                 }
