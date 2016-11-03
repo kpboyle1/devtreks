@@ -1,5 +1,5 @@
 Appendix B. ReadMe.txt
-Version: 2.0.2, October 04, 2016
+Version: 2.0.4, November 04, 2016
 Introduction
 DevTreks is a multitier ASP.NET Core 1 database 
 application. The web project, DevTreks, uses an 
@@ -18,11 +18,11 @@ Always visit the What's New link on the home site
 for the latest news. The What's New text file lists 
 tutorials that have been upgraded recently. Those 
 tutorials are usually associated with the current 
-release. The Deployment tutorial explains how the 
+release. The Source Code tutorial explains how the 
 source code works. The Social Budgeting tutorial 
 explains how to manage networks, clubs, and 
 members to deliver social budgeting data services. 
-The Calculators and Analyzers tutorials explains 
+The Calculators and Analyzers tutorial explains 
 how calculators and analyzers work. 
 
 home site
@@ -35,11 +35,10 @@ https://github.com/kpboyle1/devtreksapi1
 database.zip site
 https://devtreks.codeplex.com/
 
-What's New in Version 2.0.2
-1.	CTAs (Conservation Technology Assessments): R, Python, Statistical Virtual Machine, and AML: The Technology Assessment 01 tutorial has been upgraded to explain the changes made for Version 2.0.2, including the use of Anaconda 4 with Python 3.5.2, Microsoft R Open and Intel Math Kernel with R 3.3.0, Statistical Virtual Machines with various statistical packages, and Azure Machine Learning (AML) web services. 
-2.	DevTreksStatsApi WebApi: A new ASP.NET Core 1 WebApi app, DevTreksStatsApi, exposes a REST interface that accepts POST http commands that contain a JSON string in the request’s body (i.e. http://locahost:5000/api/statscript). The object’s properties include a data URL and a statistical script URL. The host runs the statistical script against the data and returns the JSON string that holds the statistical results. This WebApi app is deployed to the Statistical Virtual Machine mentioned in Item 3. A new client has been added to DevTreks that uses the api. The source code has been added to the devtrekapi1 github repository. 
-3.	CTA-Prevention (Climate Change): The Technology Assessment 02 tutorial has been updated and further proofed.
-
+What's New in Version 2.0.4
+1.	Monitoring and Evaluation (M&E) Calculators and Analyzers: The MEF Extension, DevTreks.Extensions.ME2, holding M&E Calculators and Analyzers, was upgraded to support the measurement of risk and uncertainty in M&E indicators. The Monitoring and Evaluation tutorials were upgraded to document the changes. A major advantage to the upgrade is that all of the nascent CTA algorithms, documented in the Technology Assessment tutorials, can also be used to conduct Monitoring and Evaluation calculation and analysis.
+2.	Resource Stock Calculators and Analyzers: The MEF Extension, SB1, holding Resource Stock Calculators and Analyzers, was changed by no longer rerunning base element Resource Stock calculations during analyses. The Analyzers don’t change the original base element calculations, so running calculations twice is unnecessary. The same pattern is now also used with the M&E Analyzers. Analyses now run much faster. The consequences of this change has not been fully tested with DevPacks yet.
+3.	Tutorials: Several references in several tutorials were updated to address the changes in these tools. 
 Database Connections
 Server version: Sql Server 2016 Express, RTM
 
@@ -54,6 +53,7 @@ system administrator
 SqlExpress 2016 databases can be accessed using a Windows OS logged in user –these haven’t been tested with the new db server and aren’t critical for accessing the db in SSMS
 User: devtreks01_sa or sa
 Pwd: public
+
 
 
  
