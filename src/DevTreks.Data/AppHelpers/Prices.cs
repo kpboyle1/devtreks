@@ -992,31 +992,31 @@ namespace DevTreks.Data.AppHelpers
                         {
                             oDocToCalc.Load(reader);
                         }
-                    }
-                    if (oDocToCalc.DocumentElement.HasChildNodes == true)
-                    {
-                        string sQry = EditHelpers.XmlIO.MakeXPathAbbreviatedQry(docToCalcURI.URINodeName,
-                            Helpers.GeneralHelpers.AT_ID, docToCalcURI.URIId.ToString());
-                        //the iterator is used to shallow clone nodes that make up the summary docs
-                        XPathNodeIterator oTotalsGroupIterator = oDocToCalc.CreateNavigator().Select(sQry);
-                        if (oTotalsGroupIterator != null)
+                        if (oDocToCalc.DocumentElement.HasChildNodes == true)
                         {
-                            if (oTotalsGroupIterator.Count > 0)
+                            string sQry = EditHelpers.XmlIO.MakeXPathAbbreviatedQry(docToCalcURI.URINodeName,
+                                Helpers.GeneralHelpers.AT_ID, docToCalcURI.URIId.ToString());
+                            //the iterator is used to shallow clone nodes that make up the summary docs
+                            XPathNodeIterator oTotalsGroupIterator = oDocToCalc.CreateNavigator().Select(sQry);
+                            if (oTotalsGroupIterator != null)
                             {
-                                //move to the iterator's top node 
-                                oTotalsGroupIterator.MoveNext();
-                                //start building the basic doc that will be used as the basis for all of the subsequent docs to be saved (cloning from the root)
-                                XmlDocument oBaseDoc = new XmlDocument();
-                                oBaseDoc.LoadXml(Helpers.GeneralHelpers.ROOT_NODE);
-                                if (docToCalcURI.URINodeName.EndsWith(OUTPUT_PRICE_TYPES.output.ToString())
-                                    || docToCalcURI.URINodeName.EndsWith(INPUT_PRICE_TYPES.input.ToString()))
+                                if (oTotalsGroupIterator.Count > 0)
                                 {
-                                    //need the group node cloned to the base doc
-                                    LinkedViews.CloneGroupNode(oDocToCalc, ref oBaseDoc);
+                                    //move to the iterator's top node 
+                                    oTotalsGroupIterator.MoveNext();
+                                    //start building the basic doc that will be used as the basis for all of the subsequent docs to be saved (cloning from the root)
+                                    XmlDocument oBaseDoc = new XmlDocument();
+                                    oBaseDoc.LoadXml(Helpers.GeneralHelpers.ROOT_NODE);
+                                    if (docToCalcURI.URINodeName.EndsWith(OUTPUT_PRICE_TYPES.output.ToString())
+                                        || docToCalcURI.URINodeName.EndsWith(INPUT_PRICE_TYPES.input.ToString()))
+                                    {
+                                        //need the group node cloned to the base doc
+                                        LinkedViews.CloneGroupNode(oDocToCalc, ref oBaseDoc);
+                                    }
+                                    await InitSaveTotals(docToCalcURI, calcDocURI,
+                                        oTotalsGroupIterator, oBaseDoc,
+                                        docToCalcURI.URIClub.ClubDocFullPath, childrenLinkedView);
                                 }
-                                await InitSaveTotals(docToCalcURI, calcDocURI,
-                                    oTotalsGroupIterator, oBaseDoc,
-                                    docToCalcURI.URIClub.ClubDocFullPath, childrenLinkedView);
                             }
                         }
                     }

@@ -21,7 +21,7 @@ namespace DevTreks.Helpers
     /// <summary>
     ///Purpose:		Class for helping stylesheets and chtml pages display data
     ///Author:		www.devtreks.org
-    ///Date:		2016, August
+    ///Date:		2016, November
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        Known issues:
     ///             1. Caching xhtml is not being done yet.
@@ -201,7 +201,6 @@ namespace DevTreks.Helpers
                         {
                             sResourceUrl = DataHelpers.GeneralHelpers.GetDelimitedSubstring(resource,
                                 DataHelpers.GeneralHelpers.STRING_DELIMITERS, 0);
-                            //sResourceUrl = DataHelpers.AppSettings.ConvertPathFileandWeb(sResourceUrl);
                         }
                     }
                 }
@@ -209,7 +208,6 @@ namespace DevTreks.Helpers
             return sResourceUrl;
         }
         
-
         public string GetMimeType(string resourceFilePath)
         {
             string sErrorMsg = string.Empty;
@@ -1112,36 +1110,36 @@ namespace DevTreks.Helpers
                     {
                         oDoc = new XPathDocument(reader);
                     }
-                }
-                XPathNavigator navDoc = oDoc.CreateNavigator();
-                // return "//nodename"
-                string sQry
-                    = EditHelpers.XmlIO.MakeXPathAbbreviatedQry(nodeSelectsName,
-                    string.Empty, string.Empty);
-                XPathNodeIterator itrDoc = navDoc.Select(sQry);
-                XPathNavigator navCurrentNode = null;
-                string sNetworkId = string.Empty;
-                sName = string.Empty;
-                bool bIsSelected = false;
-                while (itrDoc.MoveNext())
-                {
-                    bIsSelected = false;
-                    navCurrentNode = itrDoc.Current;
-                    sNetworkId = EditHelpers.XPathIO.GetAttributeValue(
-                        navCurrentNode, DataAppHelpers.Networks.NETWORK_ID);
-                    sName = EditHelpers.XPathIO.GetAttributeValue(
-                        navCurrentNode, DataAppHelpers.Calculator.cName);
-                    if (sNetworkId.Equals(nodeSelectedId))
+                    XPathNavigator navDoc = oDoc.CreateNavigator();
+                    // return "//nodename"
+                    string sQry
+                        = EditHelpers.XmlIO.MakeXPathAbbreviatedQry(nodeSelectsName,
+                        string.Empty, string.Empty);
+                    XPathNodeIterator itrDoc = navDoc.Select(sQry);
+                    XPathNavigator navCurrentNode = null;
+                    string sNetworkId = string.Empty;
+                    sName = string.Empty;
+                    bool bIsSelected = false;
+                    while (itrDoc.MoveNext())
                     {
-                        bIsSelected = true;
+                        bIsSelected = false;
+                        navCurrentNode = itrDoc.Current;
+                        sNetworkId = EditHelpers.XPathIO.GetAttributeValue(
+                            navCurrentNode, DataAppHelpers.Networks.NETWORK_ID);
+                        sName = EditHelpers.XPathIO.GetAttributeValue(
+                            navCurrentNode, DataAppHelpers.Calculator.cName);
+                        if (sNetworkId.Equals(nodeSelectedId))
+                        {
+                            bIsSelected = true;
+                        }
+                        HtmlExtensions.Option(sName, sNetworkId, bIsSelected)
+                            .WriteTo(writer, HtmlEncoder.Default);
                     }
-                    HtmlExtensions.Option(sName, sNetworkId, bIsSelected)
-                        .WriteTo(writer, HtmlEncoder.Default);
-                }
-                if (itrDoc.CurrentPosition == 0)
-                {
-                    HtmlExtensions.Option(AppHelper.GetResource("SELECTEDVIEWS_WRONGDOC"),
-                        "0", true).WriteTo(writer, HtmlEncoder.Default);
+                    if (itrDoc.CurrentPosition == 0)
+                    {
+                        HtmlExtensions.Option(AppHelper.GetResource("SELECTEDVIEWS_WRONGDOC"),
+                            "0", true).WriteTo(writer, HtmlEncoder.Default);
+                    }
                 }
             }
             else
@@ -1357,6 +1355,8 @@ namespace DevTreks.Helpers
             //2.0.0 addition for appsetting connection strings
             //not a security threat because this is run dynamically -connection strings are not stored statefully
             ContentURI resourceURI = ContentURI.ConvertShortURIPattern(sResourceURIPattern);
+            //2.0.4 addition
+            resourceURI.URIDataManager.PlatformType = DataHelpers.FileStorageIO.GetPlatformType(sFullDocPath);
             SetConnections(resourceURI, resourcesURIArrays);
             string sURIPath = sFullDocPath;
             //2.0.0 deprecated: path comes originally from this, doesn't need 2 hits to storage.
@@ -1465,10 +1465,11 @@ namespace DevTreks.Helpers
             string attributeParams)
         {
             string sName = string.Concat(linkedViewURIPattern, attributeParams);
-            //2.0.0 refactor this
+            //2.0.0 refactor includes connection strings in resourcearrays 
             ContentURI linkedViewURI = ContentURI.ConvertShortURIPattern(linkedViewURIPattern);
             linkedViewURI.URIDataManager.DefaultConnection = resourceURI.URIDataManager.DefaultConnection;
             linkedViewURI.URIDataManager.StorageConnection = resourceURI.URIDataManager.StorageConnection;
+            //2.0.4 added PlatformType because it's missing
             DataHelpers.GeneralHelpers.VIEW_EDIT_TYPES eViewEditType
                 = DataHelpers.GeneralHelpers.GetViewEditType(viewEditType);
             HtmlExtensions.SelectStart(eViewEditType, string.Concat("SelectNewView", linkedViewURI.URIId),
@@ -1484,34 +1485,34 @@ namespace DevTreks.Helpers
                     {
                         oDoc = new XPathDocument(reader);
                     }
-                }
-                XPathNavigator navDoc = oDoc.CreateNavigator();
-                // return "//nodename"
-                string sQry
-                    = EditHelpers.XmlIO.MakeXPathAbbreviatedQry(nodeSelectsName,
-                    string.Empty, string.Empty);
-                XPathNodeIterator itrDoc = navDoc.Select(sQry);
-                XPathNavigator navCurrentNode = null;
-                string sId = string.Empty;
-                bool bIsSelected = false;
-                while (itrDoc.MoveNext())
-                {
-                    bIsSelected = false;
-                    navCurrentNode = itrDoc.Current;
-                    sId = EditHelpers.XPathIO.GetAttributeValue(
-                        navCurrentNode, DataAppHelpers.Calculator.cId);
-                    sName = EditHelpers.XPathIO.GetAttributeValue(
-                        navCurrentNode, DataAppHelpers.Calculator.cName);
-                    if (sId.Equals(nodeSelectedId))
+                    XPathNavigator navDoc = oDoc.CreateNavigator();
+                    // return "//nodename"
+                    string sQry
+                        = EditHelpers.XmlIO.MakeXPathAbbreviatedQry(nodeSelectsName,
+                        string.Empty, string.Empty);
+                    XPathNodeIterator itrDoc = navDoc.Select(sQry);
+                    XPathNavigator navCurrentNode = null;
+                    string sId = string.Empty;
+                    bool bIsSelected = false;
+                    while (itrDoc.MoveNext())
                     {
-                        bIsSelected = true;
+                        bIsSelected = false;
+                        navCurrentNode = itrDoc.Current;
+                        sId = EditHelpers.XPathIO.GetAttributeValue(
+                            navCurrentNode, DataAppHelpers.Calculator.cId);
+                        sName = EditHelpers.XPathIO.GetAttributeValue(
+                            navCurrentNode, DataAppHelpers.Calculator.cName);
+                        if (sId.Equals(nodeSelectedId))
+                        {
+                            bIsSelected = true;
+                        }
+                        HtmlExtensions.Option(sName, sId, bIsSelected).WriteTo(writer, HtmlEncoder.Default);
                     }
-                    HtmlExtensions.Option(sName, sId, bIsSelected).WriteTo(writer, HtmlEncoder.Default);
-                }
-                if (itrDoc.CurrentPosition == 0)
-                {
-                    HtmlExtensions.Option(AppHelper.GetResource("SELECTEDVIEWS_WRONGDOC"),
-                        "0", true).WriteTo(writer, HtmlEncoder.Default);
+                    if (itrDoc.CurrentPosition == 0)
+                    {
+                        HtmlExtensions.Option(AppHelper.GetResource("SELECTEDVIEWS_WRONGDOC"),
+                            "0", true).WriteTo(writer, HtmlEncoder.Default);
+                    }
                 }
             }
             else

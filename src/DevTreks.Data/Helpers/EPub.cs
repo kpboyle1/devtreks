@@ -143,39 +143,39 @@ namespace DevTreks.Data.Helpers
                 {
                     xmlContentDoc.Load(reader);
                 }
-            }
-            XPathNavigator navContentDoc = xmlContentDoc.CreateNavigator();
-            //move to package
-            navContentDoc.MoveToFirstChild();
-            navContentDoc.CreateAttribute(string.Empty, "unique-identifier", string.Empty, packageId);
-            //move to meta
-            navContentDoc.MoveToFirstChild();
-            //move to manifest
-            navContentDoc.MoveToNext(XPathNodeType.Element);
-            //two default items
-            navContentDoc.MoveToChild(XPathNodeType.Element);
-            bool bHasMoved = navContentDoc.MoveToNext(XPathNodeType.Element);
-            if (bHasMoved)
-            {
-                string sKey = string.Empty;
-                string sValue = string.Empty;
-                foreach (KeyValuePair<string, string> kvp in args)
+                XPathNavigator navContentDoc = xmlContentDoc.CreateNavigator();
+                //move to package
+                navContentDoc.MoveToFirstChild();
+                navContentDoc.CreateAttribute(string.Empty, "unique-identifier", string.Empty, packageId);
+                //move to meta
+                navContentDoc.MoveToFirstChild();
+                //move to manifest
+                navContentDoc.MoveToNext(XPathNodeType.Element);
+                //two default items
+                navContentDoc.MoveToChild(XPathNodeType.Element);
+                bool bHasMoved = navContentDoc.MoveToNext(XPathNodeType.Element);
+                if (bHasMoved)
                 {
-                    sKey = kvp.Key;
-                    sValue = kvp.Value;
-                    if (sValue != "-p")
+                    string sKey = string.Empty;
+                    string sValue = string.Empty;
+                    foreach (KeyValuePair<string, string> kvp in args)
                     {
-                        //clients use same relative paths as server
-                        //convert the absolute path of partFullPath into a path relative to the package root (getcurrentdirectory)
-                        sRelPartPath = AppSettings.ConvertAbsPathToRelPath(CurrentDirectory, sKey);
-                        sMimeType = AppHelpers.Resources.GetMimeTypeFromFileExt(Path.GetExtension(sRelPartPath), ref errorMsg);
-                        //add this href attribute to a new item element child of manifest element
-                        navContentDoc.InsertElementAfter(string.Empty, "item", string.Empty, string.Empty);
-                        navContentDoc.MoveToNext();
-                        navContentDoc.CreateAttribute(string.Empty, "id", string.Empty, i.ToString());
-                        navContentDoc.CreateAttribute(string.Empty, "href", string.Empty, sRelPartPath);
-                        navContentDoc.CreateAttribute(string.Empty, "media-type", string.Empty, sMimeType);
-                        i++;
+                        sKey = kvp.Key;
+                        sValue = kvp.Value;
+                        if (sValue != "-p")
+                        {
+                            //clients use same relative paths as server
+                            //convert the absolute path of partFullPath into a path relative to the package root (getcurrentdirectory)
+                            sRelPartPath = AppSettings.ConvertAbsPathToRelPath(CurrentDirectory, sKey);
+                            sMimeType = AppHelpers.Resources.GetMimeTypeFromFileExt(Path.GetExtension(sRelPartPath), ref errorMsg);
+                            //add this href attribute to a new item element child of manifest element
+                            navContentDoc.InsertElementAfter(string.Empty, "item", string.Empty, string.Empty);
+                            navContentDoc.MoveToNext();
+                            navContentDoc.CreateAttribute(string.Empty, "id", string.Empty, i.ToString());
+                            navContentDoc.CreateAttribute(string.Empty, "href", string.Empty, sRelPartPath);
+                            navContentDoc.CreateAttribute(string.Empty, "media-type", string.Empty, sMimeType);
+                            i++;
+                        }
                     }
                 }
             }
@@ -202,7 +202,6 @@ namespace DevTreks.Data.Helpers
                 {
                     xmlNavigationDoc.Load(reader);
                 }
-            }
             XPathNavigator navNavigationDoc = xmlNavigationDoc.CreateNavigator();
             //move to ncx
             navNavigationDoc.MoveToFirstChild();
@@ -210,35 +209,36 @@ namespace DevTreks.Data.Helpers
             navNavigationDoc.MoveToFirstChild();
             //move to navPoint
             bool bHasMoved = navNavigationDoc.MoveToFirstChild();
-            if (bHasMoved)
-            {
-                string sKey = string.Empty;
-                string sValue = string.Empty;
-                int j = 2;
-                foreach (KeyValuePair<string, string> kvp in args)
+                if (bHasMoved)
                 {
-                    sKey = kvp.Key;
-                    sValue = kvp.Value;
-                    if (sValue == sPackagePartValue)
+                    string sKey = string.Empty;
+                    string sValue = string.Empty;
+                    int j = 2;
+                    foreach (KeyValuePair<string, string> kvp in args)
                     {
-                        if (string.IsNullOrEmpty(sKey) == false)
+                        sKey = kvp.Key;
+                        sValue = kvp.Value;
+                        if (sValue == sPackagePartValue)
                         {
-                            //clients use same relative paths as server
-                            //convert the absolute path of partFullPath into a path relative to the package root (getcurrentdirectory)
-                            sRelPartPath = AppSettings.ConvertAbsPathToRelPath(CurrentDirectory, sKey);
-                            navNavigationDoc.InsertElementAfter(string.Empty, "navPoint", string.Empty, string.Empty);
-                            navNavigationDoc.MoveToNext();
-                            navNavigationDoc.CreateAttribute(string.Empty, "id", string.Empty, j.ToString());
-                            navNavigationDoc.CreateAttribute(string.Empty, "playOrder", string.Empty, j.ToString());
-                            navNavigationDoc.AppendChildElement(string.Empty, "navLabel", string.Empty, string.Empty);
-                            navNavigationDoc.MoveToChild(XPathNodeType.Element);
-                            navNavigationDoc.AppendChildElement(string.Empty, "text", string.Empty, Path.GetFileNameWithoutExtension(sRelPartPath));
-                            navNavigationDoc.InsertElementAfter(string.Empty, "content", string.Empty, string.Empty);
-                            navNavigationDoc.MoveToNext();
-                            navNavigationDoc.CreateAttribute(string.Empty, "src", string.Empty, sRelPartPath);
-                            //move to navPoint
-                            navNavigationDoc.MoveToParent();
-                            j++;
+                            if (string.IsNullOrEmpty(sKey) == false)
+                            {
+                                //clients use same relative paths as server
+                                //convert the absolute path of partFullPath into a path relative to the package root (getcurrentdirectory)
+                                sRelPartPath = AppSettings.ConvertAbsPathToRelPath(CurrentDirectory, sKey);
+                                navNavigationDoc.InsertElementAfter(string.Empty, "navPoint", string.Empty, string.Empty);
+                                navNavigationDoc.MoveToNext();
+                                navNavigationDoc.CreateAttribute(string.Empty, "id", string.Empty, j.ToString());
+                                navNavigationDoc.CreateAttribute(string.Empty, "playOrder", string.Empty, j.ToString());
+                                navNavigationDoc.AppendChildElement(string.Empty, "navLabel", string.Empty, string.Empty);
+                                navNavigationDoc.MoveToChild(XPathNodeType.Element);
+                                navNavigationDoc.AppendChildElement(string.Empty, "text", string.Empty, Path.GetFileNameWithoutExtension(sRelPartPath));
+                                navNavigationDoc.InsertElementAfter(string.Empty, "content", string.Empty, string.Empty);
+                                navNavigationDoc.MoveToNext();
+                                navNavigationDoc.CreateAttribute(string.Empty, "src", string.Empty, sRelPartPath);
+                                //move to navPoint
+                                navNavigationDoc.MoveToParent();
+                                j++;
+                            }
                         }
                     }
                 }

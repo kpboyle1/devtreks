@@ -982,38 +982,38 @@ namespace DevTreks.Data.EditHelpers
                     {
                         oUpdatesDoc = new XPathDocument(reader);
                     }
-                }
-                if (oUpdatesDoc != null)
-                {
-                    XPathNavigator navUpdatesDoc = oUpdatesDoc.CreateNavigator();
-                    //move to the root node
-                    navUpdatesDoc.MoveToFirstChild();
-                    //move to the first list node
-                    navUpdatesDoc.MoveToFirstChild();
-                    string sName = navUpdatesDoc.GetAttribute(AppHelpers.Calculator.cId,
-                        string.Empty);
-                    string sValue = navUpdatesDoc.GetAttribute(Helpers.GeneralHelpers.VALUE,
-                        string.Empty);
-                    if (sName != string.Empty
-                        && sValue != string.Empty)
+                    if (oUpdatesDoc != null)
                     {
-                        lstUpdates.Add(sName, sValue);
-                    }
-                    while (navUpdatesDoc.MoveToNext(XPathNodeType.Element))
-                    {
-                        if (navUpdatesDoc.LocalName == nodeName)
+                        XPathNavigator navUpdatesDoc = oUpdatesDoc.CreateNavigator();
+                        //move to the root node
+                        navUpdatesDoc.MoveToFirstChild();
+                        //move to the first list node
+                        navUpdatesDoc.MoveToFirstChild();
+                        string sName = navUpdatesDoc.GetAttribute(AppHelpers.Calculator.cId,
+                            string.Empty);
+                        string sValue = navUpdatesDoc.GetAttribute(Helpers.GeneralHelpers.VALUE,
+                            string.Empty);
+                        if (sName != string.Empty
+                            && sValue != string.Empty)
                         {
-                            sName = navUpdatesDoc.GetAttribute(AppHelpers.Calculator.cId,
-                                string.Empty);
-                            sValue = navUpdatesDoc.GetAttribute(Helpers.GeneralHelpers.VALUE,
-                                string.Empty);
-                            if (sName != string.Empty
-                                && sValue != string.Empty)
+                            lstUpdates.Add(sName, sValue);
+                        }
+                        while (navUpdatesDoc.MoveToNext(XPathNodeType.Element))
+                        {
+                            if (navUpdatesDoc.LocalName == nodeName)
                             {
-                                lstUpdates.Add(sName, sValue);
+                                sName = navUpdatesDoc.GetAttribute(AppHelpers.Calculator.cId,
+                                    string.Empty);
+                                sValue = navUpdatesDoc.GetAttribute(Helpers.GeneralHelpers.VALUE,
+                                    string.Empty);
+                                if (sName != string.Empty
+                                    && sValue != string.Empty)
+                                {
+                                    lstUpdates.Add(sName, sValue);
+                                }
+                                sName = string.Empty;
+                                sValue = string.Empty;
                             }
-                            sName = string.Empty;
-                            sValue = string.Empty;
                         }
                     }
                 }

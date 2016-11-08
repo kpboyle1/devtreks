@@ -125,6 +125,12 @@ namespace DevTreks.Data.Helpers
             else
             {
                 PLATFORM_TYPES ePlatform = uri.URIDataManager.PlatformType;
+                //2.0.4 added this double check
+                if (ePlatform == PLATFORM_TYPES.none)
+                {
+                    ePlatform = GetPlatformType(fullURIPath);
+                    uri.URIDataManager.PlatformType = ePlatform;
+                }
                 if (fullURIPath.StartsWith("http")
                     && ePlatform == PLATFORM_TYPES.webserver)
                 {

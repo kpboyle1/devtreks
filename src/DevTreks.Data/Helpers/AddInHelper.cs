@@ -375,25 +375,25 @@ namespace DevTreks.Data.Helpers
                 {
                     oCalcDoc.Load(reader);
                 }
-            }
-            XPathNavigator navCalcDocNode = GetNode(
-                oCalcDoc, calcDocURI.URIPattern);
-            sFileExtensionType
-                = GetFilesToAnalyzeExtensionType(docToCalcURI, 
-                navCalcDocNode, ref errorMsg);
-            if (string.IsNullOrEmpty(sFileExtensionType))
-            {
+                XPathNavigator navCalcDocNode = GetNode(
+                    oCalcDoc, calcDocURI.URIPattern);
                 sFileExtensionType
-                    = navCalcDocNode.GetAttribute(Calculator.cFileExtensionType, string.Empty);
+                    = GetFilesToAnalyzeExtensionType(docToCalcURI,
+                    navCalcDocNode, ref errorMsg);
                 if (string.IsNullOrEmpty(sFileExtensionType))
                 {
-                    sFileExtensionType = calcDocURI.URIFileExtensionType;
-                }
-                if (sFileExtensionType == Helpers.GeneralHelpers.NONE
-                    || string.IsNullOrEmpty(sFileExtensionType))
-                {
-                    errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
-                        string.Empty, "ADDINHELPER_NOBASECALCS");
+                    sFileExtensionType
+                        = navCalcDocNode.GetAttribute(Calculator.cFileExtensionType, string.Empty);
+                    if (string.IsNullOrEmpty(sFileExtensionType))
+                    {
+                        sFileExtensionType = calcDocURI.URIFileExtensionType;
+                    }
+                    if (sFileExtensionType == Helpers.GeneralHelpers.NONE
+                        || string.IsNullOrEmpty(sFileExtensionType))
+                    {
+                        errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
+                            string.Empty, "ADDINHELPER_NOBASECALCS");
+                    }
                 }
             }
             return sFileExtensionType;
@@ -414,36 +414,36 @@ namespace DevTreks.Data.Helpers
                     {
                         oCalcDoc.Load(reader);
                     }
-                }
-                XPathNavigator navCalcDocNode = GetNode(
-                    oCalcDoc, calcDocURI.URIPattern);
-                sFileExtensionType
-                    = GetFilesToAnalyzeExtensionType(calcDocURI,
-                        navCalcDocNode, ref errorMsg);
-                if (string.IsNullOrEmpty(sFileExtensionType))
-                {
-                    //the form els may not have been processed yet; 
-                    sFileExtensionType = Helpers.GeneralHelpers.GetFormElementParam(
-                        calcDocURI.URIDataManager.FormInput.ToString(), Calculator.cFilesToAnalyzeExtensionType,
-                        string.Empty);
-                    if (!string.IsNullOrEmpty(sFileExtensionType))
-                    {
-                        sFileExtensionType = sFileExtensionType.Replace("*", string.Empty);
-                    }
-                }
-                if (string.IsNullOrEmpty(sFileExtensionType))
-                {
+                    XPathNavigator navCalcDocNode = GetNode(
+                        oCalcDoc, calcDocURI.URIPattern);
                     sFileExtensionType
-                        = navCalcDocNode.GetAttribute(Calculator.cFileExtensionType, string.Empty);
+                        = GetFilesToAnalyzeExtensionType(calcDocURI,
+                            navCalcDocNode, ref errorMsg);
                     if (string.IsNullOrEmpty(sFileExtensionType))
                     {
-                        sFileExtensionType = calcDocURI.URIFileExtensionType;
+                        //the form els may not have been processed yet; 
+                        sFileExtensionType = Helpers.GeneralHelpers.GetFormElementParam(
+                            calcDocURI.URIDataManager.FormInput.ToString(), Calculator.cFilesToAnalyzeExtensionType,
+                            string.Empty);
+                        if (!string.IsNullOrEmpty(sFileExtensionType))
+                        {
+                            sFileExtensionType = sFileExtensionType.Replace("*", string.Empty);
+                        }
                     }
-                    if (sFileExtensionType == Helpers.GeneralHelpers.NONE
-                        || string.IsNullOrEmpty(sFileExtensionType))
+                    if (string.IsNullOrEmpty(sFileExtensionType))
                     {
-                        errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
-                            string.Empty, "ADDINHELPER_NOBASECALCS");
+                        sFileExtensionType
+                            = navCalcDocNode.GetAttribute(Calculator.cFileExtensionType, string.Empty);
+                        if (string.IsNullOrEmpty(sFileExtensionType))
+                        {
+                            sFileExtensionType = calcDocURI.URIFileExtensionType;
+                        }
+                        if (sFileExtensionType == Helpers.GeneralHelpers.NONE
+                            || string.IsNullOrEmpty(sFileExtensionType))
+                        {
+                            errorMsg = Exceptions.DevTreksErrors.MakeStandardErrorMsg(
+                                string.Empty, "ADDINHELPER_NOBASECALCS");
+                        }
                     }
                 }
             }
