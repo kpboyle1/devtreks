@@ -597,29 +597,9 @@ namespace DevTreks.Extensions.SB1Statistics
             {
                 string[] algoIndicators = algoIndicator.Split(Constants.CSV_DELIMITERS);
                 string[] indicators = new string[] { };
-                //score has to be set regardless of props
-                //if (this.SB1ScoreD1Amount == 0 && this.SB1ScoreD2Amount == 0)
-                
                 //use the randomsample data to generate Score, ScoreM, ScoreL, and ScoreU
-                indicators = SetScoresFromRandomSamples(algoIndicators, pra.RandomSampleData);
-                
-                foreach (var indicator in indicators)
-                {
-                    if (!string.IsNullOrEmpty(indicator)
-                        && (!algoIndicator.Contains(indicator)))
-                    {
-                        if (!algoIndicator.EndsWith(Constants.CSV_DELIMITER))
-                        {
-                            algoIndicator += Constants.CSV_DELIMITER;
-                        }
-                        algoIndicator += string.Concat(indicator, Constants.CSV_DELIMITER);
-                    }
-                }
-            }
-            //remove the last delimiter
-            if (algoIndicator.EndsWith(Constants.CSV_DELIMITER))
-            {
-                algoIndicator = algoIndicator.Remove(algoIndicator.Length - 1, 1);
+                indicators = SetScoresFromRandomSamples(algoIndicators, pra.RandomSampleData, colNames);
+                algoIndicator = GetIndicatorsCSV(indicators.ToList(), algoIndicator);
             }
             return algoIndicator;
         }
@@ -1747,7 +1727,8 @@ namespace DevTreks.Extensions.SB1Statistics
                 //ignore the row
             }
         }
-        private string[] SetScoresFromRandomSamples(string[] indicators, Matrix<double> randomSampleData)
+        private string[] SetScoresFromRandomSamples(string[] indicators, Matrix<double> randomSampleData,
+            string[] colNames)
         {
             //1. store the Scores for each row in a double
             List<double> scores = new List<double>();
@@ -1763,7 +1744,6 @@ namespace DevTreks.Extensions.SB1Statistics
             sb1base.CalculateIndicators(iIndNumber);
             //but don't double display the ScoreMathResult
             sb1base.SB1ScoreMathResult = string.Empty;
-            int cc = randomSampleData.ColumnCount;
             //4. use the indicators to set each indicator.QT in the new object from each row of R
             for (int i = 0; i < randomSampleData.RowCount; i++)
             {
@@ -1776,10 +1756,9 @@ namespace DevTreks.Extensions.SB1Statistics
                     j++;
                 }
                 //set sb1Base.Score
-                sb1base.SetTotalScore(_colNames);
+                sb1base.SetTotalScore(colNames);
                 scores.Add(sb1base.SB1Score);
             }
-            string[] colNames = new List<string>().ToArray();
             List<double> qTs = new List<double>();
             Task<string> tsk = sb1base.SetAlgoPRAStats(_score, qTs, scores.ToArray());
             string sScoreMathR = string.Concat(this.SB1ScoreMathResult, sb1base.SB1ScoreMathResult);

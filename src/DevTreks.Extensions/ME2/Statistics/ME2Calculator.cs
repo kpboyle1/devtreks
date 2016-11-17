@@ -98,7 +98,7 @@ namespace DevTreks.Extensions
             string sErrorMessage = string.Empty;
             //deserialize xml to object
             this.SetME2Properties(currentCalculationsElement, currentElement);
-            bHasCalculations = RunME2Calculations(ref sErrorMessage);
+            bHasCalculations = RunME2Calculations(calcParameters, ref sErrorMessage);
             //serialize object back to xml and fill in updates list
             this.SetME2Attributes(string.Empty, ref currentCalculationsElement);
             //set calculatorid (primary way to display calculation attributes)
@@ -107,11 +107,11 @@ namespace DevTreks.Extensions
             calcParameters.ErrorMessage = sErrorMessage;
             return bHasCalculations;
         }
-        public bool RunME2Calculations(ref string errorMsg)
+        public bool RunME2Calculations(CalculatorParameters calcParameters, ref string errorMsg)
         {
             bool bHasCalculations = false;
             //run other calcs
-            bHasCalculations = this.RunCalculations();
+            bHasCalculations = this.RunCalculations(calcParameters);
             return bHasCalculations;
         }
     }

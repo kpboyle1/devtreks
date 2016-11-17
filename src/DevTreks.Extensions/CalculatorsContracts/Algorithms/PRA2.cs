@@ -118,15 +118,9 @@ namespace DevTreks.Extensions.Algorithms
             bHasCalcs = SetSampleCalculation(indicators, randomSampleData);
             //store the correlation matrix for the random sample data (for comparison to actual)
             SetCorrelationMatrix(eCType, jointData, randomSampleData);
-            //new in 1.9.0
+            //new in 1.9.0 -the score is set from calling procedure
             this.RandomSampleData = randomSampleData;
-            //version 1.9.0 had to move this to SB1Algos (can't access SB1Base from here)
-            //if (this.IndicatorQT.IndicatorQT1s[0].QTD1 == 0 && this.IndicatorQT.IndicatorQT1s[0].QTD2 == 0)
-            //{
-            //    //use the randomsample data to generate Score, ScoreM, ScoreL, and ScoreU
-            //    indicators = SetScoresFromRandomSamples(indicators, randomSampleData);
-            //}
-            //this was kept here but can be replaced by SetScoresFromRS
+            //the calling procedure can supplement this (i.e. with SetScoresFromRS)
             foreach (var indicator in indicators)
             {
                 if (!string.IsNullOrEmpty(indicator))

@@ -594,31 +594,14 @@ namespace DevTreks.Extensions.ME2Statistics
             IDictionary<string, List<List<double>>> data2 = ConvertDataToString(data);
             algoIndicator = await pra.RunAlgorithmAsync(jdataURL, data2);
             FillBaseIndicators(pra.IndicatorQT, sLowerCI, sUpperCI);
-            //version 1.9.0 had to move this out of PRA2 (can't access SB1Base from there)
             if (!string.IsNullOrEmpty(algoIndicator))
             {
                 int[] algoIndexes = GetIndexes(algoIndicator);
                 int[] indicators = new int[] { };
 
                 //use the randomsample data to generate Score, ScoreM, ScoreL, and ScoreU
-                indicators = SetScoresFromRandomSamples(algoIndexes, pra.RandomSampleData);
-
-                foreach (var indicator in indicators)
-                {
-                    if (!ContainsIndex(indicator, algoIndicator))
-                    {
-                        if (!algoIndicator.EndsWith(Constants.CSV_DELIMITER))
-                        {
-                            algoIndicator += Constants.CSV_DELIMITER;
-                        }
-                        algoIndicator += string.Concat(indicator, Constants.CSV_DELIMITER);
-                    }
-                }
-            }
-            //remove the last delimiter
-            if (algoIndicator.EndsWith(Constants.CSV_DELIMITER))
-            {
-                algoIndicator = algoIndicator.Remove(algoIndicator.Length - 1, 1);
+                indicators = SetScoresFromRandomSamples(algoIndexes, pra.RandomSampleData, colNames);
+                algoIndicator = GetIndicatorsCSV(indicators.ToList(), algoIndicator);
             }
             return algoIndicator;
         }
@@ -1747,41 +1730,45 @@ namespace DevTreks.Extensions.ME2Statistics
                 //ignore the row
             }
         }
-        private int[] SetScoresFromRandomSamples(int[] indicators, Matrix<double> randomSampleData)
+        private int[] SetScoresFromRandomSamples(int[] indicators, Matrix<double> randomSampleData, 
+            string[] colNames)
         {
             //1. store the Scores for each row in a double
             List<double> scores = new List<double>();
             //2. set a new ME2Indicator object by copying this
             var me2base = new ME2Indicator(this);
             //3.calculate indicators that are not correlated but may still be in the ind.SetRowQT or Score.MathExpress as constant QTM
+            //start with index = 1;
             int iIndNumber = 1;
-            //add the scoreMUnit to tell CalculateIndicators not to calculate score yet
             List<int> newInds = indicators.ToList();
+            //add the score to tell CalculateIndicators not to calculate score yet
             //204
-            newInds.Add(0);
-            //newInds.Add(_score);
+            if (!newInds.Contains(0))
+            {
+                newInds.Add(0);
+            }
             me2base._indicators = newInds.ToArray();
             //this assumes that corrs are only run and stored for scores
             me2base.CalculateIndicators(iIndNumber);
             //but don't double display the ScoreMathResult
             me2base.ME2Indicators[0].IndMathResult = string.Empty;
-            int cc = randomSampleData.ColumnCount;
+            //206: don't include the score index position or setrowqt is off by 1 index position
+            var scoreIndicators = indicators.Where(i => i != 0);
             //4. use the indicators to set each indicator.QT in the new object from each row of R
             for (int i = 0; i < randomSampleData.RowCount; i++)
             {
                 var row = randomSampleData.Row(i);
                 //the order of the indicators is the order of the columns
                 int j = 0;
-                foreach (var ind in indicators)
+                foreach (var ind in scoreIndicators)
                 {
                     SetRowQT(me2base, ind, j, row);
                     j++;
                 }
                 //set sb1Base.Score
-                me2base.SetTotalScore(_colNames);
+                me2base.SetTotalScore(colNames);
                 scores.Add(me2base.ME2Indicators[0].IndTAmount);
             }
-            string[] colNames = new List<string>().ToArray();
             List<double> qTs = new List<double>();
             Task<int> tsk = me2base.SetAlgoPRAStats(0, qTs, scores.ToArray());
             string sScoreMathR = string.Concat(this.ME2Indicators[0].IndMathResult, me2base.ME2Indicators[0].IndMathResult);

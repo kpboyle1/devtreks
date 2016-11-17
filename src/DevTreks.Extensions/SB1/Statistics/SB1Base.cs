@@ -15177,6 +15177,28 @@ namespace DevTreks.Extensions
             }
             return sIndicatorsCSV;
         }
+        public static string GetIndicatorsCSV(List<string> indicators, string algoIndicator)
+        {
+            string sIndicatorsCSV = string.Empty;
+            foreach (var indicator in indicators)
+            {
+                if (!algoIndicator.Contains(indicator))
+                {
+                    if (!algoIndicator.EndsWith(Constants.CSV_DELIMITER))
+                    {
+                        algoIndicator += Constants.CSV_DELIMITER;
+                    }
+                    algoIndicator += string.Concat(indicator, Constants.CSV_DELIMITER);
+                }
+            }
+            //remove the last delimiter
+            if (algoIndicator.EndsWith(Constants.CSV_DELIMITER))
+            {
+                algoIndicator = algoIndicator.Remove(algoIndicator.Length - 1, 1);
+            }
+            sIndicatorsCSV = algoIndicator;
+            return sIndicatorsCSV;
+        }
         private async Task<string> ProcessAlgoCorrAsync(string jdataURL, int dataIndex)
         {
             string algoindicators = string.Empty;

@@ -17,8 +17,8 @@ namespace DevTreks.Extensions
     ///             Important to use separate stocks because each stock represents
     ///             an aggregated observation
     ///Author:		www.devtreks.org
-    ///Date:		2016, October
-    ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148 
+    ///Date:		2016, November
+    ///References:	Refer to the M and E tutorials
     ///</summary>
     public class ME2Stock : ME2IndicatorStock
     {
@@ -82,14 +82,6 @@ namespace DevTreks.Extensions
             //need to organize stocks by observations
             this.Stocks = new List<ME2Stock>();
             ME2Stock stock = new ME2Stock(this.CalcParameters);
-            //if (this.CalcParameters != null)
-            //{
-            //    stock.CalcParameters = new CalculatorParameters(this.CalcParameters);
-            //}
-            //else
-            //{
-            //    stock.CalcParameters = new CalculatorParameters();
-            //}
             if (this.AnalyzerType == ME2AnalyzerHelper.ANALYZER_TYPES.mestat1.ToString())
             {
                 stock.Stat1 = new ME2Stat1(this.CalcParameters);

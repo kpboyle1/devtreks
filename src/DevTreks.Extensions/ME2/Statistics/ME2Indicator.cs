@@ -247,11 +247,18 @@ namespace DevTreks.Extensions
         {
             if (calculator.ME2Indicators != null)
             {
+                //206 this gets the calcparams by ref from calculator 
+                if (CalcParameters == null && calculator.CalcParameters != null)
+                {
+                    CalcParameters = calculator.CalcParameters;
+                }
                 ME2Indicators = new List<ME2Indicator>();
                 foreach (ME2Indicator calculatorInd in calculator.ME2Indicators)
                 {
                     ME2Indicator ind = new ME2Indicator();
                     CopyME2IndicatorProperties(ind, calculatorInd);
+                    //206 each indicator gets the calcparams by ref from calculator
+                    ind.CalcParameters = calculator.CalcParameters;
                     ME2Indicators.Add(ind);
                 }
                 Observations = ME2Indicators.Count;
@@ -920,9 +927,10 @@ namespace DevTreks.Extensions
         }
         #endregion
         //run the calculations
-        public bool RunCalculations()
+        public bool RunCalculations(CalculatorParameters calcParameters)
         {
             bool bHasCalculations = false;
+            this.CalcParameters = calcParameters;
             bHasCalculations = SetCalculations();
             return bHasCalculations;
         }
@@ -2449,16 +2457,40 @@ namespace DevTreks.Extensions
             string sIndicatorsCSV = string.Empty;
             foreach (var indicator in algoIndicators)
             {
-                if (indicator != 0)
-                {
-                    sIndicatorsCSV += string.Concat(indicator, Constants.CSV_DELIMITER);
-                }
+                //206 change
+                sIndicatorsCSV += string.Concat(indicator, Constants.CSV_DELIMITER);
+                //if (indicator != 0)
+                //{
+                //    sIndicatorsCSV += string.Concat(indicator, Constants.CSV_DELIMITER);
+                //}
             }
             //remove the last delimiter
             if (sIndicatorsCSV.EndsWith(Constants.CSV_DELIMITER))
             {
                 sIndicatorsCSV = sIndicatorsCSV.Remove(sIndicatorsCSV.Length - 1, 1);
             }
+            return sIndicatorsCSV;
+        }
+        public static string GetIndicatorsCSV(List<int> indicators, string algoIndicator)
+        {
+            string sIndicatorsCSV = string.Empty;
+            foreach (var indicator in indicators)
+            {
+                if (!ContainsIndex(indicator, algoIndicator))
+                {
+                    if (!algoIndicator.EndsWith(Constants.CSV_DELIMITER))
+                    {
+                        algoIndicator += Constants.CSV_DELIMITER;
+                    }
+                    algoIndicator += string.Concat(indicator, Constants.CSV_DELIMITER);
+                }
+            }
+            //remove the last delimiter
+            if (algoIndicator.EndsWith(Constants.CSV_DELIMITER))
+            {
+                algoIndicator = algoIndicator.Remove(algoIndicator.Length - 1, 1);
+            }
+            sIndicatorsCSV = algoIndicator;
             return sIndicatorsCSV;
         }
         private async Task<string> ProcessAlgoCorrAsync(string jdataURL, int dataIndex)
@@ -3018,37 +3050,64 @@ namespace DevTreks.Extensions
         private int[] GetIndicators(string[] csvIndicators)
         {
             List<int> inds = new List<int>();
-            //version 1.9.2 allows multiple subalgos to be run for multiple subinds
             if (_indicators != null)
             {
                 foreach (var indicator in _indicators)
                 {
-                    inds.Add(indicator);
+                    if (!inds.Contains(indicator))
+                    {
+                        inds.Add(indicator);
+                    }
                 }
             }
-            int iIndicator = 0;
+            int iIndicator = -1;
             foreach (var indicatorscsv in csvIndicators)
             {
                 string[] newindicators = indicatorscsv.Split(Constants.CSV_DELIMITERS);
                 foreach (var newindicator in newindicators)
                 {
                     iIndicator = CalculatorHelpers.ConvertStringToInt(newindicator);
-                    inds.Add(iIndicator);
+                    if (!inds.Contains(iIndicator))
+                    {
+                        inds.Add(iIndicator);
+                    }
                 }
             }
             return inds.ToArray();
         }
-        public static int[] GetIndexes(string algoIndicator)
+        public int[] GetIndexes(string algoIndicator)
         {
             string[] algoIndicators = algoIndicator.Split(Constants.CSV_DELIMITERS);
             List<int> inds = new List<int>();
             int iIndicator = 0;
             foreach (var newindicator in algoIndicators)
             {
-                iIndicator = CalculatorHelpers.ConvertStringToInt(newindicator);
-                inds.Add(iIndicator);
+                int i = 0;
+                for(i = 0; i <= ME2Indicators.Count - 1; i++)
+                {
+                    //206 change accounts for labels or indexes in algoindicator
+                    iIndicator = GetIndicator(i, newindicator);
+                    if (!inds.Contains(iIndicator) && iIndicator != -1)
+                    {
+                        inds.Add(iIndicator);
+                    }
+                }
+                
             }
             return inds.ToArray();
+        }
+        public int GetIndicator(int i, string newIndicator)
+        {
+            int iIndicator = -1;
+            if (newIndicator == ME2Indicators[i].IndLabel)
+            {
+                iIndicator = i;
+            }
+            else
+            {
+                iIndicator = CalculatorHelpers.ConvertStringToInt(newIndicator);
+            }
+            return iIndicator;
         }
         public static IDictionary<string, List<List<double>>> ConvertDataToString(
             IDictionary<int, List<List<double>>> data)
