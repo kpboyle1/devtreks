@@ -1772,6 +1772,22 @@ namespace DevTreks.Extensions.ME2Statistics
             List<double> qTs = new List<double>();
             Task<int> tsk = me2base.SetAlgoPRAStats(0, qTs, scores.ToArray());
             string sScoreMathR = string.Concat(this.ME2Indicators[0].IndMathResult, me2base.ME2Indicators[0].IndMathResult);
+            //5. 204: reset the indicator.QTs to mean of random sample columns 
+            //rather than last row of of randoms
+            for (int i = 0; i < randomSampleData.ColumnCount; i++)
+            {
+                var col = randomSampleData.Column(i);
+                //the order of the indicators is the order of the columns
+                int j = 0;
+                foreach (var ind in scoreIndicators)
+                {
+                    if (j == i)
+                    {
+                        SetColumnQT(me2base, ind, col);
+                    }
+                    j++;
+                }
+            }
             this.CopyME2IndicatorsProperties(me2base);
             this.ME2Indicators[0].IndMathResult = string.Empty;
             this.ME2Indicators[0].IndMathResult = sScoreMathR;
@@ -1956,6 +1972,97 @@ namespace DevTreks.Extensions.ME2Statistics
                 {
                     me2base.ME2Indicators[20].IndTAmount = row[col];
                 }
+            }
+            else
+            {
+                //colindex = 0
+            }
+        }
+        private void SetColumnQT(ME2Indicator me2base, int index, Vector<double> column)
+        {
+            if (index == 0)
+            {
+                me2base.ME2Indicators[0].IndTAmount = column.Average();
+            }
+            else if (index == 1)
+            {
+                me2base.ME2Indicators[1].IndTAmount = column.Average();
+            }
+            else if (index == 2)
+            {
+                me2base.ME2Indicators[2].IndTAmount = column.Average();
+            }
+            else if (index == 3)
+            {
+                me2base.ME2Indicators[3].IndTAmount = column.Average();
+            }
+            else if (index == 4)
+            {
+                me2base.ME2Indicators[4].IndTAmount = column.Average();
+            }
+            else if (index == 5)
+            {
+                me2base.ME2Indicators[5].IndTAmount = column.Average();
+            }
+            else if (index == 6)
+            {
+                me2base.ME2Indicators[6].IndTAmount = column.Average();
+            }
+            else if (index == 7)
+            {
+                me2base.ME2Indicators[7].IndTAmount = column.Average();
+            }
+            else if (index == 8)
+            {
+                me2base.ME2Indicators[8].IndTAmount = column.Average();
+            }
+            else if (index == 9)
+            {
+                me2base.ME2Indicators[9].IndTAmount = column.Average();
+            }
+            else if (index == 10)
+            {
+                me2base.ME2Indicators[10].IndTAmount = column.Average();
+            }
+            else if (index == 11)
+            {
+                me2base.ME2Indicators[11].IndTAmount = column.Average();
+            }
+            else if (index == 12)
+            {
+                me2base.ME2Indicators[12].IndTAmount = column.Average();
+            }
+            else if (index == 13)
+            {
+                me2base.ME2Indicators[13].IndTAmount = column.Average();
+            }
+            else if (index == 14)
+            {
+                me2base.ME2Indicators[14].IndTAmount = column.Average();
+            }
+            else if (index == 15)
+            {
+                me2base.ME2Indicators[15].IndTAmount = column.Average();
+            }
+            else if (index == 16)
+            {
+                me2base.ME2Indicators[16].IndTAmount = column.Average();
+            }
+            else if (index == 17)
+            {
+                me2base.ME2Indicators[17].IndTAmount = column.Average();
+            }
+            else if (index == 18)
+            {
+                me2base.ME2Indicators[18].IndTAmount = column.Average();
+            }
+            else if (index == 19)
+            {
+                me2base.ME2Indicators[19].IndTAmount = column.Average();
+            }
+            else if (index == 20)
+            {
+                me2base.ME2Indicators[20].IndTAmount = column.Average();
             }
             else
             {

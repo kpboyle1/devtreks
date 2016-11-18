@@ -1762,6 +1762,22 @@ namespace DevTreks.Extensions.SB1Statistics
             List<double> qTs = new List<double>();
             Task<string> tsk = sb1base.SetAlgoPRAStats(_score, qTs, scores.ToArray());
             string sScoreMathR = string.Concat(this.SB1ScoreMathResult, sb1base.SB1ScoreMathResult);
+            //5. 204: reset the indicator.QTs to mean of random sample columns 
+            //rather than last row of of randoms
+            for (int i = 0; i < randomSampleData.ColumnCount; i++)
+            {
+                var col = randomSampleData.Column(i);
+                //the order of the indicators is the order of the columns
+                int j = 0;
+                foreach (var ind in indicators)
+                {
+                    if (j == i)
+                    {
+                        SetColumnQT(sb1base, ind, col);
+                    }
+                    j++;
+                }
+            }
             this.CopySB1BaseProperties(sb1base);
             this.SB1ScoreMathResult = string.Empty;
             this.SB1ScoreMathResult = sScoreMathR;
@@ -1938,6 +1954,93 @@ namespace DevTreks.Extensions.SB1Statistics
                 {
                     sb1base.SB1TAmount20 = row[col];
                 }
+            }
+            else
+            {
+                //colindex = 0
+            }
+        }
+        private void SetColumnQT(SB1Base sb1base, string label, Vector<double> column)
+        {
+            if (label == sb1base.SB1Label1)
+            {
+                sb1base.SB1TAmount1 = column.Average();
+            }
+            else if (label == sb1base.SB1Label2)
+            {
+                sb1base.SB1TAmount2 = column.Average();
+            }
+            else if (label == sb1base.SB1Label3)
+            {
+                sb1base.SB1TAmount3 = column.Average();
+            }
+            else if (label == sb1base.SB1Label4)
+            {
+                sb1base.SB1TAmount4 = column.Average();
+            }
+            else if (label == sb1base.SB1Label5)
+            {
+                sb1base.SB1TAmount5 = column.Average();
+            }
+            else if (label == sb1base.SB1Label6)
+            {
+                sb1base.SB1TAmount6 = column.Average();
+            }
+            else if (label == sb1base.SB1Label7)
+            {
+                sb1base.SB1TAmount7 = column.Average();
+            }
+            else if (label == sb1base.SB1Label8)
+            {
+                sb1base.SB1TAmount8 = column.Average();
+            }
+            else if (label == sb1base.SB1Label9)
+            {
+                sb1base.SB1TAmount9 = column.Average();
+            }
+            else if (label == sb1base.SB1Label10)
+            {
+                sb1base.SB1TAmount10 = column.Average();
+            }
+            else if (label == sb1base.SB1Label11)
+            {
+                sb1base.SB1TAmount11 = column.Average();
+            }
+            else if (label == sb1base.SB1Label12)
+            {
+                sb1base.SB1TAmount12 = column.Average();
+            }
+            else if (label == sb1base.SB1Label13)
+            {
+                sb1base.SB1TAmount13 = column.Average();
+            }
+            else if (label == sb1base.SB1Label14)
+            {
+                sb1base.SB1TAmount14 = column.Average();
+            }
+            else if (label == sb1base.SB1Label15)
+            {
+                sb1base.SB1TAmount15 = column.Average();
+            }
+            else if (label == sb1base.SB1Label16)
+            {
+                sb1base.SB1TAmount16 = column.Average();
+            }
+            else if (label == sb1base.SB1Label17)
+            {
+                sb1base.SB1TAmount17 = column.Average();
+            }
+            else if (label == sb1base.SB1Label18)
+            {
+                sb1base.SB1TAmount18 = column.Average();
+            }
+            else if (label == sb1base.SB1Label19)
+            {
+                sb1base.SB1TAmount19 = column.Average();
+            }
+            else if (label == sb1base.SB1Label20)
+            {
+                sb1base.SB1TAmount20 = column.Average();
             }
             else
             {
