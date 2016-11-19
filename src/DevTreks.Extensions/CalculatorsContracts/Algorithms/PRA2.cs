@@ -294,122 +294,142 @@ namespace DevTreks.Extensions.Algorithms
             }
             else if (this.IndicatorQT.IndicatorQT1s[1].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[1].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[1].Label))
+                && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[1].Label)
+                || indicators.Contains("1")))
             {
                 //but the rest do
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[2].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[2].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[2].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[2].Label)
+                || indicators.Contains("2")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[3].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[3].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[3].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[3].Label)
+                || indicators.Contains("3")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[4].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[4].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[4].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[4].Label)
+                || indicators.Contains("4")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[5].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[5].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[5].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[5].Label)
+                || indicators.Contains("5")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[6].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[6].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[6].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[6].Label)
+                || indicators.Contains("6")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[7].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[7].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[7].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[7].Label)
+                || indicators.Contains("7")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[8].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[8].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[8].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[8].Label)
+                || indicators.Contains("8")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[9].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[9].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[9].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[9].Label)
+                || indicators.Contains("9")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[10].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[10].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[10].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[10].Label)
+                || indicators.Contains("10")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[11].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[11].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[11].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[11].Label)
+                || indicators.Contains("11")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[12].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[12].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[12].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[12].Label)
+                || indicators.Contains("12")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[13].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[13].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[13].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[13].Label)
+                || indicators.Contains("13")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[14].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[14].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[14].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[14].Label)
+                || indicators.Contains("14")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[15].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[15].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[15].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[15].Label)
+                || indicators.Contains("15")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[16].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[16].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[16].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[16].Label)
+                || indicators.Contains("16")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[17].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[17].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[17].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[17].Label)
+                || indicators.Contains("17")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[18].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[18].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[18].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[18].Label)
+                || indicators.Contains("18")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[19].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[19].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[19].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[19].Label)
+                || indicators.Contains("19")))
             {
                 return true;
             }
             else if (this.IndicatorQT.IndicatorQT1s[20].QMathType == algorithm
                 && this.IndicatorQT.IndicatorQT1s[20].QMathSubType == subAlgorithm
-                && indicators.Contains(this.IndicatorQT.IndicatorQT1s[20].Label))
+                 && (indicators.Contains(this.IndicatorQT.IndicatorQT1s[20].Label)
+                || indicators.Contains("20")))
             {
                 return true;
             }
@@ -636,121 +656,141 @@ namespace DevTreks.Extensions.Algorithms
         {
             double[] sampledata = { };
             //skip the score in idex 0
-            if (label == this.IndicatorQT.IndicatorQT1s[1].Label)
+            if (label == this.IndicatorQT.IndicatorQT1s[1].Label
+                || label == "1")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[1].QDistributionType, 
                     this.IndicatorQT.IndicatorQT1s[1].QT, this.IndicatorQT.IndicatorQT1s[1].QTD1, 
                     this.IndicatorQT.IndicatorQT1s[1].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[2].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[2].Label
+                || label == "2")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[2].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[2].QT, this.IndicatorQT.IndicatorQT1s[2].QTD1,
                     this.IndicatorQT.IndicatorQT1s[2].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[3].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[3].Label
+                || label == "3")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[3].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[3].QT, this.IndicatorQT.IndicatorQT1s[3].QTD1,
                     this.IndicatorQT.IndicatorQT1s[3].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[4].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[4].Label
+                || label == "4")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[4].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[4].QT, this.IndicatorQT.IndicatorQT1s[4].QTD1,
                     this.IndicatorQT.IndicatorQT1s[4].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[5].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[5].Label
+                || label == "5")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[5].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[5].QT, this.IndicatorQT.IndicatorQT1s[5].QTD1,
                     this.IndicatorQT.IndicatorQT1s[5].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[6].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[6].Label
+                || label == "6")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[6].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[6].QT, this.IndicatorQT.IndicatorQT1s[6].QTD1,
                     this.IndicatorQT.IndicatorQT1s[6].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[7].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[7].Label
+                || label == "7")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[7].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[7].QT, this.IndicatorQT.IndicatorQT1s[7].QTD1,
                     this.IndicatorQT.IndicatorQT1s[7].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[8].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[8].Label
+                || label == "8")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[8].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[8].QT, this.IndicatorQT.IndicatorQT1s[8].QTD1,
                     this.IndicatorQT.IndicatorQT1s[8].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[9].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[9].Label
+                || label == "9")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[9].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[9].QT, this.IndicatorQT.IndicatorQT1s[9].QTD1,
                     this.IndicatorQT.IndicatorQT1s[9].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[10].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[10].Label
+                || label == "10")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[10].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[10].QT, this.IndicatorQT.IndicatorQT1s[10].QTD1,
                     this.IndicatorQT.IndicatorQT1s[10].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[11].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[11].Label
+                || label == "11")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[11].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[11].QT, this.IndicatorQT.IndicatorQT1s[11].QTD1,
                     this.IndicatorQT.IndicatorQT1s[11].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[12].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[12].Label
+                || label == "12")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[12].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[12].QT, this.IndicatorQT.IndicatorQT1s[12].QTD1,
                     this.IndicatorQT.IndicatorQT1s[12].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[13].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[13].Label
+                || label == "13")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[13].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[13].QT, this.IndicatorQT.IndicatorQT1s[13].QTD1,
                     this.IndicatorQT.IndicatorQT1s[13].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[14].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[14].Label
+                || label == "14")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[14].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[14].QT, this.IndicatorQT.IndicatorQT1s[14].QTD1,
                     this.IndicatorQT.IndicatorQT1s[14].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[15].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[15].Label
+                || label == "15")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[15].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[15].QT, this.IndicatorQT.IndicatorQT1s[15].QTD1,
                     this.IndicatorQT.IndicatorQT1s[15].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[16].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[16].Label
+                || label == "16")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[16].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[16].QT, this.IndicatorQT.IndicatorQT1s[16].QTD1,
                     this.IndicatorQT.IndicatorQT1s[16].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[17].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[17].Label
+                || label == "17")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[17].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[17].QT, this.IndicatorQT.IndicatorQT1s[17].QTD1,
                     this.IndicatorQT.IndicatorQT1s[17].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[18].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[18].Label
+                || label == "18")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[18].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[18].QT, this.IndicatorQT.IndicatorQT1s[18].QTD1,
                     this.IndicatorQT.IndicatorQT1s[18].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[19].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[19].Label
+                || label == "19")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[19].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[19].QT, this.IndicatorQT.IndicatorQT1s[19].QTD1,
                     this.IndicatorQT.IndicatorQT1s[19].QTD2);
             }
-            else if (label == this.IndicatorQT.IndicatorQT1s[20].Label)
+            else if (label == this.IndicatorQT.IndicatorQT1s[20].Label
+                || label == "20")
             {
                 sampledata = this.GetSampleData(this.IndicatorQT.IndicatorQT1s[20].QDistributionType,
                     this.IndicatorQT.IndicatorQT1s[20].QT, this.IndicatorQT.IndicatorQT1s[20].QTD1,
@@ -769,7 +809,8 @@ namespace DevTreks.Extensions.Algorithms
             foreach (var label in inds)
             {
                 //skip the score
-                if (label == this.IndicatorQT.IndicatorQT1s[1].Label)
+                if (label == this.IndicatorQT.IndicatorQT1s[1].Label
+                    || label == "1")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -783,7 +824,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[2].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[2].Label
+                    || label == "2")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -794,7 +836,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[3].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[3].Label
+                    || label == "3")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -805,7 +848,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[4].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[4].Label
+                   || label == "4")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -816,7 +860,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[5].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[5].Label
+                    || label == "5")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -827,7 +872,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[6].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[6].Label
+                    || label == "6")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -838,7 +884,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[7].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[7].Label
+                    || label == "7")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -849,7 +896,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[8].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[8].Label
+                   || label == "8")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -860,7 +908,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[9].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[9].Label
+                    || label == "9")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -871,7 +920,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[10].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[10].Label
+                    || label == "10")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -882,7 +932,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[11].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[11].Label
+                    || label == "11")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -893,7 +944,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[12].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[12].Label
+                    || label == "12")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -904,7 +956,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[13].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[13].Label
+                    || label == "13")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -915,7 +968,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[14].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[14].Label
+                    || label == "14")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -926,7 +980,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[15].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[15].Label
+                    || label == "15")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -937,7 +992,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[16].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[16].Label
+                    || label == "16")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -948,7 +1004,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[17].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[17].Label
+                    || label == "17")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -959,7 +1016,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[18].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[18].Label
+                    || label == "18")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -970,7 +1028,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[19].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[19].Label
+                    || label == "19")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {
@@ -981,7 +1040,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     i++;
                 }
-                else if (label == this.IndicatorQT.IndicatorQT1s[20].Label)
+                else if (label == this.IndicatorQT.IndicatorQT1s[20].Label
+                    || label == "20")
                 {
                     if (randomSampleData.ColumnCount > i)
                     {

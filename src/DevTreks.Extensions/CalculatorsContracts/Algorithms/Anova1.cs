@@ -13,7 +13,7 @@ namespace DevTreks.Extensions.Algorithms
     /// <summary>
     ///Purpose:		ANOVA algorithm
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2016, November
     ///References:	CTA algo1 subalgo8
     ///</summary>
     public class Anova1 : Calculator1
@@ -116,6 +116,8 @@ namespace DevTreks.Extensions.Algorithms
                 Vector<double> y = Shared.GetYData(dataobs);
                 //treatments or factor1 levels
                 Matrix<double> treatments = Shared.GetDistinctMatrix(dataobs, 1);
+                //206 condition added due to M and E dataset indexing
+                _totalsNeeded = treatments.ColumnCount;
                 double tDF = treatments.ColumnCount - 1;
                 //step 1. get total of observed data
                 double yTotal = y.Sum();
@@ -168,18 +170,18 @@ namespace DevTreks.Extensions.Algorithms
                     if (itDF == 0) itDF = 1;
                     double FCriticalTValue = ExcelFunctions.FInv(dbCI, itDF, ieDF);
                     string FTGreaterFCritical = (FT > FCriticalTValue) ? "true" : "false";
-                    //List<List<double>> totals = new List<List<double>>(_totalsNeeded);
-                    
                     for (int i = 0; i < _totalsNeeded; i++)
                     {
-                        SetAnovaIntervals(i, totals, treatments, tCriticalValue, s,
-                            CalculatorHelpers.ConvertStringToDouble(treatments.RowCount.ToString()),
-                            FT, FCriticalTValue, bIsComplete);
+                        //206 condition added due to M and E dataset indexing
+                        if (i < treatments.ColumnCount)
+                        {
+                            SetAnovaIntervals(i, totals, treatments, tCriticalValue, s,
+                                CalculatorHelpers.ConvertStringToDouble(treatments.RowCount.ToString()),
+                                FT, FCriticalTValue, bIsComplete);
+                        }
                     }
                     this.DataToAnalyze.Add(Label, totals);
                     ////add the data to a string builder
-                    //StringBuilder sb = new StringBuilder();
-                    //sb.AppendLine("anova results");
                     
                     cols = new string[] { "treats", itDF.ToString("F0"), SST.ToString("F4"), MST.ToString("F4"), FT.ToString("F4") };
                     sb.AppendLine(Shared.GetLine(cols, false));
@@ -279,10 +281,14 @@ namespace DevTreks.Extensions.Algorithms
                         torbs.SetRow(0, mrow.ToArray());
                         for (int i = 0; i < _totalsNeeded; i++)
                         {
-                            //treatments
-                            SetAnovaIntervals(i, totals, torbs, tCriticalValue, s,
+                            //206 condition added due to M and E dataset indexing
+                            if (i < treatments.ColumnCount)
+                            {
+                                //treatments
+                                SetAnovaIntervals(i, totals, torbs, tCriticalValue, s,
                                 CalculatorHelpers.ConvertStringToDouble(blocks.ColumnCount.ToString()),
                                 FT, FCriticalTValue, bIsComplete);
+                            }
                         }
                         //cell1Mean = Shared.GetMeanPerCell(dataobs, 1, 2, 0, 0, r);
                         //cell2Mean = Shared.GetMeanPerCell(dataobs, 1, 2, 0, 1, r);
@@ -305,15 +311,19 @@ namespace DevTreks.Extensions.Algorithms
                         //unless custom stylesheets are developed, need to only display treatment diffs
                         for (int i = 0; i < _totalsNeeded; i++)
                         {
-                            //treatments
-                            SetAnovaIntervals(i, totals, treatments, tCriticalValue, s, 
+                            //206 condition added due to M and E dataset indexing
+                            if (i < treatments.ColumnCount)
+                            {
+                                //treatments
+                                SetAnovaIntervals(i, totals, treatments, tCriticalValue, s,
                                 CalculatorHelpers.ConvertStringToDouble(blocks.ColumnCount.ToString()),
                                 FT, FCriticalTValue, bIsComplete);
-                            ////blocks
-                            //SetAnovaIntervals(i, totals, blocks, tCriticalValue, s, 
-                            //    CalculatorHelpers.ConvertStringToDouble(treatments.ColumnCount.ToString()),
-                            //    FB, FCriticalBValue, bIsComplete);
-                            //interactions
+                                ////blocks
+                                //SetAnovaIntervals(i, totals, blocks, tCriticalValue, s, 
+                                //    CalculatorHelpers.ConvertStringToDouble(treatments.ColumnCount.ToString()),
+                                //    FB, FCriticalBValue, bIsComplete);
+                                //interactions
+                            }
 
                         }
                         

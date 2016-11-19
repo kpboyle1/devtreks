@@ -2127,7 +2127,7 @@ namespace DevTreks.Extensions
                         ME2Indicators[0].IndMathResult += ErrorMessage;
                         ErrorMessage = string.Empty;
                     }
-                    indicatorIndex = 0;
+                    indicatorIndex= -1;
                     if (HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9))
                     {
                         ProcessAlgosAsync3(indicatorIndex, DataURL);
@@ -2395,14 +2395,14 @@ namespace DevTreks.Extensions
                 {
                     //each data key is a different indicator
                     List<int> algoIndicators = new List<int>(data.Keys.Count);
-                    int algoIndicator = 0;
+                    int algoIndicator= -1;
                     foreach (var ds in data)
                     {
                         if (ds.Value.Count() > 0)
                         {
                             if (ds.Value[0].Count() > 1)
                             {
-                                algoIndicator = 0;
+                                algoIndicator= -1;
                                 if (_indicators.Contains(ds.Key) == false)
                                 {
                                     //this supports multiple algos that use the same pattern
@@ -2578,12 +2578,12 @@ namespace DevTreks.Extensions
                 if (data != null)
                 {
                     List<int> algoIndicators = new List<int>(data.Keys.Count);
-                    int algoIndicator = 0;
-                    int iIndex = 0;
+                    int algoIndicator= -1;
+                    int iIndex= -1;
                     //this data url should have one and only 1 indicator in it -same as rproject datasets
                     foreach (var ds in data)
                     {
-                        algoIndicator = 0;
+                        algoIndicator= -1;
                         iIndex = ds.Key;
                         //indicator index means labels aren't critical
                         if (indicatorIndex == 0)
@@ -2668,11 +2668,11 @@ namespace DevTreks.Extensions
                 if (data != null)
                 {
                     List<int> algoIndicators = new List<int>(data.Keys.Count);
-                    int algoIndicator = 0;
+                    int algoIndicator= -1;
                     int iIndex = 0;
                     foreach (var ds in data)
                     {
-                        algoIndicator = 0;
+                        algoIndicator= -1;
                         iIndex = ds.Key;
                         if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                             || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
@@ -2817,7 +2817,7 @@ namespace DevTreks.Extensions
             {
                 //each data key is a different indicator
                 List<int> algoIndicators = new List<int>(DataToAnalyze.Keys.Count);
-                int iIndicatorIndex = 0;
+                int iIndicatorIndex= -1;
                 int iKey = 0;
                 i = 0;
                 foreach (var ds in DataToAnalyze)
@@ -3066,10 +3066,13 @@ namespace DevTreks.Extensions
                 string[] newindicators = indicatorscsv.Split(Constants.CSV_DELIMITERS);
                 foreach (var newindicator in newindicators)
                 {
-                    iIndicator = CalculatorHelpers.ConvertStringToInt(newindicator);
-                    if (!inds.Contains(iIndicator))
+                    if (!string.IsNullOrEmpty(newindicator))
                     {
-                        inds.Add(iIndicator);
+                        iIndicator = CalculatorHelpers.ConvertStringToInt(newindicator);
+                        if (!inds.Contains(iIndicator))
+                        {
+                            inds.Add(iIndicator);
+                        }
                     }
                 }
             }
@@ -3079,7 +3082,7 @@ namespace DevTreks.Extensions
         {
             string[] algoIndicators = algoIndicator.Split(Constants.CSV_DELIMITERS);
             List<int> inds = new List<int>();
-            int iIndicator = 0;
+            int iIndicator= -1;
             foreach (var newindicator in algoIndicators)
             {
                 int i = 0;
@@ -3905,7 +3908,7 @@ namespace DevTreks.Extensions
             IDictionary<int, List<List<double>>> dataSets = new Dictionary<int, List<List<double>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            int iKey = 0;
+            int iKey= -1;
             List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
@@ -3999,7 +4002,7 @@ namespace DevTreks.Extensions
             IDictionary<int, List<List<double>>> dataSets = new Dictionary<int, List<List<double>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            int iKey = 0;
+            int iKey= -1;
             List<int> cKeysUsed = new List<int>();
             //second iteration fills dataset with complete doubles and exits loop
             int i = 0;
@@ -4097,7 +4100,7 @@ namespace DevTreks.Extensions
             IDictionary<int, List<List<string>>> dataSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            int iKey = 0;
+            int iKey= -1;
             List<int> cKeysUsed = new List<int>();
             //second iteration fills dataset with complete doubles and exits loop
             int i = 0;
@@ -4194,7 +4197,7 @@ namespace DevTreks.Extensions
             IDictionary<int, List<List<string>>> dataSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            int iKey = 0;
+            int iKey= -1;
             List<int> cKeysUsed = new List<int>();
             //second iteration fills dataset with complete doubles and exits loop
             int i = 0;
@@ -4289,7 +4292,7 @@ namespace DevTreks.Extensions
             IDictionary<int, List<List<string>>> colSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            int iKey = 0;
+            int iKey= -1;
             List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
@@ -4368,7 +4371,7 @@ namespace DevTreks.Extensions
             IDictionary<int, List<List<string>>> colSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            int iKey = 0;
+            int iKey= -1;
             List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
@@ -4483,7 +4486,7 @@ namespace DevTreks.Extensions
         }
         private int GetIndicatorIndex(string[] cols)
         {
-            int iIndIndex = 0;
+            int iIndIndex= -1;
             if (cols.Count() > 0)
             {
                 //must have at least 1 dep col and 1 ind col 
@@ -4494,7 +4497,7 @@ namespace DevTreks.Extensions
         }
         private int GetIndicatorIndex(string[] cols, string col)
         {
-            int iIndIndex = 0;
+            int iIndIndex= -1;
             //score is IIndeIndex = 0
             if (iIndIndex == 0)
             {
@@ -5140,7 +5143,7 @@ namespace DevTreks.Extensions
             IDictionary<int, List<List<string>>> dataSets = new Dictionary<int, List<List<string>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            int iKey = 0;
+            int iKey= -1;
             List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
@@ -5282,7 +5285,7 @@ namespace DevTreks.Extensions
             IDictionary<int, List<List<double>>> dataSets = new Dictionary<int, List<List<double>>>();
             string rowName = string.Empty;
             string sKey = string.Empty;
-            int iKey = 0;
+            int iKey= -1;
             List<int> cKeysUsed = new List<int>();
             int i = 0;
             foreach (var row in lines)
@@ -6982,7 +6985,7 @@ namespace DevTreks.Extensions
         }
         public int SetIndicatorData(int index, List<List<double>> data)
         {
-            int iAlgoIndicator = 0;
+            int iAlgoIndicator= -1;
             if (data.Count > 0)
             {
                 //get colcount from first row
@@ -7102,7 +7105,7 @@ namespace DevTreks.Extensions
                 {
                     sb.Append(string.Concat("Q10 mean = ", Math.Round(q10s.Average(), 4), ", "));
                 }
-                int iSiblingIndicator = 0;
+                int iSiblingIndicator= -1;
                 if (index == 0
                     && ME2Statistics.ME2Algos.HasMathExpression(ME2Indicators[0].IndMathExpression))
                 {

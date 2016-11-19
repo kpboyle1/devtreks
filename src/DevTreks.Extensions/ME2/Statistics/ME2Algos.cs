@@ -36,7 +36,7 @@ namespace DevTreks.Extensions.ME2Statistics
         {
             //probabilistic risk using montecarlo
             //if the algo is used with the label, return it as affirmation
-            int algoindicator = 0;
+            int algoindicator = -1;
             if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm1)
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm2)
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm3)
@@ -65,7 +65,7 @@ namespace DevTreks.Extensions.ME2Statistics
         public async Task<int> SetAlgoIndicatorStats1(int index, List<List<double>> data, string[] colNames)
         {
             //if the algo is used with the label, return it as affirmation
-            int algoindicator = 0;
+            int algoindicator = -1;
             
             if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm6))
             {
@@ -91,7 +91,7 @@ namespace DevTreks.Extensions.ME2Statistics
             string dataURL, string jDataURL)
         {
             //if the algo is used with the label, return it as affirmation
-            int algoindicator = 0;
+            int algoindicator = -1;
             //assume additional algos will use this data format
             string sPlatForm = CalculatorHelpers.GetPlatform(this.CalcParameters.ExtensionDocToCalcURI, dataURL);
             if (sPlatForm == CalculatorHelpers.PLATFORM_TYPES.azure.ToString())
@@ -122,7 +122,7 @@ namespace DevTreks.Extensions.ME2Statistics
             List<List<string>> colData, List<string> lines2, string[] colNames)
         {
             //if the algo is used with the label, return it as affirmation
-            int algoindicator = 0;
+            int algoindicator = -1;
             //assume additional algos will use this data format
             if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
@@ -139,7 +139,7 @@ namespace DevTreks.Extensions.ME2Statistics
             List<List<string>> colData, List<string> lines2, string[] colNames)
         {
             //if the algo is used with the label, return it as affirmation
-            int algoindicator = 0;
+            int algoindicator = -1;
             //assume additional algos will use this data format
             if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
@@ -155,7 +155,7 @@ namespace DevTreks.Extensions.ME2Statistics
         public async Task<int> SetAlgoIndicatorCalcs(int index, List<List<double>> data)
         {
             //if the algo is used with the label, return it as affirmation
-            int algoindicator = 0;
+            int algoindicator = -1;
             //init the algo using the new indicator
             if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm5))
             {
@@ -192,7 +192,7 @@ namespace DevTreks.Extensions.ME2Statistics
         private async Task<int> SetPRAIndicatorStats(int index, string[] colNames,
             List<double> qTs, double[] data = null)
         {
-            int algoIndicator = 0;
+            int algoIndicator = -1;
             string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
             if (index == 0
@@ -2066,12 +2066,12 @@ namespace DevTreks.Extensions.ME2Statistics
             }
             else
             {
-                //colindex = 0
+                //colindex = -1
             }
         }
         private async Task<int> SetRGRIndicatorStats(int index, string[] colNames, List<List<double>> data)
         {
-            int algoIndicator = 0;
+            int algoIndicator = -1;
             if (data.Count > 0)
             {
                 string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.ME2Indicators[0].IndCILevel.ToString(), Errors.GetMessage("CI_PCT"));
@@ -2447,7 +2447,7 @@ namespace DevTreks.Extensions.ME2Statistics
         }
         private async Task<int> SetANVIndicatorStats(int index, string[] colNames, List<List<double>> data)
         {
-            int algoIndicator = 0;
+            int algoIndicator = -1;
             if (data.Count > 0)
             {
                 DevTreks.Extensions.Algorithms.Anova1 anv = new Algorithms.Anova1();
@@ -2783,7 +2783,7 @@ namespace DevTreks.Extensions.ME2Statistics
         private async Task<int> SetDRR1IndicatorStats(int index, string[] colNames, 
             List<List<string>> data, List<List<string>> colData, List<string> lines2)
         {
-            int algoIndicator = 0;
+            int algoIndicator = -1;
             if (data.Count > 0)
             {
                 DevTreks.Extensions.Algorithms.DRR1 drr = new Algorithms.DRR1();
@@ -3014,7 +3014,7 @@ namespace DevTreks.Extensions.ME2Statistics
         private async Task<int> SetDRR2IndicatorStats(int index, string[] colNames,
             List<List<string>> data, List<List<string>> colData, List<string> lines2)
         {
-            int algoIndicator = 0;
+            int algoIndicator = -1;
             if (data.Count > 0)
             {
                 DevTreks.Extensions.Algorithms.DRR2 rmi = new Algorithms.DRR2();
@@ -3258,7 +3258,7 @@ namespace DevTreks.Extensions.ME2Statistics
         {
             //indicators are 1 based
             //last sibling indicator holds mathexpression if rules followed
-            int iSiblingIndex = 0;
+            int iSiblingIndex = -1;
             if (index == 0
                 && ME2Statistics.ME2Algos.HasMathExpression(calcor.ME2Indicators[0].IndMathExpression) == false
                 && indWithMathExpressIndex != 0)
