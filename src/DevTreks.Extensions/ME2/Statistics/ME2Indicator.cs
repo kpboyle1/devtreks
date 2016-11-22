@@ -2822,7 +2822,7 @@ namespace DevTreks.Extensions
                 i = 0;
                 foreach (var ds in DataToAnalyze)
                 {
-                    iIndicatorIndex = 0;
+                    iIndicatorIndex = -1;
                     iKey = CalculatorHelpers.ConvertStringToInt(ds.Key);
                     AddIndicatorToHoldTotals(i, ds.Key);
                     //this supports multiple algos that use the same pattern
@@ -4499,7 +4499,7 @@ namespace DevTreks.Extensions
         {
             int iIndIndex= -1;
             //score is IIndeIndex = 0
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 //i == 0 is the dep column and not included in MathExpressions
                 for (int i = 1; i < cols.Count(); i++)
@@ -4510,12 +4510,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4525,12 +4525,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4540,12 +4540,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4555,12 +4555,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4570,12 +4570,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4585,12 +4585,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4600,12 +4600,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4615,12 +4615,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4630,12 +4630,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4645,12 +4645,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4660,12 +4660,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4675,12 +4675,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4690,12 +4690,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4705,12 +4705,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4720,12 +4720,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4735,12 +4735,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4750,12 +4750,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4765,12 +4765,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4780,12 +4780,12 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }
             }
-            if (iIndIndex == 0)
+            if (iIndIndex == -1)
             {
                 for (int i = 1; i < cols.Count(); i++)
                 {
@@ -4795,7 +4795,7 @@ namespace DevTreks.Extensions
                     }
                     else
                     {
-                        iIndIndex = 0;
+                        iIndIndex = -1;
                         break;
                     }
                 }

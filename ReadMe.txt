@@ -1,5 +1,5 @@
 Appendix B. ReadMe.txt
-Version: 2.0.4, November 07, 2016
+Version: 2.0.6, November 22, 2016
 Introduction
 DevTreks is a multitier ASP.NET Core 1 database 
 application. The web project, DevTreks, uses an 
@@ -35,12 +35,10 @@ https://github.com/kpboyle1/devtreksapi1
 database.zip site
 https://devtreks.codeplex.com/
 
-What's New in Version 2.0.4
-What's New in Version 2.0.4
-1.	Monitoring and Evaluation (M&E) Calculators and Analyzers: The MEF Extension, DevTreks.Extensions.ME2, holding M&E Calculators and Analyzers, was upgraded to support the measurement of risk and uncertainty in M&E indicators. The Monitoring and Evaluation tutorials were upgraded to document the changes. A major advantage to the upgrade is that all of the nascent CTA algorithms, documented in the Technology Assessment tutorials, can also be used to conduct Monitoring and Evaluation calculation and analysis.
-2.	Resource Stock Calculators and Analyzers: The MEF Extension, SB1, holding Resource Stock Calculators and Analyzers, was changed by no longer rerunning base element Resource Stock calculations during analyses. The Analyzers don’t change the original base element calculations, so running calculations twice is unnecessary. The same pattern is now also used with the M&E Analyzers. Analyses now run much faster. The consequences of this change has not been fully tested with DevPacks yet.
-3.	Bugs: The bug documented in the Version 2.0.0 release notes related to connection strings resurfaced in the NPV calculators but for a different reason. The Source Code reference documents the fix.
-4.	Tutorials: Several references in several tutorials were updated to address the changes in these tools. 
+What's New in Version 2.0.6
+1.	Monitoring and Evaluation (M&E) Tools: The Version 2.0.4 M&E upgrades were tested and improved to work with all of the Conservation Technology Assessment (CTA) algorithms. The CTA references were updated with M&E examples.
+2.	Conservation Technology Assessments (CTAs): Several algorithms in the Technology Assessment tutorials were upgraded to work with M&E calculations and because the additional tests revealed some slight improvements with some of those calculations. Major changes were not made to these algorithms because this release focused on the M&E tools.
+3.	Tutorials: Several references in several tutorials were updated to address the changes in the M&E and CTA tools. 
 
 Database Connections
 Server version: Sql Server 2016 Express, RTM

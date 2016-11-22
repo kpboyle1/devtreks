@@ -11,7 +11,7 @@ namespace DevTreks.Extensions.Algorithms
     /// <summary>
     ///Purpose:		Run scripting language algorithms
     ///Author:		www.devtreks.org
-    ///Date:		2016, September
+    ///Date:		2016, November
     ///References:	CTA 1, 2, and 3 references
     ///</summary>
     public class Script1 : Calculator1
@@ -156,14 +156,26 @@ namespace DevTreks.Extensions.Algorithms
                     if (sPlatformType.Contains("azure"))
                     {
                         //webapi web domain
-                        statScript.DefaultWebDomain = "http://devtreksapi1.southcentralus.cloudapp.azure.com/";
-                        //statScript.DefaultWebDomain = "http://localhost:5000/";
+                        if (inputFilePath.Contains("localhost"))
+                        {
+                            statScript.DefaultWebDomain = "http://localhost:5000/";
+                        }
+                        else
+                        {
+                            statScript.DefaultWebDomain = "http://devtreksapi1.southcentralus.cloudapp.azure.com/";
+                        }
                     }
                     else
                     {
-                        //run tests on cloud webapi site too
-                        statScript.DefaultWebDomain = "http://devtreksapi1.southcentralus.cloudapp.azure.com/";
-                        //statScript.DefaultWebDomain = "http://localhost:5000/";
+                        if (inputFilePath.Contains("localhost"))
+                        {
+                            statScript.DefaultWebDomain = "http://localhost:5000/";
+                        }
+                        else
+                        {
+                            //run tests on cloud webapi site too
+                            statScript.DefaultWebDomain = "http://devtreksapi1.southcentralus.cloudapp.azure.com/";
+                        }
                     }
                     //use a console app to post to a webapi CreateClient controller action
                     bool bIsSuccess = await CalculatorHelpers.ClientCreate(statScript);
