@@ -2127,7 +2127,7 @@ namespace DevTreks.Extensions
                         ME2Indicators[0].IndMathResult += ErrorMessage;
                         ErrorMessage = string.Empty;
                     }
-                    indicatorIndex= -1;
+                    indicatorIndex= 0;
                     if (HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9))
                     {
                         ProcessAlgosAsync3(indicatorIndex, DataURL);
