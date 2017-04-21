@@ -19,8 +19,8 @@ namespace DevTreks.Extensions
     /// <summary>
     ///Purpose:		Helper utilities used by the DoStepsAddInView's extension calculators.
     ///Author:		www.devtreks.org
-    ///Date:		2016, March
-    ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
+    ///Date:		2017, April
+    ///References:	
     ///NOTES:
     ///             1. This class is an extension's only communication link 
     ///             to the utilities available in DevTreks.Data. 
@@ -124,7 +124,8 @@ namespace DevTreks.Extensions
             logistic = 3,
             logit = 4,
             pnorm = 5,
-            tanh = 6
+            tanh = 6,
+            weights = 7
         }
         #region "set linked lists state"
         public static bool SetLinkedLocalsListsState(CalculatorParameters calcParameters)

@@ -11,7 +11,7 @@ namespace DevTreks.Extensions.Algorithms
     ///Purpose:		DRR1 algorithm
     ///Author:		www.devtreks.org
     ///Date:		2016, May
-    ///References:	CTA algo1 subalgo9, 10, 11, 12
+    ///References:	CTA algo1, CTAP subalgo9, 10, 11, 12
     ///</summary>
     public class DRR1 : PRA1
     {

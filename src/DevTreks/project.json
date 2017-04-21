@@ -1,7 +1,6 @@
 {
   "userSecretsId": "aspnet5-DevTreks-f5b9d570-db7a-4fa2-9e37-78fade0218a3",
   "dependencies": {
-    //"BundlerMinifier.Core": "2.2.281",
     "DevTreks.Data": "1.0.0",
     "DoStepsHost": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",

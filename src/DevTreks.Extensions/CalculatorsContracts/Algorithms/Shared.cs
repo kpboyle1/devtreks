@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MathNet.Numerics.LinearAlgebra;
-
+using System.Globalization;
 
 
 namespace DevTreks.Extensions.Algorithms
@@ -11,7 +11,7 @@ namespace DevTreks.Extensions.Algorithms
     /// <summary>
     ///Purpose:		Shared static functions that support algos
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2017, April
     ///References:	CTA reference
     ///</summary>
     public static class Shared
@@ -90,6 +90,78 @@ namespace DevTreks.Extensions.Algorithms
             //TINV(0.054645,60) equals 1.96
             return pvalue;
         }
+        public static void AddStringArrayToDoubleArray(string[] strArray, 
+            List<List<double>> trends)
+        {
+            //trends
+            List<double> trend = new List<double>();
+            for (int k = 0; k < strArray.Count(); k++)
+            {
+                trend.Add(CalculatorHelpers
+                    .ConvertStringToDouble(strArray[k]));
+            }
+            trends.Add(trend);
+        }
+        public static string[] AddStringArrayToStringArray(string[] strArray,
+            List<List<double>> trends, int rowIndex)
+        {
+            string[] newArray = new string[] { };
+            if (trends.Count > rowIndex)
+            {
+                List<double> trend = trends[rowIndex];
+                newArray = new string[trend.Count];
+                if (strArray == null)
+                    strArray = new string[trend.Count];
+                if (strArray.Count() == 0)
+                {
+                    strArray = new string[trend.Count];
+                }
+                double trendValue = 0;
+                double stringArrayValue = 0;
+                for (int k = 0; k < strArray.Count(); k++)
+                {
+                    stringArrayValue = CalculatorHelpers
+                        .ConvertStringToDouble(strArray[k]);
+                    if (trend.Count > k)
+                    {
+                        trendValue = trend[k] + stringArrayValue;
+                        newArray[k] = trendValue.ToString();
+                    }
+                }
+            }
+            return newArray;
+        }
+        public static string[] AddStringArrayToStringArray(string[] strArray, int strArrayCount,
+            string[] strArray2)
+        {
+            string[] newArray = new string[strArrayCount];
+            if (strArray == null)
+                strArray = new string[strArrayCount];
+            if (strArray.Count() == 0)
+            {
+                strArray = new string[strArrayCount];
+            }
+            if (strArray2 == null)
+                strArray2 = new string[strArrayCount];
+            if (strArray2.Count() == 0)
+            {
+                strArray2 = new string[strArrayCount];
+            }
+            double stringArrayValue = 0;
+            double stringArrayValue2 = 0;
+            for (int k = 0; k < strArray.Count(); k++)
+            {
+                stringArrayValue = CalculatorHelpers
+                    .ConvertStringToDouble(strArray[k]);
+                if (strArray2.Count() > k)
+                {
+                    stringArrayValue2 = CalculatorHelpers
+                        .ConvertStringToDouble(strArray2[k]);
+                    newArray[k] = (stringArrayValue + stringArrayValue2).ToString();
+                }
+            }
+            return newArray;
+        }
         public static double[,] GetDoubleArray(List<List<double>> data)
         {
             double[,] problemData = new double[,] { };
@@ -110,7 +182,26 @@ namespace DevTreks.Extensions.Algorithms
             }
             return problemData;
         }
-
+        public static double[] GetDoubleArrayColumn(int colIndex, List<List<double>> data)
+        {
+            double[] colData = new double[data.Count()];
+            int i = 0;
+            foreach (var dlist in data)
+            {
+                int j = 0;
+                foreach (var d in dlist)
+                {
+                    if (j == colIndex)
+                    {
+                        colData[i] = d;
+                        break;
+                    }
+                    j++;
+                }
+                i++;
+            }
+            return colData;
+        }
         public static Matrix<double> GetDoubleMatrix(List<List<double>> data, string[] colNames,
             string[] dataColNames)
         {
@@ -839,12 +930,102 @@ namespace DevTreks.Extensions.Algorithms
                     }
                 }
             }
+            else if (subIndNormType == CalculatorHelpers.NORMALIZATION_TYPES.weights.ToString())
+            {
+                for (int x = 0; x < siIndex.Count; x++)
+                {
+                    //rand 2016 technique
+                    siIndex[x] = siIndex[x] / startValue;
+                    if (scaleUp4Digits)
+                    {
+                        //scale the 4 digits by multiplying by 10,000
+                        siIndex[x] = siIndex[x] * 10000.00;
+                        siIndex[x] = Math.Round(siIndex[x], 2);
+                    }
+                    else
+                    {
+                        siIndex[x] = CalculatorHelpers.CheckForNaNandRound4(siIndex[x]);
+                    }
+                }
+            }
             else
             {
                 //indicator 2 in drr1 (p and q, not norm and index)
             }
             //add them to parent cat index
             return siIndex;
+        }
+        public static string GetStringValue(List<List<double>> trends, int rowIndex, int colIndex)
+        {
+            string sValue = string.Empty;
+            if (trends.Count > rowIndex)
+            {
+                if (trends[rowIndex].Count > colIndex)
+                {
+                    sValue = trends[rowIndex]
+                        .ElementAt(colIndex).ToString("F4", CultureInfo.InvariantCulture);
+                }
+            }
+            return sValue;
+        }
+        public static double GetDoubleValue(List<List<double>> trends, int rowIndex, int colIndex)
+        {
+            double dbValue = 0;
+            if (trends.Count > rowIndex)
+            {
+                if (trends[rowIndex].Count > colIndex)
+                {
+                    dbValue = trends[rowIndex]
+                        .ElementAt(colIndex);
+                }
+            }
+            return dbValue;
+        }
+        public static double GetDoubleValue(string[] strArray, int colIndex)
+        {
+            double dbValue = 0;
+            if (strArray == null)
+                strArray = new string[colIndex];
+            if (strArray.Count() > colIndex)
+            {
+                dbValue = CalculatorHelpers
+                    .ConvertStringToDouble(strArray[colIndex]);
+            }
+            return dbValue;
+        }
+        public static List<List<double>> GetNormalizedandWeightedLists(
+            string subIndNormType, double startValue, bool scaleUp4Digits, 
+            List<double> weights, List<List<double>> trends)
+        {
+            List<List<double>> normTrends = new List<List<double>>();
+            int i = 0;
+            for (i = 0; i < trends[0].Count; i++)
+            {
+                //the columns are being normalized
+                double[] colArray = GetDoubleArrayColumn(i, trends);
+                Vector<double> normTrend = Shared.GetNormalizedVector(subIndNormType,
+                    weights.Sum(), scaleUp4Digits, colArray);
+                normTrends.Add(normTrend.ToList());
+            }
+            //but the normalized columns have to be returned back to the original rows in trends
+            //and weighted
+            List<List<double>> normTrends2 = new List<List<double>>();
+            i = 0;
+            for (i = 0; i < normTrends[0].Count; i++)
+            {
+                double[] colArray = GetDoubleArrayColumn(i, normTrends);
+                List<double> normRow = new List<double>();
+                //weighting is transitive math, shouldn't matter if before or after normaliz
+                for (int j = 0; j < colArray.Count(); j++)
+                {
+                    if (weights.Count > i)
+                    {
+                        normRow.Add(colArray[j] * weights[i]);
+                    }
+                }
+                normTrends2.Add(normRow);
+            }
+            return normTrends2;
         }
         public static double GetDiscountedAmount(double initialAmount, double life, double rate)
         {

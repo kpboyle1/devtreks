@@ -8,7 +8,7 @@ namespace DevTreks.Extensions
     ///             The algorithm results are passed back to SB1Base-based objects, 
     ///             who then fill in the original SB1Base with the results. 
     ///Author:		www.devtreks.org
-    ///Date:		2015, November
+    ///Date:		2017, April
     ///NOTES        1. Most data manipulation takes place using the collection property.
     ///             2. By convention, the first member of a this collection is the Score, and the 
     ///             remaining are the indexed Indicators.
@@ -57,6 +57,7 @@ namespace DevTreks.Extensions
             this.Q4Unit = q4Unit;
             this.Q5 = CalculatorHelpers.CheckForNaNandRound4(q5);
             this.Q5Unit = q5Unit;
+            this.Indicators = new string[] { };
         }
         //copy constructor
         public IndicatorQT1(IndicatorQT1 indQT1)
@@ -92,7 +93,7 @@ namespace DevTreks.Extensions
         public string QMathSubType { get; set; }
         public string QDistributionType { get; set; }
         public string QMathExpression { get; set; }
-        //specialty use in specific algorithms (don't init or copy)
+        //specialty use in specific algorithms (2.0.8 started init and copying)
         public string[] Indicators = new string[] { };
         public virtual void InitIndicatorQT1sProperties()
         {
@@ -144,6 +145,7 @@ namespace DevTreks.Extensions
             {
                 indQ.MathResult = string.Empty;
             }
+            indQ.Indicators = new string[] { };
         }
         public static void InitIndicatorQT1MathProperties(IndicatorQT1 indQ)
         {
@@ -182,6 +184,8 @@ namespace DevTreks.Extensions
                 indQ.QTD1Unit = string.Empty;
             if (indQ.QTD2Unit == null)
                 indQ.QTD2Unit = string.Empty;
+            if (indQ.Indicators == null)
+                indQ.Indicators = new string[] { };
         }
         public virtual void CopyIndicatorQT1sProperties(
             IndicatorQT1 calculator)
@@ -244,6 +248,7 @@ namespace DevTreks.Extensions
             indQ.QDistributionType = calculator.QDistributionType;
             indQ.QMathExpression = calculator.QMathExpression;
             indQ.MathResult = calculator.MathResult;
+            indQ.Indicators = calculator.Indicators;
         }
         public void CopyIndicatorQT1MathProperties(IndicatorQT1 indQ,
             IndicatorQT1 calculator)
@@ -267,6 +272,8 @@ namespace DevTreks.Extensions
             indQ.QTLUnit = calculator.QTLUnit;
             indQ.QTUUnit = calculator.QTUUnit;
             indQ.MathResult = calculator.MathResult;
+            if (indQ.Indicators == null)
+                indQ.Indicators = calculator.Indicators;
         }
     }
 }

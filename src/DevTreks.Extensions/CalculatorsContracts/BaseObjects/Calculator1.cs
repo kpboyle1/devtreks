@@ -294,7 +294,8 @@ namespace DevTreks.Extensions
             subalgorithm9 = 9,
             subalgorithm10 = 10,
             subalgorithm11 = 11,
-            subalgorithm12 = 12
+            subalgorithm12 = 12,
+            subalgorithm13 = 13
         }
         public enum MATH_RESULT_TYPES
         {

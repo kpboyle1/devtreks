@@ -13,7 +13,7 @@ namespace DevTreks.Extensions
     /// <summary>
     ///Purpose:		Serialize and deserialize a Stock object with up to 20 indicators
     ///Author:		www.devtreks.org
-    ///Date:		2016, September
+    ///Date:		2017, April
     ///NOTES        1. These support unit input and output indicators. The Q must be set in 
     ///             the Op/Comp/Outcome.
     /// </summary>             
@@ -13801,7 +13801,8 @@ namespace DevTreks.Extensions
                             {
                                 if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                                     || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
                                 {
                                     //198: scores use dataurl to run subalgos 10 and 11
                                     //string sTest = "skip";
@@ -14371,7 +14372,8 @@ namespace DevTreks.Extensions
                             ProcessAlgosAsync3(indicatorIndex, this.SB1URL1);
                         }
                         else if (HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                            || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                            || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
                         {
                             ProcessAlgosAsync4(indicatorIndex, this.SB1URL1);
                         }
@@ -14410,7 +14412,8 @@ namespace DevTreks.Extensions
                                 ProcessAlgosAsync3(indicatorIndex, this.SB1URL1);
                             }
                             else if (HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                               || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                               || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                               || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
                             {
                                 ProcessAlgosAsync4(indicatorIndex, this.SB1URL1);
                             }
@@ -14438,7 +14441,8 @@ namespace DevTreks.Extensions
                         if (HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
                             || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                             || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                            || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                            || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
                         {
                             ProcessAlgosAsync4(indicatorIndex, this.SB1URL2);
                         }
@@ -14466,7 +14470,8 @@ namespace DevTreks.Extensions
                         if (HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
                             || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                             || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                            || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                            || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
                         {
                             ProcessAlgosAsync3(indicatorIndex, this.SB1URL3);
                         }
@@ -14840,7 +14845,8 @@ namespace DevTreks.Extensions
                     }
                     else if (HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                         || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
-                        || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                        || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                        || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
                     {
                         ProcessAlgosAsync4(indicatorIndex, this.DataURL);
                     }
@@ -15240,7 +15246,8 @@ namespace DevTreks.Extensions
                 if (indicatorIndex == 3)
                 {
                     if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
                     {
                         //ind 3 has the rmis
                         lines = GetMathResultLines(1);
@@ -15357,7 +15364,9 @@ namespace DevTreks.Extensions
                     if (HasMathType(MATH_TYPES.algorithm1,
                         MATH_SUBTYPES.subalgorithm11)
                         || HasMathType(MATH_TYPES.algorithm1,
-                        MATH_SUBTYPES.subalgorithm12))
+                        MATH_SUBTYPES.subalgorithm12)
+                        || HasMathType(MATH_TYPES.algorithm1,
+                        MATH_SUBTYPES.subalgorithm13))
                     {
                         if (indicatorIndex == 2)
                         {
@@ -15382,7 +15391,8 @@ namespace DevTreks.Extensions
                         algoIndicator = string.Empty;
                         sLabel = ds.Key;
                         if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
                         {
                             if (indicatorIndex == 0)
                             {

@@ -4111,39 +4111,7 @@ namespace DevTreks.Extensions.ME2Statistics
             return algoIndicator;
         }
        
-        //private List<List<string>> GetAlgo8Model(int index, string jDataURL)
-        //{
-        //    string sError = string.Empty;
-        //    List<string> lines = CalculatorHelpers.ReadLines(this.CalcParameters.ExtensionDocToCalcURI, jDataURL, out sError);
-        //    List<string> cLines = lines
-        //        .Where(l => l.StartsWith(index, true, CultureInfo.InvariantCulture))
-        //        .Select(l => l.ToString()).ToList();
-        //    List<List<string>> model = new List<List<string>>();
-        //    if (cLines.Count <= 0)
-        //    {
-        //        this.ErrorMessage += string.Concat(" ", Errors.MakeStandardErrorMsg("JDATAURL_BAD"), jDataURL);
-        //        return model;
-        //    }
-        //    foreach (var jdata in cLines)
-        //    {
-        //        string[] distributes = jdata.Split(Constants.CSV_DELIMITERS);
-        //        List<string> lstDist = new List<string>(distributes);
-        //        model.Add(lstDist);
-        //    }
-        //    return model;
-        //    ////gets build from Joint Data
-        //    //Dictionary<int, List<double>> model = new Dictionary<int, List<double>>();
-        //    //string sKey = Calculator1.RUC_TYPES.normal.ToString();
-        //    //List<double> dist1 = new List<double>();
-        //    //dist1.Add(15);
-        //    //dist1.Add(0.01);
-        //    //model.Add(sKey, dist1);
-        //    //sKey = Calculator1.RUC_TYPES.gamma.ToString();
-        //    //dist1 = new List<double>();
-        //    //dist1.Add(2);
-        //    //dist1.Add(0.5);
-        //    //model.Add(sKey, dist1);
-        //}
+        
         private DevTreks.Extensions.Algorithms.PRA1 InitPRA1Algo(int index, string subalgo,
             string[] colNames, IndicatorQT1 qt1, int confidInt, int iterations, int random, List<double> qTs)
         {
