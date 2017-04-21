@@ -568,132 +568,13 @@ namespace DevTreks.Extensions.Algorithms
                 }
             }
         }
-        private void FillTrendIndicatorQT(IndicatorQT1 scoreIndicator)
-        {
-            //fill in IndicatorQT with location or alternative with highest qtms
-            int i = 0;
-            if (scoreIndicator.IndicatorQT1s != null)
-            {
-                foreach (var location in scoreIndicator.IndicatorQT1s)
-                {
-                    //convention is to start with location = 1
-                    i++;
-                    if (IndicatorIndex == 2)
-                    {
-                        IndicatorQT.QTM += location.QTM;
-                        IndicatorQT.QTL += location.QTL;
-                        IndicatorQT.QTU += location.QTU;
-                        IndicatorQT.QT += location.QT;
-                        IndicatorQT.QTD1 += location.Q3;
-                        IndicatorQT.QTD2 += location.Q4;
-                        if (IndicatorIndex == 0)
-                        {
-                            IndicatorQT.QTMUnit = "rca all locations";
-                        }
-                        else if (IndicatorIndex == 1)
-                        {
-                            IndicatorQT.QTMUnit = "rca all locations";
-                        }
-                        else
-                        {
-                            IndicatorQT.QTMUnit = "rca all locations";
-                        }
-                        IndicatorQT.QTLUnit = location.QTLUnit;
-                        IndicatorQT.QTUUnit = location.QTUUnit;
-                        IndicatorQT.QT = location.QT;
-                        IndicatorQT.QTD1 = location.Q3;
-                        IndicatorQT.QTD2 = location.Q4;
-                        //calculated based on locations
-                        FillTrendIndicatorQs(location, "location ", i);
-                    }
-                    else
-                    {
-                        //calculate based on project alternatives
-                        if (IndicatorQT.IndicatorQT1s
-                            .Any(l => l.AlternativeType
-                            == location.AlternativeType))
-                        {
-                            IndicatorQT1 AltIndicator
-                                = IndicatorQT.IndicatorQT1s
-                                .FirstOrDefault(l => l.AlternativeType
-                                == location.AlternativeType);
-                            if (AltIndicator != null)
-                            {
-                                AltIndicator.QTM += location.QTM;
-                                AltIndicator.QTL += location.QTL;
-                                AltIndicator.QTU += location.QTU;
-                                AltIndicator.QT += location.QT;
-                                AltIndicator.QTD1 += location.Q3;
-                                AltIndicator.QTD2 += location.Q4;
-                            }
-                        }
-                        else
-                        {
-                            IndicatorQT.IndicatorQT1s.Add(location);
-                        }
-                    }
-                }
-                if (IndicatorIndex != 2)
-                {
-                    i = 0;
-                    IndicatorQT.QTM = 0;
-                    foreach (var alt in IndicatorQT.IndicatorQT1s)
-                    {
-                        i++;
-                        //TR is a required convention for all subalgos
-                        if (alt.AlternativeType != "TR")
-                        {
-                            //report alt with highest score
-                            if (alt.QTM > IndicatorQT.QTM)
-                            {
-                                IndicatorQT.QTM = alt.QTM;
-                                IndicatorQT.QTL = alt.QTL;
-                                IndicatorQT.QTU = alt.QTU;
-                                if (IndicatorIndex == 0)
-                                {
-                                    IndicatorQT.QTMUnit = string.Concat("rca all locations for ", alt.AlternativeType);
-                                }
-                                else if (IndicatorIndex == 1)
-                                {
-                                    IndicatorQT.QTMUnit = string.Concat("rca all locations for ", alt.AlternativeType);
-                                }
-                                else
-                                {
-                                    IndicatorQT.QTMUnit = string.Concat("rca all locations for ", alt.AlternativeType);
-                                }
-                                IndicatorQT.QTLUnit = alt.QTLUnit;
-                                IndicatorQT.QTUUnit = alt.QTUUnit;
-                                IndicatorQT.QT = alt.QT;
-                                IndicatorQT.QTUnit = "std dev";
-                                IndicatorQT.QTD1 = alt.Q3;
-                                IndicatorQT.QTD2 = alt.Q4;
-                                IndicatorQT.QTD1Unit = "certainty1";
-                                IndicatorQT.QTD2Unit = "certainty2";
-                            }
-                        }
-                        else
-                        {
-                            //report baseline score as Score.ScoreQT, QTD1 and QTD2
-                            IndicatorQT.QT = alt.QTM;
-                            IndicatorQT.QTUnit = "base RCA score";
-                            IndicatorQT.QT = alt.QT;
-                            IndicatorQT.QTUnit = "std dev";
-                            IndicatorQT.QTD1 = alt.Q3;
-                            IndicatorQT.QTD2 = alt.Q4;
-                            IndicatorQT.QTD1Unit = "certainty1";
-                            IndicatorQT.QTD2Unit = "certainty2";
-                        }
-                    }
-                }
-            }
-        }
-        private void FillIndicatorQs(IndicatorQT1 locorAltIndicator, 
+        private void FillIndicatorQs(IndicatorQT1 locorAltIndicator,
             string locorAltName, int locOrAltNum)
         {
             if (locOrAltNum == 1)
             {
                 IndicatorQT.Q1 = locorAltIndicator.QTM;
-                IndicatorQT.Q1Unit 
+                IndicatorQT.Q1Unit
                     = string.Concat(locorAltName, locOrAltNum.ToString(), " total value");
                 IndicatorQT.QT = locorAltIndicator.QTM;
                 IndicatorQT.QTUnit
@@ -766,6 +647,52 @@ namespace DevTreks.Extensions.Algorithms
                 IndicatorQT.QTUnit = "1 to 10 totals";
             }
         }
+        private void FillTrendIndicatorQT(IndicatorQT1 scoreIndicator)
+        {
+            //fill in IndicatorQT with location or alternative with highest qtms
+            int i = 0;
+            if (scoreIndicator.IndicatorQT1s != null)
+            {
+                foreach (var location in scoreIndicator.IndicatorQT1s)
+                {
+                    if (location.AlternativeType == "TR")
+                    {
+                        IndicatorQT.Q4 += location.QTM;
+                        IndicatorQT.Q5 += location.QTL;
+                        IndicatorQT.QT += location.QTU;
+                        IndicatorQT.Q4Unit = "benchmark most score";
+                        IndicatorQT.Q5Unit = "benchmark low score";
+                        IndicatorQT.QTUnit = "benchmark high score";
+                    }
+                    else if (location.AlternativeType.Count() == 2)
+                    {
+                        //actuals have 2 chars
+                        IndicatorQT.QTM += location.QTM;
+                        IndicatorQT.QTL += location.QTL;
+                        IndicatorQT.QTU += location.QTU;
+                        IndicatorQT.QTD1 += location.Q3;
+                        IndicatorQT.QTD2 += location.Q4;
+                        IndicatorQT.QTMUnit = "actual most score";
+                        IndicatorQT.QTLUnit = "actual low score";
+                        IndicatorQT.QTUUnit = "actual high score";
+                        IndicatorQT.QTD1Unit = "actual certainty1";
+                        IndicatorQT.QTD2Unit = "actual certainty2";
+                    }
+                    else if (location.AlternativeType.Count() == 1)
+                    {
+                        //targets have 1
+                        IndicatorQT.Q1 += location.QTM;
+                        IndicatorQT.Q2 += location.QTL;
+                        IndicatorQT.Q3 += location.QTU;
+                        IndicatorQT.Q1Unit = "target most score";
+                        IndicatorQT.Q2Unit = "target low score";
+                        IndicatorQT.Q3Unit = "target high score";
+                    }
+                    i++;
+                }
+            }
+        }
+        
         private void FillTrendIndicatorQs(IndicatorQT1 locorAltIndicator,
             string locorAltName, int locOrAltNum)
         {
@@ -859,9 +786,13 @@ namespace DevTreks.Extensions.Algorithms
                 }
                 var stats = new MathNet.Numerics.Statistics.DescriptiveStatistics(trends);
                 pra1.IndicatorQT.QTM = stats.Mean;
+                pra1.IndicatorQT.QTMUnit = "mean score";
                 pra1.IndicatorQT.QTL = stats.Minimum;
+                pra1.IndicatorQT.QTLUnit = "lowest score";
                 pra1.IndicatorQT.QTU = stats.Maximum;
+                pra1.IndicatorQT.QTUUnit = "highest score";
                 pra1.IndicatorQT.QT = stats.StandardDeviation;
+                pra1.IndicatorQT.QTUnit = "std dev";
                 //2.0.8 only supports normal distribution
                 if (pra1.IndicatorQT.QDistributionType == Calculator1.RUC_TYPES.normal.ToString())
                 {
@@ -869,15 +800,6 @@ namespace DevTreks.Extensions.Algorithms
                     pra1.IndicatorQT.QTD1 = stats.Mean;
                     pra1.IndicatorQT.QTD2 = stats.StandardDeviation;
                     pra1.RunAlgorithmAsync();
-                }
-                else
-                {
-                    pra1.IndicatorQT.QTM = stats.Mean;
-                    pra1.IndicatorQT.QTL = stats.Minimum;
-                    pra1.IndicatorQT.QTU = stats.Maximum;
-                    pra1.IndicatorQT.QT = stats.Mean;
-                    pra1.IndicatorQT.QTD1 = stats.Mean;
-                    pra1.IndicatorQT.QTD2 = stats.StandardDeviation;
                 }
             }
             else
@@ -891,7 +813,6 @@ namespace DevTreks.Extensions.Algorithms
             PRA1 pra = new PRA1(pra1);
             return pra;
         }
-        
         
         private async Task SetCategoryAndIndicatorDataResult(
             int locationIndex, Dictionary<PRA1, List<PRA1>> locationIndexes,
@@ -1047,9 +968,9 @@ namespace DevTreks.Extensions.Algorithms
                         rStart++;
                     }
                 }
-                catpra.Key.IndicatorQT.QTMUnit = "category mean";
-                catpra.Key.IndicatorQT.QTLUnit = "category low ci";
-                catpra.Key.IndicatorQT.QTUUnit = "category high ci";
+                catpra.Key.IndicatorQT.QTMUnit = "mean";
+                catpra.Key.IndicatorQT.QTLUnit = "low ci";
+                catpra.Key.IndicatorQT.QTUUnit = "high ci";
                 if (catpra.Value.Count > 0)
                 {
                     catcategories.Add(catpra.Key);

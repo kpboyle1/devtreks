@@ -1083,6 +1083,13 @@ namespace DevTreks.Extensions.SB1Statistics
         private void FillBaseIndicator(IndicatorQT1 qt1, string label, string lowerci, string upperci)
         {
             bool bNeedsDistribution = true;
+            //208
+            if (this.HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+            {
+                lowerci = qt1.QTLUnit;
+                upperci = qt1.QTUUnit;
+                bNeedsDistribution = true;
+            }
             if (label == _score
                 && HasMathExpression(this.SB1ScoreMathExpression))
             {
@@ -2964,8 +2971,13 @@ namespace DevTreks.Extensions.SB1Statistics
             if (data.Count > 0)
             {
                 DevTreks.Extensions.Algorithms.DRR2 rmi = new Algorithms.DRR2();
-                string sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.SB1CILevel.ToString(), Errors.GetMessage("CI_PCT"));
-                string sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.SB1CILevel.ToString(), Errors.GetMessage("CI_PCT"));
+                string sLowerCI = string.Empty;
+                string sUpperCI = string.Empty;
+                if (this.SB1CILevel != 0)
+                {
+                    sLowerCI = string.Concat(Errors.GetMessage("LOWER"), this.SB1CILevel.ToString(), Errors.GetMessage("CI_PCT"));
+                    sUpperCI = string.Concat(Errors.GetMessage("UPPER"), this.SB1CILevel.ToString(), Errors.GetMessage("CI_PCT"));
+                }
                 if (label == _score
                     && HasMathExpression(this.SB1ScoreMathExpression))
                 {
