@@ -13802,7 +13802,8 @@ namespace DevTreks.Extensions
                                 if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                                     || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                                     || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                                 {
                                     //198: scores use dataurl to run subalgos 10 and 11
                                     //string sTest = "skip";
@@ -14373,7 +14374,8 @@ namespace DevTreks.Extensions
                         }
                         else if (HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                             || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                            || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                            || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                         {
                             ProcessAlgosAsync4(indicatorIndex, this.SB1URL1);
                         }
@@ -14413,7 +14415,8 @@ namespace DevTreks.Extensions
                             }
                             else if (HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                                || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                               || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                               || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                               || HasMathType(this.SB1Label1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                             {
                                 ProcessAlgosAsync4(indicatorIndex, this.SB1URL1);
                             }
@@ -14442,7 +14445,8 @@ namespace DevTreks.Extensions
                             || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                             || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                             || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                            || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                            || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(this.SB1Label2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                         {
                             ProcessAlgosAsync4(indicatorIndex, this.SB1URL2);
                         }
@@ -14470,10 +14474,14 @@ namespace DevTreks.Extensions
                         if (HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
                             || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                             || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                            || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                            || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
                         {
                             ProcessAlgosAsync3(indicatorIndex, this.SB1URL3);
+                        }
+                        else if (HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(this.SB1Label3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, this.SB1URL3);
                         }
                         else
                         {
@@ -14500,6 +14508,11 @@ namespace DevTreks.Extensions
                             || HasMathType(this.SB1Label4, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync3(indicatorIndex, this.SB1URL4);
+                        }
+                        else if (HasMathType(this.SB1Label4, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14)
+                            || HasMathType(this.SB1Label4, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, this.SB1URL4);
                         }
                         else
                         {
@@ -14846,7 +14859,8 @@ namespace DevTreks.Extensions
                     else if (HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                         || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                         || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                        || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                        || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                        || HasMathType(_score, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                     {
                         ProcessAlgosAsync4(indicatorIndex, this.DataURL);
                     }
@@ -15247,7 +15261,8 @@ namespace DevTreks.Extensions
                 {
                     if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                         || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                     {
                         //ind 3 has the rmis
                         lines = GetMathResultLines(1);
@@ -15364,9 +15379,7 @@ namespace DevTreks.Extensions
                     if (HasMathType(MATH_TYPES.algorithm1,
                         MATH_SUBTYPES.subalgorithm11)
                         || HasMathType(MATH_TYPES.algorithm1,
-                        MATH_SUBTYPES.subalgorithm12)
-                        || HasMathType(MATH_TYPES.algorithm1,
-                        MATH_SUBTYPES.subalgorithm13))
+                        MATH_SUBTYPES.subalgorithm12))
                     {
                         if (indicatorIndex == 2)
                         {
@@ -15392,7 +15405,8 @@ namespace DevTreks.Extensions
                         sLabel = ds.Key;
                         if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                             || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                         {
                             if (indicatorIndex == 0)
                             {
@@ -15415,6 +15429,14 @@ namespace DevTreks.Extensions
                         else if (indicatorIndex == 2)
                         {
                             sLabel = SB1Label2;
+                        }
+                        else if (indicatorIndex == 3)
+                        {
+                            sLabel = SB1Label3;
+                        }
+                        else if (indicatorIndex == 4)
+                        {
+                            sLabel = SB1Label4;
                         }
                         else if (indicatorIndex == 5)
                         {

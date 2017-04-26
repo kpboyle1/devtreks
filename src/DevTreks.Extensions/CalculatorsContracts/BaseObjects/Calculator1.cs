@@ -18,7 +18,7 @@ namespace DevTreks.Extensions
     ///             by most standard DevTreks calculators/analyzers to hold 
     ///             base properties, such as ids and names.
     ///Author:		www.devtreks.org
-    ///Date:		2016, October
+    ///Date:		2017, April
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        1. All properties are stored in Data.Calculator class. 
     ///             Inheritance to Data.Calculator is undesirable because extension
@@ -295,7 +295,9 @@ namespace DevTreks.Extensions
             subalgorithm10 = 10,
             subalgorithm11 = 11,
             subalgorithm12 = 12,
-            subalgorithm13 = 13
+            subalgorithm13 = 13,
+            subalgorithm14 = 14,
+            subalgorithm15 = 15
         }
         public enum MATH_RESULT_TYPES
         {
