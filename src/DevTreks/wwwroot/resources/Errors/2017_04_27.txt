@@ -1,0 +1,310 @@
+
+Log Entry : 2:33:01 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223485<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 2:33:07 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223485<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 2:37:18 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223485<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 2:38:52 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223485<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 2:40:32 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223485<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 2:45:07 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223485<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:An html file could not be made. Please try again.Point of contention: The stylesheet could not be found (StylesheetHelper.GetStylesheet()). This contention message can be erased by clicking on any tab.<br />
+-------------------------------
+
+Log Entry : 2:46:23 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223482<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 2:47:21 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223485<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 2:48:13 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223485<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:01:13 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:01:49 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:02:00 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:02:08 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:03:22 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:03:35 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:Point of contention: The following error took place:  The step was not completed successfully. Please check the data used in the calculator and try again. Make sure this calculator is compatible with this uri. If the problem persists, contact the calculator's author (using the feedback link on the Intro page of the calculator). This contention message can be erased by clicking on any tab.Point of contention: The following error took place:  The step was not completed successfully. PleasNo display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:03:51 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 3:03:57 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:04:48 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212731<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:11:40 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223484<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:11:50 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223484<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 3:12:29 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223484<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 3:17:14 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223484<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:18:28 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223484<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:21:46 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223484<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:An html file could not be made. Please try again.Point of contention: The stylesheet could not be found (StylesheetHelper.GetStylesheet()). This contention message can be erased by clicking on any tab.<br />
+-------------------------------
+
+Log Entry : 3:29:53 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223484<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:An html file could not be made. Please try again.Point of contention: The stylesheet could not be found (StylesheetHelper.GetStylesheet()). This contention message can be erased by clicking on any tab.<br />
+-------------------------------
+
+Log Entry : 3:36:23 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223467<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:36:28 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223467<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 3:37:45 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223467<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:42:07 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223467<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 3:43:16 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223467<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:45:58 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223467<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:46:04 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223467<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 3:47:50 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223467<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:50:30 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:50:35 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 3:52:51 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 3:55:23 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:55:29 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:55:33 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 3:55:50 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:55:53 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 3:58:02 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223468<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 4:04:02 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 4:04:07 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 4:06:23 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 4:09:35 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 4:09:40 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 4:09:59 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 4:12:06 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 4:19:09 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 4:24:12 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212723<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 4:25:05 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212723<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 4:27:38 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: outputseries<br />Id: 2141212723<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 4:36:25 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 4:36:34 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 4:37:50 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 4:51:56 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 4:52:03 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 4:53:58 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223477<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------
+
+Log Entry : 4:56:47 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223469<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The calculated results do not exist. Make sure to build a base document if one has not already been built. Please try running the calculations, or asking the owner to run the calculations. Make sure that you clicked the Get AddIn link to open the calculator or analyzer.<br />
+-------------------------------
+
+Log Entry : 4:56:53 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223469<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:The base xml document needed to begin running calculations has been successfully built. The calculations can now be run.<br />
+-------------------------------
+
+Log Entry : 4:57:55 PM Thursday, April 27, 2017
+  :
+  :Point of contention: linkedviews<br /> This contention message can be erased by clicking on any tab.<br />Application: prices<br />SubApplication: outputprices<br />Node Name: output<br />Id: 2141223469<br />Service Id: 3449<br />Account Id: DevTreks.Models.Account<br />Admin Message:No display is needed by this step.<br />
+-------------------------------

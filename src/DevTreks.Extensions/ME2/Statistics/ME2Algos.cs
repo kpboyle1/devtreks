@@ -11,7 +11,7 @@ namespace DevTreks.Extensions.ME2Statistics
     ///<summary>
     ///Purpose:		Run algorithms
     ///Author:		www.devtreks.org
-    ///Date:		2016, November
+    ///Date:		2017, April
     ///NOTES        These algorithm patterns derived directly from the equivalent code 
     ///             in the Resource Stock Calculator. They need to evolve to handle 
     ///             large numbers of algorithms.
@@ -144,7 +144,9 @@ namespace DevTreks.Extensions.ME2Statistics
             if (this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
             {
                 //if its a good exceedance probability calc returns the string
                 algoindicator = await SetDRR2IndicatorStats(index, colNames, data,
@@ -1084,6 +1086,14 @@ namespace DevTreks.Extensions.ME2Statistics
         private void FillBaseIndicator(IndicatorQT1 qt1, int index, string lowerci, string upperci)
         {
             bool bNeedsDistribution = true;
+            //208
+            if (this.HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                || this.HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
+            {
+                lowerci = qt1.QTLUnit;
+                upperci = qt1.QTUUnit;
+                bNeedsDistribution = true;
+            }
             if (index == 0
                 && HasMathExpression(this.ME2Indicators[0].IndMathExpression))
             {

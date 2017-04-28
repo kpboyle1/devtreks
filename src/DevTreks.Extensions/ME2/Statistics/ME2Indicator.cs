@@ -17,7 +17,7 @@ namespace DevTreks.Extensions
     ///             Can be run stand alone, with normal stock totals, or as an 
     ///             analyzer step that keeps track of each meal Qs, or each 
     ///             household member Qs
-    ///Date:		2016, November
+    ///Date:		2017, April
     ///References:	Monitoring and Evaluation Tutorials
     ///NOTES:       Version 2.0.4 upgraded to similar properties and methods as 
     ///             the ResourceStockCalculator to promote consistency in the use 
@@ -1115,7 +1115,9 @@ namespace DevTreks.Extensions
                             {
                                 if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                                     || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                                    || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                                 {
                                     //198: scores use dataurl to run subalgos 10 and 11
                                     //string sTest = "skip";
@@ -1686,7 +1688,9 @@ namespace DevTreks.Extensions
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[1].IndURL);
                         }
                         else if (HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                            || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                            || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                         {
                             ProcessAlgosAsync4(indicatorIndex, ME2Indicators[1].IndURL);
                         }
@@ -1724,7 +1728,9 @@ namespace DevTreks.Extensions
                                 ProcessAlgosAsync3(indicatorIndex, ME2Indicators[1].IndURL);
                             }
                             else if (HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                               || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                               || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                               || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                               || HasMathType(1, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                             {
                                 ProcessAlgosAsync4(indicatorIndex, ME2Indicators[1].IndURL);
                             }
@@ -1751,7 +1757,9 @@ namespace DevTreks.Extensions
                         if (HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm9)
                             || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
                             || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                            || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                            || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(2, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                         {
                             ProcessAlgosAsync4(indicatorIndex, ME2Indicators[2].IndURL);
                         }
@@ -1782,6 +1790,11 @@ namespace DevTreks.Extensions
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[3].IndURL);
                         }
+                        else if (HasMathType(3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(3, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, ME2Indicators[3].IndURL);
+                        }
                         else
                         {
                             SetTotalMathTypeStock3();
@@ -1806,6 +1819,11 @@ namespace DevTreks.Extensions
                             || HasMathType(4, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[4].IndURL);
+                        }
+                        else if (HasMathType(4, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14)
+                            || HasMathType(4, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, ME2Indicators[4].IndURL);
                         }
                         else
                         {
@@ -2134,7 +2152,9 @@ namespace DevTreks.Extensions
                     }
                     else if (HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                         || HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10)
-                        || HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                        || HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                        || HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                        || HasMathType(0, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                     {
                         ProcessAlgosAsync4(indicatorIndex, DataURL);
                     }
@@ -2675,7 +2695,9 @@ namespace DevTreks.Extensions
                         algoIndicator= -1;
                         iIndex = ds.Key;
                         if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
+                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
+                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
                         {
                             if (indicatorIndex == 0)
                             {
@@ -2699,6 +2721,14 @@ namespace DevTreks.Extensions
                         {
                             iIndex = 2;
                         }
+                        else if (indicatorIndex == 3)
+                        {
+                            iIndex = 3;
+                        }
+                        else if (indicatorIndex == 4)
+                        {
+                            iIndex = 4;
+                        }
                         else if (indicatorIndex == 5)
                         {
                             iIndex = 5;
@@ -2706,7 +2736,8 @@ namespace DevTreks.Extensions
                         if (_indicators.Contains(iIndex) == false)
                         {
                             algoIndicator = await SetAlgoStats4(iIndex, ds.Value, colSets[ds.Key], lines2);
-                            if (algoIndicator != 0)
+                            //208 bug fix no longer equals 0 (MCA)
+                            if (algoIndicator != -1)
                             {
                                 algoIndicators.Add(algoIndicator);
                             }

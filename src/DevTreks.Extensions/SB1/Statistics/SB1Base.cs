@@ -15260,9 +15260,7 @@ namespace DevTreks.Extensions
                 if (indicatorIndex == 3)
                 {
                     if (HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
-                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
-                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
-                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
+                        || HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12))
                     {
                         //ind 3 has the rmis
                         lines = GetMathResultLines(1);

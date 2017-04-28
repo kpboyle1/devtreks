@@ -2878,12 +2878,12 @@ namespace DevTreks.Extensions.Algorithms
             }
             else if (_subalgorithm == MATH_SUBTYPES.subalgorithm13.ToString())
             {
-                ColNames[4] = "QTM";
-                ColNames[5] = "QTMUnit";
-                ColNames[6] = "QTL";
-                ColNames[7] = "QTLUnit";
-                ColNames[8] = "QTU";
-                ColNames[9] = "QTUUnit";
+                ColNames[4] = "QTMost";
+                ColNames[5] = "QTMostUnit";
+                ColNames[6] = "QTLow";
+                ColNames[7] = "QTLowUnit";
+                ColNames[8] = "QTUp";
+                ColNames[9] = "QTUpUnit";
             }
             else if (_subalgorithm == MATH_SUBTYPES.subalgorithm14.ToString())
             {
@@ -2893,23 +2893,23 @@ namespace DevTreks.Extensions.Algorithms
                     newColNames[i] = ColNames[i];
                 }
                 //new cols changed by algo
-                newColNames[12] = "QTM";
-                newColNames[13] = "QTMUnit";
+                newColNames[12] = "QTMost";
+                newColNames[13] = "QTMostUnit";
                 //new cols
-                newColNames[14] = "QTL";
-                newColNames[15] = "QTLUnit";
-                newColNames[16] = "QTU";
-                newColNames[17] = "QTUUnit";
+                newColNames[14] = "QTLow";
+                newColNames[15] = "QTLowUnit";
+                newColNames[16] = "QTUp";
+                newColNames[17] = "QTUpUnit";
                 ColNames = newColNames;
             }
             else
             {
-                ColNames[5] = "QTM";
-                ColNames[6] = "QTMUnit";
-                ColNames[7] = "QTL";
-                ColNames[8] = "QTLUnit";
-                ColNames[9] = "QTU";
-                ColNames[10] = "QTUUnit";
+                ColNames[5] = "QTMost";
+                ColNames[6] = "QTMostUnit";
+                ColNames[7] = "QTLow";
+                ColNames[8] = "QTLowUnit";
+                ColNames[9] = "QTUp";
+                ColNames[10] = "QTUpUnit";
                 //11, 12, and 13 don't change
                 //ColNames[11] = "quantity";
             }

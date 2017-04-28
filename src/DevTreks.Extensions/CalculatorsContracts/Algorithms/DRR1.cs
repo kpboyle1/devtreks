@@ -10,7 +10,7 @@ namespace DevTreks.Extensions.Algorithms
     /// <summary>
     ///Purpose:		DRR1 algorithm
     ///Author:		www.devtreks.org
-    ///Date:		2016, May
+    ///Date:		2017, April
     ///References:	CTA algo1, CTAP subalgo9, 10, 11, 12
     ///</summary>
     public class DRR1 : PRA1
@@ -981,12 +981,12 @@ namespace DevTreks.Extensions.Algorithms
             }
             else
             {
-                ColNames[5] = "QTM";
-                ColNames[6] = "QTMUnit";
-                ColNames[7] = "QTL";
-                ColNames[8] = "QTLUnit";
-                ColNames[9] = "QTU";
-                ColNames[10] = "QTUUnit";
+                ColNames[5] = "QTMost";
+                ColNames[6] = "QTMostUnit";
+                ColNames[7] = "QTLow";
+                ColNames[8] = "QTLowUnit";
+                ColNames[9] = "QTUp";
+                ColNames[10] = "QTUpUnit";
             }
             sb.AppendLine(GetColumnNameRow());
             StringBuilder rb = new StringBuilder();
