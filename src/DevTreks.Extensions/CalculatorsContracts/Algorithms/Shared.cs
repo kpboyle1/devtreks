@@ -90,6 +90,16 @@ namespace DevTreks.Extensions.Algorithms
             //TINV(0.054645,60) equals 1.96
             return pvalue;
         }
+        public static bool IsDouble(string test)
+        {
+            bool bIsDouble = false;
+            double dbTest = CalculatorHelpers.ConvertStringToDouble(test);
+            if (dbTest != 0)
+            {
+                bIsDouble = true;
+            }
+            return bIsDouble;
+        }
         public static void AddStringArrayToDoubleArray(string[] strArray, 
             List<List<double>> trends)
         {

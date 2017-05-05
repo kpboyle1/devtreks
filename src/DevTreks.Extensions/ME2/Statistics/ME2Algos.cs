@@ -146,7 +146,9 @@ namespace DevTreks.Extensions.ME2Statistics
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm11)
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm12)
                 || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
-                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                || this.HasMathType(index, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
             {
                 //if its a good exceedance probability calc returns the string
                 algoindicator = await SetDRR2IndicatorStats(index, colNames, data,
@@ -1088,7 +1090,9 @@ namespace DevTreks.Extensions.ME2Statistics
             bool bNeedsDistribution = true;
             //208
             if (this.HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
-                || this.HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14))
+                || this.HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14)
+                || this.HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                || this.HasMathType(MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
             {
                 lowerci = qt1.QTLUnit;
                 upperci = qt1.QTUUnit;

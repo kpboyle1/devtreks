@@ -885,7 +885,7 @@ namespace DevTreks.Helpers
             using (StringWriter result = new StringWriter())
             {
                 result.WriteLine(
-                    "Current version: DevTreks.2.0.8, April 31, 2017");
+                    "Current version: DevTreks.2.0.8, May 11, 2017");
                 return new HtmlString(result.ToString());
             }
         }
