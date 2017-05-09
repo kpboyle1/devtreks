@@ -18,7 +18,7 @@ namespace DevTreks.Extensions
     ///             by most standard DevTreks calculators/analyzers to hold 
     ///             base properties, such as ids and names.
     ///Author:		www.devtreks.org
-    ///Date:		2017, April
+    ///Date:		2017, May
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     ///NOTES        1. All properties are stored in Data.Calculator class. 
     ///             Inheritance to Data.Calculator is undesirable because extension

@@ -9,7 +9,7 @@ namespace DevTreks.Extensions
     ///<summary>
     ///Purpose:		General rules for calculators.
     ///Author:		www.devtreks.org
-    ///Date:		2013, June
+    ///Date:		2017, May
     ///References:	www.devtreks.org/helptreks/linkedviews/help/linkedview/HelpFile/148
     /// </summary>
     public static class GeneralRules
@@ -19,16 +19,33 @@ namespace DevTreks.Extensions
         /// </summary>
         public enum GROWTH_SERIES_TYPES
         {
-            none        = 0,
-            uniform     = 1,
-            linear      = 2,
-            geometric   = 3,
+            none            = 0,
+            uniform         = 1,
+            linear          = 2,
+            geometric       = 3,
             //NIST 135 Handbook indexes or other upv, femupv, indexes
-            upvtable     = 4,
+            upvtable        = 4,
             //single present value used instead of growth series
-            spv          = 5,
+            spv             = 5,
             //amortized annual costs
-            caprecovery  = 6
+            caprecovery     = 6,
+            upv             = 7,
+            exponential     = 8,
+            logarithmic     = 9,
+            eaa             = 10
+        }
+        public enum DISCOUNT_TYPES
+        {
+            none = 0, //= no escalation,
+            factor = 1, //use the escalateR property as a multiplier (the factor has been pre-calculated from a discounting formula)
+            spv = 2, //single present value,
+            upv = 3, //uniform present value,
+            cap = 4, //capital recovery or amortized,
+            uniform = 5, //uniform escalation,
+            geometric = 6, //geometric escalation,
+            linear = 7,
+            exponential = 8, //exponential escalation,
+            eaa = 9 //equivalent annual annuity
         }
         public enum UNIT_TYPES
         {
@@ -149,6 +166,18 @@ namespace DevTreks.Extensions
             else if (growthType == GROWTH_SERIES_TYPES.caprecovery.ToString())
             {
                 eGrowthType = GROWTH_SERIES_TYPES.caprecovery;
+            }
+            else if (growthType == GROWTH_SERIES_TYPES.upv.ToString())
+            {
+                eGrowthType = GROWTH_SERIES_TYPES.upv;
+            }
+            else if (growthType == GROWTH_SERIES_TYPES.eaa.ToString())
+            {
+                eGrowthType = GROWTH_SERIES_TYPES.eaa;
+            }
+            else if (growthType == GROWTH_SERIES_TYPES.exponential.ToString())
+            {
+                eGrowthType = GROWTH_SERIES_TYPES.exponential;
             }
             return eGrowthType;
         }
@@ -2388,6 +2417,17 @@ namespace DevTreks.Extensions
                     //no salvage value adjustment
                 }
             }
+            else if (growthType == GeneralRules.GROWTH_SERIES_TYPES.exponential)
+            {
+                //NIST 135 recurring uniform formula
+                dbGradientFactor = System.Math.Exp(escalationRate * dbServicePlusPCYears);
+                if (planningConstructionYears > 0)
+                {
+                    dbPlanningConstructionPhaseFactor = System.Math.Exp(escalationRate * planningConstructionYears);
+                    dbGradientFactor = dbGradientFactor - dbPlanningConstructionPhaseFactor;
+                }
+                dbAdjustedTotal = cashValue * dbGradientFactor;
+            }
             else if (growthType == GeneralRules.GROWTH_SERIES_TYPES.upvtable)
             {
                 //NIST 135 index factor
@@ -2396,41 +2436,35 @@ namespace DevTreks.Extensions
             }
             else if (growthType == GeneralRules.GROWTH_SERIES_TYPES.spv)
             {
-                if (discountFactor != 0)
+
+                if (discountYearTimes > 1)
                 {
-                    //NIST 135 index factor
-                    dbAdjustedTotal = cashValue * discountFactor;
+                    dbAdjustedTotal = 0;
+                    //add recurring spv costs
+                    double dbYears = discountYears;
+                    for (int i = 1; i <= discountYearTimes; i++)
+                    {
+                        //total years must be less than or equal to servicelifeplus years
+                        if (dbYears <= dbServicePlusPCYears)
+                        {
+                            //sum the recurrent costs
+                            dbGradientFactor = 1 / (System.Math.Pow((1 + interestRate), dbYears));
+                            dbAdjustedTotal += cashValue * dbGradientFactor;
+                        }
+                        //add addition years to discount next recurrent cost
+                        dbYears += discountYears;
+                    }
                 }
                 else
                 {
-                    if (discountYearTimes > 1)
-                    {
-                        dbAdjustedTotal = 0;
-                        //add recurring spv costs
-                        double dbYears = discountYears;
-                        for (int i = 1; i <= discountYearTimes; i++)
-                        {
-                            //total years must be less than or equal to servicelifeplus years
-                            if (dbYears <= dbServicePlusPCYears)
-                            {
-                                //sum the recurrent costs
-                                dbGradientFactor = 1 / (System.Math.Pow((1 + interestRate), dbYears));
-                                dbAdjustedTotal += cashValue * dbGradientFactor;
-                            }
-                            //add addition years to discount next recurrent cost
-                            dbYears += discountYears;
-                        }
-                    }
-                    else
-                    {
-                        //NIST 135 single present value, table 5.4
-                        dbGradientFactor = 1 / (System.Math.Pow((1 + interestRate), discountYears));
-                        dbAdjustedTotal = cashValue * dbGradientFactor;
-                    }
-                    //add salvage value (a negative number)
-                    double dbSalvageValue = CalculateSalvageValue(salvValue, dbServicePlusPCYears, interestRate);
-                    dbAdjustedTotal += dbSalvageValue;
+                    //NIST 135 single present value, table 5.4
+                    dbGradientFactor = 1 / (System.Math.Pow((1 + interestRate), discountYears));
+                    dbAdjustedTotal = cashValue * dbGradientFactor;
                 }
+                //add salvage value (a negative number)
+                double dbSalvageValue = CalculateSalvageValue(salvValue, dbServicePlusPCYears, interestRate);
+                dbAdjustedTotal += dbSalvageValue;
+
             }
             else if (growthType == GeneralRules.GROWTH_SERIES_TYPES.caprecovery)
             {
@@ -2445,15 +2479,34 @@ namespace DevTreks.Extensions
                     dbAdjustedTotal = CapRecoverCostAnn(cashValue, interestRate, 0, discountYears, salvValue); ;
                 }
             }
+            else if (growthType == GeneralRules.GROWTH_SERIES_TYPES.upv)
+            {
+                if (discountYearTimes > 1)
+                {
+                    //cost per hour of operation style calculations
+                    dbAdjustedTotal = (cashValue * ((Math.Pow(1 + interestRate, discountYears) - 1) / (interestRate * (Math.Pow((1 + interestRate), discountYears))))) / discountYearTimes;
+                }
+                else
+                {
+                    dbAdjustedTotal = cashValue * ((Math.Pow(1 + interestRate, discountYears) - 1) / (interestRate * (Math.Pow((1 + interestRate), discountYears))));
+                }
+            }
+            else if (growthType == GROWTH_SERIES_TYPES.eaa)
+            {
+                dbAdjustedTotal = CalculateEquivalentAnnualAnnuity(cashValue, discountYears, interestRate, 0);
+            }
             else
             {
-                //single present value using subcost.years
-                dbGradientFactor = 1 / (System.Math.Pow((1 + interestRate), discountYears));
-                dbAdjustedTotal = cashValue * dbGradientFactor;
-                //add salvage value (a negative number)
-                double dbSalvageValue = CalculateSalvageValue(salvValue, dbServicePlusPCYears, interestRate);
-                dbAdjustedTotal += dbSalvageValue;
+                dbAdjustedTotal = cashValue;
+                //208 deprecated
+                ////single present value using subcost.years
+                //dbGradientFactor = 1 / (System.Math.Pow((1 + interestRate), discountYears));
+                //dbAdjustedTotal = cashValue * dbGradientFactor;
+                ////add salvage value (a negative number)
+                //double dbSalvageValue = CalculateSalvageValue(salvValue, dbServicePlusPCYears, interestRate);
+                //dbAdjustedTotal += dbSalvageValue;
             }
+
             return dbAdjustedTotal;
         }
         private static double CalculateSalvageValue(double salvValue, double servicePlusPCYears, 
