@@ -100,6 +100,11 @@ namespace DevTreks.Extensions.Algorithms
                 {
                     //4 level indicator systems
                     bHasCalculations = await Calculate4LevelIndicators(data, rowNames);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
+                    {
+                        //need the same qtms, qtls, and qtus in mathresult
+                        Shared.CopyStringDataToStringData(data, DataResults, 3, 0);
+                    }
                 }
                 //put the results in MathResult
                 SetMathResult(rowNames);
@@ -119,6 +124,12 @@ namespace DevTreks.Extensions.Algorithms
             {
                 //need time trends plus QTMs, QTLs, and QTUs
                 iColCount = data[0].Count + 4;
+            }
+            else if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
+            {
+                //need QTMs, QTLs, and QTUs, but no units
+                //qtm == colindex = 11
+                iColCount = data[0].Count + 3;
             }
             DataResults = CalculatorHelpers.GetList(data.Count, iColCount);
             string sCatIndexLabel = string.Empty;
@@ -754,31 +765,57 @@ namespace DevTreks.Extensions.Algorithms
                 }
                 if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
                 {
-                    if (c == 4)
+                    if (c == 0)
+                    {
+                        locationIndicator.QTM = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    }
+                    else if (c == 1)
+                    {
+                        locationIndicator.QTL = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    }
+                    else if (c == 2)
+                    {
+                        locationIndicator.QTU = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    }
+                    else if (c == 3)
+                    {
+                        //price
+                        locationIndicator.QT = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    }
+                    else if (c == 4)
                     {
                         locationIndicator.QTMUnit = data[r][c];
                     }
+                    else if (c == 5)
+                    {
+                        //real rate
+                        locationIndicator.Q1 = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    }
+                    else if (c == 6)
+                    {
+                        //nom rate
+                        locationIndicator.Q2 = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    }
+                    else if (c == 7)
+                    {
+                        //escType
+                        locationIndicator.Q3Unit = data[r][c];
+                    }
                     else if (c == 8)
                     {
-                        //planning year
+                        //escalateR (for catindex = planning years)
                         locationIndicator.Q3 = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
                     }
                     else if (c == 9)
                     {
-                        if (data[r][c] != null)
-                        {
-                            //service life
-                            locationIndicator.Q4 = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
-                        }
+                        //years (for catindex = service life)
+                        locationIndicator.Q4 = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
                     }
                     else if (c == 10)
                     {
-                        if (data[r][c] != null)
-                        {
-                            //years from base
-                            locationIndicator.Q5
+                        //recurrent times (for catindex = years from base)
+                        locationIndicator.Q5
                             = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
-                        }
                     }
                 }
                 else if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
@@ -808,7 +845,7 @@ namespace DevTreks.Extensions.Algorithms
                     {
                         if (data[r][c] != null)
                         {
-                            //15 is weight
+                            //weight
                             locationIndicator.Q1
                             = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
                         }
@@ -1123,6 +1160,28 @@ namespace DevTreks.Extensions.Algorithms
                     }
                 }
             }
+            //double check that they actually used target and actual datasets
+            if (!IndicatorQT.QTMUnit.StartsWith("actual"))
+            {
+                if (IndicatorQT.Q1Unit.StartsWith("target"))
+                {
+                    IndicatorQT.QTM = IndicatorQT.Q1;
+                    IndicatorQT.QTL = IndicatorQT.Q2;
+                    IndicatorQT.QTU = IndicatorQT.Q3;
+                    IndicatorQT.QTMUnit = "actual most";
+                    IndicatorQT.QTLUnit = "actual low";
+                    IndicatorQT.QTUUnit = "actual high";
+                }
+                else
+                {
+                    IndicatorQT.QTM = IndicatorQT.Q4;
+                    IndicatorQT.QTL = IndicatorQT.Q5;
+                    IndicatorQT.QTU = IndicatorQT.QT;
+                    IndicatorQT.QTMUnit = "actual most";
+                    IndicatorQT.QTLUnit = "actual low";
+                    IndicatorQT.QTUUnit = "actual high";
+                }
+            }
         }
         private PRA1 CalculateSubIndicators(PRA1 pra1, PRA1 catIndexPRA)
         {
@@ -1388,7 +1447,8 @@ namespace DevTreks.Extensions.Algorithms
                         rStart++;
                     }
                 }
-                if (_subalgorithm != MATH_SUBTYPES.subalgorithm15.ToString())
+                if (_subalgorithm != MATH_SUBTYPES.subalgorithm15.ToString()
+                    && _subalgorithm != MATH_SUBTYPES.subalgorithm16.ToString())
                 {
                     catpra.Key.IndicatorQT.QTMUnit = "most";
                     catpra.Key.IndicatorQT.QTLUnit = "low ci";
@@ -2041,20 +2101,40 @@ namespace DevTreks.Extensions.Algorithms
                     {
                         if (c == 0)
                         {
-                            DataResults[i][c] = catpra.Key.IndicatorQT.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                            {
+                                DataResults[i][c] = catpra.Key.IndicatorQT.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                            }
+                            else
+                            {
+                                DataResults[i][c+11] = catpra.Key.IndicatorQT.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                            }
                             ScoreIndicator.QTM += catpra.Key.IndicatorQT.QTM;
-                            //critical for equations such as moncho
                             ScoreIndicator.Label = catpra.Key.IndicatorQT.Label;
                             ScoreIndicator.Label2 = locationIndex.ToString();
                         }
                         else if (c == 1)
                         {
-                            DataResults[i][c] = catpra.Key.IndicatorQT.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                            {
+                                DataResults[i][c] = catpra.Key.IndicatorQT.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                            }
+                            else
+                            {
+                                DataResults[i][c + 11] = catpra.Key.IndicatorQT.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                            }
                             ScoreIndicator.QTL += catpra.Key.IndicatorQT.QTL;
                         }
                         else if (c == 2)
                         {
-                            DataResults[i][c] = catpra.Key.IndicatorQT.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                            {
+                                DataResults[i][c] = catpra.Key.IndicatorQT.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                            }
+                            else
+                            {
+                                DataResults[i][c + 11] = catpra.Key.IndicatorQT.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                            }
                             ScoreIndicator.QTU += catpra.Key.IndicatorQT.QTU;
                         }
                         else if (c == 3)
@@ -2065,8 +2145,10 @@ namespace DevTreks.Extensions.Algorithms
                             }
                             else
                             {
-                                DataResults[i][c] = catpra.Key.IndicatorQT.QT.ToString("F4", CultureInfo.InvariantCulture);
-                                ScoreIndicator.QT += catpra.Key.IndicatorQT.QT;
+                                //DataResults[i][c] = catpra.Key.IndicatorQT.QT.ToString("F4", CultureInfo.InvariantCulture);
+                                //ScoreIndicator.QT += catpra.Key.IndicatorQT.QT;
+                                //don't add prices
+                                ScoreIndicator.QT = catpra.Key.IndicatorQT.QT;
                             }
                             ScoreIndicator.QTMUnit = catpra.Key.IndicatorQT.QTMUnit;
                         }
@@ -2158,15 +2240,36 @@ namespace DevTreks.Extensions.Algorithms
                     {
                         if (c == 0)
                         {
-                            DataResults[i][c] = subpra.IndicatorQT.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                            {
+                                DataResults[i][c] = subpra.IndicatorQT.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                            }
+                            else
+                            {
+                                DataResults[i][c + 11] = subpra.IndicatorQT.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                            }
                         }
                         else if (c == 1)
                         {
-                            DataResults[i][c] = subpra.IndicatorQT.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                            {
+                                DataResults[i][c] = subpra.IndicatorQT.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                            }
+                            else
+                            {
+                                DataResults[i][c + 11] = subpra.IndicatorQT.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                            }
                         }
                         else if (c == 2)
                         {
-                            DataResults[i][c] = subpra.IndicatorQT.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                            {
+                                DataResults[i][c] = subpra.IndicatorQT.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                            }
+                            else
+                            {
+                                DataResults[i][c + 11] = subpra.IndicatorQT.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                            }
                         }
                         else if (c == 3)
                         {
@@ -2557,15 +2660,36 @@ namespace DevTreks.Extensions.Algorithms
             {
                 if (c == 0)
                 {
-                    DataResults[trIndex][c] = tr.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[trIndex][c] = tr.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[trIndex][c + 11] = tr.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 1)
                 {
-                    DataResults[trIndex][c] = tr.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[trIndex][c] = tr.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[trIndex][c + 11] = tr.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 2)
                 {
-                    DataResults[trIndex][c] = tr.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[trIndex][c] = tr.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[trIndex][c + 11] = tr.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 3)
                 {
@@ -2781,15 +2905,36 @@ namespace DevTreks.Extensions.Algorithms
             {
                 if (c == 0)
                 {
-                    DataResults[scoreIndex][c] = scoreIndicator.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[scoreIndex][c] = scoreIndicator.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[scoreIndex][c + 11] = scoreIndicator.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 1)
                 {
-                    DataResults[scoreIndex][c] = scoreIndicator.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[scoreIndex][c] = scoreIndicator.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[scoreIndex][c + 11] = scoreIndicator.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 2)
                 {
-                    DataResults[scoreIndex][c] = scoreIndicator.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[scoreIndex][c] = scoreIndicator.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[scoreIndex][c + 11] = scoreIndicator.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 3)
                 {
@@ -3275,15 +3420,36 @@ namespace DevTreks.Extensions.Algorithms
             {
                 if (c == 0)
                 {
-                    DataResults[r][c] = locationIndicator.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[r][c] = locationIndicator.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[r][c + 11] = locationIndicator.QTM.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 1)
                 {
-                    DataResults[r][c] = locationIndicator.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[r][c] = locationIndicator.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[r][c + 11] = locationIndicator.QTL.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 2)
                 {
-                    DataResults[r][c] = locationIndicator.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm15.ToString())
+                    {
+                        DataResults[r][c] = locationIndicator.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        DataResults[r][c + 11] = locationIndicator.QTU.ToString("F4", CultureInfo.InvariantCulture);
+                    }
                 }
                 else if (c == 3)
                 {
@@ -3761,10 +3927,16 @@ namespace DevTreks.Extensions.Algorithms
             }
             else if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
             {
-                ColNames[3] = "QTMost";
-                ColNames[4] = "QTLow";
-                ColNames[5] = "QTUp";
-                ColNames[7] = "QTMostUnit";
+                string[] newColNames = new string[17];
+                for (int i = 0; i < ColNames.Count(); i++)
+                {
+                    newColNames[i] = ColNames[i];
+                }
+                newColNames[7] = "QTMostUnit";
+                newColNames[14] = "QTMost";
+                newColNames[15] = "QTLow";
+                newColNames[16] = "QTUp";
+                ColNames = newColNames;
             }
             else
             {

@@ -32,7 +32,8 @@ namespace DevTreks.Extensions
             upv             = 7,
             exponential     = 8,
             logarithmic     = 9,
-            eaa             = 10
+            eaa             = 10,
+            caprecoveryspv  = 11
         }
         public enum DISCOUNT_TYPES
         {
@@ -178,6 +179,10 @@ namespace DevTreks.Extensions
             else if (growthType == GROWTH_SERIES_TYPES.exponential.ToString())
             {
                 eGrowthType = GROWTH_SERIES_TYPES.exponential;
+            }
+            else if (growthType == GROWTH_SERIES_TYPES.caprecoveryspv.ToString())
+            {
+                eGrowthType = GROWTH_SERIES_TYPES.caprecoveryspv;
             }
             return eGrowthType;
         }
@@ -2419,7 +2424,6 @@ namespace DevTreks.Extensions
             }
             else if (growthType == GeneralRules.GROWTH_SERIES_TYPES.exponential)
             {
-                //NIST 135 recurring uniform formula
                 dbGradientFactor = System.Math.Exp(escalationRate * dbServicePlusPCYears);
                 if (planningConstructionYears > 0)
                 {
@@ -2478,6 +2482,21 @@ namespace DevTreks.Extensions
                     //annual capital recovery costs
                     dbAdjustedTotal = CapRecoverCostAnn(cashValue, interestRate, 0, discountYears, salvValue); ;
                 }
+            }
+            else if (growthType == GeneralRules.GROWTH_SERIES_TYPES.caprecoveryspv)
+            {
+                //208: use spv to discount back to present with years from base date
+                double dbDiscountYears = yearsFromBaseDate;
+                dbAdjustedTotal = GeneralRules.GetGradientRealDiscountValue(cashValue,
+                    interestRate, serviceLifeYears, yearsFromBaseDate, planningConstructionYears,
+                    GeneralRules.GROWTH_SERIES_TYPES.spv, escalationRate, discountFactor,
+                    yearsFromBaseDate, discountYearTimes, salvValue);
+                //then use caprecovery to discount over service+pcyears
+                dbDiscountYears = serviceLifeYears + planningConstructionYears;
+                dbAdjustedTotal = GeneralRules.GetGradientRealDiscountValue(cashValue,
+                    interestRate, serviceLifeYears, yearsFromBaseDate, planningConstructionYears,
+                    GeneralRules.GROWTH_SERIES_TYPES.caprecovery, escalationRate, discountFactor,
+                    dbDiscountYears, discountYearTimes, salvValue);
             }
             else if (growthType == GeneralRules.GROWTH_SERIES_TYPES.upv)
             {

@@ -173,6 +173,32 @@ namespace DevTreks.Extensions.Algorithms
             }
             return newArray;
         }
+        public static void CopyStringDataToStringData(List<List<string>> dataToCopy, List<List<string>> data, 
+            int numOfCols, int startColIndex)
+        {
+            int iRow = 0;
+            int iCol = 0;
+            int iColStop = numOfCols + startColIndex;
+            foreach(var row in dataToCopy)
+            {
+                foreach(var col in dataToCopy)
+                {
+                    if (data.Count() > iRow)
+                    {
+                        for(int i = startColIndex; i < iColStop; i++)
+                        {
+                            if (row.Count > i && data[iRow].Count > i)
+                            {
+                                data[iRow][i] = row[i];
+                            }
+                        }
+
+                    }
+                    iCol++;
+                }
+                iRow++;
+            }
+        }
         public static double[,] GetDoubleArray(List<List<double>> data)
         {
             double[,] problemData = new double[,] { };
