@@ -1144,9 +1144,9 @@ namespace DevTreks.Extensions.Algorithms
                         IndicatorQT.QTM += location.QTM;
                         IndicatorQT.QTL += location.QTL;
                         IndicatorQT.QTU += location.QTU;
-                        IndicatorQT.QTMUnit = string.Concat("actual most", IndicatorQT.QTMUnit);
-                        IndicatorQT.QTLUnit = string.Concat("actual low", IndicatorQT.QTMUnit);
-                        IndicatorQT.QTUUnit = string.Concat("actual high", IndicatorQT.QTMUnit);
+                        IndicatorQT.QTMUnit = "actual most score";
+                        IndicatorQT.QTLUnit = "actual low score";
+                        IndicatorQT.QTUUnit = "actual high score";
                     }
                     else if (location.AlternativeType.Count() == 1)
                     {
@@ -1168,18 +1168,18 @@ namespace DevTreks.Extensions.Algorithms
                     IndicatorQT.QTM = IndicatorQT.Q1;
                     IndicatorQT.QTL = IndicatorQT.Q2;
                     IndicatorQT.QTU = IndicatorQT.Q3;
-                    IndicatorQT.QTMUnit = "actual most";
-                    IndicatorQT.QTLUnit = "actual low";
-                    IndicatorQT.QTUUnit = "actual high";
+                    IndicatorQT.QTMUnit = "actual most score";
+                    IndicatorQT.QTLUnit = "actual low score";
+                    IndicatorQT.QTUUnit = "actual high score";
                 }
                 else
                 {
                     IndicatorQT.QTM = IndicatorQT.Q4;
                     IndicatorQT.QTL = IndicatorQT.Q5;
                     IndicatorQT.QTU = IndicatorQT.QT;
-                    IndicatorQT.QTMUnit = "actual most";
-                    IndicatorQT.QTLUnit = "actual low";
-                    IndicatorQT.QTUUnit = "actual high";
+                    IndicatorQT.QTMUnit = "actual most score";
+                    IndicatorQT.QTLUnit = "actual low score";
+                    IndicatorQT.QTUUnit = "actual high score";
                 }
             }
         }
