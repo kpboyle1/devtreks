@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<!-- Author: www.devtreks.org, 2015, December -->
+<!-- Author: www.devtreks.org, 2017, May-->
 <xsl:stylesheet version="1.0"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 	xmlns:DisplayDevPacks="urn:displaydevpacks">
@@ -235,53 +235,12 @@
           </div>
           <div class="ui-block-b">
             <label for="SubPEscType1">Escalate Type 1 </label>
-            <select id="SubPEscType1" data-mini="true">
+            <input id="SubPEscType1" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType1;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType1;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType1 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType1 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType1 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType1 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType1 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType1 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType1 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType1" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor1">Discount Factor 1</label>
@@ -519,53 +478,12 @@
           </div>
           <div class="ui-block-b">
             <label for="SubPEscType2">Escalate Type 2 </label>
-            <select id="SubPEscType2" data-mini="true">
+            <input id="SubPEscType2" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType2;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType2;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType2 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType2 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType2 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType2 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType2 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType2 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType2 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType2" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor2">Discount Factor 2</label>
@@ -803,53 +721,12 @@
           </div>
           <div class="ui-block-b">
             <label for="SubPEscType3">Escalate Type 3 </label>
-            <select id="SubPEscType3" data-mini="true">
+            <input id="SubPEscType3" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType3;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType3;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType3 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType3 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType3 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType3 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType3 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType3 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType3 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType3" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor3">Discount Factor 3</label>
@@ -1087,53 +964,12 @@
           </div>
           <div class="ui-block-b">
             <label for="SubPEscType4">Escalate Type 4 </label>
-            <select id="SubPEscType4" data-mini="true">
+            <input id="SubPEscType4" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType4;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType4;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType4 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType4 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType4 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType4 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType4 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType4 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType4 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType4" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor4">Discount Factor 4</label>
@@ -1371,53 +1207,12 @@
             </div>
           <div class="ui-block-b">
             <label for="SubPEscType5">Escalate Type 5 </label>
-              <select id="SubPEscType5" data-mini="true">
+            <input id="SubPEscType5" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-								<xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType5;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType5;string;50</xsl:attribute>
               </xsl:if>
-							<option>
-								<xsl:attribute name="value">none</xsl:attribute>
-								<xsl:if test="(@SubPEscType5 = 'none')">
-									<xsl:attribute name="selected" />
-								</xsl:if>none
-							</option>
-							<option>
-								<xsl:attribute name="value">uniform</xsl:attribute>
-								<xsl:if test="(@SubPEscType5 = 'uniform')">
-									<xsl:attribute name="selected" />
-								</xsl:if>uniform
-							</option>
-							<option>
-								<xsl:attribute name="value">linear</xsl:attribute>
-								<xsl:if test="(@SubPEscType5 = 'linear')">
-									<xsl:attribute name="selected" />
-								</xsl:if>linear
-							</option>
-							<option>
-								<xsl:attribute name="value">geometric</xsl:attribute>
-								<xsl:if test="(@SubPEscType5 = 'geometric')">
-									<xsl:attribute name="selected" />
-								</xsl:if>geometric
-							</option>
-              <option>
-								<xsl:attribute name="value">upvtable</xsl:attribute>
-								<xsl:if test="(@SubPEscType5 = 'upvtable')">
-									<xsl:attribute name="selected" />
-								</xsl:if>upvtable
-							</option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType5 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType5 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-						</select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType5" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor5">Discount Factor 5</label>
@@ -1655,53 +1450,12 @@
           </div>
           <div class="ui-block-b">
             <label for="SubPEscType6">Escalate Type 6 </label>
-            <select id="SubPEscType6" data-mini="true">
+            <input id="SubPEscType6" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType6;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType6;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType6 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType6 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType6 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType6 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType6 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType6 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType6 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType6" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor6">Discount Factor 6</label>
@@ -1938,54 +1692,13 @@
             </input>
           </div>
           <div class="ui-block-b">
-            <label for="SubPEscType7">Escalate Type 7</label>
-            <select id="SubPEscType7" data-mini="true">
+            <label for="SubPEscType7">Escalate Type 7 </label>
+            <input id="SubPEscType7" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType7;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType7;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType7 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType7 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType7 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType7 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType7 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType7 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType7 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType7" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor7">Discount Factor 7</label>
@@ -2222,54 +1935,13 @@
             </input>
           </div>
           <div class="ui-block-b">
-            <label for="SubPEscType8">Escalate Type 8</label>
-            <select id="SubPEscType8" data-mini="true">
+            <label for="SubPEscType8">Escalate Type 8 </label>
+            <input id="SubPEscType8" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType8;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType8;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType8 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType8 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType8 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType8 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType8 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType8 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType8 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType8" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor8">Discount Factor 8</label>
@@ -2506,54 +2178,13 @@
             </input>
           </div>
           <div class="ui-block-b">
-            <label for="SubPEscType9">Escalate Type 9</label>
-            <select id="SubPEscType9" data-mini="true">
+            <label for="SubPEscType9">Escalate Type 9 </label>
+            <input id="SubPEscType9" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType9;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType9;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType9 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType9 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType9 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType9 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType9 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType9 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType9 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType9" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor9">Discount Factor 9</label>
@@ -2790,54 +2421,13 @@
             </input>
           </div>
           <div class="ui-block-b">
-            <label for="SubPEscType10">Escalate Type 10</label>
-            <select id="SubPEscType10" data-mini="true">
+            <label for="SubPEscType10">Escalate Type 10 </label>
+            <input id="SubPEscType10" type="text"  data-mini="true">
               <xsl:if test="($viewEditType = 'full')">
-                <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType10;string;50</xsl:attribute>
+                 <xsl:attribute name="name"><xsl:value-of select="$searchurl" />;SubPEscType10;string;50</xsl:attribute>
               </xsl:if>
-              <option>
-                <xsl:attribute name="value">none</xsl:attribute>
-                <xsl:if test="(@SubPEscType10 = 'none')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>none
-              </option>
-              <option>
-                <xsl:attribute name="value">uniform</xsl:attribute>
-                <xsl:if test="(@SubPEscType10 = 'uniform')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>uniform
-              </option>
-              <option>
-                <xsl:attribute name="value">linear</xsl:attribute>
-                <xsl:if test="(@SubPEscType10 = 'linear')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>linear
-              </option>
-              <option>
-                <xsl:attribute name="value">geometric</xsl:attribute>
-                <xsl:if test="(@SubPEscType10 = 'geometric')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>geometric
-              </option>
-              <option>
-                <xsl:attribute name="value">upvtable</xsl:attribute>
-                <xsl:if test="(@SubPEscType10 = 'upvtable')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>upvtable
-              </option>
-              <option>
-                <xsl:attribute name="value">spv</xsl:attribute>
-                <xsl:if test="(@SubPEscType10 = 'spv')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>spv
-              </option>
-              <option>
-                <xsl:attribute name="value">caprecovery</xsl:attribute>
-                <xsl:if test="(@SubPEscType10 = 'caprecovery')">
-                  <xsl:attribute name="selected" />
-                </xsl:if>caprecovery
-              </option>
-            </select>
+              <xsl:attribute name="value"><xsl:value-of select="@SubPEscType10" /></xsl:attribute>
+            </input>
           </div>
           <div class="ui-block-a">
             <label for="SubPFactor10">Discount Factor 10</label>

@@ -1070,6 +1070,8 @@ namespace DevTreks.Extensions.Algorithms
             int i = 0;
             if (scoreIndicator.IndicatorQT1s != null)
             {
+                bool bHasActual = false;
+                bool bHasTarget = false;
                 foreach (var location in scoreIndicator.IndicatorQT1s)
                 {
                     if (location.AlternativeType == "TR")
@@ -1095,6 +1097,7 @@ namespace DevTreks.Extensions.Algorithms
                         IndicatorQT.QTUUnit = "actual high score";
                         IndicatorQT.QTD1Unit = "actual certainty1";
                         IndicatorQT.QTD2Unit = "actual certainty2";
+                        bHasActual = true;
                     }
                     else if (location.AlternativeType.Count() == 1)
                     {
@@ -1105,6 +1108,66 @@ namespace DevTreks.Extensions.Algorithms
                         IndicatorQT.Q1Unit = "target most score";
                         IndicatorQT.Q2Unit = "target low score";
                         IndicatorQT.Q3Unit = "target high score";
+                        bHasTarget = true;
+                    }
+                }
+                i = 0;
+                //double check that they actually used target and actual datasets
+                FillActualIndicatorQT(scoreIndicator, bHasActual, bHasTarget);
+            }
+        }
+        private void FillActualIndicatorQT(IndicatorQT1 scoreIndicator, bool hasActual, bool hasTarget)
+        {
+            if (hasActual == false)
+            {
+                int i = 0;
+                if (hasTarget == true)
+                {
+                    foreach (var location in scoreIndicator.IndicatorQT1s)
+                    {
+                        if (location.AlternativeType.Count() == 1)
+                        {
+                            i++;
+                            IndicatorQT.QTM += location.QTM;
+                            IndicatorQT.QTL += location.QTL;
+                            IndicatorQT.QTU += location.QTU;
+                            IndicatorQT.QTMUnit = "actual most score";
+                            IndicatorQT.QTLUnit = "actual low score";
+                            IndicatorQT.QTUUnit = "actual high score";
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm13.ToString()
+                                || _subalgorithm == MATH_SUBTYPES.subalgorithm14.ToString())
+                            {
+                                IndicatorQT.QTD1 += location.Q3 / i;
+                                IndicatorQT.QTD2 += location.Q4 / i;
+                                IndicatorQT.QTD1Unit = "actual certainty1";
+                                IndicatorQT.QTD2Unit = "actual certainty2";
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //use benchmarks
+                    foreach (var location in scoreIndicator.IndicatorQT1s)
+                    {
+                        if (location.AlternativeType == "TR")
+                        {
+                            i++;
+                            IndicatorQT.QTM += location.QTM;
+                            IndicatorQT.QTL += location.QTL;
+                            IndicatorQT.QTU += location.QTU;
+                            IndicatorQT.QTMUnit = "actual most score";
+                            IndicatorQT.QTLUnit = "actual low score";
+                            IndicatorQT.QTUUnit = "actual high score";
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm13.ToString()
+                                || _subalgorithm == MATH_SUBTYPES.subalgorithm14.ToString())
+                            {
+                                IndicatorQT.QTD1 += location.Q3 / i;
+                                IndicatorQT.QTD2 += location.Q4 / i;
+                                IndicatorQT.QTD1Unit = "actual certainty1";
+                                IndicatorQT.QTD2Unit = "actual certainty2";
+                            }
+                        }
                     }
                 }
             }
@@ -1126,6 +1189,8 @@ namespace DevTreks.Extensions.Algorithms
             int i = 0;
             if (scoreIndicator.IndicatorQT1s != null)
             {
+                bool bHasActual = false;
+                bool bHasTarget = false;
                 foreach (var location in scoreIndicator.IndicatorQT1s)
                 {
                     if (location.AlternativeType == "TR")
@@ -1147,6 +1212,7 @@ namespace DevTreks.Extensions.Algorithms
                         IndicatorQT.QTMUnit = "actual most score";
                         IndicatorQT.QTLUnit = "actual low score";
                         IndicatorQT.QTUUnit = "actual high score";
+                        bHasActual = true;
                     }
                     else if (location.AlternativeType.Count() == 1)
                     {
@@ -1157,30 +1223,12 @@ namespace DevTreks.Extensions.Algorithms
                         IndicatorQT.Q1Unit = "target most score";
                         IndicatorQT.Q2Unit = "target low score";
                         IndicatorQT.Q3Unit = "target high score";
+                        bHasTarget = true;
                     }
                 }
-            }
-            //double check that they actually used target and actual datasets
-            if (!IndicatorQT.QTMUnit.StartsWith("actual"))
-            {
-                if (IndicatorQT.Q1Unit.StartsWith("target"))
-                {
-                    IndicatorQT.QTM = IndicatorQT.Q1;
-                    IndicatorQT.QTL = IndicatorQT.Q2;
-                    IndicatorQT.QTU = IndicatorQT.Q3;
-                    IndicatorQT.QTMUnit = "actual most score";
-                    IndicatorQT.QTLUnit = "actual low score";
-                    IndicatorQT.QTUUnit = "actual high score";
-                }
-                else
-                {
-                    IndicatorQT.QTM = IndicatorQT.Q4;
-                    IndicatorQT.QTL = IndicatorQT.Q5;
-                    IndicatorQT.QTU = IndicatorQT.QT;
-                    IndicatorQT.QTMUnit = "actual most score";
-                    IndicatorQT.QTLUnit = "actual low score";
-                    IndicatorQT.QTUUnit = "actual high score";
-                }
+                i = 0;
+                //double check that they actually used target and actual datasets
+                FillActualIndicatorQT(scoreIndicator, bHasActual, bHasTarget);
             }
         }
         private PRA1 CalculateSubIndicators(PRA1 pra1, PRA1 catIndexPRA)

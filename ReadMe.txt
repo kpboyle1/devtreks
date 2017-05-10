@@ -1,5 +1,5 @@
 Appendix B. ReadMe.txt
-Version: 2.0.6, November 22, 2016
+Version: 2.0.8, May 10, 2017
 Introduction
 DevTreks is a multitier ASP.NET Core 1 database 
 application. The web project, DevTreks, uses an 
@@ -35,11 +35,9 @@ https://github.com/kpboyle1/devtreksapi1
 database.zip site
 https://devtreks.codeplex.com/
 
-What's New in Version 2.0.6
-1.	Monitoring and Evaluation (M&E) Tools: The Version 2.0.4 M&E upgrades were tested and improved to work with all of the Conservation Technology Assessment (CTA) algorithms. The CTA references were updated with M&E examples.
-2.	Conservation Technology Assessments (CTAs): Several algorithms in the Technology Assessment tutorials were upgraded to work with M&E calculations and because the additional tests revealed some slight improvements with some of those calculations. Major changes were not made to these algorithms because this release focused on the M&E tools.
-3.	Tutorials: Several references in several tutorials were updated to address the changes in the M&E and CTA tools. 
-
+What's New in Version 2.0.8
+1.	Social Performance Analysis Tools: This release includes 4 new algorithms designed to measure Social Performance. A new reference, Social Performance Analysis, documents how these algorithms work. The reference can be found in the Performance Analysis tutorial. 
+2. 	Tutorials: Several references in several tutorials were updated to address the changes associated with the new tools. The Life Cycle Calculation reference has changed in order to comply with one of the new algorithms.
 Database Connections
 Server version: Sql Server 2016 Express, RTM
 
