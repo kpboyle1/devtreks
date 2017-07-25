@@ -17,7 +17,7 @@ namespace DevTreks.Extensions
     ///             Can be run stand alone, with normal stock totals, or as an 
     ///             analyzer step that keeps track of each meal Qs, or each 
     ///             household member Qs
-    ///Date:		2017, April
+    ///Date:		2017, July
     ///References:	Monitoring and Evaluation Tutorials
     ///NOTES:       Version 2.0.4 upgraded to similar properties and methods as 
     ///             the ResourceStockCalculator to promote consistency in the use 
@@ -1862,6 +1862,13 @@ namespace DevTreks.Extensions
                         {
                             ProcessAlgosAsync4(indicatorIndex, ME2Indicators[5].IndURL);
                         }
+                        else if (HasMathType(5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                            || HasMathType(5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14)
+                            || HasMathType(5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                            || HasMathType(5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, ME2Indicators[5].IndURL);
+                        }
                         else
                         {
                             SetTotalMathTypeStock5();
@@ -1886,6 +1893,11 @@ namespace DevTreks.Extensions
                             || HasMathType(6, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[6].IndURL);
+                        }
+                        else if (HasMathType(6, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                            || HasMathType(6, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, ME2Indicators[6].IndURL);
                         }
                         else
                         {
@@ -1912,6 +1924,11 @@ namespace DevTreks.Extensions
                         {
                             ProcessAlgosAsync3(indicatorIndex, ME2Indicators[7].IndURL);
                         }
+                        else if (HasMathType(7, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                            || HasMathType(7, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, ME2Indicators[7].IndURL);
+                        }
                         else
                         {
                             SetTotalMathTypeStock7();
@@ -1932,11 +1949,19 @@ namespace DevTreks.Extensions
                 {
                     if (!_indicators.Any(o => o == 8))
                     {
-                        SetTotalMathTypeStock8();
-                        if (ME2Indicators[8].IndMathSubType != Constants.NONE
-                                && (!string.IsNullOrEmpty(ME2Indicators[8].IndMathSubType)))
+                        if (HasMathType(8, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                            || HasMathType(8, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
                         {
-                            SetAlgoPRAStats(8, qTs);
+                            ProcessAlgosAsync4(indicatorIndex, ME2Indicators[8].IndURL);
+                        }
+                        else
+                        {
+                            SetTotalMathTypeStock8();
+                            if (ME2Indicators[8].IndMathSubType != Constants.NONE
+                                    && (!string.IsNullOrEmpty(ME2Indicators[8].IndMathSubType)))
+                            {
+                                SetAlgoPRAStats(8, qTs);
+                            }
                         }
                     }
                 }

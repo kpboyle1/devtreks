@@ -1681,6 +1681,8 @@ namespace DevTreks.Data.Helpers
             if (arrLabels.Count() >= (i + 1))
             {
                 sParsedName = arrLabels[i];
+                //2.1.0 trim spaces from end - common mistake when labeling indicators
+                sParsedName = sParsedName.TrimEnd(SPACE_DELIMITERS);
             }
             return sParsedName;
         }

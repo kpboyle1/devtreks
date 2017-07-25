@@ -13,7 +13,7 @@ namespace DevTreks.Extensions
     /// <summary>
     ///Purpose:		Serialize and deserialize a Stock object with up to 20 indicators
     ///Author:		www.devtreks.org
-    ///Date:		2017, April
+    ///Date:		2017, July
     ///NOTES        1. These support unit input and output indicators. The Q must be set in 
     ///             the Op/Comp/Outcome.
     /// </summary>             
@@ -14552,6 +14552,13 @@ namespace DevTreks.Extensions
                         {
                             ProcessAlgosAsync4(indicatorIndex, this.SB1URL5);
                         }
+                        else if (HasMathType(this.SB1Label5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm14)
+                           || HasMathType(this.SB1Label5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm13)
+                           || HasMathType(this.SB1Label5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                           || HasMathType(this.SB1Label5, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, this.SB1URL5);
+                        }
                         else
                         {
                             SetTotalMathTypeStock5();
@@ -14577,6 +14584,11 @@ namespace DevTreks.Extensions
                             || HasMathType(this.SB1Label6, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm10))
                         {
                             ProcessAlgosAsync3(indicatorIndex, this.SB1URL6);
+                        }
+                        else if (HasMathType(this.SB1Label6, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                           || HasMathType(this.SB1Label6, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, this.SB1URL6);
                         }
                         else
                         {
@@ -14604,6 +14616,11 @@ namespace DevTreks.Extensions
                         {
                             ProcessAlgosAsync3(indicatorIndex, this.SB1URL7);
                         }
+                        else if (HasMathType(this.SB1Label7, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                           || HasMathType(this.SB1Label7, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
+                        {
+                            ProcessAlgosAsync4(indicatorIndex, this.SB1URL7);
+                        }
                         else
                         {
                             SetTotalMathTypeStock7();
@@ -14625,11 +14642,19 @@ namespace DevTreks.Extensions
                     if (!_indicators.Any(o => o == this.SB1Label8)
                         && NeedsIndicator(this.SB1Label8))
                     {
-                        SetTotalMathTypeStock8();
-                        if (this.SB1MathSubType8 != Constants.NONE
-                                && (!string.IsNullOrEmpty(this.SB1MathSubType8)))
+                        if (HasMathType(this.SB1Label8, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm15)
+                           || HasMathType(this.SB1Label8, MATH_TYPES.algorithm1, MATH_SUBTYPES.subalgorithm16))
                         {
-                            SetAlgoPRAStats(this.SB1Label8, qTs);
+                            ProcessAlgosAsync4(indicatorIndex, this.SB1URL8);
+                        }
+                        else
+                        {
+                            SetTotalMathTypeStock8();
+                            if (this.SB1MathSubType8 != Constants.NONE
+                                    && (!string.IsNullOrEmpty(this.SB1MathSubType8)))
+                            {
+                                SetAlgoPRAStats(this.SB1Label8, qTs);
+                            }
                         }
                     }
                 }
@@ -15455,6 +15480,18 @@ namespace DevTreks.Extensions
                         else if (indicatorIndex == 5)
                         {
                             sLabel = SB1Label5;
+                        }
+                        else if (indicatorIndex == 6)
+                        {
+                            sLabel = SB1Label6;
+                        }
+                        else if (indicatorIndex == 7)
+                        {
+                            sLabel = SB1Label7;
+                        }
+                        else if (indicatorIndex == 8)
+                        {
+                            sLabel = SB1Label8;
                         }
                         if (NeedsIndicator(sLabel)
                             && _indicators.Contains(sLabel) == false)
