@@ -179,6 +179,7 @@ namespace DevTreks.Extensions.Algorithms
             int iRow = 0;
             int iCol = 0;
             int iColStop = numOfCols + startColIndex;
+            double dbZero = 0;
             foreach(var row in dataToCopy)
             {
                 foreach(var col in dataToCopy)
@@ -189,7 +190,12 @@ namespace DevTreks.Extensions.Algorithms
                         {
                             if (row.Count > i && data[iRow].Count > i)
                             {
-                                data[iRow][i] = row[i];
+                                //don't overwrite the location and tr indexes (they init with zero)
+                                dbZero = CalculatorHelpers.ConvertStringToDouble(row[i]);
+                                if (dbZero != 0)
+                                {
+                                    data[iRow][i] = row[i];
+                                }
                             }
                         }
 

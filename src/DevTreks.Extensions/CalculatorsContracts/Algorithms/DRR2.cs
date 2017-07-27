@@ -100,11 +100,6 @@ namespace DevTreks.Extensions.Algorithms
                 {
                     //4 level indicator systems
                     bHasCalculations = await Calculate4LevelIndicators(data, rowNames);
-                    if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
-                    {
-                        //need the same qtms, qtls, and qtus in mathresult
-                        Shared.CopyStringDataToStringData(data, DataResults, 3, 0);
-                    }
                 }
                 //put the results in MathResult
                 SetMathResult(rowNames);
@@ -568,14 +563,20 @@ namespace DevTreks.Extensions.Algorithms
                     //need label in rowNames
                     pra1.IndicatorQT.Label = rowNames[r][0];
                     pra1.IndicatorQT.QTM = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    //need original quantities in col[0]
+                    DataResults[r][c] = data[r][c];
                 }
                 else if (c == 1)
                 {
                     pra1.IndicatorQT.QTL = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    //need original quantities in col[1]
+                    DataResults[r][c] = data[r][c];
                 }
                 else if (c == 2)
                 {
                     pra1.IndicatorQT.QTU = CalculatorHelpers.ConvertStringToDouble(data[r][c]);
+                    //need original quantities in col[2]
+                    DataResults[r][c] = data[r][c];
                 }
                 else if (c == 3)
                 {
@@ -1290,18 +1291,42 @@ namespace DevTreks.Extensions.Algorithms
                     {
                         //actuals have 2 chars
                         i++;
-                        IndicatorQT.QTM += location.QTM;
-                        IndicatorQT.QTL += location.QTL;
-                        IndicatorQT.QTU += location.QTU;
-                        IndicatorQT.QTMUnit = "actual most score";
-                        IndicatorQT.QTLUnit = "actual low score";
-                        IndicatorQT.QTUUnit = "actual high score";
-                        if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
+                        //if cea need lowest cea of actuals
+                        if (location.Option1.ToLower() != true.ToString().ToLower())
                         {
-                            IndicatorQT.QTD1 += location.Q1;
-                            IndicatorQT.QTD2 += location.Q2;
-                            IndicatorQT.QTD1Unit = "actual certainty1";
-                            IndicatorQT.QTD2Unit = "actual certainty2";
+                            IndicatorQT.QTM += location.QTM;
+                            IndicatorQT.QTL += location.QTL;
+                            IndicatorQT.QTU += location.QTU;
+                            IndicatorQT.QTMUnit = "actual most score";
+                            IndicatorQT.QTLUnit = "actual low score";
+                            IndicatorQT.QTUUnit = "actual high score";
+                            if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
+                            {
+                                IndicatorQT.QTD1 += location.Q1;
+                                IndicatorQT.QTD2 += location.Q2;
+                                IndicatorQT.QTD1Unit = "actual certainty1";
+                                IndicatorQT.QTD2Unit = "actual certainty2";
+                            }
+                        }
+                        else
+                        {
+                            if (location.QTM < IndicatorQT.QTM
+                                || IndicatorQT.QTM == 0)
+                            {
+                                IndicatorQT.QTM = location.QTM;
+                                IndicatorQT.QTL = location.QTL;
+                                IndicatorQT.QTU = location.QTU;
+                                IndicatorQT.QTMUnit = "actual most score";
+                                IndicatorQT.QTLUnit = "actual low score";
+                                IndicatorQT.QTUUnit = "actual high score";
+                                if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
+                                {
+                                    IndicatorQT.QTD1 = location.Q1;
+                                    IndicatorQT.QTD2 = location.Q2;
+                                    IndicatorQT.QTD1Unit = "actual certainty1";
+                                    IndicatorQT.QTD2Unit = "actual certainty2";
+                                }
+                            }
                         }
                         bHasActual = true;
                     }
@@ -1380,6 +1405,7 @@ namespace DevTreks.Extensions.Algorithms
                     pra1.IndicatorQT.Q5, catIndexPRA.IndicatorQT.Q3, catIndexPRA.IndicatorQT.Q4,
                     catIndexPRA.IndicatorQT.Q5);
                 if (catIndexPRA.IndicatorQT.Q3Unit != Constants.NONE
+                    && catIndexPRA.IndicatorQT.Q3Unit != "0"
                     && !string.IsNullOrEmpty(catIndexPRA.IndicatorQT.Q3Unit))
                 {
                     //general catindex multiplier appeared in 210
@@ -1392,6 +1418,7 @@ namespace DevTreks.Extensions.Algorithms
                     pra1.IndicatorQT.Q5, catIndexPRA.IndicatorQT.Q3, catIndexPRA.IndicatorQT.Q4,
                     catIndexPRA.IndicatorQT.Q5);
                 if (catIndexPRA.IndicatorQT.Q3Unit != Constants.NONE
+                    && catIndexPRA.IndicatorQT.Q3Unit != "0"
                     && !string.IsNullOrEmpty(catIndexPRA.IndicatorQT.Q3Unit))
                 {
                     pra1.IndicatorQT.QTL = pra1.IndicatorQT.QTL
@@ -1403,6 +1430,7 @@ namespace DevTreks.Extensions.Algorithms
                     pra1.IndicatorQT.Q5, catIndexPRA.IndicatorQT.Q3, catIndexPRA.IndicatorQT.Q4,
                     catIndexPRA.IndicatorQT.Q5);
                 if (catIndexPRA.IndicatorQT.Q3Unit != Constants.NONE
+                    && catIndexPRA.IndicatorQT.Q3Unit != "0"
                     && !string.IsNullOrEmpty(catIndexPRA.IndicatorQT.Q3Unit))
                 {
                     pra1.IndicatorQT.QTU = pra1.IndicatorQT.QTU
@@ -1518,12 +1546,9 @@ namespace DevTreks.Extensions.Algorithms
             }
             int i = 0;
             int rStart = 0;
-            //210 cats store data for cea
-            double dbQTM = 0;
-            double dbQTL = 0;
-            double dbQTU = 0;
-            double dbQ1 = 0;
-            double dbQ2 = 0;
+            //210 cea is not a summation of cats; needs total costs and total scores
+            IndicatorQT1 ceaCatIndicator = new IndicatorQT1();
+            IndicatorQT1 ceaLocIndicator = new IndicatorQT1();
             int iCEACount = 0;
             //init categories to zero -they are summations of inds only
             //and can't have independent values except for subalgo16
@@ -1550,19 +1575,33 @@ namespace DevTreks.Extensions.Algorithms
                     {
                         if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
                         {
-                            //210 rule for determining whether to calculate cea or regular budget
-                            iCEACount = 1;
-                            if (cat.IndicatorQT.QTM != 0 && cat.IndicatorQT.QT != 0)
+                            //210 rule 
+                            if (ceaLocIndicator.QTM != 0)
                             {
-                                iCEACount = catcategories.Count;
+                                //location indicator holds total costs and total perf score
+                                catpra.Key.IndicatorQT.QTM = (ceaLocIndicator.QTM / ceaLocIndicator.Q3);
+                                catpra.Key.IndicatorQT.QTL = (ceaLocIndicator.QTL / ceaLocIndicator.Q4);
+                                catpra.Key.IndicatorQT.QTU = (ceaLocIndicator.QTM / ceaLocIndicator.Q5);
+                                //lcc certainty always an average never a summation
+                                catpra.Key.IndicatorQT.QT = (ceaLocIndicator.QT / catcategories.Count);
+                                catpra.Key.IndicatorQT.Q1 = (ceaLocIndicator.Q1 / catcategories.Count);
+                                catpra.Key.IndicatorQT.Q2 = (ceaLocIndicator.Q2 / catcategories.Count);
+                                catpra.Key.IndicatorQT.Q3 = (ceaLocIndicator.Q3);
+                                catpra.Key.IndicatorQT.Q4 = (ceaLocIndicator.Q4);
+                                catpra.Key.IndicatorQT.Q5 = (ceaLocIndicator.Q5);
+                                ceaLocIndicator = new IndicatorQT1();
+                                break;
                             }
-                            catpra.Key.IndicatorQT.QTM += (cat.IndicatorQT.QTM / iCEACount);
-                            catpra.Key.IndicatorQT.QTL += (cat.IndicatorQT.QTL / iCEACount);
-                            catpra.Key.IndicatorQT.QTU += (cat.IndicatorQT.QTU / iCEACount);
-                            catpra.Key.IndicatorQT.QT += (cat.IndicatorQT.QT / iCEACount);
-                            //lcc certainty always an average never a summation
-                            catpra.Key.IndicatorQT.Q1 += (cat.IndicatorQT.Q1 / catcategories.Count);
-                            catpra.Key.IndicatorQT.Q2 += (cat.IndicatorQT.Q2 / catcategories.Count);
+                            else
+                            {
+                                catpra.Key.IndicatorQT.QTM += (cat.IndicatorQT.QTM);
+                                catpra.Key.IndicatorQT.QTL += (cat.IndicatorQT.QTL);
+                                catpra.Key.IndicatorQT.QTU += (cat.IndicatorQT.QTU);
+                                //lcc certainty always an average never a summation
+                                catpra.Key.IndicatorQT.QT += (cat.IndicatorQT.QT / catcategories.Count);
+                                catpra.Key.IndicatorQT.Q1 += (cat.IndicatorQT.Q1 / catcategories.Count);
+                                catpra.Key.IndicatorQT.Q2 += (cat.IndicatorQT.Q2 / catcategories.Count);
+                            }
                         }
                         else
                         { 
@@ -1604,21 +1643,27 @@ namespace DevTreks.Extensions.Algorithms
                             if (catpra.Key.IndicatorQT.QTM != 0 && catpra.Key.IndicatorQT.QT != 0)
                             {
                                 //iCEACount = catpra.Value.Count;
-                                dbQTM += ((subpra.IndicatorQT.QTM / catpra.Key.IndicatorQT.QTM) / iCEACount);
-                                dbQTL += ((subpra.IndicatorQT.QTL / catpra.Key.IndicatorQT.QTL) / iCEACount);
-                                dbQTU += ((subpra.IndicatorQT.QTU / catpra.Key.IndicatorQT.QTU) / iCEACount);
+                                ceaCatIndicator.QTM += ((subpra.IndicatorQT.QTM / catpra.Key.IndicatorQT.QTM) / iCEACount);
+                                ceaCatIndicator.QTL += ((subpra.IndicatorQT.QTL / catpra.Key.IndicatorQT.QTL) / iCEACount);
+                                ceaCatIndicator.QTU += ((subpra.IndicatorQT.QTU / catpra.Key.IndicatorQT.QTU) / iCEACount);
                                 //lcc certainty
-                                dbQ1 += (subpra.IndicatorQT.Q1 / catpra.Value.Count);
-                                dbQ2 += (subpra.IndicatorQT.Q2 / catpra.Value.Count);
+                                ceaCatIndicator.Q1 += (subpra.IndicatorQT.Q1 / catpra.Value.Count);
+                                ceaCatIndicator.Q2 += (subpra.IndicatorQT.Q2 / catpra.Value.Count);
+                                //locational index total costs and certainty
+                                ceaLocIndicator.QTM += subpra.IndicatorQT.QTM;
+                                ceaLocIndicator.QTL += subpra.IndicatorQT.QTL;
+                                ceaLocIndicator.QTU += subpra.IndicatorQT.QTU;
+                                ceaLocIndicator.Q1 += (subpra.IndicatorQT.Q1 / catpra.Value.Count);
+                                ceaLocIndicator.Q2 += (subpra.IndicatorQT.Q2 / catpra.Value.Count);
                             }
                             else
                             {
-                                dbQTM += (subpra.IndicatorQT.QTM / iCEACount);
-                                dbQTL += (subpra.IndicatorQT.QTL / iCEACount);
-                                dbQTU += (subpra.IndicatorQT.QTU / iCEACount);
+                                ceaCatIndicator.QTM += (subpra.IndicatorQT.QTM / iCEACount);
+                                ceaCatIndicator.QTL += (subpra.IndicatorQT.QTL / iCEACount);
+                                ceaCatIndicator.QTU += (subpra.IndicatorQT.QTU / iCEACount);
                                 //lcc certainty
-                                dbQ1 += (subpra.IndicatorQT.Q1 / catpra.Value.Count);
-                                dbQ2 += (subpra.IndicatorQT.Q2 / catpra.Value.Count);
+                                ceaCatIndicator.Q1 += (subpra.IndicatorQT.Q1 / catpra.Value.Count);
+                                ceaCatIndicator.Q2 += (subpra.IndicatorQT.Q2 / catpra.Value.Count);
                             }
                         }
                         else
@@ -1655,16 +1700,18 @@ namespace DevTreks.Extensions.Algorithms
                     //210 cea
                     if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
                     {
-                        catpra.Key.IndicatorQT.QTM = dbQTM;
-                        catpra.Key.IndicatorQT.QTL = dbQTL;
-                        catpra.Key.IndicatorQT.QTU = dbQTU;
-                        catpra.Key.IndicatorQT.Q1 = dbQ1;
-                        catpra.Key.IndicatorQT.Q2 = dbQ2;
-                        dbQTM = 0;
-                        dbQTL = 0;
-                        dbQTU = 0;
-                        dbQ1 = 0;
-                        dbQ2 = 0;
+                        //total performance score and certainty
+                        ceaLocIndicator.Q3 += catpra.Key.IndicatorQT.QTM;
+                        ceaLocIndicator.Q4 += catpra.Key.IndicatorQT.QTL;
+                        ceaLocIndicator.Q5 += catpra.Key.IndicatorQT.QTU;
+                        ceaLocIndicator.QT += catpra.Key.IndicatorQT.QT;
+                        //cat index
+                        catpra.Key.IndicatorQT.QTM = ceaCatIndicator.QTM;
+                        catpra.Key.IndicatorQT.QTL = ceaCatIndicator.QTL;
+                        catpra.Key.IndicatorQT.QTU = ceaCatIndicator.QTU;
+                        catpra.Key.IndicatorQT.Q1 = ceaCatIndicator.Q1;
+                        catpra.Key.IndicatorQT.Q2 = ceaCatIndicator.Q2;
+                        ceaCatIndicator = new IndicatorQT1();
                     }
                 }
                 if (_subalgorithm != MATH_SUBTYPES.subalgorithm15.ToString()
@@ -2293,9 +2340,12 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
-                        ScoreIndicator.QTM = ScoreIndicator.QTM;
-                        ScoreIndicator.QTL = ScoreIndicator.QTL;
-                        ScoreIndicator.QTU = ScoreIndicator.QTU;
+                        ScoreIndicator.QTM = catpra.Key.IndicatorQT.QTM;
+                        ScoreIndicator.QTL = catpra.Key.IndicatorQT.QTL;
+                        ScoreIndicator.QTU = catpra.Key.IndicatorQT.QTU;
+                        //ScoreIndicator.QTM = ScoreIndicator.QTM;
+                        //ScoreIndicator.QTL = ScoreIndicator.QTL;
+                        //ScoreIndicator.QTU = ScoreIndicator.QTU;
                     }
                     ScoreIndicator.Q1 = catpra.Key.IndicatorQT.Q1;
                     ScoreIndicator.Q1Unit = catpra.Key.IndicatorQT.Q1Unit;
@@ -2861,27 +2911,47 @@ namespace DevTreks.Extensions.Algorithms
         {
             IndicatorQT1 tr = new IndicatorQT1();
             double dbLocCount = 1;
+            bool bIsCEA = false;
+            if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
+            {
+                //210 rule for cea vs cumulative sums (locational sum performance indicator, q3, and certainty, qt)
+                if (thirdIndicator.IndicatorQT1s[0].Q3 != 0 && thirdIndicator.IndicatorQT1s[0].QT != 0)
+                {
+                    dbLocCount = thirdIndicator.IndicatorQT1s.Count;
+                    bIsCEA = true;
+                    //clue in subsequent Score
+                    tr.Option1 = "true";
+                    locationIndicator.Option1 = "true";
+                    CalculateTRCEA(tr, thirdIndicator, locationIndicator);
+                }
+            }
             foreach (var rf in thirdIndicator.IndicatorQT1s)
             {
-                if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
-                {
-                    //210 rule for cea vs cumulative sums (locational and categorical must sum qt when ind.qt != 0)
-                    if (rf.QTM != 0 && rf.QT != 0)
-                    {
-                        dbLocCount = thirdIndicator.IndicatorQT1s.Count;
-                    }
-                }
                 //add it the locationsindicator for display of Qs
-                tr.QTM += (rf.QTM / dbLocCount);
-                tr.QTL += (rf.QTL / dbLocCount);
-                tr.QTU += (rf.QTU / dbLocCount);
+                if (bIsCEA)
+                {
+                    //already calculated
+                }
+                else
+                {
+                    tr.QTM += (rf.QTM / dbLocCount);
+                    tr.QTL += (rf.QTL / dbLocCount);
+                    tr.QTU += (rf.QTU / dbLocCount);
+                    //lcc displays averages
+                    tr.Q3 += (rf.Q3 / dbLocCount);
+                    tr.Q4 += (rf.Q4 / dbLocCount);
+                    tr.Q5 += (rf.Q5 / dbLocCount);
+                    //add it the locationsindicator for display of Qs
+                    locationIndicator.QTM += (rf.QTM / dbLocCount);
+                    locationIndicator.QTL += (rf.QTL / dbLocCount);
+                    locationIndicator.QTU += (rf.QTU / dbLocCount);
+                    locationIndicator.Q3 += (rf.Q3 / dbLocCount);
+                    locationIndicator.Q4 += (rf.Q4 / dbLocCount);
+                    locationIndicator.Q5 += (rf.Q5 / dbLocCount);
+                }
                 tr.QT += (rf.QT / dbLocCount);
                 tr.Q1 += (rf.Q1 / thirdIndicator.IndicatorQT1s.Count);
                 tr.Q2 += (rf.Q2 / thirdIndicator.IndicatorQT1s.Count);
-                //add it the locationsindicator for display of Qs
-                locationIndicator.QTM += (rf.QTM / dbLocCount);
-                locationIndicator.QTL += (rf.QTL / dbLocCount);
-                locationIndicator.QTU += (rf.QTU / dbLocCount);
                 locationIndicator.QT += (rf.QT / dbLocCount);
                 locationIndicator.Q1 += (rf.Q1 / thirdIndicator.IndicatorQT1s.Count);
                 locationIndicator.Q2 += (rf.Q2 / thirdIndicator.IndicatorQT1s.Count);
@@ -2896,6 +2966,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
+                        //cea emissions
+                        DataResults[trIndex][c] = tr.Q3.ToString("F4", CultureInfo.InvariantCulture);
                         DataResults[trIndex][c + 11] = tr.QTM.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
@@ -2907,6 +2979,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
+                        //cea emissions
+                        DataResults[trIndex][c] = tr.Q4.ToString("F4", CultureInfo.InvariantCulture);
                         DataResults[trIndex][c + 11] = tr.QTL.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
@@ -2918,6 +2992,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
+                        //cea emissions
+                        DataResults[trIndex][c] = tr.Q5.ToString("F4", CultureInfo.InvariantCulture);
                         DataResults[trIndex][c + 11] = tr.QTU.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
@@ -2962,7 +3038,7 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
-                        DataResults[trIndex][c] = locationIndicator.Q3.ToString("F4", CultureInfo.InvariantCulture);
+                        DataResults[trIndex][c] = locationIndicator.QTD1.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
                 else if (c == 7)
@@ -2973,7 +3049,7 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
-                        DataResults[trIndex][c] = locationIndicator.Q4.ToString("F4", CultureInfo.InvariantCulture);
+                        DataResults[trIndex][c] = locationIndicator.QTD2.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
                 else if (c == 8)
@@ -2984,7 +3060,7 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
-                        DataResults[trIndex][c] = locationIndicator.Q5.ToString("F4", CultureInfo.InvariantCulture);
+                        DataResults[trIndex][c] = locationIndicator.Multiplier.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
                 else if (c == 9)
@@ -3011,6 +3087,47 @@ namespace DevTreks.Extensions.Algorithms
                     }
                 }
             }
+        }
+        private void CalculateTRCEA(IndicatorQT1 tr,
+            IndicatorQT1 thirdIndicator, IndicatorQT1 locationIndicator)
+        {
+            IndicatorQT1 tc = new IndicatorQT1();
+            foreach (var rf in thirdIndicator.IndicatorQT1s)
+            {
+                //performance score totals are in Q3, Q4, and Q4; but come from different normalization series
+                //so approach is questionable
+                //total cost
+                tc.QTM += rf.QTM * rf.Q3;
+                tc.QTL += rf.QTL * rf.Q4;
+                tc.QTU += rf.QTU * rf.Q5;
+                //total performance
+                tc.Q3 += rf.Q3;
+                tc.Q4 += rf.Q4;
+                tc.Q5 += rf.Q5;
+            }
+            tr.QTM = tc.QTM / tc.Q3;
+            tr.QTL = tc.QTL / tc.Q4;
+            tr.QTU = tc.QTU / tc.Q5;
+            //display total performance in tr row
+            tr.Q3 = tc.Q3;
+            tr.Q4 = tc.Q4;
+            tr.Q5 = tc.Q5;
+            //display the total costs in tr row
+            tr.QTD1 = tc.QTM;
+            tr.QTD2 = tc.QTL;
+            //mult property is not in use
+            tr.Multiplier = tc.QTU;
+            locationIndicator.QTM = tr.QTM;
+            locationIndicator.QTL = tr.QTL;
+            locationIndicator.QTU = tr.QTU;
+            locationIndicator.Q3 = tr.Q3;
+            locationIndicator.Q4 = tr.Q4;
+            locationIndicator.Q5 = tr.Q5;
+            //display the total costs in tr row
+            locationIndicator.QTD1 = tr.QTD1;
+            locationIndicator.QTD2 = tr.QTD2;
+            //mult property is not in use
+            locationIndicator.Multiplier = tr.Multiplier;
         }
         private void SetScoreDataResult(int scoreIndex, 
             IndicatorQT1 scoreIndicator, IndicatorQT1 locationIndicator)
@@ -3141,6 +3258,9 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
+                        //cea has perf score
+                        DataResults[scoreIndex][c] = scoreIndicator.Q3.ToString("F4", CultureInfo.InvariantCulture);
+                        //both have qtm
                         DataResults[scoreIndex][c + 11] = scoreIndicator.QTM.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
@@ -3152,6 +3272,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
+                        //cea has perf score
+                        DataResults[scoreIndex][c] = scoreIndicator.Q4.ToString("F4", CultureInfo.InvariantCulture);
                         DataResults[scoreIndex][c + 11] = scoreIndicator.QTL.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
@@ -3163,6 +3285,8 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
+                        //cea has perf score
+                        DataResults[scoreIndex][c] = scoreIndicator.Q5.ToString("F4", CultureInfo.InvariantCulture);
                         DataResults[scoreIndex][c + 11] = scoreIndicator.QTU.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
@@ -3207,7 +3331,7 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
-                        DataResults[scoreIndex][c] = scoreIndicator.Q3.ToString("F4", CultureInfo.InvariantCulture);
+                        //DataResults[scoreIndex][c] = scoreIndicator.Q3.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
                 else if (c == 7)
@@ -3218,7 +3342,7 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
-                        DataResults[scoreIndex][c] = scoreIndicator.Q4.ToString("F4", CultureInfo.InvariantCulture);
+                        //DataResults[scoreIndex][c] = scoreIndicator.Q4.ToString("F4", CultureInfo.InvariantCulture);
                         //DataResults[scoreIndex][c] = scoreIndicator.Q1.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
@@ -3230,7 +3354,7 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     else
                     {
-                        DataResults[scoreIndex][c] = scoreIndicator.Q5.ToString("F4", CultureInfo.InvariantCulture);
+                        //DataResults[scoreIndex][c] = scoreIndicator.Q5.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
                 else if (c == 9)
@@ -3242,7 +3366,6 @@ namespace DevTreks.Extensions.Algorithms
                     else
                     {
                         DataResults[scoreIndex][c] = scoreIndicator.Q1.ToString("F4", CultureInfo.InvariantCulture);
-                        //DataResults[scoreIndex][c] = scoreIndicator.Q4.ToString("F4", CultureInfo.InvariantCulture);
                     }
                 }
                 else if (c == 10)
