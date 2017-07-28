@@ -1165,6 +1165,7 @@ namespace DevTreks.Extensions.Algorithms
                 int i = 0;
                 if (hasTarget == true)
                 {
+                    //subalgo16 cea does not need to choose among alts so no conditions
                     foreach (var location in scoreIndicator.IndicatorQT1s)
                     {
                         if (location.AlternativeType.Count() == 1)
@@ -1196,8 +1197,7 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     //210 started using averages
                     if (_subalgorithm == MATH_SUBTYPES.subalgorithm13.ToString()
-                        || _subalgorithm == MATH_SUBTYPES.subalgorithm14.ToString()
-                        || _subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
+                        || _subalgorithm == MATH_SUBTYPES.subalgorithm14.ToString())
                     {
                         if (i != 0)
                         {
@@ -1212,6 +1212,7 @@ namespace DevTreks.Extensions.Algorithms
                 else
                 {
                     //use benchmarks
+                    //subalgo16 cea does not need to choose among alts so no conditions
                     foreach (var location in scoreIndicator.IndicatorQT1s)
                     {
                         if (IsTotalRiskIndex(location.AlternativeType))
@@ -1242,8 +1243,7 @@ namespace DevTreks.Extensions.Algorithms
                     }
                     //210 started using averages
                     if (_subalgorithm == MATH_SUBTYPES.subalgorithm13.ToString()
-                        || _subalgorithm == MATH_SUBTYPES.subalgorithm14.ToString()
-                        || _subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString())
+                        || _subalgorithm == MATH_SUBTYPES.subalgorithm14.ToString())
                     {
                         if (i != 0)
                         {
@@ -1342,15 +1342,15 @@ namespace DevTreks.Extensions.Algorithms
                         bHasTarget = true;
                     }
                 }
-                if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString()
-                    && i != 0)
-                {
-                    IndicatorQT.QTM = IndicatorQT.QTM / i;
-                    IndicatorQT.QTL = IndicatorQT.QTL / i;
-                    IndicatorQT.QTU = IndicatorQT.QTU / i;
-                    IndicatorQT.QTD1 = IndicatorQT.QTD1 / i;
-                    IndicatorQT.QTD2 = IndicatorQT.QTD2 / i;
-                }
+                //if (_subalgorithm == MATH_SUBTYPES.subalgorithm16.ToString()
+                //    && i != 0)
+                //{
+                //    IndicatorQT.QTM = IndicatorQT.QTM / i;
+                //    IndicatorQT.QTL = IndicatorQT.QTL / i;
+                //    IndicatorQT.QTU = IndicatorQT.QTU / i;
+                //    IndicatorQT.QTD1 = IndicatorQT.QTD1 / i;
+                //    IndicatorQT.QTD2 = IndicatorQT.QTD2 / i;
+                //}
                 i = 0;
                 //double check that they actually used target and actual datasets
                 FillActualIndicatorQT(scoreIndicator, bHasActual, bHasTarget);
@@ -3105,6 +3105,7 @@ namespace DevTreks.Extensions.Algorithms
                 tc.Q4 += rf.Q4;
                 tc.Q5 += rf.Q5;
             }
+            //cea ratio
             tr.QTM = tc.QTM / tc.Q3;
             tr.QTL = tc.QTL / tc.Q4;
             tr.QTU = tc.QTU / tc.Q5;
