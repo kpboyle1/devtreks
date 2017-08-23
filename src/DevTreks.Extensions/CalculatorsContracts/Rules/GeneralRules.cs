@@ -349,6 +349,8 @@ namespace DevTreks.Extensions
             double periods)
         {
             if (annualRate == -1) annualRate = 1;
+            if (annualRate > 0)
+                annualRate = annualRate / 100;
             double dbDiscountFactor = (1 / (System.Math.Pow((1 + annualRate), periods)));
             return dbDiscountFactor;
         }

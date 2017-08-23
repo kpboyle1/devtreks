@@ -8,7 +8,7 @@ namespace DevTreks.Extensions
     ///             The algorithm results are passed back to SB1Base-based objects, 
     ///             who then fill in the original SB1Base with the results. 
     ///Author:		www.devtreks.org
-    ///Date:		2017, April
+    ///Date:		2017, August
     ///NOTES        1. Most data manipulation takes place using the collection property.
     ///             2. By convention, the first member of a this collection is the Score, and the 
     ///             remaining are the indexed Indicators.
@@ -57,6 +57,7 @@ namespace DevTreks.Extensions
             this.Q4Unit = q4Unit;
             this.Q5 = CalculatorHelpers.CheckForNaNandRound4(q5);
             this.Q5Unit = q5Unit;
+            //210 added q6 to q11 for supplemental storage (not because UI changed)
             this.Indicators = new string[] { };
         }
         //copy constructor
@@ -77,6 +78,19 @@ namespace DevTreks.Extensions
         public string Q4Unit { get; set; }
         public double Q5 { get; set; }
         public string Q5Unit { get; set; }
+        //210 added q6 to q11 for supplemental storage (not because UI changed)
+        public double Q6 { get; set; }
+        public string Q6Unit { get; set; }
+        public double Q7 { get; set; }
+        public string Q7Unit { get; set; }
+        public double Q8 { get; set; }
+        public string Q8Unit { get; set; }
+        public double Q9 { get; set; }
+        public string Q9Unit { get; set; }
+        public double Q10 { get; set; }
+        public string Q10Unit { get; set; }
+        public double Q11 { get; set; }
+        public string Q11Unit { get; set; }
         public double QTM { get; set; }
         public double QTL { get; set; }
         public double QTU { get; set; }
@@ -124,6 +138,18 @@ namespace DevTreks.Extensions
             indQ.Q4Unit = string.Empty;
             indQ.Q5 = 0;
             indQ.Q5Unit = string.Empty;
+            indQ.Q6 = 0;
+            indQ.Q6Unit = string.Empty;
+            indQ.Q7 = 0;
+            indQ.Q7Unit = string.Empty;
+            indQ.Q8 = 0;
+            indQ.Q8Unit = string.Empty;
+            indQ.Q9 = 0;
+            indQ.Q9Unit = string.Empty;
+            indQ.Q10 = 0;
+            indQ.Q10Unit = string.Empty;
+            indQ.Q11 = 0;
+            indQ.Q11Unit = string.Empty;
             indQ.QTM = 0;
             indQ.QTL = 0;
             indQ.QTU = 0;
@@ -155,6 +181,12 @@ namespace DevTreks.Extensions
             indQ.Q3 = 0;
             indQ.Q4 = 0;
             indQ.Q5 = 0;
+            indQ.Q6 = 0;
+            indQ.Q7 = 0;
+            indQ.Q8 = 0;
+            indQ.Q9 = 0;
+            indQ.Q10 = 0;
+            indQ.Q11 = 0;
             indQ.QTM = 0;
             indQ.QTL = 0;
             indQ.QTU = 0;
@@ -172,6 +204,18 @@ namespace DevTreks.Extensions
                 indQ.Q4Unit = string.Empty;
             if (indQ.Q5Unit == null)
                 indQ.Q5Unit = string.Empty;
+            if (indQ.Q6Unit == null)
+                indQ.Q6Unit = string.Empty;
+            if (indQ.Q7Unit == null)
+                indQ.Q7Unit = string.Empty;
+            if (indQ.Q8Unit == null)
+                indQ.Q8Unit = string.Empty;
+            if (indQ.Q9Unit == null)
+                indQ.Q9Unit = string.Empty;
+            if (indQ.Q10Unit == null)
+                indQ.Q10Unit = string.Empty;
+            if (indQ.Q11Unit == null)
+                indQ.Q11Unit = string.Empty;
             if (indQ.QTMUnit == null)
                 indQ.QTMUnit = string.Empty;
             if (indQ.QTLUnit == null)
@@ -231,6 +275,18 @@ namespace DevTreks.Extensions
             indQ.Q4Unit = calculator.Q4Unit;
             indQ.Q5 = calculator.Q5;
             indQ.Q5Unit = calculator.Q5Unit;
+            indQ.Q6 = calculator.Q6;
+            indQ.Q6Unit = calculator.Q6Unit;
+            indQ.Q7 = calculator.Q7;
+            indQ.Q7Unit = calculator.Q7Unit;
+            indQ.Q8 = calculator.Q8;
+            indQ.Q8Unit = calculator.Q8Unit;
+            indQ.Q9 = calculator.Q9;
+            indQ.Q9Unit = calculator.Q9Unit;
+            indQ.Q10 = calculator.Q10;
+            indQ.Q10Unit = calculator.Q10Unit;
+            indQ.Q11 = calculator.Q11;
+            indQ.Q11Unit = calculator.Q11Unit;
             indQ.QTM = calculator.QTM;
             indQ.QTL = calculator.QTL;
             indQ.QTU = calculator.QTU;
